@@ -1,7 +1,7 @@
 {
   "lastUpdate": "8 Febbraio 2026",
   "statusMessage": "Setup completato — Anagrafica, regime fiscale, dati bancari e struttura operativa acquisiti. In attesa dei primi documenti contabili (fatture, estratti conto) per popolare i KPI.",
-  "statoLavori": "Struttura contabile operativa dall'8 febbraio 2026. Regime semplificato, IVA trimestrale. Commercialista incaricato. In attesa di: primi documenti contabili, visura camerale completa.",
+  "statoLavori": "Società costituita il 29/05/2023. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Commercialista incaricato. Compagine attuale: Marco Vurro (accomandatario) + Sajay Fernandez Espinosa (accomandante). In attesa di: primi documenti contabili, nuova visura camerale.",
   "kpi": [
     { "label": "Ricavi Periodo", "value": "—", "sub": "In attesa fatture vendita", "class": "waiting" },
     { "label": "Costi Periodo", "value": "—", "sub": "In attesa fatture acquisto", "class": "waiting" },
@@ -36,12 +36,12 @@
   "alert": [
     { "tipo": "warning", "testo": "Scadenza 16 Feb — Versamento ritenute d'acconto gennaio (collaboratori diritto d'autore). Gestisce il commercialista." },
     { "tipo": "warning", "testo": "Scadenza 28 Feb — Certificazione Unica: invio AdE + consegna ai collaboratori. Gestisce il commercialista." },
-    { "tipo": "info", "testo": "Visura camerale incompleta: mancano sede legale e data costituzione." },
+    { "tipo": "info", "testo": "Visura camerale parziale: data costituzione acquisita (29/05/2023). In attesa nuova visura per sede legale e quote aggiornate." },
     { "tipo": "info", "testo": "In attesa dei primi documenti contabili (fatture, estratti conto) per attivare KPI e reportistica." }
   ],
-  "suggerimenti": "1) Inviare al commercialista i dati dei 2 collaboratori con contratto diritto d'autore per la CU entro il 28 febbraio. 2) Richiedere il primo estratto conto Intesa Sanpaolo per avviare il monitoraggio cash flow. 3) Completare la visura camerale per avere sede legale e data costituzione.",
+  "suggerimenti": "1) Inviare al commercialista i dati dei 2 collaboratori con contratto diritto d'autore per la CU entro il 28 febbraio. 2) Richiedere il primo estratto conto Intesa Sanpaolo per avviare il monitoraggio cash flow. 3) Sollecitare la nuova visura camerale per confermare sede legale e quote aggiornate.",
   "setupChecklist": [
-    { "label": "Visura camerale", "desc": "Parziale — mancano sede legale e data costituzione", "done": false },
+    { "label": "Visura camerale", "desc": "Parziale — costituzione 29/05/2023, REA RM-1703131. In attesa nuova visura per sede legale aggiornata", "done": false },
     { "label": "Regime fiscale e IVA", "desc": "Semplificato, IVA trimestrale", "done": true },
     { "label": "Dati bancari", "desc": "Intesa Sanpaolo — IBAN acquisito", "done": true },
     { "label": "Periodo di partenza", "desc": "Anno 2026, si parte da zero", "done": true },
