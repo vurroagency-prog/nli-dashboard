@@ -324,14 +324,27 @@
           bhtml += '<div class="empty-state" style="padding:40px 20px;"><div class="icon">🏦</div><h3>In attesa del primo estratto conto</h3><p>I movimenti bancari Intesa Sanpaolo compariranno qui non appena acquisito il primo estratto conto.</p></div>';
         } else {
           const alias = d.bancaAliasDescrizioni || {};
+          const hasAlias = Object.keys(alias).length > 0;
+          let unmatchedCount = 0;
           bhtml += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Descrizione</th><th>Dare</th><th>Avere</th><th>Saldo</th></tr></thead><tbody>';
           bhtml += d.banca.movimenti.map(mv => {
             const orig = mv.descrizione;
             const matchKey = Object.keys(alias).find(k => orig.includes(k));
-            const descHtml = matchKey ? '<span title="' + esc(orig) + '" style="border-bottom:1px dotted var(--text-dim);cursor:help;">' + esc(alias[matchKey]) + '</span>' : esc(orig);
+            let descHtml;
+            if (matchKey) {
+              descHtml = '<span title="' + esc(orig) + '" style="border-bottom:1px dotted var(--text-dim);cursor:help;">' + esc(alias[matchKey]) + '</span>';
+            } else if (hasAlias) {
+              unmatchedCount++;
+              descHtml = '<span style="color:var(--amber);">' + esc(orig) + '</span> <span class="badge upcoming" style="font-size:9px;padding:2px 6px;">da verificare</span>';
+            } else {
+              descHtml = esc(orig);
+            }
             return '<tr><td><strong>' + esc(mv.data) + '</strong></td><td>' + descHtml + '</td><td class="importo">' + esc(mv.dare) + '</td><td class="importo">' + esc(mv.avere) + '</td><td class="importo">' + esc(mv.saldo) + '</td></tr>';
           }).join('');
           bhtml += '</tbody></table></div>';
+          if (unmatchedCount > 0) {
+            bhtml += '<div class="alert-box warning" style="margin-top:12px;">' + unmatchedCount + ' moviment' + (unmatchedCount === 1 ? 'o non ha' : 'i non hanno') + ' una descrizione mappata — da verificare in bancaAliasDescrizioni.</div>';
+          }
         }
         bhtml += '</div>';
         bancaEl.innerHTML = bhtml;
