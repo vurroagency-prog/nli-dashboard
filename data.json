@@ -56,8 +56,8 @@
       "mese": "Gennaio 2026",
       "entrate": [],
       "uscite": [
-        { "data": "01/01", "voce": "Affitto sede", "voceBilancio": "B.8", "importo": "€350", "note": "Via Fieramosca 20, Bari — Panebianco" },
-        { "data": "31/01", "voce": "Rimborso km", "voceBilancio": "B.7", "importo": "€810", "note": "Marco Vurro — 11 trasferte Puglia" }
+        { "data": "01/01", "voce": "Affitto sede", "voceBilancio": "B.8 — Godimento beni terzi", "importo": "€350", "note": "Via Fieramosca 20, Bari — Panebianco" },
+        { "data": "31/01", "voce": "Rimborso km", "voceBilancio": "B.7 — Servizi", "importo": "€810", "note": "Marco Vurro — 11 trasferte Puglia" }
       ],
       "totaleEntrate": "€0",
       "totaleUscite": "€1.160",
@@ -67,7 +67,7 @@
       "mese": "Febbraio 2026",
       "entrate": [],
       "uscite": [
-        { "data": "01/02", "voce": "Affitto sede", "voceBilancio": "B.8", "importo": "€350", "note": "Via Fieramosca 20, Bari — Panebianco" }
+        { "data": "01/02", "voce": "Affitto sede", "voceBilancio": "B.8 — Godimento beni terzi", "importo": "€350", "note": "Via Fieramosca 20, Bari — Panebianco" }
       ],
       "totaleEntrate": "€0",
       "totaleUscite": "€350",
