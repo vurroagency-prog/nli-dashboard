@@ -1,18 +1,19 @@
 {
   "lastUpdate": "8 Febbraio 2026",
-  "statusMessage": "Setup completato — Tutti i dati aziendali acquisiti (anagrafica, sede, soci, regime, banca). In attesa dei primi documenti contabili (fatture, estratti conto) per popolare i KPI.",
-  "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% (accomandatario) + Sajay Fernandez Espinosa 50% (accomandante). In attesa dei primi documenti contabili.",
+  "statusMessage": "Primi documenti acquisiti — Contratto locazione sede, rimborso km gennaio, regolamento welfare archiviati. In attesa di fatture vendita e estratto conto bancario per completare i KPI.",
+  "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. Documenti archiviati: contratto locazione, registrazione AdE, rimborso km gen 2026, regolamento welfare.",
   "kpi": [
     { "label": "Ricavi Periodo", "value": "—", "sub": "In attesa fatture vendita", "class": "waiting" },
-    { "label": "Costi Periodo", "value": "—", "sub": "In attesa fatture acquisto", "class": "waiting" },
-    { "label": "Margine Lordo", "value": "—%", "sub": "(Ricavi - Costi) / Ricavi", "class": "waiting" },
-    { "label": "Utile Netto", "value": "—", "sub": "Dopo imposte", "class": "waiting" },
-    { "label": "Flusso di Cassa", "value": "—", "sub": "Conto Intesa Sanpaolo", "class": "waiting" },
-    { "label": "Incidenza Fiscale", "value": "—%", "sub": "Imposte / Utile lordo", "class": "waiting" },
+    { "label": "Costi Fissi Mese", "value": "€850", "sub": "Affitto €350 + Commerc. €167 + Welfare €167", "class": "neutral" },
+    { "label": "Rimborso Km Gen", "value": "€810", "sub": "Marco Vurro — 11 trasferte Puglia", "class": "neutral" },
+    { "label": "Affitto Sede", "value": "€350/m", "sub": "Via Fieramosca 20, Bari — Panebianco", "class": "neutral" },
+    { "label": "Flusso di Cassa", "value": "—", "sub": "In attesa estratto conto Intesa Sanpaolo", "class": "waiting" },
+    { "label": "Welfare Annuo", "value": "€2.000", "sub": "Credito welfare dipendente (Sajay)", "class": "neutral" },
     { "label": "DSO", "value": "— gg", "sub": "Tempo medio incasso clienti", "class": "waiting" },
     { "label": "DPO", "value": "— gg", "sub": "Tempo medio pag. fornitori", "class": "waiting" }
   ],
   "scadenze": [
+    { "data": "1° ogni mese", "adempimento": "Pagamento affitto sede €350", "frequenza": "Mensile", "stato": "upcoming", "statoLabel": "Ricorrente", "chi": "Noi" },
     { "data": "16 Feb 2026", "adempimento": "Versamento ritenute d'acconto gennaio", "frequenza": "Mensile", "stato": "upcoming", "statoLabel": "In scadenza", "chi": "Commercialista" },
     { "data": "28 Feb 2026", "adempimento": "Invio Certificazione Unica (CU) all'AdE", "frequenza": "Annuale", "stato": "upcoming", "statoLabel": "In scadenza", "chi": "Commercialista" },
     { "data": "28 Feb 2026", "adempimento": "Consegna CU ai collaboratori", "frequenza": "Annuale", "stato": "upcoming", "statoLabel": "In scadenza", "chi": "Commercialista" },
@@ -36,26 +37,26 @@
   "alert": [
     { "tipo": "warning", "testo": "Scadenza 16 Feb — Versamento ritenute d'acconto gennaio (collaboratori diritto d'autore). Gestisce il commercialista." },
     { "tipo": "warning", "testo": "Scadenza 28 Feb — Certificazione Unica: invio AdE + consegna ai collaboratori. Gestisce il commercialista." },
-    { "tipo": "success", "testo": "Visura camerale completata: sede Via Fieramosca 20, Bari. Quote 50/50 confermate. PDF nuova visura in arrivo." },
-    { "tipo": "info", "testo": "In attesa dei primi documenti contabili (fatture, estratti conto) per attivare KPI e reportistica." }
+    { "tipo": "success", "testo": "5 documenti archiviati: contratto locazione, registrazione AdE, ricevuta imposta registro, rimborso km gen 2026, regolamento welfare." },
+    { "tipo": "info", "testo": "In attesa di: fatture vendita, fatture acquisto, primo estratto conto Intesa Sanpaolo." }
   ],
-  "suggerimenti": "1) Inviare al commercialista i dati dei 2 collaboratori con contratto diritto d'autore per la CU entro il 28 febbraio. 2) Richiedere il primo estratto conto Intesa Sanpaolo per avviare il monitoraggio cash flow. 3) Archiviare la nuova visura camerale quando arriva il PDF.",
+  "suggerimenti": "1) Inviare al commercialista i dati dei 2 collaboratori per la CU entro il 28 febbraio. 2) Richiedere il primo estratto conto Intesa Sanpaolo per avviare il monitoraggio cash flow. 3) Verificare pagamento affitto marzo (€350, 1° del mese). 4) Raccogliere rimborso km febbraio 2026.",
   "setupChecklist": [
-    { "label": "Visura camerale", "desc": "Costituzione 29/05/2023, REA RM-1703131. Sede: Via Fieramosca 20, Bari. Quote 50/50. PDF nuova visura in arrivo", "done": true },
+    { "label": "Visura camerale", "desc": "Costituzione 29/05/2023, REA RM-1703131. Sede: Via Fieramosca 20, Bari. Quote 50/50", "done": true },
     { "label": "Regime fiscale e IVA", "desc": "Semplificato, IVA trimestrale", "done": true },
     { "label": "Dati bancari", "desc": "Intesa Sanpaolo — IBAN acquisito", "done": true },
     { "label": "Periodo di partenza", "desc": "Anno 2026, si parte da zero", "done": true },
     { "label": "Software fatturazione", "desc": "Danea Easyfatt", "done": true },
     { "label": "Dipendenti/collaboratori", "desc": "1 dipendente (Sajay) + 2 collaboratori diritto d'autore", "done": true },
-    { "label": "Contabilità pregressa", "desc": "Nessuna — si parte da zero", "done": true },
-    { "label": "Descrizione attività", "desc": "Vendita porta a porta: oggetti pubblicitari, abbigliamento lavoro, siti web, social", "done": true }
+    { "label": "Contratto locazione sede", "desc": "Via Fieramosca 20, Bari — €350/mese, 17/03/2025-16/03/2031", "done": true },
+    { "label": "Welfare aziendale", "desc": "€2.000/anno per dipendente, regolamento archiviato", "done": true }
   ],
   "report": {
     "empty": true,
-    "message": "I report verranno generati non appena saranno registrati i primi documenti contabili (fatture e movimenti bancari)."
+    "message": "I report verranno generati non appena saranno registrati fatture vendita e movimenti bancari."
   },
   "andamento": {
     "empty": true,
-    "message": "I grafici su ricavi, costi, margini e cash flow compariranno con i primi dati contabili."
+    "message": "I grafici su ricavi, costi, margini e cash flow compariranno con i primi dati contabili completi."
   }
 }
