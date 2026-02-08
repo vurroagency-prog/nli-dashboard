@@ -4,13 +4,13 @@
   "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. Documenti archiviati: contratto locazione, registrazione AdE, rimborso km gen 2026, regolamento welfare.",
   "kpi": [
     { "label": "Ricavi Periodo", "value": "—", "sub": "In attesa fatture vendita", "class": "waiting" },
-    { "label": "Costi Fissi Mese", "value": "€850", "sub": "Affitto €350 + Commerc. €167 + Welfare €167", "class": "neutral" },
-    { "label": "Rimborso Km Gen", "value": "€810", "sub": "Marco Vurro — 11 trasferte Puglia", "class": "neutral" },
-    { "label": "Affitto Sede", "value": "€350/m", "sub": "Via Fieramosca 20, Bari — Panebianco", "class": "neutral" },
+    { "label": "Costi Periodo", "value": "€1.660", "sub": "Gen: fissi €850 + rimborso km €810", "class": "neutral" },
+    { "label": "Utile Netto", "value": "—", "sub": "Ricavi - Costi - Imposte", "class": "waiting" },
+    { "label": "Pressione Fiscale", "value": "~50%", "sub": "Stima SAS: IRPEF + INPS + IRAP + add.", "class": "neutral" },
     { "label": "Flusso di Cassa", "value": "—", "sub": "In attesa estratto conto Intesa Sanpaolo", "class": "waiting" },
-    { "label": "Welfare Annuo", "value": "€2.000", "sub": "Credito welfare dipendente (Sajay)", "class": "neutral" },
-    { "label": "DSO", "value": "— gg", "sub": "Tempo medio incasso clienti", "class": "waiting" },
-    { "label": "DPO", "value": "— gg", "sub": "Tempo medio pag. fornitori", "class": "waiting" }
+    { "label": "Affitto Sede", "value": "€350/m", "sub": "Via Fieramosca 20, Bari — Panebianco", "class": "neutral" },
+    { "label": "Rimborso Km Gen", "value": "€810", "sub": "Marco Vurro — 11 trasferte Puglia", "class": "neutral" },
+    { "label": "Welfare Annuo", "value": "€2.000", "sub": "Credito welfare dipendente (Sajay)", "class": "neutral" }
   ],
   "scadenze": [
     { "data": "1° ogni mese", "adempimento": "Pagamento affitto sede €350", "frequenza": "Mensile", "stato": "upcoming", "statoLabel": "Ricorrente", "chi": "Noi" },
