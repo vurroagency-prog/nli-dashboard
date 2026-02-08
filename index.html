@@ -91,6 +91,19 @@
   .alert-box.warning { background: var(--amber-glow); border: 1px solid rgba(251,191,36,0.2); color: var(--amber); }
   .alert-box.info { background: var(--accent-glow); border: 1px solid rgba(79,140,255,0.2); color: var(--accent); }
   .alert-box.success { background: var(--green-glow); border: 1px solid rgba(52,211,153,0.2); color: var(--green); }
+  .badge-certezza { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; padding: 3px 10px; border-radius: 100px; }
+  .badge-certezza.certo { background: var(--green-glow); color: var(--green); }
+  .badge-certezza.stimato { background: var(--amber-glow); color: var(--amber); }
+  .badge-certezza.atteso { background: rgba(255,255,255,0.06); color: var(--text-dim); }
+  .month-card { margin-bottom: 24px; }
+  .month-card .month-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .month-card .month-header h3 { font-size: 16px; font-weight: 600; }
+  .month-card .month-saldo { font-size: 14px; font-weight: 600; }
+  .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin: 16px 0 8px; }
+  .totals-row { display: flex; gap: 24px; padding: 14px 16px; font-size: 13px; font-weight: 600; border-top: 2px solid var(--border); margin-top: 4px; }
+  .totals-row span { color: var(--text-dim); }
+  .totals-row .val { color: var(--text); }
+  td.importo { font-family: 'JetBrains Mono', monospace; font-size: 13px; white-space: nowrap; }
   .empty-state { text-align: center; padding: 60px 20px; color: var(--text-dim); }
   .empty-state .icon { font-size: 48px; margin-bottom: 16px; opacity: 0.4; }
   .empty-state h3 { font-size: 18px; color: var(--text); margin-bottom: 8px; }
@@ -128,9 +141,10 @@
   </div>
   <div class="nav-tabs">
     <div class="nav-tab active" onclick="switchTab('overview')">Panoramica</div>
+    <div class="nav-tab" onclick="switchTab('movimenti')">Entrate &amp; Uscite</div>
+    <div class="nav-tab" onclick="switchTab('banca')">Banca</div>
+    <div class="nav-tab" onclick="switchTab('previsionale')">Previsionale</div>
     <div class="nav-tab" onclick="switchTab('scadenzario')">Scadenzario</div>
-    <div class="nav-tab" onclick="switchTab('report')">Report</div>
-    <div class="nav-tab" onclick="switchTab('andamento')">Andamento</div>
     <div class="nav-tab" onclick="switchTab('alert')">Alert</div>
     <div class="nav-tab" onclick="switchTab('setup')">Setup Iniziale</div>
   </div>
@@ -148,15 +162,20 @@
       <div id="scadenzario-alert" class="alert-box info" style="margin-bottom:24px;">Regime semplificato — IVA trimestrale. Tutti gli adempimenti sono gestiti dal commercialista.</div>
       <div class="card"><div class="table-wrap"><table><thead><tr><th>Scadenza</th><th>Adempimento</th><th>Frequenza</th><th>Chi</th><th>Stato</th></tr></thead><tbody id="scadenze-body"></tbody></table></div></div>
     </div>
-    <!-- Report -->
-    <div class="tab-panel" id="tab-report">
-      <div class="page-header"><h1>Report</h1><p>Report economico-finanziari periodici</p></div>
-      <div id="report-content"></div>
+    <!-- Entrate & Uscite -->
+    <div class="tab-panel" id="tab-movimenti">
+      <div class="page-header"><h1>Entrate &amp; Uscite</h1><p>Movimenti mensili — fatture emesse e pagamenti effettuati</p></div>
+      <div id="movimenti-content"></div>
     </div>
-    <!-- Andamento -->
-    <div class="tab-panel" id="tab-andamento">
-      <div class="page-header"><h1>Andamento</h1><p>Trend e grafici</p></div>
-      <div id="andamento-content"></div>
+    <!-- Banca -->
+    <div class="tab-panel" id="tab-banca">
+      <div class="page-header"><h1>Banca</h1><p>Movimenti conto corrente Intesa Sanpaolo</p></div>
+      <div id="banca-content"></div>
+    </div>
+    <!-- Previsionale -->
+    <div class="tab-panel" id="tab-previsionale">
+      <div class="page-header"><h1>Previsionale</h1><p>Cash flow forecast — costi certi, stimati ed entrate attese</p></div>
+      <div id="previsionale-content"></div>
     </div>
     <!-- Alert -->
     <div class="tab-panel" id="tab-alert">
@@ -247,20 +266,70 @@
         '<tr><td><strong>' + esc(s.data) + '</strong></td><td>' + esc(s.adempimento) + '</td><td>' + esc(s.frequenza) + '</td><td>' + esc(s.chi || '') + '</td><td><span class="badge ' + esc(s.stato) + '">' + esc(s.statoLabel) + '</span></td></tr>'
       ).join('');
 
-      // Report
-      const reportEl = document.getElementById('report-content');
-      if (d.report.empty) {
-        reportEl.innerHTML = '<div class="empty-state"><div class="icon">📊</div><h3>Report in arrivo</h3><p>' + esc(d.report.message) + '</p></div>';
+      // Entrate & Uscite
+      const movEl = document.getElementById('movimenti-content');
+      if (d.movimentiMensili && d.movimentiMensili.length) {
+        movEl.innerHTML = d.movimentiMensili.map(m => {
+          let html = '<div class="card month-card"><div class="month-header"><h3>' + esc(m.mese) + '</h3><div class="month-saldo">Saldo: ' + esc(m.saldo) + '</div></div>';
+          // Entrate
+          html += '<div class="section-label">Entrate</div>';
+          if (m.entrate.length === 0) {
+            html += '<p style="font-size:13px;color:var(--text-dim);padding:8px 0;">Nessuna entrata registrata</p>';
+          } else {
+            html += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Voce</th><th>Voce Bilancio</th><th>Importo</th><th>Note</th></tr></thead><tbody>';
+            html += m.entrate.map(e => '<tr><td><strong>' + esc(e.data) + '</strong></td><td>' + esc(e.voce) + '</td><td>' + esc(e.voceBilancio) + '</td><td class="importo">' + esc(e.importo) + '</td><td>' + esc(e.note) + '</td></tr>').join('');
+            html += '</tbody></table></div>';
+          }
+          // Uscite
+          html += '<div class="section-label">Uscite</div>';
+          if (m.uscite.length === 0) {
+            html += '<p style="font-size:13px;color:var(--text-dim);padding:8px 0;">Nessuna uscita registrata</p>';
+          } else {
+            html += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Voce</th><th>Voce Bilancio</th><th>Importo</th><th>Note</th></tr></thead><tbody>';
+            html += m.uscite.map(e => '<tr><td><strong>' + esc(e.data) + '</strong></td><td>' + esc(e.voce) + '</td><td>' + esc(e.voceBilancio) + '</td><td class="importo">' + esc(e.importo) + '</td><td>' + esc(e.note) + '</td></tr>').join('');
+            html += '</tbody></table></div>';
+          }
+          // Totali
+          html += '<div class="totals-row"><span>Entrate: <span class="val">' + esc(m.totaleEntrate) + '</span></span><span>Uscite: <span class="val">' + esc(m.totaleUscite) + '</span></span></div>';
+          html += '</div>';
+          return html;
+        }).join('');
       } else {
-        reportEl.innerHTML = d.report.html || '';
+        movEl.innerHTML = '<div class="empty-state"><div class="icon">📋</div><h3>Nessun movimento</h3><p>I movimenti compariranno con le prime fatture e pagamenti registrati.</p></div>';
       }
 
-      // Andamento
-      const andEl = document.getElementById('andamento-content');
-      if (d.andamento.empty) {
-        andEl.innerHTML = '<div class="empty-state"><div class="icon">📈</div><h3>Grafici in attesa di dati</h3><p>' + esc(d.andamento.message) + '</p></div>';
+      // Banca
+      const bancaEl = document.getElementById('banca-content');
+      if (d.banca) {
+        let bhtml = '<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;"><h3>' + esc(d.banca.conto) + '</h3><div style="font-size:13px;color:var(--text-dim);">' + esc(d.banca.ultimoAggiornamento) + '</div></div>';
+        if (d.banca.saldoAttuale !== '—') {
+          bhtml += '<div style="font-size:28px;font-weight:700;margin-bottom:20px;">' + esc(d.banca.saldoAttuale) + '</div>';
+        }
+        if (d.banca.movimenti.length === 0) {
+          bhtml += '<div class="empty-state" style="padding:40px 20px;"><div class="icon">🏦</div><h3>In attesa del primo estratto conto</h3><p>I movimenti bancari Intesa Sanpaolo compariranno qui non appena acquisito il primo estratto conto.</p></div>';
+        } else {
+          bhtml += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Descrizione</th><th>Dare</th><th>Avere</th><th>Saldo</th></tr></thead><tbody>';
+          bhtml += d.banca.movimenti.map(mv => '<tr><td><strong>' + esc(mv.data) + '</strong></td><td>' + esc(mv.descrizione) + '</td><td class="importo">' + esc(mv.dare) + '</td><td class="importo">' + esc(mv.avere) + '</td><td class="importo">' + esc(mv.saldo) + '</td></tr>').join('');
+          bhtml += '</tbody></table></div>';
+        }
+        bhtml += '</div>';
+        bancaEl.innerHTML = bhtml;
+      }
+
+      // Previsionale
+      const prevEl = document.getElementById('previsionale-content');
+      if (d.previsionale && d.previsionale.length) {
+        prevEl.innerHTML = d.previsionale.map(m => {
+          let html = '<div class="card month-card"><div class="month-header"><h3>' + esc(m.mese) + '</h3><div class="month-saldo">Saldo stimato: ' + esc(m.saldoStimato) + '</div></div>';
+          html += '<div class="table-wrap"><table><thead><tr><th>Voce</th><th>Tipo</th><th>Importo</th><th>Certezza</th></tr></thead><tbody>';
+          html += m.voci.map(v => '<tr><td><strong>' + esc(v.voce) + '</strong></td><td>' + esc(v.tipo) + '</td><td class="importo">' + esc(v.importo) + '</td><td><span class="badge-certezza ' + esc(v.certezza) + '">' + esc(v.certezza) + '</span></td></tr>').join('');
+          html += '</tbody></table></div>';
+          html += '<div class="totals-row"><span>Uscite stimate: <span class="val">' + esc(m.totaleUsciteStimate) + '</span></span><span>Entrate stimate: <span class="val">' + esc(m.totaleEntrateStimate) + '</span></span></div>';
+          html += '</div>';
+          return html;
+        }).join('');
       } else {
-        andEl.innerHTML = d.andamento.html || '';
+        prevEl.innerHTML = '<div class="empty-state"><div class="icon">🔮</div><h3>Previsionale vuoto</h3><p>Le previsioni di cassa compariranno qui con i primi dati ricorrenti.</p></div>';
       }
 
       // Alert

@@ -51,12 +51,48 @@
     { "label": "Contratto locazione sede", "desc": "Via Fieramosca 20, Bari — €350/mese, 17/03/2025-16/03/2031", "done": true },
     { "label": "Welfare aziendale", "desc": "€2.000/anno per dipendente, regolamento archiviato", "done": true }
   ],
-  "report": {
-    "empty": true,
-    "message": "I report verranno generati non appena saranno registrati fatture vendita e movimenti bancari."
+  "movimentiMensili": [
+    {
+      "mese": "Gennaio 2026",
+      "entrate": [],
+      "uscite": [
+        { "data": "01/01", "voce": "Affitto sede", "voceBilancio": "B.8", "importo": "€350", "note": "Via Fieramosca 20, Bari — Panebianco" },
+        { "data": "31/01", "voce": "Rimborso km", "voceBilancio": "B.7", "importo": "€810", "note": "Marco Vurro — 11 trasferte Puglia" }
+      ],
+      "totaleEntrate": "€0",
+      "totaleUscite": "€1.160",
+      "saldo": "−€1.160"
+    },
+    {
+      "mese": "Febbraio 2026",
+      "entrate": [],
+      "uscite": [
+        { "data": "01/02", "voce": "Affitto sede", "voceBilancio": "B.8", "importo": "€350", "note": "Via Fieramosca 20, Bari — Panebianco" }
+      ],
+      "totaleEntrate": "€0",
+      "totaleUscite": "€350",
+      "saldo": "−€350"
+    }
+  ],
+  "banca": {
+    "conto": "Intesa Sanpaolo",
+    "saldoAttuale": "—",
+    "ultimoAggiornamento": "In attesa primo estratto conto",
+    "movimenti": []
   },
-  "andamento": {
-    "empty": true,
-    "message": "I grafici su ricavi, costi, margini e cash flow compariranno con i primi dati contabili completi."
-  }
+  "previsionale": [
+    {
+      "mese": "Marzo 2026",
+      "voci": [
+        { "voce": "Affitto sede", "tipo": "uscita", "importo": "€350", "certezza": "certo" },
+        { "voce": "Commercialista (rateo)", "tipo": "uscita", "importo": "~€167", "certezza": "stimato" },
+        { "voce": "Welfare (rateo)", "tipo": "uscita", "importo": "~€167", "certezza": "stimato" },
+        { "voce": "Rimborso km", "tipo": "uscita", "importo": "~€800", "certezza": "stimato" },
+        { "voce": "Fatture clienti", "tipo": "entrata", "importo": "—", "certezza": "atteso" }
+      ],
+      "totaleUsciteStimate": "~€1.484",
+      "totaleEntrateStimate": "—",
+      "saldoStimato": "—"
+    }
+  ]
 }
