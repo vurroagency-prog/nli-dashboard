@@ -6,6 +6,7 @@
     { "label": "Ricavi Periodo", "value": "—", "sub": "In attesa fatture vendita", "class": "waiting" },
     { "label": "Costi Periodo", "value": "€1.660", "sub": "Gen: fissi €850 + rimborso km €810", "class": "neutral" },
     { "label": "Utile Netto", "value": "—", "sub": "Ricavi - Costi - Imposte", "class": "waiting" },
+    { "label": "EBITDA YTD", "value": "−€1.510", "sub": "Ricavi − Costi operativi (no imposte/ammort.)", "class": "negative" },
     { "label": "Pressione Fiscale", "value": "~50%", "sub": "Stima SAS: IRPEF + INPS + IRAP + add.", "class": "neutral" },
     { "label": "Flusso di Cassa", "value": "—", "sub": "In attesa estratto conto Intesa Sanpaolo", "class": "waiting" },
     { "label": "Affitto Sede", "value": "€350/m", "sub": "Via Fieramosca 20, Bari — Panebianco", "class": "neutral" },
@@ -61,7 +62,8 @@
       ],
       "totaleEntrate": "€0",
       "totaleUscite": "€1.160",
-      "saldo": "−€1.160"
+      "saldo": "−€1.160",
+      "ebitda": "−€1.160"
     },
     {
       "mese": "Febbraio 2026",
@@ -71,7 +73,8 @@
       ],
       "totaleEntrate": "€0",
       "totaleUscite": "€350",
-      "saldo": "−€350"
+      "saldo": "−€350",
+      "ebitda": "−€350"
     }
   ],
   "banca": {

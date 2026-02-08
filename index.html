@@ -270,7 +270,9 @@
       const movEl = document.getElementById('movimenti-content');
       if (d.movimentiMensili && d.movimentiMensili.length) {
         movEl.innerHTML = d.movimentiMensili.map(m => {
-          let html = '<div class="card month-card"><div class="month-header"><h3>' + esc(m.mese) + '</h3><div class="month-saldo">Saldo: ' + esc(m.saldo) + '</div></div>';
+          const ebitdaVal = m.ebitda || '—';
+          const ebitdaColor = ebitdaVal.includes('−') ? 'var(--red)' : (ebitdaVal === '—' ? 'var(--text-dim)' : 'var(--green)');
+          let html = '<div class="card month-card"><div class="month-header"><h3>' + esc(m.mese) + '</h3><div class="month-saldo">Saldo: ' + esc(m.saldo) + ' <span style="margin-left:12px;color:' + ebitdaColor + '">EBITDA: ' + esc(ebitdaVal) + '</span></div></div>';
           // Entrate
           html += '<div class="section-label">Entrate</div>';
           if (m.entrate.length === 0) {
