@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NLI — Dashboard Contabilità</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -115,7 +116,11 @@
   .check-box.pending { border: 2px solid var(--amber); color: var(--amber); }
   .check-box.done { border: 2px solid var(--green); background: var(--green-glow); color: var(--green); }
   .last-update { text-align: center; padding: 40px 20px 20px; font-size: 12px; color: var(--text-dim); opacity: 0.5; }
-  @media (max-width: 768px) { .topbar { padding: 14px 16px; } .nav-tabs { padding: 0 16px; } .content { padding: 24px 16px; } .page-header h1 { font-size: 22px; } .kpi-grid { grid-template-columns: 1fr 1fr; } .login-box { margin: 20px; padding: 36px 28px; } }
+  .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+  .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .chart-card h4 { font-size: 13px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 16px; }
+  .chart-card canvas { width: 100% !important; max-height: 260px; }
+  @media (max-width: 768px) { .topbar { padding: 14px 16px; } .nav-tabs { padding: 0 16px; } .content { padding: 24px 16px; } .page-header h1 { font-size: 22px; } .kpi-grid { grid-template-columns: 1fr 1fr; } .charts-grid { grid-template-columns: 1fr; } .login-box { margin: 20px; padding: 36px 28px; } }
 </style>
 </head>
 <body>
@@ -154,6 +159,14 @@
       <div class="page-header"><h1>Panoramica</h1><p>KPI e stato generale di Next Level Italia SAS</p></div>
       <div id="overview-status" class="alert-box info" style="margin-bottom:28px;"></div>
       <div class="kpi-grid" id="kpi-grid"></div>
+      <div class="charts-grid">
+        <div class="chart-card"><h4>Entrate vs Uscite</h4><canvas id="chart-entrate-uscite"></canvas></div>
+        <div class="chart-card"><h4>Utile Netto Mensile</h4><canvas id="chart-utile-netto"></canvas></div>
+        <div class="chart-card"><h4>EBITDA Cumulativo vs Target €100k</h4><canvas id="chart-ebitda-target"></canvas></div>
+        <div class="chart-card"><h4>EBITDA Mensile</h4><canvas id="chart-ebitda-mensile"></canvas></div>
+        <div class="chart-card"><h4>Composizione Costi</h4><canvas id="chart-composizione-costi"></canvas></div>
+        <div class="chart-card"><h4>Cash Burn Mensile</h4><canvas id="chart-cash-burn"></canvas></div>
+      </div>
       <div class="card"><h3>Stato lavori</h3><p id="stato-lavori"></p></div>
     </div>
     <!-- Scadenzario -->
@@ -349,6 +362,9 @@
         return '<li><div class="check-box ' + cls + '">' + icon + '</div><div><strong>' + esc(item.label) + '</strong> — ' + esc(item.desc) + '</div></li>';
       }).join('');
 
+      // Charts
+      renderCharts(d);
+
     } catch (err) {
       console.error('Errore caricamento data.json:', err);
     }
@@ -358,6 +374,147 @@
     const div = document.createElement('div');
     div.textContent = str;
     return div.innerHTML;
+  }
+
+  function parseEuro(s) {
+    if (!s || s === '—') return 0;
+    return parseFloat(s.replace('€', '').replace(/\./g, '').replace(',', '.').replace('−', '-').replace('–', '-').trim()) || 0;
+  }
+
+  let chartInstances = [];
+  function renderCharts(d) {
+    chartInstances.forEach(c => c.destroy());
+    chartInstances = [];
+    const mesi = d.movimentiMensili || [];
+    const labels = mesi.map(m => m.mese.replace(' 2026', '').substring(0, 3));
+    const entrate = mesi.map(m => parseEuro(m.totaleEntrate));
+    const uscite = mesi.map(m => parseEuro(m.totaleUscite));
+    const utileNetto = mesi.map(m => parseEuro(m.utileNetto || m.saldo));
+    const ebitdaMensile = mesi.map(m => parseEuro(m.ebitda));
+    const target = d.ebitdaTargetAnnuo || 100000;
+    const targetMensile = target / 12;
+
+    const baseOpts = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#8891a4', font: { family: 'DM Sans', size: 11 } } } },
+      scales: {
+        x: { ticks: { color: '#8891a4', font: { family: 'DM Sans', size: 11 } }, grid: { color: 'rgba(42,48,64,0.5)' } },
+        y: { ticks: { color: '#8891a4', font: { family: 'DM Sans', size: 11 }, callback: function(v) { return '€' + v.toLocaleString('it-IT'); } }, grid: { color: 'rgba(42,48,64,0.5)' } }
+      }
+    };
+
+    // 1. Entrate vs Uscite
+    chartInstances.push(new Chart(document.getElementById('chart-entrate-uscite'), {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          { label: 'Entrate', data: entrate, backgroundColor: '#34d399', borderRadius: 4 },
+          { label: 'Uscite', data: uscite, backgroundColor: '#f87171', borderRadius: 4 }
+        ]
+      },
+      options: { ...baseOpts, plugins: { ...baseOpts.plugins } }
+    }));
+
+    // 2. Utile Netto Mensile
+    chartInstances.push(new Chart(document.getElementById('chart-utile-netto'), {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Utile Netto',
+          data: utileNetto,
+          backgroundColor: utileNetto.map(v => v >= 0 ? '#34d399' : '#f87171'),
+          borderRadius: 4
+        }]
+      },
+      options: { ...baseOpts, plugins: { ...baseOpts.plugins, legend: { display: false } } }
+    }));
+
+    // 3. EBITDA Cumulativo vs Target
+    let cumEbitda = [];
+    let cumTarget = [];
+    ebitdaMensile.forEach((v, i) => {
+      cumEbitda.push((cumEbitda[i - 1] || 0) + v);
+      cumTarget.push(targetMensile * (i + 1));
+    });
+    // Estendi target a 12 mesi
+    const allMonthLabels = ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'];
+    const targetLine = allMonthLabels.map((_, i) => targetMensile * (i + 1));
+    const cumEbitdaFull = allMonthLabels.map((_, i) => i < cumEbitda.length ? cumEbitda[i] : null);
+    chartInstances.push(new Chart(document.getElementById('chart-ebitda-target'), {
+      type: 'line',
+      data: {
+        labels: allMonthLabels,
+        datasets: [
+          { label: 'EBITDA Cumulativo', data: cumEbitdaFull, borderColor: '#4f8cff', backgroundColor: 'rgba(79,140,255,0.1)', fill: true, tension: 0.3, pointRadius: 4, pointBackgroundColor: '#4f8cff', spanGaps: false },
+          { label: 'Target €100k', data: targetLine, borderColor: '#fbbf24', borderDash: [6, 4], pointRadius: 0, fill: false }
+        ]
+      },
+      options: { ...baseOpts, scales: { ...baseOpts.scales, y: { ...baseOpts.scales.y, ticks: { ...baseOpts.scales.y.ticks, callback: function(v) { return '€' + (v / 1000).toFixed(0) + 'k'; } } } } }
+    }));
+
+    // 4. EBITDA Mensile
+    chartInstances.push(new Chart(document.getElementById('chart-ebitda-mensile'), {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'EBITDA',
+          data: ebitdaMensile,
+          backgroundColor: ebitdaMensile.map(v => v >= 0 ? '#34d399' : '#f87171'),
+          borderRadius: 4
+        }]
+      },
+      options: { ...baseOpts, plugins: { ...baseOpts.plugins, legend: { display: false } } }
+    }));
+
+    // 5. Composizione Costi (Doughnut)
+    const costiMap = {};
+    mesi.forEach(m => {
+      m.uscite.forEach(u => {
+        const voce = u.voceBilancio || 'Altro';
+        costiMap[voce] = (costiMap[voce] || 0) + parseEuro(u.importo);
+      });
+    });
+    const costiLabels = Object.keys(costiMap);
+    const costiValues = Object.values(costiMap);
+    const doughnutColors = ['#4f8cff', '#a78bfa', '#f87171', '#fbbf24', '#34d399', '#f472b6', '#38bdf8', '#fb923c'];
+    chartInstances.push(new Chart(document.getElementById('chart-composizione-costi'), {
+      type: 'doughnut',
+      data: {
+        labels: costiLabels.map(l => l.length > 25 ? l.substring(0, 25) + '…' : l),
+        datasets: [{
+          data: costiValues,
+          backgroundColor: doughnutColors.slice(0, costiLabels.length),
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { color: '#8891a4', font: { family: 'DM Sans', size: 11 }, padding: 16, usePointStyle: true, pointStyle: 'circle' } },
+          tooltip: { callbacks: { label: function(ctx) { return ctx.label + ': €' + ctx.parsed.toLocaleString('it-IT'); } } }
+        }
+      }
+    }));
+
+    // 6. Cash Burn Mensile
+    const burnValues = uscite.slice();
+    const avgBurn = burnValues.length ? burnValues.reduce((a, b) => a + b, 0) / burnValues.length : 0;
+    chartInstances.push(new Chart(document.getElementById('chart-cash-burn'), {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          { label: 'Burn Mensile', data: burnValues, backgroundColor: '#f87171', borderRadius: 4, order: 2 },
+          { label: 'Media', data: burnValues.map(() => avgBurn), type: 'line', borderColor: '#fbbf24', borderDash: [6, 4], pointRadius: 0, fill: false, order: 1 }
+        ]
+      },
+      options: baseOpts
+    }));
   }
 </script>
 </body>

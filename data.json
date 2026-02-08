@@ -1,5 +1,6 @@
 {
   "lastUpdate": "8 Febbraio 2026",
+  "ebitdaTargetAnnuo": 100000,
   "statusMessage": "Primi documenti acquisiti — Contratto locazione sede, rimborso km gennaio, regolamento welfare archiviati. In attesa di fatture vendita e estratto conto bancario per completare i KPI.",
   "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. Documenti archiviati: contratto locazione, registrazione AdE, rimborso km gen 2026, regolamento welfare.",
   "kpi": [
@@ -63,7 +64,8 @@
       "totaleEntrate": "€0",
       "totaleUscite": "€1.160",
       "saldo": "−€1.160",
-      "ebitda": "−€1.160"
+      "ebitda": "−€1.160",
+      "utileNetto": "−€1.160"
     },
     {
       "mese": "Febbraio 2026",
@@ -74,7 +76,8 @@
       "totaleEntrate": "€0",
       "totaleUscite": "€350",
       "saldo": "−€350",
-      "ebitda": "−€350"
+      "ebitda": "−€350",
+      "utileNetto": "−€350"
     }
   ],
   "banca": {
