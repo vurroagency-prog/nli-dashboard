@@ -1,48 +1,61 @@
 {
   "lastUpdate": "8 Febbraio 2026",
-  "statusMessage": "Setup in corso — La dashboard è attiva e pronta. I dati verranno popolati non appena riceverò i primi documenti contabili.",
-  "statoLavori": "Struttura contabile impostata l'8 febbraio 2026. In attesa di: dati anagrafici, regime fiscale, documenti contabili.",
+  "statusMessage": "Setup completato — Anagrafica, regime fiscale, dati bancari e struttura operativa acquisiti. In attesa dei primi documenti contabili (fatture, estratti conto) per popolare i KPI.",
+  "statoLavori": "Struttura contabile operativa dall'8 febbraio 2026. Regime semplificato, IVA trimestrale. Commercialista incaricato. In attesa di: primi documenti contabili, visura camerale completa.",
   "kpi": [
-    { "label": "Ricavi Periodo", "value": "—", "sub": "In attesa dei dati", "class": "waiting" },
-    { "label": "Costi Periodo", "value": "—", "sub": "In attesa dei dati", "class": "waiting" },
+    { "label": "Ricavi Periodo", "value": "—", "sub": "In attesa fatture vendita", "class": "waiting" },
+    { "label": "Costi Periodo", "value": "—", "sub": "In attesa fatture acquisto", "class": "waiting" },
     { "label": "Margine Lordo", "value": "—%", "sub": "(Ricavi - Costi) / Ricavi", "class": "waiting" },
     { "label": "Utile Netto", "value": "—", "sub": "Dopo imposte", "class": "waiting" },
-    { "label": "Flusso di Cassa", "value": "—", "sub": "Entrate - Uscite mese", "class": "waiting" },
+    { "label": "Flusso di Cassa", "value": "—", "sub": "Conto Intesa Sanpaolo", "class": "waiting" },
     { "label": "Incidenza Fiscale", "value": "—%", "sub": "Imposte / Utile lordo", "class": "waiting" },
     { "label": "DSO", "value": "— gg", "sub": "Tempo medio incasso clienti", "class": "waiting" },
     { "label": "DPO", "value": "— gg", "sub": "Tempo medio pag. fornitori", "class": "waiting" }
   ],
   "scadenze": [
-    { "data": "16 Feb 2026", "adempimento": "Liquidazione IVA Gennaio", "frequenza": "Mensile", "stato": "upcoming", "statoLabel": "Da verificare" },
-    { "data": "16 Feb 2026", "adempimento": "Ritenute d'acconto Gennaio", "frequenza": "Mensile", "stato": "upcoming", "statoLabel": "Da verificare" },
-    { "data": "28 Feb 2026", "adempimento": "LIPE Q4 2025", "frequenza": "Trimestrale", "stato": "upcoming", "statoLabel": "Da verificare" },
-    { "data": "16 Mar 2026", "adempimento": "Certificazione Unica 2025", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma" },
-    { "data": "30 Apr 2026", "adempimento": "Dichiarazione IVA annuale 2025", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma" },
-    { "data": "30 Giu 2026", "adempimento": "Saldo imposte 2025 + 1° acconto 2026", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma" },
-    { "data": "30 Nov 2026", "adempimento": "2° acconto imposte 2026", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma" },
-    { "data": "30 Nov 2026", "adempimento": "Dichiarazione Redditi SC 2025", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma" }
+    { "data": "16 Feb 2026", "adempimento": "Versamento ritenute d'acconto gennaio", "frequenza": "Mensile", "stato": "upcoming", "statoLabel": "In scadenza", "chi": "Commercialista" },
+    { "data": "28 Feb 2026", "adempimento": "Invio Certificazione Unica (CU) all'AdE", "frequenza": "Annuale", "stato": "upcoming", "statoLabel": "In scadenza", "chi": "Commercialista" },
+    { "data": "28 Feb 2026", "adempimento": "Consegna CU ai collaboratori", "frequenza": "Annuale", "stato": "upcoming", "statoLabel": "In scadenza", "chi": "Commercialista" },
+    { "data": "16 Mar 2026", "adempimento": "Versamento ritenute d'acconto febbraio", "frequenza": "Mensile", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "16 Mar 2026", "adempimento": "Versamento saldo INPS + 1° acconto", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "16 Apr 2026", "adempimento": "Versamento ritenute d'acconto marzo", "frequenza": "Mensile", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "30 Apr 2026", "adempimento": "Dichiarazione annuale IVA", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "16 Mag 2026", "adempimento": "Versamento IVA I trimestre 2026", "frequenza": "Trimestrale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "16 Mag 2026", "adempimento": "Versamento ritenute d'acconto aprile", "frequenza": "Mensile", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "31 Mag 2026", "adempimento": "Invio LIPE I trimestre 2026", "frequenza": "Trimestrale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "30 Giu 2026", "adempimento": "Saldo imposte (IRPEF/IRAP) + 1° acconto", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "30 Giu 2026", "adempimento": "Saldo INPS + 1° acconto", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "30 Giu 2026", "adempimento": "Diritto annuale CCIAA", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "20 Ago 2026", "adempimento": "Versamento IVA II trimestre 2026", "frequenza": "Trimestrale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "16 Nov 2026", "adempimento": "Versamento IVA III trimestre 2026", "frequenza": "Trimestrale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "30 Nov 2026", "adempimento": "2° acconto imposte (IRPEF/IRAP)", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "30 Nov 2026", "adempimento": "2° acconto INPS", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "30 Nov 2026", "adempimento": "Dichiarazione Redditi SP + PF soci", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "27 Dic 2026", "adempimento": "Acconto IVA dicembre", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" }
   ],
   "alert": [
-    { "tipo": "warning", "testo": "Scadenza vicina: 16 Febbraio — Verificare liquidazioni IVA e ritenute." },
-    { "tipo": "info", "testo": "Setup incompleto: In attesa di dati anagrafici e documenti contabili." }
+    { "tipo": "warning", "testo": "Scadenza 16 Feb — Versamento ritenute d'acconto gennaio (collaboratori diritto d'autore). Gestisce il commercialista." },
+    { "tipo": "warning", "testo": "Scadenza 28 Feb — Certificazione Unica: invio AdE + consegna ai collaboratori. Gestisce il commercialista." },
+    { "tipo": "info", "testo": "Visura camerale incompleta: mancano sede legale e data costituzione." },
+    { "tipo": "info", "testo": "In attesa dei primi documenti contabili (fatture, estratti conto) per attivare KPI e reportistica." }
   ],
-  "suggerimenti": "Appena avrò visibilità sui dati, questa sezione conterrà suggerimenti proattivi.",
+  "suggerimenti": "1) Inviare al commercialista i dati dei 2 collaboratori con contratto diritto d'autore per la CU entro il 28 febbraio. 2) Richiedere il primo estratto conto Intesa Sanpaolo per avviare il monitoraggio cash flow. 3) Completare la visura camerale per avere sede legale e data costituzione.",
   "setupChecklist": [
-    { "label": "Visura camerale", "desc": "Dati societari, ATECO, sede, soci", "done": false },
-    { "label": "Regime fiscale e IVA", "desc": "Ordinario/semplificato, mensile/trimestrale", "done": false },
-    { "label": "Dati bancari", "desc": "Conti correnti, banche", "done": false },
-    { "label": "Periodo di partenza", "desc": "Da quando registrare?", "done": false },
-    { "label": "Software fatturazione", "desc": "Aruba, Fatture in Cloud, ecc.", "done": false },
-    { "label": "Dipendenti/collaboratori", "desc": "Presenze, buste paga", "done": false },
-    { "label": "Contabilità pregressa", "desc": "Bilancio precedente?", "done": false },
-    { "label": "Descrizione attività", "desc": "Settore, servizi, clienti", "done": false }
+    { "label": "Visura camerale", "desc": "Parziale — mancano sede legale e data costituzione", "done": false },
+    { "label": "Regime fiscale e IVA", "desc": "Semplificato, IVA trimestrale", "done": true },
+    { "label": "Dati bancari", "desc": "Intesa Sanpaolo — IBAN acquisito", "done": true },
+    { "label": "Periodo di partenza", "desc": "Anno 2026, si parte da zero", "done": true },
+    { "label": "Software fatturazione", "desc": "Danea Easyfatt", "done": true },
+    { "label": "Dipendenti/collaboratori", "desc": "1 dipendente (Sajay) + 2 collaboratori diritto d'autore", "done": true },
+    { "label": "Contabilità pregressa", "desc": "Nessuna — si parte da zero", "done": true },
+    { "label": "Descrizione attività", "desc": "Vendita porta a porta: oggetti pubblicitari, abbigliamento lavoro, siti web, social", "done": true }
   ],
   "report": {
     "empty": true,
-    "message": "I report verranno generati non appena avrò registrato i primi documenti contabili."
+    "message": "I report verranno generati non appena saranno registrati i primi documenti contabili (fatture e movimenti bancari)."
   },
   "andamento": {
     "empty": true,
-    "message": "Qui compariranno grafici interattivi su ricavi, costi, margini e cash flow."
+    "message": "I grafici su ricavi, costi, margini e cash flow compariranno con i primi dati contabili."
   }
 }

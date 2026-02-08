@@ -145,8 +145,8 @@
     <!-- Scadenzario -->
     <div class="tab-panel" id="tab-scadenzario">
       <div class="page-header"><h1>Scadenzario</h1><p>Scadenze fiscali, contributive e amministrative</p></div>
-      <div id="scadenzario-alert" class="alert-box warning" style="margin-bottom:24px;">Lo scadenzario sarà personalizzato in base al regime fiscale effettivo.</div>
-      <div class="card"><div class="table-wrap"><table><thead><tr><th>Scadenza</th><th>Adempimento</th><th>Frequenza</th><th>Stato</th></tr></thead><tbody id="scadenze-body"></tbody></table></div></div>
+      <div id="scadenzario-alert" class="alert-box info" style="margin-bottom:24px;">Regime semplificato — IVA trimestrale. Tutti gli adempimenti sono gestiti dal commercialista.</div>
+      <div class="card"><div class="table-wrap"><table><thead><tr><th>Scadenza</th><th>Adempimento</th><th>Frequenza</th><th>Chi</th><th>Stato</th></tr></thead><tbody id="scadenze-body"></tbody></table></div></div>
     </div>
     <!-- Report -->
     <div class="tab-panel" id="tab-report">
@@ -244,7 +244,7 @@
       // Scadenzario
       const scBody = document.getElementById('scadenze-body');
       scBody.innerHTML = d.scadenze.map(s =>
-        '<tr><td><strong>' + esc(s.data) + '</strong></td><td>' + esc(s.adempimento) + '</td><td>' + esc(s.frequenza) + '</td><td><span class="badge ' + esc(s.stato) + '">' + esc(s.statoLabel) + '</span></td></tr>'
+        '<tr><td><strong>' + esc(s.data) + '</strong></td><td>' + esc(s.adempimento) + '</td><td>' + esc(s.frequenza) + '</td><td>' + esc(s.chi || '') + '</td><td><span class="badge ' + esc(s.stato) + '">' + esc(s.statoLabel) + '</span></td></tr>'
       ).join('');
 
       // Report
