@@ -323,8 +323,14 @@
         if (d.banca.movimenti.length === 0) {
           bhtml += '<div class="empty-state" style="padding:40px 20px;"><div class="icon">🏦</div><h3>In attesa del primo estratto conto</h3><p>I movimenti bancari Intesa Sanpaolo compariranno qui non appena acquisito il primo estratto conto.</p></div>';
         } else {
+          const alias = d.bancaAliasDescrizioni || {};
           bhtml += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Descrizione</th><th>Dare</th><th>Avere</th><th>Saldo</th></tr></thead><tbody>';
-          bhtml += d.banca.movimenti.map(mv => '<tr><td><strong>' + esc(mv.data) + '</strong></td><td>' + esc(mv.descrizione) + '</td><td class="importo">' + esc(mv.dare) + '</td><td class="importo">' + esc(mv.avere) + '</td><td class="importo">' + esc(mv.saldo) + '</td></tr>').join('');
+          bhtml += d.banca.movimenti.map(mv => {
+            const orig = mv.descrizione;
+            const matchKey = Object.keys(alias).find(k => orig.includes(k));
+            const descHtml = matchKey ? '<span title="' + esc(orig) + '" style="border-bottom:1px dotted var(--text-dim);cursor:help;">' + esc(alias[matchKey]) + '</span>' : esc(orig);
+            return '<tr><td><strong>' + esc(mv.data) + '</strong></td><td>' + descHtml + '</td><td class="importo">' + esc(mv.dare) + '</td><td class="importo">' + esc(mv.avere) + '</td><td class="importo">' + esc(mv.saldo) + '</td></tr>';
+          }).join('');
           bhtml += '</tbody></table></div>';
         }
         bhtml += '</div>';
