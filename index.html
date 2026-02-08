@@ -10,7 +10,7 @@
   :root {
     --bg: #0c0f14;
     --surface: #151921;
-    --surface-2: #1c2230
+    --surface-2: #1c2230;
     --border: #2a3040;
     --text: #e4e8f0;
     --text-dim: #8891a4;
@@ -122,7 +122,7 @@
   <div class="topbar">
     <div class="topbar-brand">NLI <span>Dashboard</span></div>
     <div class="topbar-right">
-      <div class="topbar-status"><span class="dot"></span>Ultimo aggiornamento: <span id="last-update-date">8 Feb 2026</span></div>
+      <div class="topbar-status"><span class="dot"></span>Ultimo aggiornamento: <span id="last-update-date">—</span></div>
       <button class="logout-btn" onclick="doLogout()">Esci</button>
     </div>
   </div>
@@ -135,77 +135,159 @@
     <div class="nav-tab" onclick="switchTab('setup')">Setup Iniziale</div>
   </div>
   <div class="content">
+    <!-- Panoramica -->
     <div class="tab-panel active" id="tab-overview">
       <div class="page-header"><h1>Panoramica</h1><p>KPI e stato generale di Next Level Italia SAS</p></div>
-      <div class="alert-box info" style="margin-bottom:28px;">Setup in corso — La dashboard e' attiva e pronta. I dati verranno popolati non appena ricevero' i primi documenti contabili.</div>
-      <div class="kpi-grid">
-        <div class="kpi-card"><div class="kpi-label">Ricavi Periodo</div><div class="kpi-value waiting">—</div><div class="kpi-sub">In attesa dei dati</div></div>
-        <div class="kpi-card"><div class="kpi-label">Costi Periodo</div><div class="kpi-value waiting">—</div><div class="kpi-sub">In attesa dei dati</div></div>
-        <div class="kpi-card"><div class="kpi-label">Margine Lordo</div><div class="kpi-value waiting">—%</div><div class="kpi-sub">(Ricavi - Costi) / Ricavi</div></div>
-        <div class="kpi-card"><div class="kpi-label">Utile Netto</div><div class="kpi-value waiting">—</div><div class="kpi-sub">Dopo imposte</div></div>
-        <div class="kpi-card"><div class="kpi-label">Flusso di Cassa</div><div class="kpi-value waiting">—</div><div class="kpi-sub">Entrate - Uscite mese</div></div>
-        <div class="kpi-card"><div class="kpi-label">Incidenza Fiscale</div><div class="kpi-value waiting">—%</div><div class="kpi-sub">Imposte / Utile lordo</div></div>
-        <div class="kpi-card"><div class="kpi-label">DSO</div><div class="kpi-value waiting">— gg</div><div class="kpi-sub">Tempo medio incasso clienti</div></div>
-        <div class="kpi-card"><div class="kpi-label">DPO</div><div class="kpi-value waiting">— gg</div><div class="kpi-sub">Tempo medio pag. fornitori</div></div>
-      </div>
-      <div class="card"><h3>Stato lavori</h3><p>Struttura contabile impostata l'8 febbraio 2026. In attesa di: dati anagrafici, regime fiscale, documenti contabili.</p></div>
+      <div id="overview-status" class="alert-box info" style="margin-bottom:28px;"></div>
+      <div class="kpi-grid" id="kpi-grid"></div>
+      <div class="card"><h3>Stato lavori</h3><p id="stato-lavori"></p></div>
     </div>
+    <!-- Scadenzario -->
     <div class="tab-panel" id="tab-scadenzario">
       <div class="page-header"><h1>Scadenzario</h1><p>Scadenze fiscali, contributive e amministrative</p></div>
-      <div class="alert-box warning" style="margin-bottom:24px;">Lo scadenzario sara' personalizzato in base al regime fiscale effettivo.</div>
-      <div class="card"><div class="table-wrap"><table><thead><tr><th>Scadenza</th><th>Adempimento</th><th>Frequenza</th><th>Stato</th></tr></thead><tbody>
-        <tr><td><strong>16 Feb 2026</strong></td><td>Liquidazione IVA Gennaio</td><td>Mensile</td><td><span class="badge upcoming">Da verificare</span></td></tr>
-        <tr><td><strong>16 Feb 2026</strong></td><td>Ritenute d'acconto Gennaio</td><td>Mensile</td><td><span class="badge upcoming">Da verificare</span></td></tr>
-        <tr><td><strong>28 Feb 2026</strong></td><td>LIPE Q4 2025</td><td>Trimestrale</td><td><span class="badge upcoming">Da verificare</span></td></tr>
-        <tr><td><strong>16 Mar 2026</strong></td><td>Certificazione Unica 2025</td><td>Annuale</td><td><span class="badge info">In programma</span></td></tr>
-        <tr><td><strong>30 Apr 2026</strong></td><td>Dichiarazione IVA annuale 2025</td><td>Annuale</td><td><span class="badge info">In programma</span></td></tr>
-        <tr><td><strong>30 Giu 2026</strong></td><td>Saldo imposte 2025 + 1 acconto 2026</td><td>Annuale</td><td><span class="badge info">In programma</span></td></tr>
-        <tr><td><strong>30 Nov 2026</strong></td><td>2 acconto imposte 2026</td><td>Annuale</td><td><span class="badge info">In programma</span></td></tr>
-        <tr><td><strong>30 Nov 2026</strong></td><td>Dichiarazione Redditi SC 2025</td><td>Annuale</td><td><span class="badge info">In programma</span></td></tr>
-      </tbody></table></div></div>
+      <div id="scadenzario-alert" class="alert-box warning" style="margin-bottom:24px;">Lo scadenzario sarà personalizzato in base al regime fiscale effettivo.</div>
+      <div class="card"><div class="table-wrap"><table><thead><tr><th>Scadenza</th><th>Adempimento</th><th>Frequenza</th><th>Stato</th></tr></thead><tbody id="scadenze-body"></tbody></table></div></div>
     </div>
+    <!-- Report -->
     <div class="tab-panel" id="tab-report">
       <div class="page-header"><h1>Report</h1><p>Report economico-finanziari periodici</p></div>
-      <div class="empty-state"><div class="icon">📊</div><h3>Report in arrivo</h3><p>I report verranno generati non appena avro' registrato i primi documenti contabili.</p></div>
+      <div id="report-content"></div>
     </div>
+    <!-- Andamento -->
     <div class="tab-panel" id="tab-andamento">
       <div class="page-header"><h1>Andamento</h1><p>Trend e grafici</p></div>
-      <div class="empty-state"><div class="icon">📈</div><h3>Grafici in attesa di dati</h3><p>Qui compariranno grafici interattivi su ricavi, costi, margini e cash flow.</p></div>
+      <div id="andamento-content"></div>
     </div>
+    <!-- Alert -->
     <div class="tab-panel" id="tab-alert">
       <div class="page-header"><h1>Alert e Suggerimenti</h1><p>Segnalazioni, anomalie e consigli proattivi</p></div>
-      <div class="alert-box warning">Scadenza vicina: 16 Febbraio — Verificare liquidazioni IVA e ritenute.</div>
-      <div class="alert-box info">Setup incompleto: In attesa di dati anagrafici e documenti contabili.</div>
-      <div class="card" style="margin-top:16px;"><h3>Suggerimenti</h3><p>Appena avro' visibilita' sui dati, questa sezione conterra' suggerimenti proattivi.</p></div>
+      <div id="alert-list"></div>
+      <div class="card" style="margin-top:16px;"><h3>Suggerimenti</h3><p id="suggerimenti-text"></p></div>
     </div>
+    <!-- Setup -->
     <div class="tab-panel" id="tab-setup">
-      <div class="page-header"><h1>Setup Iniziale</h1><p>Checklist per avviare la contabilita' completa</p></div>
+      <div class="page-header"><h1>Setup Iniziale</h1><p>Checklist per avviare la contabilità completa</p></div>
       <div class="card"><h3>Informazioni necessarie</h3>
-        <ul class="checklist">
-          <li><div class="check-box pending">?</div><div><strong>Visura camerale</strong> — Dati societari, ATECO, sede, soci</div></li>
-          <li><div class="check-box pending">?</div><div><strong>Regime fiscale e IVA</strong> — Ordinario/semplificato, mensile/trimestrale</div></li>
-          <li><div class="check-box pending">?</div><div><strong>Dati bancari</strong> — Conti correnti, banche</div></li>
-          <li><div class="check-box pending">?</div><div><strong>Periodo di partenza</strong> — Da quando registrare?</div></li>
-          <li><div class="check-box pending">?</div><div><strong>Software fatturazione</strong> — Aruba, Fatture in Cloud, ecc.</div></li>
-          <li><div class="check-box pending">?</div><div><strong>Dipendenti/collaboratori</strong> — Presenze, buste paga</div></li>
-          <li><div class="check-box pending">?</div><div><strong>Contabilita' pregressa</strong> — Bilancio precedente?</div></li>
-          <li><div class="check-box pending">?</div><div><strong>Descrizione attivita'</strong> — Settore, servizi, clienti</div></li>
-        </ul>
+        <ul class="checklist" id="setup-checklist"></ul>
       </div>
     </div>
   </div>
-  <div class="last-update">Next Level Italia SAS — Dashboard Contabilita' — Ultimo aggiornamento: 8 Febbraio 2026</div>
+  <div class="last-update" id="footer-update"></div>
 </div>
 <script>
   const HASH = 'ed9ec9d0b70b2b77ff7dbc74cddd4673fbcc4020fe75483d9d071830830e3aef';
   const SESSION_KEY = 'nli_dash_auth';
+
   if (sessionStorage.getItem(SESSION_KEY) === 'true') { showDashboard(); }
   document.getElementById('pwd-input').addEventListener('keydown', function(e) { if (e.key === 'Enter') tryLogin(); });
-  async function hashPassword(pwd) { const encoder = new TextEncoder(); const data = encoder.encode(pwd); const hashBuffer = await crypto.subtle.digest('SHA-256', data); const hashArray = Array.from(new Uint8Array(hashBuffer)); return hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); }
-  async function tryLogin() { const pwd = document.getElementById('pwd-input').value; if (!pwd) { document.getElementById('login-error').textContent = 'Inserisci la password'; return; } const hash = await hashPassword(pwd); if (hash === HASH) { sessionStorage.setItem(SESSION_KEY, 'true'); showDashboard(); } else { document.getElementById('login-error').textContent = 'Password errata'; document.getElementById('pwd-input').value = ''; document.getElementById('pwd-input').focus(); } }
-  function showDashboard() { document.getElementById('login-screen').classList.add('hidden'); document.getElementById('dashboard').classList.add('visible'); }
-  function doLogout() { sessionStorage.removeItem(SESSION_KEY); document.getElementById('login-screen').classList.remove('hidden'); document.getElementById('dashboard').classList.remove('visible'); document.getElementById('pwd-input').value = ''; document.getElementById('pwd-input').focus(); }
-  function switchTab(tabName) { document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active')); document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active')); document.getElementById('tab-' + tabName).classList.add('active'); event.target.classList.add('active'); }
+
+  async function hashPassword(pwd) {
+    const data = new TextEncoder().encode(pwd);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  async function tryLogin() {
+    const pwd = document.getElementById('pwd-input').value;
+    if (!pwd) { document.getElementById('login-error').textContent = 'Inserisci la password'; return; }
+    const hash = await hashPassword(pwd);
+    if (hash === HASH) {
+      sessionStorage.setItem(SESSION_KEY, 'true');
+      showDashboard();
+    } else {
+      document.getElementById('login-error').textContent = 'Password errata';
+      document.getElementById('pwd-input').value = '';
+      document.getElementById('pwd-input').focus();
+    }
+  }
+
+  function showDashboard() {
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('dashboard').classList.add('visible');
+    loadData();
+  }
+
+  function doLogout() {
+    sessionStorage.removeItem(SESSION_KEY);
+    document.getElementById('login-screen').classList.remove('hidden');
+    document.getElementById('dashboard').classList.remove('visible');
+    document.getElementById('pwd-input').value = '';
+    document.getElementById('pwd-input').focus();
+  }
+
+  function switchTab(tabName) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + tabName).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  async function loadData() {
+    try {
+      const resp = await fetch('data.json?' + Date.now());
+      const d = await resp.json();
+
+      // Last update
+      document.getElementById('last-update-date').textContent = d.lastUpdate;
+      document.getElementById('footer-update').textContent = 'Next Level Italia SAS — Dashboard Contabilità — Ultimo aggiornamento: ' + d.lastUpdate;
+
+      // Overview status
+      document.getElementById('overview-status').textContent = d.statusMessage;
+      document.getElementById('stato-lavori').textContent = d.statoLavori;
+
+      // KPI
+      const kpiGrid = document.getElementById('kpi-grid');
+      kpiGrid.innerHTML = d.kpi.map(k =>
+        '<div class="kpi-card"><div class="kpi-label">' + esc(k.label) + '</div><div class="kpi-value ' + esc(k.class) + '">' + esc(k.value) + '</div><div class="kpi-sub">' + esc(k.sub) + '</div></div>'
+      ).join('');
+
+      // Scadenzario
+      const scBody = document.getElementById('scadenze-body');
+      scBody.innerHTML = d.scadenze.map(s =>
+        '<tr><td><strong>' + esc(s.data) + '</strong></td><td>' + esc(s.adempimento) + '</td><td>' + esc(s.frequenza) + '</td><td><span class="badge ' + esc(s.stato) + '">' + esc(s.statoLabel) + '</span></td></tr>'
+      ).join('');
+
+      // Report
+      const reportEl = document.getElementById('report-content');
+      if (d.report.empty) {
+        reportEl.innerHTML = '<div class="empty-state"><div class="icon">📊</div><h3>Report in arrivo</h3><p>' + esc(d.report.message) + '</p></div>';
+      } else {
+        reportEl.innerHTML = d.report.html || '';
+      }
+
+      // Andamento
+      const andEl = document.getElementById('andamento-content');
+      if (d.andamento.empty) {
+        andEl.innerHTML = '<div class="empty-state"><div class="icon">📈</div><h3>Grafici in attesa di dati</h3><p>' + esc(d.andamento.message) + '</p></div>';
+      } else {
+        andEl.innerHTML = d.andamento.html || '';
+      }
+
+      // Alert
+      const alertList = document.getElementById('alert-list');
+      alertList.innerHTML = d.alert.map(a =>
+        '<div class="alert-box ' + esc(a.tipo) + '">' + esc(a.testo) + '</div>'
+      ).join('');
+      document.getElementById('suggerimenti-text').textContent = d.suggerimenti;
+
+      // Setup checklist
+      const cl = document.getElementById('setup-checklist');
+      cl.innerHTML = d.setupChecklist.map(item => {
+        const cls = item.done ? 'done' : 'pending';
+        const icon = item.done ? '✓' : '?';
+        return '<li><div class="check-box ' + cls + '">' + icon + '</div><div><strong>' + esc(item.label) + '</strong> — ' + esc(item.desc) + '</div></li>';
+      }).join('');
+
+    } catch (err) {
+      console.error('Errore caricamento data.json:', err);
+    }
+  }
+
+  function esc(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
 </script>
 </body>
 </html>

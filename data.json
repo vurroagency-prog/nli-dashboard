@@ -1,0 +1,48 @@
+{
+  "lastUpdate": "8 Febbraio 2026",
+  "statusMessage": "Setup in corso — La dashboard è attiva e pronta. I dati verranno popolati non appena riceverò i primi documenti contabili.",
+  "statoLavori": "Struttura contabile impostata l'8 febbraio 2026. In attesa di: dati anagrafici, regime fiscale, documenti contabili.",
+  "kpi": [
+    { "label": "Ricavi Periodo", "value": "—", "sub": "In attesa dei dati", "class": "waiting" },
+    { "label": "Costi Periodo", "value": "—", "sub": "In attesa dei dati", "class": "waiting" },
+    { "label": "Margine Lordo", "value": "—%", "sub": "(Ricavi - Costi) / Ricavi", "class": "waiting" },
+    { "label": "Utile Netto", "value": "—", "sub": "Dopo imposte", "class": "waiting" },
+    { "label": "Flusso di Cassa", "value": "—", "sub": "Entrate - Uscite mese", "class": "waiting" },
+    { "label": "Incidenza Fiscale", "value": "—%", "sub": "Imposte / Utile lordo", "class": "waiting" },
+    { "label": "DSO", "value": "— gg", "sub": "Tempo medio incasso clienti", "class": "waiting" },
+    { "label": "DPO", "value": "— gg", "sub": "Tempo medio pag. fornitori", "class": "waiting" }
+  ],
+  "scadenze": [
+    { "data": "16 Feb 2026", "adempimento": "Liquidazione IVA Gennaio", "frequenza": "Mensile", "stato": "upcoming", "statoLabel": "Da verificare" },
+    { "data": "16 Feb 2026", "adempimento": "Ritenute d'acconto Gennaio", "frequenza": "Mensile", "stato": "upcoming", "statoLabel": "Da verificare" },
+    { "data": "28 Feb 2026", "adempimento": "LIPE Q4 2025", "frequenza": "Trimestrale", "stato": "upcoming", "statoLabel": "Da verificare" },
+    { "data": "16 Mar 2026", "adempimento": "Certificazione Unica 2025", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma" },
+    { "data": "30 Apr 2026", "adempimento": "Dichiarazione IVA annuale 2025", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma" },
+    { "data": "30 Giu 2026", "adempimento": "Saldo imposte 2025 + 1° acconto 2026", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma" },
+    { "data": "30 Nov 2026", "adempimento": "2° acconto imposte 2026", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma" },
+    { "data": "30 Nov 2026", "adempimento": "Dichiarazione Redditi SC 2025", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma" }
+  ],
+  "alert": [
+    { "tipo": "warning", "testo": "Scadenza vicina: 16 Febbraio — Verificare liquidazioni IVA e ritenute." },
+    { "tipo": "info", "testo": "Setup incompleto: In attesa di dati anagrafici e documenti contabili." }
+  ],
+  "suggerimenti": "Appena avrò visibilità sui dati, questa sezione conterrà suggerimenti proattivi.",
+  "setupChecklist": [
+    { "label": "Visura camerale", "desc": "Dati societari, ATECO, sede, soci", "done": false },
+    { "label": "Regime fiscale e IVA", "desc": "Ordinario/semplificato, mensile/trimestrale", "done": false },
+    { "label": "Dati bancari", "desc": "Conti correnti, banche", "done": false },
+    { "label": "Periodo di partenza", "desc": "Da quando registrare?", "done": false },
+    { "label": "Software fatturazione", "desc": "Aruba, Fatture in Cloud, ecc.", "done": false },
+    { "label": "Dipendenti/collaboratori", "desc": "Presenze, buste paga", "done": false },
+    { "label": "Contabilità pregressa", "desc": "Bilancio precedente?", "done": false },
+    { "label": "Descrizione attività", "desc": "Settore, servizi, clienti", "done": false }
+  ],
+  "report": {
+    "empty": true,
+    "message": "I report verranno generati non appena avrò registrato i primi documenti contabili."
+  },
+  "andamento": {
+    "empty": true,
+    "message": "Qui compariranno grafici interattivi su ricavi, costi, margini e cash flow."
+  }
+}
