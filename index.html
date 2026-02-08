@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NLI — Dashboard Contabilità</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0f14;
+    --surface: #151921;
+    --surface-2: #1c2230;
+    --border: #2a3040;
+    --text: #e4e8f0;
+    --text-dim: #8891a4;
+    --accent: #4f8cff;
+    --accent-glow: rgba(79,140,255,0.15);
+    --green: #34d399;
+    --green-glow: rgba(52,211,153,0.12);
+    --amber: #fbbf24;
+    --amber-glow: rgba(251,191,36,0.12);
+    --red: #f87171;
+    --red-glow: rgba(248,113,113,0.12);
+    --purple: #a78bfa;
+    --radius: 12px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+  #login-screen { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s ease, visibility 0.5s ease; }
+  #login-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+  .login-box { width: 100%; max-width: 400px; padding: 48px 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; text-align: center; position: relative; box-shadow: 0 0 80px rgba(79,140,255,0.06); }
+  .login-box::before { content: ''; position: absolute; top: -1px; left: -1px; right: -1px; bottom: -1px; border-radius: 17px; background: linear-gradient(135deg, rgba(79,140,255,0.15), transparent 50%, rgba(167,139,250,0.1)); z-index: -1; }
+  .login-logo { font-size: 32px; font-weight: 700; margin-bottom: 4px; letter-spacing: -1px; }
+  .login-logo span { color: var(--accent); }
+  .login-sub { font-size: 13px; color: var(--text-dim); margin-bottom: 36px; }
+  .login-field { position: relative; margin-bottom: 16px; }
+  .login-field input { width: 100%; padding: 14px 18px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s; }
+  .login-field input:focus { border-color: var(--accent); }
+  .login-field input::placeholder { color: var(--text-dim); }
+  .login-btn { width: 100%; padding: 14px; background: var(--accent); color: #fff; border: none; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 8px; transition: background 0.2s, transform 0.1s; }
+  .login-btn:hover { background: #3d7ae8; }
+  .login-btn:active { transform: scale(0.98); }
+  .login-error { color: var(--red); font-size: 13px; margin-top: 14px; min-height: 20px; }
+  .login-hint { font-size: 11px; color: var(--text-dim); margin-top: 24px; opacity: 0.6; }
+  #dashboard { display: none; }
+  #dashboard.visible { display: block; }
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; border-bottom: 1px solid var(--border); background: var(--surface); position: sticky; top: 0; z-index: 100; }
+  .topbar-brand { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; }
+  .topbar-brand span { color: var(--accent); }
+  .topbar-right { display: flex; align-items: center; gap: 20px; }
+  .topbar-status { font-size: 12px; color: var(--text-dim); }
+  .topbar-status .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--green); margin-right: 6px; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .logout-btn { background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim); padding: 6px 16px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+  .logout-btn:hover { color: var(--text); border-color: var(--text-dim); }
+  .nav-tabs { display: flex; gap: 0; padding: 0 40px; background: var(--surface); border-bottom: 1px solid var(--border); overflow-x: auto; }
+  .nav-tab { padding: 14px 24px; font-size: 13px; font-weight: 500; color: var(--text-dim); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; white-space: nowrap; }
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .content { max-width: 1200px; margin: 0 auto; padding: 40px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .page-header { margin-bottom: 32px; }
+  .page-header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+  .page-header p { color: var(--text-dim); font-size: 14px; margin-top: 4px; }
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .kpi-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .kpi-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px; }
+  .kpi-value { font-size: 30px; font-weight: 700; letter-spacing: -1px; }
+  .kpi-sub { font-size: 12px; color: var(--text-dim); margin-top: 6px; }
+  .kpi-value.positive { color: var(--green); }
+  .kpi-value.negative { color: var(--red); }
+  .kpi-value.neutral { color: var(--text); }
+  .kpi-value.waiting { color: var(--text-dim); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 16px; }
+  .card h3 { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+  .card p { font-size: 14px; color: var(--text-dim); line-height: 1.75; }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); padding: 12px 16px; border-bottom: 2px solid var(--border); white-space: nowrap; }
+  td { padding: 14px 16px; border-bottom: 1px solid var(--border); color: var(--text-dim); }
+  tr:last-child td { border-bottom: none; }
+  td strong { color: var(--text); font-weight: 500; }
+  .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; padding: 4px 10px; border-radius: 100px; }
+  .badge.upcoming { background: var(--amber-glow); color: var(--amber); }
+  .badge.ok { background: var(--green-glow); color: var(--green); }
+  .badge.overdue { background: var(--red-glow); color: var(--red); }
+  .badge.info { background: var(--accent-glow); color: var(--accent); }
+  .alert-box { padding: 20px 24px; border-radius: var(--radius); margin-bottom: 16px; font-size: 14px; }
+  .alert-box.warning { background: var(--amber-glow); border: 1px solid rgba(251,191,36,0.2); color: var(--amber); }
+  .alert-box.info { background: var(--accent-glow); border: 1px solid rgba(79,140,255,0.2); color: var(--accent); }
+  .alert-box.success { background: var(--green-glow); border: 1px solid rgba(52,211,153,0.2); color: var(--green); }
+  .empty-state { text-align: center; padding: 60px 20px; color: var(--text-dim); }
+  .empty-state .icon { font-size: 48px; margin-bottom: 16px; opacity: 0.4; }
+  .empty-state h3 { font-size: 18px; color: var(--text); margin-bottom: 8px; }
+  .empty-state p { font-size: 14px; max-width: 400px; margin: 0 auto; }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { padding: 14px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 14px; font-size: 14px; }
+  .checklist li:last-child { border-bottom: none; }
+  .check-box { width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+  .check-box.pending { border: 2px solid var(--amber); color: var(--amber); }
+  .check-box.done { border: 2px solid var(--green); background: var(--green-glow); color: var(--green); }
+  .last-update { text-align: center; padding: 40px 20px 20px; font-size: 12px; color: var(--text-dim); opacity: 0.5; }
+  @media (max-width: 768px) { .topbar { padding: 14px 16px; } .nav-tabs { padding: 0 16px; } .content { padding: 24px 16px; } .page-header h1 { font-size: 22px; } .kpi-grid { grid-template-columns: 1fr 1fr; } .login-box { margin: 20px; padding: 36px 28px; } }
+</style>
+</head>
+<body>
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">NLI <span>Dashboard</span></div>
+    <div class="login-sub">Next Level Italia SAS — Area Riservata</div>
+    <div class="login-field">
+      <input type="password" id="pwd-input" placeholder="Password di accesso" autocomplete="off" autofocus>
+    </div>
+    <button class="login-btn" id="login-btn" onclick="tryLogin()">Accedi</button>
+    <div class="login-error" id="login-error"></div>
+    <div class="login-hint">Accesso riservato ai soci</div>
+  </div>
+</div>
+<div id="dashboard">
+  <div class="topbar">
+    <div class="topbar-brand">NLI <span>Dashboard</span></div>
+    <div class="topbar-right">
+      <div class="topbar-status"><span class="dot"></span>Ultimo aggiornamento: <span id="last-update-date">8 Feb 2026</span></div>
+      <button class="logout-btn" onclick="doLogout()">Esci</button>
+    </div>
+  </div>
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="switchTab('overview')">Panoramica</div>
+    <div class="nav-tab" onclick="switchTab('scadenzario')">Scadenzario</div>
+    <div class="nav-tab" onclick="switchTab('report')">Report</div>
+    <div class="nav-tab" onclick="switchTab('andamento')">Andamento</div>
+    <div class="nav-tab" onclick="switchTab('alert')">Alert</div>
+    <div class="nav-tab" onclick="switchTab('setup')">Setup Iniziale</div>
+  </div>
+  <div class="content">
+    <div class="tab-panel active" id="tab-overview">
+      <div class="page-header"><h1>Panoramica</h1><p>KPI e stato generale di Next Level Italia SAS</p></div>
+      <div class="alert-box info" style="margin-bottom:28px;">Setup in corso — La dashboard e' attiva e pronta. I dati verranno popolati non appena ricevero' i primi documenti contabili.</div>
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-label">Ricavi Periodo</div><div class="kpi-value waiting">—</div><div class="kpi-sub">In attesa dei dati</div></div>
+        <div class="kpi-card"><div class="kpi-label">Costi Periodo</div><div class="kpi-value waiting">—</div><div class="kpi-sub">In attesa dei dati</div></div>
+        <div class="kpi-card"><div class="kpi-label">Margine Lordo</div><div class="kpi-value waiting">—%</div><div class="kpi-sub">(Ricavi - Costi) / Ricavi</div></div>
+        <div class="kpi-card"><div class="kpi-label">Utile Netto</div><div class="kpi-value waiting">—</div><div class="kpi-sub">Dopo imposte</div></div>
+        <div class="kpi-card"><div class="kpi-label">Flusso di Cassa</div><div class="kpi-value waiting">—</div><div class="kpi-sub">Entrate - Uscite mese</div></div>
+        <div class="kpi-card"><div class="kpi-label">Incidenza Fiscale</div><div class="kpi-value waiting">—%</div><div class="kpi-sub">Imposte / Utile lordo</div></div>
+        <div class="kpi-card"><div class="kpi-label">DSO</div><div class="kpi-value waiting">— gg</div><div class="kpi-sub">Tempo medio incasso clienti</div></div>
+        <div class="kpi-card"><div class="kpi-label">DPO</div><div class="kpi-value waiting">— gg</div><div class="kpi-sub">Tempo medio pag. fornitori</div></div>
+      </div>
+      <div class="card"><h3>Stato lavori</h3><p>Struttura contabile impostata l'8 febbraio 2026. In attesa di: dati anagrafici, regime fiscale, documenti contabili.</p></div>
+    </div>
+    <div class="tab-panel" id="tab-scadenzario">
+      <div class="page-header"><h1>Scadenzario</h1><p>Scadenze fiscali, contributive e amministrative</p></div>
+      <div class="alert-box warning" style="margin-bottom:24px;">Lo scadenzario sara' personalizzato in base al regime fiscale effettivo.</div>
+      <div class="card"><div class="table-wrap"><table><thead><tr><th>Scadenza</th><th>Adempimento</th><th>Frequenza</th><th>Stato</th></tr></thead><tbody>
+        <tr><td><strong>16 Feb 2026</strong></td><td>Liquidazione IVA Gennaio</td><td>Mensile</td><td><span class="badge upcoming">Da verificare</span></td></tr>
+        <tr><td><strong>16 Feb 2026</strong></td><td>Ritenute d'acconto Gennaio</td><td>Mensile</td><td><span class="badge upcoming">Da verificare</span></td></tr>
+        <tr><td><strong>28 Feb 2026</strong></td><td>LIPE Q4 2025</td><td>Trimestrale</td><td><span class="badge upcoming">Da verificare</span></td></tr>
+        <tr><td><strong>16 Mar 2026</strong></td><td>Certificazione Unica 2025</td><td>Annuale</td><td><span class="badge info">In programma</span></td></tr>
+        <tr><td><strong>30 Apr 2026</strong></td><td>Dichiarazione IVA annuale 2025</td><td>Annuale</td><td><span class="badge info">In programma</span></td></tr>
+        <tr><td><strong>30 Giu 2026</strong></td><td>Saldo imposte 2025 + 1 acconto 2026</td><td>Annuale</td><td><span class="badge info">In programma</span></td></tr>
+        <tr><td><strong>30 Nov 2026</strong></td><td>2 acconto imposte 2026</td><td>Annuale</td><td><span class="badge info">In programma</span></td></tr>
+        <tr><td><strong>30 Nov 2026</strong></td><td>Dichiarazione Redditi SC 2025</td><td>Annuale</td><td><span class="badge info">In programma</span></td></tr>
+      </tbody></table></div></div>
+    </div>
+    <div class="tab-panel" id="tab-report">
+      <div class="page-header"><h1>Report</h1><p>Report economico-finanziari periodici</p></div>
+      <div class="empty-state"><div class="icon">📊</div><h3>Report in arrivo</h3><p>I report verranno generati non appena avro' registrato i primi documenti contabili.</p></div>
+    </div>
+    <div class="tab-panel" id="tab-andamento">
+      <div class="page-header"><h1>Andamento</h1><p>Trend e grafici</p></div>
+      <div class="empty-state"><div class="icon">📈</div><h3>Grafici in attesa di dati</h3><p>Qui compariranno grafici interattivi su ricavi, costi, margini e cash flow.</p></div>
+    </div>
+    <div class="tab-panel" id="tab-alert">
+      <div class="page-header"><h1>Alert e Suggerimenti</h1><p>Segnalazioni, anomalie e consigli proattivi</p></div>
+      <div class="alert-box warning">Scadenza vicina: 16 Febbraio — Verificare liquidazioni IVA e ritenute.</div>
+      <div class="alert-box info">Setup incompleto: In attesa di dati anagrafici e documenti contabili.</div>
+      <div class="card" style="margin-top:16px;"><h3>Suggerimenti</h3><p>Appena avro' visibilita' sui dati, questa sezione conterra' suggerimenti proattivi.</p></div>
+    </div>
+    <div class="tab-panel" id="tab-setup">
+      <div class="page-header"><h1>Setup Iniziale</h1><p>Checklist per avviare la contabilita' completa</p></div>
+      <div class="card"><h3>Informazioni necessarie</h3>
+        <ul class="checklist">
+          <li><div class="check-box pending">?</div><div><strong>Visura camerale</strong> — Dati societari, ATECO, sede, soci</div></li>
+          <li><div class="check-box pending">?</div><div><strong>Regime fiscale e IVA</strong> — Ordinario/semplificato, mensile/trimestrale</div></li>
+          <li><div class="check-box pending">?</div><div><strong>Dati bancari</strong> — Conti correnti, banche</div></li>
+          <li><div class="check-box pending">?</div><div><strong>Periodo di partenza</strong> — Da quando registrare?</div></li>
+          <li><div class="check-box pending">?</div><div><strong>Software fatturazione</strong> — Aruba, Fatture in Cloud, ecc.</div></li>
+          <li><div class="check-box pending">?</div><div><strong>Dipendenti/collaboratori</strong> — Presenze, buste paga</div></li>
+          <li><div class="check-box pending">?</div><div><strong>Contabilita' pregressa</strong> — Bilancio precedente?</div></li>
+          <li><div class="check-box pending">?</div><div><strong>Descrizione attivita'</strong> — Settore, servizi, clienti</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="last-update">Next Level Italia SAS — Dashboard Contabilita' — Ultimo aggiornamento: 8 Febbraio 2026</div>
+</div>
+<script>
+  const HASH = '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8';
+  const SESSION_KEY = 'nli_dash_auth';
+  if (sessionStorage.getItem(SESSION_KEY) === 'true') { showDashboard(); }
+  document.getElementById('pwd-input').addEventListener('keydown', function(e) { if (e.key === 'Enter') tryLogin(); });
+  async function hashPassword(pwd) { const encoder = new TextEncoder(); const data = encoder.encode(pwd); const hashBuffer = await crypto.subtle.digest('SHA-256', data); const hashArray = Array.from(new Uint8Array(hashBuffer)); return hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); }
+  async function tryLogin() { const pwd = document.getElementById('pwd-input').value; if (!pwd) { document.getElementById('login-error').textContent = 'Inserisci la password'; return; } const hash = await hashPassword(pwd); if (hash === HASH) { sessionStorage.setItem(SESSION_KEY, 'true'); showDashboard(); } else { document.getElementById('login-error').textContent = 'Password errata'; document.getElementById('pwd-input').value = ''; document.getElementById('pwd-input').focus(); } }
+  function showDashboard() { document.getElementById('login-screen').classList.add('hidden'); document.getElementById('dashboard').classList.add('visible'); }
+  function doLogout() { sessionStorage.removeItem(SESSION_KEY); document.getElementById('login-screen').classList.remove('hidden'); document.getElementById('dashboard').classList.remove('visible'); document.getElementById('pwd-input').value = ''; document.getElementById('pwd-input').focus(); }
+  function switchTab(tabName) { document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active')); document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active')); document.getElementById('tab-' + tabName).classList.add('active'); event.target.classList.add('active'); }
+</script>
+</body>
+</html>
