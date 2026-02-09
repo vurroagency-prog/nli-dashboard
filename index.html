@@ -150,7 +150,8 @@
   </div>
   <div class="nav-tabs">
     <div class="nav-tab active" onclick="switchTab('overview')">Panoramica</div>
-    <div class="nav-tab" onclick="switchTab('movimenti')">Entrate &amp; Uscite</div>
+    <div class="nav-tab" onclick="switchTab('entrate')">Entrate</div>
+    <div class="nav-tab" onclick="switchTab('uscite')">Uscite</div>
     <div class="nav-tab" onclick="switchTab('banca')">Banca</div>
     <div class="nav-tab" onclick="switchTab('previsionale')">Previsionale</div>
     <div class="nav-tab" onclick="switchTab('scadenzario')">Scadenzario</div>
@@ -186,10 +187,15 @@
       <div id="scadenzario-alert" class="alert-box info" style="margin-bottom:24px;">Regime semplificato — IVA trimestrale. Tutti gli adempimenti sono gestiti dal commercialista.</div>
       <div class="card"><div class="table-wrap"><table><thead><tr><th>Scadenza</th><th>Adempimento</th><th>Frequenza</th><th>Chi</th><th>Stato</th></tr></thead><tbody id="scadenze-body"></tbody></table></div></div>
     </div>
-    <!-- Entrate & Uscite -->
-    <div class="tab-panel" id="tab-movimenti">
-      <div class="page-header"><h1>Entrate &amp; Uscite</h1><p>Movimenti mensili — fatture emesse e pagamenti effettuati</p></div>
-      <div id="movimenti-content"></div>
+    <!-- Entrate -->
+    <div class="tab-panel" id="tab-entrate">
+      <div class="page-header"><h1>Entrate</h1><p>Fatture emesse e incassi mensili</p></div>
+      <div id="entrate-content"></div>
+    </div>
+    <!-- Uscite -->
+    <div class="tab-panel" id="tab-uscite">
+      <div class="page-header"><h1>Uscite</h1><p>Fatture ricevute e pagamenti mensili</p></div>
+      <div id="uscite-content"></div>
     </div>
     <!-- Banca -->
     <div class="tab-panel" id="tab-banca">
@@ -290,38 +296,42 @@
         '<tr><td><strong>' + esc(s.data) + '</strong></td><td>' + esc(s.adempimento) + '</td><td>' + esc(s.frequenza) + '</td><td>' + esc(s.chi || '') + '</td><td><span class="badge ' + esc(s.stato) + '">' + esc(s.statoLabel) + '</span></td></tr>'
       ).join('');
 
-      // Entrate & Uscite
-      const movEl = document.getElementById('movimenti-content');
+      // Entrate
+      const entrateEl = document.getElementById('entrate-content');
       if (d.movimentiMensili && d.movimentiMensili.length) {
-        movEl.innerHTML = d.movimentiMensili.map(m => {
-          const ebitdaVal = m.ebitda || '—';
-          const ebitdaColor = ebitdaVal.includes('−') ? 'var(--red)' : (ebitdaVal === '—' ? 'var(--text-dim)' : 'var(--green)');
-          let html = '<div class="card month-card"><div class="month-header"><h3>' + esc(m.mese) + '</h3><div class="month-saldo">Saldo: ' + esc(m.saldo) + ' <span style="margin-left:12px;color:' + ebitdaColor + '">EBITDA: ' + esc(ebitdaVal) + '</span></div></div>';
-          // Entrate
-          html += '<div class="section-label">Entrate</div>';
-          if (m.entrate.length === 0) {
-            html += '<p style="font-size:13px;color:var(--text-dim);padding:8px 0;">Nessuna entrata registrata</p>';
-          } else {
-            html += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Voce</th><th>Voce Bilancio</th><th>Importo</th><th>Note</th></tr></thead><tbody>';
-            html += m.entrate.map(e => '<tr><td><strong>' + esc(e.data) + '</strong></td><td>' + esc(e.voce) + '</td><td>' + esc(e.voceBilancio) + '</td><td class="importo">' + esc(e.importo) + '</td><td>' + esc(e.note) + '</td></tr>').join('');
-            html += '</tbody></table></div>';
-          }
-          // Uscite
-          html += '<div class="section-label">Uscite</div>';
-          if (m.uscite.length === 0) {
-            html += '<p style="font-size:13px;color:var(--text-dim);padding:8px 0;">Nessuna uscita registrata</p>';
-          } else {
-            html += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Voce</th><th>Voce Bilancio</th><th>Importo</th><th>Note</th></tr></thead><tbody>';
-            html += m.uscite.map(e => '<tr><td><strong>' + esc(e.data) + '</strong></td><td>' + esc(e.voce) + '</td><td>' + esc(e.voceBilancio) + '</td><td class="importo">' + esc(e.importo) + '</td><td>' + esc(e.note) + '</td></tr>').join('');
-            html += '</tbody></table></div>';
-          }
-          // Totali
-          html += '<div class="totals-row"><span>Entrate: <span class="val">' + esc(m.totaleEntrate) + '</span></span><span>Uscite: <span class="val">' + esc(m.totaleUscite) + '</span></span></div>';
+        entrateEl.innerHTML = d.movimentiMensili.map(m => {
+          if (m.entrate.length === 0) return '';
+          let html = '<div class="card month-card"><div class="month-header"><h3>' + esc(m.mese) + '</h3><div class="month-saldo" style="color:var(--green);">Totale: ' + esc(m.totaleEntrate) + '</div></div>';
+          html += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Voce</th><th>Voce Bilancio</th><th>Importo</th><th>Note</th></tr></thead><tbody>';
+          html += m.entrate.map(e => '<tr><td><strong>' + esc(e.data) + '</strong></td><td>' + esc(e.voce) + '</td><td>' + esc(e.voceBilancio) + '</td><td class="importo">' + esc(e.importo) + '</td><td>' + esc(e.note) + '</td></tr>').join('');
+          html += '</tbody></table></div>';
+          html += '<div class="totals-row"><span>Totale entrate: <span class="val" style="color:var(--green);">' + esc(m.totaleEntrate) + '</span></span></div>';
           html += '</div>';
           return html;
         }).join('');
+        if (!entrateEl.innerHTML.trim()) entrateEl.innerHTML = '<div class="empty-state"><div class="icon">📥</div><h3>Nessuna entrata</h3><p>Le entrate compariranno con le prime fatture emesse e incassi registrati.</p></div>';
       } else {
-        movEl.innerHTML = '<div class="empty-state"><div class="icon">📋</div><h3>Nessun movimento</h3><p>I movimenti compariranno con le prime fatture e pagamenti registrati.</p></div>';
+        entrateEl.innerHTML = '<div class="empty-state"><div class="icon">📥</div><h3>Nessuna entrata</h3><p>Le entrate compariranno con le prime fatture emesse e incassi registrati.</p></div>';
+      }
+
+      // Uscite
+      const usciteEl = document.getElementById('uscite-content');
+      if (d.movimentiMensili && d.movimentiMensili.length) {
+        usciteEl.innerHTML = d.movimentiMensili.map(m => {
+          if (m.uscite.length === 0) return '';
+          const ebitdaVal = m.ebitda || '—';
+          const ebitdaColor = ebitdaVal.includes('−') ? 'var(--red)' : (ebitdaVal === '—' ? 'var(--text-dim)' : 'var(--green)');
+          let html = '<div class="card month-card"><div class="month-header"><h3>' + esc(m.mese) + '</h3><div class="month-saldo" style="color:var(--red);">Totale: ' + esc(m.totaleUscite) + ' <span style="margin-left:12px;color:' + ebitdaColor + '">EBITDA: ' + esc(ebitdaVal) + '</span></div></div>';
+          html += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Voce</th><th>Voce Bilancio</th><th>Importo</th><th>Note</th></tr></thead><tbody>';
+          html += m.uscite.map(e => '<tr><td><strong>' + esc(e.data) + '</strong></td><td>' + esc(e.voce) + '</td><td>' + esc(e.voceBilancio) + '</td><td class="importo">' + esc(e.importo) + '</td><td>' + esc(e.note) + '</td></tr>').join('');
+          html += '</tbody></table></div>';
+          html += '<div class="totals-row"><span>Totale uscite: <span class="val" style="color:var(--red);">' + esc(m.totaleUscite) + '</span></span></div>';
+          html += '</div>';
+          return html;
+        }).join('');
+        if (!usciteEl.innerHTML.trim()) usciteEl.innerHTML = '<div class="empty-state"><div class="icon">📤</div><h3>Nessuna uscita</h3><p>Le uscite compariranno con le prime fatture ricevute e pagamenti registrati.</p></div>';
+      } else {
+        usciteEl.innerHTML = '<div class="empty-state"><div class="icon">📤</div><h3>Nessuna uscita</h3><p>Le uscite compariranno con le prime fatture ricevute e pagamenti registrati.</p></div>';
       }
 
       // Banca
@@ -342,7 +352,7 @@
             bhtml += '<div class="kpi-card"><div class="kpi-label">Flusso Netto</div><div class="kpi-value positive">' + esc(d.banca.flussoNetto || '—') + '</div></div>';
             bhtml += '<div class="kpi-card"><div class="kpi-label">Movimenti Totali</div><div class="kpi-value neutral">' + (d.banca.movimentiTotali || '—') + '</div></div>';
             bhtml += '</div>';
-            bhtml += '<div class="alert-box info">Dettaglio movimenti disponibile nella sezione Entrate &amp; Uscite. Per il dettaglio completo per riga bancaria, caricare il file estratto conto.</div>';
+            bhtml += '<div class="alert-box info">Dettaglio movimenti disponibile nelle sezioni Entrate e Uscite. Per il dettaglio completo per riga bancaria, caricare il file estratto conto.</div>';
           } else {
             bhtml += '<div class="empty-state" style="padding:40px 20px;"><div class="icon">🏦</div><h3>In attesa del primo estratto conto</h3><p>I movimenti bancari Intesa Sanpaolo compariranno qui non appena acquisito il primo estratto conto.</p></div>';
           }
