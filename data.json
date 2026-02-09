@@ -1,7 +1,8 @@
 {
   "lastUpdate": "9 Febbraio 2026",
+  "fonte": "registro.json",
   "ebitdaTargetAnnuo": 100000,
-  "statusMessage": "41 documenti archiviati (36 fatture acquisto + 5 vendita). F24 16/02 confermato da Prima Nota: €649,98. Totale uscite certe 16/02: €1.890,48. Ritenute da versare: Fatone Gasso €34,50 (16/02) + Palumbo €30,00 (16/03). Saldo banca €11.442 — capienza OK.",
+  "statusMessage": "Fonte: registro.json (44 mov., 41 fatt., 25 scad.). F24 16/02: €649,98. Totale uscite 16/02: €1.890,48. Debiti fornitori: €1.918. Crediti clienti: €625. Saldo banca €11.442 — capienza OK.",
   "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gennaio analizzato: 76 movimenti, quadratura OK. 41 documenti SDI + estere archiviati. Prima Nota paghe gennaio processata. F24 16/02: €649,98 confermato.",
   "kpi": [
     { "label": "Incassi Gennaio", "value": "€28.350", "sub": "Totale cassa — 10 clienti + TeamSystem SDD", "class": "positive" },
@@ -13,7 +14,9 @@
     { "label": "Flusso di Cassa Gen", "value": "+€8.961", "sub": "Da €2.481 a €11.442 (+361%)", "class": "positive" },
     { "label": "Top Cliente", "value": "SiliconDev", "sub": "€9.816 — 34,6% entrate (concentrazione!)", "class": "warning" },
     { "label": "Uscite 16/02", "value": "€1.890", "sub": "F24 €650 + INAIL €69 + INPS Marco €1.137 + rit. €35", "class": "danger" },
-    { "label": "Documenti Archiviati", "value": "41", "sub": "36 fatture IN + 5 fatture OUT (gen-feb)", "class": "positive" }
+    { "label": "Debiti Fornitori", "value": "€1.918", "sub": "12 fatture acquisto da pagare (gen-feb)", "class": "warning" },
+    { "label": "Crediti Clienti", "value": "€625", "sub": "FV 5 Ecomondi da incassare", "class": "neutral" },
+    { "label": "Dati Mancanti", "value": "12", "sub": "Voci da verificare/completare in registro.json", "class": "warning" }
   ],
   "scadenze": [
     { "data": "1° ogni mese", "adempimento": "Pagamento affitto sede €350", "frequenza": "Mensile", "stato": "upcoming", "statoLabel": "Ricorrente", "chi": "Noi" },
