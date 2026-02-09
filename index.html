@@ -124,6 +124,18 @@
   .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
   .chart-card h4 { font-size: 13px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 16px; }
   .chart-card canvas { width: 100% !important; max-height: 260px; }
+  .badge-competenza { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; padding: 2px 8px; border-radius: 100px; margin-left: 8px; vertical-align: middle; }
+  .badge-competenza.comp-2025 { background: var(--amber-glow); color: var(--amber); }
+  .badge-competenza.comp-verify { background: var(--amber-glow); color: var(--amber); border: 1px dashed var(--amber); }
+  .badge-competenza.comp-2026 { background: var(--green-glow); color: var(--green); }
+  tr.row-comp-2025 td { opacity: 0.55; }
+  tr.row-comp-2025 td .badge-competenza { opacity: 1; }
+  tr.row-comp-verify td { opacity: 0.75; }
+  tr.row-comp-verify td .badge-competenza { opacity: 1; }
+  .totals-breakdown { padding: 10px 16px; font-size: 13px; color: var(--text-dim); border-top: 1px solid var(--border); display: flex; gap: 24px; flex-wrap: wrap; }
+  .totals-breakdown .val-green { color: var(--green); font-weight: 600; }
+  .totals-breakdown .val-amber { color: var(--amber); font-weight: 600; }
+  .totals-breakdown .val-dim { color: var(--text-dim); font-weight: 600; }
   @media (max-width: 768px) { .topbar { padding: 14px 16px; } .nav-tabs { padding: 0 16px; } .content { padding: 24px 16px; } .page-header h1 { font-size: 22px; } .kpi-grid { grid-template-columns: 1fr 1fr; } .charts-grid { grid-template-columns: 1fr; } .login-box { margin: 20px; padding: 36px 28px; } }
 </style>
 </head>
@@ -301,11 +313,42 @@
       if (d.movimentiMensili && d.movimentiMensili.length) {
         entrateEl.innerHTML = d.movimentiMensili.map(m => {
           if (m.entrate.length === 0) return '';
-          let html = '<div class="card month-card"><div class="month-header"><h3>' + esc(m.mese) + '</h3><div class="month-saldo" style="color:var(--green);">Totale: ' + esc(m.totaleEntrate) + '</div></div>';
+          // Calcola totali per competenza
+          let tot2026 = 0, tot2025 = 0, totVerify = 0;
+          m.entrate.forEach(e => {
+            const imp = parseEuro(e.importo);
+            const comp = e.competenza || '2026';
+            if (comp === '2025') tot2025 += imp;
+            else if (comp === 'da verificare') totVerify += imp;
+            else tot2026 += imp;
+          });
+          let html = '<div class="card month-card"><div class="month-header"><h3>' + esc(m.mese) + '</h3><div class="month-saldo" style="color:var(--green);">Incassi: ' + esc(m.totaleEntrate) + '</div></div>';
           html += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Voce</th><th>Voce Bilancio</th><th>Importo</th><th>Note</th></tr></thead><tbody>';
-          html += m.entrate.map(e => '<tr><td><strong>' + esc(e.data) + '</strong></td><td>' + esc(e.voce) + '</td><td>' + esc(e.voceBilancio) + '</td><td class="importo">' + esc(e.importo) + '</td><td>' + esc(e.note) + '</td></tr>').join('');
+          html += m.entrate.map(e => {
+            const comp = e.competenza || '2026';
+            let rowClass = '';
+            let badgeHtml = '';
+            if (comp === '2025') {
+              rowClass = ' class="row-comp-2025"';
+              badgeHtml = ' <span class="badge-competenza comp-2025">2025</span>';
+            } else if (comp === 'da verificare') {
+              rowClass = ' class="row-comp-verify"';
+              badgeHtml = ' <span class="badge-competenza comp-verify">da verificare</span>';
+            } else if (comp === '2026') {
+              badgeHtml = ' <span class="badge-competenza comp-2026">2026</span>';
+            }
+            return '<tr' + rowClass + '><td><strong>' + esc(e.data) + '</strong></td><td>' + esc(e.voce) + '</td><td>' + esc(e.voceBilancio) + '</td><td class="importo">' + esc(e.importo) + badgeHtml + '</td><td>' + esc(e.note) + '</td></tr>';
+          }).join('');
           html += '</tbody></table></div>';
-          html += '<div class="totals-row"><span>Totale entrate: <span class="val" style="color:var(--green);">' + esc(m.totaleEntrate) + '</span></span></div>';
+          html += '<div class="totals-row"><span>Totale incassi: <span class="val" style="color:var(--green);">' + esc(m.totaleEntrate) + '</span></span></div>';
+          // Breakdown competenza
+          if (tot2025 > 0 || totVerify > 0) {
+            html += '<div class="totals-breakdown">';
+            html += '<span>Competenza 2026: <span class="val-green">\u20AC' + tot2026.toLocaleString('it-IT', {minimumFractionDigits: 2}) + '</span></span>';
+            if (tot2025 > 0) html += '<span>Incassi fatt. 2025: <span class="val-dim">\u20AC' + tot2025.toLocaleString('it-IT', {minimumFractionDigits: 2}) + '</span></span>';
+            if (totVerify > 0) html += '<span>Da verificare: <span class="val-amber">\u20AC' + totVerify.toLocaleString('it-IT', {minimumFractionDigits: 2}) + '</span></span>';
+            html += '</div>';
+          }
           html += '</div>';
           return html;
         }).join('');

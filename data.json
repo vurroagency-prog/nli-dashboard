@@ -1,10 +1,11 @@
 {
   "lastUpdate": "9 Febbraio 2026",
   "ebitdaTargetAnnuo": 100000,
-  "statusMessage": "Estratto conto gennaio importato — 76 movimenti, quadratura OK. Entrate €28.350, uscite operative €8.889, margine cassa 68,6%. Saldo banca €11.442. Alert: F24 + INAIL 1a rata scadenza 16/02!",
+  "statusMessage": "Estratto conto gennaio importato — 76 movimenti, quadratura OK. Incassi €28.350 (di cui competenza 2026: €1.640 + €5.239 da verificare TS). Uscite operative €8.889, margine cassa 68,6%. Saldo banca €11.442. Alert: F24 + INAIL 1a rata scadenza 16/02!",
   "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. Estratto conto gennaio 2026 analizzato: 76 movimenti, 10 clienti diretti + TeamSystem SDD. Documenti commercialista processati. Buste paga dicembre 2025 riconciliate.",
   "kpi": [
-    { "label": "Ricavi Gennaio", "value": "€28.350", "sub": "10 clienti bonifico + TeamSystem SDD", "class": "positive" },
+    { "label": "Incassi Gennaio", "value": "€28.350", "sub": "Totale cassa — 10 clienti + TeamSystem SDD", "class": "positive" },
+    { "label": "Ricavi Competenza 2026", "value": "€1.640", "sub": "Solo fatture emesse nel 2026 (OEM + Splendor)", "class": "neutral" },
     { "label": "Costi Operativi Gen", "value": "€8.889", "sub": "Escluse distribuzioni soci (€10.500)", "class": "neutral" },
     { "label": "Margine Operativo", "value": "68,6%", "sub": "€19.461 su €28.350 di entrate", "class": "positive" },
     { "label": "EBITDA YTD", "value": "€19.461", "sub": "Cash-based — target annuo €100k", "class": "positive" },
@@ -64,20 +65,20 @@
     {
       "mese": "Gennaio 2026",
       "entrate": [
-        { "data": "02/01", "voce": "Costruzioni Vulpio SRL", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.534,76", "note": "Saldo fatt. 75 del 22/12/2025" },
-        { "data": "02/01", "voce": "SiliconDev S.p.A.", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€9.816,12", "note": "Rif. 57 del 31/10/2025" },
-        { "data": "05/01", "voce": "TeamSystem Payments", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€2.125,86", "note": "SDD aggregato — dettaglio clienti in attesa" },
-        { "data": "08/01", "voce": "De Nicolo C. S.r.l.", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.221,22", "note": "Saldo fatt. 79 del 22/12/2025" },
-        { "data": "08/01", "voce": "Dentitalia S.r.l.", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€3.715,25", "note": "1a rata fatt. 64 del 06/11/2025" },
-        { "data": "12/01", "voce": "TeamSystem Payments", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.913,01", "note": "SDD aggregato — dettaglio clienti in attesa" },
-        { "data": "15/01", "voce": "Cassano SRL", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€711,16", "note": "Saldo fatt. proforma 78" },
-        { "data": "19/01", "voce": "TeamSystem Payments", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€208,18", "note": "SDD aggregato — dettaglio clienti in attesa" },
-        { "data": "20/01", "voce": "O.E.M. di De Lorenzo D. & C.", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.273,78", "note": "Saldo fatt. 72 - NC 3 del 14/01" },
-        { "data": "26/01", "voce": "TeamSystem Payments", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€992,02", "note": "SDD aggregato — dettaglio clienti in attesa" },
-        { "data": "28/01", "voce": "Mec Welding Service SRL", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.337,12", "note": "Saldo ft. 84 del 30/12/2025" },
-        { "data": "29/01", "voce": "Splendor SRL", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€366,00", "note": "Saldo fattura 2 del 08/01/2026" },
-        { "data": "29/01", "voce": "RP SRL", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.282,18", "note": "Saldo fatt. 10 del 13/03/2025 + spese d.i." },
-        { "data": "30/01", "voce": "Euro Impianti 2000 SRL", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.853,18", "note": "Saldo ft. 85 del 30/12/2025" }
+        { "data": "02/01", "voce": "Costruzioni Vulpio SRL", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.534,76", "note": "Saldo fatt. 75 del 22/12/2025", "competenza": "2025" },
+        { "data": "02/01", "voce": "SiliconDev S.p.A.", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€9.816,12", "note": "Rif. 57 del 31/10/2025", "competenza": "2025" },
+        { "data": "05/01", "voce": "TeamSystem Payments", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€2.125,86", "note": "SDD aggregato — dettaglio clienti in attesa", "competenza": "da verificare" },
+        { "data": "08/01", "voce": "De Nicolo C. S.r.l.", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.221,22", "note": "Saldo fatt. 79 del 22/12/2025", "competenza": "2025" },
+        { "data": "08/01", "voce": "Dentitalia S.r.l.", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€3.715,25", "note": "1a rata fatt. 64 del 06/11/2025", "competenza": "2025" },
+        { "data": "12/01", "voce": "TeamSystem Payments", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.913,01", "note": "SDD aggregato — dettaglio clienti in attesa", "competenza": "da verificare" },
+        { "data": "15/01", "voce": "Cassano SRL", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€711,16", "note": "Saldo fatt. proforma 78", "competenza": "2025" },
+        { "data": "19/01", "voce": "TeamSystem Payments", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€208,18", "note": "SDD aggregato — dettaglio clienti in attesa", "competenza": "da verificare" },
+        { "data": "20/01", "voce": "O.E.M. di De Lorenzo D. & C.", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.273,78", "note": "Saldo fatt. 72 - NC 3 del 14/01", "competenza": "2026" },
+        { "data": "26/01", "voce": "TeamSystem Payments", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€992,02", "note": "SDD aggregato — dettaglio clienti in attesa", "competenza": "da verificare" },
+        { "data": "28/01", "voce": "Mec Welding Service SRL", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.337,12", "note": "Saldo ft. 84 del 30/12/2025", "competenza": "2025" },
+        { "data": "29/01", "voce": "Splendor SRL", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€366,00", "note": "Saldo fattura 2 del 08/01/2026", "competenza": "2026" },
+        { "data": "29/01", "voce": "RP SRL", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.282,18", "note": "Saldo fatt. 10 del 13/03/2025 + spese d.i.", "competenza": "2025" },
+        { "data": "30/01", "voce": "Euro Impianti 2000 SRL", "voceBilancio": "A.1 — Ricavi vendite", "importo": "€1.853,18", "note": "Saldo ft. 85 del 30/12/2025", "competenza": "2025" }
       ],
       "uscite": [
         { "data": "02/01", "voce": "Distribuzione utili soci uscenti", "voceBilancio": "Straordinario", "importo": "€10.000,00", "note": "Alessandro Vurro + Claudia Loconsole — NON ricorrente" },
