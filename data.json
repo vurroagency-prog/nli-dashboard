@@ -2,7 +2,7 @@
   "lastUpdate": "9 Febbraio 2026",
   "fonte": "registro.json",
   "ebitdaTargetAnnuo": 100000,
-  "statusMessage": "Fonte: registro.json (51 mov., 46 fatt., 25 scad.). F24 16/02: €649,98. Totale uscite 16/02: €1.890,48. Debito Marco: €2.580. Debiti fornitori: €1.918. Crediti clienti: €625. Saldo banca €11.442 — capienza OK.",
+  "statusMessage": "Fonte: registro.json (52 mov., 46 fatt., 25 scad.). F24 16/02: €649,98. Totale uscite 16/02: €1.890,48. Debito Marco: €2.780. Debiti fornitori: €1.918. Crediti clienti: €625. Saldo banca €11.442 — capienza OK.",
   "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gennaio analizzato: 76 movimenti, quadratura OK. 41 documenti SDI + estere archiviati. Prima Nota paghe gennaio processata. F24 16/02: €649,98 confermato.",
   "kpi": [
     {
@@ -20,7 +20,7 @@
     {
       "label": "Costi Operativi Gen",
       "value": "€10.800",
-      "sub": "Incl. €1.911 anticipati da Marco (Sintra+MediaMarket+Claude.ai)",
+      "sub": "Incl. €1.911 anticipati da Marco (Sintra+MediaMarket+Claude.ai). Totale anticipi: €2.780",
       "class": "neutral"
     },
     {
@@ -73,14 +73,14 @@
     },
     {
       "label": "Dati Mancanti",
-      "value": "17",
-      "sub": "Incl. 5 fatture estere da commercialista + data Envato",
+      "value": "18",
+      "sub": "Incl. 5 fatture estere da commercialista + data Envato + diff. Meccatronica",
       "class": "warning"
     },
     {
       "label": "Debito verso Marco",
-      "value": "€2.580",
-      "sub": "7 spese anticipate gen-feb — rimborso in sospeso",
+      "value": "€2.780",
+      "sub": "8 spese anticipate gen-feb — rimborso in sospeso",
       "class": "warning"
     }
   ],
@@ -301,7 +301,7 @@
     },
     {
       "tipo": "warning",
-      "testo": "RIMBORSO SPESE MARCO: €2.580,05 da rimborsare (7 spese anticipate gen-feb su conto personale: Sintra €416, MediaMarket €1.409, Claude.ai €86, Hostinger €151, Elementor €204, Canva €140, Envato €174)."
+      "testo": "RIMBORSO SPESE MARCO: €2.780,05 da rimborsare (8 spese anticipate gen-feb su conto personale: Sintra €416, MediaMarket €1.409, Claude.ai €86, Hostinger €151, Elementor €204, Canva €140, Envato €174, Meccatronica €200)."
     },
     {
       "tipo": "warning",
@@ -340,7 +340,7 @@
       "testo": "5 fatture estere da richiedere al commercialista: Sintra.ai, Claude.ai, Elementor, Canva, Envato (reverse charge, anticipate da Marco)."
     }
   ],
-  "suggerimenti": "1) URGENTE 16/02: totale uscite €1.890,48 — F24 dip. €649,98 + INAIL €68,65 + INPS Marco €1.137,35 + ritenuta Fatone €34,50. 2) Rimborso spese Marco: €2.580,05 da rimborsare via bonifico (7 anticipazioni). 3) TFR Claudia €1.175,92 da pagare. 4) Richiedere file TeamSystem entro il 10/02. 5) 5 fatture estere da richiedere al commercialista (Sintra, Claude.ai, Elementor, Canva, Envato). 6) Ritenuta Palumbo €30,00 da versare entro 16/03. 7) Diversificare clienti — SiliconDev 34,6%. 8) Offerta Frisbi: decidere entro 28/02. 9) Rimborso km febbraio a fine mese.",
+  "suggerimenti": "1) URGENTE 16/02: totale uscite €1.890,48 — F24 dip. €649,98 + INAIL €68,65 + INPS Marco €1.137,35 + ritenuta Fatone €34,50. 2) Rimborso spese Marco: €2.780,05 da rimborsare via bonifico (8 anticipazioni incl. tagliando Meccatronica). 3) TFR Claudia €1.175,92 da pagare. 4) Richiedere file TeamSystem entro il 10/02. 5) 5 fatture estere da richiedere al commercialista (Sintra, Claude.ai, Elementor, Canva, Envato). 6) Ritenuta Palumbo €30,00 da versare entro 16/03. 7) Diversificare clienti — SiliconDev 34,6%. 8) Offerta Frisbi: decidere entro 28/02. 9) Rimborso km febbraio a fine mese.",
   "setupChecklist": [
     {
       "label": "Visura camerale",
@@ -793,14 +793,21 @@
           "voceBilancio": "B.7 — Servizi",
           "importo": "€174,00",
           "note": "Marketplace digitale — anticipato da Marco (data mancante)"
+        },
+        {
+          "data": "02/02",
+          "voce": "Meccatronica Car Service",
+          "voceBilancio": "B.7 — Servizi",
+          "importo": "€200,00",
+          "note": "Tagliando auto aziendale (Peugeot 3008) — anticipato da Marco (conto personale)"
         }
       ],
       "totaleEntrate": "€0",
-      "totaleUscite": "€1.019",
-      "saldo": "−€1.019",
-      "ebitda": "−€1.019",
+      "totaleUscite": "€1.219",
+      "saldo": "−€1.219",
+      "ebitda": "−€1.219",
       "utileNetto": "—",
-      "note": "Mese in corso — dati parziali. In attesa E/C febbraio. Incl. €668,76 spese anticipate da Marco (conto personale). Fatture ricevute SDI: 8 documenti per ~€640. FV 5 Ecomondi €625,07 emessa."
+      "note": "Mese in corso — dati parziali. In attesa E/C febbraio. Incl. €868,76 spese anticipate da Marco (conto personale). Fatture ricevute SDI: 8 documenti per ~€640. FV 5 Ecomondi €625,07 emessa."
     }
   ],
   "bancaAliasDescrizioni": {
@@ -931,11 +938,11 @@
         {
           "voce": "Rimborso spese Marco (anticipazioni gen-feb)",
           "tipo": "uscita",
-          "importo": "€2.580,05",
+          "importo": "€2.780,05",
           "certezza": "certo"
         }
       ],
-      "totaleUsciteStimate": "~€7.658",
+      "totaleUsciteStimate": "~€7.858",
       "totaleEntrateStimate": "~€20.625",
       "saldoStimato": "~€24.409"
     },
