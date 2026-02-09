@@ -92,6 +92,7 @@
   .alert-box.warning { background: var(--amber-glow); border: 1px solid rgba(251,191,36,0.2); color: var(--amber); }
   .alert-box.info { background: var(--accent-glow); border: 1px solid rgba(79,140,255,0.2); color: var(--accent); }
   .alert-box.success { background: var(--green-glow); border: 1px solid rgba(52,211,153,0.2); color: var(--green); }
+  .alert-box.danger { background: var(--red-glow); border: 1px solid rgba(248,113,113,0.3); color: var(--red); font-weight: 600; }
   .badge-certezza { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; padding: 3px 10px; border-radius: 100px; }
   .badge-certezza.certo { background: var(--green-glow); color: var(--green); }
   .badge-certezza.stimato { background: var(--amber-glow); color: var(--amber); }
@@ -116,6 +117,9 @@
   .check-box.pending { border: 2px solid var(--amber); color: var(--amber); }
   .check-box.done { border: 2px solid var(--green); background: var(--green-glow); color: var(--green); }
   .last-update { text-align: center; padding: 40px 20px 20px; font-size: 12px; color: var(--text-dim); opacity: 0.5; }
+  .section-header { margin: 32px 0 16px 0; }
+  .section-header:first-of-type { margin-top: 0; }
+  .section-header h3 { font-size: 15px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.2px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
   .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
   .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
   .chart-card h4 { font-size: 13px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 16px; }
@@ -159,13 +163,20 @@
       <div class="page-header"><h1>Panoramica</h1><p>KPI e stato generale di Next Level Italia SAS</p></div>
       <div id="overview-status" class="alert-box info" style="margin-bottom:28px;"></div>
       <div class="kpi-grid" id="kpi-grid"></div>
+      <div class="section-header"><h3 style="color:var(--green);">Entrate</h3></div>
       <div class="charts-grid">
-        <div class="chart-card"><h4>Entrate vs Uscite</h4><canvas id="chart-entrate-uscite"></canvas></div>
-        <div class="chart-card"><h4>Utile Netto Mensile</h4><canvas id="chart-utile-netto"></canvas></div>
-        <div class="chart-card"><h4>EBITDA Cumulativo vs Target €100k</h4><canvas id="chart-ebitda-target"></canvas></div>
-        <div class="chart-card"><h4>EBITDA Mensile</h4><canvas id="chart-ebitda-mensile"></canvas></div>
+        <div class="chart-card"><h4>Entrate Mensili</h4><canvas id="chart-entrate"></canvas></div>
+        <div class="chart-card"><h4>Composizione Entrate</h4><canvas id="chart-composizione-entrate"></canvas></div>
+      </div>
+      <div class="section-header"><h3 style="color:var(--red);">Uscite</h3></div>
+      <div class="charts-grid">
+        <div class="chart-card"><h4>Uscite Mensili</h4><canvas id="chart-uscite"></canvas></div>
         <div class="chart-card"><h4>Composizione Costi</h4><canvas id="chart-composizione-costi"></canvas></div>
-        <div class="chart-card"><h4>Cash Burn Mensile</h4><canvas id="chart-cash-burn"></canvas></div>
+      </div>
+      <div class="section-header"><h3>Performance</h3></div>
+      <div class="charts-grid">
+        <div class="chart-card"><h4>EBITDA Cumulativo vs Target €100k</h4><canvas id="chart-ebitda-target"></canvas></div>
+        <div class="chart-card"><h4>EBITDA e Utile Netto</h4><canvas id="chart-ebitda-utile"></canvas></div>
       </div>
       <div class="card"><h3>Stato lavori</h3><p id="stato-lavori"></p></div>
     </div>
@@ -320,8 +331,21 @@
         if (d.banca.saldoAttuale !== '—') {
           bhtml += '<div style="font-size:28px;font-weight:700;margin-bottom:20px;">' + esc(d.banca.saldoAttuale) + '</div>';
         }
-        if (d.banca.movimenti.length === 0) {
-          bhtml += '<div class="empty-state" style="padding:40px 20px;"><div class="icon">🏦</div><h3>In attesa del primo estratto conto</h3><p>I movimenti bancari Intesa Sanpaolo compariranno qui non appena acquisito il primo estratto conto.</p></div>';
+        if (!d.banca.movimenti || d.banca.movimenti.length === 0) {
+          // Mostra riepilogo se ci sono dati di sintesi
+          if (d.banca.saldoInizioMese && d.banca.saldoInizioMese !== '—') {
+            bhtml += '<div class="kpi-grid" style="margin-bottom:20px;">';
+            bhtml += '<div class="kpi-card"><div class="kpi-label">Saldo Iniziale</div><div class="kpi-value neutral">' + esc(d.banca.saldoInizioMese) + '</div></div>';
+            bhtml += '<div class="kpi-card"><div class="kpi-label">Saldo Finale</div><div class="kpi-value positive">' + esc(d.banca.saldoAttuale) + '</div></div>';
+            bhtml += '<div class="kpi-card"><div class="kpi-label">Entrate Totali</div><div class="kpi-value positive">' + esc(d.banca.entrateGennaio || '—') + '</div></div>';
+            bhtml += '<div class="kpi-card"><div class="kpi-label">Uscite Totali</div><div class="kpi-value negative">' + esc(d.banca.usciteGennaio || '—') + '</div></div>';
+            bhtml += '<div class="kpi-card"><div class="kpi-label">Flusso Netto</div><div class="kpi-value positive">' + esc(d.banca.flussoNetto || '—') + '</div></div>';
+            bhtml += '<div class="kpi-card"><div class="kpi-label">Movimenti Totali</div><div class="kpi-value neutral">' + (d.banca.movimentiTotali || '—') + '</div></div>';
+            bhtml += '</div>';
+            bhtml += '<div class="alert-box info">Dettaglio movimenti disponibile nella sezione Entrate &amp; Uscite. Per il dettaglio completo per riga bancaria, caricare il file estratto conto.</div>';
+          } else {
+            bhtml += '<div class="empty-state" style="padding:40px 20px;"><div class="icon">🏦</div><h3>In attesa del primo estratto conto</h3><p>I movimenti bancari Intesa Sanpaolo compariranno qui non appena acquisito il primo estratto conto.</p></div>';
+          }
         } else {
           const alias = d.bancaAliasDescrizioni || {};
           const hasAlias = Object.keys(alias).length > 0;
@@ -406,9 +430,9 @@
     chartInstances = [];
     const mesi = d.movimentiMensili || [];
     const labels = mesi.map(m => m.mese.replace(' 2026', '').substring(0, 3));
-    const entrate = mesi.map(m => parseEuro(m.totaleEntrate));
-    const uscite = mesi.map(m => parseEuro(m.totaleUscite));
-    const utileNetto = mesi.map(m => parseEuro(m.utileNetto || m.saldo));
+    const entrateData = mesi.map(m => parseEuro(m.totaleEntrate));
+    const usciteData = mesi.map(m => parseEuro(m.totaleUscite));
+    const utileNettoData = mesi.map(m => parseEuro(m.utileNetto || m.saldo));
     const ebitdaMensile = mesi.map(m => parseEuro(m.ebitda));
     const target = d.ebitdaTargetAnnuo || 100000;
     const targetMensile = target / 12;
@@ -422,43 +446,91 @@
         y: { ticks: { color: '#8891a4', font: { family: 'DM Sans', size: 11 }, callback: function(v) { return '€' + v.toLocaleString('it-IT'); } }, grid: { color: 'rgba(42,48,64,0.5)' } }
       }
     };
+    const doughnutColors = ['#4f8cff', '#34d399', '#a78bfa', '#fbbf24', '#f472b6', '#38bdf8', '#fb923c', '#f87171', '#6ee7b7', '#c084fc', '#facc15', '#818cf8'];
 
-    // 1. Entrate vs Uscite
-    chartInstances.push(new Chart(document.getElementById('chart-entrate-uscite'), {
+    // === ENTRATE ===
+
+    // 1. Entrate Mensili (bar verde)
+    chartInstances.push(new Chart(document.getElementById('chart-entrate'), {
       type: 'bar',
       data: {
         labels: labels,
-        datasets: [
-          { label: 'Entrate', data: entrate, backgroundColor: '#34d399', borderRadius: 4 },
-          { label: 'Uscite', data: uscite, backgroundColor: '#f87171', borderRadius: 4 }
-        ]
-      },
-      options: { ...baseOpts, plugins: { ...baseOpts.plugins } }
-    }));
-
-    // 2. Utile Netto Mensile
-    chartInstances.push(new Chart(document.getElementById('chart-utile-netto'), {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Utile Netto',
-          data: utileNetto,
-          backgroundColor: utileNetto.map(v => v >= 0 ? '#34d399' : '#f87171'),
-          borderRadius: 4
-        }]
+        datasets: [{ label: 'Entrate', data: entrateData, backgroundColor: '#34d399', borderRadius: 4 }]
       },
       options: { ...baseOpts, plugins: { ...baseOpts.plugins, legend: { display: false } } }
     }));
 
-    // 3. EBITDA Cumulativo vs Target
-    let cumEbitda = [];
-    let cumTarget = [];
-    ebitdaMensile.forEach((v, i) => {
-      cumEbitda.push((cumEbitda[i - 1] || 0) + v);
-      cumTarget.push(targetMensile * (i + 1));
+    // 2. Composizione Entrate (doughnut per cliente)
+    const entrateMap = {};
+    mesi.forEach(m => {
+      (m.entrate || []).forEach(e => {
+        const voce = e.voce || 'Altro';
+        entrateMap[voce] = (entrateMap[voce] || 0) + parseEuro(e.importo);
+      });
     });
-    // Estendi target a 12 mesi
+    const entrateLabels = Object.keys(entrateMap);
+    const entrateValues = Object.values(entrateMap);
+    chartInstances.push(new Chart(document.getElementById('chart-composizione-entrate'), {
+      type: 'doughnut',
+      data: {
+        labels: entrateLabels.map(l => l.length > 25 ? l.substring(0, 25) + '…' : l),
+        datasets: [{ data: entrateValues, backgroundColor: doughnutColors.slice(0, entrateLabels.length), borderWidth: 0 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { color: '#8891a4', font: { family: 'DM Sans', size: 11 }, padding: 12, usePointStyle: true, pointStyle: 'circle' } },
+          tooltip: { callbacks: { label: function(ctx) { return ctx.label + ': €' + ctx.parsed.toLocaleString('it-IT'); } } }
+        }
+      }
+    }));
+
+    // === USCITE ===
+
+    // 3. Uscite Mensili + Media (bar rosso + linea media)
+    const avgUscite = usciteData.length ? usciteData.reduce((a, b) => a + b, 0) / usciteData.length : 0;
+    chartInstances.push(new Chart(document.getElementById('chart-uscite'), {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          { label: 'Uscite', data: usciteData, backgroundColor: '#f87171', borderRadius: 4, order: 2 },
+          { label: 'Media', data: usciteData.map(() => avgUscite), type: 'line', borderColor: '#fbbf24', borderDash: [6, 4], pointRadius: 0, fill: false, order: 1 }
+        ]
+      },
+      options: baseOpts
+    }));
+
+    // 4. Composizione Costi (doughnut per voceBilancio)
+    const costiMap = {};
+    mesi.forEach(m => {
+      (m.uscite || []).forEach(u => {
+        const voce = u.voceBilancio || 'Altro';
+        costiMap[voce] = (costiMap[voce] || 0) + parseEuro(u.importo);
+      });
+    });
+    const costiLabels = Object.keys(costiMap);
+    const costiValues = Object.values(costiMap);
+    chartInstances.push(new Chart(document.getElementById('chart-composizione-costi'), {
+      type: 'doughnut',
+      data: {
+        labels: costiLabels.map(l => l.length > 25 ? l.substring(0, 25) + '…' : l),
+        datasets: [{ data: costiValues, backgroundColor: doughnutColors.slice(0, costiLabels.length), borderWidth: 0 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { color: '#8891a4', font: { family: 'DM Sans', size: 11 }, padding: 12, usePointStyle: true, pointStyle: 'circle' } },
+          tooltip: { callbacks: { label: function(ctx) { return ctx.label + ': €' + ctx.parsed.toLocaleString('it-IT'); } } }
+        }
+      }
+    }));
+
+    // === PERFORMANCE ===
+
+    // 5. EBITDA Cumulativo vs Target
+    let cumEbitda = [];
+    ebitdaMensile.forEach((v, i) => { cumEbitda.push((cumEbitda[i - 1] || 0) + v); });
     const allMonthLabels = ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'];
     const targetLine = allMonthLabels.map((_, i) => targetMensile * (i + 1));
     const cumEbitdaFull = allMonthLabels.map((_, i) => i < cumEbitda.length ? cumEbitda[i] : null);
@@ -474,62 +546,14 @@
       options: { ...baseOpts, scales: { ...baseOpts.scales, y: { ...baseOpts.scales.y, ticks: { ...baseOpts.scales.y.ticks, callback: function(v) { return '€' + (v / 1000).toFixed(0) + 'k'; } } } } }
     }));
 
-    // 4. EBITDA Mensile
-    chartInstances.push(new Chart(document.getElementById('chart-ebitda-mensile'), {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'EBITDA',
-          data: ebitdaMensile,
-          backgroundColor: ebitdaMensile.map(v => v >= 0 ? '#34d399' : '#f87171'),
-          borderRadius: 4
-        }]
-      },
-      options: { ...baseOpts, plugins: { ...baseOpts.plugins, legend: { display: false } } }
-    }));
-
-    // 5. Composizione Costi (Doughnut)
-    const costiMap = {};
-    mesi.forEach(m => {
-      m.uscite.forEach(u => {
-        const voce = u.voceBilancio || 'Altro';
-        costiMap[voce] = (costiMap[voce] || 0) + parseEuro(u.importo);
-      });
-    });
-    const costiLabels = Object.keys(costiMap);
-    const costiValues = Object.values(costiMap);
-    const doughnutColors = ['#4f8cff', '#a78bfa', '#f87171', '#fbbf24', '#34d399', '#f472b6', '#38bdf8', '#fb923c'];
-    chartInstances.push(new Chart(document.getElementById('chart-composizione-costi'), {
-      type: 'doughnut',
-      data: {
-        labels: costiLabels.map(l => l.length > 25 ? l.substring(0, 25) + '…' : l),
-        datasets: [{
-          data: costiValues,
-          backgroundColor: doughnutColors.slice(0, costiLabels.length),
-          borderWidth: 0
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { position: 'bottom', labels: { color: '#8891a4', font: { family: 'DM Sans', size: 11 }, padding: 16, usePointStyle: true, pointStyle: 'circle' } },
-          tooltip: { callbacks: { label: function(ctx) { return ctx.label + ': €' + ctx.parsed.toLocaleString('it-IT'); } } }
-        }
-      }
-    }));
-
-    // 6. Cash Burn Mensile
-    const burnValues = uscite.slice();
-    const avgBurn = burnValues.length ? burnValues.reduce((a, b) => a + b, 0) / burnValues.length : 0;
-    chartInstances.push(new Chart(document.getElementById('chart-cash-burn'), {
+    // 6. EBITDA e Utile Netto (bar affiancati)
+    chartInstances.push(new Chart(document.getElementById('chart-ebitda-utile'), {
       type: 'bar',
       data: {
         labels: labels,
         datasets: [
-          { label: 'Burn Mensile', data: burnValues, backgroundColor: '#f87171', borderRadius: 4, order: 2 },
-          { label: 'Media', data: burnValues.map(() => avgBurn), type: 'line', borderColor: '#fbbf24', borderDash: [6, 4], pointRadius: 0, fill: false, order: 1 }
+          { label: 'EBITDA', data: ebitdaMensile, backgroundColor: '#4f8cff', borderRadius: 4 },
+          { label: 'Utile Netto', data: utileNettoData, backgroundColor: '#34d399', borderRadius: 4 }
         ]
       },
       options: baseOpts

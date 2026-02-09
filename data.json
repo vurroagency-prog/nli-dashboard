@@ -116,7 +116,7 @@
       "costiStraordinari": "€10.500,00",
       "saldo": "+€8.960,96",
       "ebitda": "€19.461",
-      "utileNetto": "~€9.730 (stima al 50% pressione fiscale)"
+      "utileNetto": "€9.730"
     },
     {
       "mese": "Febbraio 2026",
@@ -177,7 +177,8 @@
     "movimentiTotali": 76,
     "entrateGennaio": "€28.349,84",
     "usciteGennaio": "€19.388,88",
-    "flussoNetto": "+€8.960,96"
+    "flussoNetto": "+€8.960,96",
+    "movimenti": []
   },
   "previsionale": [
     {
