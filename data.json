@@ -1,8 +1,8 @@
 {
   "lastUpdate": "9 Febbraio 2026",
   "ebitdaTargetAnnuo": 100000,
-  "statusMessage": "Estratto conto gennaio importato — 76 movimenti, quadratura OK. Incassi €28.350 (di cui competenza 2026: €1.640 + €5.239 da verificare TS). Uscite operative €8.889, margine cassa 68,6%. Saldo banca €11.442. Alert: F24 + INAIL 1a rata scadenza 16/02!",
-  "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. Estratto conto gennaio 2026 analizzato: 76 movimenti, 10 clienti diretti + TeamSystem SDD. Documenti commercialista processati. Buste paga dicembre 2025 riconciliate.",
+  "statusMessage": "41 documenti archiviati (36 fatture acquisto + 5 vendita). F24 16/02 confermato da Prima Nota: €649,98. Totale uscite certe 16/02: €1.890,48. Ritenute da versare: Fatone Gasso €34,50 (16/02) + Palumbo €30,00 (16/03). Saldo banca €11.442 — capienza OK.",
+  "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gennaio analizzato: 76 movimenti, quadratura OK. 41 documenti SDI + estere archiviati. Prima Nota paghe gennaio processata. F24 16/02: €649,98 confermato.",
   "kpi": [
     { "label": "Incassi Gennaio", "value": "€28.350", "sub": "Totale cassa — 10 clienti + TeamSystem SDD", "class": "positive" },
     { "label": "Ricavi Competenza 2026", "value": "€1.640", "sub": "Solo fatture emesse nel 2026 (OEM + Splendor)", "class": "neutral" },
@@ -12,20 +12,22 @@
     { "label": "Saldo Banca", "value": "€11.442", "sub": "Al 31/01/2026 — Intesa Sanpaolo", "class": "positive" },
     { "label": "Flusso di Cassa Gen", "value": "+€8.961", "sub": "Da €2.481 a €11.442 (+361%)", "class": "positive" },
     { "label": "Top Cliente", "value": "SiliconDev", "sub": "€9.816 — 34,6% entrate (concentrazione!)", "class": "warning" },
-    { "label": "Stipendio Netto", "value": "€662/m", "sub": "Sajay — part-time 40% livello C2", "class": "neutral" },
-    { "label": "Pressione Fiscale", "value": "~50%", "sub": "Stima SAS: IRPEF + INPS + IRAP + add.", "class": "neutral" }
+    { "label": "Uscite 16/02", "value": "€1.890", "sub": "F24 €650 + INAIL €69 + INPS Marco €1.137 + rit. €35", "class": "danger" },
+    { "label": "Documenti Archiviati", "value": "41", "sub": "36 fatture IN + 5 fatture OUT (gen-feb)", "class": "positive" }
   ],
   "scadenze": [
     { "data": "1° ogni mese", "adempimento": "Pagamento affitto sede €350", "frequenza": "Mensile", "stato": "upcoming", "statoLabel": "Ricorrente", "chi": "Noi" },
     { "data": "10 ogni mese", "adempimento": "Riepilogo TeamSystem Payments — richiedere a Marco", "frequenza": "Mensile", "stato": "upcoming", "statoLabel": "Ricorrente", "chi": "Noi" },
-    { "data": "16 Feb 2026", "adempimento": "F24 contributi/ritenute gennaio (~€250 stimato — solo Sajay)", "frequenza": "Mensile", "stato": "danger", "statoLabel": "URGENTE", "chi": "Commercialista" },
+    { "data": "16 Feb 2026", "adempimento": "F24 contributi/ritenute gennaio — €649,98 (INPS €428 + IRPEF €261,41 + INAIL €4,47 - bonus €43,90)", "frequenza": "Mensile", "stato": "danger", "statoLabel": "URGENTE", "chi": "Commercialista" },
     { "data": "16 Feb 2026", "adempimento": "INAIL autoliquidazione 1a rata — €68,65", "frequenza": "Annuale (4 rate)", "stato": "danger", "statoLabel": "URGENTE", "chi": "Commercialista" },
     { "data": "16 Feb 2026", "adempimento": "Bonifico a Marco per INPS Commercianti 4a rata 2025 — €1.137,35 (F24 personale)", "frequenza": "Trimestrale", "stato": "danger", "statoLabel": "URGENTE", "chi": "Noi + Marco" },
+    { "data": "16 Feb 2026", "adempimento": "Ritenuta d'acconto Studio Fatone Gasso — €34,50 (cod. tributo 1040, mese gen 2026)", "frequenza": "Mensile", "stato": "danger", "statoLabel": "URGENTE", "chi": "Commercialista" },
     { "data": "28 Feb 2026", "adempimento": "Invio Certificazione Unica (CU) all'AdE", "frequenza": "Annuale", "stato": "upcoming", "statoLabel": "In scadenza", "chi": "Commercialista" },
     { "data": "28 Feb 2026", "adempimento": "Consegna CU ai collaboratori", "frequenza": "Annuale", "stato": "upcoming", "statoLabel": "In scadenza", "chi": "Commercialista" },
     { "data": "28 Feb 2026", "adempimento": "Decisione offerta energia Frisbi STAR BUSINESS PO", "frequenza": "Una tantum", "stato": "upcoming", "statoLabel": "In scadenza", "chi": "Noi" },
     { "data": "Fine Feb 2026", "adempimento": "Rimborso km febbraio — raccogliere documentazione", "frequenza": "Mensile", "stato": "info", "statoLabel": "In programma", "chi": "Noi" },
     { "data": "16 Mar 2026", "adempimento": "F24 contributi/ritenute febbraio", "frequenza": "Mensile", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
+    { "data": "16 Mar 2026", "adempimento": "Ritenuta d'acconto Avv. Palumbo — €30,00 (cod. tributo 1040, mese feb 2026)", "frequenza": "Mensile", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
     { "data": "16 Mar 2026", "adempimento": "Versamento saldo INPS + 1° acconto", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
     { "data": "16 Apr 2026", "adempimento": "F24 contributi/ritenute marzo", "frequenza": "Mensile", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
     { "data": "30 Apr 2026", "adempimento": "Dichiarazione annuale IVA", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" },
@@ -40,18 +42,22 @@
     { "data": "27 Dic 2026", "adempimento": "Acconto IVA dicembre", "frequenza": "Annuale", "stato": "info", "statoLabel": "In programma", "chi": "Commercialista" }
   ],
   "alert": [
-    { "tipo": "danger", "testo": "SCADENZA 16/02 — F24 contributi dip. gennaio: ~€250 stimato (solo Sajay — INPS ~€240 - bonus ~€40). Importo esatto da confermare con LUL dal commercialista." },
+    { "tipo": "danger", "testo": "SCADENZA 16/02 — F24 contributi/ritenute gennaio: €649,98 CONFERMATO da Prima Nota (INPS DM10 €428 + IRPEF €261,41 + INAIL €4,47 - bonus €43,90)." },
     { "tipo": "danger", "testo": "SCADENZA 16/02 — INAIL autoliquidazione 1a rata: €68,65." },
     { "tipo": "danger", "testo": "SCADENZA 16/02 — Bonifico a Marco per INPS Commercianti (4a rata 2025): €1.137,35. NLI bonifica, Marco paga F24 dal conto personale." },
-    { "tipo": "danger", "testo": "TOTALE USCITE CERTE 16/02: ~€1.456 (F24 dip. ~€250 + INAIL €68,65 + INPS Marco €1.137,35). Saldo banca €11.442 — capienza OK." },
+    { "tipo": "danger", "testo": "SCADENZA 16/02 — Ritenuta d'acconto Studio Fatone Gasso: €34,50 (cod. tributo 1040, competenza gen 2026)." },
+    { "tipo": "danger", "testo": "TOTALE USCITE CERTE 16/02: €1.890,48 (F24 dip. €649,98 + INAIL €68,65 + INPS Marco €1.137,35 + ritenuta Fatone €34,50). Saldo banca €11.442 — capienza OK." },
     { "tipo": "warning", "testo": "TFR Claudia Loconsole: €1.175,92 da pagare (cessata 31/12/2025). Non ancora liquidato." },
+    { "tipo": "warning", "testo": "Ritenuta d'acconto Avv. Palumbo: €30,00 da versare entro 16/03/2026 (competenza feb 2026, proc. monitorio RP Srl)." },
+    { "tipo": "warning", "testo": "iPhone 17 Pro MediaMarket: €1.408,94 (20/01/2026) — da confermare uso aziendale con Marco." },
     { "tipo": "warning", "testo": "Concentrazione ricavi: SiliconDev S.p.A. pesa 34,6% delle entrate gennaio. Rischio dipendenza." },
     { "tipo": "warning", "testo": "Dentitalia S.r.l.: incassata solo 1a rata €3.715,25 su fatt. 64. Monitorare rate successive." },
-    { "tipo": "info", "testo": "TeamSystem Payments: 4 accrediti SDD per €5.239,07 — in attesa file dettaglio per cliente." },
+    { "tipo": "info", "testo": "TeamSystem Payments: 4 accrediti SDD per €5.239,07 — in attesa file dettaglio per cliente (richiedere entro il 10/02)." },
+    { "tipo": "info", "testo": "Fattura emessa FV 5 Ecomondi (02/02/2026): €625,07 — incasso atteso." },
     { "tipo": "info", "testo": "Offerta energia Frisbi STAR BUSINESS PO: decisione entro 28/02/2026." },
-    { "tipo": "success", "testo": "Estratto conto gennaio importato: 76 movimenti, quadratura OK (€0,00 differenza). Saldo €11.441,90." }
+    { "tipo": "success", "testo": "41 documenti archiviati: 36 fatture acquisto (18 SDI gen + 8 SDI feb + 10 estere) + 5 fatture emesse. Quadratura E/C gennaio OK." }
   ],
-  "suggerimenti": "1) URGENTE 16/02: totale uscite ~€1.456 (F24 dip. ~€250 + INAIL €68,65 + bonifico a Marco per INPS Commercianti €1.137,35) — confermare importo esatto dip. con LUL dal commercialista Mascolo. 2) Organizzare pagamento TFR Claudia €1.175,92. 3) Richiedere file TeamSystem Payments entro il 10/02. 4) Valutare offerta Frisbi STAR BUSINESS PO entro 28/02. 5) Diversificare clienti — SiliconDev pesa troppo (34,6%). 6) Raccogliere rimborso km febbraio a fine mese. 7) INPS Commercianti Marco: NLI bonifica a Marco, che paga F24 dal conto personale — verificare importo rate 2026 (1a-3a rata) con commercialista.",
+  "suggerimenti": "1) URGENTE 16/02: totale uscite €1.890,48 — F24 dip. €649,98 (confermato) + INAIL €68,65 + INPS Marco €1.137,35 + ritenuta Fatone €34,50. Comunicare a Marco per pagamento. 2) TFR Claudia €1.175,92 da pagare. 3) Richiedere file TeamSystem Payments entro il 10/02 per breakdown accrediti SDD. 4) iPhone 17 Pro €1.408,94: confermare uso aziendale con Marco (deducibilità). 5) Ritenuta Palumbo €30,00 da versare entro 16/03. 6) Diversificare clienti — SiliconDev 34,6%. 7) Offerta Frisbi STAR BUSINESS PO: decidere entro 28/02. 8) Rimborso km febbraio a fine mese. 9) Verificare importo rate INPS Commercianti 2026 con commercialista.",
   "setupChecklist": [
     { "label": "Visura camerale", "desc": "Costituzione 29/05/2023, REA RM-1703131. Sede: Via Fieramosca 20, Bari. Quote 50/50", "done": true },
     { "label": "Regime fiscale e IVA", "desc": "Semplificato, IVA trimestrale", "done": true },
@@ -62,7 +68,9 @@
     { "label": "Welfare aziendale", "desc": "€2.000/anno per dipendente, regolamento archiviato", "done": true },
     { "label": "Commercialista", "desc": "Pietro Mascolo (Altamura) — €2.400/anno, contratto archiviato", "done": true },
     { "label": "Estratto conto gennaio", "desc": "76 movimenti processati, quadratura OK, categorie classificate", "done": true },
-    { "label": "Buste paga dicembre 2025", "desc": "LUL + Prima Nota archiviati, riconciliati con banca", "done": true }
+    { "label": "Buste paga dic 2025 + gen 2026", "desc": "LUL + Prima Nota archiviati e riconciliati. F24 gen €398,43 OK, F24 feb €649,98 confermato", "done": true },
+    { "label": "Fatture SDI archiviate", "desc": "26 fatture IN (18 gen + 8 feb) + 5 fatture OUT da export SDI", "done": true },
+    { "label": "Documenti commercialista", "desc": "18 file archiviati: 10 fatture estere + 4 ricevute + 1 contratto + 3 personale", "done": true }
   ],
   "movimentiMensili": [
     {
@@ -109,7 +117,7 @@
         { "data": "26/01", "voce": "Stipendio Claudia (dic. 2025)", "voceBilancio": "B.9 — Personale", "importo": "€636,49", "note": "Ultima busta paga — cessata 31/12/2025" },
         { "data": "26/01", "voce": "Restituzione quote soci", "voceBilancio": "Straordinario", "importo": "€500,00", "note": "Alessandro €250 + Claudia €250 — atto 29/12/2025" },
         { "data": "26/01", "voce": "Fastweb SPA", "voceBilancio": "B.7 — Servizi", "importo": "€41,36", "note": "Telefonia/internet" },
-        { "data": "26/01", "voce": "Studio Avv. Fatone Gasso", "voceBilancio": "B.7 — Servizi", "importo": "€184,37", "note": "Consulenza legale" },
+        { "data": "26/01", "voce": "Studio Avv. Fatone Gasso", "voceBilancio": "B.7 — Servizi", "importo": "€184,37", "note": "Consulenza legale (ritenuta 20% = €34,50 da versare 16/02)" },
         { "data": "26/01", "voce": "Rimborso spese Alessandro", "voceBilancio": "B.7 — Servizi", "importo": "€129,00", "note": "Rimborso spese dicembre" },
         { "data": "30/01", "voce": "Frisbi energia", "voceBilancio": "B.7 — Servizi", "importo": "€89,47", "note": "Bolletta energia elettrica" },
         { "data": "31/01", "voce": "Spese bancarie", "voceBilancio": "C — Oneri finanziari", "importo": "€28,50", "note": "Bonifici ist. €19 + SDD €9 + canone €0,50" }
@@ -133,7 +141,7 @@
       "saldo": "−€350",
       "ebitda": "−€350",
       "utileNetto": "—",
-      "note": "Mese in corso — dati parziali"
+      "note": "Mese in corso — dati parziali. In attesa E/C febbraio. Fatture ricevute SDI: 8 documenti per ~€640. FV 5 Ecomondi €625,07 emessa."
     }
   ],
   "bancaAliasDescrizioni": {
@@ -147,8 +155,11 @@
     "SPLENDOR": "Splendor SRL (cliente)",
     "RP SRL": "RP SRL (cliente)",
     "EURO IMPIANTI": "Euro Impianti 2000 SRL (cliente)",
-    "TEAMSYSTEM": "TeamSystem Payments (incassi SDD aggregati)",
-    "ELETTRA 2G": "Elettra 2G SRL (fornitore merce)",
+    "NAPOLETANO": "Napoletano Nicola SRL (cliente — Trani)",
+    "ECOMONDI": "Ecomondi di Messina (cliente — Bari)",
+    "ELETTRA 2G": "Elettra 2G SRL (cliente/fornitore merce)",
+    "TEAMSYSTEM PAY": "TeamSystem Payments (incassi SDD aggregati)",
+    "TEAMSYSTEM S.P": "TeamSystem S.P.A. (CRM in Cloud)",
     "METRIE": "Metrie Spol. S.r.o. (fornitore estero)",
     "SIGGI": "Siggi Group (abbigliamento lavoro)",
     "GOR FACTORY": "GOR Factory / Roly (abbigliamento lavoro)",
@@ -156,21 +167,26 @@
     "ROSSINI": "Rossini 1969 S.p.A. (abbigliamento lavoro)",
     "PF CONCEPT": "PF Concept International (oggetti promozionali)",
     "WTGROUP": "WTGroup KgSAS (fornitore)",
-    "LAPENNA": "Raffaele Lapenna (fornitore)",
-    "PLUXEE": "Pluxee Italia (welfare / buoni)",
+    "LAPENNA": "Raffaele Lapenna (posteggio auto — forfettario)",
+    "PLUXEE": "Pluxee Italia (welfare / buoni pasto)",
     "SENDCLOUD": "Sendcloud SRL (spedizioni)",
-    "OPUSCLIP": "OpusClip Inc. (software video AI)",
+    "OPUSCLIP": "OpusClip Inc. (software video AI — USA)",
     "FASTWEB": "Fastweb SPA (telefonia/internet)",
     "FRISBI": "Frisbi Società Benefit (energia elettrica)",
     "AMAZON": "Amazon Business (materiali vari)",
-    "FATONE": "Studio Avv. Fatone Gasso (consulenza legale)",
+    "MEDIAMARKET": "MediaMarket S.p.A. (elettronica/telefonia)",
+    "MECCATRONICA": "Meccatronica Car Service (officina auto)",
+    "FATONE": "Studio Avv. Fatone Gasso (consulenza legale — rit. 20%)",
+    "PALUMBO": "Avv. Palumbo Chiara (proc. monitorio RP Srl — rit. 20%)",
     "FESTA": "Festa Daniele (collaboratore — diritti autore)",
     "SALA VURRO": "Silvana Nicola Sala Vurro (royalties marchio)",
     "NICOLA VURRO": "Nicola Vurro (royalties marchio)",
     "PANEBIANCO": "Antonia Panebianco (affitto sede €350/m)",
     "FERNANDEZ": "Sajay Fernandez Espinosa (stipendio)",
     "LOCONSOLE": "Claudia Loconsole (ex dipendente — cessata 31/12/2025)",
-    "ALESSANDRO VURRO": "Alessandro Vurro (ex socio)"
+    "ALESSANDRO VURRO": "Alessandro Vurro (ex socio)",
+    "HOSTINGER": "Hostinger (hosting VPS — Cipro)",
+    "ZAPIER": "Zapier Inc. (servizi automazione — USA)"
   },
   "banca": {
     "conto": "Intesa Sanpaolo",
@@ -190,16 +206,18 @@
       "voci": [
         { "voce": "Affitto sede", "tipo": "uscita", "importo": "€350", "certezza": "certo" },
         { "voce": "Stipendio Sajay", "tipo": "uscita", "importo": "€662", "certezza": "certo" },
-        { "voce": "F24 contributi/ritenute gennaio (solo Sajay)", "tipo": "uscita", "importo": "~€250", "certezza": "stimato" },
-        { "voce": "INAIL 1a rata", "tipo": "uscita", "importo": "€68,65", "certezza": "certo" },
+        { "voce": "F24 contributi/ritenute gennaio", "tipo": "uscita", "importo": "€649,98", "certezza": "certo" },
+        { "voce": "INAIL 1a rata autoliquidazione", "tipo": "uscita", "importo": "€68,65", "certezza": "certo" },
         { "voce": "Bonifico a Marco per INPS Commercianti (4a rata 2025)", "tipo": "uscita", "importo": "€1.137,35", "certezza": "certo" },
+        { "voce": "Ritenuta d'acconto Fatone Gasso", "tipo": "uscita", "importo": "€34,50", "certezza": "certo" },
         { "voce": "TFR Claudia Loconsole", "tipo": "uscita", "importo": "€1.175,92", "certezza": "certo" },
         { "voce": "Fornitori/SDD ricorrenti", "tipo": "uscita", "importo": "~€1.000", "certezza": "stimato" },
-        { "voce": "Fatture clienti", "tipo": "entrata", "importo": "~€20.000", "certezza": "stimato" }
+        { "voce": "Fatture clienti", "tipo": "entrata", "importo": "~€20.000", "certezza": "stimato" },
+        { "voce": "FV 5 Ecomondi (emessa 02/02)", "tipo": "entrata", "importo": "€625,07", "certezza": "certo" }
       ],
-      "totaleUsciteStimate": "~€4.644",
-      "totaleEntrateStimate": "~€20.000",
-      "saldoStimato": "~€26.798"
+      "totaleUsciteStimate": "~€5.078",
+      "totaleEntrateStimate": "~€20.625",
+      "saldoStimato": "~€26.989"
     },
     {
       "mese": "Marzo 2026",
@@ -207,14 +225,15 @@
         { "voce": "Affitto sede", "tipo": "uscita", "importo": "€350", "certezza": "certo" },
         { "voce": "Stipendio Sajay", "tipo": "uscita", "importo": "€662", "certezza": "certo" },
         { "voce": "F24 contributi/ritenute febbraio", "tipo": "uscita", "importo": "~€300", "certezza": "stimato" },
+        { "voce": "Ritenuta d'acconto Avv. Palumbo", "tipo": "uscita", "importo": "€30", "certezza": "certo" },
         { "voce": "Commercialista (rateo trim.)", "tipo": "uscita", "importo": "€500", "certezza": "certo" },
         { "voce": "Rimborso km febbraio", "tipo": "uscita", "importo": "~€800", "certezza": "stimato" },
         { "voce": "Fornitori/SDD ricorrenti", "tipo": "uscita", "importo": "~€1.000", "certezza": "stimato" },
         { "voce": "Fatture clienti", "tipo": "entrata", "importo": "~€20.000", "certezza": "stimato" }
       ],
-      "totaleUsciteStimate": "~€3.612",
+      "totaleUsciteStimate": "~€3.642",
       "totaleEntrateStimate": "~€20.000",
-      "saldoStimato": "~€43.923"
+      "saldoStimato": "~€43.347"
     }
   ]
 }
