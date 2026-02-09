@@ -20,7 +20,7 @@
     { "data": "10 ogni mese", "adempimento": "Riepilogo TeamSystem Payments — richiedere a Marco", "frequenza": "Mensile", "stato": "upcoming", "statoLabel": "Ricorrente", "chi": "Noi" },
     { "data": "16 Feb 2026", "adempimento": "F24 contributi/ritenute gennaio (~€250 stimato — solo Sajay)", "frequenza": "Mensile", "stato": "danger", "statoLabel": "URGENTE", "chi": "Commercialista" },
     { "data": "16 Feb 2026", "adempimento": "INAIL autoliquidazione 1a rata — €68,65", "frequenza": "Annuale (4 rate)", "stato": "danger", "statoLabel": "URGENTE", "chi": "Commercialista" },
-    { "data": "16 Feb 2026", "adempimento": "INPS Commercianti Marco — 4a rata 2025 — €1.137,35", "frequenza": "Trimestrale", "stato": "danger", "statoLabel": "URGENTE", "chi": "Commercialista" },
+    { "data": "16 Feb 2026", "adempimento": "Bonifico a Marco per INPS Commercianti 4a rata 2025 — €1.137,35 (F24 personale)", "frequenza": "Trimestrale", "stato": "danger", "statoLabel": "URGENTE", "chi": "Noi + Marco" },
     { "data": "28 Feb 2026", "adempimento": "Invio Certificazione Unica (CU) all'AdE", "frequenza": "Annuale", "stato": "upcoming", "statoLabel": "In scadenza", "chi": "Commercialista" },
     { "data": "28 Feb 2026", "adempimento": "Consegna CU ai collaboratori", "frequenza": "Annuale", "stato": "upcoming", "statoLabel": "In scadenza", "chi": "Commercialista" },
     { "data": "28 Feb 2026", "adempimento": "Decisione offerta energia Frisbi STAR BUSINESS PO", "frequenza": "Una tantum", "stato": "upcoming", "statoLabel": "In scadenza", "chi": "Noi" },
@@ -42,7 +42,7 @@
   "alert": [
     { "tipo": "danger", "testo": "SCADENZA 16/02 — F24 contributi dip. gennaio: ~€250 stimato (solo Sajay — INPS ~€240 - bonus ~€40). Importo esatto da confermare con LUL dal commercialista." },
     { "tipo": "danger", "testo": "SCADENZA 16/02 — INAIL autoliquidazione 1a rata: €68,65." },
-    { "tipo": "danger", "testo": "SCADENZA 16/02 — INPS Commercianti Marco (4a rata 2025): €1.137,35. F24 personale socio accomandatario." },
+    { "tipo": "danger", "testo": "SCADENZA 16/02 — Bonifico a Marco per INPS Commercianti (4a rata 2025): €1.137,35. NLI bonifica, Marco paga F24 dal conto personale." },
     { "tipo": "danger", "testo": "TOTALE USCITE CERTE 16/02: ~€1.456 (F24 dip. ~€250 + INAIL €68,65 + INPS Marco €1.137,35). Saldo banca €11.442 — capienza OK." },
     { "tipo": "warning", "testo": "TFR Claudia Loconsole: €1.175,92 da pagare (cessata 31/12/2025). Non ancora liquidato." },
     { "tipo": "warning", "testo": "Concentrazione ricavi: SiliconDev S.p.A. pesa 34,6% delle entrate gennaio. Rischio dipendenza." },
@@ -51,7 +51,7 @@
     { "tipo": "info", "testo": "Offerta energia Frisbi STAR BUSINESS PO: decisione entro 28/02/2026." },
     { "tipo": "success", "testo": "Estratto conto gennaio importato: 76 movimenti, quadratura OK (€0,00 differenza). Saldo €11.441,90." }
   ],
-  "suggerimenti": "1) URGENTE 16/02: totale F24 stimato ~€1.456 (dip. ~€250 + INAIL €68,65 + INPS Marco €1.137,35) — confermare importo esatto dip. con LUL dal commercialista Mascolo. 2) Organizzare pagamento TFR Claudia €1.175,92. 3) Richiedere file TeamSystem Payments entro il 10/02. 4) Valutare offerta Frisbi STAR BUSINESS PO entro 28/02. 5) Diversificare clienti — SiliconDev pesa troppo (34,6%). 6) Raccogliere rimborso km febbraio a fine mese. 7) INPS commercianti Marco: verificare importo rate 2026 (1a-3a rata) con commercialista.",
+  "suggerimenti": "1) URGENTE 16/02: totale uscite ~€1.456 (F24 dip. ~€250 + INAIL €68,65 + bonifico a Marco per INPS Commercianti €1.137,35) — confermare importo esatto dip. con LUL dal commercialista Mascolo. 2) Organizzare pagamento TFR Claudia €1.175,92. 3) Richiedere file TeamSystem Payments entro il 10/02. 4) Valutare offerta Frisbi STAR BUSINESS PO entro 28/02. 5) Diversificare clienti — SiliconDev pesa troppo (34,6%). 6) Raccogliere rimborso km febbraio a fine mese. 7) INPS Commercianti Marco: NLI bonifica a Marco, che paga F24 dal conto personale — verificare importo rate 2026 (1a-3a rata) con commercialista.",
   "setupChecklist": [
     { "label": "Visura camerale", "desc": "Costituzione 29/05/2023, REA RM-1703131. Sede: Via Fieramosca 20, Bari. Quote 50/50", "done": true },
     { "label": "Regime fiscale e IVA", "desc": "Semplificato, IVA trimestrale", "done": true },
@@ -192,7 +192,7 @@
         { "voce": "Stipendio Sajay", "tipo": "uscita", "importo": "€662", "certezza": "certo" },
         { "voce": "F24 contributi/ritenute gennaio (solo Sajay)", "tipo": "uscita", "importo": "~€250", "certezza": "stimato" },
         { "voce": "INAIL 1a rata", "tipo": "uscita", "importo": "€68,65", "certezza": "certo" },
-        { "voce": "INPS Commercianti Marco 4a rata", "tipo": "uscita", "importo": "€1.137,35", "certezza": "certo" },
+        { "voce": "Bonifico a Marco per INPS Commercianti (4a rata 2025)", "tipo": "uscita", "importo": "€1.137,35", "certezza": "certo" },
         { "voce": "TFR Claudia Loconsole", "tipo": "uscita", "importo": "€1.175,92", "certezza": "certo" },
         { "voce": "Fornitori/SDD ricorrenti", "tipo": "uscita", "importo": "~€1.000", "certezza": "stimato" },
         { "voce": "Fatture clienti", "tipo": "entrata", "importo": "~€20.000", "certezza": "stimato" }
