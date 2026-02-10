@@ -73,9 +73,10 @@
     },
     {
       "label": "Dati Mancanti",
-      "value": "15",
+      "value": 15,
       "sub": "Incl. 2 fatture estere (Elementor, Canva — arrivano fine marzo) + diff. Meccatronica + indirizzo Sintra",
-      "class": "warning"
+      "class": "warning",
+      "subText": ""
     },
     {
       "label": "Debito verso Marco",
