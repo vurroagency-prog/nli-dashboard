@@ -1,8 +1,8 @@
 {
-  "lastUpdate": "9 Febbraio 2026",
+  "lastUpdate": "10 Febbraio 2026",
   "fonte": "registro.json",
   "ebitdaTargetAnnuo": 100000,
-  "statusMessage": "Fonte: registro.json (52 mov., 46 fatt., 25 scad.). F24 16/02: €649,98. Totale uscite 16/02: €1.890,48. Debito Marco: €2.780. Debiti fornitori: €1.918. Crediti clienti: €625. Saldo banca €11.442 — capienza OK.",
+  "statusMessage": "Fonte: registro.json (52 mov., 46 fatt., 25 scad.). F24 16/02: €649,98. Totale uscite 16/02: €1.890,48. Debito Marco: €2.780. Debiti fornitori: €1.918. Crediti clienti: €625. Saldo banca €11.442 — capienza OK. 3 fatture estere archiviate (Sintra, Anthropic, Envato).",
   "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gennaio analizzato: 76 movimenti, quadratura OK. 41 documenti SDI + estere archiviati. Prima Nota paghe gennaio processata. F24 16/02: €649,98 confermato.",
   "kpi": [
     {
@@ -73,8 +73,8 @@
     },
     {
       "label": "Dati Mancanti",
-      "value": "18",
-      "sub": "Incl. 5 fatture estere da commercialista + data Envato + diff. Meccatronica",
+      "value": "15",
+      "sub": "Incl. 2 fatture estere (Elementor, Canva — arrivano fine marzo) + diff. Meccatronica + indirizzo Sintra",
       "class": "warning"
     },
     {
@@ -337,10 +337,10 @@
     },
     {
       "tipo": "info",
-      "testo": "5 fatture estere da richiedere al commercialista: Sintra.ai, Claude.ai, Elementor, Canva, Envato (reverse charge, anticipate da Marco)."
+      "testo": "2 fatture estere in attesa (arrivano fine marzo): Elementor, Canva (reverse charge, anticipate da Marco). 3 archiviate: Sintra, Anthropic, Envato."
     }
   ],
-  "suggerimenti": "1) URGENTE 16/02: totale uscite €1.890,48 — F24 dip. €649,98 + INAIL €68,65 + INPS Marco €1.137,35 + ritenuta Fatone €34,50. 2) Rimborso spese Marco: €2.780,05 da rimborsare via bonifico (8 anticipazioni incl. tagliando Meccatronica). 3) TFR Claudia €1.175,92 da pagare. 4) Richiedere file TeamSystem entro il 10/02. 5) 5 fatture estere da richiedere al commercialista (Sintra, Claude.ai, Elementor, Canva, Envato). 6) Ritenuta Palumbo €30,00 da versare entro 16/03. 7) Diversificare clienti — SiliconDev 34,6%. 8) Offerta Frisbi: decidere entro 28/02. 9) Rimborso km febbraio a fine mese.",
+  "suggerimenti": "1) URGENTE 16/02: totale uscite €1.890,48 — F24 dip. €649,98 + INAIL €68,65 + INPS Marco €1.137,35 + ritenuta Fatone €34,50. 2) Rimborso spese Marco: €2.780,05 da rimborsare via bonifico (8 anticipazioni incl. tagliando Meccatronica). 3) TFR Claudia €1.175,92 da pagare. 4) Richiedere file TeamSystem entro il 10/02. 5) 2 fatture estere in attesa (Elementor, Canva — arrivano fine marzo). 6) Ritenuta Palumbo €30,00 da versare entro 16/03. 7) Diversificare clienti — SiliconDev 34,6%. 8) Offerta Frisbi: decidere entro 28/02. 9) Rimborso km febbraio a fine mese. 10) Correggere indirizzo NLI su Sintra.ai (risulta Via di Dragone, Roma).",
   "setupChecklist": [
     {
       "label": "Visura camerale",
@@ -788,11 +788,11 @@
           "note": "Design tool — anticipato da Marco (conto personale)"
         },
         {
-          "data": "??/??",
+          "data": "03/02",
           "voce": "Envato",
           "voceBilancio": "B.7 — Servizi",
           "importo": "€174,00",
-          "note": "Marketplace digitale — anticipato da Marco (data mancante)"
+          "note": "Annual 198 (Feb 2026-Feb 2027) — anticipato da Marco (conto personale)"
         },
         {
           "data": "02/02",
