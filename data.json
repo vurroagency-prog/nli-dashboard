@@ -1368,6 +1368,44 @@
         "stato": "sbilancio",
         "nota": "Sbilancio di €14812.04 — dovuto a voci non ancora censite (utili pregressi, riserve, partite transitorie). Non anomalo in un bilancio gestionale provvisorio."
       }
+    },
+    "previsioneFiscale": {
+      "disclaimer": "Stime indicative basate su utile progressivo annuo. Importi definitivi dal commercialista.",
+      "utileAnteImposte": -9274.61,
+      "utileNegativo": true,
+      "baseImponibileIRAP": -7067.75,
+      "irap": {
+        "importo": 0,
+        "aliquota": 0.039,
+        "acconto1": 0,
+        "acconto2": 0
+      },
+      "marco": {
+        "label": "Marco Vurro (accomandatario 50%)",
+        "quotaUtile": 0,
+        "redditoImponibile": 0,
+        "irpef": 0,
+        "addizionali": 0,
+        "inpsFisso": 4515,
+        "inpsEccedenza": 0,
+        "totaleTasse": 4515,
+        "aliquotaEffettiva": null,
+        "nettoStimato": -4515
+      },
+      "sajay": {
+        "label": "Sajay Fernandez (accomandante 50%)",
+        "quotaUtile": 0,
+        "redditoDipendente": 8500,
+        "redditoImponibile": 8500,
+        "irpef": 0,
+        "addizionali": 0,
+        "totaleTasse": 0,
+        "aliquotaEffettiva": null,
+        "nettoStimato": 0
+      },
+      "totaleCaricofiscale": 4515,
+      "percentualeSuUtile": null,
+      "nota": "Utile negativo — nessuna imposta stimata tranne INPS fisso Marco 4.515/anno"
     }
   }
 }

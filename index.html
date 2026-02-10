@@ -244,6 +244,15 @@
         <div class="card" id="bilancio-sp-passivo"><h3>PASSIVO + PATRIMONIO NETTO</h3><div class="table-wrap"><table id="bilancio-sp-passivo-table"></table></div></div>
       </div>
       <div id="bilancio-sp-verifica" class="alert-box" style="margin-top:16px;"></div>
+      <!-- Previsione Fiscale -->
+      <div class="card" id="bilancio-fiscale-card" style="margin-top:24px;">
+        <h3>Previsione Fiscale</h3>
+        <div id="fiscale-alert" style="margin-bottom:16px;"></div>
+        <div id="fiscale-summary" style="margin-bottom:16px;padding:16px;border-radius:8px;background:var(--surface-2);"></div>
+        <div class="table-wrap"><table id="fiscale-table" style="width:100%;"></table></div>
+        <div id="fiscale-gauge" style="margin-top:16px;"></div>
+        <div id="fiscale-disclaimer" style="margin-top:12px;font-size:12px;color:var(--text-dim);"></div>
+      </div>
     </div>
     <!-- Alert -->
     <div class="tab-panel" id="tab-alert">
@@ -612,6 +621,59 @@
         } else {
           verDiv.className = 'alert-box warning';
           verDiv.textContent = 'Sbilancio SP: differenza ' + fmtEuro(ver.differenza) + '. ' + (ver.nota || 'Mancano saldi di apertura e utili pregressi.');
+        }
+        // Previsione Fiscale
+        var pf = bil.previsioneFiscale;
+        if (pf) {
+          var alertDiv = document.getElementById('fiscale-alert');
+          var summaryDiv = document.getElementById('fiscale-summary');
+          var tableEl = document.getElementById('fiscale-table');
+          var gaugeDiv = document.getElementById('fiscale-gauge');
+          var disclaimerDiv = document.getElementById('fiscale-disclaimer');
+          if (pf.utileNegativo) {
+            alertDiv.className = 'alert-box warning';
+            alertDiv.innerHTML = '<strong>Utile negativo</strong> — Nessuna imposta stimata tranne INPS fisso Marco \u20AC4.515/anno (dovuto comunque).';
+            summaryDiv.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">' +
+              '<div><span style="font-size:14px;color:var(--text-dim);">Utile progressivo</span><br><strong style="font-size:22px;color:var(--red);">' + fmtEuro(pf.utileAnteImposte) + '</strong></div>' +
+              '<div><span style="font-size:14px;color:var(--text-dim);">Carico fiscale stimato</span><br><strong style="font-size:22px;">' + fmtEuro(pf.totaleCaricofiscale) + '</strong></div>' +
+              '<div><span style="font-size:14px;color:var(--text-dim);">di cui INPS fisso</span><br><strong style="font-size:22px;">' + fmtEuro(pf.marco.inpsFisso) + '</strong></div></div>';
+          } else {
+            alertDiv.innerHTML = '';
+            alertDiv.className = '';
+            var pct = pf.percentualeSuUtile != null ? (pf.percentualeSuUtile * 100).toFixed(1) + '%' : 'n/a';
+            summaryDiv.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">' +
+              '<div><span style="font-size:14px;color:var(--text-dim);">Utile progressivo</span><br><strong style="font-size:22px;color:var(--green);">' + fmtEuro(pf.utileAnteImposte) + '</strong></div>' +
+              '<div><span style="font-size:14px;color:var(--text-dim);">Carico fiscale totale</span><br><strong style="font-size:22px;color:var(--red);">' + fmtEuro(pf.totaleCaricofiscale) + '</strong></div>' +
+              '<div><span style="font-size:14px;color:var(--text-dim);">Pressione fiscale</span><br><strong style="font-size:22px;">' + pct + '</strong></div></div>';
+          }
+          // Table
+          var tHtml = '<thead><tr><th>Soggetto</th><th style="text-align:right">Imponibile</th><th style="text-align:right">Imposta</th><th style="text-align:right">Aliq. eff.</th><th style="text-align:right">Netto in tasca</th></tr></thead><tbody>';
+          // IRAP
+          var irapAliq = pf.irap.importo > 0 ? (pf.irap.aliquota * 100).toFixed(1) + '%' : '-';
+          tHtml += '<tr><td><strong>IRAP (NLI)</strong></td><td style="text-align:right">' + fmtEuro(pf.baseImponibileIRAP) + '</td><td style="text-align:right">' + fmtEuro(pf.irap.importo) + '</td><td style="text-align:right">' + irapAliq + '</td><td style="text-align:right;color:var(--text-dim);">-</td></tr>';
+          // Marco
+          var mAliq = pf.marco.aliquotaEffettiva != null ? (pf.marco.aliquotaEffettiva * 100).toFixed(1) + '%' : '-';
+          var mTasseDetail = 'IRPEF ' + fmtEuro(pf.marco.irpef) + ' + Add. ' + fmtEuro(pf.marco.addizionali) + ' + INPS ' + fmtEuro(pf.marco.inpsFisso + pf.marco.inpsEccedenza);
+          tHtml += '<tr><td><strong>Marco</strong><br><small style="color:var(--text-dim);">' + esc(mTasseDetail) + '</small></td><td style="text-align:right">' + fmtEuro(pf.marco.redditoImponibile) + '</td><td style="text-align:right">' + fmtEuro(pf.marco.totaleTasse) + '</td><td style="text-align:right">' + mAliq + '</td><td style="text-align:right;font-weight:600;color:' + (pf.marco.nettoStimato >= 0 ? 'var(--green)' : 'var(--red)') + ';">' + fmtEuro(pf.marco.nettoStimato) + '</td></tr>';
+          // Sajay
+          var sAliq = pf.sajay.aliquotaEffettiva != null ? (pf.sajay.aliquotaEffettiva * 100).toFixed(1) + '%' : '-';
+          var sTasseDetail = 'IRPEF ' + fmtEuro(pf.sajay.irpef) + ' + Add. ' + fmtEuro(pf.sajay.addizionali);
+          tHtml += '<tr><td><strong>Sajay</strong><br><small style="color:var(--text-dim);">' + esc(sTasseDetail) + '</small></td><td style="text-align:right">' + fmtEuro(pf.sajay.redditoImponibile) + '</td><td style="text-align:right">' + fmtEuro(pf.sajay.totaleTasse) + '</td><td style="text-align:right">' + sAliq + '</td><td style="text-align:right;font-weight:600;color:' + (pf.sajay.nettoStimato >= 0 ? 'var(--green)' : 'var(--red)') + ';">' + fmtEuro(pf.sajay.nettoStimato) + '</td></tr>';
+          // Totale
+          tHtml += '<tr style="font-weight:700;border-top:2px solid var(--border);"><td>TOTALE</td><td></td><td style="text-align:right">' + fmtEuro(pf.totaleCaricofiscale) + '</td><td></td><td></td></tr>';
+          tHtml += '</tbody>';
+          tableEl.innerHTML = tHtml;
+          // Gauge
+          if (!pf.utileNegativo && pf.percentualeSuUtile != null) {
+            var pctVal = Math.min(pf.percentualeSuUtile * 100, 100);
+            var barColor = pctVal < 30 ? 'var(--green)' : pctVal < 40 ? '#f59e0b' : 'var(--red)';
+            gaugeDiv.innerHTML = '<div style="font-size:13px;color:var(--text-dim);margin-bottom:4px;">Pressione fiscale su utile</div>' +
+              '<div style="background:var(--surface-2);border-radius:8px;height:24px;overflow:hidden;position:relative;">' +
+              '<div style="background:' + barColor + ';height:100%;width:' + pctVal + '%;border-radius:8px;transition:width 0.5s;"></div>' +
+              '<span style="position:absolute;right:8px;top:3px;font-size:12px;font-weight:600;">' + pctVal.toFixed(1) + '%</span></div>' +
+              '<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-dim);margin-top:2px;"><span>0%</span><span style="color:var(--green);">30%</span><span style="color:#f59e0b;">40%</span><span style="color:var(--red);">50%+</span></div>';
+          } else { gaugeDiv.innerHTML = ''; }
+          disclaimerDiv.textContent = pf.disclaimer + ' INPS fisso Marco (\u20AC4.515) dovuto comunque, anche con utile zero/negativo.';
         }
       }
 
