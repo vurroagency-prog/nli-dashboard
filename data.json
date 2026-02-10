@@ -410,7 +410,7 @@
         {
           "data": "02/01",
           "voce": "Costruzioni Vulpio SRL",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€1.534,76",
           "note": "Saldo fatt. 75 del 22/12/2025",
           "competenza": "2025"
@@ -418,7 +418,7 @@
         {
           "data": "02/01",
           "voce": "SiliconDev S.p.A.",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€9.816,12",
           "note": "Rif. 57 del 31/10/2025",
           "competenza": "2025"
@@ -426,7 +426,7 @@
         {
           "data": "05/01",
           "voce": "TeamSystem Payments",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€2.125,86",
           "note": "SDD aggregato — dettaglio clienti in attesa",
           "competenza": "da verificare"
@@ -434,7 +434,7 @@
         {
           "data": "08/01",
           "voce": "De Nicolo C. S.r.l.",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€1.221,22",
           "note": "Saldo fatt. 79 del 22/12/2025",
           "competenza": "2025"
@@ -442,7 +442,7 @@
         {
           "data": "08/01",
           "voce": "Dentitalia S.r.l.",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€3.715,25",
           "note": "1a rata fatt. 64 del 06/11/2025",
           "competenza": "2025"
@@ -450,7 +450,7 @@
         {
           "data": "12/01",
           "voce": "TeamSystem Payments",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€1.913,01",
           "note": "SDD aggregato — dettaglio clienti in attesa",
           "competenza": "da verificare"
@@ -458,7 +458,7 @@
         {
           "data": "15/01",
           "voce": "Cassano SRL",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€711,16",
           "note": "Saldo fatt. proforma 78",
           "competenza": "2025"
@@ -466,7 +466,7 @@
         {
           "data": "19/01",
           "voce": "TeamSystem Payments",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€208,18",
           "note": "SDD aggregato — dettaglio clienti in attesa",
           "competenza": "da verificare"
@@ -474,7 +474,7 @@
         {
           "data": "20/01",
           "voce": "O.E.M. di De Lorenzo D. & C.",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€1.273,78",
           "note": "Saldo fatt. 72 - NC 3 del 14/01",
           "competenza": "2026"
@@ -482,7 +482,7 @@
         {
           "data": "26/01",
           "voce": "TeamSystem Payments",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€992,02",
           "note": "SDD aggregato — dettaglio clienti in attesa",
           "competenza": "da verificare"
@@ -490,7 +490,7 @@
         {
           "data": "28/01",
           "voce": "Mec Welding Service SRL",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€1.337,12",
           "note": "Saldo ft. 84 del 30/12/2025",
           "competenza": "2025"
@@ -498,7 +498,7 @@
         {
           "data": "29/01",
           "voce": "Splendor SRL",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€366,00",
           "note": "Saldo fattura 2 del 08/01/2026",
           "competenza": "2026"
@@ -506,7 +506,7 @@
         {
           "data": "29/01",
           "voce": "RP SRL",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€1.282,18",
           "note": "Saldo fatt. 10 del 13/03/2025 + spese d.i.",
           "competenza": "2025"
@@ -514,7 +514,7 @@
         {
           "data": "30/01",
           "voce": "Euro Impianti 2000 SRL",
-          "voceBilancio": "A.1 — Ricavi vendite",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€1.853,18",
           "note": "Saldo ft. 85 del 30/12/2025",
           "competenza": "2025"
@@ -531,154 +531,154 @@
         {
           "data": "03/01",
           "voce": "Stipendio Sajay (dic. 2025)",
-          "voceBilancio": "B.9 — Personale",
+          "voceBilancio": "B.9 Stipendi",
           "importo": "€662,00",
           "note": "Busta paga dicembre 2025"
         },
         {
           "data": "03/01",
           "voce": "Affitto sede",
-          "voceBilancio": "B.8 — Godimento beni terzi",
+          "voceBilancio": "B.8 Affitto sede",
           "importo": "€350,00",
           "note": "Gennaio 2026 — Panebianco"
         },
         {
           "data": "05/01",
           "voce": "Imposta bollo e/c",
-          "voceBilancio": "B.14 — Oneri diversi",
+          "voceBilancio": "B.14 Oneri diversi",
           "importo": "€25,20",
           "note": "Bollo e rendiconto bancario"
         },
         {
           "data": "08/01",
           "voce": "Elettra 2G SRL",
-          "voceBilancio": "B.6 — Materie prime",
+          "voceBilancio": "B.6 Merci e prodotti",
           "importo": "€549,00",
           "note": "Storno parziale fatt. 62 — merce non conforme"
         },
         {
           "data": "08/01",
           "voce": "Metrie Spol. S.r.o.",
-          "voceBilancio": "B.6 — Materie prime",
+          "voceBilancio": "B.6 Merci e prodotti",
           "importo": "€469,50",
           "note": "Saldo fatture — fornitore estero"
         },
         {
           "data": "08/01",
           "voce": "Siggi Group",
-          "voceBilancio": "B.6 — Materie prime",
+          "voceBilancio": "B.6 Merci e prodotti",
           "importo": "€128,60",
           "note": "Abbigliamento da lavoro"
         },
         {
           "data": "09/01",
           "voce": "Raffaele Lapenna",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Posteggio",
           "importo": "€120,00",
           "note": "Saldo fatt. 926"
         },
         {
           "data": "11/01",
           "voce": "Rimborso macchinario Marco",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Rimborso macchinario",
           "importo": "€500,00",
           "note": "Rimborso macchinario DFT"
         },
         {
           "data": "12/01",
           "voce": "GOR Factory (Roly)",
-          "voceBilancio": "B.6 — Materie prime",
+          "voceBilancio": "B.6 Merci e prodotti",
           "importo": "€244,13",
           "note": "Abbigliamento da lavoro — SDD"
         },
         {
           "data": "12/01",
           "voce": "Rossini 1969 S.p.A.",
-          "voceBilancio": "B.6 — Materie prime",
+          "voceBilancio": "B.6 Merci e prodotti",
           "importo": "€58,66",
           "note": "Abbigliamento da lavoro — Ri.Ba"
         },
         {
           "data": "12/01",
           "voce": "Pluxee Italia (welfare)",
-          "voceBilancio": "B.9 — Personale",
+          "voceBilancio": "B.9 Buoni pasto",
           "importo": "€536,87",
           "note": "Buoni welfare dipendente"
         },
         {
           "data": "12/01",
           "voce": "Royalties Silvana Sala Vurro",
-          "voceBilancio": "B.14 — Oneri diversi",
+          "voceBilancio": "B.14 Royalties marchio",
           "importo": "€170,00",
           "note": "Royalties marchio Next Level"
         },
         {
           "data": "12/01",
           "voce": "Royalties Nicola Vurro",
-          "voceBilancio": "B.14 — Oneri diversi",
+          "voceBilancio": "B.14 Royalties marchio",
           "importo": "€170,00",
           "note": "Royalties marchio Next Level"
         },
         {
           "data": "13/01",
           "voce": "WTGroup KgSAS",
-          "voceBilancio": "B.6 — Materie prime",
+          "voceBilancio": "B.6 Merci e prodotti",
           "importo": "€1.321,91",
           "note": "Saldo fattura"
         },
         {
           "data": "14/01",
           "voce": "OpusClip Inc.",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Software operativi",
           "importo": "€174,00",
           "note": "Software video editing AI — SDD"
         },
         {
           "data": "15/01",
           "voce": "GOR Factory (Roly)",
-          "voceBilancio": "B.6 — Materie prime",
+          "voceBilancio": "B.6 Merci e prodotti",
           "importo": "€222,85",
           "note": "Abbigliamento da lavoro — SDD"
         },
         {
           "data": "15/01",
           "voce": "Festa Daniele",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Diritti d'autore",
           "importo": "€414,75",
           "note": "Diritti d'autore — 10 loghi"
         },
         {
           "data": "19/01",
           "voce": "F24 contributi/ritenute",
-          "voceBilancio": "Debiti tributari",
+          "voceBilancio": "Tributi/contributi",
           "importo": "€398,43",
           "note": "INPS €478 - bonus €79,57 (dic. 2025)"
         },
         {
           "data": "21/01",
           "voce": "Sendcloud SRL",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Spedizioni",
           "importo": "€45,07",
           "note": "Spedizioni (3 addebiti SDD)"
         },
         {
           "data": "22/01",
           "voce": "Amazon Business",
-          "voceBilancio": "B.6 — Materie prime",
+          "voceBilancio": "B.6 Merci e prodotti",
           "importo": "€114,70",
           "note": "Materiali vari (2 addebiti)"
         },
         {
           "data": "26/01",
           "voce": "PF Concept International",
-          "voceBilancio": "B.6 — Materie prime",
+          "voceBilancio": "B.6 Merci e prodotti",
           "importo": "€1.104,02",
           "note": "Oggetti promozionali — saldo 4 fatture"
         },
         {
           "data": "26/01",
           "voce": "Stipendio Claudia (dic. 2025)",
-          "voceBilancio": "B.9 — Personale",
+          "voceBilancio": "B.9 Stipendi",
           "importo": "€636,49",
           "note": "Ultima busta paga — cessata 31/12/2025"
         },
@@ -692,56 +692,56 @@
         {
           "data": "26/01",
           "voce": "Fastweb SPA",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Canoni servizio",
           "importo": "€41,36",
           "note": "Telefonia/internet"
         },
         {
           "data": "26/01",
           "voce": "Studio Avv. Fatone Gasso",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Consulenze legali",
           "importo": "€184,37",
           "note": "Consulenza legale (ritenuta 20% = €34,50 da versare 16/02)"
         },
         {
           "data": "26/01",
           "voce": "Rimborso spese Alessandro",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Rimborsi spese soci",
           "importo": "€129,00",
           "note": "Rimborso spese dicembre"
         },
         {
           "data": "30/01",
           "voce": "Frisbi energia",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Energia elettrica",
           "importo": "€89,47",
           "note": "Bolletta energia elettrica"
         },
         {
           "data": "31/01",
           "voce": "Spese bancarie",
-          "voceBilancio": "C — Oneri finanziari",
+          "voceBilancio": "C. Spese bancarie",
           "importo": "€28,50",
           "note": "Bonifici ist. €19 + SDD €9 + canone €0,50"
         },
         {
           "data": "16/01",
           "voce": "Sintra.ai",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Software operativi",
           "importo": "€415,91",
           "note": "AI sales tool — anticipato da Marco (conto personale)"
         },
         {
           "data": "20/01",
           "voce": "MediaMarket (iPhone 17 Pro)",
-          "voceBilancio": "B.6 — Materie prime",
+          "voceBilancio": "B.10 Immobilizzazione",
           "importo": "€1.408,94",
           "note": "Uso aziendale confermato — anticipato da Marco (conto personale)"
         },
         {
           "data": "31/01",
           "voce": "Claude.ai (Anthropic)",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Software operativi",
           "importo": "€86,44",
           "note": "AI subscription — anticipato da Marco (conto personale)"
         }
@@ -762,42 +762,42 @@
         {
           "data": "01/02",
           "voce": "Affitto sede",
-          "voceBilancio": "B.8 — Godimento beni terzi",
+          "voceBilancio": "B.8 Affitto sede",
           "importo": "€350,00",
           "note": "Via Fieramosca 20, Bari — Panebianco"
         },
         {
           "data": "01/02",
           "voce": "Hostinger.com",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Hosting/tool digitali",
           "importo": "€150,98",
           "note": "Hosting VPS — anticipato da Marco (conto personale)"
         },
         {
           "data": "02/02",
           "voce": "Elementor",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Software operativi",
           "importo": "€203,88",
           "note": "Website builder — anticipato da Marco (conto personale)"
         },
         {
           "data": "03/02",
           "voce": "Canva",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Software operativi",
           "importo": "€139,90",
           "note": "Design tool — anticipato da Marco (conto personale)"
         },
         {
           "data": "03/02",
           "voce": "Envato",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Software operativi",
           "importo": "€174,00",
           "note": "Annual 198 (Feb 2026-Feb 2027) — anticipato da Marco (conto personale)"
         },
         {
           "data": "02/02",
           "voce": "Meccatronica Car Service",
-          "voceBilancio": "B.7 — Servizi",
+          "voceBilancio": "B.7 Manutenzione auto",
           "importo": "€200,00",
           "note": "Tagliando auto aziendale (Peugeot 3008) — anticipato da Marco (conto personale)"
         }
@@ -1025,7 +1025,7 @@
           "credito_10": 0,
           "credito_4": 19.26,
           "reverseCharge": 3243.03,
-          "forfettario": 240.00
+          "forfettario": 240
         }
       },
       {
@@ -1040,9 +1040,14 @@
         "importoVersamento": 0,
         "creditoIva": 0,
         "breakdown": {
-          "debito_22": 0, "debito_10": 0, "debito_4": 0,
-          "credito_22": 0, "credito_10": 0, "credito_4": 0,
-          "reverseCharge": 0, "forfettario": 0
+          "debito_22": 0,
+          "debito_10": 0,
+          "debito_4": 0,
+          "credito_22": 0,
+          "credito_10": 0,
+          "credito_4": 0,
+          "reverseCharge": 0,
+          "forfettario": 0
         }
       },
       {
@@ -1057,9 +1062,14 @@
         "importoVersamento": 0,
         "creditoIva": 0,
         "breakdown": {
-          "debito_22": 0, "debito_10": 0, "debito_4": 0,
-          "credito_22": 0, "credito_10": 0, "credito_4": 0,
-          "reverseCharge": 0, "forfettario": 0
+          "debito_22": 0,
+          "debito_10": 0,
+          "debito_4": 0,
+          "credito_22": 0,
+          "credito_10": 0,
+          "credito_4": 0,
+          "reverseCharge": 0,
+          "forfettario": 0
         }
       },
       {
@@ -1074,9 +1084,14 @@
         "importoVersamento": 0,
         "creditoIva": 0,
         "breakdown": {
-          "debito_22": 0, "debito_10": 0, "debito_4": 0,
-          "credito_22": 0, "credito_10": 0, "credito_4": 0,
-          "reverseCharge": 0, "forfettario": 0
+          "debito_22": 0,
+          "debito_10": 0,
+          "debito_4": 0,
+          "credito_22": 0,
+          "credito_10": 0,
+          "credito_4": 0,
+          "reverseCharge": 0,
+          "forfettario": 0
         }
       }
     ],
@@ -1085,6 +1100,257 @@
       "data": "16/05/2026",
       "importo": 0,
       "nota": "Credito IVA €616,69 — nessun versamento dovuto"
+    }
+  },
+  "bilancio": {
+    "disclaimer": "Bilancio gestionale interno — importi al netto IVA (CE) e lordo IVA (SP). Non sostituisce la contabilita ufficiale del commercialista.",
+    "notaCompetenza": "Ricavi per competenza 2026 — gli incassi di fatture emesse nel 2025 (28k+ a gennaio) non figurano nei ricavi. E normale vedere un risultato negativo nei primi mesi.",
+    "dataRiferimento": "31 Gennaio 2026",
+    "ce": {
+      "A": {
+        "label": "A) Valore della produzione",
+        "totale": 248.75,
+        "dettaglio": [
+          {
+            "label": "A.1.1 Vendita merci",
+            "importo": 512.35
+          },
+          {
+            "label": "A.1.2 Prestazioni servizi",
+            "importo": 300
+          },
+          {
+            "label": "A.1.3 Note di credito",
+            "importo": -563.6
+          }
+        ]
+      },
+      "B": {
+        "label": "B) Costi della produzione",
+        "totale": 9494.86,
+        "sottoGruppi": [
+          {
+            "codice": "B6",
+            "label": "Materie prime e merci",
+            "totale": 2556.51,
+            "dettaglio": [
+              {
+                "label": "Merci e prodotti",
+                "importo": 2462.5
+              },
+              {
+                "label": "Materiale consumo",
+                "importo": 94.01
+              }
+            ]
+          },
+          {
+            "codice": "B7",
+            "label": "Servizi",
+            "totale": 3579.3,
+            "dettaglio": [
+              {
+                "label": "Software operativi (Sintra, Claude, Opus, Elementor, Canva, Envato)",
+                "importo": 1224.12
+              },
+              {
+                "label": "Rimborso macchinario (Marco)",
+                "importo": 500
+              },
+              {
+                "label": "Diritti d'autore (Festa Daniele)",
+                "importo": 414.75
+              },
+              {
+                "label": "Consulenze legali (Fatone Gasso, Palumbo)",
+                "importo": 335.4
+              },
+              {
+                "label": "Posteggio (Lapenna)",
+                "importo": 240
+              },
+              {
+                "label": "Canoni servizio (Fastweb, TeamSystem)",
+                "importo": 196.8
+              },
+              {
+                "label": "Manutenzione auto (Meccatronica)",
+                "importo": 164.58
+              },
+              {
+                "label": "Energia elettrica (Frisbi)",
+                "importo": 151.75
+              },
+              {
+                "label": "Hosting/tool digitali (Hostinger)",
+                "importo": 150.98
+              },
+              {
+                "label": "Rimborsi spese soci (Alessandro)",
+                "importo": 129
+              },
+              {
+                "label": "Spedizioni (Sendcloud)",
+                "importo": 62.04
+              },
+              {
+                "label": "Commissioni welfare (Pluxee)",
+                "importo": 9.88
+              }
+            ]
+          },
+          {
+            "codice": "B8",
+            "label": "Godimento beni di terzi",
+            "totale": 700,
+            "dettaglio": [
+              {
+                "label": "Affitto sede (Panebianco)",
+                "importo": 700
+              }
+            ]
+          },
+          {
+            "codice": "B9",
+            "label": "Personale",
+            "totale": 2178.36,
+            "dettaglio": [
+              {
+                "label": "Stipendi (Sajay + Claudia)",
+                "importo": 1298.49
+              },
+              {
+                "label": "Buoni pasto (Pluxee)",
+                "importo": 481.44
+              },
+              {
+                "label": "Contributi INPS dipendenti (F24)",
+                "importo": 398.43
+              }
+            ]
+          },
+          {
+            "codice": "B10",
+            "label": "Ammortamenti",
+            "totale": 115.49,
+            "dettaglio": [
+              {
+                "label": "Macchine elettroniche (iPhone)",
+                "importo": 115.49
+              }
+            ]
+          },
+          {
+            "codice": "B14",
+            "label": "Oneri diversi",
+            "totale": 365.2,
+            "dettaglio": [
+              {
+                "label": "Royalties marchio (Sala Vurro + Nicola Vurro)",
+                "importo": 340
+              },
+              {
+                "label": "Bolli e tributi bancari",
+                "importo": 25.2
+              }
+            ]
+          }
+        ]
+      },
+      "diffAB": {
+        "importo": -9246.11
+      },
+      "C": {
+        "label": "C) Oneri finanziari",
+        "totale": 28.5,
+        "dettaglio": [
+          {
+            "label": "Spese bancarie",
+            "importo": 28.5
+          }
+        ]
+      },
+      "imposte": {
+        "totale": 0,
+        "nota": "Imposte non ancora determinate — a cura del commercialista"
+      },
+      "utile": {
+        "importo": -9274.61
+      }
+    },
+    "sp": {
+      "attivo": {
+        "totale": 14188.53,
+        "gruppi": [
+          {
+            "label": "Immobilizzazioni nette",
+            "importo": 1154.87
+          },
+          {
+            "label": "Crediti commerciali",
+            "importo": 625.07
+          },
+          {
+            "label": "Crediti tributari (IVA)",
+            "importo": 616.69
+          },
+          {
+            "label": "Depositi cauzionali",
+            "importo": 350
+          },
+          {
+            "label": "Disponibilita liquide",
+            "importo": 11441.9
+          }
+        ]
+      },
+      "passivo": {
+        "totale": 7651.1,
+        "gruppi": [
+          {
+            "label": "Debiti fornitori",
+            "importo": 1565.94
+          },
+          {
+            "label": "Debiti tributari",
+            "importo": 991.84
+          },
+          {
+            "label": "Debiti verso soci",
+            "importo": 2780.05
+          },
+          {
+            "label": "Fondo TFR",
+            "importo": 1175.92
+          },
+          {
+            "label": "Debiti previdenziali",
+            "importo": 1137.35
+          }
+        ]
+      },
+      "pn": {
+        "totale": -8274.61,
+        "dettaglio": [
+          {
+            "label": "Capitale sociale",
+            "importo": 1000
+          },
+          {
+            "label": "Utile esercizio",
+            "importo": -9274.61
+          },
+          {
+            "label": "Utili pregressi",
+            "importo": 0
+          }
+        ]
+      },
+      "verifica": {
+        "differenza": 14812.04,
+        "stato": "sbilancio",
+        "nota": "Sbilancio di €14812.04 — dovuto a voci non ancora censite (utili pregressi, riserve, partite transitorie). Non anomalo in un bilancio gestionale provvisorio."
+      }
     }
   }
 }
