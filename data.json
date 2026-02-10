@@ -1302,6 +1302,14 @@
           {
             "label": "Disponibilita liquide",
             "importo": 11441.9
+          },
+          {
+            "label": "Ratei attivi",
+            "importo": 0
+          },
+          {
+            "label": "Risconti attivi",
+            "importo": 0
           }
         ]
       },
@@ -1327,6 +1335,14 @@
           {
             "label": "Debiti previdenziali",
             "importo": 1137.35
+          },
+          {
+            "label": "Ratei passivi",
+            "importo": 0
+          },
+          {
+            "label": "Risconti passivi",
+            "importo": 0
           }
         ]
       },
