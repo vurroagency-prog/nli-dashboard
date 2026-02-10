@@ -166,6 +166,7 @@
     <div class="nav-tab" onclick="switchTab('uscite')">Uscite</div>
     <div class="nav-tab" onclick="switchTab('banca')">Banca</div>
     <div class="nav-tab" onclick="switchTab('previsionale')">Previsionale</div>
+    <div class="nav-tab" onclick="switchTab('iva')">IVA</div>
     <div class="nav-tab" onclick="switchTab('scadenzario')">Scadenzario</div>
     <div class="nav-tab" onclick="switchTab('alert')">Alert</div>
     <div class="nav-tab" onclick="switchTab('setup')">Setup Iniziale</div>
@@ -218,6 +219,18 @@
     <div class="tab-panel" id="tab-previsionale">
       <div class="page-header"><h1>Previsionale</h1><p>Cash flow forecast — costi certi, stimati ed entrate attese</p></div>
       <div id="previsionale-content"></div>
+    </div>
+    <!-- IVA -->
+    <div class="tab-panel" id="tab-iva">
+      <div class="page-header"><h1>Monitoraggio IVA</h1><p>Stima previsionale IVA trimestrale</p></div>
+      <div id="iva-disclaimer" class="alert-box info" style="margin-bottom:24px;"></div>
+      <div class="kpi-grid" id="iva-kpi-grid"></div>
+      <div class="charts-grid" style="margin-top:24px;">
+        <div class="chart-card"><h4>IVA Debito vs Credito per Trimestre</h4><canvas id="chart-iva-trimestri"></canvas></div>
+        <div class="chart-card"><h4>Breakdown per Aliquota (Q corrente)</h4><canvas id="chart-iva-aliquote"></canvas></div>
+      </div>
+      <div class="card" style="margin-top:24px;"><h3>Dettaglio Trimestri</h3><div class="table-wrap"><table><thead><tr><th>Trimestre</th><th>Stato</th><th>IVA Debito</th><th>IVA Credito</th><th>Credito Riportato</th><th>Saldo</th><th>Versamento</th><th>Scadenza</th></tr></thead><tbody id="iva-trimestri-body"></tbody></table></div></div>
+      <div class="card" style="margin-top:16px;"><h3>Breakdown Aliquote Q1 2026</h3><div class="table-wrap"><table><thead><tr><th>Aliquota</th><th>IVA Debito</th><th>IVA Credito</th><th>Note</th></tr></thead><tbody id="iva-aliquote-body"></tbody></table></div></div>
     </div>
     <!-- Alert -->
     <div class="tab-panel" id="tab-alert">
@@ -481,6 +494,47 @@
         return '<li><div class="check-box ' + cls + '">' + icon + '</div><div><strong>' + esc(item.label) + '</strong> — ' + esc(item.desc) + '</div></li>';
       }).join('');
 
+      // IVA
+      if (d.iva) {
+        document.getElementById('iva-disclaimer').textContent = d.iva.disclaimer || '';
+        const ivaKpi = document.getElementById('iva-kpi-grid');
+        const pv = d.iva.prossimoVersamento || {};
+        const q1 = (d.iva.trimestri || [])[0] || {};
+        const saldoClass = (q1.saldo || 0) <= 0 ? 'positive' : 'negative';
+        const saldoLabel = (q1.saldo || 0) <= 0 ? 'Credito IVA' : 'IVA da versare';
+        const saldoVal = (q1.saldo || 0) <= 0 ? q1.creditoIva || 0 : q1.importoVersamento || 0;
+        ivaKpi.innerHTML = [
+          { label: saldoLabel + ' ' + (q1.periodo || ''), value: '\u20AC' + saldoVal.toLocaleString('it-IT', {minimumFractionDigits:2}), sub: 'Saldo: \u20AC' + (q1.saldo || 0).toLocaleString('it-IT', {minimumFractionDigits:2}), class: saldoClass },
+          { label: 'Prossimo Versamento', value: '\u20AC' + (pv.importo || 0).toLocaleString('it-IT', {minimumFractionDigits:2}), sub: pv.nota || '', class: (pv.importo || 0) > 0 ? 'negative' : 'positive' },
+          { label: 'Scadenza', value: pv.data || '—', sub: pv.trimestre || '', class: 'neutral' }
+        ].map(function(k) {
+          return '<div class="kpi-card ' + k.class + '"><div class="kpi-label">' + esc(k.label) + '</div><div class="kpi-value">' + k.value + '</div><div class="kpi-sub">' + esc(k.sub) + '</div></div>';
+        }).join('');
+        // Tabella trimestri
+        var ivaBody = document.getElementById('iva-trimestri-body');
+        ivaBody.innerHTML = (d.iva.trimestri || []).map(function(t) {
+          var badge = t.stato === 'in_corso' ? 'upcoming' : (t.stato === 'non_iniziato' ? 'info' : 'ok');
+          var statoLabel = t.stato === 'in_corso' ? 'In corso' : (t.stato === 'non_iniziato' ? 'Non iniziato' : t.stato);
+          var saldoStr = t.saldo < 0 ? '-\u20AC' + Math.abs(t.saldo).toFixed(2) + ' (credito)' : '\u20AC' + (t.saldo || 0).toFixed(2);
+          var versStr = t.importoVersamento > 0 ? '\u20AC' + t.importoVersamento.toFixed(2) : '\u20AC0,00';
+          return '<tr><td><strong>' + esc(t.periodo) + '</strong><br><small>' + esc(t.mesi) + '</small></td><td><span class="badge ' + badge + '">' + statoLabel + '</span></td><td>\u20AC' + (t.ivaDebito || 0).toFixed(2) + '</td><td>\u20AC' + (t.ivaCredito || 0).toFixed(2) + '</td><td>\u20AC' + (t.creditoRiportato || 0).toFixed(2) + '</td><td>' + saldoStr + '</td><td>' + versStr + '</td><td>' + esc(t.scadenza || '—') + '</td></tr>';
+        }).join('');
+        // Breakdown aliquote
+        var alqBody = document.getElementById('iva-aliquote-body');
+        var bk = q1.breakdown || {};
+        alqBody.innerHTML = [
+          { aliq: '22%', deb: bk.debito_22, cred: bk.credito_22, note: '' },
+          { aliq: '10%', deb: bk.debito_10, cred: bk.credito_10, note: '' },
+          { aliq: '4%', deb: bk.debito_4, cred: bk.credito_4, note: 'Buoni pasto (Pluxee)' },
+          { aliq: 'Reverse Charge', deb: bk.reverseCharge ? (bk.reverseCharge * 0.22).toFixed(2) : '0.00', cred: bk.reverseCharge ? (bk.reverseCharge * 0.22).toFixed(2) : '0.00', note: 'Neutro — debito e credito si annullano' },
+          { aliq: 'Forfettario/Esente', deb: 0, cred: 0, note: 'Nessuna IVA detraibile (€' + (bk.forfettario || 0).toFixed(0) + ' imponibile)' }
+        ].map(function(r) {
+          var dv = typeof r.deb === 'string' ? r.deb : (r.deb || 0).toFixed(2);
+          var cv = typeof r.cred === 'string' ? r.cred : (r.cred || 0).toFixed(2);
+          return '<tr><td><strong>' + r.aliq + '</strong></td><td>\u20AC' + dv + '</td><td>\u20AC' + cv + '</td><td><small>' + esc(r.note) + '</small></td></tr>';
+        }).join('');
+      }
+
       // Charts
       renderCharts(d);
 
@@ -634,6 +688,45 @@
       },
       options: baseOpts
     }));
+
+    // === IVA ===
+    if (d.iva && d.iva.trimestri) {
+      var ivaT = d.iva.trimestri;
+      var ivaLabels = ivaT.map(function(t) { return t.periodo.replace(' 2026', '').replace(' 2027', ''); });
+      var ivaDebitoData = ivaT.map(function(t) { return t.ivaDebito || 0; });
+      var ivaCreditoData = ivaT.map(function(t) { return t.ivaCredito || 0; });
+
+      // 7. IVA Debito vs Credito (bar raggruppato)
+      var ivaCanvas = document.getElementById('chart-iva-trimestri');
+      if (ivaCanvas) {
+        chartInstances.push(new Chart(ivaCanvas, {
+          type: 'bar',
+          data: {
+            labels: ivaLabels,
+            datasets: [
+              { label: 'IVA Debito', data: ivaDebitoData, backgroundColor: '#f87171', borderRadius: 4 },
+              { label: 'IVA Credito', data: ivaCreditoData, backgroundColor: '#34d399', borderRadius: 4 }
+            ]
+          },
+          options: baseOpts
+        }));
+      }
+
+      // 8. Breakdown aliquote Q corrente (doughnut)
+      var qCorr = ivaT.find(function(t) { return t.stato === 'in_corso'; }) || ivaT[0];
+      var bk = qCorr.breakdown || {};
+      var alqLabels = ['22% Credito', '4% Credito', 'RC (neutro)', '22% Debito'];
+      var alqData = [bk.credito_22 || 0, bk.credito_4 || 0, bk.reverseCharge ? bk.reverseCharge * 0.22 : 0, bk.debito_22 || 0];
+      var alqColors = ['#34d399', '#6ee7b7', '#a78bfa', '#f87171'];
+      var alqCanvas = document.getElementById('chart-iva-aliquote');
+      if (alqCanvas) {
+        chartInstances.push(new Chart(alqCanvas, {
+          type: 'doughnut',
+          data: { labels: alqLabels, datasets: [{ data: alqData, backgroundColor: alqColors }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#8891a4', font: { family: 'DM Sans', size: 11 } } } } }
+        }));
+      }
+    }
   }
 </script>
 </body>

@@ -1002,5 +1002,89 @@
       "totaleEntrateStimate": "~€20.000",
       "saldoStimato": "~€43.347"
     }
-  ]
+  ],
+  "iva": {
+    "disclaimer": "Stima indicativa — liquidazione ufficiale a cura del commercialista",
+    "trimestri": [
+      {
+        "periodo": "Q1 2026",
+        "mesi": "Gennaio - Marzo",
+        "stato": "in_corso",
+        "scadenza": "16/05/2026",
+        "creditoRiportato": 0,
+        "ivaDebito": 54.73,
+        "ivaCredito": 671.42,
+        "saldo": -616.69,
+        "importoVersamento": 0,
+        "creditoIva": 616.69,
+        "breakdown": {
+          "debito_22": 54.73,
+          "debito_10": 0,
+          "debito_4": 0,
+          "credito_22": 652.16,
+          "credito_10": 0,
+          "credito_4": 19.26,
+          "reverseCharge": 3243.03,
+          "forfettario": 240.00
+        }
+      },
+      {
+        "periodo": "Q2 2026",
+        "mesi": "Aprile - Giugno",
+        "stato": "non_iniziato",
+        "scadenza": "20/08/2026",
+        "creditoRiportato": 616.69,
+        "ivaDebito": 0,
+        "ivaCredito": 0,
+        "saldo": 0,
+        "importoVersamento": 0,
+        "creditoIva": 0,
+        "breakdown": {
+          "debito_22": 0, "debito_10": 0, "debito_4": 0,
+          "credito_22": 0, "credito_10": 0, "credito_4": 0,
+          "reverseCharge": 0, "forfettario": 0
+        }
+      },
+      {
+        "periodo": "Q3 2026",
+        "mesi": "Luglio - Settembre",
+        "stato": "non_iniziato",
+        "scadenza": "16/11/2026",
+        "creditoRiportato": 0,
+        "ivaDebito": 0,
+        "ivaCredito": 0,
+        "saldo": 0,
+        "importoVersamento": 0,
+        "creditoIva": 0,
+        "breakdown": {
+          "debito_22": 0, "debito_10": 0, "debito_4": 0,
+          "credito_22": 0, "credito_10": 0, "credito_4": 0,
+          "reverseCharge": 0, "forfettario": 0
+        }
+      },
+      {
+        "periodo": "Q4 2026",
+        "mesi": "Ottobre - Dicembre",
+        "stato": "non_iniziato",
+        "scadenza": "16/03/2027",
+        "creditoRiportato": 0,
+        "ivaDebito": 0,
+        "ivaCredito": 0,
+        "saldo": 0,
+        "importoVersamento": 0,
+        "creditoIva": 0,
+        "breakdown": {
+          "debito_22": 0, "debito_10": 0, "debito_4": 0,
+          "credito_22": 0, "credito_10": 0, "credito_4": 0,
+          "reverseCharge": 0, "forfettario": 0
+        }
+      }
+    ],
+    "prossimoVersamento": {
+      "trimestre": "Q1 2026",
+      "data": "16/05/2026",
+      "importo": 0,
+      "nota": "Credito IVA €616,69 — nessun versamento dovuto"
+    }
+  }
 }
