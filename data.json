@@ -208,6 +208,14 @@
     },
     {
       "data": "16 Mag 2026",
+      "adempimento": "INPS Commercianti Marco — 1a rata fisso 2026 ~€1.137",
+      "frequenza": "Trimestrale",
+      "stato": "info",
+      "statoLabel": "In programma",
+      "chi": "Marco (F24 personale)"
+    },
+    {
+      "data": "16 Mag 2026",
       "adempimento": "Versamento IVA I trimestre 2026",
       "frequenza": "Trimestrale",
       "stato": "info",
@@ -248,11 +256,27 @@
     },
     {
       "data": "20 Ago 2026",
+      "adempimento": "INPS Commercianti Marco — 2a rata fisso 2026 ~€1.137",
+      "frequenza": "Trimestrale",
+      "stato": "info",
+      "statoLabel": "In programma",
+      "chi": "Marco (F24 personale)"
+    },
+    {
+      "data": "20 Ago 2026",
       "adempimento": "Versamento IVA II trimestre + INAIL 3a rata €69,57",
       "frequenza": "Trimestrale",
       "stato": "info",
       "statoLabel": "In programma",
       "chi": "Commercialista"
+    },
+    {
+      "data": "16 Nov 2026",
+      "adempimento": "INPS Commercianti Marco — 3a rata fisso 2026 ~€1.137",
+      "frequenza": "Trimestrale",
+      "stato": "info",
+      "statoLabel": "In programma",
+      "chi": "Marco (F24 personale)"
     },
     {
       "data": "16 Nov 2026",
@@ -277,6 +301,14 @@
       "stato": "info",
       "statoLabel": "In programma",
       "chi": "Commercialista"
+    },
+    {
+      "data": "16 Feb 2027",
+      "adempimento": "INPS Commercianti Marco — 4a rata fisso 2026 ~€1.137",
+      "frequenza": "Trimestrale",
+      "stato": "info",
+      "statoLabel": "In programma",
+      "chi": "Marco (F24 personale)"
     }
   ],
   "alert": [
