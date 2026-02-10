@@ -331,7 +331,22 @@
       document.getElementById('overview-status').textContent = d.statusMessage;
       document.getElementById('stato-lavori').textContent = d.statoLavori;
 
-      // KPI
+      // KPI — override dinamico Pressione Fiscale da previsioneFiscale
+      var pfd = d.bilancio && d.bilancio.previsioneFiscale;
+      d.kpi.forEach(function(k) {
+        if (k.label === 'Pressione Fiscale Stimata' && pfd) {
+          if (pfd.utileNegativo || pfd.percentualeSuUtile == null) {
+            k.value = 'N/D';
+            k.sub = 'Utile negativo \u2014 non calcolabile';
+            k.class = 'neutral';
+          } else {
+            var pv = (pfd.percentualeSuUtile * 100).toFixed(1);
+            k.value = pv + '%';
+            k.sub = 'IRAP + IRPEF soci + INPS Marco su utile';
+            k.class = parseFloat(pv) < 30 ? 'positive' : parseFloat(pv) < 40 ? 'warning' : 'danger';
+          }
+        }
+      });
       const kpiGrid = document.getElementById('kpi-grid');
       kpiGrid.innerHTML = d.kpi.map(k =>
         '<div class="kpi-card"><div class="kpi-label">' + esc(k.label) + '</div><div class="kpi-value ' + esc(k.class) + '">' + esc(k.value) + '</div><div class="kpi-sub">' + esc(k.sub) + '</div></div>'

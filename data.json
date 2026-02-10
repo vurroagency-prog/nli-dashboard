@@ -30,6 +30,12 @@
       "class": "positive"
     },
     {
+      "label": "Pressione Fiscale Stimata",
+      "value": "N/D",
+      "sub": "Utile negativo — non calcolabile",
+      "class": "neutral"
+    },
+    {
       "label": "EBITDA YTD",
       "value": "€17.550",
       "sub": "Cash-based — target annuo €100k. Incl. costi conto Marco.",
