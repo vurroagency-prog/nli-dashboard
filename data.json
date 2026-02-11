@@ -2,7 +2,7 @@
   "lastUpdate": "11 Febbraio 2026",
   "fonte": "registro.json",
   "ebitdaTargetAnnuo": 100000,
-  "statusMessage": "Fonte: registro.json (53 mov., 46 fatt., 25 scad.). Riepilogo TS Payments gennaio analizzato: 5 accrediti (€6.683), 8 clienti identificati, competenza assegnata. Riconciliazione gen: 88,4% (38/43). Commissioni TS €14,30 registrate. F24 16/02: €1.890,48. Saldo banca €11.442.",
+  "statusMessage": "Fonte: registro.json (53 mov., 46 fatt., 25 scad.). TS Payments gennaio COMPLETATO: 4 accrediti con dettaglio clienti (12 clienti, competenza assegnata). Riconciliazione gen: 93,0% (40/43). Solo 3 movimenti aperti (Metrie+2 GOR). F24 16/02: €1.890,48. Saldo banca €11.442.",
   "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gennaio analizzato: 76 movimenti, quadratura OK. 41 documenti SDI + estere archiviati. Prima Nota paghe gennaio processata. F24 16/02: €649,98 confermato.",
   "kpi": [
     {
@@ -360,7 +360,7 @@
     },
     {
       "tipo": "info",
-      "testo": "TeamSystem Payments gennaio: riepilogo + dettaglio incassi analizzati. 5 accrediti €6.683. MOV-0008 e MOV-0010 → clienti identificati (comp. 2026). MOV-0003/0006 → incassi dic. 2025 (comp. provv. 2025). 5° accredito €1.444 (Tecno Soluzioni, comp. 2025) atteso su E/C feb. Commissioni €14,30 registrate."
+      "testo": "TeamSystem Payments gennaio COMPLETATO: tutti 4 accrediti riconciliati con 12 clienti. MOV-0003/0006 = 6 clienti comp. 2025 (saldi proformas). MOV-0008/0010 = 5 clienti comp. 2026 (rate+acconti). 5° accredito €1.444 (Tecno Soluzioni) su E/C feb. Commissioni €14,30. Riconciliazione gen: 93% (40/43)."
     },
     {
       "tipo": "info",
@@ -379,7 +379,7 @@
       "testo": "2 fatture estere in attesa (arrivano fine marzo): Elementor, Canva (reverse charge, anticipate da Marco). 3 archiviate: Sintra, Anthropic, Envato."
     }
   ],
-  "suggerimenti": "1) URGENTE 16/02: totale uscite €1.890,48 — F24 dip. €649,98 + INAIL €68,65 + INPS Marco €1.137,35 + ritenuta Fatone €34,50. 2) Rimborso spese Marco: €2.780,05 da rimborsare via bonifico (8 anticipazioni incl. tagliando Meccatronica). 3) TFR Claudia €1.175,92 da pagare. 4) TS Payments gennaio analizzato — per completare riconciliazione MOV-0003/0006 servono incassi dicembre da Area Riservata TS. 5) 2 fatture estere in attesa (Elementor, Canva — arrivano fine marzo). 6) Ritenuta Palumbo €30,00 da versare entro 16/03. 7) Diversificare clienti — SiliconDev 34,6%. 8) Offerta Frisbi: decidere entro 28/02. 9) Rimborso km febbraio a fine mese. 10) Correggere indirizzo NLI su Sintra.ai (risulta Via di Dragone, Roma).",
+  "suggerimenti": "1) URGENTE 16/02: totale uscite €1.890,48 — F24 dip. €649,98 + INAIL €68,65 + INPS Marco €1.137,35 + ritenuta Fatone €34,50. 2) Rimborso spese Marco: €2.780,05 da rimborsare via bonifico (8 anticipazioni incl. tagliando Meccatronica). 3) TFR Claudia €1.175,92 da pagare. 4) Riconciliazione gen 93% — restano 3 movimenti aperti (Metrie €469 + 2 GOR €467). 5) 2 fatture estere in attesa (Elementor, Canva — arrivano fine marzo). 6) Ritenuta Palumbo €30,00 da versare entro 16/03. 7) Diversificare clienti — SiliconDev 34,6%. 8) Offerta Frisbi: decidere entro 28/02. 9) Rimborso km febbraio a fine mese. 10) Correggere indirizzo NLI su Sintra.ai (risulta Via di Dragone, Roma).",
   "setupChecklist": [
     {
       "label": "Visura camerale",
@@ -467,7 +467,7 @@
           "voce": "TeamSystem Payments",
           "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€2.125,86",
-          "note": "TS-BIETLYGHM4 — incassi dicembre 2025 (dettaglio non nel CSV gen)",
+          "note": "TS-BIETLYGHM4 — Artigianscavi €1.536 + Cubica €590 (saldi proformas 2025)",
           "competenza": "2025"
         },
         {
@@ -491,7 +491,7 @@
           "voce": "TeamSystem Payments",
           "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€1.913,01",
-          "note": "TS-BIJHDTXHTQ — prob. Security Dealers €418 (comp. 2025) + incassi dic.",
+          "note": "TS-BIJHDTXHTQ — GD Tech €1.198 + Security Dealers €418 + Ecomondi €186 + Sia Impianti €111",
           "competenza": "2025"
         },
         {
