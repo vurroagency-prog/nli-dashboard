@@ -1,8 +1,8 @@
 {
-  "lastUpdate": "10 Febbraio 2026",
+  "lastUpdate": "11 Febbraio 2026",
   "fonte": "registro.json",
   "ebitdaTargetAnnuo": 100000,
-  "statusMessage": "Fonte: registro.json (52 mov., 46 fatt., 25 scad.). F24 16/02: €649,98. Totale uscite 16/02: €1.890,48. Debito Marco: €2.780. Debiti fornitori: €1.918. Crediti clienti: €625. Saldo banca €11.442 — capienza OK. 3 fatture estere archiviate (Sintra, Anthropic, Envato).",
+  "statusMessage": "Fonte: registro.json (53 mov., 46 fatt., 25 scad.). Riepilogo TS Payments gennaio analizzato: 5 accrediti (€6.683), 8 clienti identificati, competenza assegnata. Riconciliazione gen: 88,4% (38/43). Commissioni TS €14,30 registrate. F24 16/02: €1.890,48. Saldo banca €11.442.",
   "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gennaio analizzato: 76 movimenti, quadratura OK. 41 documenti SDI + estere archiviati. Prima Nota paghe gennaio processata. F24 16/02: €649,98 confermato.",
   "kpi": [
     {
@@ -102,7 +102,7 @@
     },
     {
       "data": "10 ogni mese",
-      "adempimento": "Riepilogo TeamSystem Payments — richiedere a Marco",
+      "adempimento": "Riepilogo TeamSystem Payments — richiedere a Marco (gen. ricevuto 11/02)",
       "frequenza": "Mensile",
       "stato": "upcoming",
       "statoLabel": "Ricorrente",
@@ -360,7 +360,7 @@
     },
     {
       "tipo": "info",
-      "testo": "TeamSystem Payments: 4 accrediti SDD per €5.239,07 — in attesa file dettaglio per cliente (richiedere entro il 10/02)."
+      "testo": "TeamSystem Payments gennaio: riepilogo + dettaglio incassi analizzati. 5 accrediti €6.683. MOV-0008 e MOV-0010 → clienti identificati (comp. 2026). MOV-0003/0006 → incassi dic. 2025 (comp. provv. 2025). 5° accredito €1.444 (Tecno Soluzioni, comp. 2025) atteso su E/C feb. Commissioni €14,30 registrate."
     },
     {
       "tipo": "info",
@@ -379,7 +379,7 @@
       "testo": "2 fatture estere in attesa (arrivano fine marzo): Elementor, Canva (reverse charge, anticipate da Marco). 3 archiviate: Sintra, Anthropic, Envato."
     }
   ],
-  "suggerimenti": "1) URGENTE 16/02: totale uscite €1.890,48 — F24 dip. €649,98 + INAIL €68,65 + INPS Marco €1.137,35 + ritenuta Fatone €34,50. 2) Rimborso spese Marco: €2.780,05 da rimborsare via bonifico (8 anticipazioni incl. tagliando Meccatronica). 3) TFR Claudia €1.175,92 da pagare. 4) Richiedere file TeamSystem entro il 10/02. 5) 2 fatture estere in attesa (Elementor, Canva — arrivano fine marzo). 6) Ritenuta Palumbo €30,00 da versare entro 16/03. 7) Diversificare clienti — SiliconDev 34,6%. 8) Offerta Frisbi: decidere entro 28/02. 9) Rimborso km febbraio a fine mese. 10) Correggere indirizzo NLI su Sintra.ai (risulta Via di Dragone, Roma).",
+  "suggerimenti": "1) URGENTE 16/02: totale uscite €1.890,48 — F24 dip. €649,98 + INAIL €68,65 + INPS Marco €1.137,35 + ritenuta Fatone €34,50. 2) Rimborso spese Marco: €2.780,05 da rimborsare via bonifico (8 anticipazioni incl. tagliando Meccatronica). 3) TFR Claudia €1.175,92 da pagare. 4) TS Payments gennaio analizzato — per completare riconciliazione MOV-0003/0006 servono incassi dicembre da Area Riservata TS. 5) 2 fatture estere in attesa (Elementor, Canva — arrivano fine marzo). 6) Ritenuta Palumbo €30,00 da versare entro 16/03. 7) Diversificare clienti — SiliconDev 34,6%. 8) Offerta Frisbi: decidere entro 28/02. 9) Rimborso km febbraio a fine mese. 10) Correggere indirizzo NLI su Sintra.ai (risulta Via di Dragone, Roma).",
   "setupChecklist": [
     {
       "label": "Visura camerale",
@@ -467,8 +467,8 @@
           "voce": "TeamSystem Payments",
           "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€2.125,86",
-          "note": "SDD aggregato — dettaglio clienti in attesa",
-          "competenza": "da verificare"
+          "note": "TS-BIETLYGHM4 — incassi dicembre 2025 (dettaglio non nel CSV gen)",
+          "competenza": "2025"
         },
         {
           "data": "08/01",
@@ -491,8 +491,8 @@
           "voce": "TeamSystem Payments",
           "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€1.913,01",
-          "note": "SDD aggregato — dettaglio clienti in attesa",
-          "competenza": "da verificare"
+          "note": "TS-BIJHDTXHTQ — prob. Security Dealers €418 (comp. 2025) + incassi dic.",
+          "competenza": "2025"
         },
         {
           "data": "15/01",
@@ -507,8 +507,8 @@
           "voce": "TeamSystem Payments",
           "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€208,18",
-          "note": "SDD aggregato — dettaglio clienti in attesa",
-          "competenza": "da verificare"
+          "note": "TS-BIN2VXTORE — Costruire ArtigianLab (rata manut.+sito)",
+          "competenza": "2026"
         },
         {
           "data": "20/01",
@@ -523,8 +523,8 @@
           "voce": "TeamSystem Payments",
           "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€992,02",
-          "note": "SDD aggregato — dettaglio clienti in attesa",
-          "competenza": "da verificare"
+          "note": "TS-BISOKRSZVQ — GIMA €708 + Sureness €121 + Emmeti €121 + COISA €47",
+          "competenza": "2026"
         },
         {
           "data": "28/01",
@@ -762,6 +762,13 @@
           "voceBilancio": "C. Spese bancarie",
           "importo": "€28,50",
           "note": "Bonifici ist. €19 + SDD €9 + canone €0,50"
+        },
+        {
+          "data": "31/01",
+          "voce": "Commissioni TS Payments",
+          "voceBilancio": "C. Spese bancarie",
+          "importo": "€14,30",
+          "note": "11 incassi SDD × €1,30 — trattenuta all'origine (lordo €4.957, netto €4.943)"
         },
         {
           "data": "16/01",
@@ -1301,11 +1308,15 @@
       },
       "C": {
         "label": "C) Oneri finanziari",
-        "totale": 28.5,
+        "totale": 42.8,
         "dettaglio": [
           {
             "label": "Spese bancarie",
             "importo": 28.5
+          },
+          {
+            "label": "Commissioni TS Payments",
+            "importo": 14.3
           }
         ]
       },
@@ -1314,7 +1325,7 @@
         "nota": "Imposte non ancora determinate — a cura del commercialista"
       },
       "utile": {
-        "importo": -9274.61
+        "importo": -9288.91
       }
     },
     "sp": {
@@ -1385,7 +1396,7 @@
         ]
       },
       "pn": {
-        "totale": -8274.61,
+        "totale": -8288.91,
         "dettaglio": [
           {
             "label": "Capitale sociale",
@@ -1393,7 +1404,7 @@
           },
           {
             "label": "Utile esercizio",
-            "importo": -9274.61
+            "importo": -9288.91
           },
           {
             "label": "Utili pregressi",
@@ -1402,14 +1413,14 @@
         ]
       },
       "verifica": {
-        "differenza": 14812.04,
+        "differenza": 14826.34,
         "stato": "sbilancio",
-        "nota": "Sbilancio di €14812.04 — dovuto a voci non ancora censite (utili pregressi, riserve, partite transitorie). Non anomalo in un bilancio gestionale provvisorio."
+        "nota": "Sbilancio di €14826.34 — dovuto a voci non ancora censite (utili pregressi, riserve, partite transitorie). Non anomalo in un bilancio gestionale provvisorio."
       }
     },
     "previsioneFiscale": {
       "disclaimer": "Stime indicative basate su utile progressivo annuo. Importi definitivi dal commercialista.",
-      "utileAnteImposte": -9274.61,
+      "utileAnteImposte": -9288.91,
       "utileNegativo": true,
       "baseImponibileIRAP": -7067.75,
       "irap": {
