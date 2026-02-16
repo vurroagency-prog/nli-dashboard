@@ -618,10 +618,10 @@
         },
         {
           "data": "11/01",
-          "voce": "Rimborso macchinario Marco",
-          "voceBilancio": "B.7 Rimborso macchinario",
+          "voce": "Anticipo Utili 2025 Marco Vurro",
+          "voceBilancio": "Distribuzione utili",
           "importo": "€500,00",
-          "note": "Rimborso macchinario DFT"
+          "note": "Anticipo utili esercizio 2025 — causale bancaria errata (era: Rimborso macchinario DFT)"
         },
         {
           "data": "12/01",
@@ -1200,8 +1200,9 @@
                 "importo": 1224.12
               },
               {
-                "label": "Rimborso macchinario (Marco)",
-                "importo": 500
+                "label": "Anticipo utili 2025 (Marco)",
+                "importo": 500,
+                "nota": "Non è costo CE — distribuzione utili (SP)"
               },
               {
                 "label": "Diritti d'autore (Festa Daniele)",
