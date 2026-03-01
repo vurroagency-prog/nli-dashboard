@@ -1476,5 +1476,470 @@
       "risultatoOperativo": -2947.0,
       "nota": "Dati da 55 fatture registrate (gen-feb 2026). Valori al netto IVA."
     }
+  },
+  "storico": {
+    "annuale": {
+      "2023": {
+        "ricaviNetto": 52816.2,
+        "ricaviLordo": 64435.78,
+        "costiNetto": 23490.4,
+        "costiLordo": 27688.83,
+        "margine": 29325.8,
+        "marginePct": 55.5,
+        "numClienti": 32,
+        "numFattureVendita": 37,
+        "numFattureAcquisto": 91,
+        "topCliente": "Progesi - Societa' Per Azioni",
+        "topClienteImporto": 15028.0,
+        "topClientePct": 28.5
+      },
+      "2024": {
+        "ricaviNetto": 182728.76,
+        "ricaviLordo": 222925.65,
+        "costiNetto": 54989.88,
+        "costiLordo": 65405.73,
+        "margine": 127738.88,
+        "marginePct": 69.9,
+        "numClienti": 80,
+        "numFattureVendita": 120,
+        "numFattureAcquisto": 186,
+        "topCliente": "Avangarde Consulting S.R.L.",
+        "topClienteImporto": 38260.0,
+        "topClientePct": 20.9
+      },
+      "2025": {
+        "ricaviNetto": 174135.51,
+        "ricaviLordo": 212579.53,
+        "costiNetto": 49385.05,
+        "costiLordo": 58017.75,
+        "margine": 124750.46,
+        "marginePct": 71.6,
+        "numClienti": 59,
+        "numFattureVendita": 88,
+        "numFattureAcquisto": 214,
+        "topCliente": "Silicondev Spa",
+        "topClienteImporto": 68615.52,
+        "topClientePct": 39.4
+      },
+      "2026": {
+        "ricaviNetto": 3372.58,
+        "ricaviLordo": 4114.56,
+        "costiNetto": 5032.07,
+        "costiLordo": 5908.85,
+        "margine": -1659.49,
+        "marginePct": -49.2,
+        "numClienti": 6,
+        "numFattureVendita": 6,
+        "numFattureAcquisto": 30,
+        "topCliente": "Piesse S.R.L.S.",
+        "topClienteImporto": 1080.8,
+        "topClientePct": 32.0
+      }
+    },
+    "mensile": [
+      {
+        "anno": "2023",
+        "mese": 6,
+        "label": "Giu 2023",
+        "ricavi": 1468.6,
+        "costi": 963.44,
+        "margine": 505.16
+      },
+      {
+        "anno": "2023",
+        "mese": 7,
+        "label": "Lug 2023",
+        "ricavi": 1223.5,
+        "costi": 3816.42,
+        "margine": -2592.92
+      },
+      {
+        "anno": "2023",
+        "mese": 8,
+        "label": "Ago 2023",
+        "ricavi": 848.12,
+        "costi": 2363.09,
+        "margine": -1514.97
+      },
+      {
+        "anno": "2023",
+        "mese": 9,
+        "label": "Set 2023",
+        "ricavi": 0,
+        "costi": 1570.56,
+        "margine": -1570.56
+      },
+      {
+        "anno": "2023",
+        "mese": 10,
+        "label": "Ott 2023",
+        "ricavi": 9642.58,
+        "costi": 4576.53,
+        "margine": 5066.05
+      },
+      {
+        "anno": "2023",
+        "mese": 11,
+        "label": "Nov 2023",
+        "ricavi": 10537.83,
+        "costi": 5891.48,
+        "margine": 4646.35
+      },
+      {
+        "anno": "2023",
+        "mese": 12,
+        "label": "Dic 2023",
+        "ricavi": 29095.57,
+        "costi": 4308.88,
+        "margine": 24786.69
+      },
+      {
+        "anno": "2024",
+        "mese": 1,
+        "label": "Gen 2024",
+        "ricavi": 5356.2,
+        "costi": 1125.46,
+        "margine": 4230.74
+      },
+      {
+        "anno": "2024",
+        "mese": 2,
+        "label": "Feb 2024",
+        "ricavi": 14069.96,
+        "costi": 1543.42,
+        "margine": 12526.54
+      },
+      {
+        "anno": "2024",
+        "mese": 3,
+        "label": "Mar 2024",
+        "ricavi": 2471.48,
+        "costi": 2485.58,
+        "margine": -14.1
+      },
+      {
+        "anno": "2024",
+        "mese": 4,
+        "label": "Apr 2024",
+        "ricavi": 9561.49,
+        "costi": 2161.72,
+        "margine": 7399.77
+      },
+      {
+        "anno": "2024",
+        "mese": 5,
+        "label": "Mag 2024",
+        "ricavi": 11754.6,
+        "costi": 3361.3,
+        "margine": 8393.3
+      },
+      {
+        "anno": "2024",
+        "mese": 6,
+        "label": "Giu 2024",
+        "ricavi": 13409.94,
+        "costi": 2285.8,
+        "margine": 11124.14
+      },
+      {
+        "anno": "2024",
+        "mese": 7,
+        "label": "Lug 2024",
+        "ricavi": 14777.55,
+        "costi": 1808.23,
+        "margine": 12969.32
+      },
+      {
+        "anno": "2024",
+        "mese": 8,
+        "label": "Ago 2024",
+        "ricavi": 9858.46,
+        "costi": 6615.37,
+        "margine": 3243.09
+      },
+      {
+        "anno": "2024",
+        "mese": 9,
+        "label": "Set 2024",
+        "ricavi": 12688.97,
+        "costi": 4215.98,
+        "margine": 8472.99
+      },
+      {
+        "anno": "2024",
+        "mese": 10,
+        "label": "Ott 2024",
+        "ricavi": 36279.79,
+        "costi": 11658.89,
+        "margine": 24620.9
+      },
+      {
+        "anno": "2024",
+        "mese": 11,
+        "label": "Nov 2024",
+        "ricavi": 13715.86,
+        "costi": 11483.69,
+        "margine": 2232.17
+      },
+      {
+        "anno": "2024",
+        "mese": 12,
+        "label": "Dic 2024",
+        "ricavi": 38784.46,
+        "costi": 6244.44,
+        "margine": 32540.02
+      },
+      {
+        "anno": "2025",
+        "mese": 1,
+        "label": "Gen 2025",
+        "ricavi": 5818.13,
+        "costi": 2603.29,
+        "margine": 3214.84
+      },
+      {
+        "anno": "2025",
+        "mese": 2,
+        "label": "Feb 2025",
+        "ricavi": 6911.84,
+        "costi": 3435.25,
+        "margine": 3476.59
+      },
+      {
+        "anno": "2025",
+        "mese": 3,
+        "label": "Mar 2025",
+        "ricavi": 12619.85,
+        "costi": 6095.16,
+        "margine": 6524.69
+      },
+      {
+        "anno": "2025",
+        "mese": 4,
+        "label": "Apr 2025",
+        "ricavi": 11469.07,
+        "costi": 3195.85,
+        "margine": 8273.22
+      },
+      {
+        "anno": "2025",
+        "mese": 5,
+        "label": "Mag 2025",
+        "ricavi": 16376.21,
+        "costi": 2561.92,
+        "margine": 13814.29
+      },
+      {
+        "anno": "2025",
+        "mese": 6,
+        "label": "Giu 2025",
+        "ricavi": 10550.47,
+        "costi": 5627.2,
+        "margine": 4923.27
+      },
+      {
+        "anno": "2025",
+        "mese": 7,
+        "label": "Lug 2025",
+        "ricavi": 13621.45,
+        "costi": 2203.23,
+        "margine": 11418.22
+      },
+      {
+        "anno": "2025",
+        "mese": 8,
+        "label": "Ago 2025",
+        "ricavi": 10147.57,
+        "costi": 1616.64,
+        "margine": 8530.93
+      },
+      {
+        "anno": "2025",
+        "mese": 9,
+        "label": "Set 2025",
+        "ricavi": 9944.0,
+        "costi": 5961.02,
+        "margine": 3982.98
+      },
+      {
+        "anno": "2025",
+        "mese": 10,
+        "label": "Ott 2025",
+        "ricavi": 18847.08,
+        "costi": 4254.91,
+        "margine": 14592.17
+      },
+      {
+        "anno": "2025",
+        "mese": 11,
+        "label": "Nov 2025",
+        "ricavi": 30536.81,
+        "costi": 5887.77,
+        "margine": 24649.04
+      },
+      {
+        "anno": "2025",
+        "mese": 12,
+        "label": "Dic 2025",
+        "ricavi": 27293.03,
+        "costi": 5942.81,
+        "margine": 21350.22
+      },
+      {
+        "anno": "2026",
+        "mese": 1,
+        "label": "Gen 2026",
+        "ricavi": -263.6,
+        "costi": 2953.6,
+        "margine": -3217.2
+      },
+      {
+        "anno": "2026",
+        "mese": 2,
+        "label": "Feb 2026",
+        "ricavi": 3636.18,
+        "costi": 2078.47,
+        "margine": 1557.71
+      }
+    ],
+    "clienti": {
+      "2023": [
+        {
+          "nome": "Progesi - Societa' Per Azioni",
+          "importo": 15028.0,
+          "percentuale": 28.4
+        },
+        {
+          "nome": "Nicola Lomaistro",
+          "importo": 4397.8,
+          "percentuale": 8.3
+        },
+        {
+          "nome": "Meridional Indotti S.R.L.",
+          "importo": 4127.09,
+          "percentuale": 7.8
+        },
+        {
+          "nome": "Elettrik Sistemi Di Gentile U. S.N.",
+          "importo": 3029.4,
+          "percentuale": 5.7
+        },
+        {
+          "nome": "Splendor S.R.L.",
+          "importo": 2806.63,
+          "percentuale": 5.3
+        },
+        {
+          "nome": "Altri",
+          "importo": 23445.28,
+          "percentuale": 44.4
+        }
+      ],
+      "2024": [
+        {
+          "nome": "Avangarde Consulting S.R.L.",
+          "importo": 38260.0,
+          "percentuale": 20.8
+        },
+        {
+          "nome": "Progesi - Societa' Per Azioni",
+          "importo": 21946.0,
+          "percentuale": 12.0
+        },
+        {
+          "nome": "G.D.M. Service Di Di Modugno Gianlu",
+          "importo": 6999.45,
+          "percentuale": 3.8
+        },
+        {
+          "nome": "V.M.Costruzioni Srl",
+          "importo": 6996.68,
+          "percentuale": 3.8
+        },
+        {
+          "nome": "Security Dealers System S.R.L.",
+          "importo": 5227.73,
+          "percentuale": 2.8
+        },
+        {
+          "nome": "Altri",
+          "importo": 104091.29,
+          "percentuale": 56.7
+        }
+      ],
+      "2025": [
+        {
+          "nome": "Silicondev Spa",
+          "importo": 68615.52,
+          "percentuale": 38.2
+        },
+        {
+          "nome": "Gd Tech Di Spezzacatena Corrado",
+          "importo": 8638.77,
+          "percentuale": 4.8
+        },
+        {
+          "nome": "Avangarde Enterprise S.R.L.",
+          "importo": 7830.0,
+          "percentuale": 4.4
+        },
+        {
+          "nome": "Dentitalia  S.R.L.",
+          "importo": 6050.0,
+          "percentuale": 3.4
+        },
+        {
+          "nome": "Avangarde Consulting S.R.L.",
+          "importo": 5130.0,
+          "percentuale": 2.9
+        },
+        {
+          "nome": "Altri",
+          "importo": 83577.32,
+          "percentuale": 46.5
+        }
+      ],
+      "2026": [
+        {
+          "nome": "Piesse S.R.L.S.",
+          "importo": 1080.8,
+          "percentuale": 27.5
+        },
+        {
+          "nome": "Giuseppe De Giglio",
+          "importo": 1051.53,
+          "percentuale": 26.7
+        },
+        {
+          "nome": "Dinamica Pulizie Di Volpe Francesco",
+          "importo": 641.5,
+          "percentuale": 16.3
+        },
+        {
+          "nome": "Ecomondi Di Messina Costantinlucio",
+          "importo": 512.35,
+          "percentuale": 13.0
+        },
+        {
+          "nome": "Digitality Consulting S.R.L.",
+          "importo": 350.0,
+          "percentuale": 8.9
+        },
+        {
+          "nome": "Altri",
+          "importo": 300.0,
+          "percentuale": 7.6
+        }
+      ]
+    },
+    "yoyGenFeb": {
+      "ricavi2025": 12729.97,
+      "ricavi2026": 3372.58,
+      "variazionePct": -73.5
+    },
+    "note": {
+      "2023": "Società fondata maggio 2023 (7 mesi operativi)",
+      "2026": "Anno in corso (YTD)"
+    }
   }
 }

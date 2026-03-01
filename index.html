@@ -168,6 +168,7 @@
     <div class="nav-tab" onclick="switchTab('previsionale')">Previsionale</div>
     <div class="nav-tab" onclick="switchTab('iva')">IVA</div>
     <div class="nav-tab" onclick="switchTab('bilancio')">Bilancio</div>
+    <div class="nav-tab" onclick="switchTab('storico')">Storico</div>
     <div class="nav-tab" onclick="switchTab('scadenzario')">Scadenzario</div>
     <div class="nav-tab" onclick="switchTab('alert')">Alert</div>
     <div class="nav-tab" onclick="switchTab('setup')">Setup Iniziale</div>
@@ -252,6 +253,26 @@
         <div class="table-wrap"><table id="fiscale-table" style="width:100%;"></table></div>
         <div id="fiscale-gauge" style="margin-top:16px;"></div>
         <div id="fiscale-disclaimer" style="margin-top:12px;font-size:12px;color:var(--text-dim);"></div>
+      </div>
+    </div>
+    <!-- Storico -->
+    <div class="tab-panel" id="tab-storico">
+      <div class="page-header"><h1>Storico 2023-2026</h1><p>Traiettoria di crescita da archivio SDI (806 fatture)</p></div>
+      <div class="kpi-grid" id="storico-kpi-grid"></div>
+      <div class="chart-grid">
+        <div class="card chart-card"><h3>Fatturato Annuale (imponibile)</h3><div class="chart-wrap"><canvas id="chart-storico-annuale"></canvas></div></div>
+        <div class="card chart-card"><h3>Andamento Mensile per Anno</h3><div class="chart-wrap"><canvas id="chart-storico-mensile"></canvas></div></div>
+        <div class="card chart-card"><h3>Margine Lordo %</h3><div class="chart-wrap"><canvas id="chart-storico-margine"></canvas></div></div>
+        <div class="card chart-card"><h3>Concentrazione Clienti (Top 5)</h3><div class="chart-wrap"><canvas id="chart-storico-clienti"></canvas></div></div>
+      </div>
+      <div class="card" style="margin-top:24px;">
+        <h3>Riepilogo per Anno</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Anno</th><th>Ricavi (netto)</th><th>Ricavi (lordo)</th><th>Costi</th><th>Margine</th><th>Margine %</th><th>Clienti</th><th>Fatture</th><th>Top Cliente</th><th>Note</th></tr></thead>
+            <tbody id="storico-table-body"></tbody>
+          </table>
+        </div>
       </div>
     </div>
     <!-- Alert -->
@@ -695,6 +716,9 @@
       // Charts
       renderCharts(d);
 
+      // Storico
+      if (d.storico) renderStorico(d);
+
     } catch (err) {
       console.error('Errore caricamento data.json:', err);
     }
@@ -884,6 +908,188 @@
         }));
       }
     }
+  }
+
+  function renderStorico(d) {
+    var s = d.storico;
+    var anni = Object.keys(s.annuale).sort();
+    var colori = { '2023': '#a78bfa', '2024': '#4f8cff', '2025': '#34d399', '2026': '#fbbf24' };
+    var fmtK = function(v) { return v >= 1000 ? '€' + (v/1000).toFixed(0) + 'k' : '€' + v.toFixed(0); };
+
+    // KPI storico
+    var yoy = s.yoyGenFeb || {};
+    var kpiHtml = '';
+    anni.forEach(function(a) {
+      var an = s.annuale[a];
+      var yoyPct = '';
+      var prevAnno = String(parseInt(a) - 1);
+      if (s.annuale[prevAnno]) {
+        var diff = ((an.ricaviNetto - s.annuale[prevAnno].ricaviNetto) / s.annuale[prevAnno].ricaviNetto * 100).toFixed(0);
+        yoyPct = (diff >= 0 ? '+' : '') + diff + '% YoY';
+      }
+      var nota = s.note && s.note[a] ? ' — ' + s.note[a] : '';
+      kpiHtml += '<div class="kpi-card"><div class="kpi-label">Ricavi ' + a + '</div><div class="kpi-value ' + (an.ricaviNetto >= 0 ? 'positive' : 'negative') + '">' + fmtK(an.ricaviNetto) + '</div><div class="kpi-sub">' + esc(an.numClienti + ' clienti, ' + an.numFattureVendita + ' fatture' + (yoyPct ? ' | ' + yoyPct : '') + nota) + '</div></div>';
+    });
+    // KPI YoY Gen-Feb
+    if (yoy.variazionePct != null) {
+      var cls = yoy.variazionePct >= 0 ? 'positive' : 'negative';
+      kpiHtml += '<div class="kpi-card"><div class="kpi-label">YoY Gen-Feb</div><div class="kpi-value ' + cls + '">' + (yoy.variazionePct >= 0 ? '+' : '') + yoy.variazionePct.toFixed(1) + '%</div><div class="kpi-sub">' + fmtK(yoy.ricavi2026) + ' vs ' + fmtK(yoy.ricavi2025) + ' (2025)</div></div>';
+    }
+    document.getElementById('storico-kpi-grid').innerHTML = kpiHtml;
+
+    // Aggiungi KPI YoY anche in Panoramica
+    if (yoy.variazionePct != null) {
+      var kpiGrid = document.getElementById('kpi-grid');
+      var yoyCard = document.createElement('div');
+      yoyCard.className = 'kpi-card';
+      var cls2 = yoy.variazionePct >= 0 ? 'positive' : 'negative';
+      yoyCard.innerHTML = '<div class="kpi-label">YoY Gen-Feb vs 2025</div><div class="kpi-value ' + cls2 + '">' + (yoy.variazionePct >= 0 ? '+' : '') + yoy.variazionePct.toFixed(1) + '%</div><div class="kpi-sub">' + fmtK(yoy.ricavi2026) + ' vs ' + fmtK(yoy.ricavi2025) + '</div>';
+      kpiGrid.appendChild(yoyCard);
+    }
+
+    var baseOpts = {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#8891a4', font: { family: 'DM Sans', size: 11 } } } },
+      scales: {
+        x: { ticks: { color: '#8891a4', font: { family: 'DM Sans', size: 11 } }, grid: { color: 'rgba(42,48,64,0.5)' } },
+        y: { ticks: { color: '#8891a4', font: { family: 'DM Sans', size: 11 }, callback: function(v) { return '€' + (v/1000).toFixed(0) + 'k'; } }, grid: { color: 'rgba(42,48,64,0.5)' } }
+      }
+    };
+
+    // 1. Fatturato Annuale (bar chart)
+    var annualeRicavi = anni.map(function(a) { return s.annuale[a].ricaviNetto; });
+    var barBg = anni.map(function(a) { return colori[a] || '#4f8cff'; });
+    var barBorder = anni.map(function(a) { return a === '2026' ? [colori[a], colori[a]] : 'transparent'; });
+    chartInstances.push(new Chart(document.getElementById('chart-storico-annuale'), {
+      type: 'bar',
+      data: {
+        labels: anni.map(function(a) { return a + (s.note && s.note[a] ? '*' : ''); }),
+        datasets: [{
+          label: 'Ricavi (imponibile)',
+          data: annualeRicavi,
+          backgroundColor: barBg.map(function(c, i) { return anni[i] === '2026' ? c + '80' : c; }),
+          borderColor: barBg,
+          borderWidth: anni.map(function(a) { return a === '2026' ? 2 : 0; }),
+          borderDash: anni.map(function(a) { return a === '2026' ? [6, 3] : []; }),
+          borderRadius: 6
+        }]
+      },
+      options: {
+        ...baseOpts,
+        plugins: {
+          ...baseOpts.plugins,
+          legend: { display: false },
+          tooltip: { callbacks: { label: function(ctx) { return '€' + ctx.parsed.y.toLocaleString('it-IT', {maximumFractionDigits:0}); } } }
+        }
+      }
+    }));
+
+    // 2. Andamento Mensile (line chart, una linea per anno)
+    var mesiLabel = ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'];
+    var datasets = anni.map(function(anno) {
+      var dati = new Array(12).fill(null);
+      s.mensile.forEach(function(m) {
+        if (m.anno === anno) dati[m.mese - 1] = m.ricavi;
+      });
+      return {
+        label: anno,
+        data: dati,
+        borderColor: colori[anno] || '#4f8cff',
+        backgroundColor: (colori[anno] || '#4f8cff') + '20',
+        tension: 0.3,
+        pointRadius: 3,
+        pointBackgroundColor: colori[anno] || '#4f8cff',
+        spanGaps: false,
+        borderWidth: anno === '2026' ? 3 : 2,
+        borderDash: anno === '2026' ? [6, 3] : []
+      };
+    });
+    chartInstances.push(new Chart(document.getElementById('chart-storico-mensile'), {
+      type: 'line',
+      data: { labels: mesiLabel, datasets: datasets },
+      options: baseOpts
+    }));
+
+    // 3. Margine Lordo % (bar chart)
+    chartInstances.push(new Chart(document.getElementById('chart-storico-margine'), {
+      type: 'bar',
+      data: {
+        labels: anni,
+        datasets: [{
+          label: 'Margine %',
+          data: anni.map(function(a) { return s.annuale[a].marginePct; }),
+          backgroundColor: anni.map(function(a) { return s.annuale[a].marginePct >= 0 ? colori[a] || '#4f8cff' : '#f87171'; }),
+          borderRadius: 6
+        }]
+      },
+      options: {
+        ...baseOpts,
+        plugins: { ...baseOpts.plugins, legend: { display: false }, tooltip: { callbacks: { label: function(ctx) { return ctx.parsed.y.toFixed(1) + '%'; } } } },
+        scales: { ...baseOpts.scales, y: { ...baseOpts.scales.y, ticks: { ...baseOpts.scales.y.ticks, callback: function(v) { return v + '%'; } } } }
+      }
+    }));
+
+    // 4. Concentrazione Clienti (stacked bar)
+    var clientiDatasets = [];
+    var maxSlots = 0;
+    anni.forEach(function(a) { if (s.clienti[a] && s.clienti[a].length > maxSlots) maxSlots = s.clienti[a].length; });
+    var stackColors = ['#4f8cff', '#34d399', '#a78bfa', '#fbbf24', '#f472b6', '#546E7A'];
+    for (var i = 0; i < maxSlots; i++) {
+      clientiDatasets.push({
+        label: i < maxSlots - 1 ? '' : 'Altri',
+        data: anni.map(function(a) {
+          var cl = s.clienti[a];
+          return cl && cl[i] ? cl[i].importo : 0;
+        }),
+        backgroundColor: stackColors[i % stackColors.length],
+        borderRadius: i === 0 ? 6 : 0
+      });
+    }
+    // Fix labels from first year with most clients
+    var labelAnno = anni.reduce(function(best, a) { return (s.clienti[a] || []).length > (s.clienti[best] || []).length ? a : best; }, anni[0]);
+    clientiDatasets.forEach(function(ds, idx) {
+      if (s.clienti[labelAnno] && s.clienti[labelAnno][idx]) {
+        ds.label = s.clienti[labelAnno][idx].nome.length > 20 ? s.clienti[labelAnno][idx].nome.substring(0, 20) + '…' : s.clienti[labelAnno][idx].nome;
+      }
+    });
+    chartInstances.push(new Chart(document.getElementById('chart-storico-clienti'), {
+      type: 'bar',
+      data: { labels: anni, datasets: clientiDatasets },
+      options: {
+        ...baseOpts,
+        plugins: { ...baseOpts.plugins, legend: { position: 'bottom', labels: { ...baseOpts.plugins.legend.labels, usePointStyle: true, pointStyle: 'circle', padding: 8 } },
+          tooltip: { callbacks: {
+            title: function(ctx) { return ctx[0].label; },
+            label: function(ctx) {
+              var a = anni[ctx.dataIndex];
+              var cl = s.clienti[a];
+              if (cl && cl[ctx.datasetIndex]) return cl[ctx.datasetIndex].nome + ': €' + cl[ctx.datasetIndex].importo.toLocaleString('it-IT', {maximumFractionDigits:0}) + ' (' + cl[ctx.datasetIndex].percentuale + '%)';
+              return '';
+            }
+          }}
+        },
+        scales: { ...baseOpts.scales, x: { ...baseOpts.scales.x, stacked: true }, y: { ...baseOpts.scales.y, stacked: true } }
+      }
+    }));
+
+    // Tabella riepilogo
+    var tbody = document.getElementById('storico-table-body');
+    tbody.innerHTML = anni.map(function(a) {
+      var an = s.annuale[a];
+      var nota = s.note && s.note[a] ? s.note[a] : '';
+      var margColor = an.marginePct >= 0 ? 'var(--green)' : 'var(--red)';
+      return '<tr>' +
+        '<td><strong>' + a + '</strong></td>' +
+        '<td class="importo">€' + an.ricaviNetto.toLocaleString('it-IT', {maximumFractionDigits:0}) + '</td>' +
+        '<td class="importo">€' + an.ricaviLordo.toLocaleString('it-IT', {maximumFractionDigits:0}) + '</td>' +
+        '<td class="importo">€' + an.costiNetto.toLocaleString('it-IT', {maximumFractionDigits:0}) + '</td>' +
+        '<td class="importo" style="color:' + margColor + '">€' + an.margine.toLocaleString('it-IT', {maximumFractionDigits:0}) + '</td>' +
+        '<td style="color:' + margColor + '">' + an.marginePct.toFixed(1) + '%</td>' +
+        '<td>' + an.numClienti + '</td>' +
+        '<td>' + an.numFattureVendita + ' / ' + an.numFattureAcquisto + '</td>' +
+        '<td><small>' + esc(an.topCliente) + ' (' + an.topClientePct + '%)</small></td>' +
+        '<td><small style="color:var(--text-dim);">' + esc(nota) + '</small></td></tr>';
+    }).join('');
   }
 </script>
 </body>
