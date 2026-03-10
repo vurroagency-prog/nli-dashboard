@@ -478,45 +478,57 @@
         if (d.banca.saldoAttuale !== '—') {
           bhtml += '<div style="font-size:28px;font-weight:700;margin-bottom:20px;">' + esc(d.banca.saldoAttuale) + '</div>';
         }
-        if (!d.banca.movimenti || d.banca.movimenti.length === 0) {
-          // Mostra riepilogo se ci sono dati di sintesi
-          if (d.banca.saldoInizioMese && d.banca.saldoInizioMese !== '—') {
-            bhtml += '<div class="kpi-grid" style="margin-bottom:20px;">';
-            bhtml += '<div class="kpi-card"><div class="kpi-label">Saldo Iniziale</div><div class="kpi-value neutral">' + esc(d.banca.saldoInizioMese) + '</div></div>';
-            bhtml += '<div class="kpi-card"><div class="kpi-label">Saldo Finale</div><div class="kpi-value positive">' + esc(d.banca.saldoAttuale) + '</div></div>';
-            bhtml += '<div class="kpi-card"><div class="kpi-label">Entrate Totali</div><div class="kpi-value positive">' + esc(d.banca.entrateGennaio || '—') + '</div></div>';
-            bhtml += '<div class="kpi-card"><div class="kpi-label">Uscite Totali</div><div class="kpi-value negative">' + esc(d.banca.usciteGennaio || '—') + '</div></div>';
-            bhtml += '<div class="kpi-card"><div class="kpi-label">Flusso Netto</div><div class="kpi-value positive">' + esc(d.banca.flussoNetto || '—') + '</div></div>';
-            bhtml += '<div class="kpi-card"><div class="kpi-label">Movimenti Totali</div><div class="kpi-value neutral">' + (d.banca.movimentiTotali || '—') + '</div></div>';
-            bhtml += '</div>';
-            bhtml += '<div class="alert-box info">Dettaglio movimenti disponibile nelle sezioni Entrate e Uscite. Per il dettaglio completo per riga bancaria, caricare il file estratto conto.</div>';
-          } else {
-            bhtml += '<div class="empty-state" style="padding:40px 20px;"><div class="icon">🏦</div><h3>In attesa del primo estratto conto</h3><p>I movimenti bancari Intesa Sanpaolo compariranno qui non appena acquisito il primo estratto conto.</p></div>';
+
+        // Totali cumulativi
+        if (d.banca.totali) {
+          bhtml += '<h3 style="margin-bottom:12px;">Riepilogo Cumulativo</h3>';
+          bhtml += '<div class="kpi-grid" style="margin-bottom:20px;">';
+          bhtml += '<div class="kpi-card"><div class="kpi-label">Saldo Iniziale Anno</div><div class="kpi-value neutral">' + esc(d.banca.saldoInizialeAnno || '—') + '</div></div>';
+          bhtml += '<div class="kpi-card"><div class="kpi-label">Saldo Attuale</div><div class="kpi-value positive">' + esc(d.banca.saldoAttuale) + '</div></div>';
+          bhtml += '<div class="kpi-card"><div class="kpi-label">Entrate Totali</div><div class="kpi-value positive">' + esc(d.banca.totali.entrate) + '</div></div>';
+          bhtml += '<div class="kpi-card"><div class="kpi-label">Uscite Totali</div><div class="kpi-value negative">' + esc(d.banca.totali.uscite) + '</div></div>';
+          bhtml += '<div class="kpi-card"><div class="kpi-label">Flusso Netto</div><div class="kpi-value positive">' + esc(d.banca.totali.flusso) + '</div></div>';
+          bhtml += '<div class="kpi-card"><div class="kpi-label">Movimenti Totali</div><div class="kpi-value neutral">' + (d.banca.totali.movimenti || '—') + '</div></div>';
+          bhtml += '</div>';
+        }
+
+        // Riepilogo mensile
+        if (d.banca.riepilogoMensile && d.banca.riepilogoMensile.length > 0) {
+          bhtml += '<h3 style="margin-bottom:12px;">Dettaglio Mensile</h3>';
+          bhtml += '<div class="table-wrap"><table><thead><tr><th>Mese</th><th>Saldo Inizio</th><th>Entrate</th><th>Uscite</th><th>Flusso</th><th>Saldo Fine</th><th>Mov.</th></tr></thead><tbody>';
+          d.banca.riepilogoMensile.forEach(function(m) {
+            bhtml += '<tr><td><strong>' + esc(m.mese) + '</strong></td><td class="importo">' + esc(m.saldoInizio) + '</td><td class="importo" style="color:var(--green);">' + esc(m.entrate) + '</td><td class="importo" style="color:var(--red);">' + esc(m.uscite) + '</td><td class="importo" style="color:var(--green);">' + esc(m.flusso) + '</td><td class="importo"><strong>' + esc(m.saldoFine) + '</strong></td><td style="text-align:center;">' + m.movimenti + '</td></tr>';
+          });
+          if (d.banca.totali) {
+            bhtml += '<tr style="font-weight:700;border-top:2px solid var(--border);"><td>Totale</td><td class="importo">' + esc(d.banca.saldoInizialeAnno || '—') + '</td><td class="importo" style="color:var(--green);">' + esc(d.banca.totali.entrate) + '</td><td class="importo" style="color:var(--red);">' + esc(d.banca.totali.uscite) + '</td><td class="importo" style="color:var(--green);">' + esc(d.banca.totali.flusso) + '</td><td class="importo">' + esc(d.banca.saldoAttuale) + '</td><td style="text-align:center;">' + d.banca.totali.movimenti + '</td></tr>';
           }
-        } else {
-          const alias = d.bancaAliasDescrizioni || {};
-          const hasAlias = Object.keys(alias).length > 0;
-          let unmatchedCount = 0;
-          bhtml += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Descrizione</th><th>Dare</th><th>Avere</th><th>Saldo</th></tr></thead><tbody>';
-          bhtml += d.banca.movimenti.map(mv => {
-            const orig = mv.descrizione;
-            const matchKey = Object.keys(alias).find(k => orig.includes(k));
-            let descHtml;
-            if (matchKey) {
-              descHtml = '<span title="' + esc(orig) + '" style="border-bottom:1px dotted var(--text-dim);cursor:help;">' + esc(alias[matchKey]) + '</span>';
-            } else if (hasAlias) {
-              unmatchedCount++;
-              descHtml = '<span style="color:var(--amber);">' + esc(orig) + '</span> <span class="badge upcoming" style="font-size:9px;padding:2px 6px;">da verificare</span>';
-            } else {
-              descHtml = esc(orig);
-            }
-            return '<tr><td><strong>' + esc(mv.data) + '</strong></td><td>' + descHtml + '</td><td class="importo">' + esc(mv.dare) + '</td><td class="importo">' + esc(mv.avere) + '</td><td class="importo">' + esc(mv.saldo) + '</td></tr>';
-          }).join('');
           bhtml += '</tbody></table></div>';
-          if (unmatchedCount > 0) {
-            bhtml += '<div class="alert-box warning" style="margin-top:12px;">' + unmatchedCount + ' moviment' + (unmatchedCount === 1 ? 'o non ha' : 'i non hanno') + ' una descrizione mappata — da verificare in bancaAliasDescrizioni.</div>';
+        }
+
+        // Riconciliazione
+        if (d.banca.riconciliazione) {
+          var ric = d.banca.riconciliazione;
+          bhtml += '<h3 style="margin:24px 0 12px;">Riconciliazione Bancaria</h3>';
+          // Progress bar
+          bhtml += '<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">';
+          bhtml += '<div style="flex:1;background:var(--surface-2);border-radius:6px;height:12px;overflow:hidden;"><div style="width:' + ric.percentuale + '%;height:100%;background:var(--green);border-radius:6px;"></div></div>';
+          bhtml += '<span style="font-weight:600;font-size:14px;">' + ric.percentuale + '%</span>';
+          bhtml += '</div>';
+          bhtml += '<div style="font-size:13px;color:var(--text-dim);margin-bottom:16px;">' + ric.riconciliati + ' / ' + ric.totaleMovimenti + ' movimenti riconciliati</div>';
+
+          if (ric.movimentiAperti && ric.movimentiAperti.length > 0) {
+            bhtml += '<div class="table-wrap"><table><thead><tr><th>ID</th><th>Data</th><th>Controparte</th><th>Importo</th><th>Motivo</th></tr></thead><tbody>';
+            ric.movimentiAperti.forEach(function(mv) {
+              var colorStyle = mv.tipo === 'uscita' ? 'color:var(--red);' : 'color:var(--green);';
+              bhtml += '<tr><td><code style="font-size:11px;">' + esc(mv.id) + '</code></td><td>' + esc(mv.data) + '</td><td>' + esc(mv.controparte) + '</td><td class="importo" style="' + colorStyle + '">' + esc(mv.importo) + '</td><td style="font-size:12px;">' + esc(mv.motivo) + '</td></tr>';
+            });
+            bhtml += '</tbody></table></div>';
+          } else {
+            bhtml += '<div class="alert-box success">Tutti i movimenti sono riconciliati.</div>';
           }
         }
+
+        bhtml += '<div class="alert-box info" style="margin-top:16px;">Dettaglio movimenti disponibile nelle sezioni Entrate e Uscite. Per il dettaglio completo per riga bancaria, caricare il file estratto conto.</div>';
         bhtml += '</div>';
         bancaEl.innerHTML = bhtml;
       }

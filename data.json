@@ -397,6 +397,10 @@
     {
       "tipo": "info",
       "testo": "TS Payments feb: 5 accrediti totale €5.959 (spillover gen + feb). Breakdown clienti da richiedere per competenza."
+    },
+    {
+      "tipo": "warning",
+      "testo": "RICONCILIAZIONE: 4 movimenti non ancora abbinati a fatture (3 gen + 1 feb). Metrie €469 + 2 GOR/Roly €467 + TS Payments €279. Dettaglio nel tab Banca."
     }
   ],
   "suggerimenti": "1) URGENTE: pagare 2 fatture Roly scadute (€268 totale). 2) SCADENZA 16/03: F24 €220 + ritenute €90 = ~€310. 3) Rimborso km feb Marco: €895 entro 31/03. 4) INCASSI: €2.691 da 3 clienti (Ecomondi, De Giglio, Dinamica) — sollecitare. 5) Debito verso Marco €3.675 — organizzare rimborso. 6) RICAVI IN CALO: gen-feb 2026 -73,5% vs 2025 — servono nuove vendite. 7) Chiarire pagamento Petrini €641. 8) Richiedere breakdown TS Payments feb. 9) Offerta Frisbi scaduta — decidere. 10) Diversificare clienti (SiliconDev 40%).",
@@ -1244,11 +1248,73 @@
     "iban": "IT94G0306905124100000014534",
     "saldoAttuale": "€16.803,86",
     "ultimoAggiornamento": "28 Febbraio 2026",
-    "saldoInizioMese": "€11.441,90",
-    "movimentiTotali": 42,
-    "entrateFebbraio": "€17.739,88",
-    "usciteFebbraio": "€12.377,92",
-    "flussoNetto": "+€5.361,96",
+    "saldoInizialeAnno": "€2.480,94",
+    "riepilogoMensile": [
+      {
+        "mese": "Gennaio 2026",
+        "saldoInizio": "€2.480,94",
+        "saldoFine": "€11.441,90",
+        "entrate": "€28.349,84",
+        "uscite": "€19.388,88",
+        "flusso": "+€8.960,96",
+        "movimenti": 48
+      },
+      {
+        "mese": "Febbraio 2026",
+        "saldoInizio": "€11.441,90",
+        "saldoFine": "€16.803,86",
+        "entrate": "€17.739,88",
+        "uscite": "€12.377,92",
+        "flusso": "+€5.361,96",
+        "movimenti": 47
+      }
+    ],
+    "totali": {
+      "entrate": "€46.089,72",
+      "uscite": "€31.766,80",
+      "flusso": "+€14.322,92",
+      "movimenti": 95
+    },
+    "riconciliazione": {
+      "totaleMovimenti": 95,
+      "riconciliati": 91,
+      "nonRiconciliati": 4,
+      "percentuale": 95.8,
+      "movimentiAperti": [
+        {
+          "id": "MOV-2026-0020",
+          "data": "2026-01-10",
+          "controparte": "Metrie Spol. S.r.o.",
+          "importo": "€469,50",
+          "tipo": "uscita",
+          "motivo": "Pagamento parziale — non corrisponde a nessuna fattura singola. Servono 3 fatture Metrie (€1.264 totali)"
+        },
+        {
+          "id": "MOV-2026-0024",
+          "data": "2026-01-12",
+          "controparte": "GOR Factory (Roly)",
+          "importo": "€244,13",
+          "tipo": "uscita",
+          "motivo": "SDD Roly — matching fatture non univoco. Richiedere estratto conto fornitore"
+        },
+        {
+          "id": "MOV-2026-0031",
+          "data": "2026-01-15",
+          "controparte": "GOR Factory (Roly)",
+          "importo": "€222,85",
+          "tipo": "uscita",
+          "motivo": "SDD Roly — analizzare insieme a MOV-0024. Totale SDD GOR €466,98 vs fatture €403,33"
+        },
+        {
+          "id": "MOV-2026-0095",
+          "data": "2026-02-27",
+          "controparte": "TeamSystem Payments",
+          "importo": "€278,91",
+          "tipo": "entrata",
+          "motivo": "Accredito TS da riepilogo — non presente nell'E/C importato. Da confermare con E/C completo"
+        }
+      ]
+    },
     "movimenti": []
   },
   "previsionale": [
