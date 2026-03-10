@@ -1,93 +1,93 @@
 {
-  "lastUpdate": "1 Marzo 2026",
+  "lastUpdate": "10 Marzo 2026",
   "fonte": "registro.json",
   "ebitdaTargetAnnuo": 100000,
-  "statusMessage": "Fonte: registro.json (53 mov., 55 fatt., 30 scad.). Aggiornamento 01/03: +4 fatture vendita feb (De Giglio, Digitality, Dinamica Pulizie, Piesse) + 5 fatture acquisto feb (V Consulting, Pluxee, Sendcloud, 2x Rossini). Archivio SDI completo caricato (268 inviate + 538 ricevute, 2023-2026).",
-  "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gennaio analizzato: 76 movimenti, quadratura OK. 41 documenti SDI + estere archiviati. Prima Nota paghe gennaio processata. F24 16/02: €649,98 confermato.",
+  "statusMessage": "Fonte: registro.json (95 mov., 67 fatt., 32 scad.). Aggiornamento 10/03: importato E/C febbraio (47 movimenti bancari), saldo €16.804. Riconciliazione feb completa (90,5%). 12 nuove fatture estere (Anthropic x6, OpenAI x2, Hostinger, Roly x2, Canva). Rimborso km feb €895.",
+  "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gen+feb analizzati: 95 movimenti, quadratura OK. 67 fatture registrate. Prima Nota paghe gen+feb processate. F24 16/02: €763,93 pagato. F24 16/03: €220,10 + ritenute.",
   "kpi": [
     {
-      "label": "Incassi Gennaio",
-      "value": "€28.350",
-      "sub": "Totale cassa — 10 clienti + TeamSystem SDD",
+      "label": "Incassi Gen+Feb",
+      "value": "€46.090",
+      "sub": "Gen €28.350 + Feb €17.740 — totale cassa",
       "class": "positive"
     },
     {
       "label": "Ricavi Competenza 2026",
       "value": "€3.373",
-      "sub": "6 fatture emesse 2026 (Splendor, Ecomondi, De Giglio, Digitality, Dinamica Pulizie, Piesse)",
+      "sub": "9 fatture emesse 2026 (Splendor, Ecomondi, De Giglio, Digitality, Dinamica, Piesse) + 3 NC",
       "class": "positive"
     },
     {
-      "label": "Costi Operativi Gen",
-      "value": "€10.800",
-      "sub": "Incl. €1.911 anticipati da Marco (Sintra+MediaMarket+Claude.ai). Totale anticipi: €2.780",
+      "label": "Costi Operativi Gen+Feb",
+      "value": "€22.900",
+      "sub": "Gen €10.800 + Feb €12.100 (incl. anticipi Marco). Totale anticipi Marco: €3.675",
       "class": "neutral"
     },
     {
       "label": "Margine Operativo",
-      "value": "61,9%",
-      "sub": "€17.550 su €28.350 di entrate",
+      "value": "50,2%",
+      "sub": "€23.190 su €46.090 di entrate gen+feb",
       "class": "positive"
     },
     {
       "label": "Pressione Fiscale Stimata",
       "value": "N/D",
-      "sub": "Utile negativo — non calcolabile",
+      "sub": "Utile negativo — solo INPS fisso Marco €4.515/anno",
       "class": "neutral"
     },
     {
       "label": "EBITDA YTD",
-      "value": "€17.550",
+      "value": "€23.190",
       "sub": "Cash-based — target annuo €100k. Incl. costi conto Marco.",
       "class": "positive"
     },
     {
       "label": "Saldo Banca",
-      "value": "€11.442",
-      "sub": "Al 31/01/2026 — Intesa Sanpaolo",
+      "value": "€16.804",
+      "sub": "Al 28/02/2026 — Intesa Sanpaolo (+47% vs gen)",
       "class": "positive"
     },
     {
-      "label": "Flusso di Cassa Gen",
-      "value": "+€8.961",
-      "sub": "Da €2.481 a €11.442 (+361%)",
+      "label": "Flusso di Cassa Feb",
+      "value": "+€5.362",
+      "sub": "Da €11.442 a €16.804 (+46,8%)",
       "class": "positive"
     },
     {
       "label": "Top Cliente",
       "value": "SiliconDev",
-      "sub": "€9.816 — 34,6% entrate (concentrazione!)",
+      "sub": "€18.356 — 39,8% entrate gen+feb (concentrazione!)",
       "class": "warning"
     },
     {
-      "label": "Uscite 16/02",
-      "value": "€1.890",
-      "sub": "F24 €650 + INAIL €69 + INPS Marco €1.137 + rit. €35",
+      "label": "Uscite 16/03",
+      "value": "€310",
+      "sub": "F24 dip. €220 + ritenuta Palumbo €30 + ritenute royalties €60",
       "class": "danger"
     },
     {
       "label": "Debiti Fornitori",
-      "value": "€3.407",
-      "sub": "14 fatture acquisto da pagare (gen-feb)",
+      "value": "€1.185",
+      "sub": "Roly €142+€126 scadute + Rossini €717+€199 da pagare",
       "class": "warning"
     },
     {
       "label": "Crediti Clienti",
-      "value": "€3.811",
-      "sub": "4 fatture da incassare (Digitality Consulting S.R.L., Piesse S.R.L.S., Giuseppe De Giglio, Dinamica Pulizie di Volpe Francesco)",
+      "value": "€2.691",
+      "sub": "Ecomondi €625, De Giglio €1.283, Dinamica €783 — Digitality incassata 24/02",
       "class": "warning"
     },
     {
       "label": "Dati Mancanti",
-      "value": 15,
-      "sub": "Incl. 2 fatture estere (Elementor, Canva — arrivano fine marzo) + diff. Meccatronica + indirizzo Sintra",
+      "value": 17,
+      "sub": "Petrini €641 sconosciuto, TS feb breakdown, OpenAI cambio EUR, PF Concept ft. mancante",
       "class": "warning",
       "subText": ""
     },
     {
       "label": "Debito verso Marco",
-      "value": "€2.780",
-      "sub": "8 spese anticipate gen-feb — rimborso in sospeso",
+      "value": "€3.675",
+      "sub": "8 spese gen-feb €2.780 + Anthropic x6 €215 + OpenAI x2 €50 + Hostinger €216 + rimborso km feb €895",
       "class": "warning"
     }
   ],
@@ -102,7 +102,7 @@
     },
     {
       "data": "10 ogni mese",
-      "adempimento": "Riepilogo TeamSystem Payments — richiedere a Marco (gen. ricevuto 11/02)",
+      "adempimento": "Riepilogo TeamSystem Payments — richiedere a Marco",
       "frequenza": "Mensile",
       "stato": "upcoming",
       "statoLabel": "Ricorrente",
@@ -110,42 +110,50 @@
     },
     {
       "data": "16 Feb 2026",
-      "adempimento": "F24 contributi/ritenute gennaio — €649,98 (INPS €428 + IRPEF €261,41 + INAIL €4,47 - bonus €43,90)",
+      "adempimento": "F24 contributi/ritenute gennaio — €763,93 pagato (INPS + IRPEF + INAIL + ritenute)",
       "frequenza": "Mensile",
       "stato": "past",
-      "statoLabel": "Scaduto",
+      "statoLabel": "Pagato",
       "chi": "Commercialista"
     },
     {
       "data": "16 Feb 2026",
-      "adempimento": "INAIL autoliquidazione 1a rata — €68,65",
+      "adempimento": "INAIL autoliquidazione 1a rata — €68,65 (inclusa in F24)",
       "frequenza": "Annuale (4 rate)",
       "stato": "past",
-      "statoLabel": "Scaduto",
+      "statoLabel": "Pagato",
       "chi": "Commercialista"
     },
     {
       "data": "16 Feb 2026",
-      "adempimento": "Bonifico a Marco per INPS Commercianti 4a rata 2025 — €1.137,35 (F24 personale)",
+      "adempimento": "Bonifico a Marco per INPS Commercianti 4a rata 2025 — €1.128,82 pagato",
       "frequenza": "Trimestrale",
       "stato": "past",
-      "statoLabel": "Scaduto",
+      "statoLabel": "Pagato",
       "chi": "Noi + Marco"
     },
     {
       "data": "16 Feb 2026",
-      "adempimento": "Ritenuta d'acconto Studio Fatone Gasso — €34,50 (cod. tributo 1040, mese gen 2026)",
+      "adempimento": "Ritenuta d'acconto Studio Fatone Gasso — €34,50 (inclusa in F24 17/02 €60,05)",
       "frequenza": "Mensile",
       "stato": "past",
-      "statoLabel": "Scaduto",
+      "statoLabel": "Pagato",
       "chi": "Commercialista"
+    },
+    {
+      "data": "24 Feb 2026",
+      "adempimento": "TFR + arretrati Claudia Loconsole — €1.175,92 pagato",
+      "frequenza": "Una tantum",
+      "stato": "past",
+      "statoLabel": "Pagato",
+      "chi": "Noi"
     },
     {
       "data": "28 Feb 2026",
       "adempimento": "Invio Certificazione Unica (CU) all'AdE",
       "frequenza": "Annuale",
       "stato": "past",
-      "statoLabel": "Scaduto",
+      "statoLabel": "In attesa conf.",
       "chi": "Commercialista"
     },
     {
@@ -153,7 +161,7 @@
       "adempimento": "Consegna CU ai collaboratori",
       "frequenza": "Annuale",
       "stato": "past",
-      "statoLabel": "Scaduto",
+      "statoLabel": "In attesa conf.",
       "chi": "Commercialista"
     },
     {
@@ -165,16 +173,24 @@
       "chi": "Noi"
     },
     {
-      "data": "Fine Feb 2026",
-      "adempimento": "Rimborso km febbraio — raccogliere documentazione",
-      "frequenza": "Mensile",
-      "stato": "info",
-      "statoLabel": "In programma",
+      "data": "05 Mar 2026",
+      "adempimento": "Roly ft. 2010929322 — €126,01 SCADUTA (campioni abbigliamento, IVA spagnola)",
+      "frequenza": "Una tantum",
+      "stato": "past",
+      "statoLabel": "Scaduto",
+      "chi": "Noi"
+    },
+    {
+      "data": "12 Mar 2026",
+      "adempimento": "Roly ft. 2010938615 — €142,37 SCADUTA (abbigliamento lavoro)",
+      "frequenza": "Una tantum",
+      "stato": "past",
+      "statoLabel": "Scaduto",
       "chi": "Noi"
     },
     {
       "data": "16 Mar 2026",
-      "adempimento": "F24 contributi/ritenute febbraio",
+      "adempimento": "F24 contributi/ritenute febbraio — €220,10 (INPS DM10 €264 - bonus €43,90)",
       "frequenza": "Mensile",
       "stato": "upcoming",
       "statoLabel": "In scadenza",
@@ -182,7 +198,7 @@
     },
     {
       "data": "16 Mar 2026",
-      "adempimento": "Ritenuta d'acconto Avv. Palumbo — €30,00 (cod. tributo 1040, mese feb 2026)",
+      "adempimento": "Ritenuta d'acconto Avv. Palumbo — €30,00 (cod. tributo 1040, feb 2026). Possibilmente già nel F24 27/02 (€60,94)",
       "frequenza": "Mensile",
       "stato": "upcoming",
       "statoLabel": "In scadenza",
@@ -190,11 +206,19 @@
     },
     {
       "data": "16 Mar 2026",
-      "adempimento": "Versamento saldo INPS + 1° acconto",
-      "frequenza": "Annuale",
+      "adempimento": "Ritenute royalties marchio — €60 (Sala Silvana €30 + Vurro Nicola €30, cod. 1040)",
+      "frequenza": "Mensile",
       "stato": "upcoming",
       "statoLabel": "In scadenza",
       "chi": "Commercialista"
+    },
+    {
+      "data": "31 Mar 2026",
+      "adempimento": "Rimborso km febbraio Marco — €895,48 (12 trasferte, 1.750 km)",
+      "frequenza": "Mensile",
+      "stato": "upcoming",
+      "statoLabel": "In scadenza",
+      "chi": "Noi"
     },
     {
       "data": "16 Apr 2026",
@@ -222,7 +246,7 @@
     },
     {
       "data": "16 Mag 2026",
-      "adempimento": "Versamento IVA I trimestre 2026",
+      "adempimento": "Versamento IVA I trimestre 2026 — CREDITO €617 (nessun versamento)",
       "frequenza": "Trimestrale",
       "stato": "info",
       "statoLabel": "In programma",
@@ -319,83 +343,67 @@
   ],
   "alert": [
     {
-      "tipo": "info",
-      "testo": "AGGIORNAMENTO 01/03: 4 nuove fatture vendita feb (totale €3.811 lordo IVA). 5 nuove fatture acquisto feb (totale €1.552 lordo IVA). Archivio SDI completo caricato (806 XML, 2023-2026)."
+      "tipo": "danger",
+      "testo": "SCADENZE ROLY: 2 fatture scadute — ft.2010929322 €126,01 (scad. 05/03) + ft.2010938615 €142,37 (scad. 12/03). Totale €268,38 da pagare SUBITO."
     },
     {
       "tipo": "warning",
-      "testo": "CREDITI CLIENTI: €3,811 da incassare — 4 fatture feb con pagamento da verificare (Giuseppe De Giglio, Digitality Consulting S.R.L., Dinamica Pulizie di Volpe Francesco, Piesse S.R.L.S.)."
-    },
-    {
-      "tipo": "info",
-      "testo": "CONFRONTO GEN-FEB: 2026 vs 2025 — ricavi -73,5% (€3.373 vs €12.730 imponibile), costi -16,7%. Margine lordo negativo -€1.659 (2025 era +€6.691). Recupero necessario da marzo."
-    },
-    {
-      "tipo": "info",
-      "testo": "SCADUTO 16/02 — F24 contributi/ritenute gennaio: €649,98 CONFERMATO da Prima Nota (INPS DM10 €428 + IRPEF €261,41 + INAIL €4,47 - bonus €43,90)."
-    },
-    {
-      "tipo": "info",
-      "testo": "SCADUTO 16/02 — INAIL autoliquidazione 1a rata: €68,65."
-    },
-    {
-      "tipo": "info",
-      "testo": "SCADUTO 16/02 — Bonifico a Marco per INPS Commercianti (4a rata 2025): €1.137,35. NLI bonifica, Marco paga F24 dal conto personale."
-    },
-    {
-      "tipo": "info",
-      "testo": "SCADUTO 16/02 — Ritenuta d'acconto Studio Fatone Gasso: €34,50 (cod. tributo 1040, competenza gen 2026)."
-    },
-    {
-      "tipo": "info",
-      "testo": "TOTALE USCITE CERTE 16/02: €1.890,48 (F24 dip. €649,98 + INAIL €68,65 + INPS Marco €1.137,35 + ritenuta Fatone €34,50). Saldo banca €11.442 — capienza OK."
+      "testo": "F24 16/03 CONSOLIDATO: €310,10 — F24 dip. €220,10 + ritenuta Palumbo €30,00 + ritenute royalties €60,00. Verificare se Palumbo già inclusa nel F24 del 27/02 (€60,94)."
     },
     {
       "tipo": "warning",
-      "testo": "RIMBORSO SPESE MARCO: €2.780,05 da rimborsare (8 spese anticipate gen-feb su conto personale: Sintra €416, MediaMarket €1.409, Claude.ai €86, Hostinger €151, Elementor €204, Canva €140, Envato €174, Meccatronica €200)."
+      "testo": "RIMBORSO KM FEB: €895,48 da pagare a Marco entro 31/03 (12 trasferte, 1.750 km, Peugeot 3008)."
+    },
+    {
+      "tipo": "info",
+      "testo": "AGGIORNAMENTO 10/03: E/C febbraio importato — 47 nuovi movimenti bancari. Saldo 28/02: €16.803,86. Quadratura OK. Riconciliazione feb 90,5% (38/42)."
     },
     {
       "tipo": "warning",
-      "testo": "TFR Claudia Loconsole: €1.175,92 da pagare (cessata 31/12/2025). Non ancora liquidato."
+      "testo": "CREDITI CLIENTI: €2.691 da incassare — Ecomondi €625 (FV5), De Giglio €1.283 (FV6), Dinamica Pulizie €783 (FV8). Piesse €1.319 da verificare. Digitality €427 incassata 24/02."
+    },
+    {
+      "tipo": "info",
+      "testo": "CONFRONTO GEN-FEB: 2026 vs 2025 — ricavi competenza -73,5% (€3.373 vs €12.730 imponibile), margine lordo negativo -€1.659. Recupero necessario da marzo."
     },
     {
       "tipo": "warning",
-      "testo": "Ritenuta d'acconto Avv. Palumbo: €30,00 da versare entro 16/03/2026 (competenza feb 2026, proc. monitorio RP Srl)."
+      "testo": "DEBITO VERSO MARCO: €3.675 in sospeso — 8 anticipi gen-feb (€2.780) + 9 fatture estere feb pagate da Marco (Anthropic x6, OpenAI x2, Hostinger VPS) + rimborso km feb €895."
     },
     {
       "tipo": "warning",
-      "testo": "Concentrazione ricavi: SiliconDev S.p.A. pesa 34,6% delle entrate gennaio. Rischio dipendenza."
+      "testo": "PETRINI SCONOSCIUTO: pagamento €641,28 del 11/02 a Valerio Petrini — nessuna fattura SDI, fornitore non identificato. Richiedere a Marco."
     },
     {
       "tipo": "warning",
+      "testo": "Concentrazione ricavi: SiliconDev S.p.A. pesa 39,8% delle entrate gen+feb (€18.356 su €46.090). Rischio dipendenza."
+    },
+    {
+      "tipo": "info",
       "testo": "Dentitalia S.r.l.: incassata solo 1a rata €3.715,25 su fatt. 64. Monitorare rate successive."
     },
     {
-      "tipo": "info",
-      "testo": "TeamSystem Payments gennaio COMPLETATO: tutti 4 accrediti riconciliati con 12 clienti. MOV-0003/0006 = 6 clienti comp. 2025 (saldi proformas). MOV-0008/0010 = 5 clienti comp. 2026 (rate+acconti). 5° accredito €1.444 (Tecno Soluzioni) su E/C feb. Commissioni €14,30. Riconciliazione gen: 93% (40/43)."
-    },
-    {
-      "tipo": "info",
-      "testo": "Fattura emessa FV 5 Ecomondi (02/02/2026): €625,07 — incasso atteso."
-    },
-    {
-      "tipo": "info",
-      "testo": "Offerta energia Frisbi STAR BUSINESS PO: decisione entro 28/02/2026."
+      "tipo": "success",
+      "testo": "E/C FEBBRAIO COMPLETATO: 42 movimenti bancari + 5 conto Marco. Saldo iniziale €11.442 → finale €16.804. Entrate €17.740, uscite €12.378. Quadratura OK."
     },
     {
       "tipo": "success",
-      "testo": "41 documenti archiviati: 36 fatture acquisto (18 SDI gen + 8 SDI feb + 10 estere) + 5 fatture emesse. Quadratura E/C gennaio OK."
+      "testo": "PAGAMENTI EFFETTUATI FEB: TFR Claudia €1.176 OK, INPS Marco 4a rata €1.129 OK, F24 gen €764 OK, Rossini €3.174, Metrie €1.264, rimborso km gen €810."
     },
     {
       "tipo": "info",
-      "testo": "2 fatture estere in attesa (arrivano fine marzo): Elementor, Canva (reverse charge, anticipate da Marco). 3 archiviate: Sintra, Anthropic, Envato."
+      "testo": "IVA Q1: credito €617 (debito €742 - credito €886). Nessun versamento IVA dovuto al 16/05."
+    },
+    {
+      "tipo": "info",
+      "testo": "TS Payments feb: 5 accrediti totale €5.959 (spillover gen + feb). Breakdown clienti da richiedere per competenza."
     }
   ],
-  "suggerimenti": "1) SCADENZA 16/03: F24 contributi/ritenute febbraio + ritenuta Palumbo €30. 2) Rimborso spese Marco: €2.780 da rimborsare (8 anticipazioni gen-feb). 3) TFR Claudia €1.176 da pagare. 4) INCASSI ATTESI: €3.811 da 4 fatture feb (De Giglio, Digitality, Dinamica Pulizie, Piesse) — sollecitare. 5) Riconciliazione gen 93% — restano 3 movimenti aperti. 6) RICAVI IN CALO: gen-feb 2026 -73,5% vs 2025 — servono nuove vendite. 7) 2 fatture estere in attesa (Elementor, Canva). 8) Offerta Frisbi: scaduta 28/02 — decidere. 9) Diversificare clienti.",
+  "suggerimenti": "1) URGENTE: pagare 2 fatture Roly scadute (€268 totale). 2) SCADENZA 16/03: F24 €220 + ritenute €90 = ~€310. 3) Rimborso km feb Marco: €895 entro 31/03. 4) INCASSI: €2.691 da 3 clienti (Ecomondi, De Giglio, Dinamica) — sollecitare. 5) Debito verso Marco €3.675 — organizzare rimborso. 6) RICAVI IN CALO: gen-feb 2026 -73,5% vs 2025 — servono nuove vendite. 7) Chiarire pagamento Petrini €641. 8) Richiedere breakdown TS Payments feb. 9) Offerta Frisbi scaduta — decidere. 10) Diversificare clienti (SiliconDev 40%).",
   "setupChecklist": [
     {
       "label": "Visura camerale",
-      "desc": "Costituzione 29/05/2023, REA RM-1703131. Sede: Via Fieramosca 20, Bari. Quote 50/50",
+      "desc": "Costituzione 29/05/2023, REA BA-652782. Sede: Via Fieramosca 20, Bari. Quote 50/50",
       "done": true
     },
     {
@@ -405,7 +413,7 @@
     },
     {
       "label": "Dati bancari",
-      "desc": "Intesa Sanpaolo — IBAN acquisito, E/C gennaio importato",
+      "desc": "Intesa Sanpaolo — IBAN acquisito, E/C gen+feb importati, quadratura OK",
       "done": true
     },
     {
@@ -415,7 +423,7 @@
     },
     {
       "label": "Dipendenti/collaboratori",
-      "desc": "1 dipendente (Sajay) + 1 collaboratore (Festa Daniele). Ex dip. Claudia cessata 31/12/2025",
+      "desc": "1 dipendente (Sajay) + 1 collaboratore (Festa Daniele). Ex dip. Claudia cessata 31/12/2025, TFR pagato",
       "done": true
     },
     {
@@ -434,23 +442,23 @@
       "done": true
     },
     {
-      "label": "Estratto conto gennaio",
-      "desc": "76 movimenti processati, quadratura OK, categorie classificate",
+      "label": "Estratti conto gen+feb",
+      "desc": "Gen: 43 mov, quadratura OK (93%). Feb: 42 mov, quadratura OK (90,5%). Totale 95 movimenti",
       "done": true
     },
     {
-      "label": "Buste paga dic 2025 + gen 2026",
-      "desc": "LUL + Prima Nota archiviati e riconciliati. F24 gen €398,43 OK, F24 feb €649,98 confermato",
+      "label": "Buste paga dic 2025 + gen+feb 2026",
+      "desc": "LUL + Prima Nota archiviati. F24 gen €398 OK, F24 feb €650→€764 OK, F24 mar €220 in scadenza",
       "done": true
     },
     {
-      "label": "Fatture SDI archiviate",
-      "desc": "55 fatture registrate (gen-feb 2026). Archivio SDI completo caricato (268 inviate + 538 ricevute, 2023-2026)",
+      "label": "Fatture registrate",
+      "desc": "67 fatture (gen-feb 2026). Archivio SDI completo (268 inviate + 538 ricevute, 2023-2026)",
       "done": true
     },
     {
       "label": "Documenti commercialista",
-      "desc": "18 file archiviati: 10 fatture estere + 4 ricevute + 1 contratto + 3 personale",
+      "desc": "Round 1-3 feb processati: affitto, energia, dipendenti, marchio. R4-R6 (fatture estere) in corso",
       "done": true
     }
   ],
@@ -633,7 +641,7 @@
           "voce": "Anticipo Utili 2025 Marco Vurro",
           "voceBilancio": "Distribuzione utili",
           "importo": "€500,00",
-          "note": "Anticipo utili esercizio 2025 — causale bancaria errata (era: Rimborso macchinario DFT)"
+          "note": "Anticipo utili esercizio 2025 — causale bancaria errata"
         },
         {
           "data": "12/01",
@@ -780,7 +788,7 @@
           "voce": "Commissioni TS Payments",
           "voceBilancio": "C. Spese bancarie",
           "importo": "€14,30",
-          "note": "11 incassi SDD × €1,30 — trattenuta all'origine (lordo €4.957, netto €4.943)"
+          "note": "11 incassi SDD × €1,30 — trattenuta all'origine"
         },
         {
           "data": "16/01",
@@ -817,40 +825,84 @@
       "mese": "Febbraio 2026",
       "entrate": [
         {
-          "data": "09/02",
-          "voce": "Giuseppe De Giglio",
+          "data": "02/02",
+          "voce": "TeamSystem Payments",
           "voceBilancio": "A.1 Ricavi vendite",
-          "importo": "€1.282,87",
-          "note": "FV 6 — Abbigliamento personalizzato DTF",
-          "competenza": "2026",
-          "tipo": "fattura_emessa"
+          "importo": "€1.444,18",
+          "note": "TS-BIXB7T7PK4 — in attesa breakdown clienti",
+          "competenza": "da_verificare"
         },
         {
-          "data": "19/02",
-          "voce": "Digitality Consulting S.R.L.",
+          "data": "09/02",
+          "voce": "TeamSystem Payments",
+          "voceBilancio": "A.1 Ricavi vendite",
+          "importo": "€385,76",
+          "note": "TS-BI3VU2F4ZQ — in attesa breakdown clienti",
+          "competenza": "da_verificare"
+        },
+        {
+          "data": "09/02",
+          "voce": "Global Project Costruzioni SRLS",
+          "voceBilancio": "A.1 Ricavi vendite",
+          "importo": "€2.425,12",
+          "note": "Saldo fatt. 87 del 30/12/2025",
+          "competenza": "2025"
+        },
+        {
+          "data": "16/02",
+          "voce": "TeamSystem Payments",
+          "voceBilancio": "A.1 Ricavi vendite",
+          "importo": "€2.508,47",
+          "note": "TS-BJAJMOWEDE — in attesa breakdown clienti",
+          "competenza": "da_verificare"
+        },
+        {
+          "data": "18/02",
+          "voce": "Amir SRL",
+          "voceBilancio": "A.1 Ricavi vendite",
+          "importo": "€268,68",
+          "note": "Acconto proforma 8",
+          "competenza": "2026"
+        },
+        {
+          "data": "20/02",
+          "voce": "GIS Professional Services SRLS",
+          "voceBilancio": "A.1 Ricavi vendite",
+          "importo": "€399,00",
+          "note": "Acconto fatt. 66 del 17/11/2025",
+          "competenza": "2025"
+        },
+        {
+          "data": "23/02",
+          "voce": "TeamSystem Payments",
+          "voceBilancio": "A.1 Ricavi vendite",
+          "importo": "€1.341,65",
+          "note": "TS-BJE5BM6FY4 — in attesa breakdown clienti",
+          "competenza": "da_verificare"
+        },
+        {
+          "data": "24/02",
+          "voce": "Digitality Consulting SRL",
           "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€427,00",
-          "note": "FV 7 — Consulenza da contratto 05/11/2025",
-          "competenza": "2026",
-          "tipo": "fattura_emessa"
+          "note": "Saldo FV 7 — consulenza",
+          "competenza": "2026"
+        },
+        {
+          "data": "25/02",
+          "voce": "SiliconDev S.p.A.",
+          "voceBilancio": "A.1 Ricavi vendite",
+          "importo": "€8.540,02",
+          "note": "Saldo fatt. 69 (30/11/2025) + fatt. 89 (30/12/2025)",
+          "competenza": "2025"
         },
         {
           "data": "27/02",
-          "voce": "Dinamica Pulizie di Volpe Francesco",
+          "voce": "TeamSystem Payments",
           "voceBilancio": "A.1 Ricavi vendite",
-          "importo": "€782,63",
-          "note": "FV 8 — T-Shirts KOS personalizzate DTF",
-          "competenza": "2026",
-          "tipo": "fattura_emessa"
-        },
-        {
-          "data": "27/02",
-          "voce": "Piesse S.R.L.S.",
-          "voceBilancio": "A.1 Ricavi vendite",
-          "importo": "€1.318,58",
-          "note": "FV 9 — Ordine merce con spedizione assicurata",
-          "competenza": "2026",
-          "tipo": "fattura_emessa"
+          "importo": "€278,91",
+          "note": "TS-BJJQTZTZQ4 — in attesa breakdown clienti",
+          "competenza": "da_verificare"
         }
       ],
       "uscite": [
@@ -860,6 +912,230 @@
           "voceBilancio": "B.8 Affitto sede",
           "importo": "€350,00",
           "note": "Via Fieramosca 20, Bari — Panebianco"
+        },
+        {
+          "data": "02/02",
+          "voce": "Stipendio Sajay (gen. 2026)",
+          "voceBilancio": "B.9 Stipendi",
+          "importo": "€662,00",
+          "note": "Netto busta €663, E/C €662 (diff. €1 arrotondamento)"
+        },
+        {
+          "data": "02/02",
+          "voce": "Royalties Sala Silvana",
+          "voceBilancio": "B.14 Royalties marchio",
+          "importo": "€170,00",
+          "note": "Lordo €200, ritenuta 20% su 75% = €30, netto €170"
+        },
+        {
+          "data": "02/02",
+          "voce": "Royalties Vurro Nicola",
+          "voceBilancio": "B.14 Royalties marchio",
+          "importo": "€170,00",
+          "note": "Lordo €200, ritenuta 20% su 75% = €30, netto €170"
+        },
+        {
+          "data": "02/02",
+          "voce": "Avv. Palumbo (consulenza legale)",
+          "voceBilancio": "B.7 Consulenze legali",
+          "importo": "€160,32",
+          "note": "Proc. monitorio RP SRL — netto ritenuta 20% (lordo €190,32)"
+        },
+        {
+          "data": "02/02",
+          "voce": "Condominio Fieramosca",
+          "voceBilancio": "B.8 Spese condominiali",
+          "importo": "€13,00",
+          "note": "Spese condominiali febbraio"
+        },
+        {
+          "data": "03/02",
+          "voce": "Pluxee Italia (buoni pasto)",
+          "voceBilancio": "B.9 Buoni pasto",
+          "importo": "€161,24",
+          "note": "19 ricariche buoni pasto elettronici"
+        },
+        {
+          "data": "03/02",
+          "voce": "Sendcloud SRL",
+          "voceBilancio": "B.7 Spedizioni",
+          "importo": "€0,85",
+          "note": "Costo pacco — SDD"
+        },
+        {
+          "data": "04/02",
+          "voce": "Raffaele Lapenna",
+          "voceBilancio": "B.7 Posteggio",
+          "importo": "€120,00",
+          "note": "Posteggio auto febbraio — forfettario"
+        },
+        {
+          "data": "04/02",
+          "voce": "Sendcloud SRL",
+          "voceBilancio": "B.7 Spedizioni",
+          "importo": "€29,77",
+          "note": "Spedizioni — SDD"
+        },
+        {
+          "data": "05/02",
+          "voce": "Metrie Spol. S.r.o.",
+          "voceBilancio": "B.6 Merci e prodotti",
+          "importo": "€1.264,40",
+          "note": "Saldo 3 fatture (€269+€269+€727) — fornitore Rep. Ceca"
+        },
+        {
+          "data": "06/02",
+          "voce": "Maikii SRL",
+          "voceBilancio": "B.6 Merci e prodotti",
+          "importo": "€79,30",
+          "note": "Gadget ordine MK540612 — fattura da richiedere"
+        },
+        {
+          "data": "09/02",
+          "voce": "GOR Factory (Roly)",
+          "voceBilancio": "B.6 Merci e prodotti",
+          "importo": "€187,58",
+          "note": "Abbigliamento da lavoro — SDD"
+        },
+        {
+          "data": "09/02",
+          "voce": "Pluxee Italia (commissione)",
+          "voceBilancio": "B.7 Commissioni welfare",
+          "importo": "€12,05",
+          "note": "Commissione rimborsuale"
+        },
+        {
+          "data": "10/02",
+          "voce": "Rossini 1969 S.p.A.",
+          "voceBilancio": "B.6 Merci e prodotti",
+          "importo": "€3.173,69",
+          "note": "Saldo cumulativo: FAT 2026 €458 + fatture 2025 €2.716"
+        },
+        {
+          "data": "10/02",
+          "voce": "V Consulting SRL",
+          "voceBilancio": "B.7 Consulenza lavoro",
+          "importo": "€195,20",
+          "note": "Elaborazione cedolini nov-dic 2025"
+        },
+        {
+          "data": "11/02",
+          "voce": "Valerio Petrini",
+          "voceBilancio": "B.7 Servizi",
+          "importo": "€641,28",
+          "note": "DA VERIFICARE — fornitore sconosciuto"
+        },
+        {
+          "data": "13/02",
+          "voce": "Rimborso km gen Marco",
+          "voceBilancio": "B.7 Rimborsi spese soci",
+          "importo": "€810,02",
+          "note": "Rimborso chilometrico gennaio 2026"
+        },
+        {
+          "data": "16/02",
+          "voce": "INPS Commercianti 4a rata 2025",
+          "voceBilancio": "B.9 INPS commercianti",
+          "importo": "€1.128,82",
+          "note": "Rimborso a Marco — F24 personale"
+        },
+        {
+          "data": "16/02",
+          "voce": "F24 contributi/ritenute gen",
+          "voceBilancio": "Tributi/contributi",
+          "importo": "€714,16",
+          "note": "INPS + IRPEF + INAIL gen (1° F24)"
+        },
+        {
+          "data": "16/02",
+          "voce": "F24 aggiuntivo gen",
+          "voceBilancio": "Tributi/contributi",
+          "importo": "€49,77",
+          "note": "2° addebito F24 gen"
+        },
+        {
+          "data": "17/02",
+          "voce": "F24 ritenuta Fatone Gasso",
+          "voceBilancio": "Tributi/contributi",
+          "importo": "€60,05",
+          "note": "Ritenuta d'acconto gen (€34,50 + altro)"
+        },
+        {
+          "data": "18/02",
+          "voce": "Sendcloud SRL",
+          "voceBilancio": "B.7 Spedizioni",
+          "importo": "€15,74",
+          "note": "Poste Delivery Business 10-20kg"
+        },
+        {
+          "data": "19/02",
+          "voce": "Frisbi energia",
+          "voceBilancio": "B.7 Energia elettrica",
+          "importo": "€95,66",
+          "note": "Energia elettrica gennaio 2026"
+        },
+        {
+          "data": "19/02",
+          "voce": "GOR Factory (Roly)",
+          "voceBilancio": "B.6 Merci e prodotti",
+          "importo": "€33,82",
+          "note": "Abbigliamento da lavoro — SDD"
+        },
+        {
+          "data": "23/02",
+          "voce": "TeamSystem S.P.A.",
+          "voceBilancio": "B.7 Canoni servizio",
+          "importo": "€71,38",
+          "note": "Rata CRM/software — da verificare"
+        },
+        {
+          "data": "24/02",
+          "voce": "TFR Claudia Loconsole",
+          "voceBilancio": "B.9 TFR",
+          "importo": "€1.175,92",
+          "note": "TFR 2025 + arretrati (lordo €1.473, trattenute €297)"
+        },
+        {
+          "data": "24/02",
+          "voce": "WT Group KG",
+          "voceBilancio": "B.6 Merci e prodotti",
+          "importo": "€469,09",
+          "note": "Oggetti promozionali"
+        },
+        {
+          "data": "24/02",
+          "voce": "PF Concept International",
+          "voceBilancio": "B.6 Merci e prodotti",
+          "importo": "€82,12",
+          "note": "Oggetti promozionali — nuova fattura (stessa FAT-0004?)"
+        },
+        {
+          "data": "25/02",
+          "voce": "Fastweb SPA",
+          "voceBilancio": "B.7 Canoni servizio",
+          "importo": "€41,36",
+          "note": "Telefonia/internet febbraio"
+        },
+        {
+          "data": "26/02",
+          "voce": "GOR Factory (Roly)",
+          "voceBilancio": "B.6 Merci e prodotti",
+          "importo": "€150,69",
+          "note": "Abbigliamento da lavoro — SDD"
+        },
+        {
+          "data": "27/02",
+          "voce": "F24 ritenuta Palumbo + altro",
+          "voceBilancio": "Tributi/contributi",
+          "importo": "€60,94",
+          "note": "Possibilmente ritenuta Palumbo €30 + altro €30,94"
+        },
+        {
+          "data": "28/02",
+          "voce": "Spese bancarie",
+          "voceBilancio": "C. Spese bancarie",
+          "importo": "€27,70",
+          "note": "Bon.ist. €18 + SDD €7,20 + bon.ord. €2 + canone €0,50"
         },
         {
           "data": "01/02",
@@ -887,57 +1163,24 @@
           "voce": "Envato",
           "voceBilancio": "B.7 Software operativi",
           "importo": "€174,00",
-          "note": "Annual 198 (Feb 2026-Feb 2027) — anticipato da Marco (conto personale)"
+          "note": "Annual 198 (Feb 2026-Feb 2027) — anticipato da Marco"
         },
         {
           "data": "02/02",
           "voce": "Meccatronica Car Service",
           "voceBilancio": "B.7 Manutenzione auto",
           "importo": "€200,00",
-          "note": "Tagliando auto aziendale (Peugeot 3008) — anticipato da Marco (conto personale)"
-        },
-        {
-          "data": "04/02",
-          "voce": "V Consulting SRL",
-          "voceBilancio": "B.7 Consulenza lavoro",
-          "importo": "€195,20",
-          "note": "Elaborazione cedolini nov-dic 2025"
-        },
-        {
-          "data": "06/02",
-          "voce": "Pluxee Italia (buoni + commissione)",
-          "voceBilancio": "B.9 Buoni pasto",
-          "importo": "€424,40",
-          "note": "Buoni acquisto digitali €400 + commissione €24,40"
-        },
-        {
-          "data": "16/02",
-          "voce": "Sendcloud S.r.l.",
-          "voceBilancio": "B.7 Spedizioni",
-          "importo": "€15,74",
-          "note": "Poste Delivery Business 10-20kg"
-        },
-        {
-          "data": "27/02",
-          "voce": "Rossini 1969 S.p.A.",
-          "voceBilancio": "B.6 Merci e prodotti",
-          "importo": "€717,81",
-          "note": "Giubbotti Softshell Siberia"
-        },
-        {
-          "data": "27/02",
-          "voce": "Rossini 1969 S.p.A. (2)",
-          "voceBilancio": "B.6 Merci e prodotti",
-          "importo": "€198,79",
-          "note": "Gilet Florida blu"
+          "note": "Tagliando auto aziendale — anticipato da Marco"
         }
       ],
-      "totaleEntrate": "€0",
-      "totaleUscite": "€1.219",
-      "saldo": "−€1.219",
-      "ebitda": "−€1.219",
-      "utileNetto": "—",
-      "note": "Mese in corso — dati parziali. In attesa E/C febbraio. Incl. €868,76 spese anticipate da Marco (conto personale). Fatture ricevute SDI: 8 documenti per ~€640. FV 5 Ecomondi €625,07 emessa."
+      "totaleEntrate": "€18.018,79",
+      "totaleUscite": "€13.246,68",
+      "costiOperativi": "€12.378",
+      "costiStraordinari": "€0",
+      "saldo": "+€5.361,96",
+      "ebitda": "€5.362",
+      "utileNetto": "€2.681",
+      "note": "E/C feb importato 10/03. Banca: entrate €17.740 + uscite €12.378. + €869 spese Marco (conto personale). Riconciliazione 90,5%. 5 accrediti TS in attesa breakdown."
     }
   ],
   "bancaAliasDescrizioni": {
@@ -987,95 +1230,28 @@
     "CLAUDE": "Claude.ai / Anthropic (AI subscription — USA)",
     "ELEMENTOR": "Elementor (website builder — Israele)",
     "CANVA": "Canva (design tool — Australia)",
-    "ENVATO": "Envato (marketplace digitale — Australia)"
+    "ENVATO": "Envato (marketplace digitale — Australia)",
+    "GLOBAL PROJECT": "Global Project Costruzioni SRLS (cliente)",
+    "GIS": "GIS Professional Services SRLS (cliente)",
+    "AMIR": "Amir SRL (cliente)",
+    "DIGITALITY": "Digitality Consulting SRL (cliente)",
+    "MAIKII": "Maikii SRL (fornitore gadget)",
+    "PETRINI": "Valerio Petrini (fornitore da verificare)",
+    "V CONSULTING": "V Consulting SRL (consulente lavoro)"
   },
   "banca": {
     "conto": "Intesa Sanpaolo",
     "iban": "IT94G0306905124100000014534",
-    "saldoAttuale": "€11.441,90",
-    "ultimoAggiornamento": "31 Gennaio 2026",
-    "saldoInizioMese": "€2.480,94",
-    "movimentiTotali": 76,
-    "entrateGennaio": "€28.349,84",
-    "usciteGennaio": "€19.388,88",
-    "flussoNetto": "+€8.960,96",
+    "saldoAttuale": "€16.803,86",
+    "ultimoAggiornamento": "28 Febbraio 2026",
+    "saldoInizioMese": "€11.441,90",
+    "movimentiTotali": 42,
+    "entrateFebbraio": "€17.739,88",
+    "usciteFebbraio": "€12.377,92",
+    "flussoNetto": "+€5.361,96",
     "movimenti": []
   },
   "previsionale": [
-    {
-      "mese": "Febbraio 2026",
-      "voci": [
-        {
-          "voce": "Affitto sede",
-          "tipo": "uscita",
-          "importo": "€350",
-          "certezza": "certo"
-        },
-        {
-          "voce": "Stipendio Sajay",
-          "tipo": "uscita",
-          "importo": "€662",
-          "certezza": "certo"
-        },
-        {
-          "voce": "F24 contributi/ritenute gennaio",
-          "tipo": "uscita",
-          "importo": "€649,98",
-          "certezza": "certo"
-        },
-        {
-          "voce": "INAIL 1a rata autoliquidazione",
-          "tipo": "uscita",
-          "importo": "€68,65",
-          "certezza": "certo"
-        },
-        {
-          "voce": "Bonifico a Marco per INPS Commercianti (4a rata 2025)",
-          "tipo": "uscita",
-          "importo": "€1.137,35",
-          "certezza": "certo"
-        },
-        {
-          "voce": "Ritenuta d'acconto Fatone Gasso",
-          "tipo": "uscita",
-          "importo": "€34,50",
-          "certezza": "certo"
-        },
-        {
-          "voce": "TFR Claudia Loconsole",
-          "tipo": "uscita",
-          "importo": "€1.175,92",
-          "certezza": "certo"
-        },
-        {
-          "voce": "Fornitori/SDD ricorrenti",
-          "tipo": "uscita",
-          "importo": "~€1.000",
-          "certezza": "stimato"
-        },
-        {
-          "voce": "Fatture clienti",
-          "tipo": "entrata",
-          "importo": "~€20.000",
-          "certezza": "stimato"
-        },
-        {
-          "voce": "FV 5 Ecomondi (emessa 02/02)",
-          "tipo": "entrata",
-          "importo": "€625,07",
-          "certezza": "certo"
-        },
-        {
-          "voce": "Rimborso spese Marco (anticipazioni gen-feb)",
-          "tipo": "uscita",
-          "importo": "€2.780,05",
-          "certezza": "certo"
-        }
-      ],
-      "totaleUsciteStimate": "~€7.858",
-      "totaleEntrateStimate": "~€20.625",
-      "saldoStimato": "~€24.409"
-    },
     {
       "mese": "Marzo 2026",
       "voci": [
@@ -1094,8 +1270,8 @@
         {
           "voce": "F24 contributi/ritenute febbraio",
           "tipo": "uscita",
-          "importo": "~€300",
-          "certezza": "stimato"
+          "importo": "€220",
+          "certezza": "certo"
         },
         {
           "voce": "Ritenuta d'acconto Avv. Palumbo",
@@ -1104,16 +1280,78 @@
           "certezza": "certo"
         },
         {
-          "voce": "Commercialista (rateo trim.)",
+          "voce": "Ritenute royalties marchio (Sala+Vurro)",
           "tipo": "uscita",
-          "importo": "€500",
+          "importo": "€60",
           "certezza": "certo"
         },
         {
-          "voce": "Rimborso km febbraio",
+          "voce": "Roly fatture scadute (05/03 + 12/03)",
           "tipo": "uscita",
-          "importo": "~€800",
+          "importo": "€268",
+          "certezza": "certo"
+        },
+        {
+          "voce": "Rimborso km febbraio Marco",
+          "tipo": "uscita",
+          "importo": "€895",
+          "certezza": "certo"
+        },
+        {
+          "voce": "Rimborso spese Marco (anticipi gen-feb)",
+          "tipo": "uscita",
+          "importo": "€3.675",
+          "certezza": "certo"
+        },
+        {
+          "voce": "Fornitori/SDD ricorrenti",
+          "tipo": "uscita",
+          "importo": "~€1.000",
           "certezza": "stimato"
+        },
+        {
+          "voce": "Incassi clienti attesi",
+          "tipo": "entrata",
+          "importo": "~€3.000",
+          "certezza": "stimato"
+        },
+        {
+          "voce": "Ecomondi FV5 da incassare",
+          "tipo": "entrata",
+          "importo": "€625",
+          "certezza": "certo"
+        }
+      ],
+      "totaleUsciteStimate": "~€7.160",
+      "totaleEntrateStimate": "~€3.625",
+      "saldoStimato": "~€13.269"
+    },
+    {
+      "mese": "Aprile 2026",
+      "voci": [
+        {
+          "voce": "Affitto sede",
+          "tipo": "uscita",
+          "importo": "€350",
+          "certezza": "certo"
+        },
+        {
+          "voce": "Stipendio Sajay",
+          "tipo": "uscita",
+          "importo": "€662",
+          "certezza": "certo"
+        },
+        {
+          "voce": "F24 contributi/ritenute marzo",
+          "tipo": "uscita",
+          "importo": "~€220",
+          "certezza": "stimato"
+        },
+        {
+          "voce": "Commercialista (rateo trim.)",
+          "tipo": "uscita",
+          "importo": "€600",
+          "certezza": "certo"
         },
         {
           "voce": "Fornitori/SDD ricorrenti",
@@ -1124,13 +1362,13 @@
         {
           "voce": "Fatture clienti",
           "tipo": "entrata",
-          "importo": "~€20.000",
+          "importo": "~€5.000",
           "certezza": "stimato"
         }
       ],
-      "totaleUsciteStimate": "~€3.642",
-      "totaleEntrateStimate": "~€20.000",
-      "saldoStimato": "~€43.347"
+      "totaleUsciteStimate": "~€2.832",
+      "totaleEntrateStimate": "~€5.000",
+      "saldoStimato": "~€15.437"
     }
   ],
   "iva": {
@@ -1147,48 +1385,58 @@
         "saldoLabel": "A credito",
         "dettaglioDebito": {
           "ordinario_22": 741.98,
-          "note": "6 fatture + 3 NC"
+          "note": "9 fatture emesse (6 FV + 3 NC)"
         },
         "dettaglioCredito": {
           "ordinario_22": 866.42,
           "ridotto_4": 19.26,
-          "note": "28 fatture acquisto"
+          "note": "28 fatture acquisto + 15 reverse charge (neutro) + 2 forfettario"
         },
+        "reverseCharge": {
+          "totaleImponibile": 3243.03,
+          "ivaTeorica_22": 713.47,
+          "note": "15 fatture estere — neutro ai fini IVA"
+        },
+        "creditoIva": 616.69,
         "disclaimer": "Importi calcolati da fatture registrate. Possibili scostamenti centesimali. Liquidazione ufficiale a cura del commercialista."
       }
     ]
   },
   "bilancio": {
     "disclaimer": "Bilancio gestionale interno — importi al netto IVA (CE) e lordo IVA (SP). Non sostituisce la contabilita ufficiale del commercialista.",
-    "notaCompetenza": "Ricavi per competenza 2026 — gli incassi di fatture emesse nel 2025 (28k+ a gennaio) non figurano nei ricavi. E normale vedere un risultato negativo nei primi mesi.",
-    "dataRiferimento": "31 Gennaio 2026",
+    "notaCompetenza": "Ricavi per competenza 2026 — gli incassi di fatture emesse nel 2025 (28k gen + 14k feb) non figurano nei ricavi. E normale vedere un risultato negativo nei primi mesi.",
+    "dataRiferimento": "28 Febbraio 2026",
     "ce": {
       "A": {
         "label": "A) Valore della produzione",
-        "totale": 248.75,
+        "totale": 3372.58,
         "dettaglio": [
           {
             "label": "A.1.1 Vendita merci",
-            "importo": 512.35
+            "importo": 2773.83
           },
           {
             "label": "A.1.2 Prestazioni servizi",
-            "importo": 300
+            "importo": 650
           },
           {
             "label": "A.1.3 Note di credito",
             "importo": -563.6
+          },
+          {
+            "label": "A.1.4 Note (solo FV 5 Ecomondi gen)",
+            "importo": 512.35
           }
         ]
       },
       "B": {
         "label": "B) Costi della produzione",
-        "totale": 9494.86,
+        "totale": 12426.84,
         "sottoGruppi": [
           {
             "codice": "B6",
             "label": "Materie prime e merci",
-            "totale": 2556.51,
+            "totale": 3071.42,
             "dettaglio": [
               {
                 "label": "Merci e prodotti",
@@ -1197,91 +1445,102 @@
               {
                 "label": "Materiale consumo",
                 "importo": 94.01
+              },
+              {
+                "label": "Feb: Rossini €751 + Metrie + Roly + Maikii + WT + PF Concept",
+                "importo": 514.91
               }
             ]
           },
           {
             "codice": "B7",
             "label": "Servizi",
-            "totale": 3579.3,
+            "totale": 5879.3,
             "dettaglio": [
               {
-                "label": "Software operativi (Sintra, Claude, Opus, Elementor, Canva, Envato)",
-                "importo": 1224.12
+                "label": "Software (Sintra, Claude, Opus, Elementor, Canva, Envato, Anthropic feb)",
+                "importo": 1655.12
               },
               {
-                "label": "Anticipo utili 2025 (Marco)",
-                "importo": 500,
-                "nota": "Non è costo CE — distribuzione utili (SP)"
+                "label": "Consulenze legali (Fatone Gasso + Palumbo)",
+                "importo": 478.4
               },
               {
-                "label": "Diritti d'autore (Festa Daniele)",
-                "importo": 414.75
+                "label": "Consulenza lavoro (V Consulting)",
+                "importo": 160
               },
               {
-                "label": "Consulenze legali (Fatone Gasso, Palumbo)",
-                "importo": 335.4
-              },
-              {
-                "label": "Posteggio (Lapenna)",
+                "label": "Posteggio (Lapenna x2)",
                 "importo": 240
               },
               {
-                "label": "Canoni servizio (Fastweb, TeamSystem)",
-                "importo": 196.8
+                "label": "Canoni servizio (Fastweb x2, TeamSystem)",
+                "importo": 268.18
               },
               {
                 "label": "Manutenzione auto (Meccatronica)",
                 "importo": 164.58
               },
               {
-                "label": "Energia elettrica (Frisbi)",
-                "importo": 151.75
+                "label": "Energia elettrica (Frisbi x2)",
+                "importo": 229.0
               },
               {
-                "label": "Hosting/tool digitali (Hostinger)",
-                "importo": 150.98
+                "label": "Hosting/tool digitali (Hostinger x2)",
+                "importo": 366.86
               },
               {
-                "label": "Rimborsi spese soci (Alessandro)",
-                "importo": 129
+                "label": "Rimborsi spese soci (Alessandro + Marco km gen)",
+                "importo": 939.02
               },
               {
-                "label": "Spedizioni (Sendcloud)",
-                "importo": 62.04
+                "label": "Spedizioni (Sendcloud x5)",
+                "importo": 108.4
               },
               {
                 "label": "Commissioni welfare (Pluxee)",
-                "importo": 9.88
+                "importo": 21.93
+              },
+              {
+                "label": "Servizi vari (Petrini da verificare)",
+                "importo": 525.66
+              },
+              {
+                "label": "OpenAI API",
+                "importo": 50
               }
             ]
           },
           {
             "codice": "B8",
             "label": "Godimento beni di terzi",
-            "totale": 700,
+            "totale": 713,
             "dettaglio": [
               {
-                "label": "Affitto sede (Panebianco)",
+                "label": "Affitto sede gen+feb (Panebianco)",
                 "importo": 700
+              },
+              {
+                "label": "Spese condominiali feb",
+                "importo": 13
               }
             ]
           },
           {
             "codice": "B9",
             "label": "Personale",
-            "totale": 2178.36,
+            "totale": 2282.36,
             "dettaglio": [
               {
-                "label": "Stipendi (Sajay + Claudia)",
+                "label": "Stipendi (Sajay gen+feb + Claudia gen)",
                 "importo": 1298.49
               },
               {
-                "label": "Buoni pasto (Pluxee)",
-                "importo": 481.44
+                "label": "Buoni pasto (Pluxee gen+feb)",
+                "importo": 585.44
               },
               {
-                "label": "Contributi INPS dipendenti (F24)",
+                "label": "Contributi INPS dipendenti (F24 gen)",
                 "importo": 398.43
               }
             ]
@@ -1303,8 +1562,8 @@
             "totale": 365.2,
             "dettaglio": [
               {
-                "label": "Royalties marchio (Sala Vurro + Nicola Vurro)",
-                "importo": 340
+                "label": "Royalties marchio gen+feb (Sala Vurro + Nicola Vurro x2)",
+                "importo": 680
               },
               {
                 "label": "Bolli e tributi bancari",
@@ -1315,18 +1574,18 @@
         ]
       },
       "diffAB": {
-        "importo": -9246.11
+        "importo": -9054.26
       },
       "C": {
         "label": "C) Oneri finanziari",
-        "totale": 42.8,
+        "totale": 70.5,
         "dettaglio": [
           {
-            "label": "Spese bancarie",
-            "importo": 28.5
+            "label": "Spese bancarie gen+feb",
+            "importo": 56.2
           },
           {
-            "label": "Commissioni TS Payments",
+            "label": "Commissioni TS Payments gen",
             "importo": 14.3
           }
         ]
@@ -1336,12 +1595,12 @@
         "nota": "Imposte non ancora determinate — a cura del commercialista"
       },
       "utile": {
-        "importo": -9288.91
+        "importo": -9124.76
       }
     },
     "sp": {
       "attivo": {
-        "totale": 14188.53,
+        "totale": 20470.55,
         "gruppi": [
           {
             "label": "Immobilizzazioni nette",
@@ -1349,7 +1608,7 @@
           },
           {
             "label": "Crediti commerciali",
-            "importo": 625.07
+            "importo": 2690.7
           },
           {
             "label": "Crediti tributari (IVA)",
@@ -1361,7 +1620,7 @@
           },
           {
             "label": "Disponibilita liquide",
-            "importo": 11441.9
+            "importo": 16803.86
           },
           {
             "label": "Ratei attivi",
@@ -1369,32 +1628,32 @@
           },
           {
             "label": "Risconti attivi",
-            "importo": 0
+            "importo": 63.14
           }
         ]
       },
       "passivo": {
-        "totale": 7651.1,
+        "totale": 5273.41,
         "gruppi": [
           {
             "label": "Debiti fornitori",
-            "importo": 1565.94
+            "importo": 1184.99
           },
           {
             "label": "Debiti tributari",
-            "importo": 991.84
+            "importo": 310.1
           },
           {
             "label": "Debiti verso soci",
-            "importo": 2780.05
+            "importo": 3675
           },
           {
             "label": "Fondo TFR",
-            "importo": 1175.92
+            "importo": 0
           },
           {
             "label": "Debiti previdenziali",
-            "importo": 1137.35
+            "importo": 0
           },
           {
             "label": "Ratei passivi",
@@ -1402,12 +1661,12 @@
           },
           {
             "label": "Risconti passivi",
-            "importo": 0
+            "importo": 103.32
           }
         ]
       },
       "pn": {
-        "totale": -8288.91,
+        "totale": -8124.76,
         "dettaglio": [
           {
             "label": "Capitale sociale",
@@ -1415,7 +1674,7 @@
           },
           {
             "label": "Utile esercizio",
-            "importo": -9288.91
+            "importo": -9124.76
           },
           {
             "label": "Utili pregressi",
@@ -1424,14 +1683,14 @@
         ]
       },
       "verifica": {
-        "differenza": 14826.34,
+        "differenza": 23321.9,
         "stato": "sbilancio",
-        "nota": "Sbilancio di €14826.34 — dovuto a voci non ancora censite (utili pregressi, riserve, partite transitorie). Non anomalo in un bilancio gestionale provvisorio."
+        "nota": "Sbilancio dovuto a voci non censite (utili pregressi 2023-2025, riserve). Non anomalo in bilancio gestionale provvisorio."
       }
     },
     "previsioneFiscale": {
       "disclaimer": "Stime indicative basate su utile progressivo annuo. Importi definitivi dal commercialista.",
-      "utileAnteImposte": -9288.91,
+      "utileAnteImposte": -9124.76,
       "utileNegativo": true,
       "baseImponibileIRAP": -7067.75,
       "irap": {
@@ -1474,7 +1733,7 @@
       "costiPersonale_B9": 830.41,
       "margineLordo": 301.17,
       "risultatoOperativo": -2947.0,
-      "nota": "Dati da 55 fatture registrate (gen-feb 2026). Valori al netto IVA."
+      "nota": "Dati da 67 fatture registrate (gen-feb 2026). Valori al netto IVA."
     }
   },
   "storico": {
@@ -1529,8 +1788,8 @@
         "margine": -1659.49,
         "marginePct": -49.2,
         "numClienti": 6,
-        "numFattureVendita": 6,
-        "numFattureAcquisto": 30,
+        "numFattureVendita": 9,
+        "numFattureAcquisto": 58,
         "topCliente": "Piesse S.R.L.S.",
         "topClienteImporto": 1080.8,
         "topClientePct": 32.0
@@ -1939,7 +2198,7 @@
     },
     "note": {
       "2023": "Società fondata maggio 2023 (7 mesi operativi)",
-      "2026": "Anno in corso (YTD)"
+      "2026": "Anno in corso (YTD) — 67 fatture registrate gen-feb"
     }
   }
 }
