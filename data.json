@@ -1,9 +1,9 @@
 {
-  "lastUpdate": "10 Marzo 2026",
+  "lastUpdate": "28 Aprile 2026",
   "fonte": "registro.json",
   "ebitdaTargetAnnuo": 100000,
-  "statusMessage": "Fonte: registro.json (95 mov., 67 fatt., 32 scad.). Aggiornamento 10/03: importato E/C febbraio (47 movimenti bancari), saldo €16.804. Riconciliazione feb completa (90,5%). 12 nuove fatture estere (Anthropic x6, OpenAI x2, Hostinger, Roly x2, Canva). Rimborso km feb €895.",
-  "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gen+feb analizzati: 95 movimenti, quadratura OK. 67 fatture registrate. Prima Nota paghe gen+feb processate. F24 16/02: €763,93 pagato. F24 16/03: €220,10 + ritenute.",
+  "statusMessage": "Fonte: registro.json (95 mov., 67 fatt., 32 scad.). Dati finanziari al 28/02/2026 — E/C marzo e aprile non ancora importati. Scadenze urgenti: Dich. IVA 2025 30/04 (Dandoli Barnini), INPS Marco €1.137 e INAIL €69 al 16-18/05.",
+  "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gen+feb analizzati: 95 movimenti. 67 fatture registrate. Marzo+aprile non processati. Prossimo: importare E/C marzo, processare documenti marzo.",
   "kpi": [
     {
       "label": "Incassi Gen+Feb",
@@ -60,9 +60,9 @@
       "class": "warning"
     },
     {
-      "label": "Uscite 16/03",
-      "value": "€310",
-      "sub": "F24 dip. €220 + ritenuta Palumbo €30 + ritenute royalties €60",
+      "label": "Scadenze 16-18/05",
+      "value": "€1.206",
+      "sub": "INPS Commercianti Marco €1.137 (16/05) + INAIL 2a rata €69 (18/05)",
       "class": "danger"
     },
     {
@@ -79,8 +79,8 @@
     },
     {
       "label": "Dati Mancanti",
-      "value": 17,
-      "sub": "Petrini €641 sconosciuto, TS feb breakdown, OpenAI cambio EUR, PF Concept ft. mancante",
+      "value": 14,
+      "sub": "Petrini €641 sconosciuto, OpenAI USD, Canva periodo, Maikii ft., PF Concept, Pluxee diff.",
       "class": "warning",
       "subText": ""
     },
@@ -176,88 +176,88 @@
       "data": "05 Mar 2026",
       "adempimento": "Roly ft. 2010929322 — €126,01 SCADUTA (campioni abbigliamento, IVA spagnola)",
       "frequenza": "Una tantum",
-      "stato": "past",
-      "statoLabel": "Scaduto",
+      "stato": "overdue",
+      "statoLabel": "SCADUTA — da confermare",
       "chi": "Noi"
     },
     {
       "data": "12 Mar 2026",
       "adempimento": "Roly ft. 2010938615 — €142,37 SCADUTA (abbigliamento lavoro)",
       "frequenza": "Una tantum",
-      "stato": "past",
-      "statoLabel": "Scaduto",
+      "stato": "overdue",
+      "statoLabel": "SCADUTA — da confermare",
       "chi": "Noi"
     },
     {
       "data": "16 Mar 2026",
       "adempimento": "F24 contributi/ritenute febbraio — €220,10 (INPS DM10 €264 - bonus €43,90)",
       "frequenza": "Mensile",
-      "stato": "upcoming",
-      "statoLabel": "In scadenza",
+      "stato": "overdue",
+      "statoLabel": "SCADUTA — da confermare",
       "chi": "Commercialista"
     },
     {
       "data": "16 Mar 2026",
       "adempimento": "Ritenuta d'acconto Avv. Palumbo — €30,00 (cod. tributo 1040, feb 2026). Possibilmente già nel F24 27/02 (€60,94)",
       "frequenza": "Mensile",
-      "stato": "upcoming",
-      "statoLabel": "In scadenza",
+      "stato": "overdue",
+      "statoLabel": "SCADUTA — da confermare",
       "chi": "Commercialista"
     },
     {
       "data": "16 Mar 2026",
       "adempimento": "Ritenute royalties marchio — €60 (Sala Silvana €30 + Vurro Nicola €30, cod. 1040)",
       "frequenza": "Mensile",
-      "stato": "upcoming",
-      "statoLabel": "In scadenza",
+      "stato": "overdue",
+      "statoLabel": "SCADUTA — da confermare",
       "chi": "Commercialista"
     },
     {
       "data": "31 Mar 2026",
       "adempimento": "Rimborso km febbraio Marco — €895,48 (12 trasferte, 1.750 km)",
       "frequenza": "Mensile",
-      "stato": "upcoming",
-      "statoLabel": "In scadenza",
+      "stato": "overdue",
+      "statoLabel": "SCADUTA — da confermare",
       "chi": "Noi"
     },
     {
       "data": "16 Apr 2026",
       "adempimento": "F24 contributi/ritenute marzo",
       "frequenza": "Mensile",
-      "stato": "info",
-      "statoLabel": "In programma",
+      "stato": "overdue",
+      "statoLabel": "SCADUTA — importo ignoto",
       "chi": "Commercialista"
     },
     {
       "data": "30 Apr 2026",
-      "adempimento": "Dichiarazione annuale IVA",
+      "adempimento": "Dichiarazione annuale IVA 2025 — competenza Dandoli Barnini (ex commercialista). Verificare presentazione!",
       "frequenza": "Annuale",
-      "stato": "info",
-      "statoLabel": "In programma",
+      "stato": "danger",
+      "statoLabel": "⚠️ DOPODOMANI — Dandoli Barnini",
       "chi": "Commercialista"
     },
     {
       "data": "16 Mag 2026",
       "adempimento": "INPS Commercianti Marco — 1a rata fisso 2026 ~€1.137",
       "frequenza": "Trimestrale",
-      "stato": "info",
-      "statoLabel": "In programma",
+      "stato": "upcoming",
+      "statoLabel": "18 giorni",
       "chi": "Marco (F24 personale)"
     },
     {
       "data": "16 Mag 2026",
       "adempimento": "Versamento IVA I trimestre 2026 — CREDITO €617 (nessun versamento)",
       "frequenza": "Trimestrale",
-      "stato": "info",
-      "statoLabel": "In programma",
+      "stato": "upcoming",
+      "statoLabel": "18 giorni",
       "chi": "Commercialista"
     },
     {
       "data": "18 Mag 2026",
       "adempimento": "INAIL autoliquidazione 2a rata — €69,10",
       "frequenza": "Annuale (4 rate)",
-      "stato": "info",
-      "statoLabel": "In programma",
+      "stato": "upcoming",
+      "statoLabel": "18 giorni",
       "chi": "Commercialista"
     },
     {
