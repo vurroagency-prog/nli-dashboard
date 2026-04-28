@@ -86,8 +86,8 @@
     },
     {
       "label": "Debito verso Marco",
-      "value": "€3.675",
-      "sub": "8 spese gen-feb €2.780 + Anthropic x6 €215 + OpenAI x2 €50 + Hostinger €216 + rimborso km feb €895",
+      "value": "€2.480",
+      "sub": "8 spese gen-feb carta personale (€2.780) - conguaglio KM mar €300 = €2.480,05. KM tutti pagati (gen/feb/mar).",
       "class": "warning"
     }
   ],
@@ -279,7 +279,7 @@
     },
     {
       "tipo": "warning",
-      "testo": "RIMBORSO KM FEB: €895,48 da pagare a Marco entro 31/03 (12 trasferte, 1.750 km, Peugeot 3008)."
+      "testo": "ANTICIPAZIONI MARCO: €2.480,05 in sospeso — acquisti gen-feb con carta personale. KM gen/feb/mar tutti pagati. Policy 28/04: nessun futuro rimborso KM o carta personale. Organizzare bonifico NLI → Marco entro fine maggio."
     },
     {
       "tipo": "info",
@@ -295,7 +295,7 @@
     },
     {
       "tipo": "warning",
-      "testo": "DEBITO VERSO MARCO: €3.675 in sospeso — 8 anticipi gen-feb (€2.780) + 9 fatture estere feb pagate da Marco (Anthropic x6, OpenAI x2, Hostinger VPS) + rimborso km feb €895."
+      "testo": "ANTICIPAZIONI MARCO: €2.480,05 in sospeso — 8 spese gen-feb carta personale (€2.780) meno conguaglio €300 overpayment KM marzo = €2.480,05. KM tutti pagati. Policy 28/04: nessun futuro rimborso KM né carta personale."
     },
     {
       "tipo": "warning",
@@ -330,7 +330,7 @@
       "testo": "RICONCILIAZIONE: 4 movimenti non ancora abbinati a fatture (3 gen + 1 feb). Metrie €469 + 2 GOR/Roly €467 + TS Payments €279. Dettaglio nel tab Banca."
     }
   ],
-  "suggerimenti": "1) URGENTE: pagare 2 fatture Roly scadute (€268 totale). 2) SCADENZA 16/03: F24 €220 + ritenute €90 = ~€310. 3) Rimborso km feb Marco: €895 entro 31/03. 4) INCASSI: €2.691 da 3 clienti (Ecomondi, De Giglio, Dinamica) — sollecitare. 5) Debito verso Marco €3.675 — organizzare rimborso. 6) RICAVI IN CALO: gen-feb 2026 -73,5% vs 2025 — servono nuove vendite. 7) Chiarire pagamento Petrini €641. 8) Richiedere breakdown TS Payments feb. 9) Offerta Frisbi scaduta — decidere. 10) Diversificare clienti (SiliconDev 40%).",
+  "suggerimenti": "1) URGENTE: pagare 2 fatture Roly scadute (€268 totale). 2) SCADENZA 16/03: F24 €220 + ritenute €90 = ~€310. 3) KM gen/feb/mar tutti pagati. 4) INCASSI: €2.691 da 3 clienti (Ecomondi, De Giglio, Dinamica) — sollecitare. 5) Anticipazioni Marco €2.480,05 (KM pagati) — organizzare rimborso. 6) RICAVI IN CALO: gen-feb 2026 -73,5% vs 2025 — servono nuove vendite. 7) Chiarire pagamento Petrini €641. 8) Richiedere breakdown TS Payments feb. 9) Offerta Frisbi scaduta — decidere. 10) Diversificare clienti (SiliconDev 40%).",
   "setupChecklist": [
     {
       "label": "Visura camerale",
@@ -2144,15 +2144,9 @@
           "certezza": "certo"
         },
         {
-          "voce": "Rimborso km febbraio Marco",
+          "voce": "Anticipazioni Marco — acquisti carta personale gen-feb",
           "tipo": "uscita",
-          "importo": "€895",
-          "certezza": "certo"
-        },
-        {
-          "voce": "Rimborso spese Marco (anticipi gen-feb)",
-          "tipo": "uscita",
-          "importo": "€3.675",
+          "importo": "€2.480",
           "certezza": "certo"
         },
         {
@@ -2497,7 +2491,7 @@
           },
           {
             "label": "Debiti verso soci",
-            "importo": 3675
+            "importo": 2480.05
           },
           {
             "label": "Fondo TFR",
