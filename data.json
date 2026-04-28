@@ -93,252 +93,179 @@
   ],
   "scadenze": [
     {
-      "data": "1° ogni mese",
-      "adempimento": "Pagamento affitto sede €350",
-      "frequenza": "Mensile",
-      "stato": "upcoming",
-      "statoLabel": "Ricorrente",
-      "chi": "Noi"
+      "id": "SCAD-2026-0007",
+      "descrizione": "Invio Certificazione Unica (CU) all'Agenzia delle Entrate",
+      "scadenza": "",
+      "importo": "—",
+      "stato": "in_attesa_dati"
     },
     {
-      "data": "10 ogni mese",
-      "adempimento": "Riepilogo TeamSystem Payments — richiedere a Marco",
-      "frequenza": "Mensile",
-      "stato": "upcoming",
-      "statoLabel": "Ricorrente",
-      "chi": "Noi"
+      "id": "SCAD-2026-0008",
+      "descrizione": "Consegna CU ai collaboratori (Festa Daniele)",
+      "scadenza": "",
+      "importo": "—",
+      "stato": "in_attesa_dati"
     },
     {
-      "data": "16 Feb 2026",
-      "adempimento": "F24 contributi/ritenute gennaio — €763,93 pagato (INPS + IRPEF + INAIL + ritenute)",
-      "frequenza": "Mensile",
-      "stato": "past",
-      "statoLabel": "Pagato",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0010",
+      "descrizione": "F24 contributi/ritenute febbraio 2026 — INPS DM10 €264 - bonus 1704 €43,90 = saldo €220,10",
+      "scadenza": "",
+      "importo": "€220,10",
+      "stato": "da_pagare"
     },
     {
-      "data": "16 Feb 2026",
-      "adempimento": "INAIL autoliquidazione 1a rata — €68,65 (inclusa in F24)",
-      "frequenza": "Annuale (4 rate)",
-      "stato": "past",
-      "statoLabel": "Pagato",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0031",
+      "descrizione": "Ritenute d'acconto royalties marchio — Sala Silvana €30 + Vurro Nicola €30 — cod. tributo 1040, competenza feb 2026",
+      "scadenza": "",
+      "importo": "€60,00",
+      "stato": "da_pagare"
     },
     {
-      "data": "16 Feb 2026",
-      "adempimento": "Bonifico a Marco per INPS Commercianti 4a rata 2025 — €1.128,82 pagato",
-      "frequenza": "Trimestrale",
-      "stato": "past",
-      "statoLabel": "Pagato",
-      "chi": "Noi + Marco"
+      "id": "SCAD-2026-0032",
+      "descrizione": "Rimborso km febbraio 2026 Marco Vurro — 12 trasferte, 1.750 km, Peugeot 3008 (€0,5117/km)",
+      "scadenza": "",
+      "importo": "€895,48",
+      "stato": "da_pagare"
     },
     {
-      "data": "16 Feb 2026",
-      "adempimento": "Ritenuta d'acconto Studio Fatone Gasso — €34,50 (inclusa in F24 17/02 €60,05)",
-      "frequenza": "Mensile",
-      "stato": "past",
-      "statoLabel": "Pagato",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0012",
+      "descrizione": "Versamento saldo INPS + 1° acconto",
+      "scadenza": "",
+      "importo": "—",
+      "stato": "in_attesa_dati"
     },
     {
-      "data": "24 Feb 2026",
-      "adempimento": "TFR + arretrati Claudia Loconsole — €1.175,92 pagato",
-      "frequenza": "Una tantum",
-      "stato": "past",
-      "statoLabel": "Pagato",
-      "chi": "Noi"
+      "id": "SCAD-2026-0013",
+      "descrizione": "F24 contributi/ritenute marzo 2026",
+      "scadenza": "",
+      "importo": "—",
+      "stato": "in_attesa_dati"
     },
     {
-      "data": "28 Feb 2026",
-      "adempimento": "Invio Certificazione Unica (CU) all'AdE",
-      "frequenza": "Annuale",
-      "stato": "past",
-      "statoLabel": "In attesa conf.",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0014",
+      "descrizione": "Dichiarazione annuale IVA",
+      "scadenza": "",
+      "importo": "—",
+      "stato": "in_attesa_dati"
     },
     {
-      "data": "28 Feb 2026",
-      "adempimento": "Consegna CU ai collaboratori",
-      "frequenza": "Annuale",
-      "stato": "past",
-      "statoLabel": "In attesa conf.",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0016",
+      "descrizione": "INAIL autoliquidazione 2026 — 2a rata",
+      "scadenza": "",
+      "importo": "€69,10",
+      "stato": "da_pagare"
     },
     {
-      "data": "28 Feb 2026",
-      "adempimento": "Decisione offerta energia Frisbi STAR BUSINESS PO",
-      "frequenza": "Una tantum",
-      "stato": "past",
-      "statoLabel": "Scaduto",
-      "chi": "Noi"
+      "id": "SCAD-2026-0017",
+      "descrizione": "Invio LIPE I trimestre 2026",
+      "scadenza": "",
+      "importo": "—",
+      "stato": "in_attesa_dati"
     },
     {
-      "data": "05 Mar 2026",
-      "adempimento": "Roly ft. 2010929322 — €126,01 SCADUTA (campioni abbigliamento, IVA spagnola)",
-      "frequenza": "Una tantum",
-      "stato": "overdue",
-      "statoLabel": "SCADUTA — da confermare",
-      "chi": "Noi"
+      "id": "SCAD-2026-0018",
+      "descrizione": "Saldo imposte 2025 + 1° acconto 2026 — IRAP (NLI) + IRPEF Marco + IRPEF Sajay + INPS eccedenza Marco. Importi dal commercialista, stima in previsioneFiscale.",
+      "scadenza": "",
+      "importo": "—",
+      "stato": "in_attesa_dati"
     },
     {
-      "data": "12 Mar 2026",
-      "adempimento": "Roly ft. 2010938615 — €142,37 SCADUTA (abbigliamento lavoro)",
-      "frequenza": "Una tantum",
-      "stato": "overdue",
-      "statoLabel": "SCADUTA — da confermare",
-      "chi": "Noi"
+      "id": "SCAD-2026-0019",
+      "descrizione": "Diritto annuale CCIAA",
+      "scadenza": "",
+      "importo": "—",
+      "stato": "in_attesa_dati"
     },
     {
-      "data": "16 Mar 2026",
-      "adempimento": "F24 contributi/ritenute febbraio — €220,10 (INPS DM10 €264 - bonus €43,90)",
-      "frequenza": "Mensile",
-      "stato": "overdue",
-      "statoLabel": "SCADUTA — da confermare",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0020",
+      "descrizione": "Versamento IVA II trimestre 2026",
+      "scadenza": "",
+      "importo": "—",
+      "stato": "in_attesa_dati"
     },
     {
-      "data": "16 Mar 2026",
-      "adempimento": "Ritenuta d'acconto Avv. Palumbo — €30,00 (cod. tributo 1040, feb 2026). Possibilmente già nel F24 27/02 (€60,94)",
-      "frequenza": "Mensile",
-      "stato": "overdue",
-      "statoLabel": "SCADUTA — da confermare",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0021",
+      "descrizione": "INAIL autoliquidazione 2026 — 3a rata",
+      "scadenza": "",
+      "importo": "€69,57",
+      "stato": "da_pagare"
     },
     {
-      "data": "16 Mar 2026",
-      "adempimento": "Ritenute royalties marchio — €60 (Sala Silvana €30 + Vurro Nicola €30, cod. 1040)",
-      "frequenza": "Mensile",
-      "stato": "overdue",
-      "statoLabel": "SCADUTA — da confermare",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0022",
+      "descrizione": "Versamento IVA III trimestre 2026",
+      "scadenza": "",
+      "importo": "—",
+      "stato": "in_attesa_dati"
     },
     {
-      "data": "31 Mar 2026",
-      "adempimento": "Rimborso km febbraio Marco — €895,48 (12 trasferte, 1.750 km)",
-      "frequenza": "Mensile",
-      "stato": "overdue",
-      "statoLabel": "SCADUTA — da confermare",
-      "chi": "Noi"
+      "id": "SCAD-2026-0023",
+      "descrizione": "INAIL autoliquidazione 2026 — 4a rata",
+      "scadenza": "",
+      "importo": "€70,04",
+      "stato": "da_pagare"
     },
     {
-      "data": "16 Apr 2026",
-      "adempimento": "F24 contributi/ritenute marzo",
-      "frequenza": "Mensile",
-      "stato": "overdue",
-      "statoLabel": "SCADUTA — importo ignoto",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0024",
+      "descrizione": "2° acconto 2026 — IRAP (NLI) + IRPEF Marco + IRPEF Sajay + INPS eccedenza Marco + Dichiarazione Redditi SP + PF. Importi dal commercialista, stima in previsioneFiscale.",
+      "scadenza": "",
+      "importo": "—",
+      "stato": "in_attesa_dati"
     },
     {
-      "data": "30 Apr 2026",
-      "adempimento": "Dichiarazione annuale IVA 2025 — competenza Dandoli Barnini (ex commercialista). Verificare presentazione!",
-      "frequenza": "Annuale",
-      "stato": "danger",
-      "statoLabel": "⚠️ DOPODOMANI — Dandoli Barnini",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0025",
+      "descrizione": "Acconto IVA dicembre 2026",
+      "scadenza": "",
+      "importo": "—",
+      "stato": "in_attesa_dati"
     },
     {
-      "data": "16 Mag 2026",
-      "adempimento": "INPS Commercianti Marco — 1a rata fisso 2026 ~€1.137",
-      "frequenza": "Trimestrale",
-      "stato": "upcoming",
-      "statoLabel": "18 giorni",
-      "chi": "Marco (F24 personale)"
+      "id": "SCAD-2026-0026",
+      "descrizione": "Saldo IVA annuale 2026 (Q4 + conguaglio)",
+      "scadenza": "",
+      "importo": "—",
+      "stato": "in_attesa_dati"
     },
     {
-      "data": "16 Mag 2026",
-      "adempimento": "Versamento IVA I trimestre 2026 — CREDITO €617 (nessun versamento)",
-      "frequenza": "Trimestrale",
-      "stato": "upcoming",
-      "statoLabel": "18 giorni",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0027",
+      "descrizione": "INPS Commercianti Marco — 1a rata fisso 2026",
+      "scadenza": "",
+      "importo": "€1.137,00",
+      "stato": "da_pagare"
     },
     {
-      "data": "18 Mag 2026",
-      "adempimento": "INAIL autoliquidazione 2a rata — €69,10",
-      "frequenza": "Annuale (4 rate)",
-      "stato": "upcoming",
-      "statoLabel": "18 giorni",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0028",
+      "descrizione": "INPS Commercianti Marco — 2a rata fisso 2026",
+      "scadenza": "",
+      "importo": "€1.137,00",
+      "stato": "da_pagare"
     },
     {
-      "data": "31 Mag 2026",
-      "adempimento": "Invio LIPE I trimestre 2026",
-      "frequenza": "Trimestrale",
-      "stato": "info",
-      "statoLabel": "In programma",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0029",
+      "descrizione": "INPS Commercianti Marco — 3a rata fisso 2026",
+      "scadenza": "",
+      "importo": "€1.137,00",
+      "stato": "da_pagare"
     },
     {
-      "data": "30 Giu 2026",
-      "adempimento": "Saldo imposte (IRPEF/IRAP) + 1° acconto",
-      "frequenza": "Annuale",
-      "stato": "info",
-      "statoLabel": "In programma",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0030",
+      "descrizione": "INPS Commercianti Marco — 4a rata fisso 2026",
+      "scadenza": "",
+      "importo": "€1.137,00",
+      "stato": "da_pagare"
     },
     {
-      "data": "30 Giu 2026",
-      "adempimento": "Diritto annuale CCIAA",
-      "frequenza": "Annuale",
-      "stato": "info",
-      "statoLabel": "In programma",
-      "chi": "Commercialista"
+      "id": "SCAD-2026-0033",
+      "descrizione": "Timeflow S.R.L. — Decreto Ingiuntivo n.506/2026 rata 3/4",
+      "scadenza": "2026-05-13",
+      "importo": "€733,33",
+      "stato": "da_pagare"
     },
     {
-      "data": "20 Ago 2026",
-      "adempimento": "INPS Commercianti Marco — 2a rata fisso 2026 ~€1.137",
-      "frequenza": "Trimestrale",
-      "stato": "info",
-      "statoLabel": "In programma",
-      "chi": "Marco (F24 personale)"
-    },
-    {
-      "data": "20 Ago 2026",
-      "adempimento": "Versamento IVA II trimestre + INAIL 3a rata €69,57",
-      "frequenza": "Trimestrale",
-      "stato": "info",
-      "statoLabel": "In programma",
-      "chi": "Commercialista"
-    },
-    {
-      "data": "16 Nov 2026",
-      "adempimento": "INPS Commercianti Marco — 3a rata fisso 2026 ~€1.137",
-      "frequenza": "Trimestrale",
-      "stato": "info",
-      "statoLabel": "In programma",
-      "chi": "Marco (F24 personale)"
-    },
-    {
-      "data": "16 Nov 2026",
-      "adempimento": "Versamento IVA III trimestre + INAIL 4a rata €70,04",
-      "frequenza": "Trimestrale",
-      "stato": "info",
-      "statoLabel": "In programma",
-      "chi": "Commercialista"
-    },
-    {
-      "data": "30 Nov 2026",
-      "adempimento": "2° acconto imposte + INPS + Dichiarazione Redditi SP + PF",
-      "frequenza": "Annuale",
-      "stato": "info",
-      "statoLabel": "In programma",
-      "chi": "Commercialista"
-    },
-    {
-      "data": "27 Dic 2026",
-      "adempimento": "Acconto IVA dicembre",
-      "frequenza": "Annuale",
-      "stato": "info",
-      "statoLabel": "In programma",
-      "chi": "Commercialista"
-    },
-    {
-      "data": "16 Feb 2027",
-      "adempimento": "INPS Commercianti Marco — 4a rata fisso 2026 ~€1.137",
-      "frequenza": "Trimestrale",
-      "stato": "info",
-      "statoLabel": "In programma",
-      "chi": "Marco (F24 personale)"
+      "id": "SCAD-2026-0034",
+      "descrizione": "Timeflow S.R.L. — Decreto Ingiuntivo n.506/2026 rata 4/4",
+      "scadenza": "2026-06-13",
+      "importo": "€733,33",
+      "stato": "da_pagare"
     }
   ],
   "alert": [
@@ -1416,10 +1343,10 @@
         },
         {
           "data": "13/03",
-          "voce": "Timeflow S.R.L. — D.I. n.506/2026 prima rata",
+          "voce": "Timeflow S.R.L. — D.I. n.506/2026 rata 1/4",
           "voceBilancio": "B.7 Servizi",
           "importo": "€733,33",
-          "note": "Timeflow S.R.L. — D.I. n.506/2026 prima rata"
+          "note": "Timeflow S.R.L. — Decreto Ingiuntivo n.506/2026 rata 1/4"
         },
         {
           "data": "13/03",
@@ -1808,10 +1735,10 @@
         },
         {
           "data": "13/04",
-          "voce": "Timeflow S.R.L. — D.I. n.506/2026 seconda rata",
+          "voce": "Timeflow S.R.L. — D.I. n.506/2026 rata 2/4",
           "voceBilancio": "B.7 Servizi",
           "importo": "€733,33",
-          "note": "Timeflow S.R.L. — D.I. n.506/2026 seconda rata"
+          "note": "Timeflow S.R.L. — Decreto Ingiuntivo n.506/2026 rata 2/4"
         },
         {
           "data": "13/04",
