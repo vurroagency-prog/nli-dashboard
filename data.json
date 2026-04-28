@@ -1,5 +1,5 @@
 {
-  "lastUpdate": "28 Aprile 2026",
+  "lastUpdate": "28 aprile 2026",
   "fonte": "registro.json",
   "ebitdaTargetAnnuo": 100000,
   "statusMessage": "Fonte: registro.json (210 mov., 92 fatt., 32 scad.). Aggiornamento 28/04: importati gen-apr 2026 (+115 movimenti, +25 fatture mar-apr). Saldo banca 27/04: €16.611,21.",
@@ -472,112 +472,108 @@
       "entrate": [
         {
           "data": "02/01",
-          "voce": "Costruzioni Vulpio SRL",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Saldo fatt. 75 del 22/12/2025",
+          "voceBilancio": "A1_ricavi",
           "importo": "€1.534,76",
           "note": "Saldo fatt. 75 del 22/12/2025",
           "competenza": "2025"
         },
         {
           "data": "02/01",
-          "voce": "SiliconDev S.p.A.",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Rif. 57 del 31/10/2025",
+          "voceBilancio": "A1_ricavi",
           "importo": "€9.816,12",
           "note": "Rif. 57 del 31/10/2025",
           "competenza": "2025"
         },
         {
           "data": "05/01",
-          "voce": "TeamSystem Payments",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Artigianscavi SRL + Cubica di Lobascio — saldi pro",
+          "voceBilancio": "A1_ricavi",
           "importo": "€2.125,86",
-          "note": "TS-BIETLYGHM4 — Artigianscavi €1.536 + Cubica €590 (saldi proformas 2025)",
+          "note": "Artigianscavi SRL + Cubica di Lobascio — saldi proformas 2025",
           "competenza": "2025"
         },
         {
           "data": "08/01",
-          "voce": "De Nicolo C. S.r.l.",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Saldo fatt. 79 del 22/12/2025",
+          "voceBilancio": "A1_ricavi",
           "importo": "€1.221,22",
           "note": "Saldo fatt. 79 del 22/12/2025",
           "competenza": "2025"
         },
         {
           "data": "08/01",
-          "voce": "Dentitalia S.r.l.",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "1a rata fatt. 64 del 06/11/2025",
+          "voceBilancio": "A1_ricavi",
           "importo": "€3.715,25",
           "note": "1a rata fatt. 64 del 06/11/2025",
           "competenza": "2025"
         },
         {
           "data": "12/01",
-          "voce": "TeamSystem Payments",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "GD Tech + Ecomondi + Sia Impianti + Security Deale",
+          "voceBilancio": "A1_ricavi",
           "importo": "€1.913,01",
-          "note": "TS-BIJHDTXHTQ — GD Tech €1.198 + Security Dealers €418 + Ecomondi €186 + Sia Impianti €111",
+          "note": "GD Tech + Ecomondi + Sia Impianti + Security Dealers — saldi e acconti profor...",
           "competenza": "2025"
         },
         {
           "data": "15/01",
-          "voce": "Cassano SRL",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Saldo fatt. proforma 78",
+          "voceBilancio": "A1_ricavi",
           "importo": "€711,16",
           "note": "Saldo fatt. proforma 78",
           "competenza": "2025"
         },
         {
           "data": "19/01",
-          "voce": "TeamSystem Payments",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Costruire ArtigianLab SRL — rata manutenzione + si",
+          "voceBilancio": "A1_ricavi",
           "importo": "€208,18",
-          "note": "TS-BIN2VXTORE — Costruire ArtigianLab (rata manut.+sito)",
-          "competenza": "2026"
+          "note": "Costruire ArtigianLab SRL — rata manutenzione + sito (Proforma 29-30 del 06/0..."
         },
         {
           "data": "20/01",
-          "voce": "O.E.M. di De Lorenzo D. & C.",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Saldo fatt. 72 - NC 3 del 14/01",
+          "voceBilancio": "A1_ricavi",
           "importo": "€1.273,78",
-          "note": "Saldo fatt. 72 - NC 3 del 14/01",
-          "competenza": "2026"
+          "note": "Saldo fatt. 72 - NC 3 del 14/01"
         },
         {
           "data": "26/01",
-          "voce": "TeamSystem Payments",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "GIMA Costruzioni + Sureness + Emmeti Impianti + CO",
+          "voceBilancio": "A1_ricavi",
           "importo": "€992,02",
-          "note": "TS-BISOKRSZVQ — GIMA €708 + Sureness €121 + Emmeti €121 + COISA €47",
-          "competenza": "2026"
+          "note": "GIMA Costruzioni + Sureness + Emmeti Impianti + COISA Italia — rate mensili e..."
         },
         {
           "data": "28/01",
-          "voce": "Mec Welding Service SRL",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Saldo ft. 84 del 30/12/2025",
+          "voceBilancio": "A1_ricavi",
           "importo": "€1.337,12",
           "note": "Saldo ft. 84 del 30/12/2025",
           "competenza": "2025"
         },
         {
           "data": "29/01",
-          "voce": "Splendor SRL",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Saldo fattura 2 del 08/01/2026",
+          "voceBilancio": "A1_ricavi",
           "importo": "€366,00",
-          "note": "Saldo fattura 2 del 08/01/2026",
-          "competenza": "2026"
+          "note": "Saldo fattura 2 del 08/01/2026"
         },
         {
           "data": "29/01",
-          "voce": "RP SRL",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Saldo fatt. 10 del 13/03/2025 + spese d.i.",
+          "voceBilancio": "A1_ricavi",
           "importo": "€1.282,18",
           "note": "Saldo fatt. 10 del 13/03/2025 + spese d.i.",
           "competenza": "2025"
         },
         {
           "data": "30/01",
-          "voce": "Euro Impianti 2000 SRL",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Saldo ft. 85 del 30/12/2025",
+          "voceBilancio": "A1_ricavi",
           "importo": "€1.853,18",
           "note": "Saldo ft. 85 del 30/12/2025",
           "competenza": "2025"
@@ -586,1426 +582,1404 @@
       "uscite": [
         {
           "data": "02/01",
-          "voce": "Distribuzione utili soci uscenti",
-          "voceBilancio": "Straordinario",
+          "voce": "Distribuzione utili soci uscenti — NON ricorrente",
+          "voceBilancio": "STR_straordinario",
           "importo": "€10.000,00",
-          "note": "Alessandro Vurro + Claudia Loconsole — NON ricorrente"
+          "note": "Distribuzione utili soci uscenti — NON ricorrente"
         },
         {
           "data": "03/01",
-          "voce": "Stipendio Sajay (dic. 2025)",
-          "voceBilancio": "B.9 Stipendi",
+          "voce": "Stipendio netto dicembre 2025",
+          "voceBilancio": "B.9 Personale",
           "importo": "€662,00",
-          "note": "Busta paga dicembre 2025"
+          "note": "Stipendio netto dicembre 2025"
         },
         {
           "data": "03/01",
-          "voce": "Affitto sede",
+          "voce": "Affitto sede gennaio 2026",
           "voceBilancio": "B.8 Affitto sede",
           "importo": "€350,00",
-          "note": "Gennaio 2026 — Panebianco"
+          "note": "Affitto sede gennaio 2026"
         },
         {
           "data": "05/01",
-          "voce": "Imposta bollo e/c",
-          "voceBilancio": "B.14 Oneri diversi",
+          "voce": "Imposta bollo e rendiconto bancario",
+          "voceBilancio": "B14_oneri_diversi",
           "importo": "€25,20",
-          "note": "Bollo e rendiconto bancario"
+          "note": "Imposta bollo e rendiconto bancario"
         },
         {
           "data": "08/01",
-          "voce": "Elettra 2G SRL",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Storno parziale fatt. 62 — merce non conforme",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€549,00",
           "note": "Storno parziale fatt. 62 — merce non conforme"
         },
         {
           "data": "08/01",
-          "voce": "Metrie Spol. S.r.o.",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Saldo fatture — fornitore estero Rep. Ceca",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€469,50",
-          "note": "Saldo fatture — fornitore estero"
+          "note": "Saldo fatture — fornitore estero Rep. Ceca"
         },
         {
           "data": "08/01",
-          "voce": "Siggi Group",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Abbigliamento da lavoro",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€128,60",
           "note": "Abbigliamento da lavoro"
         },
         {
           "data": "09/01",
-          "voce": "Raffaele Lapenna",
-          "voceBilancio": "B.7 Posteggio",
+          "voce": "Posteggio auto — forfettario",
+          "voceBilancio": "B7_posteggio",
           "importo": "€120,00",
-          "note": "Saldo fatt. 926"
+          "note": "Posteggio auto — forfettario"
         },
         {
           "data": "11/01",
-          "voce": "Anticipo Utili 2025 Marco Vurro",
-          "voceBilancio": "Distribuzione utili",
+          "voce": "Causale bancaria errata: 'Rimborso macchinario DFT",
+          "voceBilancio": "distribuzione_utili",
           "importo": "€500,00",
-          "note": "Anticipo utili esercizio 2025 — causale bancaria errata"
+          "note": "Causale bancaria errata: 'Rimborso macchinario DFT'. Causale corretta: 'Antic..."
         },
         {
           "data": "12/01",
-          "voce": "GOR Factory (Roly)",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Abbigliamento da lavoro — SDD",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€244,13",
           "note": "Abbigliamento da lavoro — SDD"
         },
         {
           "data": "12/01",
-          "voce": "Rossini 1969 S.p.A.",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Abbigliamento da lavoro — Ri.Ba",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€58,66",
           "note": "Abbigliamento da lavoro — Ri.Ba"
         },
         {
           "data": "12/01",
-          "voce": "Pluxee Italia (welfare)",
-          "voceBilancio": "B.9 Buoni pasto",
+          "voce": "Buoni welfare dipendente",
+          "voceBilancio": "B.9 Personale",
           "importo": "€536,87",
           "note": "Buoni welfare dipendente"
         },
         {
           "data": "12/01",
-          "voce": "Royalties Silvana Sala Vurro",
-          "voceBilancio": "B.14 Royalties marchio",
+          "voce": "Royalties marchio Next Level",
+          "voceBilancio": "B14_oneri_diversi",
           "importo": "€170,00",
           "note": "Royalties marchio Next Level"
         },
         {
           "data": "12/01",
-          "voce": "Royalties Nicola Vurro",
-          "voceBilancio": "B.14 Royalties marchio",
+          "voce": "Royalties marchio Next Level",
+          "voceBilancio": "B14_oneri_diversi",
           "importo": "€170,00",
           "note": "Royalties marchio Next Level"
         },
         {
           "data": "13/01",
-          "voce": "WTGroup KgSAS",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Saldo fatture — oggetti promozionali",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€1.321,91",
-          "note": "Saldo fattura"
+          "note": "Saldo fatture — oggetti promozionali"
         },
         {
           "data": "14/01",
-          "voce": "OpusClip Inc.",
-          "voceBilancio": "B.7 Software operativi",
+          "voce": "Software video editing AI — SDD estero USA",
+          "voceBilancio": "B7_software_operativi",
           "importo": "€174,00",
-          "note": "Software video editing AI — SDD"
+          "note": "Software video editing AI — SDD estero USA"
         },
         {
           "data": "15/01",
-          "voce": "GOR Factory (Roly)",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Abbigliamento da lavoro — SDD",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€222,85",
           "note": "Abbigliamento da lavoro — SDD"
         },
         {
           "data": "15/01",
-          "voce": "Festa Daniele",
-          "voceBilancio": "B.7 Diritti d'autore",
+          "voce": "Diritti d'autore — 10 loghi",
+          "voceBilancio": "B7_diritti_autore",
           "importo": "€414,75",
           "note": "Diritti d'autore — 10 loghi"
         },
         {
+          "data": "16/01",
+          "voce": "AI sales/e-commerce tool — abbonamento annuale ($4",
+          "voceBilancio": "B7_software_operativi",
+          "importo": "€415,91",
+          "note": "AI sales/e-commerce tool — abbonamento annuale ($468 USD)"
+        },
+        {
           "data": "19/01",
-          "voce": "F24 contributi/ritenute",
-          "voceBilancio": "Tributi/contributi",
+          "voce": "F24 contributi dicembre 2025 (INPS €478 - bonus €7",
+          "voceBilancio": "TRIB_debiti",
           "importo": "€398,43",
-          "note": "INPS €478 - bonus €79,57 (dic. 2025)"
+          "note": "F24 contributi dicembre 2025 (INPS €478 - bonus €79,57)"
+        },
+        {
+          "data": "20/01",
+          "voce": "iPhone 17 Pro — uso aziendale confermato",
+          "voceBilancio": "B10_macchine_elettroniche",
+          "importo": "€1.408,94",
+          "note": "iPhone 17 Pro — uso aziendale confermato"
         },
         {
           "data": "21/01",
-          "voce": "Sendcloud SRL",
-          "voceBilancio": "B.7 Spedizioni",
+          "voce": "Spedizioni — 3 addebiti SDD aggregati",
+          "voceBilancio": "B7_spedizioni",
           "importo": "€45,07",
-          "note": "Spedizioni (3 addebiti SDD)"
+          "note": "Spedizioni — 3 addebiti SDD aggregati"
         },
         {
           "data": "22/01",
-          "voce": "Amazon Business",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Materiali vari — 2 addebiti SDD",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€114,70",
-          "note": "Materiali vari (2 addebiti)"
+          "note": "Materiali vari — 2 addebiti SDD"
         },
         {
           "data": "26/01",
-          "voce": "PF Concept International",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Oggetti promozionali — saldo 4 fatture",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€1.104,02",
           "note": "Oggetti promozionali — saldo 4 fatture"
         },
         {
           "data": "26/01",
-          "voce": "Stipendio Claudia (dic. 2025)",
-          "voceBilancio": "B.9 Stipendi",
+          "voce": "Ultimo stipendio netto dicembre 2025 — cessata 31/",
+          "voceBilancio": "B.9 Personale",
           "importo": "€636,49",
-          "note": "Ultima busta paga — cessata 31/12/2025"
+          "note": "Ultimo stipendio netto dicembre 2025 — cessata 31/12/2025"
         },
         {
           "data": "26/01",
-          "voce": "Restituzione quote soci",
-          "voceBilancio": "Straordinario",
+          "voce": "Restituzione quote soci (€250 + €250) — atto 29/12",
+          "voceBilancio": "STR_straordinario",
           "importo": "€500,00",
-          "note": "Alessandro €250 + Claudia €250 — atto 29/12/2025"
+          "note": "Restituzione quote soci (€250 + €250) — atto 29/12/2025"
         },
         {
           "data": "26/01",
-          "voce": "Fastweb SPA",
-          "voceBilancio": "B.7 Canoni servizio",
+          "voce": "Telefonia/internet gennaio",
+          "voceBilancio": "B7_canone_servizio",
           "importo": "€41,36",
-          "note": "Telefonia/internet"
+          "note": "Telefonia/internet gennaio"
         },
         {
           "data": "26/01",
-          "voce": "Studio Avv. Fatone Gasso",
-          "voceBilancio": "B.7 Consulenze legali",
+          "voce": "Consulenza legale — netto ritenuta 20% (lordo €218",
+          "voceBilancio": "B7_consulenze_legali",
           "importo": "€184,37",
-          "note": "Consulenza legale (ritenuta 20% = €34,50 da versare 16/02)"
+          "note": "Consulenza legale — netto ritenuta 20% (lordo €218,87, ritenuta €34,50)"
         },
         {
           "data": "26/01",
-          "voce": "Rimborso spese Alessandro",
-          "voceBilancio": "B.7 Rimborsi spese soci",
+          "voce": "Rimborso spese dicembre",
+          "voceBilancio": "B7_rimborsi_spese_soci",
           "importo": "€129,00",
           "note": "Rimborso spese dicembre"
         },
         {
           "data": "30/01",
-          "voce": "Frisbi energia",
-          "voceBilancio": "B.7 Energia elettrica",
+          "voce": "Energia elettrica dicembre 2025",
+          "voceBilancio": "B7_energia_elettrica",
           "importo": "€89,47",
-          "note": "Bolletta energia elettrica"
+          "note": "Energia elettrica dicembre 2025"
         },
         {
           "data": "31/01",
-          "voce": "Spese bancarie",
-          "voceBilancio": "C. Spese bancarie",
+          "voce": "Spese bancarie: bonifici ist. €19 + SDD €9 + canon",
+          "voceBilancio": "C_oneri_finanziari",
           "importo": "€28,50",
-          "note": "Bonifici ist. €19 + SDD €9 + canone €0,50"
+          "note": "Spese bancarie: bonifici ist. €19 + SDD €9 + canone €0,50"
         },
         {
           "data": "31/01",
-          "voce": "Commissioni TS Payments",
-          "voceBilancio": "C. Spese bancarie",
-          "importo": "€14,30",
-          "note": "11 incassi SDD × €1,30 — trattenuta all'origine"
-        },
-        {
-          "data": "16/01",
-          "voce": "Sintra.ai",
-          "voceBilancio": "B.7 Software operativi",
-          "importo": "€415,91",
-          "note": "AI sales tool — anticipato da Marco (conto personale)"
-        },
-        {
-          "data": "20/01",
-          "voce": "MediaMarket (iPhone 17 Pro)",
-          "voceBilancio": "B.10 Immobilizzazione",
-          "importo": "€1.408,94",
-          "note": "Uso aziendale confermato — anticipato da Marco (conto personale)"
-        },
-        {
-          "data": "31/01",
-          "voce": "Claude.ai (Anthropic)",
-          "voceBilancio": "B.7 Software operativi",
+          "voce": "Abbonamento AI — mensile",
+          "voceBilancio": "B7_software_operativi",
           "importo": "€86,44",
-          "note": "AI subscription — anticipato da Marco (conto personale)"
+          "note": "Abbonamento AI — mensile"
+        },
+        {
+          "data": "31/01",
+          "voce": "Commissioni incasso SDD gennaio 2026 — 11 operazio",
+          "voceBilancio": "C Spese bancarie",
+          "importo": "€14,30",
+          "note": "Commissioni incasso SDD gennaio 2026 — 11 operazioni × €1,30 fisso. Trattenut..."
         }
-      ],
-      "totaleEntrate": "€28.349,84",
-      "totaleUscite": "€19.388,88",
-      "costiOperativi": "€10.800,17",
-      "costiStraordinari": "€10.500,00",
-      "saldo": "+€8.960,96",
-      "ebitda": "€17.550",
-      "utileNetto": "€8.775",
-      "note": "Incl. €1.911,29 spese anticipate da Marco (conto personale). Non transitano su E/C banca NLI."
+      ]
     },
     {
       "mese": "Febbraio 2026",
       "entrate": [
         {
           "data": "02/02",
-          "voce": "TeamSystem Payments",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Incassi SDD clienti — in attesa breakdown",
+          "voceBilancio": "A1_ricavi",
           "importo": "€1.444,18",
-          "note": "TS-BIXB7T7PK4 — in attesa breakdown clienti",
+          "note": "Incassi SDD clienti — in attesa breakdown",
           "competenza": "da_verificare"
         },
         {
           "data": "09/02",
-          "voce": "TeamSystem Payments",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Incassi SDD clienti — in attesa breakdown",
+          "voceBilancio": "A1_ricavi",
           "importo": "€385,76",
-          "note": "TS-BI3VU2F4ZQ — in attesa breakdown clienti",
+          "note": "Incassi SDD clienti — in attesa breakdown",
           "competenza": "da_verificare"
         },
         {
           "data": "09/02",
-          "voce": "Global Project Costruzioni SRLS",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Saldo fattura n.87 del 30/12/2025",
+          "voceBilancio": "A1_ricavi",
           "importo": "€2.425,12",
-          "note": "Saldo fatt. 87 del 30/12/2025",
+          "note": "Saldo fattura n.87 del 30/12/2025",
           "competenza": "2025"
         },
         {
           "data": "16/02",
-          "voce": "TeamSystem Payments",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Incassi SDD clienti — 4 clienti (GD Tech, Ecomondi",
+          "voceBilancio": "A1_ricavi",
           "importo": "€2.508,47",
-          "note": "TS-BJAJMOWEDE — in attesa breakdown clienti",
-          "competenza": "da_verificare"
+          "note": "Incassi SDD clienti — 4 clienti (GD Tech, Ecomondi, Lavanderia NI.DA., Piesse)",
+          "competenza": "misto"
         },
         {
           "data": "18/02",
-          "voce": "Amir SRL",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Acconto vs fattura pro forma n.8",
+          "voceBilancio": "A1_ricavi",
           "importo": "€268,68",
-          "note": "Acconto proforma 8",
-          "competenza": "2026"
+          "note": "Acconto vs fattura pro forma n.8"
         },
         {
           "data": "20/02",
-          "voce": "GIS Professional Services SRLS",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Acconto fatt. n.66 del 17/11/2025",
+          "voceBilancio": "A1_ricavi",
           "importo": "€399,00",
-          "note": "Acconto fatt. 66 del 17/11/2025",
+          "note": "Acconto fatt. n.66 del 17/11/2025",
           "competenza": "2025"
         },
         {
           "data": "23/02",
-          "voce": "TeamSystem Payments",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Incassi SDD clienti — 4 clienti (ArtigianLab, De G",
+          "voceBilancio": "A1_ricavi",
           "importo": "€1.341,65",
-          "note": "TS-BJE5BM6FY4 — in attesa breakdown clienti",
-          "competenza": "da_verificare"
+          "note": "Incassi SDD clienti — 4 clienti (ArtigianLab, De Giglio, Emmetiimpianti, Sure...",
+          "competenza": "misto"
         },
         {
           "data": "24/02",
-          "voce": "Digitality Consulting SRL",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Saldo fattura nr.7 del 19/02/2026",
+          "voceBilancio": "A1_ricavi",
           "importo": "€427,00",
-          "note": "Saldo FV 7 — consulenza",
-          "competenza": "2026"
+          "note": "Saldo fattura nr.7 del 19/02/2026"
         },
         {
           "data": "25/02",
-          "voce": "SiliconDev S.p.A.",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Saldo fatture rif. 69 del 30/11/2025 e 89 del 30/1",
+          "voceBilancio": "A1_ricavi",
           "importo": "€8.540,02",
-          "note": "Saldo fatt. 69 (30/11/2025) + fatt. 89 (30/12/2025)",
+          "note": "Saldo fatture rif. 69 del 30/11/2025 e 89 del 30/12/2025",
           "competenza": "2025"
         },
         {
           "data": "27/02",
-          "voce": "TeamSystem Payments",
-          "voceBilancio": "A.1 Ricavi vendite",
+          "voce": "Incassi SDD clienti — 2 clienti (Coisa Italia, Din",
+          "voceBilancio": "A1_ricavi",
           "importo": "€278,91",
-          "note": "TS-BJJQTZTZQ4 — in attesa breakdown clienti",
-          "competenza": "da_verificare"
+          "note": "Incassi SDD clienti — 2 clienti (Coisa Italia, Dinamiche Pulizie)",
+          "competenza": "misto"
         }
       ],
       "uscite": [
         {
           "data": "01/02",
-          "voce": "Affitto sede",
+          "voce": "Affitto sede febbraio 2026",
           "voceBilancio": "B.8 Affitto sede",
           "importo": "€350,00",
-          "note": "Via Fieramosca 20, Bari — Panebianco"
+          "note": "Affitto sede febbraio 2026"
+        },
+        {
+          "data": "01/02",
+          "voce": "Hosting VPS — rinnovo",
+          "voceBilancio": "B7_hosting_tool_digitali",
+          "importo": "€150,98",
+          "note": "Hosting VPS — rinnovo"
         },
         {
           "data": "02/02",
-          "voce": "Stipendio Sajay (gen. 2026)",
-          "voceBilancio": "B.9 Stipendi",
+          "voce": "Plugin website builder — abbonamento",
+          "voceBilancio": "B7_software_operativi",
+          "importo": "€203,88",
+          "note": "Plugin website builder — abbonamento"
+        },
+        {
+          "data": "02/02",
+          "voce": "Tagliando auto aziendale (Peugeot 3008 GC979EJ)",
+          "voceBilancio": "B7_manutenzione_auto",
+          "importo": "€200,00",
+          "note": "Tagliando auto aziendale (Peugeot 3008 GC979EJ)"
+        },
+        {
+          "data": "02/02",
+          "voce": "Stipendio netto gennaio 2026",
+          "voceBilancio": "B.9 Personale",
           "importo": "€662,00",
-          "note": "Netto busta €663, E/C €662 (diff. €1 arrotondamento)"
+          "note": "Stipendio netto gennaio 2026"
         },
         {
           "data": "02/02",
-          "voce": "Royalties Sala Silvana",
-          "voceBilancio": "B.14 Royalties marchio",
+          "voce": "Royalties marchio Next Level n° reg. 3020230000785",
+          "voceBilancio": "B14_oneri_diversi",
           "importo": "€170,00",
-          "note": "Lordo €200, ritenuta 20% su 75% = €30, netto €170"
+          "note": "Royalties marchio Next Level n° reg. 302023000078576 — febbraio 2026"
         },
         {
           "data": "02/02",
-          "voce": "Royalties Vurro Nicola",
-          "voceBilancio": "B.14 Royalties marchio",
+          "voce": "Royalties marchio Next Level n° reg. 3020230000785",
+          "voceBilancio": "B14_oneri_diversi",
           "importo": "€170,00",
-          "note": "Lordo €200, ritenuta 20% su 75% = €30, netto €170"
+          "note": "Royalties marchio Next Level n° reg. 302023000078576 — febbraio 2026"
         },
         {
           "data": "02/02",
-          "voce": "Avv. Palumbo (consulenza legale)",
-          "voceBilancio": "B.7 Consulenze legali",
+          "voce": "Procedimento monitorio RP SRL — netto ritenuta 20%",
+          "voceBilancio": "B7_consulenze_legali",
           "importo": "€160,32",
-          "note": "Proc. monitorio RP SRL — netto ritenuta 20% (lordo €190,32)"
+          "note": "Procedimento monitorio RP SRL — netto ritenuta 20% (lordo €190,32, ritenuta €30)"
         },
         {
           "data": "02/02",
-          "voce": "Condominio Fieramosca",
-          "voceBilancio": "B.8 Spese condominiali",
+          "voce": "Spese condominiali febbraio 2026",
+          "voceBilancio": "B.8 Affitto sede",
           "importo": "€13,00",
-          "note": "Spese condominiali febbraio"
+          "note": "Spese condominiali febbraio 2026"
         },
         {
           "data": "03/02",
-          "voce": "Pluxee Italia (buoni pasto)",
-          "voceBilancio": "B.9 Buoni pasto",
+          "voce": "Design tool — abbonamento",
+          "voceBilancio": "B7_software_operativi",
+          "importo": "€139,90",
+          "note": "Design tool — abbonamento"
+        },
+        {
+          "data": "03/02",
+          "voce": "Marketplace digitale — acquisto",
+          "voceBilancio": "B7_software_operativi",
+          "importo": "€174,00",
+          "note": "Marketplace digitale — acquisto"
+        },
+        {
+          "data": "03/02",
+          "voce": "Buoni pasto elettronici — pagamento RDA2600011120",
+          "voceBilancio": "B.9 Personale",
           "importo": "€161,24",
-          "note": "19 ricariche buoni pasto elettronici"
+          "note": "Buoni pasto elettronici — pagamento RDA2600011120"
         },
         {
           "data": "03/02",
-          "voce": "Sendcloud SRL",
-          "voceBilancio": "B.7 Spedizioni",
+          "voce": "Costo pacco — SDD",
+          "voceBilancio": "B7_spedizioni",
           "importo": "€0,85",
           "note": "Costo pacco — SDD"
         },
         {
           "data": "04/02",
-          "voce": "Raffaele Lapenna",
-          "voceBilancio": "B.7 Posteggio",
+          "voce": "Posteggio auto febbraio — ft.1026 forfettario",
+          "voceBilancio": "B7_posteggio",
           "importo": "€120,00",
-          "note": "Posteggio auto febbraio — forfettario"
+          "note": "Posteggio auto febbraio — ft.1026 forfettario"
         },
         {
           "data": "04/02",
-          "voce": "Sendcloud SRL",
-          "voceBilancio": "B.7 Spedizioni",
+          "voce": "Spedizioni — SDD",
+          "voceBilancio": "B7_spedizioni",
           "importo": "€29,77",
           "note": "Spedizioni — SDD"
         },
         {
           "data": "05/02",
-          "voce": "Metrie Spol. S.r.o.",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Saldo fatt. 203260030, 203260032, 203260073 — forn",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€1.264,40",
-          "note": "Saldo 3 fatture (€269+€269+€727) — fornitore Rep. Ceca"
+          "note": "Saldo fatt. 203260030, 203260032, 203260073 — fornitore estero Rep. Ceca"
         },
         {
           "data": "06/02",
-          "voce": "Maikii SRL",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Conferma ordine MK540612 — gadget",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€79,30",
-          "note": "Gadget ordine MK540612 — fattura da richiedere"
+          "note": "Conferma ordine MK540612 — gadget"
         },
         {
           "data": "09/02",
-          "voce": "GOR Factory (Roly)",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Abbigliamento da lavoro — SDD",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€187,58",
           "note": "Abbigliamento da lavoro — SDD"
         },
         {
           "data": "09/02",
-          "voce": "Pluxee Italia (commissione)",
-          "voceBilancio": "B.7 Commissioni welfare",
+          "voce": "Commissione rimborsuale ft. VC26000114",
+          "voceBilancio": "B7_commissioni_welfare",
           "importo": "€12,05",
-          "note": "Commissione rimborsuale"
+          "note": "Commissione rimborsuale ft. VC26000114"
         },
         {
           "data": "10/02",
-          "voce": "Rossini 1969 S.p.A.",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Saldo ft. FE2521634 + FE2524354 — include fatture ",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€3.173,69",
-          "note": "Saldo cumulativo: FAT 2026 €458 + fatture 2025 €2.716"
+          "note": "Saldo ft. FE2521634 + FE2524354 — include fatture 2025 + FAT-0016 + FAT-0017"
         },
         {
           "data": "10/02",
-          "voce": "V Consulting SRL",
-          "voceBilancio": "B.7 Consulenza lavoro",
+          "voce": "Saldo ft. 38700 — elaborazione cedolini nov-dic 20",
+          "voceBilancio": "B7_consulenza_lavoro",
           "importo": "€195,20",
-          "note": "Elaborazione cedolini nov-dic 2025"
+          "note": "Saldo ft. 38700 — elaborazione cedolini nov-dic 2025"
         },
         {
           "data": "11/02",
-          "voce": "Valerio Petrini",
+          "voce": "Preavviso fattura del 02/01/2026 — fornitore scono",
           "voceBilancio": "B.7 Servizi",
           "importo": "€641,28",
-          "note": "DA VERIFICARE — fornitore sconosciuto"
+          "note": "Preavviso fattura del 02/01/2026 — fornitore sconosciuto"
         },
         {
           "data": "13/02",
-          "voce": "Rimborso km gen Marco",
-          "voceBilancio": "B.7 Rimborsi spese soci",
+          "voce": "Rimborso chilometrico gennaio 2026",
+          "voceBilancio": "B7_rimborsi_spese_soci",
           "importo": "€810,02",
           "note": "Rimborso chilometrico gennaio 2026"
         },
         {
           "data": "16/02",
-          "voce": "INPS Commercianti 4a rata 2025",
-          "voceBilancio": "B.9 INPS commercianti",
+          "voce": "Rimborso INPS Commercianti 4a rata 2025 — pagato d",
+          "voceBilancio": "B9_inps_commercianti",
           "importo": "€1.128,82",
-          "note": "Rimborso a Marco — F24 personale"
+          "note": "Rimborso INPS Commercianti 4a rata 2025 — pagato da Marco con F24 personale"
         },
         {
           "data": "16/02",
-          "voce": "F24 contributi/ritenute gen",
-          "voceBilancio": "Tributi/contributi",
+          "voce": "F24 contributi/ritenute gennaio 2026",
+          "voceBilancio": "TRIB_debiti",
           "importo": "€714,16",
-          "note": "INPS + IRPEF + INAIL gen (1° F24)"
+          "note": "F24 contributi/ritenute gennaio 2026"
         },
         {
           "data": "16/02",
-          "voce": "F24 aggiuntivo gen",
-          "voceBilancio": "Tributi/contributi",
+          "voce": "F24 aggiuntivo contributi gennaio 2026",
+          "voceBilancio": "TRIB_debiti",
           "importo": "€49,77",
-          "note": "2° addebito F24 gen"
+          "note": "F24 aggiuntivo contributi gennaio 2026"
         },
         {
           "data": "17/02",
-          "voce": "F24 ritenuta Fatone Gasso",
-          "voceBilancio": "Tributi/contributi",
+          "voce": "F24 — possibile ritenuta d'acconto Fatone Gasso ge",
+          "voceBilancio": "TRIB_debiti",
           "importo": "€60,05",
-          "note": "Ritenuta d'acconto gen (€34,50 + altro)"
+          "note": "F24 — possibile ritenuta d'acconto Fatone Gasso gen (€34,50) + altro"
         },
         {
           "data": "18/02",
-          "voce": "Sendcloud SRL",
-          "voceBilancio": "B.7 Spedizioni",
+          "voce": "Spedizioni — SDD",
+          "voceBilancio": "B7_spedizioni",
           "importo": "€15,74",
-          "note": "Poste Delivery Business 10-20kg"
+          "note": "Spedizioni — SDD"
         },
         {
           "data": "19/02",
-          "voce": "Frisbi energia",
-          "voceBilancio": "B.7 Energia elettrica",
+          "voce": "Energia elettrica gennaio 2026 — SDD",
+          "voceBilancio": "B7_energia_elettrica",
           "importo": "€95,66",
-          "note": "Energia elettrica gennaio 2026"
+          "note": "Energia elettrica gennaio 2026 — SDD"
         },
         {
           "data": "19/02",
-          "voce": "GOR Factory (Roly)",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Abbigliamento da lavoro — SDD",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€33,82",
           "note": "Abbigliamento da lavoro — SDD"
         },
         {
           "data": "23/02",
-          "voce": "TeamSystem S.P.A.",
-          "voceBilancio": "B.7 Canoni servizio",
+          "voce": "Rata 31/01 — CRM/software",
+          "voceBilancio": "B7_canone_servizio",
           "importo": "€71,38",
-          "note": "Rata CRM/software — da verificare"
+          "note": "Rata 31/01 — CRM/software"
         },
         {
           "data": "24/02",
-          "voce": "TFR Claudia Loconsole",
-          "voceBilancio": "B.9 TFR",
+          "voce": "TFR 2025 + arretrati — cessata 31/12/2025",
+          "voceBilancio": "B.9 Personale",
           "importo": "€1.175,92",
-          "note": "TFR 2025 + arretrati (lordo €1.473, trattenute €297)"
+          "note": "TFR 2025 + arretrati — cessata 31/12/2025"
         },
         {
           "data": "24/02",
-          "voce": "WT Group KG",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Saldo ft. RK-026-20260023 — oggetti promozionali",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€469,09",
-          "note": "Oggetti promozionali"
+          "note": "Saldo ft. RK-026-20260023 — oggetti promozionali"
         },
         {
           "data": "24/02",
-          "voce": "PF Concept International",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Saldo ft. 1926000062 — oggetti promozionali",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€82,12",
-          "note": "Oggetti promozionali — nuova fattura (stessa FAT-0004?)"
+          "note": "Saldo ft. 1926000062 — oggetti promozionali"
         },
         {
           "data": "25/02",
-          "voce": "Fastweb SPA",
-          "voceBilancio": "B.7 Canoni servizio",
+          "voce": "Telefonia/internet febbraio — SDD",
+          "voceBilancio": "B7_canone_servizio",
           "importo": "€41,36",
-          "note": "Telefonia/internet febbraio"
+          "note": "Telefonia/internet febbraio — SDD"
         },
         {
           "data": "26/02",
-          "voce": "GOR Factory (Roly)",
-          "voceBilancio": "B.6 Merci e prodotti",
+          "voce": "Abbigliamento da lavoro — SDD",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€150,69",
           "note": "Abbigliamento da lavoro — SDD"
         },
         {
           "data": "27/02",
-          "voce": "F24 ritenuta Palumbo + altro",
-          "voceBilancio": "Tributi/contributi",
+          "voce": "F24 — possibile ritenuta Palumbo (€30) + altro",
+          "voceBilancio": "TRIB_debiti",
           "importo": "€60,94",
-          "note": "Possibilmente ritenuta Palumbo €30 + altro €30,94"
+          "note": "F24 — possibile ritenuta Palumbo (€30) + altro"
         },
         {
           "data": "28/02",
-          "voce": "Spese bancarie",
-          "voceBilancio": "C. Spese bancarie",
+          "voce": "Spese bancarie feb: bon.ist. €18 + comm.SDD €7,20 ",
+          "voceBilancio": "C_oneri_finanziari",
           "importo": "€27,70",
-          "note": "Bon.ist. €18 + SDD €7,20 + bon.ord. €2 + canone €0,50"
-        },
-        {
-          "data": "01/02",
-          "voce": "Hostinger.com",
-          "voceBilancio": "B.7 Hosting/tool digitali",
-          "importo": "€150,98",
-          "note": "Hosting VPS — anticipato da Marco (conto personale)"
-        },
-        {
-          "data": "02/02",
-          "voce": "Elementor",
-          "voceBilancio": "B.7 Software operativi",
-          "importo": "€203,88",
-          "note": "Website builder — anticipato da Marco (conto personale)"
-        },
-        {
-          "data": "03/02",
-          "voce": "Canva",
-          "voceBilancio": "B.7 Software operativi",
-          "importo": "€139,90",
-          "note": "Design tool — anticipato da Marco (conto personale)"
-        },
-        {
-          "data": "03/02",
-          "voce": "Envato",
-          "voceBilancio": "B.7 Software operativi",
-          "importo": "€174,00",
-          "note": "Annual 198 (Feb 2026-Feb 2027) — anticipato da Marco"
-        },
-        {
-          "data": "02/02",
-          "voce": "Meccatronica Car Service",
-          "voceBilancio": "B.7 Manutenzione auto",
-          "importo": "€200,00",
-          "note": "Tagliando auto aziendale — anticipato da Marco"
+          "note": "Spese bancarie feb: bon.ist. €18 + comm.SDD €7,20 + bon.ord. €2 + canone €0,50"
         }
-      ],
-      "totaleEntrate": "€18.018,79",
-      "totaleUscite": "€13.246,68",
-      "costiOperativi": "€12.378",
-      "costiStraordinari": "€0",
-      "saldo": "+€5.361,96",
-      "ebitda": "€5.362",
-      "utileNetto": "€2.681",
-      "note": "E/C feb importato 10/03. Banca: entrate €17.740 + uscite €12.378. + €869 spese Marco (conto personale). Riconciliazione 90,5%. 5 accrediti TS in attesa breakdown."
+      ]
     },
     {
       "mese": "Marzo 2026",
-      "totaleEntrate": "€8.993,99",
-      "totaleUscite": "€8.608,04",
       "entrate": [
         {
-          "data": "02",
-          "voce": "ACCREDITO BEU CON CONTABILE",
+          "data": "02/03",
+          "voce": "Accredito TS Payments — TS-BJJQTZTZQ4",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€278,91",
-          "voceBilancio": "",
-          "note": "COD.DISP.: 0126030201360792 CASH TS-BJJQTZTZQ4 ACCREDITO TEA"
+          "note": "Accredito TS Payments — TS-BJJQTZTZQ4"
         },
         {
-          "data": "04",
-          "voce": "ACCREDITO BEU CON CONTABILE",
-          "importo": "€3715,25",
-          "voceBilancio": "",
-          "note": "COD.DISP.: 0126030409615304 CASH 120260303094423312XNLHM775X"
+          "data": "04/03",
+          "voce": "Dentitalia SRL — Saldo Fatt.29989 del 06/11/2025",
+          "voceBilancio": "A.1 Ricavi vendite",
+          "importo": "€3.715,25",
+          "note": "Dentitalia SRL — Saldo Fatt.29989 del 06/11/2025"
         },
         {
-          "data": "11",
-          "voce": "ACCREDITO BONIFICO ISTANTANEO",
+          "data": "11/03",
+          "voce": "Amir SRL — Saldo fattura proforma n.11",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€200,00",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126031182951470 CASH NOTPROVIDED Saldo vostra f"
+          "note": "Amir SRL — Saldo fattura proforma n.11"
         },
         {
-          "data": "16",
-          "voce": "ACCREDITO BEU CON CONTABILE",
-          "importo": "€1467,00",
-          "voceBilancio": "",
-          "note": "COD.DISP.: 0126031644880723 CASH TS-BJSYAQBSEI ACCREDITO TEA"
+          "data": "16/03",
+          "voce": "Accredito TS Payments — TS-BJSYAQBSEI",
+          "voceBilancio": "A.1 Ricavi vendite",
+          "importo": "€1.467,00",
+          "note": "Accredito TS Payments — TS-BJSYAQBSEI"
         },
         {
-          "data": "20",
-          "voce": "ACCREDITO BEU CON CONTABILE",
+          "data": "20/03",
+          "voce": "Edil Special — Pagamento abbigliamento da lavoro",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€470,81",
-          "voceBilancio": "",
-          "note": "COD.DISP.: 0126032001137779 CASH NOT PROVIDED PAGAMENTO ABBI"
+          "note": "Edil Special — Pagamento abbigliamento da lavoro"
         },
         {
-          "data": "23",
-          "voce": "ACCREDITO BEU CON CONTABILE",
-          "importo": "€1620,97",
-          "voceBilancio": "",
-          "note": "COD.DISP.: 0126032305826072 CASH TS-BJXLVKTVHE ACCREDITO TEA"
+          "data": "23/03",
+          "voce": "Accredito TS Payments — TS-BJXLVKTVHE",
+          "voceBilancio": "A.1 Ricavi vendite",
+          "importo": "€1.620,97",
+          "note": "Accredito TS Payments — TS-BJXLVKTVHE"
         },
         {
-          "data": "30",
-          "voce": "ACCREDITO BEU CON CONTABILE",
+          "data": "30/03",
+          "voce": "Accredito TS Payments — TS-BJ37HQRLHE",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€45,42",
-          "voceBilancio": "",
-          "note": "COD.DISP.: 0126033029383639 CASH TS-BJ37HQRLHE ACCREDITO TEA"
+          "note": "Accredito TS Payments — TS-BJ37HQRLHE"
         },
         {
-          "data": "31",
-          "voce": "ACCREDITO BONIFICO ISTANTANEO",
+          "data": "31/03",
+          "voce": "GIS Professional Services — Acconto Fattura n.66/2",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€399,00",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126033161973858 CASH 00120260331170824669640249"
+          "note": "GIS Professional Services — Acconto Fattura n.66/2025"
         },
         {
-          "data": "31",
-          "voce": "ACCREDITO BEU CON CONTABILE",
+          "data": "31/03",
+          "voce": "Costruzioni Vulpio — Acconto Fattura Proforma n.11",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€796,63",
-          "voceBilancio": "",
-          "note": "COD.DISP.: 0126033032715714 CASH NOTPROVIDED ACCONTO FATTURA"
+          "note": "Costruzioni Vulpio — Acconto Fattura Proforma n.11 del 27/03/2026"
         }
       ],
       "uscite": [
         {
-          "data": "02",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "02/03",
+          "voce": "Rimborso KM febbraio 2026 — Marco Vurro",
+          "voceBilancio": "B.9 Personale",
           "importo": "€895,48",
-          "voceBilancio": "",
-          "note": "0126030272810330 02INTER20260302HSRT1359669307 0306925291419"
+          "note": "Rimborso KM febbraio 2026 — Marco Vurro"
         },
         {
-          "data": "02",
-          "voce": "PAGAMENTO DISPOSIZ. ELETTRONICHE",
+          "data": "02/03",
+          "voce": "Contributi — Disposizione elettronica n.002",
+          "voceBilancio": "B.14 Imposte",
           "importo": "€406,45",
-          "voceBilancio": "",
-          "note": "PAGAMENTO N. 002 DISPOSIZIONI"
+          "note": "Contributi — Disposizione elettronica n.002"
         },
         {
-          "data": "02",
-          "voce": "PAGAMENTO ADUE",
+          "data": "02/03",
+          "voce": "Gor Factory S.A. — SDD (accredito)",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€31,24",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126021718345036 NOME: Gor Factory S.A MANDATO: "
+          "note": "Gor Factory S.A. — SDD (accredito)"
         },
         {
-          "data": "02",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "02/03",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126030272810330 02INTER20260302HSRT1359669307 0306925291419"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "02",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "02/03",
+          "voce": "Commissione SDD — Gor Factory",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126021718345036 NOME: Gor Factory S.A MANDATO: 2"
+          "note": "Commissione SDD — Gor Factory"
         },
         {
-          "data": "03",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "03/03",
+          "voce": "Pluxee Italia — Fattura VC26000144",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€424,40",
-          "voceBilancio": "",
-          "note": "0126030374224933 02INTER20260303HSRT1377156124 0306925336347"
+          "note": "Pluxee Italia — Fattura VC26000144"
         },
         {
-          "data": "03",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "03/03",
+          "voce": "Affitto sede marzo — Panebianco Antonia",
+          "voceBilancio": "B.8 Affitto sede",
           "importo": "€350,00",
-          "voceBilancio": "",
-          "note": "0126030374233360 02INTER20260303HSRT1380445759 0306925336617"
+          "note": "Affitto sede marzo — Panebianco Antonia"
         },
         {
-          "data": "03",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "03/03",
+          "voce": "Royalties marchio marzo — Silvana Sala / Nicola Vu",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€170,00",
-          "voceBilancio": "",
-          "note": "0126030374241540 02INTER20260303HSRT1383735684 0306925336894"
+          "note": "Royalties marchio marzo — Silvana Sala / Nicola Vurro"
         },
         {
-          "data": "03",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "03/03",
+          "voce": "Condominio Via Fieramosca 20 — gen+mar+acqua",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€41,74",
-          "voceBilancio": "",
-          "note": "0126030374261490 02INTER20260303HSRT1391458336 0306925337563"
+          "note": "Condominio Via Fieramosca 20 — gen+mar+acqua"
         },
         {
-          "data": "03",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "03/03",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126030374224933 02INTER20260303HSRT1377156124 0306925336347"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "03",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "03/03",
+          "voce": "Commissione SDD — Sendcloud",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126030203629783 NOME: Sendcloud S.r.l. MANDATO: "
+          "note": "Commissione SDD — Sendcloud"
         },
         {
-          "data": "03",
-          "voce": "PAGAMENTO ADUE",
+          "data": "03/03",
+          "voce": "Sendcloud S.r.l. — SDD",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€0,61",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126030203629783 NOME: Sendcloud S.r.l. MANDATO:"
+          "note": "Sendcloud S.r.l. — SDD"
         },
         {
-          "data": "04",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "04/03",
+          "voce": "Stipendio febbraio 2026 — Sajay Fernandez",
+          "voceBilancio": "B.9 Personale",
           "importo": "€663,00",
-          "voceBilancio": "",
-          "note": "0126030475365261 02INTER20260304HSRT1367126114 0306925372512"
+          "note": "Stipendio febbraio 2026 — Sajay Fernandez"
         },
         {
-          "data": "04",
-          "voce": "PAGAMENTO ADUE",
+          "data": "04/03",
+          "voce": "Sendcloud S.r.l. — SDD",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€44,00",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126030305553417 NOME: Sendcloud S.r.l. MANDATO:"
+          "note": "Sendcloud S.r.l. — SDD"
         },
         {
-          "data": "04",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "04/03",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126030475365261 02INTER20260304HSRT1367126114 0306925372512"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "04",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "04/03",
+          "voce": "Commissione SDD — Sendcloud",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126030305553417 NOME: Sendcloud S.r.l. MANDATO: "
+          "note": "Commissione SDD — Sendcloud"
         },
         {
-          "data": "05",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "05/03",
+          "voce": "Pluxee Italia Srl — Ordine RDA2600022386",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€169,73",
-          "voceBilancio": "",
-          "note": "0126030576704525 02INTER20260305HSRT1448638854 0306925415227"
+          "note": "Pluxee Italia Srl — Ordine RDA2600022386"
         },
         {
-          "data": "05",
-          "voce": "PAGAMENTO ADUE",
+          "data": "05/03",
+          "voce": "Gor Factory S.A. — SDD (Roly campioni)",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€126,01",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126030258955824 NOME: Gor Factory S.A MANDATO: "
+          "note": "Gor Factory S.A. — SDD (Roly campioni)"
         },
         {
-          "data": "05",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "05/03",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126030576704525 02INTER20260305HSRT1448638854 0306925415227"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "05",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "05/03",
+          "voce": "Commissione SDD — Gor Factory",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126030258955824 NOME: Gor Factory S.A MANDATO: 2"
+          "note": "Commissione SDD — Gor Factory"
         },
         {
-          "data": "10",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "10/03",
+          "voce": "Raffaele Lapenna — Fattura FPR 28/26 del 03.03.202",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€120,00",
-          "voceBilancio": "",
-          "note": "0126031081208861 02INTER20260310HSRT1340386070 0306925559360"
+          "note": "Raffaele Lapenna — Fattura FPR 28/26 del 03.03.2026"
         },
         {
-          "data": "10",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "10/03",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126031081208861 02INTER20260310HSRT1340386070 0306925559360"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "12",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "12/03",
+          "voce": "Avv. Chiara Palumbo — acconto/proforma (D'Attolico",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€372,02",
-          "voceBilancio": "",
-          "note": "0126031283585215 02INTER20260312HSRT1347486367 0306925637751"
+          "note": "Avv. Chiara Palumbo — acconto/proforma (D'Attolico)"
         },
         {
-          "data": "12",
-          "voce": "PAGAMENTO ADUE",
+          "data": "12/03",
+          "voce": "Gor Factory S.A. — SDD (Roly merce)",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€142,37",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126030258999147 NOME: Gor Factory S.A MANDATO: "
+          "note": "Gor Factory S.A. — SDD (Roly merce)"
         },
         {
-          "data": "12",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "12/03",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126031283585215 02INTER20260312HSRT1347486367 0306925637751"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "12",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "12/03",
+          "voce": "Commissione SDD — Gor Factory",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126030258999147 NOME: Gor Factory S.A MANDATO: 2"
+          "note": "Commissione SDD — Gor Factory"
         },
         {
-          "data": "13",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "13/03",
+          "voce": "Timeflow S.R.L. — D.I. n.506/2026 prima rata",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€733,33",
-          "voceBilancio": "",
-          "note": "0126031385208302 02INTER20260313HSRT1578027047 0306925690904"
+          "note": "Timeflow S.R.L. — D.I. n.506/2026 prima rata"
         },
         {
-          "data": "13",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "13/03",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126031385208302 02INTER20260313HSRT1578027047 0306925690904"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "16",
-          "voce": "PAGAMENTO DELEGA F24",
-          "importo": "€1663,00",
-          "voceBilancio": "",
-          "note": ""
+          "data": "16/03",
+          "voce": "F24 — IRPEF/contributi dipendente febbraio",
+          "voceBilancio": "B.14 Imposte",
+          "importo": "€1.663,00",
+          "note": "F24 — IRPEF/contributi dipendente febbraio"
         },
         {
-          "data": "16",
-          "voce": "PAGAMENTO DELEGA F24",
+          "data": "16/03",
+          "voce": "F24 — contributi/ritenute febbraio",
+          "voceBilancio": "B.14 Imposte",
           "importo": "€220,10",
-          "voceBilancio": "",
-          "note": ""
+          "note": "F24 — contributi/ritenute febbraio"
         },
         {
-          "data": "16",
-          "voce": "PAGAMENTO DELEGA F24",
+          "data": "16/03",
+          "voce": "F24 — ritenuta royalties febbraio",
+          "voceBilancio": "B.14 Imposte",
           "importo": "€60,00",
-          "voceBilancio": "",
-          "note": ""
+          "note": "F24 — ritenuta royalties febbraio"
         },
         {
-          "data": "17",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "17/03",
+          "voce": "Rimborso Km marzo (acconto) — Marco Vurro",
+          "voceBilancio": "B.9 Personale",
           "importo": "€300,00",
-          "voceBilancio": "",
-          "note": "0126031788772124 02INTER20260317HSRT1501795606 0306921805477"
+          "note": "Rimborso Km marzo (acconto) — Marco Vurro"
         },
         {
-          "data": "17",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "17/03",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126031788772124 02INTER20260317HSRT1501795606 0306921805477"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "18",
-          "voce": "PAGAMENTO ADUE",
+          "data": "18/03",
+          "voce": "Gor Factory S.A. — SDD",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€67,59",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126031235685493 NOME: Gor Factory S.A MANDATO: "
+          "note": "Gor Factory S.A. — SDD"
         },
         {
-          "data": "18",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "18/03",
+          "voce": "Commissione SDD — Gor Factory",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126031235685493 NOME: Gor Factory S.A MANDATO: 2"
+          "note": "Commissione SDD — Gor Factory"
         },
         {
-          "data": "19",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "19/03",
+          "voce": "Work Gianto S.R.L. — Saldo fattura n.71",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€298,90",
-          "voceBilancio": "",
-          "note": "0126031990664623 02INTER20260319HSRT1443299906 0306921864663"
+          "note": "Work Gianto S.R.L. — Saldo fattura n.71"
         },
         {
-          "data": "19",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "19/03",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126031990664623 02INTER20260319HSRT1443299906 0306921864663"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "23",
-          "voce": "PAGAMENTO ADUE",
+          "data": "23/03",
+          "voce": "Frisbi Società Benefit — SDD (STAR BUSINESS PO)",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€83,25",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126031340800416 NOME: FRISBI SOCIETA' BENEFIT S"
+          "note": "Frisbi Società Benefit — SDD (STAR BUSINESS PO)"
         },
         {
-          "data": "23",
-          "voce": "PAGAMENTO POS",
+          "data": "23/03",
+          "voce": "Claude.ai Subscription — Anthropic.com",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€21,96",
-          "voceBilancio": "",
-          "note": "EFFETTUATO IL 18/03/2026 ALLE ORE 18:29 MEDIANTE LA CARTA 41"
+          "note": "Claude.ai Subscription — Anthropic.com"
         },
         {
-          "data": "23",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "23/03",
+          "voce": "Commissione SDD — Frisbi",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126031340800416 NOME: FRISBI SOCIETA' BENEFIT S."
+          "note": "Commissione SDD — Frisbi"
         },
         {
-          "data": "24",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "24/03",
+          "voce": "Anticipo quote 2025 — Marco Vurro",
+          "voceBilancio": "",
           "importo": "€600,00",
-          "voceBilancio": "",
-          "note": "0126032494858442 02INTER20260324HSRT1411418171 0306921995892"
+          "note": "Anticipo quote 2025 — Marco Vurro"
         },
         {
-          "data": "24",
-          "voce": "PAGAMENTO POS",
+          "data": "24/03",
+          "voce": "Claude.ai Subscription — Anthropic.com",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€88,49",
-          "voceBilancio": "",
-          "note": "EFFETTUATO IL 19/03/2026 ALLE ORE 15:22 MEDIANTE LA CARTA 41"
+          "note": "Claude.ai Subscription — Anthropic.com"
         },
         {
-          "data": "24",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "24/03",
+          "voce": "Quota erario locale 50% — Panebianco Antonia",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€42,00",
-          "voceBilancio": "",
-          "note": "0126032495046167 02INTER20260324HSRT1519147447 0306922001939"
+          "note": "Quota erario locale 50% — Panebianco Antonia"
         },
         {
-          "data": "24",
-          "voce": "PAGAMENTO POS",
+          "data": "24/03",
+          "voce": "SiteGround Hosting — abbonamento",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€12,99",
-          "voceBilancio": "",
-          "note": "EFFETTUATO IL 21/03/2026 ALLE ORE 18:14 MEDIANTE LA CARTA 41"
+          "note": "SiteGround Hosting — abbonamento"
         },
         {
-          "data": "24",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "24/03",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126032494858442 02INTER20260324HSRT1411418171 0306921995892"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "25",
-          "voce": "PAGAMENTO ADUE",
+          "data": "25/03",
+          "voce": "FASTWEB SpA — SDD bolletta",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€41,36",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126031957498702 NOME: FASTWEB SPA MANDATO: 3F38"
+          "note": "FASTWEB SpA — SDD bolletta"
         },
         {
-          "data": "25",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "25/03",
+          "voce": "Commissione SDD — FASTWEB",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126031957498702 NOME: FASTWEB SPA MANDATO: 3F381"
+          "note": "Commissione SDD — FASTWEB"
         },
         {
-          "data": "26",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "26/03",
+          "voce": "V Consulting SRL — Fattura n.913/00",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€146,40",
-          "voceBilancio": "",
-          "note": "0126032696731474 02INTER20260326HSRT1382158870 0306922053813"
+          "note": "V Consulting SRL — Fattura n.913/00"
         },
         {
-          "data": "26",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "26/03",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126032696731474 02INTER20260326HSRT1382158870 0306922053813"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "27",
-          "voce": "PAGAMENTO BOLLETTA CBILL",
+          "data": "27/03",
+          "voce": "AdE Riscossione — pagamento CBILL/PagoPA",
+          "voceBilancio": "B.14 Imposte",
           "importo": "€39,97",
-          "voceBilancio": "",
-          "note": "NOME AZIENDA AGENZIA DELLE ENTRATE - RISCOSSIONE CODICE AZIE"
+          "note": "AdE Riscossione — pagamento CBILL/PagoPA"
         },
         {
-          "data": "27",
-          "voce": "COMMISSIONE PAGAMENTO CBILL / PAGOPA",
+          "data": "27/03",
+          "voce": "Commissione CBILL",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,30",
-          "voceBilancio": "",
-          "note": "NOME AZIENDA AGENZIA DELLE ENTRATE - RISCOSSIONE CODICE AZIE"
+          "note": "Commissione CBILL"
         },
         {
-          "data": "30",
-          "voce": "PAGAMENTO EFFETTUATO SU POS ESTERO",
+          "data": "30/03",
+          "voce": "OpenAI — $20 USD (cambio 0,8655)",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€17,98",
-          "voceBilancio": "",
-          "note": "EFFETTUATO IL 26/03/2026 ALLE ORE 09:06 (ORA AUTORIZZAZIONE)"
+          "note": "OpenAI — $20 USD (cambio 0,8655)"
         },
         {
-          "data": "31",
-          "voce": "PAGAMENTO DISPOSIZ. ELETTRONICHE",
+          "data": "31/03",
+          "voce": "Contributi — Disposizione elettronica n.002 marzo",
+          "voceBilancio": "B.14 Imposte",
           "importo": "€193,67",
-          "voceBilancio": "",
-          "note": "PAGAMENTO N. 002 DISPOSIZIONI"
+          "note": "Contributi — Disposizione elettronica n.002 marzo"
         },
         {
-          "data": "31",
-          "voce": "CANONE MENSILE BASE E SERVIZI AGGIUNTIVI",
+          "data": "31/03",
+          "voce": "Canone mensile base — marzo",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,50",
-          "voceBilancio": "",
-          "note": "CANONE MENSILE MESE DI MARZO"
+          "note": "Canone mensile base — marzo"
         }
       ]
     },
     {
       "mese": "Aprile 2026",
-      "totaleEntrate": "€5.329,14",
-      "totaleUscite": "€5.554,74",
       "entrate": [
         {
-          "data": "08",
-          "voce": "ACCREDITO BEU CON CONTABILE",
+          "data": "08/04",
+          "voce": "Accredito TS Payments — TS-BKDGMRS4JE",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€620,68",
-          "voceBilancio": "",
-          "note": "COD.DISP.: 0126040854774313 CASH TS-BKDGMRS4JE ACCREDITO TEA"
+          "note": "Accredito TS Payments — TS-BKDGMRS4JE"
         },
         {
-          "data": "09",
-          "voce": "ACCREDITO BEU CON CONTABILE",
+          "data": "09/04",
+          "voce": "Lobascio Serramenti SAS — Saldo Ft.74 del 18/12/20",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€649,04",
-          "voceBilancio": "",
-          "note": "COD.DISP.: 0126040903603258 CASH Q66C77ZC556R817757290711490"
+          "note": "Lobascio Serramenti SAS — Saldo Ft.74 del 18/12/2025"
         },
         {
-          "data": "20",
-          "voce": "ACCREDITO BEU CON CONTABILE",
+          "data": "20/04",
+          "voce": "Accredito TS Payments — TS-BKJZKVUHJE",
+          "voceBilancio": "A.1 Ricavi vendite",
           "importo": "€724,49",
-          "voceBilancio": "",
-          "note": "COD.DISP.: 0126042032326305 CASH NOTPROVIDED TS-BKJZKVUHJE A"
+          "note": "Accredito TS Payments — TS-BKJZKVUHJE"
         },
         {
-          "data": "27",
-          "voce": "ACCREDITO BEU CON CONTABILE",
-          "importo": "€3334,93",
-          "voceBilancio": "",
-          "note": "COD.DISP.: 0126042755427637 CASH NOTPROVIDED TS-BKOM72LTVY A"
+          "data": "27/04",
+          "voce": "Accredito TS Payments — TS-BKOM72LTVY",
+          "voceBilancio": "A.1 Ricavi vendite",
+          "importo": "€3.334,93",
+          "note": "Accredito TS Payments — TS-BKOM72LTVY"
         }
       ],
       "uscite": [
         {
-          "data": "01",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "01/04",
+          "voce": "Rimborso chilometrico marzo — Marco Vurro",
+          "voceBilancio": "B.9 Personale",
           "importo": "€847,38",
-          "voceBilancio": "",
-          "note": "0126040162991710 02INTER20260401HSRT1439158485 0306922251137"
+          "note": "Rimborso chilometrico marzo — Marco Vurro"
         },
         {
-          "data": "01",
-          "voce": "PAGAMENTO ADUE",
+          "data": "01/04",
+          "voce": "Sendcloud S.r.l. — SDD",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€5,89",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126033134749088 NOME: Sendcloud S.r.l. MANDATO:"
+          "note": "Sendcloud S.r.l. — SDD"
         },
         {
-          "data": "01",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "01/04",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126040162991710 02INTER20260401HSRT1439158485 0306922251137"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "01",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "01/04",
+          "voce": "Commissione SDD — Sendcloud",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126033134749088 NOME: Sendcloud S.r.l. MANDATO: "
+          "note": "Commissione SDD — Sendcloud"
         },
         {
-          "data": "02",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "02/04",
+          "voce": "Affitto sede aprile — Panebianco Antonia",
+          "voceBilancio": "B.8 Affitto sede",
           "importo": "€350,00",
-          "voceBilancio": "",
-          "note": "0126040264292722 02INTER20260402HSRT1399766560 0306922293145"
+          "note": "Affitto sede aprile — Panebianco Antonia"
         },
         {
-          "data": "02",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "02/04",
+          "voce": "Royalties marchio aprile — Silvana Sala / Nicola V",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€170,00",
-          "voceBilancio": "",
-          "note": "0126040264300675 02INTER20260402HSRT1402626823 0306922293425"
+          "note": "Royalties marchio aprile — Silvana Sala / Nicola Vurro"
         },
         {
-          "data": "02",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "02/04",
+          "voce": "Raffaele Lapenna — Fattura FPR 30/26 del 01.04.202",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€120,00",
-          "voceBilancio": "",
-          "note": "0126040264332677 02INTER20260402HSRT1413649553 0306922294523"
+          "note": "Raffaele Lapenna — Fattura FPR 30/26 del 01.04.2026"
         },
         {
-          "data": "02",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "02/04",
+          "voce": "XD Connects B.V. — Fattura IN1905612 del 09.03.202",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€97,33",
-          "voceBilancio": "",
-          "note": "0126040264417876 02INTER20260402HSRT1443639972 0306922297462"
+          "note": "XD Connects B.V. — Fattura IN1905612 del 09.03.2026"
         },
         {
-          "data": "02",
-          "voce": "IMPOSTA DI BOLLO E/C E RENDICONTO",
+          "data": "02/04",
+          "voce": "Imposta di bollo E/C — trimestrale",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€24,70",
-          "voceBilancio": "",
-          "note": ""
+          "note": "Imposta di bollo E/C — trimestrale"
         },
         {
-          "data": "02",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "02/04",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126040264292722 02INTER20260402HSRT1399766560 0306922293145"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "03",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "03/04",
+          "voce": "WT Group KGSAS — Saldo fattura n.20260124",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€240,23",
-          "voceBilancio": "",
-          "note": "0126040365641907 02INTER20260403HSRT1421188359 0306922338248"
+          "note": "WT Group KGSAS — Saldo fattura n.20260124"
         },
         {
-          "data": "03",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "03/04",
+          "voce": "Pluxee Italia Srl — Ordine RDA2600031225",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€186,70",
-          "voceBilancio": "",
-          "note": "0126040365930703 02INTER20260403HSRT1552037299 0306922348258"
+          "note": "Pluxee Italia Srl — Ordine RDA2600031225"
         },
         {
-          "data": "03",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "03/04",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126040365641907 02INTER20260403HSRT1421188359 0306922338248"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "07",
-          "voce": "DISPOSIZIONE DI BONIFICO",
+          "data": "07/04",
+          "voce": "Stipendio marzo 2026 — Sajay Fernandez",
+          "voceBilancio": "B.9 Personale",
           "importo": "€662,00",
-          "voceBilancio": "",
-          "note": "0126040246574259 NOTPROVIDED 0306910994253312S90512405124IT "
+          "note": "Stipendio marzo 2026 — Sajay Fernandez"
         },
         {
-          "data": "07",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "07/04",
+          "voce": "Sinfotech.it srl — Conferma d'ordine ZHADJUWAP",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€24,28",
-          "voceBilancio": "",
-          "note": "0126040768609726 02INTER20260407HSRT1412297153 0306922431811"
+          "note": "Sinfotech.it srl — Conferma d'ordine ZHADJUWAP"
         },
         {
-          "data": "07",
-          "voce": "PAGAMENTO POS",
+          "data": "07/04",
+          "voce": "Google Cloud — addebito",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€3,89",
-          "voceBilancio": "",
-          "note": "EFFETTUATO IL 01/04/2026 ALLE ORE 19:31 MEDIANTE LA CARTA 41"
+          "note": "Google Cloud — addebito"
         },
         {
-          "data": "07",
-          "voce": "COMMISSIONE DISPOSIZIONE DI BONIFICO",
+          "data": "07/04",
+          "voce": "Commissione bonifico — stipendio Sajay",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "Bonifico da Voi disposto a favore di: BENEFICIARI DIVERSI - "
+          "note": "Commissione bonifico — stipendio Sajay"
         },
         {
-          "data": "07",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "07/04",
+          "voce": "Commissione SDD — Sendcloud",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126040244001116 NOME: Sendcloud S.r.l. MANDATO: "
+          "note": "Commissione SDD — Sendcloud"
         },
         {
-          "data": "07",
-          "voce": "PAGAMENTO ADUE",
+          "data": "07/04",
+          "voce": "Sendcloud S.r.l. — SDD",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€0,24",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126040244001116 NOME: Sendcloud S.r.l. MANDATO:"
+          "note": "Sendcloud S.r.l. — SDD"
         },
         {
-          "data": "09",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "09/04",
+          "voce": "Luca Maitan — Cessione diritti d'autore (1 sito)",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€550,00",
-          "voceBilancio": "",
-          "note": "0126040970983122 02INTER20260409HSRT1360319740 0306922506433"
+          "note": "Luca Maitan — Cessione diritti d'autore (1 sito)"
         },
         {
-          "data": "09",
-          "voce": "PAGAMENTO ADUE",
+          "data": "09/04",
+          "voce": "Gor Factory S.A. — SDD",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€46,36",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126032722583977 NOME: Gor Factory S.A MANDATO: "
+          "note": "Gor Factory S.A. — SDD"
         },
         {
-          "data": "09",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "09/04",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126040970983122 02INTER20260409HSRT1360319740 0306922506433"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "09",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "09/04",
+          "voce": "Commissione SDD — Gor Factory",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126032722583977 NOME: Gor Factory S.A MANDATO: 2"
+          "note": "Commissione SDD — Gor Factory"
         },
         {
-          "data": "13",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "13/04",
+          "voce": "Timeflow S.R.L. — D.I. n.506/2026 seconda rata",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€733,33",
-          "voceBilancio": "",
-          "note": "0126041374993324 02INTER20260413HSRT1365636983 0306922637637"
+          "note": "Timeflow S.R.L. — D.I. n.506/2026 seconda rata"
         },
         {
-          "data": "13",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "13/04",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126041374993324 02INTER20260413HSRT1365636983 0306922637637"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "14",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "14/04",
+          "voce": "Siggi Group — Saldo proforma 26SOV-00070",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€245,17",
-          "voceBilancio": "",
-          "note": "0126041476758339 02INTER20260414HSRT1603935238 0306922694975"
+          "note": "Siggi Group — Saldo proforma 26SOV-00070"
         },
         {
-          "data": "14",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "14/04",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126041476758339 02INTER20260414HSRT1603935238 0306922694975"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "15",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "15/04",
+          "voce": "Reflects — Invoice MUS52615195",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€84,91",
-          "voceBilancio": "",
-          "note": "0126041577789742 02INTER20260415HSRT1469449729 0306922729503"
+          "note": "Reflects — Invoice MUS52615195"
         },
         {
-          "data": "15",
-          "voce": "PAGAMENTO ADUE",
+          "data": "15/04",
+          "voce": "Sendcloud S.r.l. — SDD",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€71,58",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126041415023398 NOME: Sendcloud S.r.l. MANDATO:"
+          "note": "Sendcloud S.r.l. — SDD"
         },
         {
-          "data": "15",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "15/04",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126041577789742 02INTER20260415HSRT1469449729 0306922729503"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "15",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "15/04",
+          "voce": "Commissione SDD — Sendcloud",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126041415023398 NOME: Sendcloud S.r.l. MANDATO: "
+          "note": "Commissione SDD — Sendcloud"
         },
         {
-          "data": "16",
-          "voce": "PAGAMENTO DELEGA F24",
+          "data": "16/04",
+          "voce": "F24 — contributi/ritenute marzo",
+          "voceBilancio": "B.14 Imposte",
           "importo": "€220,10",
-          "voceBilancio": "",
-          "note": ""
+          "note": "F24 — contributi/ritenute marzo"
         },
         {
-          "data": "16",
-          "voce": "PAGAMENTO DELEGA F24",
+          "data": "16/04",
+          "voce": "F24 — ritenuta royalties marzo",
+          "voceBilancio": "B.14 Imposte",
           "importo": "€60,00",
-          "voceBilancio": "",
-          "note": ""
+          "note": "F24 — ritenuta royalties marzo"
         },
         {
-          "data": "17",
-          "voce": "PAGAMENTO POS",
+          "data": "17/04",
+          "voce": "Facebook Ads — addebito",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€10,00",
-          "voceBilancio": "",
-          "note": "EFFETTUATO IL 14/04/2026 ALLE ORE 09:14 MEDIANTE LA CARTA 41"
+          "note": "Facebook Ads — addebito"
         },
         {
-          "data": "20",
-          "voce": "PAGAMENTO ADUE",
+          "data": "20/04",
+          "voce": "Gor Factory S.A. — SDD",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€152,78",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126041005932018 NOME: Gor Factory S.A MANDATO: "
+          "note": "Gor Factory S.A. — SDD"
         },
         {
-          "data": "20",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "20/04",
+          "voce": "Commissione SDD — Gor Factory",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126041005932018 NOME: Gor Factory S.A MANDATO: 2"
+          "note": "Commissione SDD — Gor Factory"
         },
         {
-          "data": "21",
-          "voce": "PAGAMENTO POS",
+          "data": "21/04",
+          "voce": "SiteGround Hosting — abbonamento",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€20,99",
-          "voceBilancio": "",
-          "note": "EFFETTUATO IL 18/04/2026 ALLE ORE 09:31 MEDIANTE LA CARTA 41"
+          "note": "SiteGround Hosting — abbonamento"
         },
         {
-          "data": "21",
-          "voce": "PAGAMENTO POS",
+          "data": "21/04",
+          "voce": "SiteGround Hosting — abbonamento",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€19,99",
-          "voceBilancio": "",
-          "note": "EFFETTUATO IL 16/04/2026 ALLE ORE 09:21 MEDIANTE LA CARTA 41"
+          "note": "SiteGround Hosting — abbonamento"
         },
         {
-          "data": "21",
-          "voce": "PAGAMENTO POS",
+          "data": "21/04",
+          "voce": "Facebook Ads — addebito",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€0,86",
-          "voceBilancio": "",
-          "note": "EFFETTUATO IL 16/04/2026 ALLE ORE 08:47 MEDIANTE LA CARTA 41"
+          "note": "Facebook Ads — addebito"
         },
         {
-          "data": "22",
-          "voce": "PAGAMENTO ADUE",
+          "data": "22/04",
+          "voce": "Frisbi Società Benefit — SDD",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€105,38",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126041521142866 NOME: FRISBI SOCIETA' BENEFIT S"
+          "note": "Frisbi Società Benefit — SDD"
         },
         {
-          "data": "22",
-          "voce": "PAGAMENTO POS",
+          "data": "22/04",
+          "voce": "Claude.ai Subscription — Anthropic.com",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€21,96",
-          "voceBilancio": "",
-          "note": "EFFETTUATO IL 19/04/2026 ALLE ORE 17:25 MEDIANTE LA CARTA 41"
+          "note": "Claude.ai Subscription — Anthropic.com"
         },
         {
-          "data": "22",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "22/04",
+          "voce": "Commissione SDD — Frisbi",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126041521142866 NOME: FRISBI SOCIETA' BENEFIT S."
+          "note": "Commissione SDD — Frisbi"
         },
         {
-          "data": "24",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "24/04",
+          "voce": "Siggi Group — Saldo proforma 26SOV-07480",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€267,13",
-          "voceBilancio": "",
-          "note": "0126042486743787 02INTER20260424HSRT1506508473 0306923012197"
+          "note": "Siggi Group — Saldo proforma 26SOV-07480"
         },
         {
-          "data": "24",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "24/04",
+          "voce": "We Safe srl — Saldo fattura n.0902",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€109,80",
-          "voceBilancio": "",
-          "note": "0126042486731815 02INTER20260424HSRT1499247306 0306923011806"
+          "note": "We Safe srl — Saldo fattura n.0902"
         },
         {
-          "data": "24",
-          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "data": "24/04",
+          "voce": "Mid Ocean Brands B.V. — Saldo fattura n.105834542",
+          "voceBilancio": "B.6 Materie prime",
           "importo": "€45,10",
-          "voceBilancio": "",
-          "note": "0126042486737772 02INTER20260424HSRT1502875394 0306923011999"
+          "note": "Mid Ocean Brands B.V. — Saldo fattura n.105834542"
         },
         {
-          "data": "24",
-          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "data": "24/04",
+          "voce": "Commissione bonifico",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€1,00",
-          "voceBilancio": "",
-          "note": "0126042486731815 02INTER20260424HSRT1499247306 0306923011806"
+          "note": "Commissione bonifico"
         },
         {
-          "data": "27",
-          "voce": "PAGAMENTO ADUE",
+          "data": "27/04",
+          "voce": "FASTWEB SpA — SDD bolletta",
+          "voceBilancio": "B.7 Servizi",
           "importo": "€41,36",
-          "voceBilancio": "",
-          "note": "COD. DISP.: 0126042451570032 NOME: FASTWEB SpA MANDATO: 3F38"
+          "note": "FASTWEB SpA — SDD bolletta"
         },
         {
-          "data": "27",
-          "voce": "COMMISSIONI E SPESE ADUE",
+          "data": "27/04",
+          "voce": "Commissione SDD — FASTWEB",
+          "voceBilancio": "C Spese bancarie",
           "importo": "€0,90",
-          "voceBilancio": "",
-          "note": "COD DISP.: 0126042451570032 NOME: FASTWEB SpA MANDATO: 3F381"
+          "note": "Commissione SDD — FASTWEB"
         }
       ]
     }
@@ -2069,34 +2043,52 @@
   "banca": {
     "conto": "Intesa Sanpaolo",
     "iban": "IT94G0306905124100000014534",
-    "saldoAttuale": "€16.611,21",
-    "ultimoAggiornamento": "28 Febbraio 2026",
+    "saldoAttuale": "€16.964,21",
+    "ultimoAggiornamento": "27 Aprile 2026",
     "saldoInizialeAnno": "€2.480,94",
     "riepilogoMensile": [
       {
         "mese": "Gennaio 2026",
         "saldoInizio": "€2.480,94",
-        "saldoFine": "€11.441,90",
         "entrate": "€28.349,84",
-        "uscite": "€19.388,88",
-        "flusso": "+€8.960,96",
-        "movimenti": 48
+        "uscite": "€21.314,47",
+        "flusso": "+€7.035,37",
+        "saldoFine": "€11.441,90",
+        "movimenti": 47
       },
       {
         "mese": "Febbraio 2026",
         "saldoInizio": "€11.441,90",
+        "entrate": "€18.018,79",
+        "uscite": "€13.246,68",
+        "flusso": "+€4.772,11",
         "saldoFine": "€16.803,86",
-        "entrate": "€17.739,88",
-        "uscite": "€12.377,92",
-        "flusso": "+€5.361,96",
-        "movimenti": 47
+        "movimenti": 48
+      },
+      {
+        "mese": "Marzo 2026",
+        "saldoInizio": "€16.803,86",
+        "entrate": "€8.993,99",
+        "uscite": "€8.608,04",
+        "flusso": "+€385,95",
+        "saldoFine": "€17.189,81",
+        "movimenti": 63
+      },
+      {
+        "mese": "Aprile 2026",
+        "saldoInizio": "€17.189,81",
+        "entrate": "€5.329,14",
+        "uscite": "€5.554,74",
+        "flusso": "€-225,60",
+        "saldoFine": "€16.964,21",
+        "movimenti": 52
       }
     ],
     "totali": {
-      "entrate": "€46.089,72",
-      "uscite": "€31.766,80",
-      "flusso": "+€14.322,92",
-      "movimenti": 95
+      "entrate": "€60.691,76",
+      "uscite": "€48.723,93",
+      "flusso": "+€11.967,83",
+      "movimenti": 210
     },
     "riconciliazione": {
       "totaleMovimenti": 95,
@@ -2174,12 +2166,12 @@
         "movimenti": 63
       },
       {
-        "mese": "Aprile 2026 (parz.)",
+        "mese": "Aprile 2026",
         "saldoInizio": "€17.189,81",
         "entrate": "€5.329,14",
         "uscite": "€5.554,74",
         "flusso": "€-225,60",
-        "saldoFine": "€16.611,21",
+        "saldoFine": "€16.964,21",
         "movimenti": 52
       }
     ]
