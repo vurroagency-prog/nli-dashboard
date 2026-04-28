@@ -2,13 +2,13 @@
   "lastUpdate": "28 Aprile 2026",
   "fonte": "registro.json",
   "ebitdaTargetAnnuo": 100000,
-  "statusMessage": "Fonte: registro.json (95 mov., 67 fatt., 32 scad.). Dati finanziari al 28/02/2026 — E/C marzo e aprile non ancora importati. Scadenze urgenti: Dich. IVA 2025 30/04 (Dandoli Barnini), INPS Marco €1.137 e INAIL €69 al 16-18/05.",
-  "statoLavori": "Società costituita il 29/05/2023. Sede: Via Fieramosca 20, Bari. ATECO 73.11.02. Regime semplificato, IVA trimestrale. Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gen+feb analizzati: 95 movimenti. 67 fatture registrate. Marzo+aprile non processati. Prossimo: importare E/C marzo, processare documenti marzo.",
+  "statusMessage": "Fonte: registro.json (210 mov., 92 fatt., 32 scad.). Aggiornamento 28/04: importati gen-apr 2026 (+115 movimenti, +25 fatture mar-apr). Saldo banca 27/04: €16.611,21.",
+  "statoLavori": "Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gen-apr 2026 analizzati: 210 movimenti. 92 fatture registrate. Riconciliazione parziale — 353€ di gap da verificare.",
   "kpi": [
     {
-      "label": "Incassi Gen+Feb",
-      "value": "€46.090",
-      "sub": "Gen €28.350 + Feb €17.740 — totale cassa",
+      "label": "Incassi YTD (Gen-Apr)",
+      "value": "€60.692",
+      "sub": "Gen €28.350 + Feb €18.019 + Mar €8.994 + Apr €5.329",
       "class": "positive"
     },
     {
@@ -18,15 +18,15 @@
       "class": "positive"
     },
     {
-      "label": "Costi Operativi Gen+Feb",
-      "value": "€22.900",
-      "sub": "Gen €10.800 + Feb €12.100 (incl. anticipi Marco). Totale anticipi Marco: €3.675",
+      "label": "Costi YTD (Gen-Apr)",
+      "value": "€48.724",
+      "sub": "Gen €21.314 + Feb €13.247 + Mar €8.608 + Apr €5.555",
       "class": "neutral"
     },
     {
       "label": "Margine Operativo",
-      "value": "50,2%",
-      "sub": "€23.190 su €46.090 di entrate gen+feb",
+      "value": "19,7%",
+      "sub": "€11.968 su €60.692 YTD",
       "class": "positive"
     },
     {
@@ -43,15 +43,15 @@
     },
     {
       "label": "Saldo Banca",
-      "value": "€16.804",
-      "sub": "Al 28/02/2026 — Intesa Sanpaolo (+47% vs gen)",
+      "value": "€16.611",
+      "sub": "Al 27/04/2026 — Intesa Sanpaolo",
       "class": "positive"
     },
     {
-      "label": "Flusso di Cassa Feb",
-      "value": "+€5.362",
-      "sub": "Da €11.442 a €16.804 (+46,8%)",
-      "class": "positive"
+      "label": "Flusso Apr 2026",
+      "value": "-€226",
+      "sub": "Da €17.190 a €16.611 (-3,4%)",
+      "class": "warning"
     },
     {
       "label": "Top Cliente",
@@ -1185,6 +1185,829 @@
       "ebitda": "€5.362",
       "utileNetto": "€2.681",
       "note": "E/C feb importato 10/03. Banca: entrate €17.740 + uscite €12.378. + €869 spese Marco (conto personale). Riconciliazione 90,5%. 5 accrediti TS in attesa breakdown."
+    },
+    {
+      "mese": "Marzo 2026",
+      "totaleEntrate": "€8.993,99",
+      "totaleUscite": "€8.608,04",
+      "entrate": [
+        {
+          "data": "02",
+          "voce": "ACCREDITO BEU CON CONTABILE",
+          "importo": "€278,91",
+          "voceBilancio": "",
+          "note": "COD.DISP.: 0126030201360792 CASH TS-BJJQTZTZQ4 ACCREDITO TEA"
+        },
+        {
+          "data": "04",
+          "voce": "ACCREDITO BEU CON CONTABILE",
+          "importo": "€3715,25",
+          "voceBilancio": "",
+          "note": "COD.DISP.: 0126030409615304 CASH 120260303094423312XNLHM775X"
+        },
+        {
+          "data": "11",
+          "voce": "ACCREDITO BONIFICO ISTANTANEO",
+          "importo": "€200,00",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126031182951470 CASH NOTPROVIDED Saldo vostra f"
+        },
+        {
+          "data": "16",
+          "voce": "ACCREDITO BEU CON CONTABILE",
+          "importo": "€1467,00",
+          "voceBilancio": "",
+          "note": "COD.DISP.: 0126031644880723 CASH TS-BJSYAQBSEI ACCREDITO TEA"
+        },
+        {
+          "data": "20",
+          "voce": "ACCREDITO BEU CON CONTABILE",
+          "importo": "€470,81",
+          "voceBilancio": "",
+          "note": "COD.DISP.: 0126032001137779 CASH NOT PROVIDED PAGAMENTO ABBI"
+        },
+        {
+          "data": "23",
+          "voce": "ACCREDITO BEU CON CONTABILE",
+          "importo": "€1620,97",
+          "voceBilancio": "",
+          "note": "COD.DISP.: 0126032305826072 CASH TS-BJXLVKTVHE ACCREDITO TEA"
+        },
+        {
+          "data": "30",
+          "voce": "ACCREDITO BEU CON CONTABILE",
+          "importo": "€45,42",
+          "voceBilancio": "",
+          "note": "COD.DISP.: 0126033029383639 CASH TS-BJ37HQRLHE ACCREDITO TEA"
+        },
+        {
+          "data": "31",
+          "voce": "ACCREDITO BONIFICO ISTANTANEO",
+          "importo": "€399,00",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126033161973858 CASH 00120260331170824669640249"
+        },
+        {
+          "data": "31",
+          "voce": "ACCREDITO BEU CON CONTABILE",
+          "importo": "€796,63",
+          "voceBilancio": "",
+          "note": "COD.DISP.: 0126033032715714 CASH NOTPROVIDED ACCONTO FATTURA"
+        }
+      ],
+      "uscite": [
+        {
+          "data": "02",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€895,48",
+          "voceBilancio": "",
+          "note": "0126030272810330 02INTER20260302HSRT1359669307 0306925291419"
+        },
+        {
+          "data": "02",
+          "voce": "PAGAMENTO DISPOSIZ. ELETTRONICHE",
+          "importo": "€406,45",
+          "voceBilancio": "",
+          "note": "PAGAMENTO N. 002 DISPOSIZIONI"
+        },
+        {
+          "data": "02",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€31,24",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126021718345036 NOME: Gor Factory S.A MANDATO: "
+        },
+        {
+          "data": "02",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126030272810330 02INTER20260302HSRT1359669307 0306925291419"
+        },
+        {
+          "data": "02",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126021718345036 NOME: Gor Factory S.A MANDATO: 2"
+        },
+        {
+          "data": "03",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€424,40",
+          "voceBilancio": "",
+          "note": "0126030374224933 02INTER20260303HSRT1377156124 0306925336347"
+        },
+        {
+          "data": "03",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€350,00",
+          "voceBilancio": "",
+          "note": "0126030374233360 02INTER20260303HSRT1380445759 0306925336617"
+        },
+        {
+          "data": "03",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€170,00",
+          "voceBilancio": "",
+          "note": "0126030374241540 02INTER20260303HSRT1383735684 0306925336894"
+        },
+        {
+          "data": "03",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€41,74",
+          "voceBilancio": "",
+          "note": "0126030374261490 02INTER20260303HSRT1391458336 0306925337563"
+        },
+        {
+          "data": "03",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126030374224933 02INTER20260303HSRT1377156124 0306925336347"
+        },
+        {
+          "data": "03",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126030203629783 NOME: Sendcloud S.r.l. MANDATO: "
+        },
+        {
+          "data": "03",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€0,61",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126030203629783 NOME: Sendcloud S.r.l. MANDATO:"
+        },
+        {
+          "data": "04",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€663,00",
+          "voceBilancio": "",
+          "note": "0126030475365261 02INTER20260304HSRT1367126114 0306925372512"
+        },
+        {
+          "data": "04",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€44,00",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126030305553417 NOME: Sendcloud S.r.l. MANDATO:"
+        },
+        {
+          "data": "04",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126030475365261 02INTER20260304HSRT1367126114 0306925372512"
+        },
+        {
+          "data": "04",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126030305553417 NOME: Sendcloud S.r.l. MANDATO: "
+        },
+        {
+          "data": "05",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€169,73",
+          "voceBilancio": "",
+          "note": "0126030576704525 02INTER20260305HSRT1448638854 0306925415227"
+        },
+        {
+          "data": "05",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€126,01",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126030258955824 NOME: Gor Factory S.A MANDATO: "
+        },
+        {
+          "data": "05",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126030576704525 02INTER20260305HSRT1448638854 0306925415227"
+        },
+        {
+          "data": "05",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126030258955824 NOME: Gor Factory S.A MANDATO: 2"
+        },
+        {
+          "data": "10",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€120,00",
+          "voceBilancio": "",
+          "note": "0126031081208861 02INTER20260310HSRT1340386070 0306925559360"
+        },
+        {
+          "data": "10",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126031081208861 02INTER20260310HSRT1340386070 0306925559360"
+        },
+        {
+          "data": "12",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€372,02",
+          "voceBilancio": "",
+          "note": "0126031283585215 02INTER20260312HSRT1347486367 0306925637751"
+        },
+        {
+          "data": "12",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€142,37",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126030258999147 NOME: Gor Factory S.A MANDATO: "
+        },
+        {
+          "data": "12",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126031283585215 02INTER20260312HSRT1347486367 0306925637751"
+        },
+        {
+          "data": "12",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126030258999147 NOME: Gor Factory S.A MANDATO: 2"
+        },
+        {
+          "data": "13",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€733,33",
+          "voceBilancio": "",
+          "note": "0126031385208302 02INTER20260313HSRT1578027047 0306925690904"
+        },
+        {
+          "data": "13",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126031385208302 02INTER20260313HSRT1578027047 0306925690904"
+        },
+        {
+          "data": "16",
+          "voce": "PAGAMENTO DELEGA F24",
+          "importo": "€1663,00",
+          "voceBilancio": "",
+          "note": ""
+        },
+        {
+          "data": "16",
+          "voce": "PAGAMENTO DELEGA F24",
+          "importo": "€220,10",
+          "voceBilancio": "",
+          "note": ""
+        },
+        {
+          "data": "16",
+          "voce": "PAGAMENTO DELEGA F24",
+          "importo": "€60,00",
+          "voceBilancio": "",
+          "note": ""
+        },
+        {
+          "data": "17",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€300,00",
+          "voceBilancio": "",
+          "note": "0126031788772124 02INTER20260317HSRT1501795606 0306921805477"
+        },
+        {
+          "data": "17",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126031788772124 02INTER20260317HSRT1501795606 0306921805477"
+        },
+        {
+          "data": "18",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€67,59",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126031235685493 NOME: Gor Factory S.A MANDATO: "
+        },
+        {
+          "data": "18",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126031235685493 NOME: Gor Factory S.A MANDATO: 2"
+        },
+        {
+          "data": "19",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€298,90",
+          "voceBilancio": "",
+          "note": "0126031990664623 02INTER20260319HSRT1443299906 0306921864663"
+        },
+        {
+          "data": "19",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126031990664623 02INTER20260319HSRT1443299906 0306921864663"
+        },
+        {
+          "data": "23",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€83,25",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126031340800416 NOME: FRISBI SOCIETA' BENEFIT S"
+        },
+        {
+          "data": "23",
+          "voce": "PAGAMENTO POS",
+          "importo": "€21,96",
+          "voceBilancio": "",
+          "note": "EFFETTUATO IL 18/03/2026 ALLE ORE 18:29 MEDIANTE LA CARTA 41"
+        },
+        {
+          "data": "23",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126031340800416 NOME: FRISBI SOCIETA' BENEFIT S."
+        },
+        {
+          "data": "24",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€600,00",
+          "voceBilancio": "",
+          "note": "0126032494858442 02INTER20260324HSRT1411418171 0306921995892"
+        },
+        {
+          "data": "24",
+          "voce": "PAGAMENTO POS",
+          "importo": "€88,49",
+          "voceBilancio": "",
+          "note": "EFFETTUATO IL 19/03/2026 ALLE ORE 15:22 MEDIANTE LA CARTA 41"
+        },
+        {
+          "data": "24",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€42,00",
+          "voceBilancio": "",
+          "note": "0126032495046167 02INTER20260324HSRT1519147447 0306922001939"
+        },
+        {
+          "data": "24",
+          "voce": "PAGAMENTO POS",
+          "importo": "€12,99",
+          "voceBilancio": "",
+          "note": "EFFETTUATO IL 21/03/2026 ALLE ORE 18:14 MEDIANTE LA CARTA 41"
+        },
+        {
+          "data": "24",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126032494858442 02INTER20260324HSRT1411418171 0306921995892"
+        },
+        {
+          "data": "25",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€41,36",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126031957498702 NOME: FASTWEB SPA MANDATO: 3F38"
+        },
+        {
+          "data": "25",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126031957498702 NOME: FASTWEB SPA MANDATO: 3F381"
+        },
+        {
+          "data": "26",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€146,40",
+          "voceBilancio": "",
+          "note": "0126032696731474 02INTER20260326HSRT1382158870 0306922053813"
+        },
+        {
+          "data": "26",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126032696731474 02INTER20260326HSRT1382158870 0306922053813"
+        },
+        {
+          "data": "27",
+          "voce": "PAGAMENTO BOLLETTA CBILL",
+          "importo": "€39,97",
+          "voceBilancio": "",
+          "note": "NOME AZIENDA AGENZIA DELLE ENTRATE - RISCOSSIONE CODICE AZIE"
+        },
+        {
+          "data": "27",
+          "voce": "COMMISSIONE PAGAMENTO CBILL / PAGOPA",
+          "importo": "€1,30",
+          "voceBilancio": "",
+          "note": "NOME AZIENDA AGENZIA DELLE ENTRATE - RISCOSSIONE CODICE AZIE"
+        },
+        {
+          "data": "30",
+          "voce": "PAGAMENTO EFFETTUATO SU POS ESTERO",
+          "importo": "€17,98",
+          "voceBilancio": "",
+          "note": "EFFETTUATO IL 26/03/2026 ALLE ORE 09:06 (ORA AUTORIZZAZIONE)"
+        },
+        {
+          "data": "31",
+          "voce": "PAGAMENTO DISPOSIZ. ELETTRONICHE",
+          "importo": "€193,67",
+          "voceBilancio": "",
+          "note": "PAGAMENTO N. 002 DISPOSIZIONI"
+        },
+        {
+          "data": "31",
+          "voce": "CANONE MENSILE BASE E SERVIZI AGGIUNTIVI",
+          "importo": "€0,50",
+          "voceBilancio": "",
+          "note": "CANONE MENSILE MESE DI MARZO"
+        }
+      ]
+    },
+    {
+      "mese": "Aprile 2026",
+      "totaleEntrate": "€5.329,14",
+      "totaleUscite": "€5.554,74",
+      "entrate": [
+        {
+          "data": "08",
+          "voce": "ACCREDITO BEU CON CONTABILE",
+          "importo": "€620,68",
+          "voceBilancio": "",
+          "note": "COD.DISP.: 0126040854774313 CASH TS-BKDGMRS4JE ACCREDITO TEA"
+        },
+        {
+          "data": "09",
+          "voce": "ACCREDITO BEU CON CONTABILE",
+          "importo": "€649,04",
+          "voceBilancio": "",
+          "note": "COD.DISP.: 0126040903603258 CASH Q66C77ZC556R817757290711490"
+        },
+        {
+          "data": "20",
+          "voce": "ACCREDITO BEU CON CONTABILE",
+          "importo": "€724,49",
+          "voceBilancio": "",
+          "note": "COD.DISP.: 0126042032326305 CASH NOTPROVIDED TS-BKJZKVUHJE A"
+        },
+        {
+          "data": "27",
+          "voce": "ACCREDITO BEU CON CONTABILE",
+          "importo": "€3334,93",
+          "voceBilancio": "",
+          "note": "COD.DISP.: 0126042755427637 CASH NOTPROVIDED TS-BKOM72LTVY A"
+        }
+      ],
+      "uscite": [
+        {
+          "data": "01",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€847,38",
+          "voceBilancio": "",
+          "note": "0126040162991710 02INTER20260401HSRT1439158485 0306922251137"
+        },
+        {
+          "data": "01",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€5,89",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126033134749088 NOME: Sendcloud S.r.l. MANDATO:"
+        },
+        {
+          "data": "01",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126040162991710 02INTER20260401HSRT1439158485 0306922251137"
+        },
+        {
+          "data": "01",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126033134749088 NOME: Sendcloud S.r.l. MANDATO: "
+        },
+        {
+          "data": "02",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€350,00",
+          "voceBilancio": "",
+          "note": "0126040264292722 02INTER20260402HSRT1399766560 0306922293145"
+        },
+        {
+          "data": "02",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€170,00",
+          "voceBilancio": "",
+          "note": "0126040264300675 02INTER20260402HSRT1402626823 0306922293425"
+        },
+        {
+          "data": "02",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€120,00",
+          "voceBilancio": "",
+          "note": "0126040264332677 02INTER20260402HSRT1413649553 0306922294523"
+        },
+        {
+          "data": "02",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€97,33",
+          "voceBilancio": "",
+          "note": "0126040264417876 02INTER20260402HSRT1443639972 0306922297462"
+        },
+        {
+          "data": "02",
+          "voce": "IMPOSTA DI BOLLO E/C E RENDICONTO",
+          "importo": "€24,70",
+          "voceBilancio": "",
+          "note": ""
+        },
+        {
+          "data": "02",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126040264292722 02INTER20260402HSRT1399766560 0306922293145"
+        },
+        {
+          "data": "03",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€240,23",
+          "voceBilancio": "",
+          "note": "0126040365641907 02INTER20260403HSRT1421188359 0306922338248"
+        },
+        {
+          "data": "03",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€186,70",
+          "voceBilancio": "",
+          "note": "0126040365930703 02INTER20260403HSRT1552037299 0306922348258"
+        },
+        {
+          "data": "03",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126040365641907 02INTER20260403HSRT1421188359 0306922338248"
+        },
+        {
+          "data": "07",
+          "voce": "DISPOSIZIONE DI BONIFICO",
+          "importo": "€662,00",
+          "voceBilancio": "",
+          "note": "0126040246574259 NOTPROVIDED 0306910994253312S90512405124IT "
+        },
+        {
+          "data": "07",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€24,28",
+          "voceBilancio": "",
+          "note": "0126040768609726 02INTER20260407HSRT1412297153 0306922431811"
+        },
+        {
+          "data": "07",
+          "voce": "PAGAMENTO POS",
+          "importo": "€3,89",
+          "voceBilancio": "",
+          "note": "EFFETTUATO IL 01/04/2026 ALLE ORE 19:31 MEDIANTE LA CARTA 41"
+        },
+        {
+          "data": "07",
+          "voce": "COMMISSIONE DISPOSIZIONE DI BONIFICO",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "Bonifico da Voi disposto a favore di: BENEFICIARI DIVERSI - "
+        },
+        {
+          "data": "07",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126040244001116 NOME: Sendcloud S.r.l. MANDATO: "
+        },
+        {
+          "data": "07",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€0,24",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126040244001116 NOME: Sendcloud S.r.l. MANDATO:"
+        },
+        {
+          "data": "09",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€550,00",
+          "voceBilancio": "",
+          "note": "0126040970983122 02INTER20260409HSRT1360319740 0306922506433"
+        },
+        {
+          "data": "09",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€46,36",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126032722583977 NOME: Gor Factory S.A MANDATO: "
+        },
+        {
+          "data": "09",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126040970983122 02INTER20260409HSRT1360319740 0306922506433"
+        },
+        {
+          "data": "09",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126032722583977 NOME: Gor Factory S.A MANDATO: 2"
+        },
+        {
+          "data": "13",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€733,33",
+          "voceBilancio": "",
+          "note": "0126041374993324 02INTER20260413HSRT1365636983 0306922637637"
+        },
+        {
+          "data": "13",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126041374993324 02INTER20260413HSRT1365636983 0306922637637"
+        },
+        {
+          "data": "14",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€245,17",
+          "voceBilancio": "",
+          "note": "0126041476758339 02INTER20260414HSRT1603935238 0306922694975"
+        },
+        {
+          "data": "14",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126041476758339 02INTER20260414HSRT1603935238 0306922694975"
+        },
+        {
+          "data": "15",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€84,91",
+          "voceBilancio": "",
+          "note": "0126041577789742 02INTER20260415HSRT1469449729 0306922729503"
+        },
+        {
+          "data": "15",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€71,58",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126041415023398 NOME: Sendcloud S.r.l. MANDATO:"
+        },
+        {
+          "data": "15",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126041577789742 02INTER20260415HSRT1469449729 0306922729503"
+        },
+        {
+          "data": "15",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126041415023398 NOME: Sendcloud S.r.l. MANDATO: "
+        },
+        {
+          "data": "16",
+          "voce": "PAGAMENTO DELEGA F24",
+          "importo": "€220,10",
+          "voceBilancio": "",
+          "note": ""
+        },
+        {
+          "data": "16",
+          "voce": "PAGAMENTO DELEGA F24",
+          "importo": "€60,00",
+          "voceBilancio": "",
+          "note": ""
+        },
+        {
+          "data": "17",
+          "voce": "PAGAMENTO POS",
+          "importo": "€10,00",
+          "voceBilancio": "",
+          "note": "EFFETTUATO IL 14/04/2026 ALLE ORE 09:14 MEDIANTE LA CARTA 41"
+        },
+        {
+          "data": "20",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€152,78",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126041005932018 NOME: Gor Factory S.A MANDATO: "
+        },
+        {
+          "data": "20",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126041005932018 NOME: Gor Factory S.A MANDATO: 2"
+        },
+        {
+          "data": "21",
+          "voce": "PAGAMENTO POS",
+          "importo": "€20,99",
+          "voceBilancio": "",
+          "note": "EFFETTUATO IL 18/04/2026 ALLE ORE 09:31 MEDIANTE LA CARTA 41"
+        },
+        {
+          "data": "21",
+          "voce": "PAGAMENTO POS",
+          "importo": "€19,99",
+          "voceBilancio": "",
+          "note": "EFFETTUATO IL 16/04/2026 ALLE ORE 09:21 MEDIANTE LA CARTA 41"
+        },
+        {
+          "data": "21",
+          "voce": "PAGAMENTO POS",
+          "importo": "€0,86",
+          "voceBilancio": "",
+          "note": "EFFETTUATO IL 16/04/2026 ALLE ORE 08:47 MEDIANTE LA CARTA 41"
+        },
+        {
+          "data": "22",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€105,38",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126041521142866 NOME: FRISBI SOCIETA' BENEFIT S"
+        },
+        {
+          "data": "22",
+          "voce": "PAGAMENTO POS",
+          "importo": "€21,96",
+          "voceBilancio": "",
+          "note": "EFFETTUATO IL 19/04/2026 ALLE ORE 17:25 MEDIANTE LA CARTA 41"
+        },
+        {
+          "data": "22",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126041521142866 NOME: FRISBI SOCIETA' BENEFIT S."
+        },
+        {
+          "data": "24",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€267,13",
+          "voceBilancio": "",
+          "note": "0126042486743787 02INTER20260424HSRT1506508473 0306923012197"
+        },
+        {
+          "data": "24",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€109,80",
+          "voceBilancio": "",
+          "note": "0126042486731815 02INTER20260424HSRT1499247306 0306923011806"
+        },
+        {
+          "data": "24",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+          "importo": "€45,10",
+          "voceBilancio": "",
+          "note": "0126042486737772 02INTER20260424HSRT1502875394 0306923011999"
+        },
+        {
+          "data": "24",
+          "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOST",
+          "importo": "€1,00",
+          "voceBilancio": "",
+          "note": "0126042486731815 02INTER20260424HSRT1499247306 0306923011806"
+        },
+        {
+          "data": "27",
+          "voce": "PAGAMENTO ADUE",
+          "importo": "€41,36",
+          "voceBilancio": "",
+          "note": "COD. DISP.: 0126042451570032 NOME: FASTWEB SpA MANDATO: 3F38"
+        },
+        {
+          "data": "27",
+          "voce": "COMMISSIONI E SPESE ADUE",
+          "importo": "€0,90",
+          "voceBilancio": "",
+          "note": "COD DISP.: 0126042451570032 NOME: FASTWEB SpA MANDATO: 3F381"
+        }
+      ]
     }
   ],
   "bancaAliasDescrizioni": {
@@ -1246,7 +2069,7 @@
   "banca": {
     "conto": "Intesa Sanpaolo",
     "iban": "IT94G0306905124100000014534",
-    "saldoAttuale": "€16.803,86",
+    "saldoAttuale": "€16.611,21",
     "ultimoAggiornamento": "28 Febbraio 2026",
     "saldoInizialeAnno": "€2.480,94",
     "riepilogoMensile": [
@@ -1315,7 +2138,51 @@
         }
       ]
     },
-    "movimenti": []
+    "movimenti": [],
+    "dataAggiornamento": "27 Aprile 2026",
+    "saldoInizioAnno": "€2.480,94",
+    "entrateTotali": "€60.691,76",
+    "usciteTotali": "€48.723,93",
+    "flussoNetto": "+€11.967,83",
+    "movimentiTotali": 210,
+    "dettaglioMensile": [
+      {
+        "mese": "Gennaio 2026",
+        "saldoInizio": "€2.480,94",
+        "entrate": "€28.349,84",
+        "uscite": "€21.314,47",
+        "flusso": "+€7.035,37",
+        "saldoFine": "€11.441,90",
+        "movimenti": 47
+      },
+      {
+        "mese": "Febbraio 2026",
+        "saldoInizio": "€11.441,90",
+        "entrate": "€18.018,79",
+        "uscite": "€13.246,68",
+        "flusso": "+€4.772,11",
+        "saldoFine": "€16.803,86",
+        "movimenti": 48
+      },
+      {
+        "mese": "Marzo 2026",
+        "saldoInizio": "€16.803,86",
+        "entrate": "€8.993,99",
+        "uscite": "€8.608,04",
+        "flusso": "+€385,95",
+        "saldoFine": "€17.189,81",
+        "movimenti": 63
+      },
+      {
+        "mese": "Aprile 2026 (parz.)",
+        "saldoInizio": "€17.189,81",
+        "entrate": "€5.329,14",
+        "uscite": "€5.554,74",
+        "flusso": "€-225,60",
+        "saldoFine": "€16.611,21",
+        "movimenti": 52
+      }
+    ]
   },
   "previsionale": [
     {
