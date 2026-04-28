@@ -13,9 +13,9 @@
     },
     {
       "label": "Ricavi Competenza 2026",
-      "value": "€3.373",
-      "sub": "9 fatture emesse 2026 (Splendor, Ecomondi, De Giglio, Digitality, Dinamica, Piesse) + 3 NC",
-      "class": "positive"
+      "value": "€11.148",
+      "sub": "13 fatture emesse 2026 (gen-feb €3.373 netto NC + mar-apr €7.775): Cassano, AMIR, TecnoProject, Gima, SIA, EdilSpecial, Colella",
+      "class": "success"
     },
     {
       "label": "Costi YTD (Gen-Apr)",
@@ -318,8 +318,8 @@
       "testo": "PAGAMENTI EFFETTUATI FEB: TFR Claudia €1.176 OK, INPS Marco 4a rata €1.129 OK, F24 gen €764 OK, Rossini €3.174, Metrie €1.264, rimborso km gen €810."
     },
     {
-      "tipo": "info",
-      "testo": "IVA Q1: credito €617 (debito €742 - credito €886). Nessun versamento IVA dovuto al 16/05."
+      "tipo": "error",
+      "testo": "IVA Q1 RIVEDERE: saldo lordo attuale DEBITO €124 (debito FV €1.010 - credito acquisti gen-feb €886). Fatture acquisto marzo non ancora calcolate — potrebbero ribaltare in credito. PROCESSARE FATTURE ACQUISTO MARZO prima del 16/05!"
     },
     {
       "tipo": "info",
