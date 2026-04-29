@@ -61,7 +61,12 @@
       "scadenza": "2026-05-13",
       "importo": 733.33,
       "stato": "da_pagare",
-      "note": "4 rate da €733,33 — rate 1+2 già pagate"
+      "note": "4 rate da €733,33 — rate 1+2 già pagate",
+      "adempimento": "Timeflow D.I. n.506 — rata 3/4",
+      "frequenza": "Una tantum",
+      "chi": "NLI",
+      "data": "13 mag 2026",
+      "importoStr": "€733,33"
     },
     {
       "id": "SCAD-0015",
@@ -69,7 +74,12 @@
       "scadenza": "2026-05-16",
       "importo": 109.01,
       "stato": "da_pagare",
-      "note": "Saldo parziale: FI aprile mancanti"
+      "note": "Saldo parziale: FI aprile mancanti",
+      "adempimento": "IVA Q1 2026 — DEBITO €109,01",
+      "frequenza": "Una tantum",
+      "chi": "NLI",
+      "data": "16 mag 2026",
+      "importoStr": "€109,01"
     },
     {
       "id": "SCAD-0027",
@@ -77,7 +87,12 @@
       "scadenza": "2026-05-16",
       "importo": 1137.0,
       "stato": "da_pagare",
-      "note": "F24 da Mascolo"
+      "note": "F24 da Mascolo",
+      "adempimento": "INPS Marco — 1a rata fissa 2026",
+      "frequenza": "Una tantum",
+      "chi": "NLI",
+      "data": "16 mag 2026",
+      "importoStr": "€1.137,00"
     },
     {
       "id": "SCAD-0016",
@@ -85,7 +100,12 @@
       "scadenza": "2026-05-18",
       "importo": 69.1,
       "stato": "da_pagare",
-      "note": ""
+      "note": "",
+      "adempimento": "INAIL — 2a rata 2026",
+      "frequenza": "Una tantum",
+      "chi": "NLI",
+      "data": "18 mag 2026",
+      "importoStr": "€69,10"
     },
     {
       "id": "SCAD-0034",
@@ -93,7 +113,12 @@
       "scadenza": "2026-06-13",
       "importo": 733.33,
       "stato": "da_pagare",
-      "note": ""
+      "note": "",
+      "adempimento": "Timeflow D.I. n.506 — rata 4/4",
+      "frequenza": "Una tantum",
+      "chi": "NLI",
+      "data": "13 giu 2026",
+      "importoStr": "€733,33"
     }
   ],
   "alert": [
