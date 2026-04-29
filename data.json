@@ -2,25 +2,25 @@
   "lastUpdate": "29 aprile 2026",
   "fonte": "registro.json",
   "ebitdaTargetAnnuo": 100000,
-  "statusMessage": "Fonte: registro.json (228 mov., 121 fatt., 37 scad.). Aggiornamento 29/04: E/C ufficiali Intesa SP mar+apr riconciliati. Saldo banca 28/04: €15.762,83 (ufficiale). IVA Q1: DEBITO €109,01.",
-  "statoLavori": "Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gen-apr 2026: 228 movimenti. 121 fatture registrate. Mar: 6 mov. non abbinati. Apr: 11 mov. non abbinati. FI aprile: 7 da processare.",
+  "statusMessage": "Fonte: registro.json (228 mov., 121 fatt., 37 scad.). E/C ufficiali Intesa SP mar+apr riconciliati. Saldo banca 28/04: €15.762,83. IVA Q1: DEBITO €109,01 — scad. 16/05.",
+  "statoLavori": "Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gen-apr: 228 movimenti. 121 fatture. Mar: 6 mov. non abbinati. Apr: 11 mov. non abbinati. FI aprile: 7 da processare.",
   "kpi": [
     {
       "label": "Incassi YTD (Gen-Apr)",
       "value": "€60.692",
-      "sub": "Gen €28350 + Feb €18019 + Mar €8994 + Apr €5329",
+      "sub": "Gen €28.350 · Feb €18.019 · Mar €8.994 · Apr €5.329",
       "class": "positive"
     },
     {
       "label": "Ricavi Competenza 2026",
       "value": "€10.898",
-      "sub": "16 FV emesse — imponibile netto NC",
+      "sub": "16 FV emesse (netto NC) — gen-apr",
       "class": "success"
     },
     {
       "label": "Costi YTD (Gen-Apr)",
       "value": "€49.926",
-      "sub": "Gen €21314 + Feb €13247 + Mar €8783 + Apr €6582",
+      "sub": "Gen €21.314 · Feb €13.247 · Mar €8.783 · Apr €6.582",
       "class": "neutral"
     },
     {
@@ -43,45 +43,45 @@
     },
     {
       "label": "Flusso Apr 2026",
-      "value": "€-1.253",
+      "value": "-€1.253",
       "sub": "Da €17.015 a €15.763",
       "class": "warning"
     },
     {
       "label": "Scadenze Maggio",
-      "value": "€1.956",
-      "sub": "IVA €109 + INPS €1.137 + Timeflow €733 + INAIL €69",
+      "value": "€2.049",
+      "sub": "Timeflow €733 · IVA €109 · INPS €1.137 · INAIL €69",
       "class": "danger"
     }
   ],
   "scadenze": [
     {
-      "id": "SCAD-2026-0033",
-      "descrizione": "Timeflow S.R.L. — Decreto Ingiuntivo n.506/2026 rata 3/4",
+      "id": "SCAD-0033",
+      "descrizione": "Timeflow D.I. n.506 — rata 3/4",
       "scadenza": "2026-05-13",
       "importo": 733.33,
       "stato": "da_pagare",
-      "note": "4 rate mensili da €733,33 — D.I. ottenuto da Timeflow. Rate 1 e 2 già pagate (mar+apr 2026)."
+      "note": "4 rate da €733,33 — rate 1+2 già pagate"
     },
     {
       "id": "SCAD-0015",
-      "descrizione": "IVA Q1 2026 — DEBITO",
+      "descrizione": "IVA Q1 2026 — DEBITO €109,01",
       "scadenza": "2026-05-16",
       "importo": 109.01,
       "stato": "da_pagare",
-      "note": ""
+      "note": "Saldo parziale: FI aprile mancanti"
     },
     {
       "id": "SCAD-0027",
-      "descrizione": "INPS Marco 1a rata 2026",
+      "descrizione": "INPS Marco — 1a rata fissa 2026",
       "scadenza": "2026-05-16",
       "importo": 1137.0,
       "stato": "da_pagare",
-      "note": ""
+      "note": "F24 da Mascolo"
     },
     {
       "id": "SCAD-0016",
-      "descrizione": "INAIL 2a rata 2026",
+      "descrizione": "INAIL — 2a rata 2026",
       "scadenza": "2026-05-18",
       "importo": 69.1,
       "stato": "da_pagare",
@@ -89,7 +89,7 @@
     },
     {
       "id": "SCAD-0034",
-      "descrizione": "Timeflow D.I. n.506 — rata 4",
+      "descrizione": "Timeflow D.I. n.506 — rata 4/4",
       "scadenza": "2026-06-13",
       "importo": 733.33,
       "stato": "da_pagare",
@@ -99,34 +99,34 @@
   "alert": [
     {
       "tipo": "danger",
-      "testo": "🔴 IVA Q1 DEBITO €109,01 — scadenza 16/05. Include FI gen-mar. FI aprile mancanti → possibile riduzione."
+      "testo": "🔴 IVA Q1 DEBITO €109,01 — scadenza 16/05. Calcolato su FI gen-mar. FI aprile ancora da processare (potrebbero abbassare il saldo)."
     },
     {
       "tipo": "danger",
-      "testo": "🔴 INPS Marco €1.137 — scadenza 16/05 (F24 da richiedere a Mascolo)."
+      "testo": "🔴 INPS Marco €1.137 — scadenza 16/05. F24 da richiedere a Mascolo."
     },
     {
       "tipo": "warning",
-      "testo": "⚠️ Timeflow D.I. n.506 — rata 3 €733,33 il 13/05."
+      "testo": "⚠️ Timeflow D.I. n.506 — rata 3 di 4: €733,33 il 13/05."
     },
     {
       "tipo": "warning",
-      "testo": "⚠️ F24 €1.663 del 16/03 non identificato — chiedere a Mascolo (SCAD-0035)."
+      "testo": "⚠️ F24 €1.663 del 16/03 non identificato — chiedere a Mascolo (INPS? IRAP? Altro?)"
     },
     {
       "tipo": "warning",
-      "testo": "⚠️ 7 fatture acquisto aprile non ancora registrate (Lapenna, WT Group, Pluxee, Sinfotech, Maitan, Siggi, Reflects)."
+      "testo": "⚠️ 7 fatture acquisto aprile da registrare (Lapenna, WT Group, Pluxee, Sinfotech, Maitan, Siggi Group, Reflects)."
     },
     {
       "tipo": "info",
-      "testo": "ℹ️ Saldo banca 28/04: €15.762,83 ufficiale (mancano 29-30/04)."
+      "testo": "ℹ️ Saldo banca 28/04: €15.762,83 — E/C ufficiale (mancano 29-30 apr)."
     },
     {
       "tipo": "info",
       "testo": "ℹ️ KM aprile: saldo €8,69 ancora dovuto a Marco (dovuto €856,07, pagato €847,38)."
     }
   ],
-  "suggerimenti": "1) URGENTE: pagare 2 fatture Roly scadute (€268 totale). 2) SCADENZA 16/03: F24 €220 + ritenute €90 = ~€310. 3) KM gen/feb/mar tutti pagati. 4) INCASSI: €2.691 da 3 clienti (Ecomondi, De Giglio, Dinamica) — sollecitare. 5) Anticipazioni Marco €2.480,05 (KM pagati) — organizzare rimborso. 6) RICAVI IN CALO: gen-feb 2026 -73,5% vs 2025 — servono nuove vendite. 7) Chiarire pagamento Petrini €641. 8) Richiedere breakdown TS Payments feb. 9) Offerta Frisbi scaduta — decidere. 10) Diversificare clienti (SiliconDev 40%).",
+  "suggerimenti": "PRIORITÀ MAGGIO: 1) IVA Q1 €109 (16/05) — ma prima processare 7 FI aprile (potrebbero abbassarlo). 2) INPS Marco €1.137 (16/05) — F24 da richiedere a Mascolo. 3) Timeflow rata 3 €733 (13/05). 4) Chiarire F24 €1.663 del 16/03 con Mascolo. 5) Sollecitare €3.811 da 4 clienti feb (De Giglio, Digitality, Dinamica, Piesse). 6) Rimborso anticipazioni Marco €2.480 + saldo KM apr €8,69. 7) RICAVI IN CALO: gen-apr -73%% vs 2025 — servono nuove vendite.",
   "setupChecklist": [
     {
       "label": "Visura camerale",
@@ -195,28 +195,32 @@
       "label": "Gen",
       "entrate": 28349.84,
       "uscite": 21314.47,
-      "netto": 7035.37
+      "netto": 7035.37,
+      "utileNetto": 7035.37
     },
     {
       "mese": "2026-02",
       "label": "Feb",
       "entrate": 18018.79,
       "uscite": 13246.68,
-      "netto": 4772.11
+      "netto": 4772.11,
+      "utileNetto": 4772.11
     },
     {
       "mese": "2026-03",
       "label": "Mar",
       "entrate": 8993.99,
       "uscite": 8783.04,
-      "netto": 210.95
+      "netto": 210.95,
+      "utileNetto": 210.95
     },
     {
       "mese": "2026-04",
       "label": "Apr",
       "entrate": 5329.14,
       "uscite": 6582.12,
-      "netto": -1252.98
+      "netto": -1252.98,
+      "utileNetto": -1252.98
     }
   ],
   "bancaAliasDescrizioni": {
@@ -276,10 +280,141 @@
     "V CONSULTING": "V Consulting SRL (consulente lavoro)"
   },
   "banca": {
-    "contoId": "BANCA-ISP-001",
-    "banca": "Intesa Sanpaolo",
-    "saldoCorrente": 15762.83,
+    "conto": "Intesa Sanpaolo",
+    "iban": "IT94G0306905124100000014534",
+    "saldoAttuale": "€16.964,21",
+    "ultimoAggiornamento": "27 Aprile 2026",
+    "saldoInizialeAnno": "€2.480,94",
+    "riepilogoMensile": [
+      {
+        "mese": "Gennaio 2026",
+        "saldoInizio": "€2.480,94",
+        "entrate": "€28.349,84",
+        "uscite": "€21.314,47",
+        "flusso": "+€7.035,37",
+        "saldoFine": "€11.441,90",
+        "movimenti": 47
+      },
+      {
+        "mese": "Febbraio 2026",
+        "saldoInizio": "€11.441,90",
+        "entrate": "€18.018,79",
+        "uscite": "€13.246,68",
+        "flusso": "+€4.772,11",
+        "saldoFine": "€16.803,86",
+        "movimenti": 48
+      },
+      {
+        "mese": "Marzo 2026",
+        "saldoInizio": "€16.803,86",
+        "entrate": "€8.993,99",
+        "uscite": "€8.608,04",
+        "flusso": "+€385,95",
+        "saldoFine": "€17.189,81",
+        "movimenti": 63
+      },
+      {
+        "mese": "Aprile 2026",
+        "saldoInizio": "€17.189,81",
+        "entrate": "€5.329,14",
+        "uscite": "€5.554,74",
+        "flusso": "€-225,60",
+        "saldoFine": "€16.964,21",
+        "movimenti": 52
+      }
+    ],
+    "totali": {
+      "entrate": "€60.691,76",
+      "uscite": "€48.723,93",
+      "flusso": "+€11.967,83",
+      "movimenti": 210
+    },
+    "riconciliazione": {
+      "totaleMovimenti": 95,
+      "riconciliati": 91,
+      "nonRiconciliati": 4,
+      "percentuale": 95.8,
+      "movimentiAperti": [
+        {
+          "id": "MOV-2026-0020",
+          "data": "2026-01-10",
+          "controparte": "Metrie Spol. S.r.o.",
+          "importo": "€469,50",
+          "tipo": "uscita",
+          "motivo": "Pagamento parziale — non corrisponde a nessuna fattura singola. Servono 3 fatture Metrie (€1.264 totali)"
+        },
+        {
+          "id": "MOV-2026-0024",
+          "data": "2026-01-12",
+          "controparte": "GOR Factory (Roly)",
+          "importo": "€244,13",
+          "tipo": "uscita",
+          "motivo": "SDD Roly — matching fatture non univoco. Richiedere estratto conto fornitore"
+        },
+        {
+          "id": "MOV-2026-0031",
+          "data": "2026-01-15",
+          "controparte": "GOR Factory (Roly)",
+          "importo": "€222,85",
+          "tipo": "uscita",
+          "motivo": "SDD Roly — analizzare insieme a MOV-0024. Totale SDD GOR €466,98 vs fatture €403,33"
+        },
+        {
+          "id": "MOV-2026-0095",
+          "data": "2026-02-27",
+          "controparte": "TeamSystem Payments",
+          "importo": "€278,91",
+          "tipo": "entrata",
+          "motivo": "Accredito TS da riepilogo — non presente nell'E/C importato. Da confermare con E/C completo"
+        }
+      ]
+    },
+    "movimenti": [],
     "dataAggiornamento": "2026-04-28",
+    "saldoInizioAnno": "€2.480,94",
+    "entrateTotali": "€60.691,76",
+    "usciteTotali": "€48.723,93",
+    "flussoNetto": "+€11.967,83",
+    "movimentiTotali": 210,
+    "dettaglioMensile": [
+      {
+        "mese": "Gennaio 2026",
+        "saldoInizio": "€2.480,94",
+        "entrate": "€28.349,84",
+        "uscite": "€21.314,47",
+        "flusso": "+€7.035,37",
+        "saldoFine": "€11.441,90",
+        "movimenti": 47
+      },
+      {
+        "mese": "Febbraio 2026",
+        "saldoInizio": "€11.441,90",
+        "entrate": "€18.018,79",
+        "uscite": "€13.246,68",
+        "flusso": "+€4.772,11",
+        "saldoFine": "€16.803,86",
+        "movimenti": 48
+      },
+      {
+        "mese": "Marzo 2026",
+        "saldoInizio": "€16.803,86",
+        "entrate": "€8.993,99",
+        "uscite": "€8.608,04",
+        "flusso": "+€385,95",
+        "saldoFine": "€17.189,81",
+        "movimenti": 63
+      },
+      {
+        "mese": "Aprile 2026",
+        "saldoInizio": "€17.189,81",
+        "entrate": "€5.329,14",
+        "uscite": "€5.554,74",
+        "flusso": "€-225,60",
+        "saldoFine": "€16.964,21",
+        "movimenti": 52
+      }
+    ],
+    "saldoCorrente": 15762.83,
     "storico": [
       {
         "data": "2026-01-01",
@@ -418,30 +553,231 @@
     }
   ],
   "iva": {
-    "regime": "ordinario_trimestrale",
-    "Q1": {
-      "periodo": "Gennaio–Marzo 2026",
-      "scadenza": "2026-05-16",
-      "ivaDebito": 1009.7,
-      "ivaCredito": 900.69,
-      "saldo": 109.01,
-      "stato": "da_versare",
-      "note": "FI aprile non ancora incluse. Possibile riduzione saldo."
-    },
-    "Q2": {
-      "periodo": "Aprile–Giugno 2026",
-      "stato": "in_corso"
-    }
+    "regime": "Trimestrale (contribuenti minori)",
+    "trimestri": [
+      {
+        "periodo": "Q1 2026 (Gen-Mar)",
+        "stato": "da_versare",
+        "scadenzaVersamento": "16 Maggio 2026",
+        "ivaDebito": 1009.7,
+        "ivaCredito": 900.69,
+        "creditoRiportato": 0,
+        "saldo": 109.01,
+        "saldoLabel": "A debito",
+        "dettaglioDebito": {
+          "ordinario_22": 741.98,
+          "note": "9 fatture emesse (6 FV + 3 NC)"
+        },
+        "dettaglioCredito": {
+          "ordinario_22": 866.42,
+          "ridotto_4": 19.26,
+          "note": "28 fatture acquisto + 15 reverse charge (neutro) + 2 forfettario"
+        },
+        "reverseCharge": {
+          "totaleImponibile": 3243.03,
+          "ivaTeorica_22": 713.47,
+          "note": "15 fatture estere — neutro ai fini IVA"
+        },
+        "creditoIva": 616.69,
+        "disclaimer": "Importi calcolati da fatture registrate. Possibili scostamenti centesimali. Liquidazione ufficiale a cura del commercialista."
+      }
+    ]
   },
   "bilancio": {
     "disclaimer": "Bilancio gestionale interno — importi al netto IVA (CE) e lordo IVA (SP). Non sostituisce la contabilita ufficiale del commercialista.",
-    "notaCompetenza": "Dati cassa YTD. Ricavi per competenza 2026: €10.898 (FV emesse meno NC). Costi parziali: FI aprile non ancora registrate.",
-    "dataRiferimento": "Gen–Apr 2026",
+    "notaCompetenza": "Ricavi per competenza 2026 — gli incassi di fatture emesse nel 2025 (28k gen + 14k feb) non figurano nei ricavi. E normale vedere un risultato negativo nei primi mesi.",
+    "dataRiferimento": "28 Febbraio 2026",
     "ce": {
-      "ricaviCassa": 60691.76,
-      "costiCassa": 49926.31,
-      "margineCassa": 10765.45,
-      "ricaviCompetenza": 10898.4
+      "A": {
+        "label": "A) Valore della produzione",
+        "totale": 3372.58,
+        "dettaglio": [
+          {
+            "label": "A.1.1 Vendita merci",
+            "importo": 2773.83
+          },
+          {
+            "label": "A.1.2 Prestazioni servizi",
+            "importo": 650
+          },
+          {
+            "label": "A.1.3 Note di credito",
+            "importo": -563.6
+          },
+          {
+            "label": "A.1.4 Note (solo FV 5 Ecomondi gen)",
+            "importo": 512.35
+          }
+        ]
+      },
+      "B": {
+        "label": "B) Costi della produzione",
+        "totale": 12426.84,
+        "sottoGruppi": [
+          {
+            "codice": "B6",
+            "label": "Materie prime e merci",
+            "totale": 3071.42,
+            "dettaglio": [
+              {
+                "label": "Merci e prodotti",
+                "importo": 2462.5
+              },
+              {
+                "label": "Materiale consumo",
+                "importo": 94.01
+              },
+              {
+                "label": "Feb: Rossini €751 + Metrie + Roly + Maikii + WT + PF Concept",
+                "importo": 514.91
+              }
+            ]
+          },
+          {
+            "codice": "B7",
+            "label": "Servizi",
+            "totale": 5879.3,
+            "dettaglio": [
+              {
+                "label": "Software (Sintra, Claude, Opus, Elementor, Canva, Envato, Anthropic feb)",
+                "importo": 1655.12
+              },
+              {
+                "label": "Consulenze legali (Fatone Gasso + Palumbo)",
+                "importo": 478.4
+              },
+              {
+                "label": "Consulenza lavoro (V Consulting)",
+                "importo": 160
+              },
+              {
+                "label": "Posteggio (Lapenna x2)",
+                "importo": 240
+              },
+              {
+                "label": "Canoni servizio (Fastweb x2, TeamSystem)",
+                "importo": 268.18
+              },
+              {
+                "label": "Manutenzione auto (Meccatronica)",
+                "importo": 164.58
+              },
+              {
+                "label": "Energia elettrica (Frisbi x2)",
+                "importo": 229.0
+              },
+              {
+                "label": "Hosting/tool digitali (Hostinger x2)",
+                "importo": 366.86
+              },
+              {
+                "label": "Rimborsi spese soci (Alessandro + Marco km gen)",
+                "importo": 939.02
+              },
+              {
+                "label": "Spedizioni (Sendcloud x5)",
+                "importo": 108.4
+              },
+              {
+                "label": "Commissioni welfare (Pluxee)",
+                "importo": 21.93
+              },
+              {
+                "label": "Servizi vari (Petrini da verificare)",
+                "importo": 525.66
+              },
+              {
+                "label": "OpenAI API",
+                "importo": 50
+              }
+            ]
+          },
+          {
+            "codice": "B8",
+            "label": "Godimento beni di terzi",
+            "totale": 713,
+            "dettaglio": [
+              {
+                "label": "Affitto sede gen+feb (Panebianco)",
+                "importo": 700
+              },
+              {
+                "label": "Spese condominiali feb",
+                "importo": 13
+              }
+            ]
+          },
+          {
+            "codice": "B9",
+            "label": "Personale",
+            "totale": 2282.36,
+            "dettaglio": [
+              {
+                "label": "Stipendi (Sajay gen+feb + Claudia gen)",
+                "importo": 1298.49
+              },
+              {
+                "label": "Buoni pasto (Pluxee gen+feb)",
+                "importo": 585.44
+              },
+              {
+                "label": "Contributi INPS dipendenti (F24 gen)",
+                "importo": 398.43
+              }
+            ]
+          },
+          {
+            "codice": "B10",
+            "label": "Ammortamenti",
+            "totale": 115.49,
+            "dettaglio": [
+              {
+                "label": "Macchine elettroniche (iPhone)",
+                "importo": 115.49
+              }
+            ]
+          },
+          {
+            "codice": "B14",
+            "label": "Oneri diversi",
+            "totale": 365.2,
+            "dettaglio": [
+              {
+                "label": "Royalties marchio gen+feb (Sala Vurro + Nicola Vurro x2)",
+                "importo": 680
+              },
+              {
+                "label": "Bolli e tributi bancari",
+                "importo": 25.2
+              }
+            ]
+          }
+        ]
+      },
+      "diffAB": {
+        "importo": -9054.26
+      },
+      "C": {
+        "label": "C) Oneri finanziari",
+        "totale": 70.5,
+        "dettaglio": [
+          {
+            "label": "Spese bancarie gen+feb",
+            "importo": 56.2
+          },
+          {
+            "label": "Commissioni TS Payments gen",
+            "importo": 14.3
+          }
+        ]
+      },
+      "imposte": {
+        "totale": 0,
+        "nota": "Imposte non ancora determinate — a cura del commercialista"
+      },
+      "utile": {
+        "importo": -9124.76
+      }
     },
     "sp": {
       "attivo": {
