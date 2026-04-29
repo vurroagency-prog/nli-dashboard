@@ -191,36 +191,48 @@
   ],
   "movimentiMensili": [
     {
-      "mese": "2026-01",
+      "mese": "Gennaio 2026",
       "label": "Gen",
-      "entrate": 28349.84,
-      "uscite": 21314.47,
+      "entrate": [],
+      "uscite": [],
       "netto": 7035.37,
-      "utileNetto": 7035.37
+      "utileNetto": 7035.37,
+      "totaleEntrate": "€28.349,84",
+      "totaleUscite": "€21.314,47",
+      "ebitda": "—"
     },
     {
-      "mese": "2026-02",
+      "mese": "Febbraio 2026",
       "label": "Feb",
-      "entrate": 18018.79,
-      "uscite": 13246.68,
+      "entrate": [],
+      "uscite": [],
       "netto": 4772.11,
-      "utileNetto": 4772.11
+      "utileNetto": 4772.11,
+      "totaleEntrate": "€18.018,79",
+      "totaleUscite": "€13.246,68",
+      "ebitda": "—"
     },
     {
-      "mese": "2026-03",
+      "mese": "Marzo 2026",
       "label": "Mar",
-      "entrate": 8993.99,
-      "uscite": 8783.04,
+      "entrate": [],
+      "uscite": [],
       "netto": 210.95,
-      "utileNetto": 210.95
+      "utileNetto": 210.95,
+      "totaleEntrate": "€8.993,99",
+      "totaleUscite": "€8.783,04",
+      "ebitda": "—"
     },
     {
-      "mese": "2026-04",
+      "mese": "Aprile 2026",
       "label": "Apr",
-      "entrate": 5329.14,
-      "uscite": 6582.12,
+      "entrate": [],
+      "uscite": [],
       "netto": -1252.98,
-      "utileNetto": -1252.98
+      "utileNetto": -1252.98,
+      "totaleEntrate": "€5.329,14",
+      "totaleUscite": "€6.582,12",
+      "ebitda": "—"
     }
   ],
   "bancaAliasDescrizioni": {
@@ -282,8 +294,8 @@
   "banca": {
     "conto": "Intesa Sanpaolo",
     "iban": "IT94G0306905124100000014534",
-    "saldoAttuale": "€16.964,21",
-    "ultimoAggiornamento": "27 Aprile 2026",
+    "saldoAttuale": "€15.762,83",
+    "ultimoAggiornamento": "28 aprile 2026",
     "saldoInizialeAnno": "€2.480,94",
     "riepilogoMensile": [
       {
