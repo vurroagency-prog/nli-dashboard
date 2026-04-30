@@ -220,8 +220,8 @@
       "label": "Gen",
       "entrate": [],
       "uscite": [],
-      "netto": 7035.37,
-      "utileNetto": 7035.37,
+      "netto": "€7.035,37",
+      "utileNetto": "€7.035,37",
       "totaleEntrate": "€28.349,84",
       "totaleUscite": "€21.314,47",
       "ebitda": "—"
@@ -231,8 +231,8 @@
       "label": "Feb",
       "entrate": [],
       "uscite": [],
-      "netto": 4772.11,
-      "utileNetto": 4772.11,
+      "netto": "€4.772,11",
+      "utileNetto": "€4.772,11",
       "totaleEntrate": "€18.018,79",
       "totaleUscite": "€13.246,68",
       "ebitda": "—"
@@ -242,8 +242,8 @@
       "label": "Mar",
       "entrate": [],
       "uscite": [],
-      "netto": 210.95,
-      "utileNetto": 210.95,
+      "netto": "€210,95",
+      "utileNetto": "€210,95",
       "totaleEntrate": "€8.993,99",
       "totaleUscite": "€8.783,04",
       "ebitda": "—"
@@ -253,8 +253,8 @@
       "label": "Apr",
       "entrate": [],
       "uscite": [],
-      "netto": -1252.98,
-      "utileNetto": -1252.98,
+      "netto": "−€1.252,98",
+      "utileNetto": "−€1.252,98",
       "totaleEntrate": "€5.329,14",
       "totaleUscite": "€6.582,12",
       "ebitda": "—"
