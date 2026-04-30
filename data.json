@@ -218,45 +218,2105 @@
     {
       "mese": "Gennaio 2026",
       "label": "Gen",
-      "entrate": [],
-      "uscite": [],
-      "netto": "€7.035,37",
-      "utileNetto": "€7.035,37",
+      "entrate": [
+        {
+          "data": "01/02",
+          "voce": "Costruzioni Vulpio SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€1.534,76",
+          "note": "✓ Riconciliato",
+          "competenza": "2025",
+          "riconciliato": true
+        },
+        {
+          "data": "01/02",
+          "voce": "SiliconDev S.p.A.",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€9.816,12",
+          "note": "✓ Riconciliato",
+          "competenza": "2025",
+          "riconciliato": true
+        },
+        {
+          "data": "01/05",
+          "voce": "TeamSystem Payments SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€2.125,86",
+          "note": "✓ Riconciliato",
+          "competenza": "2025",
+          "riconciliato": true
+        },
+        {
+          "data": "01/08",
+          "voce": "De Nicolo C. S.r.l.",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€1.221,22",
+          "note": "✓ Riconciliato",
+          "competenza": "2025",
+          "riconciliato": true
+        },
+        {
+          "data": "01/08",
+          "voce": "Dentitalia S.r.l.",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€3.715,25",
+          "note": "✓ Riconciliato",
+          "competenza": "2025",
+          "riconciliato": true
+        },
+        {
+          "data": "01/12",
+          "voce": "TeamSystem Payments SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€1.913,01",
+          "note": "✓ Riconciliato",
+          "competenza": "2025",
+          "riconciliato": true
+        },
+        {
+          "data": "01/15",
+          "voce": "Cassano SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€711,16",
+          "note": "✓ Riconciliato",
+          "competenza": "2025",
+          "riconciliato": true
+        },
+        {
+          "data": "01/19",
+          "voce": "TeamSystem Payments SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€208,18",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/20",
+          "voce": "O.E.M. di De Lorenzo Domenico & C.",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€1.273,78",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/26",
+          "voce": "TeamSystem Payments SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€992,02",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/28",
+          "voce": "Mec Welding Service SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€1.337,12",
+          "note": "✓ Riconciliato",
+          "competenza": "2025",
+          "riconciliato": true
+        },
+        {
+          "data": "01/29",
+          "voce": "Splendor SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€366,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/29",
+          "voce": "RP SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€1.282,18",
+          "note": "✓ Riconciliato",
+          "competenza": "2025",
+          "riconciliato": true
+        },
+        {
+          "data": "01/30",
+          "voce": "Euro Impianti 2000 SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€1.853,18",
+          "note": "✓ Riconciliato",
+          "competenza": "2025",
+          "riconciliato": true
+        }
+      ],
+      "uscite": [
+        {
+          "data": "01/02",
+          "voce": "Alessandro Vurro + Claudia Loconsole",
+          "voceBilancio": "STR_straordinario",
+          "importo": "−€10.000,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/03",
+          "voce": "Sajay Fernandez Espinosa",
+          "voceBilancio": "B9_personale",
+          "importo": "−€662,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/03",
+          "voce": "Panebianco Antonia",
+          "voceBilancio": "B8_godimento_beni",
+          "importo": "−€350,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/05",
+          "voce": "Intesa Sanpaolo",
+          "voceBilancio": "B14_oneri_diversi",
+          "importo": "−€25,20",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/08",
+          "voce": "Elettra 2G SRL",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€549,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/08",
+          "voce": "Metrie Spol. S.r.o.",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€469,50",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/08",
+          "voce": "Siggi Group",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€128,60",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/09",
+          "voce": "Raffaele Lapenna",
+          "voceBilancio": "B7_posteggio",
+          "importo": "−€120,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/11",
+          "voce": "Marco Vurro",
+          "voceBilancio": "distribuzione_utili",
+          "importo": "−€500,00",
+          "note": "✓ Riconciliato — Causale bancaria errata: 'Rimborso macchinario DFT'. Causale corretta: 'Anticipo Utili 2025 Marco Vurro'. Da comunicare al commercialista per corretta registrazione.",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/12",
+          "voce": "GOR Factory S.A. (Roly)",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€244,13",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/12",
+          "voce": "Rossini 1969 S.p.A.",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€58,66",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/12",
+          "voce": "Pluxee Italia SRL",
+          "voceBilancio": "B9_personale",
+          "importo": "−€536,87",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/12",
+          "voce": "Silvana Nicola Sala Vurro",
+          "voceBilancio": "B14_oneri_diversi",
+          "importo": "−€170,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/12",
+          "voce": "Nicola Vurro",
+          "voceBilancio": "B14_oneri_diversi",
+          "importo": "−€170,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/13",
+          "voce": "WT Group KG",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€1.321,91",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/14",
+          "voce": "OpusClip Inc.",
+          "voceBilancio": "B7_software_operativi",
+          "importo": "−€174,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/15",
+          "voce": "GOR Factory S.A. (Roly)",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€222,85",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/15",
+          "voce": "Festa Daniele",
+          "voceBilancio": "B7_diritti_autore",
+          "importo": "−€414,75",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/16",
+          "voce": "Sintra.ai",
+          "voceBilancio": "B7_software_operativi",
+          "importo": "−€415,91",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/19",
+          "voce": "Agenzia delle Entrate",
+          "voceBilancio": "TRIB_debiti",
+          "importo": "−€398,43",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/20",
+          "voce": "MediaMarket S.p.A.",
+          "voceBilancio": "B10_macchine_elettroniche",
+          "importo": "−€1.408,94",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/21",
+          "voce": "Sendcloud SRL",
+          "voceBilancio": "B7_spedizioni",
+          "importo": "−€45,07",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/22",
+          "voce": "Amazon Business EU",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€114,70",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/26",
+          "voce": "PF Concept International",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€1.104,02",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/26",
+          "voce": "Claudia Loconsole",
+          "voceBilancio": "B9_personale",
+          "importo": "−€636,49",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/26",
+          "voce": "Alessandro Vurro + Claudia Loconsole",
+          "voceBilancio": "STR_straordinario",
+          "importo": "−€500,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/26",
+          "voce": "Fastweb SPA",
+          "voceBilancio": "B7_canone_servizio",
+          "importo": "−€41,36",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/26",
+          "voce": "Studio Avvocati Fatone Gasso",
+          "voceBilancio": "B7_consulenze_legali",
+          "importo": "−€184,37",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/26",
+          "voce": "Alessandro Vurro",
+          "voceBilancio": "B7_rimborsi_spese_soci",
+          "importo": "−€129,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/30",
+          "voce": "Frisbi Società Benefit SRL",
+          "voceBilancio": "B7_energia_elettrica",
+          "importo": "−€89,47",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/31",
+          "voce": "Intesa Sanpaolo",
+          "voceBilancio": "C_oneri_finanziari",
+          "importo": "−€28,50",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/31",
+          "voce": "Claude.ai (Anthropic)",
+          "voceBilancio": "B7_software_operativi",
+          "importo": "−€86,44",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "01/31",
+          "voce": "TeamSystem Payments SRL",
+          "voceBilancio": "C_oneri_finanziari",
+          "importo": "−€14,30",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        }
+      ],
       "totaleEntrate": "€28.349,84",
       "totaleUscite": "€21.314,47",
+      "netto": "€7.035,37",
+      "utileNetto": "€7.035,37",
       "ebitda": "—"
     },
     {
       "mese": "Febbraio 2026",
       "label": "Feb",
-      "entrate": [],
-      "uscite": [],
-      "netto": "€4.772,11",
-      "utileNetto": "€4.772,11",
+      "entrate": [
+        {
+          "data": "02/02",
+          "voce": "TeamSystem Payments SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€1.444,18",
+          "note": "✓ Riconciliato",
+          "competenza": "da_verificare",
+          "riconciliato": true
+        },
+        {
+          "data": "02/09",
+          "voce": "TeamSystem Payments SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€385,76",
+          "note": "✓ Riconciliato",
+          "competenza": "da_verificare",
+          "riconciliato": true
+        },
+        {
+          "data": "02/09",
+          "voce": "Global Project Costruzioni SRLS",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€2.425,12",
+          "note": "✓ Riconciliato",
+          "competenza": "2025",
+          "riconciliato": true
+        },
+        {
+          "data": "02/16",
+          "voce": "TeamSystem Payments SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€2.508,47",
+          "note": "✓ Riconciliato",
+          "competenza": "misto",
+          "riconciliato": true
+        },
+        {
+          "data": "02/18",
+          "voce": "Amir SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€268,68",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/20",
+          "voce": "GIS Professional Services SRLS",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€399,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2025",
+          "riconciliato": true
+        },
+        {
+          "data": "02/23",
+          "voce": "TeamSystem Payments SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€1.341,65",
+          "note": "✓ Riconciliato",
+          "competenza": "misto",
+          "riconciliato": true
+        },
+        {
+          "data": "02/24",
+          "voce": "Digitality Consulting SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€427,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/25",
+          "voce": "SiliconDev S.p.A.",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€8.540,02",
+          "note": "✓ Riconciliato",
+          "competenza": "2025",
+          "riconciliato": true
+        },
+        {
+          "data": "02/27",
+          "voce": "TeamSystem Payments SRL",
+          "voceBilancio": "A1_ricavi",
+          "importo": "€278,91",
+          "note": "⚠ Da abbinare",
+          "competenza": "misto",
+          "riconciliato": false
+        }
+      ],
+      "uscite": [
+        {
+          "data": "02/01",
+          "voce": "Panebianco Antonia",
+          "voceBilancio": "B8_godimento_beni",
+          "importo": "−€350,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/01",
+          "voce": "Hostinger.com",
+          "voceBilancio": "B7_hosting_tool_digitali",
+          "importo": "−€150,98",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/02",
+          "voce": "Elementor",
+          "voceBilancio": "B7_software_operativi",
+          "importo": "−€203,88",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/02",
+          "voce": "Meccatronica Car Service",
+          "voceBilancio": "B7_manutenzione_auto",
+          "importo": "−€200,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/02",
+          "voce": "Sajay Fernandez Espinosa",
+          "voceBilancio": "B9_personale",
+          "importo": "−€662,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/02",
+          "voce": "Sala Silvana",
+          "voceBilancio": "B14_oneri_diversi",
+          "importo": "−€170,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/02",
+          "voce": "Vurro Nicola",
+          "voceBilancio": "B14_oneri_diversi",
+          "importo": "−€170,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/02",
+          "voce": "Palumbo Chiara (Avv.)",
+          "voceBilancio": "B7_consulenze_legali",
+          "importo": "−€160,32",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/02",
+          "voce": "Condominio Via Fieramosca 20",
+          "voceBilancio": "B8_godimento_beni",
+          "importo": "−€13,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/03",
+          "voce": "Canva",
+          "voceBilancio": "B7_software_operativi",
+          "importo": "−€139,90",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/03",
+          "voce": "Envato",
+          "voceBilancio": "B7_software_operativi",
+          "importo": "−€174,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/03",
+          "voce": "Pluxee Italia SRL",
+          "voceBilancio": "B9_personale",
+          "importo": "−€161,24",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/03",
+          "voce": "Sendcloud SRL",
+          "voceBilancio": "B7_spedizioni",
+          "importo": "−€0,85",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/04",
+          "voce": "Raffaele Lapenna",
+          "voceBilancio": "B7_posteggio",
+          "importo": "−€120,00",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/04",
+          "voce": "Sendcloud SRL",
+          "voceBilancio": "B7_spedizioni",
+          "importo": "−€29,77",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/05",
+          "voce": "Metrie Spol. S.r.o.",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€1.264,40",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/06",
+          "voce": "Maikii SRL",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€79,30",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/09",
+          "voce": "GOR Factory S.A. (Roly)",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€187,58",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/09",
+          "voce": "Pluxee Italia SRL",
+          "voceBilancio": "B7_commissioni_welfare",
+          "importo": "−€12,05",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/10",
+          "voce": "Rossini 1969 S.p.A.",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€3.173,69",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/10",
+          "voce": "V Consulting SRL",
+          "voceBilancio": "B7_consulenza_lavoro",
+          "importo": "−€195,20",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/11",
+          "voce": "Valerio Petrini",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€641,28",
+          "note": "✓ Riconciliato — Ex commercialista Valerio Petrini — onorario/saldo compenso 2025. Nessuna fattura SDI attesa (potrebbe essere non soggetto a fatturazione o fuori soglia). Confermare con commercialista attuale.",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/13",
+          "voce": "Marco Vurro",
+          "voceBilancio": "B9_personale",
+          "importo": "−€810,02",
+          "note": "✓ Riconciliato — Rimborso KM gennaio 2026 — Marco Vurro",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/16",
+          "voce": "Marco Vurro",
+          "voceBilancio": "B9_inps_commercianti",
+          "importo": "−€1.128,82",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/16",
+          "voce": "Agenzia delle Entrate",
+          "voceBilancio": "TRIB_debiti",
+          "importo": "−€714,16",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/16",
+          "voce": "Agenzia delle Entrate",
+          "voceBilancio": "TRIB_debiti",
+          "importo": "−€49,77",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/17",
+          "voce": "Agenzia delle Entrate",
+          "voceBilancio": "TRIB_debiti",
+          "importo": "−€60,05",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/18",
+          "voce": "Sendcloud SRL",
+          "voceBilancio": "B7_spedizioni",
+          "importo": "−€15,74",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/19",
+          "voce": "Frisbi Società Benefit SRL",
+          "voceBilancio": "B7_energia_elettrica",
+          "importo": "−€95,66",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/19",
+          "voce": "GOR Factory S.A. (Roly)",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€33,82",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/23",
+          "voce": "TeamSystem S.P.A.",
+          "voceBilancio": "B7_canone_servizio",
+          "importo": "−€71,38",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/24",
+          "voce": "Claudia Loconsole",
+          "voceBilancio": "B9_personale",
+          "importo": "−€1.175,92",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/24",
+          "voce": "WT Group KG",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€469,09",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/24",
+          "voce": "PF Concept International",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€82,12",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/25",
+          "voce": "Fastweb SPA",
+          "voceBilancio": "B7_canone_servizio",
+          "importo": "−€41,36",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/26",
+          "voce": "GOR Factory S.A. (Roly)",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€150,69",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/27",
+          "voce": "Agenzia delle Entrate",
+          "voceBilancio": "TRIB_debiti",
+          "importo": "−€60,94",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "02/28",
+          "voce": "Intesa Sanpaolo",
+          "voceBilancio": "C_oneri_finanziari",
+          "importo": "−€27,70",
+          "note": "✓ Riconciliato",
+          "competenza": "2026",
+          "riconciliato": true
+        }
+      ],
       "totaleEntrate": "€18.018,79",
       "totaleUscite": "€13.246,68",
+      "netto": "€4.772,11",
+      "utileNetto": "€4.772,11",
       "ebitda": "—"
     },
     {
       "mese": "Marzo 2026",
       "label": "Mar",
-      "entrate": [],
-      "uscite": [],
-      "netto": "€210,95",
-      "utileNetto": "€210,95",
+      "entrate": [
+        {
+          "data": "03/02",
+          "voce": "COD.DISP.: 0126030201360792 CASH TS-BJJQTZTZQ4 ACCREDITO TEA",
+          "voceBilancio": "A1_ricavi_vendite",
+          "importo": "€278,91",
+          "note": "✓ Riconciliato — Accredito TS Payments — TS-BJJQTZTZQ4",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/04",
+          "voce": "COD.DISP.: 0126030409615304 CASH 120260303094423312XNLHM775X",
+          "voceBilancio": "A1_ricavi_vendite",
+          "importo": "€3.715,25",
+          "note": "✓ Riconciliato — Dentitalia SRL — Saldo Fatt.29989 del 06/11/2025",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/11",
+          "voce": "COD. DISP.: 0126031182951470 CASH NOTPROVIDED Saldo vostra f",
+          "voceBilancio": "A1_ricavi_vendite",
+          "importo": "€200,00",
+          "note": "✓ Riconciliato — Amir SRL — Saldo fattura proforma n.11",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/16",
+          "voce": "COD.DISP.: 0126031644880723 CASH TS-BJSYAQBSEI ACCREDITO TEA",
+          "voceBilancio": "A1_ricavi_vendite",
+          "importo": "€1.467,00",
+          "note": "✓ Riconciliato — Accredito TS Payments — TS-BJSYAQBSEI",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/20",
+          "voce": "COD.DISP.: 0126032001137779 CASH NOT PROVIDED PAGAMENTO ABBI",
+          "voceBilancio": "A1_ricavi_vendite",
+          "importo": "€470,81",
+          "note": "✓ Riconciliato — Edil Special — Pagamento abbigliamento da lavoro",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/23",
+          "voce": "COD.DISP.: 0126032305826072 CASH TS-BJXLVKTVHE ACCREDITO TEA",
+          "voceBilancio": "A1_ricavi_vendite",
+          "importo": "€1.620,97",
+          "note": "✓ Riconciliato — Accredito TS Payments — TS-BJXLVKTVHE",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/30",
+          "voce": "COD.DISP.: 0126033029383639 CASH TS-BJ37HQRLHE ACCREDITO TEA",
+          "voceBilancio": "A1_ricavi_vendite",
+          "importo": "€45,42",
+          "note": "✓ Riconciliato — Accredito TS Payments — TS-BJ37HQRLHE",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/31",
+          "voce": "COD. DISP.: 0126033161973858 CASH 00120260331170824669640249",
+          "voceBilancio": "A1_ricavi_vendite",
+          "importo": "€399,00",
+          "note": "✓ Riconciliato — GIS Professional Services — Acconto Fattura n.66/2025",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/31",
+          "voce": "COD.DISP.: 0126033032715714 CASH NOTPROVIDED ACCONTO FATTURA",
+          "voceBilancio": "A1_ricavi_vendite",
+          "importo": "€796,63",
+          "note": "✓ Riconciliato — Costruzioni Vulpio — Acconto Fattura Proforma n.11 del 27/03/2026",
+          "competenza": "2026",
+          "riconciliato": true
+        }
+      ],
+      "uscite": [
+        {
+          "data": "03/02",
+          "voce": "0126030272810330 02INTER20260302HSRT1359669307 0306925291419",
+          "voceBilancio": "B9_personale",
+          "importo": "−€895,48",
+          "note": "✓ Riconciliato — Rimborso KM febbraio 2026 — Marco Vurro",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/02",
+          "voce": "PAGAMENTO N. 002 DISPOSIZIONI",
+          "voceBilancio": "B14_imposte",
+          "importo": "−€406,45",
+          "note": "✓ Riconciliato — Contributi — Disposizione elettronica n.002",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/02",
+          "voce": "COD. DISP.: 0126021718345036 NOME: Gor Factory S.A MANDATO: ",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€31,24",
+          "note": "✓ Riconciliato — Gor Factory S.A. — SDD (accredito)",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/02",
+          "voce": "0126030272810330 02INTER20260302HSRT1359669307 0306925291419",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/02",
+          "voce": "COD DISP.: 0126021718345036 NOME: Gor Factory S.A MANDATO: 2",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — Gor Factory",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/03",
+          "voce": "0126030374224933 02INTER20260303HSRT1377156124 0306925336347",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€424,40",
+          "note": "✓ Riconciliato — Pluxee Italia — Fattura VC26000144",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/03",
+          "voce": "0126030374233360 02INTER20260303HSRT1380445759 0306925336617",
+          "voceBilancio": "B8_godimento_beni",
+          "importo": "−€350,00",
+          "note": "✓ Riconciliato — Affitto sede marzo — Panebianco Antonia",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/03",
+          "voce": "0126030374241540 02INTER20260303HSRT1383735684 0306925336894",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€170,00",
+          "note": "✓ Riconciliato — Royalties marchio marzo — Silvana Sala / Nicola Vurro",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/03",
+          "voce": "0126030374261490 02INTER20260303HSRT1391458336 0306925337563",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€41,74",
+          "note": "✓ Riconciliato — Condominio Via Fieramosca 20 — gen+mar+acqua",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/03",
+          "voce": "0126030374224933 02INTER20260303HSRT1377156124 0306925336347",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/03",
+          "voce": "COD DISP.: 0126030203629783 NOME: Sendcloud S.r.l. MANDATO: ",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — Sendcloud",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/03",
+          "voce": "COD. DISP.: 0126030203629783 NOME: Sendcloud S.r.l. MANDATO:",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€0,61",
+          "note": "✓ Riconciliato — Sendcloud S.r.l. — SDD",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/03",
+          "voce": "Bonifico a favore di: Silvana Sala Nicola Vurro pagamento ro",
+          "voceBilancio": "B14_royalties",
+          "importo": "−€170,00",
+          "note": "✓ Riconciliato — Royalties marchio NL marzo — 2° quota (€170 × 2 = €340 totale mensile)",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/03",
+          "voce": "Commissione bonifico istantaneo — affitto Panebianco",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico affitto Panebianco",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/03",
+          "voce": "Commissione bonifico istantaneo — royalties 1a quota",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico royalties 1a quota",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/03",
+          "voce": "Commissione bonifico istantaneo — royalties 2a quota",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico royalties 2a quota",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/03",
+          "voce": "Commissione bonifico istantaneo — condominio Fieramosca",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico condominio Fieramosca",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/04",
+          "voce": "0126030475365261 02INTER20260304HSRT1367126114 0306925372512",
+          "voceBilancio": "B9_personale",
+          "importo": "−€663,00",
+          "note": "✓ Riconciliato — Stipendio febbraio 2026 — Sajay Fernandez",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/04",
+          "voce": "COD. DISP.: 0126030305553417 NOME: Sendcloud S.r.l. MANDATO:",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€44,00",
+          "note": "✓ Riconciliato — Sendcloud S.r.l. — SDD",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/04",
+          "voce": "0126030475365261 02INTER20260304HSRT1367126114 0306925372512",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/04",
+          "voce": "COD DISP.: 0126030305553417 NOME: Sendcloud S.r.l. MANDATO: ",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — Sendcloud",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/05",
+          "voce": "0126030576704525 02INTER20260305HSRT1448638854 0306925415227",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€169,73",
+          "note": "✓ Riconciliato — Pluxee Italia Srl — Ordine RDA2600022386",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/05",
+          "voce": "COD. DISP.: 0126030258955824 NOME: Gor Factory S.A MANDATO: ",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€126,01",
+          "note": "✓ Riconciliato — Gor Factory S.A. — SDD (Roly campioni)",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/05",
+          "voce": "0126030576704525 02INTER20260305HSRT1448638854 0306925415227",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/05",
+          "voce": "COD DISP.: 0126030258955824 NOME: Gor Factory S.A MANDATO: 2",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — Gor Factory",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/10",
+          "voce": "0126031081208861 02INTER20260310HSRT1340386070 0306925559360",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€120,00",
+          "note": "✓ Riconciliato — Raffaele Lapenna — Fattura FPR 28/26 del 03.03.2026",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/10",
+          "voce": "0126031081208861 02INTER20260310HSRT1340386070 0306925559360",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/12",
+          "voce": "0126031283585215 02INTER20260312HSRT1347486367 0306925637751",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€372,02",
+          "note": "✓ Riconciliato — Avv. Chiara Palumbo — acconto/proforma (D'Attolico)",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/12",
+          "voce": "COD. DISP.: 0126030258999147 NOME: Gor Factory S.A MANDATO: ",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€142,37",
+          "note": "✓ Riconciliato — Gor Factory S.A. — SDD (Roly merce)",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/12",
+          "voce": "0126031283585215 02INTER20260312HSRT1347486367 0306925637751",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/12",
+          "voce": "COD DISP.: 0126030258999147 NOME: Gor Factory S.A MANDATO: 2",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — Gor Factory",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/13",
+          "voce": "0126031385208302 02INTER20260313HSRT1578027047 0306925690904",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€733,33",
+          "note": "✓ Riconciliato — Timeflow S.R.L. — Decreto Ingiuntivo n.506/2026 rata 1/4",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/13",
+          "voce": "0126031385208302 02INTER20260313HSRT1578027047 0306925690904",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/16",
+          "voce": "PAGAMENTO DELEGA F24",
+          "voceBilancio": "B14_imposte",
+          "importo": "−€1.663,00",
+          "note": "✓ Riconciliato — F24 — IRPEF/contributi dipendente febbraio",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/16",
+          "voce": "PAGAMENTO DELEGA F24",
+          "voceBilancio": "B14_imposte",
+          "importo": "−€220,10",
+          "note": "✓ Riconciliato — F24 — contributi/ritenute febbraio",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/16",
+          "voce": "PAGAMENTO DELEGA F24",
+          "voceBilancio": "B14_imposte",
+          "importo": "−€60,00",
+          "note": "✓ Riconciliato — F24 — ritenuta royalties febbraio",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/17",
+          "voce": "0126031788772124 02INTER20260317HSRT1501795606 0306921805477",
+          "voceBilancio": "B9_personale",
+          "importo": "−€300,00",
+          "note": "✓ Riconciliato — Rimborso Km marzo (acconto) — Marco Vurro",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/17",
+          "voce": "0126031788772124 02INTER20260317HSRT1501795606 0306921805477",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/18",
+          "voce": "COD. DISP.: 0126031235685493 NOME: Gor Factory S.A MANDATO: ",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€67,59",
+          "note": "✓ Riconciliato — Gor Factory S.A. — SDD",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/18",
+          "voce": "COD DISP.: 0126031235685493 NOME: Gor Factory S.A MANDATO: 2",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — Gor Factory",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/19",
+          "voce": "0126031990664623 02INTER20260319HSRT1443299906 0306921864663",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€298,90",
+          "note": "✓ Riconciliato — Work Gianto S.R.L. — Saldo fattura n.71",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/19",
+          "voce": "0126031990664623 02INTER20260319HSRT1443299906 0306921864663",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/23",
+          "voce": "COD. DISP.: 0126031340800416 NOME: FRISBI SOCIETA' BENEFIT S",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€83,25",
+          "note": "✓ Riconciliato — Frisbi Società Benefit — SDD (STAR BUSINESS PO)",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/23",
+          "voce": "EFFETTUATO IL 18/03/2026 ALLE ORE 18:29 MEDIANTE LA CARTA 41",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€21,96",
+          "note": "✓ Riconciliato — Claude.ai Subscription — Anthropic.com",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/23",
+          "voce": "COD DISP.: 0126031340800416 NOME: FRISBI SOCIETA' BENEFIT S.",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — Frisbi",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/24",
+          "voce": "0126032494858442 02INTER20260324HSRT1411418171 0306921995892",
+          "voceBilancio": "",
+          "importo": "−€600,00",
+          "note": "✓ Riconciliato — Anticipo quote 2025 — Marco Vurro",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/24",
+          "voce": "EFFETTUATO IL 19/03/2026 ALLE ORE 15:22 MEDIANTE LA CARTA 41",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€88,49",
+          "note": "✓ Riconciliato — Claude.ai Subscription — Anthropic.com",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/24",
+          "voce": "0126032495046167 02INTER20260324HSRT1519147447 0306922001939",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€42,00",
+          "note": "✓ Riconciliato — Quota erario locale 50% — Panebianco Antonia",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/24",
+          "voce": "EFFETTUATO IL 21/03/2026 ALLE ORE 18:14 MEDIANTE LA CARTA 41",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€12,99",
+          "note": "✓ Riconciliato — SiteGround Hosting — abbonamento",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/24",
+          "voce": "0126032494858442 02INTER20260324HSRT1411418171 0306921995892",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/24",
+          "voce": "Commissione bonifico istantaneo — Panebianco quota erario lo",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico Panebianco erario",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/25",
+          "voce": "COD. DISP.: 0126031957498702 NOME: FASTWEB SPA MANDATO: 3F38",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€41,36",
+          "note": "✓ Riconciliato — FASTWEB SpA — SDD bolletta",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/25",
+          "voce": "COD DISP.: 0126031957498702 NOME: FASTWEB SPA MANDATO: 3F381",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — FASTWEB",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/26",
+          "voce": "0126032696731474 02INTER20260326HSRT1382158870 0306922053813",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€146,40",
+          "note": "✓ Riconciliato — V Consulting SRL — Fattura n.913/00",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/26",
+          "voce": "0126032696731474 02INTER20260326HSRT1382158870 0306922053813",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/27",
+          "voce": "NOME AZIENDA AGENZIA DELLE ENTRATE - RISCOSSIONE CODICE AZIE",
+          "voceBilancio": "B14_imposte",
+          "importo": "−€39,97",
+          "note": "✓ Riconciliato — AdE Riscossione — pagamento CBILL/PagoPA",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/27",
+          "voce": "NOME AZIENDA AGENZIA DELLE ENTRATE - RISCOSSIONE CODICE AZIE",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,30",
+          "note": "✓ Riconciliato — Commissione CBILL",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/30",
+          "voce": "EFFETTUATO IL 26/03/2026 ALLE ORE 09:06 (ORA AUTORIZZAZIONE)",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€17,98",
+          "note": "✓ Riconciliato — OpenAI — $20 USD (cambio 0,8655)",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/31",
+          "voce": "PAGAMENTO N. 002 DISPOSIZIONI",
+          "voceBilancio": "B14_imposte",
+          "importo": "−€193,67",
+          "note": "✓ Riconciliato — Contributi — Disposizione elettronica n.002 marzo",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "03/31",
+          "voce": "CANONE MENSILE MESE DI MARZO",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,50",
+          "note": "✓ Riconciliato — Canone mensile base — marzo",
+          "competenza": "2026",
+          "riconciliato": true
+        }
+      ],
       "totaleEntrate": "€8.993,99",
       "totaleUscite": "€8.783,04",
+      "netto": "€210,95",
+      "utileNetto": "€210,95",
       "ebitda": "—"
     },
     {
       "mese": "Aprile 2026",
       "label": "Apr",
-      "entrate": [],
-      "uscite": [],
-      "netto": "−€1.252,98",
-      "utileNetto": "−€1.252,98",
+      "entrate": [
+        {
+          "data": "04/08",
+          "voce": "COD.DISP.: 0126040854774313 CASH TS-BKDGMRS4JE ACCREDITO TEA",
+          "voceBilancio": "A1_ricavi_vendite",
+          "importo": "€620,68",
+          "note": "✓ Riconciliato — Accredito TS Payments — TS-BKDGMRS4JE",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/09",
+          "voce": "COD.DISP.: 0126040903603258 CASH Q66C77ZC556R817757290711490",
+          "voceBilancio": "A1_ricavi_vendite",
+          "importo": "€649,04",
+          "note": "✓ Riconciliato — Lobascio Serramenti SAS — Saldo Ft.74 del 18/12/2025",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/20",
+          "voce": "COD.DISP.: 0126042032326305 CASH NOTPROVIDED TS-BKJZKVUHJE A",
+          "voceBilancio": "A1_ricavi_vendite",
+          "importo": "€724,49",
+          "note": "✓ Riconciliato — Accredito TS Payments — TS-BKJZKVUHJE",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/27",
+          "voce": "COD.DISP.: 0126042755427637 CASH NOTPROVIDED TS-BKOM72LTVY A",
+          "voceBilancio": "A1_ricavi_vendite",
+          "importo": "€3.334,93",
+          "note": "✓ Riconciliato — Accredito TS Payments — TS-BKOM72LTVY",
+          "competenza": "2026",
+          "riconciliato": true
+        }
+      ],
+      "uscite": [
+        {
+          "data": "04/01",
+          "voce": "0126040162991710 02INTER20260401HSRT1439158485 0306922251137",
+          "voceBilancio": "B9_personale",
+          "importo": "−€847,38",
+          "note": "✓ Riconciliato — Rimborso chilometrico marzo — Marco Vurro",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/01",
+          "voce": "COD. DISP.: 0126033134749088 NOME: Sendcloud S.r.l. MANDATO:",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€5,89",
+          "note": "✓ Riconciliato — Sendcloud S.r.l. — SDD",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/01",
+          "voce": "0126040162991710 02INTER20260401HSRT1439158485 0306922251137",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/01",
+          "voce": "COD DISP.: 0126033134749088 NOME: Sendcloud S.r.l. MANDATO: ",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — Sendcloud",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/02",
+          "voce": "0126040264292722 02INTER20260402HSRT1399766560 0306922293145",
+          "voceBilancio": "B8_godimento_beni",
+          "importo": "−€350,00",
+          "note": "✓ Riconciliato — Affitto sede aprile — Panebianco Antonia",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/02",
+          "voce": "0126040264300675 02INTER20260402HSRT1402626823 0306922293425",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€170,00",
+          "note": "✓ Riconciliato — Royalties marchio aprile — Silvana Sala / Nicola Vurro",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/02",
+          "voce": "0126040264332677 02INTER20260402HSRT1413649553 0306922294523",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€120,00",
+          "note": "✓ Riconciliato — Raffaele Lapenna — Fattura FPR 30/26 del 01.04.2026",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/02",
+          "voce": "0126040264417876 02INTER20260402HSRT1443639972 0306922297462",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€97,33",
+          "note": "✓ Riconciliato — XD Connects B.V. — Fattura IN1905612 del 09.03.2026",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/02",
+          "voce": "IMPOSTA DI BOLLO E/C E RENDICONTO",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€24,70",
+          "note": "✓ Riconciliato — Imposta di bollo E/C — trimestrale",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/02",
+          "voce": "0126040264292722 02INTER20260402HSRT1399766560 0306922293145",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/02",
+          "voce": "Bonifico a favore di: Silvana Sala Nicola Vurro pagamento ro",
+          "voceBilancio": "B14_royalties",
+          "importo": "−€170,00",
+          "note": "✓ Riconciliato — Royalties marchio NL aprile — 2° quota",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/02",
+          "voce": "Commissione bonifico istantaneo — affitto Panebianco",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico affitto Panebianco",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/02",
+          "voce": "Commissione bonifico istantaneo — royalties 1a quota",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico royalties 1a quota",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/02",
+          "voce": "Commissione bonifico istantaneo — royalties 2a quota",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico royalties 2a quota",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/02",
+          "voce": "Commissione bonifico istantaneo — Lapenna",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico Lapenna",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/02",
+          "voce": "Commissione bonifico istantaneo — XD Connects",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico XD Connects",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/03",
+          "voce": "0126040365641907 02INTER20260403HSRT1421188359 0306922338248",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€240,23",
+          "note": "✓ Riconciliato — WT Group KGSAS — Saldo fattura n.20260124",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/03",
+          "voce": "0126040365930703 02INTER20260403HSRT1552037299 0306922348258",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€186,70",
+          "note": "✓ Riconciliato — Pluxee Italia Srl — Ordine RDA2600031225",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/03",
+          "voce": "0126040365641907 02INTER20260403HSRT1421188359 0306922338248",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/03",
+          "voce": "Commissione bonifico istantaneo — WT Group / Pluxee",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico apr",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/07",
+          "voce": "0126040246574259 NOTPROVIDED 0306910994253312S90512405124IT ",
+          "voceBilancio": "B9_personale",
+          "importo": "−€662,00",
+          "note": "✓ Riconciliato — Stipendio marzo 2026 — Sajay Fernandez",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/07",
+          "voce": "0126040768609726 02INTER20260407HSRT1412297153 0306922431811",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€24,28",
+          "note": "✓ Riconciliato — Sinfotech.it srl — Conferma d'ordine ZHADJUWAP",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/07",
+          "voce": "EFFETTUATO IL 01/04/2026 ALLE ORE 19:31 MEDIANTE LA CARTA 41",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€3,89",
+          "note": "✓ Riconciliato — Google Cloud — addebito",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/07",
+          "voce": "Bonifico da Voi disposto a favore di: BENEFICIARI DIVERSI - ",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico — stipendio Sajay",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/07",
+          "voce": "COD DISP.: 0126040244001116 NOME: Sendcloud S.r.l. MANDATO: ",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — Sendcloud",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/07",
+          "voce": "COD. DISP.: 0126040244001116 NOME: Sendcloud S.r.l. MANDATO:",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€0,24",
+          "note": "✓ Riconciliato — Sendcloud S.r.l. — SDD",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/07",
+          "voce": "Commissione bonifico istantaneo — Sinfotech",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico apr",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/09",
+          "voce": "0126040970983122 02INTER20260409HSRT1360319740 0306922506433",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€550,00",
+          "note": "✓ Riconciliato — Luca Maitan — Cessione diritti d'autore (1 sito)",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/09",
+          "voce": "COD. DISP.: 0126032722583977 NOME: Gor Factory S.A MANDATO: ",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€46,36",
+          "note": "✓ Riconciliato — Gor Factory S.A. — SDD",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/09",
+          "voce": "0126040970983122 02INTER20260409HSRT1360319740 0306922506433",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/09",
+          "voce": "COD DISP.: 0126032722583977 NOME: Gor Factory S.A MANDATO: 2",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — Gor Factory",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/13",
+          "voce": "0126041374993324 02INTER20260413HSRT1365636983 0306922637637",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€733,33",
+          "note": "✓ Riconciliato — Timeflow S.R.L. — Decreto Ingiuntivo n.506/2026 rata 2/4",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/13",
+          "voce": "0126041374993324 02INTER20260413HSRT1365636983 0306922637637",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/14",
+          "voce": "0126041476758339 02INTER20260414HSRT1603935238 0306922694975",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€245,17",
+          "note": "✓ Riconciliato — Siggi Group — Saldo proforma 26SOV-00070",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/14",
+          "voce": "0126041476758339 02INTER20260414HSRT1603935238 0306922694975",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/15",
+          "voce": "0126041577789742 02INTER20260415HSRT1469449729 0306922729503",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€84,91",
+          "note": "✓ Riconciliato — Reflects — Invoice MUS52615195",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/15",
+          "voce": "COD. DISP.: 0126041415023398 NOME: Sendcloud S.r.l. MANDATO:",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€71,58",
+          "note": "✓ Riconciliato — Sendcloud S.r.l. — SDD",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/15",
+          "voce": "0126041577789742 02INTER20260415HSRT1469449729 0306922729503",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/15",
+          "voce": "COD DISP.: 0126041415023398 NOME: Sendcloud S.r.l. MANDATO: ",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — Sendcloud",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/16",
+          "voce": "PAGAMENTO DELEGA F24",
+          "voceBilancio": "B14_imposte",
+          "importo": "−€220,10",
+          "note": "✓ Riconciliato — F24 — contributi/ritenute marzo",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/16",
+          "voce": "PAGAMENTO DELEGA F24",
+          "voceBilancio": "B14_imposte",
+          "importo": "−€60,00",
+          "note": "✓ Riconciliato — F24 — ritenuta royalties marzo",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/17",
+          "voce": "EFFETTUATO IL 14/04/2026 ALLE ORE 09:14 MEDIANTE LA CARTA 41",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€10,00",
+          "note": "✓ Riconciliato — Facebook Ads — addebito",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/20",
+          "voce": "COD. DISP.: 0126041005932018 NOME: Gor Factory S.A MANDATO: ",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€152,78",
+          "note": "✓ Riconciliato — Gor Factory S.A. — SDD",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/20",
+          "voce": "COD DISP.: 0126041005932018 NOME: Gor Factory S.A MANDATO: 2",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — Gor Factory",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/21",
+          "voce": "EFFETTUATO IL 18/04/2026 ALLE ORE 09:31 MEDIANTE LA CARTA 41",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€20,99",
+          "note": "✓ Riconciliato — SiteGround Hosting — abbonamento",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/21",
+          "voce": "EFFETTUATO IL 16/04/2026 ALLE ORE 09:21 MEDIANTE LA CARTA 41",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€19,99",
+          "note": "✓ Riconciliato — SiteGround Hosting — abbonamento",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/21",
+          "voce": "EFFETTUATO IL 16/04/2026 ALLE ORE 08:47 MEDIANTE LA CARTA 41",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€0,86",
+          "note": "✓ Riconciliato — Facebook Ads — addebito",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/22",
+          "voce": "COD. DISP.: 0126041521142866 NOME: FRISBI SOCIETA' BENEFIT S",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€105,38",
+          "note": "✓ Riconciliato — Frisbi Società Benefit — SDD",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/22",
+          "voce": "EFFETTUATO IL 19/04/2026 ALLE ORE 17:25 MEDIANTE LA CARTA 41",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€21,96",
+          "note": "✓ Riconciliato — Claude.ai Subscription — Anthropic.com",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/22",
+          "voce": "COD DISP.: 0126041521142866 NOME: FRISBI SOCIETA' BENEFIT S.",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — Frisbi",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/24",
+          "voce": "0126042486743787 02INTER20260424HSRT1506508473 0306923012197",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€267,13",
+          "note": "✓ Riconciliato — Siggi Group — Saldo proforma 26SOV-07480",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/24",
+          "voce": "0126042486731815 02INTER20260424HSRT1499247306 0306923011806",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€109,80",
+          "note": "✓ Riconciliato — We Safe srl — Saldo fattura n.0902",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/24",
+          "voce": "0126042486737772 02INTER20260424HSRT1502875394 0306923011999",
+          "voceBilancio": "B6_materie_prime",
+          "importo": "−€45,10",
+          "note": "✓ Riconciliato — Mid Ocean Brands B.V. — Saldo fattura n.105834542",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/24",
+          "voce": "0126042486731815 02INTER20260424HSRT1499247306 0306923011806",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione bonifico",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/24",
+          "voce": "Commissione bonifico istantaneo — V Consulting/altro",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico apr",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/24",
+          "voce": "Commissione bonifico istantaneo — pagamento apr",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico apr",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/27",
+          "voce": "COD. DISP.: 0126042451570032 NOME: FASTWEB SpA MANDATO: 3F38",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€41,36",
+          "note": "✓ Riconciliato — FASTWEB SpA — SDD bolletta",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/27",
+          "voce": "COD DISP.: 0126042451570032 NOME: FASTWEB SpA MANDATO: 3F381",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Riconciliato — Commissione SDD — FASTWEB",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/28",
+          "voce": "Bonifico a favore di: Marco Vurro Rimborso km Marzo — ⚠️ VER",
+          "voceBilancio": "B9_personale",
+          "importo": "−€847,38",
+          "note": "✓ Riconciliato — Rimborso km Aprile Marco Vurro (causale bonifico errata: indicato Marzo)",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/28",
+          "voce": "Commissione bonifico istantaneo 28/04",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Riconciliato — Commissione €1 bonifico 28/04",
+          "competenza": "2026",
+          "riconciliato": true
+        }
+      ],
       "totaleEntrate": "€5.329,14",
       "totaleUscite": "€6.582,12",
+      "netto": "−€1.252,98",
+      "utileNetto": "−€1.252,98",
       "ebitda": "—"
     }
   ],
