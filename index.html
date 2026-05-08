@@ -942,20 +942,22 @@
       var nota = s.note && s.note[a] ? ' — ' + s.note[a] : '';
       kpiHtml += '<div class="kpi-card"><div class="kpi-label">Ricavi ' + a + '</div><div class="kpi-value ' + (an.ricaviNetto >= 0 ? 'positive' : 'negative') + '">' + fmtK(an.ricaviNetto) + '</div><div class="kpi-sub">' + esc(an.numClienti + ' clienti, ' + an.numFattureVendita + ' fatture' + (yoyPct ? ' | ' + yoyPct : '') + nota) + '</div></div>';
     });
-    // KPI YoY Gen-Feb
-    if (yoy.variazionePct != null) {
-      var cls = yoy.variazionePct >= 0 ? 'positive' : 'negative';
-      kpiHtml += '<div class="kpi-card"><div class="kpi-label">YoY Gen-Feb</div><div class="kpi-value ' + cls + '">' + (yoy.variazionePct >= 0 ? '+' : '') + yoy.variazionePct.toFixed(1) + '%</div><div class="kpi-sub">' + fmtK(yoy.ricavi2026) + ' vs ' + fmtK(yoy.ricavi2025) + ' (2025)</div></div>';
+    // KPI YoY YTD (preferenza yoyGenApr > yoyGenFeb)
+    var yoyYtd = s.yoyGenApr || s.yoyGenFeb || {};
+    var yoyLabel = s.yoyGenApr ? 'YoY Gen-Apr' : 'YoY Gen-Feb';
+    if (yoyYtd.variazionePct != null) {
+      var cls = yoyYtd.variazionePct >= 0 ? 'positive' : 'negative';
+      kpiHtml += '<div class="kpi-card"><div class="kpi-label">' + yoyLabel + '</div><div class="kpi-value ' + cls + '">' + (yoyYtd.variazionePct >= 0 ? '+' : '') + yoyYtd.variazionePct.toFixed(1) + '%</div><div class="kpi-sub">' + fmtK(yoyYtd.ricavi2026) + ' vs ' + fmtK(yoyYtd.ricavi2025) + ' (2025)</div></div>';
     }
     document.getElementById('storico-kpi-grid').innerHTML = kpiHtml;
 
     // Aggiungi KPI YoY anche in Panoramica
-    if (yoy.variazionePct != null) {
+    if (yoyYtd.variazionePct != null) {
       var kpiGrid = document.getElementById('kpi-grid');
       var yoyCard = document.createElement('div');
       yoyCard.className = 'kpi-card';
-      var cls2 = yoy.variazionePct >= 0 ? 'positive' : 'negative';
-      yoyCard.innerHTML = '<div class="kpi-label">YoY Gen-Feb vs 2025</div><div class="kpi-value ' + cls2 + '">' + (yoy.variazionePct >= 0 ? '+' : '') + yoy.variazionePct.toFixed(1) + '%</div><div class="kpi-sub">' + fmtK(yoy.ricavi2026) + ' vs ' + fmtK(yoy.ricavi2025) + '</div>';
+      var cls2 = yoyYtd.variazionePct >= 0 ? 'positive' : 'negative';
+      yoyCard.innerHTML = '<div class="kpi-label">' + yoyLabel + ' vs 2025</div><div class="kpi-value ' + cls2 + '">' + (yoyYtd.variazionePct >= 0 ? '+' : '') + yoyYtd.variazionePct.toFixed(1) + '%</div><div class="kpi-sub">' + fmtK(yoyYtd.ricavi2026) + ' vs ' + fmtK(yoyYtd.ricavi2025) + '</div>';
       kpiGrid.appendChild(yoyCard);
     }
 

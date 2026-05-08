@@ -3238,18 +3238,18 @@
         "topClientePct": 39.4
       },
       "2026": {
-        "ricaviNetto": 3372.58,
-        "ricaviLordo": 4114.56,
-        "costiNetto": 5032.07,
-        "costiLordo": 5908.85,
-        "margine": -1659.49,
-        "marginePct": -49.2,
-        "numClienti": 6,
-        "numFattureVendita": 9,
-        "numFattureAcquisto": 58,
-        "topCliente": "Piesse S.R.L.S.",
-        "topClienteImporto": 1080.8,
-        "topClientePct": 32.0
+        "ricaviNetto": 11147.15,
+        "ricaviLordo": 13599.53,
+        "costiNetto": 16666.74,
+        "costiLordo": 18743.97,
+        "margine": -5519.59,
+        "marginePct": -49.5,
+        "numClienti": 16,
+        "numFattureVendita": 10,
+        "numFattureAcquisto": 96,
+        "topCliente": "Gima Costruzioni s.r.l.",
+        "topClienteImporto": 1939.6,
+        "topClientePct": 17.4
       }
     },
     "mensile": [
@@ -3516,6 +3516,22 @@
         "ricavi": 3636.18,
         "costi": 2078.47,
         "margine": 1557.71
+      },
+      {
+        "anno": "2026",
+        "mese": 3,
+        "label": "Mar 2026",
+        "ricavi": 1216.9,
+        "costi": 3777.34,
+        "margine": -2560.44
+      },
+      {
+        "anno": "2026",
+        "mese": 4,
+        "label": "Apr 2026",
+        "ricavi": 6557.67,
+        "costi": 1716.74,
+        "margine": 4840.93
       }
     ],
     "clienti": {
@@ -3649,13 +3665,16 @@
       ]
     },
     "yoyGenFeb": {
-      "ricavi2025": 12729.97,
-      "ricavi2026": 3372.58,
-      "variazionePct": -73.5
+      "ricavi2025": 36818.89,
+      "ricavi2026": 11147.15,
+      "variazionePct": -69.7,
+      "note": "Esteso a gen-apr 2026 (vs gen-apr 2025) — confronto YTD."
     },
-    "note": {
-      "2023": "Società fondata maggio 2023 (7 mesi operativi)",
-      "2026": "Anno in corso (YTD) — 67 fatture registrate gen-feb"
+    "note": "Riepilogo 2026 aggiornato a gen-apr (8 mag 2026): ricavi netto €11.147. costi €16.667. margine €-5.520 (-49.5%). YoY gen-apr: -69.7%. Top cliente 2026: Gima Costruzioni s.r.l. (17.4%).",
+    "yoyGenApr": {
+      "ricavi2025": 36818.89,
+      "ricavi2026": 11147.15,
+      "variazionePct": -69.7
     }
   }
 }
