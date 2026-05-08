@@ -1,56 +1,56 @@
 {
-  "lastUpdate": "29 aprile 2026",
+  "lastUpdate": "8 maggio 2026",
   "fonte": "registro.json",
   "ebitdaTargetAnnuo": 100000,
-  "statusMessage": "Fonte: registro.json (228 mov., 121 fatt., 37 scad.). E/C ufficiali Intesa SP mar+apr riconciliati. Saldo banca 28/04: €15.762,83. IVA Q1: DEBITO €109,01 — scad. 16/05.",
-  "statoLavori": "Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gen-apr: 228 movimenti. 121 fatture. Mar: 6 mov. non abbinati. Apr: 11 mov. non abbinati. FI aprile: 7 da processare.",
+  "statusMessage": "Fonte: registro.json (247 mov., 132 fatt., 37 scad.). E/C ufficiali Intesa SP gen-apr 2026: 100% riconciliati. Saldo banca 30/04: €13.718,19. IVA Q1: CREDITO €603,87.",
+  "statoLavori": "Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gen-apr 2026: 141 movimenti, 87.2% riconciliati. 132 fatture in registro. Anticipazioni socio Marco: €2.775,73 (19 fatture carta personale, KM tutti chiusi).",
   "kpi": [
     {
       "label": "Incassi YTD (Gen-Apr)",
-      "value": "€60.692",
-      "sub": "Gen €28.350 · Feb €18.019 · Mar €8.994 · Apr €5.329",
+      "value": "€60.691,76",
+      "sub": "Gen €28.349,84 · Feb €18.018,79 · Mar €8.993,99 · Apr €5.329,14",
       "class": "positive"
     },
     {
       "label": "Ricavi Competenza 2026",
-      "value": "€10.898",
-      "sub": "16 FV emesse (netto NC) — gen-apr",
+      "value": "€11.148,00",
+      "sub": "13 FV emesse (gen-apr) — netto NC, fonte registro",
       "class": "success"
     },
     {
       "label": "Costi YTD (Gen-Apr)",
-      "value": "€49.926",
-      "sub": "Gen €21.314 · Feb €13.247 · Mar €8.783 · Apr €6.582",
+      "value": "€51.794,95",
+      "sub": "Gen €21.314,47 · Feb €13.246,68 · Mar €8.608,04 · Apr €8.625,76",
       "class": "neutral"
     },
     {
       "label": "Margine Operativo",
-      "value": "17.7%",
-      "sub": "€10.765 su €60.692 YTD",
+      "value": "14.7%",
+      "sub": "€8.896,81 su €60.691,76 YTD",
       "class": "positive"
     },
     {
       "label": "IVA Q1 — Saldo",
-      "value": "DEBITO €109",
-      "sub": "Scad. 16/05 — FI aprile ancora da calcolare",
-      "class": "warning"
+      "value": "CREDITO €604",
+      "sub": "Riportato a Q2 — nessun versamento 16/05",
+      "class": "success"
     },
     {
       "label": "Saldo Banca",
-      "value": "€15.763",
-      "sub": "Al 28/04/2026 (E/C ufficiale — mancano 29-30/04)",
+      "value": "€13.718,19",
+      "sub": "Al 30/04/2026 (E/C ufficiale, 72 mov.)",
       "class": "positive"
     },
     {
       "label": "Flusso Apr 2026",
-      "value": "-€1.253",
-      "sub": "Da €17.015 a €15.763",
+      "value": "−€3.296,62",
+      "sub": "Da €17.014,81 a €13.718,19",
       "class": "warning"
     },
     {
       "label": "Scadenze Maggio",
-      "value": "€2.049",
-      "sub": "Timeflow €733 · IVA €109 · INPS €1.137 · INAIL €69",
+      "value": "€1.939",
+      "sub": "INPS Marco €1.137 · Timeflow €733 · INAIL €69",
       "class": "danger"
     }
   ],
@@ -67,19 +67,6 @@
       "chi": "NLI",
       "data": "13 mag 2026",
       "importoStr": "€733,33"
-    },
-    {
-      "id": "SCAD-0015",
-      "descrizione": "IVA Q1 2026 — DEBITO €109,01",
-      "scadenza": "2026-05-16",
-      "importo": 109.01,
-      "stato": "da_pagare",
-      "note": "Saldo parziale: FI aprile mancanti",
-      "adempimento": "IVA Q1 2026 — DEBITO €109,01",
-      "frequenza": "Una tantum",
-      "chi": "NLI",
-      "data": "16 mag 2026",
-      "importoStr": "€109,01"
     },
     {
       "id": "SCAD-0027",
@@ -108,12 +95,25 @@
       "importoStr": "€69,10"
     },
     {
+      "id": "SCAD-0017",
+      "descrizione": "LIPE I trimestre 2026",
+      "scadenza": "2026-05-31",
+      "importo": 0,
+      "stato": "da_inviare",
+      "note": "Comunicazione liquidazione (a credito) — gestita Mascolo",
+      "adempimento": "LIPE I trimestre 2026",
+      "frequenza": "Trimestrale",
+      "chi": "Mascolo",
+      "data": "31 mag 2026",
+      "importoStr": "—"
+    },
+    {
       "id": "SCAD-0034",
       "descrizione": "Timeflow D.I. n.506 — rata 4/4",
       "scadenza": "2026-06-13",
       "importo": 733.33,
       "stato": "da_pagare",
-      "note": "",
+      "note": "Ultima rata",
       "adempimento": "Timeflow D.I. n.506 — rata 4/4",
       "frequenza": "Una tantum",
       "chi": "NLI",
@@ -124,11 +124,11 @@
   "alert": [
     {
       "tipo": "danger",
-      "testo": "🔴 IVA Q1 DEBITO €109,01 — scadenza 16/05. Calcolato su FI gen-mar. FI aprile ancora da processare (potrebbero abbassare il saldo)."
+      "testo": "🔴 INPS Marco €1.137 — scadenza 16/05. F24 da richiedere a Mascolo."
     },
     {
-      "tipo": "danger",
-      "testo": "🔴 INPS Marco €1.137 — scadenza 16/05. F24 da richiedere a Mascolo."
+      "tipo": "success",
+      "testo": "✅ IVA Q1 a CREDITO €603,87 — riportato a Q2, nessun versamento il 16/05."
     },
     {
       "tipo": "warning",
@@ -136,22 +136,26 @@
     },
     {
       "tipo": "warning",
-      "testo": "⚠️ F24 €1.663 del 16/03 non identificato — chiedere a Mascolo (INPS? IRAP? Altro?)"
+      "testo": "⚠️ MOV-0242 €1.096,17 del 30/04 — Pagamento disposiz. n.003: probabile F24 contributi/ritenute aprile, da confermare con Mascolo."
     },
     {
       "tipo": "warning",
-      "testo": "⚠️ 7 fatture acquisto aprile da registrare (Lapenna, WT Group, Pluxee, Sinfotech, Maitan, Siggi Group, Reflects)."
+      "testo": "⚠️ F24 €1.663 del 16/03 ancora da identificare — chiedere a Mascolo (INPS? IRAP? Altro?)"
     },
     {
       "tipo": "info",
-      "testo": "ℹ️ Saldo banca 28/04: €15.762,83 — E/C ufficiale (mancano 29-30 apr)."
+      "testo": "ℹ️ Saldo banca 30/04: €13.718,19 — E/C ufficiale (72 mov., 100% riconciliati)."
     },
     {
       "tipo": "info",
-      "testo": "ℹ️ KM aprile: saldo €8,69 ancora dovuto a Marco (dovuto €856,07, pagato €847,38)."
+      "testo": "ℹ️ Anticipazioni socio Marco: €2.775,73 (19 fatture pagate con carta personale gen-mar). KM tutti chiusi."
+    },
+    {
+      "tipo": "info",
+      "testo": "ℹ️ Crediti clienti €3.811 da incassare — 4 fatture feb (De Giglio, Digitality, Dinamica, Piesse)."
     }
   ],
-  "suggerimenti": "PRIORITÀ MAGGIO: 1) IVA Q1 €109 (16/05) — ma prima processare 7 FI aprile (potrebbero abbassarlo). 2) INPS Marco €1.137 (16/05) — F24 da richiedere a Mascolo. 3) Timeflow rata 3 €733 (13/05). 4) Chiarire F24 €1.663 del 16/03 con Mascolo. 5) Sollecitare €3.811 da 4 clienti feb (De Giglio, Digitality, Dinamica, Piesse). 6) Rimborso anticipazioni Marco €2.480 + saldo KM apr €8,69. 7) RICAVI IN CALO: gen-apr -73%% vs 2025 — servono nuove vendite.",
+  "suggerimenti": "PRIORITÀ MAGGIO 2026: 1) INPS Marco €1.137 (16/05) — F24 da Mascolo. 2) Timeflow rata 3 €733 (13/05). 3) INAIL 2a rata €69 (18/05). 4) Chiarire MOV-0242 €1.096 del 30/04 con Mascolo (probabile F24 ritenute aprile). 5) Chiarire F24 €1.663 del 16/03. 6) Sollecitare €3.811 da 4 clienti feb. 7) Rimborso anticipazioni Marco €2.775,73 (saldo netto post-compensazione). 8) RICAVI: gen-apr competenza €11.148 vs 2025 -73% — focus vendite. 9) IVA Q2 in corso: già €1.443 debito provvisorio (FV apr), - €604 credito Q1 = €839 netto.",
   "setupChecklist": [
     {
       "label": "Visura camerale",
@@ -1855,66 +1859,57 @@
         },
         {
           "data": "04/02",
-          "voce": "Commissione bonifico",
-          "voceBilancio": "C_spese_bancarie",
-          "importo": "−€1,00",
-          "note": "✓ Ric.",
-          "competenza": "2026",
-          "riconciliato": true
-        },
-        {
-          "data": "04/02",
           "voce": "Royalties marchio NL aprile — 2° quota",
-          "voceBilancio": "B14_royalties",
+          "voceBilancio": "B14_imposte",
           "importo": "−€170,00",
-          "note": "✓ Ric.",
+          "note": "—",
           "competenza": "2026",
-          "riconciliato": true
+          "riconciliato": false
         },
         {
           "data": "04/02",
           "voce": "Commissione €1 bonifico affitto Panebianco",
           "voceBilancio": "C_spese_bancarie",
           "importo": "−€1,00",
-          "note": "✓ Ric.",
+          "note": "—",
           "competenza": "2026",
-          "riconciliato": true
+          "riconciliato": false
         },
         {
           "data": "04/02",
           "voce": "Commissione €1 bonifico royalties 1a quota",
           "voceBilancio": "C_spese_bancarie",
           "importo": "−€1,00",
-          "note": "✓ Ric.",
+          "note": "—",
           "competenza": "2026",
-          "riconciliato": true
+          "riconciliato": false
         },
         {
           "data": "04/02",
           "voce": "Commissione €1 bonifico royalties 2a quota",
           "voceBilancio": "C_spese_bancarie",
           "importo": "−€1,00",
-          "note": "✓ Ric.",
+          "note": "—",
           "competenza": "2026",
-          "riconciliato": true
+          "riconciliato": false
         },
         {
           "data": "04/02",
           "voce": "Commissione €1 bonifico Lapenna",
           "voceBilancio": "C_spese_bancarie",
           "importo": "−€1,00",
-          "note": "✓ Ric.",
+          "note": "—",
           "competenza": "2026",
-          "riconciliato": true
+          "riconciliato": false
         },
         {
           "data": "04/02",
           "voce": "Commissione €1 bonifico XD Connects",
           "voceBilancio": "C_spese_bancarie",
           "importo": "−€1,00",
-          "note": "✓ Ric.",
+          "note": "—",
           "competenza": "2026",
-          "riconciliato": true
+          "riconciliato": false
         },
         {
           "data": "04/03",
@@ -1948,9 +1943,9 @@
           "voce": "Commissione €1 bonifico apr",
           "voceBilancio": "C_spese_bancarie",
           "importo": "−€1,00",
-          "note": "✓ Ric.",
+          "note": "—",
           "competenza": "2026",
-          "riconciliato": true
+          "riconciliato": false
         },
         {
           "data": "04/07",
@@ -2011,9 +2006,9 @@
           "voce": "Commissione €1 bonifico apr",
           "voceBilancio": "C_spese_bancarie",
           "importo": "−€1,00",
-          "note": "✓ Ric.",
+          "note": "—",
           "competenza": "2026",
-          "riconciliato": true
+          "riconciliato": false
         },
         {
           "data": "04/09",
@@ -2170,7 +2165,7 @@
         },
         {
           "data": "04/21",
-          "voce": "SiteGround Hosting — abbonamento",
+          "voce": "SiteGround — rinnovo dominio euroimpianti.info (FAT-2026-0132)",
           "voceBilancio": "B7_servizi",
           "importo": "−€20,99",
           "note": "✓ Ric.",
@@ -2179,7 +2174,7 @@
         },
         {
           "data": "04/21",
-          "voce": "SiteGround Hosting — abbonamento",
+          "voce": "SiteGround — rinnovo dominio nextlevelitalia.com (FAT-2026-0131)",
           "voceBilancio": "B7_servizi",
           "importo": "−€19,99",
           "note": "✓ Ric.",
@@ -2263,18 +2258,18 @@
           "voce": "Commissione €1 bonifico apr",
           "voceBilancio": "C_spese_bancarie",
           "importo": "−€1,00",
-          "note": "✓ Ric.",
+          "note": "—",
           "competenza": "2026",
-          "riconciliato": true
+          "riconciliato": false
         },
         {
           "data": "04/24",
           "voce": "Commissione €1 bonifico apr",
           "voceBilancio": "C_spese_bancarie",
           "importo": "−€1,00",
-          "note": "✓ Ric.",
+          "note": "—",
           "competenza": "2026",
-          "riconciliato": true
+          "riconciliato": false
         },
         {
           "data": "04/27",
@@ -2296,7 +2291,7 @@
         },
         {
           "data": "04/28",
-          "voce": "Rimborso km Aprile Marco Vurro (causale bonifico errata: indicato",
+          "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
           "voceBilancio": "B9_personale",
           "importo": "−€847,38",
           "note": "✓ Ric.",
@@ -2308,15 +2303,96 @@
           "voce": "Commissione €1 bonifico 28/04",
           "voceBilancio": "C_spese_bancarie",
           "importo": "−€1,00",
+          "note": "—",
+          "competenza": "2026",
+          "riconciliato": false
+        },
+        {
+          "data": "04/29",
+          "voce": "Sendcloud — spedizioni aprile (SDD)",
+          "voceBilancio": "B7_servizi",
+          "importo": "−€80,56",
+          "note": "✓ Ric.",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/29",
+          "voce": "Commissione SDD Sendcloud aprile",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,90",
+          "note": "✓ Ric.",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/30",
+          "voce": "Pagamento multiplo n.003 — 30/04. Probabile F24 contributi/ritenute aprile ",
+          "voceBilancio": "DA_VERIFICARE",
+          "importo": "−€1.096,17",
+          "note": "—",
+          "competenza": "2026",
+          "riconciliato": false
+        },
+        {
+          "data": "04/30",
+          "voce": "Sajay — busta paga aprile 2026",
+          "voceBilancio": "B9_personale_dipendenti",
+          "importo": "−€686,00",
+          "note": "✓ Ric.",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/30",
+          "voce": "Pluxee — saldo ordine RDA2600038107 (buoni pasto/welfare aprile)",
+          "voceBilancio": "B9_personale_dipendenti",
+          "importo": "−€178,21",
+          "note": "✓ Ric.",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/30",
+          "voce": "Costo bonifico Sajay busta paga aprile",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Ric.",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/30",
+          "voce": "Costo bonifico Pluxee saldo ordine",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€1,00",
+          "note": "✓ Ric.",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/30",
+          "voce": "Canone conto Intesa SP aprile",
+          "voceBilancio": "C_spese_bancarie",
+          "importo": "−€0,50",
+          "note": "✓ Ric.",
+          "competenza": "2026",
+          "riconciliato": true
+        },
+        {
+          "data": "04/30",
+          "voce": "Facebook Ads — micropagamento (data valuta 27/04, contabilizzato 30/04)",
+          "voceBilancio": "B7_pubblicita",
+          "importo": "−€0,30",
           "note": "✓ Ric.",
           "competenza": "2026",
           "riconciliato": true
         }
       ],
       "totaleEntrate": "€5.329,14",
-      "totaleUscite": "€6.582,12",
-      "netto": "−€1.252,98",
-      "utileNetto": "−€1.252,98",
+      "totaleUscite": "€8.625,76",
+      "netto": "−€3.296,62",
+      "utileNetto": "−€3.296,62",
       "ebitda": "—"
     }
   ],
@@ -2379,8 +2455,8 @@
   "banca": {
     "conto": "Intesa Sanpaolo",
     "iban": "IT94G0306905124100000014534",
-    "saldoAttuale": "€15.762,83",
-    "ultimoAggiornamento": "28 aprile 2026",
+    "saldoAttuale": "€13.718,19",
+    "ultimoAggiornamento": "30 aprile 2026",
     "saldoInizialeAnno": "€2.480,94",
     "riepilogoMensile": [
       {
@@ -2412,67 +2488,155 @@
       },
       {
         "mese": "Aprile 2026",
-        "saldoInizio": "€17.189,81",
+        "saldoInizio": "€17.014,81",
         "entrate": "€5.329,14",
-        "uscite": "€5.554,74",
-        "flusso": "€-225,60",
-        "saldoFine": "€16.964,21",
-        "movimenti": 52
+        "uscite": "€8.625,76",
+        "flusso": "−€3.296,62",
+        "saldoFine": "€13.718,19",
+        "movimenti": 72
       }
     ],
     "totali": {
       "entrate": "€60.691,76",
-      "uscite": "€48.723,93",
-      "flusso": "+€11.967,83",
-      "movimenti": 210
+      "uscite": "€51.794,95",
+      "flusso": "+€8.896,81",
+      "movimenti": 230
     },
     "riconciliazione": {
-      "totaleMovimenti": 95,
-      "riconciliati": 91,
-      "nonRiconciliati": 4,
-      "percentuale": 95.8,
+      "totaleMovimenti": 141,
+      "riconciliati": 123,
+      "nonRiconciliati": 18,
+      "percentuale": 87.2,
       "movimentiAperti": [
         {
-          "id": "MOV-2026-0020",
-          "data": "2026-01-10",
-          "controparte": "Metrie Spol. S.r.o.",
-          "importo": "€469,50",
+          "id": "MOV-2026-0211",
+          "data": "2026-03-03",
+          "controparte": "Royalties marchio NL marzo — 2° quota (€170 × 2 = €340 total",
+          "importo": "€170,00",
           "tipo": "uscita",
-          "motivo": "Pagamento parziale — non corrisponde a nessuna fattura singola. Servono 3 fatture Metrie (€1.264 totali)"
+          "motivo": "Royalties marchio NL marzo — 2° quota (€170 × 2 = €340 totale mensile)"
         },
         {
-          "id": "MOV-2026-0024",
-          "data": "2026-01-12",
-          "controparte": "GOR Factory (Roly)",
-          "importo": "€244,13",
+          "id": "MOV-2026-0212",
+          "data": "2026-03-03",
+          "controparte": "Commissione €1 bonifico affitto Panebianco",
+          "importo": "€1,00",
           "tipo": "uscita",
-          "motivo": "SDD Roly — matching fatture non univoco. Richiedere estratto conto fornitore"
+          "motivo": "Commissione €1 bonifico affitto Panebianco"
         },
         {
-          "id": "MOV-2026-0031",
-          "data": "2026-01-15",
-          "controparte": "GOR Factory (Roly)",
-          "importo": "€222,85",
+          "id": "MOV-2026-0213",
+          "data": "2026-03-03",
+          "controparte": "Commissione €1 bonifico royalties 1a quota",
+          "importo": "€1,00",
           "tipo": "uscita",
-          "motivo": "SDD Roly — analizzare insieme a MOV-0024. Totale SDD GOR €466,98 vs fatture €403,33"
+          "motivo": "Commissione €1 bonifico royalties 1a quota"
         },
         {
-          "id": "MOV-2026-0095",
-          "data": "2026-02-27",
-          "controparte": "TeamSystem Payments",
-          "importo": "€278,91",
-          "tipo": "entrata",
-          "motivo": "Accredito TS da riepilogo — non presente nell'E/C importato. Da confermare con E/C completo"
+          "id": "MOV-2026-0214",
+          "data": "2026-03-03",
+          "controparte": "Commissione €1 bonifico royalties 2a quota",
+          "importo": "€1,00",
+          "tipo": "uscita",
+          "motivo": "Commissione €1 bonifico royalties 2a quota"
+        },
+        {
+          "id": "MOV-2026-0215",
+          "data": "2026-03-03",
+          "controparte": "Commissione €1 bonifico condominio Fieramosca",
+          "importo": "€1,00",
+          "tipo": "uscita",
+          "motivo": "Commissione €1 bonifico condominio Fieramosca"
+        },
+        {
+          "id": "MOV-2026-0216",
+          "data": "2026-03-24",
+          "controparte": "Commissione €1 bonifico Panebianco erario",
+          "importo": "€1,00",
+          "tipo": "uscita",
+          "motivo": "Commissione €1 bonifico Panebianco erario"
+        },
+        {
+          "id": "MOV-2026-0217",
+          "data": "2026-04-02",
+          "controparte": "Royalties marchio NL aprile — 2° quota",
+          "importo": "€170,00",
+          "tipo": "uscita",
+          "motivo": "Royalties marchio NL aprile — 2° quota"
+        },
+        {
+          "id": "MOV-2026-0218",
+          "data": "2026-04-02",
+          "controparte": "Commissione €1 bonifico affitto Panebianco",
+          "importo": "€1,00",
+          "tipo": "uscita",
+          "motivo": "Commissione €1 bonifico affitto Panebianco"
+        },
+        {
+          "id": "MOV-2026-0219",
+          "data": "2026-04-02",
+          "controparte": "Commissione €1 bonifico royalties 1a quota",
+          "importo": "€1,00",
+          "tipo": "uscita",
+          "motivo": "Commissione €1 bonifico royalties 1a quota"
+        },
+        {
+          "id": "MOV-2026-0220",
+          "data": "2026-04-02",
+          "controparte": "Commissione €1 bonifico royalties 2a quota",
+          "importo": "€1,00",
+          "tipo": "uscita",
+          "motivo": "Commissione €1 bonifico royalties 2a quota"
+        },
+        {
+          "id": "MOV-2026-0221",
+          "data": "2026-04-02",
+          "controparte": "Commissione €1 bonifico Lapenna",
+          "importo": "€1,00",
+          "tipo": "uscita",
+          "motivo": "Commissione €1 bonifico Lapenna"
+        },
+        {
+          "id": "MOV-2026-0222",
+          "data": "2026-04-02",
+          "controparte": "Commissione €1 bonifico XD Connects",
+          "importo": "€1,00",
+          "tipo": "uscita",
+          "motivo": "Commissione €1 bonifico XD Connects"
+        },
+        {
+          "id": "MOV-2026-0223",
+          "data": "2026-04-03",
+          "controparte": "Commissione €1 bonifico apr",
+          "importo": "€1,00",
+          "tipo": "uscita",
+          "motivo": "Commissione €1 bonifico apr"
+        },
+        {
+          "id": "MOV-2026-0224",
+          "data": "2026-04-07",
+          "controparte": "Commissione €1 bonifico apr",
+          "importo": "€1,00",
+          "tipo": "uscita",
+          "motivo": "Commissione €1 bonifico apr"
+        },
+        {
+          "id": "MOV-2026-0225",
+          "data": "2026-04-24",
+          "controparte": "Commissione €1 bonifico apr",
+          "importo": "€1,00",
+          "tipo": "uscita",
+          "motivo": "Commissione €1 bonifico apr"
         }
       ]
     },
     "movimenti": [],
-    "dataAggiornamento": "2026-04-28",
+    "dataAggiornamento": "2026-04-30",
     "saldoInizioAnno": "€2.480,94",
     "entrateTotali": "€60.691,76",
-    "usciteTotali": "€48.723,93",
-    "flussoNetto": "+€11.967,83",
-    "movimentiTotali": 210,
+    "usciteTotali": "€51.794,95",
+    "flussoNetto": "+€8.896,81",
+    "movimentiTotali": 230,
     "dettaglioMensile": [
       {
         "mese": "Gennaio 2026",
@@ -2503,15 +2667,15 @@
       },
       {
         "mese": "Aprile 2026",
-        "saldoInizio": "€17.189,81",
+        "saldoInizio": "€17.014,81",
         "entrate": "€5.329,14",
-        "uscite": "€5.554,74",
-        "flusso": "€-225,60",
-        "saldoFine": "€16.964,21",
-        "movimenti": 52
+        "uscite": "€8.625,76",
+        "flusso": "−€3.296,62",
+        "saldoFine": "€13.718,19",
+        "movimenti": 72
       }
     ],
-    "saldoCorrente": 15762.83,
+    "saldoCorrente": 13718.19,
     "storico": [
       {
         "data": "2026-01-01",
@@ -2530,8 +2694,8 @@
         "saldo": 17014.81
       },
       {
-        "data": "2026-04-28",
-        "saldo": 15762.83
+        "data": "2026-04-30",
+        "saldo": 13718.19
       }
     ]
   },
@@ -2651,32 +2815,47 @@
   ],
   "iva": {
     "regime": "Trimestrale (contribuenti minori)",
+    "fonte": "Registro acquisti ufficiale Mascolo (Q1 chiuso)",
     "trimestri": [
       {
-        "periodo": "Q1 2026 (Gen-Mar)",
-        "stato": "da_versare",
-        "scadenzaVersamento": "16 Maggio 2026",
-        "ivaDebito": 1009.7,
-        "ivaCredito": 900.69,
-        "creditoRiportato": 0,
-        "saldo": 109.01,
-        "saldoLabel": "A debito",
-        "dettaglioDebito": {
-          "ordinario_22": 741.98,
-          "note": "9 fatture emesse (6 FV + 3 NC)"
-        },
-        "dettaglioCredito": {
-          "ordinario_22": 866.42,
-          "ridotto_4": 19.26,
-          "note": "28 fatture acquisto + 15 reverse charge (neutro) + 2 forfettario"
-        },
-        "reverseCharge": {
-          "totaleImponibile": 3243.03,
-          "ivaTeorica_22": 713.47,
-          "note": "15 fatture estere — neutro ai fini IVA"
-        },
-        "creditoIva": 616.69,
-        "disclaimer": "Importi calcolati da fatture registrate. Possibili scostamenti centesimali. Liquidazione ufficiale a cura del commercialista."
+        "id": "IVA-Q1-2026",
+        "periodo": "Q1 2026 (gen-feb-mar)",
+        "stato": "credito",
+        "scadenza": "16/05/2026",
+        "ivaVendite": 1009.7,
+        "ivaAcquisti": 1613.57,
+        "saldo": -603.87,
+        "saldoTipo": "credito",
+        "note": "CREDITO €603,87 — riportato a Q2. NESSUN versamento il 16/05. Fonte: registro ufficiale commercialista."
+      },
+      {
+        "id": "IVA-Q2-2026",
+        "periodo": "Q2 2026 (apr-mag-giu)",
+        "stato": "in_corso",
+        "scadenza": "20/08/2026",
+        "ivaVendite": 1442.68,
+        "ivaAcquisti": 0,
+        "saldo": 1442.68,
+        "saldoTipo": "debito_provvisorio",
+        "note": "Debito provvisorio: solo FV apr (5 fatture). Mancano FI aprile, riducono debito. - Credito Q1 €603,87."
+      },
+      {
+        "id": "IVA-Q3-2026",
+        "periodo": "Q3 2026 (lug-ago-set)",
+        "stato": "futuro",
+        "scadenza": "16/11/2026",
+        "saldo": 0,
+        "saldoTipo": "n/d",
+        "note": "—"
+      },
+      {
+        "id": "IVA-Q4-2026",
+        "periodo": "Q4 2026 (ott-nov-dic)",
+        "stato": "futuro",
+        "scadenza": "16/03/2027",
+        "saldo": 0,
+        "saldoTipo": "n/d",
+        "note": "—"
       }
     ]
   },
