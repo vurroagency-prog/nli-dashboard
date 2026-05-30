@@ -2394,6 +2394,667 @@
    "netto": "−€3.296,62",
    "utileNetto": "−€3.296,62",
    "ebitda": "—"
+  },
+  {
+   "mese": "Maggio 2026",
+   "label": "Mag",
+   "entrate": [
+    {
+     "data": "05/05",
+     "voce": "Mitt. Teamsystem Payments S.R.L. Benef — sas di alessandro e",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€305,84",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "Mitt. Edil Special Di — bonifico a vostro favore disposto da",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€1.098,55",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "06/05",
+     "voce": "Mitt. Rivoluzione Casa S.R.L. Benef — bonifico a vostro favo",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€975,94",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "11/05",
+     "voce": "Mitt. Camasta Impianti S.A.S. Di Camasta — proforma 15 bonif",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€283,63",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "20/05",
+     "voce": "Mitt. Giami Impianti Di Calemma Giovanni — proforma n 17 del",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€726,11",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "Mitt. Gis Services — vostro favore disposto da mitt. gis ser",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€399,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "29/05",
+     "voce": "Mitt. Costruzioni Vulpio Societa A Respo — bonifico a vostro",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€1.965,66",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    }
+   ],
+   "uscite": [
+    {
+     "data": "04/05",
+     "voce": "Sajay Fernandez Espinosa Acconto Utili — bonifico da voi dis",
+     "voceBilancio": "distribuzione_utili",
+     "importo": "−€500,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Panebianco Antonia Affitto Locale Mese M — bonifico da voi d",
+     "voceBilancio": "B8_godimento",
+     "importo": "−€350,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Pagamento delega f24 Bonifico istantaneo da voi disposto",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€338,89",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Silvana Sala Nicola Vurro Pagamento Roya — bonifico da voi d",
+     "voceBilancio": "B14_royalties",
+     "importo": "−€170,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Silvana Sala Nicola Vurro Pagamento Roya — bonifico da voi d",
+     "voceBilancio": "B14_royalties",
+     "importo": "−€170,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Pagamento delega f24 Bonifico istantaneo da voi disposto",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€152,41",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Work Gianto Srl Saldo Fattura N — bonifico da voi disposto a",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€106,14",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Claude.Ai Subscription Anthrop — mediante la carta 4108 xxxx",
+     "voceBilancio": "B7_software_operativi",
+     "importo": "−€94,40",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Pagamento delega f24",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€65,03",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Pagamento delega f24 Costo bonifico istantaneo da voi dispos",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€35,10",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Costo bonifico istantaneo da voi disposto",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Costo bonifico istantaneo da voi disposto",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Costo bonifico istantaneo da voi disposto",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Costo bonifico istantaneo da voi disposto",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "Pagamento disposiz",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "Raffaele Lapenna Saldo Fattura N — bonifico da voi disposto ",
+     "voceBilancio": "B7_servizi",
+     "importo": "−€120,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "Xd Connects B.V. Saldo Ordine N. Sc — bonifico da voi dispos",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€97,48",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "Wtgroup Kgsas Saldo Fattura N. Rk — bonifico da voi disposto",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€38,78",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "Google Cloud W9Bpgr Milan Paga — mediante la carta 4108 xxxx",
+     "voceBilancio": "B7_software_operativi",
+     "importo": "−€12,94",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "sendcloud s.r.l. mandato Costo bonifico istantaneo da voi di",
+     "voceBilancio": "B7_spedizioni",
+     "importo": "−€1,34",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "Costo bonifico istantaneo da voi disposto",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "Costo bonifico istantaneo da voi disposto",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "Commissioni e spese adue",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "Next Level Italia — sendcloud s.r.l. mandato Accredito beu c",
+     "voceBilancio": "B7_spedizioni",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "07/05",
+     "voce": "Pf Concept Saldo Fattura N — bonifico da voi disposto a favo",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€42,63",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "07/05",
+     "voce": "Accredito beu con contabile cash notprovided rif. fattura n.",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "08/05",
+     "voce": "Teamsystem S.P.A. Ordine W — bonifico da voi disposto a favo",
+     "voceBilancio": "B7_servizi",
+     "importo": "−€632,92",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "08/05",
+     "voce": "Bonifico istantaneo da voi disposto",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "11/05",
+     "voce": "gor factory s.a Commissioni e spese adue",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€83,79",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "11/05",
+     "voce": "gor factory s.a Accredito bonifico istantaneo cash acconto",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "13/05",
+     "voce": "amazon payments europe s.c.a. amazo Pagamento adue",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€43,05",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "13/05",
+     "voce": "sendcloud s.r.l. mandato Commissioni e spese adue",
+     "voceBilancio": "B7_spedizioni",
+     "importo": "−€34,65",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "13/05",
+     "voce": "sendcloud s.r.l. mandato Commissioni e spese adue",
+     "voceBilancio": "B7_spedizioni",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "13/05",
+     "voce": "amazon payments europe s.c.a. amazo Pagamento adue",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "14/05",
+     "voce": "Timeflow S.R.L. Saldo Transazione D.I. N — bonifico da voi d",
+     "voceBilancio": "B7_consulenze_legali",
+     "importo": "−€733,34",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "14/05",
+     "voce": "amazon payments europe s.c.a. amazo Costo bonifico istantane",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€169,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "14/05",
+     "voce": "Commissioni e spese adue",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "14/05",
+     "voce": "amazon payments europe s.c.a. amazo Pagamento adue",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "15/05",
+     "voce": "Pagamento delega f24 Bonifico istantaneo da voi disposto",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€70,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "18/05",
+     "voce": "Marco Vurro Anticipo Quote — bonifico da voi disposto a favo",
+     "voceBilancio": "distribuzione_utili",
+     "importo": "−€1.200,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "18/05",
+     "voce": "Pagamento delega f24",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€296,64",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "18/05",
+     "voce": "Pagamento delega f24 Bonifico istantaneo da voi disposto",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€135,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "18/05",
+     "voce": "Maikii Srl Saldo Conferma Dordine N.Mk — bonifico da voi dis",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€42,70",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "18/05",
+     "voce": "Costo bonifico istantaneo da voi disposto",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "18/05",
+     "voce": "(da E/C)",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "22/05",
+     "voce": "Wwwarubait Bibbiena Accredito — mediante la carta 4108 xxxx ",
+     "voceBilancio": "B7_software_operativi",
+     "importo": "−€12,08",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "25/05",
+     "voce": "fastweb spa mandato Commissioni e spese adue",
+     "voceBilancio": "B7_servizi",
+     "importo": "−€41,36",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "25/05",
+     "voce": "fastweb spa mandato Pagamento pos effettuato il 18052026 all",
+     "voceBilancio": "B7_servizi",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "27/05",
+     "voce": "gor factory s.a Pagamento adue",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€33,02",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "27/05",
+     "voce": "sendcloud s.r.l. mandato Commissioni e spese adue",
+     "voceBilancio": "B7_spedizioni",
+     "importo": "−€29,76",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "27/05",
+     "voce": "gor factory s.a Commissioni e spese adue",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "27/05",
+     "voce": "sendcloud s.r.l. mandato Pagamento adue",
+     "voceBilancio": "B7_spedizioni",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "Marco Vurro Rimborso Kilometrico Mese Ma — bonifico da voi d",
+     "voceBilancio": "B7_rimborsi_spese_soci",
+     "importo": "−€849,41",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "Sajay Fernandez Espinosa Busta Paga Mese — bonifico da voi d",
+     "voceBilancio": "B9_personale",
+     "importo": "−€662,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "Pluxee Italia Fattura N. Vc — bonifico da voi disposto a fav",
+     "voceBilancio": "B9_personale",
+     "importo": "−€212,20",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "V Consulting Srl Saldo Fattura N — bonifico da voi disposto ",
+     "voceBilancio": "B7_consulenza_lavoro",
+     "importo": "−€97,60",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "Costo bonifico istantaneo da voi disposto",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "Costo bonifico istantaneo da voi disposto",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "Costo bonifico istantaneo da voi disposto",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "Accredito beu con contabile cash notprovided acconto fatt. 6",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "29/05",
+     "voce": "Alibabacom Luxembourg Pagament — mediante la carta 4108 xxxx",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€196,62",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "29/05",
+     "voce": "frisbi societa benefit s.r.l Commissioni e spese adue",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€105,57",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "29/05",
+     "voce": "frisbi societa benefit s.r.l Accredito beu con contabile cas",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "30/05",
+     "voce": "Mascolo Dott. Pietro Contabilita General — bonifico da voi d",
+     "voceBilancio": "B7_servizi",
+     "importo": "−€522,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "30/05",
+     "voce": "Pagamento pos effettuato il 25052026 alle ore 1058",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    }
+   ],
+   "totaleEntrate": "€5.754,73",
+   "totaleUscite": "−€8.523,95",
+   "netto": "−€2.769,22",
+   "utileNetto": "−€2.769,22",
+   "ebitda": "−€2.769,22"
   }
  ],
  "bancaAliasDescrizioni": {
