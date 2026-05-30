@@ -31,7 +31,7 @@
   },
   {
    "label": "IVA Q1 — SALDO",
-   "value": "CREDITO",
+   "value": "CREDITO €582",
    "sub": "€582,14 (ufficiale Mascolo) — riportato a Q2",
    "class": "success"
   },
@@ -45,7 +45,7 @@
    "label": "FLUSSO MAG 2026",
    "value": "−€2.769,22",
    "sub": "Da €13.718,19 a €10.948,97",
-   "class": "warning",
+   "class": "negative",
    "color": "negative"
   },
   {
@@ -3117,7 +3117,7 @@
  "banca": {
   "conto": "Intesa Sanpaolo",
   "iban": "IT94G0306905124100000014534",
-  "saldoAttuale": 10948.97,
+  "saldoAttuale": "€10.948,97",
   "ultimoAggiornamento": "30 maggio 2026",
   "saldoInizialeAnno": "€2.480,94",
   "riepilogoMensile": [
@@ -3156,13 +3156,21 @@
     "flusso": "−€3.296,62",
     "saldoFine": "€13.718,19",
     "movimenti": 72
+   },
+   {
+    "mese": "Maggio 2026",
+    "saldoInizio": "€13.718,19",
+    "entrate": "€5.754,73",
+    "uscite": "€8.523,95",
+    "flusso": "−€2.769,22",
+    "saldoFine": "€10.948,97",
+    "movimenti": 72
    }
   ],
   "totali": {
-   "entrate": 66446.49,
-   "uscite": 60318.9,
-   "saldoFinale": 10948.97,
-   "flussoNetto": 8468.03,
+   "entrate": "€66.446,49",
+   "uscite": "€60.318,90",
+   "flusso": "+€8.468,03",
    "movimenti": 302
   },
   "riconciliazione": {
@@ -3499,10 +3507,10 @@
     "stato": "chiuso",
     "scadenza": "16/05/2026",
     "ivaVendite": 1009.7,
-    "ivaAcquisti": 1613.57,
+    "ivaAcquisti": 1591.84,
     "saldo": -582.14,
     "saldoTipo": "credito",
-    "note": "CREDITO €603,87 — riportato a Q2. NESSUN versamento il 16/05. Fonte: registro ufficiale commercialista.",
+    "note": "CREDITO €582,14 (liquidazione UFFICIALE Mascolo 28/05) — riportato a Q2. Nessun versamento il 16/05.",
     "creditoIva": 582.14,
     "importoVersamento": 0
    },
