@@ -1,14 +1,14 @@
 {
  "lastUpdate": "30 maggio 2026",
- "fonte": "registro.json",
+ "fonte": "Fonte: registro.json (319 mov, 132 fatt, 37 scad). E/C ufficiali Intesa SP gen-mag 2026: 100% riconciliati. Saldo banca 30/05: €10.948,97. IVA Q1: CREDITO €582,14 (liquidazione ufficiale Mascolo).",
  "ebitdaTargetAnnuo": 100000,
  "statusMessage": "Fonte: registro.json (247 mov., 132 fatt., 37 scad.). E/C ufficiali Intesa SP gen-apr 2026: 100% riconciliati. Saldo banca 30/04: €13.718,19. IVA Q1: CREDITO €603,87.",
  "statoLavori": "Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gen-apr 2026: 141 movimenti, 87.2% riconciliati. 132 fatture in registro. Anticipazioni socio Marco: €2.775,73 (19 fatture carta personale, KM tutti chiusi).",
  "kpi": [
   {
-   "label": "Incassi YTD (Gen-Apr)",
-   "value": "€60.691,76",
-   "sub": "Gen €28.349,84 · Feb €18.018,79 · Mar €8.993,99 · Apr €5.329,14",
+   "label": "INCASSI YTD (GEN-MAG)",
+   "value": "€66.446,49",
+   "sub": "Gen €28.350 · Feb €18.019 · Mar €8.994 · Apr €5.329 · Mag €5.755",
    "class": "positive"
   },
   {
@@ -18,39 +18,40 @@
    "class": "success"
   },
   {
-   "label": "Costi YTD (Gen-Apr)",
-   "value": "€51.794,95",
-   "sub": "Gen €21.314,47 · Feb €13.246,68 · Mar €8.608,04 · Apr €8.625,76",
+   "label": "COSTI YTD (GEN-MAG)",
+   "value": "€60.318,90",
+   "sub": "Gen €21.314 · Feb €13.247 · Mar €8.608 · Apr €8.626 · Mag €8.524",
    "class": "neutral"
   },
   {
    "label": "Margine Operativo",
-   "value": "14.7%",
-   "sub": "€8.896,81 su €60.691,76 YTD",
+   "value": "12.7%",
+   "sub": "€8.468,03 flusso su €66.446,49 YTD",
    "class": "positive"
   },
   {
-   "label": "IVA Q1 — Saldo",
-   "value": "CREDITO €604",
-   "sub": "Riportato a Q2 — nessun versamento 16/05",
+   "label": "IVA Q1 — SALDO",
+   "value": "CREDITO",
+   "sub": "€582,14 (ufficiale Mascolo) — riportato a Q2",
    "class": "success"
   },
   {
    "label": "Saldo Banca",
-   "value": "€13.718,19",
-   "sub": "Al 30/04/2026 (E/C ufficiale, 72 mov.)",
+   "value": "€10.948,97",
+   "sub": "Al 30/05/2026 (E/C ufficiale)",
    "class": "positive"
   },
   {
-   "label": "Flusso Apr 2026",
-   "value": "−€3.296,62",
-   "sub": "Da €17.014,81 a €13.718,19",
-   "class": "warning"
+   "label": "FLUSSO MAG 2026",
+   "value": "−€2.769,22",
+   "sub": "Da €13.718,19 a €10.948,97",
+   "class": "warning",
+   "color": "negative"
   },
   {
-   "label": "Scadenze Maggio",
-   "value": "€1.939",
-   "sub": "INPS Marco €1.137 · Timeflow €733 · INAIL €69",
+   "label": "SCADENZE GIUGNO",
+   "value": "~€3.900",
+   "sub": "IRAP 2025 €3.786 · CCIAA · (INPS €1.137 a ago)",
    "class": "danger"
   }
  ],
@@ -3116,8 +3117,8 @@
  "banca": {
   "conto": "Intesa Sanpaolo",
   "iban": "IT94G0306905124100000014534",
-  "saldoAttuale": "€13.718,19",
-  "ultimoAggiornamento": "30 aprile 2026",
+  "saldoAttuale": 10948.97,
+  "ultimoAggiornamento": "30 maggio 2026",
   "saldoInizialeAnno": "€2.480,94",
   "riepilogoMensile": [
    {
@@ -3158,10 +3159,11 @@
    }
   ],
   "totali": {
-   "entrate": "€60.691,76",
-   "uscite": "€51.794,95",
-   "flusso": "+€8.896,81",
-   "movimenti": 230
+   "entrate": 66446.49,
+   "uscite": 60318.9,
+   "saldoFinale": 10948.97,
+   "flussoNetto": 8468.03,
+   "movimenti": 302
   },
   "riconciliazione": {
    "totaleMovimenti": 141,
@@ -3292,7 +3294,7 @@
    ]
   },
   "movimenti": [],
-  "dataAggiornamento": "2026-04-30",
+  "dataAggiornamento": "30 maggio 2026",
   "saldoInizioAnno": "€2.480,94",
   "entrateTotali": "€60.691,76",
   "usciteTotali": "€51.794,95",
@@ -3334,9 +3336,18 @@
     "flusso": "−€3.296,62",
     "saldoFine": "€13.718,19",
     "movimenti": 72
+   },
+   {
+    "mese": "Maggio 2026",
+    "saldoInizio": 13718.19,
+    "entrate": 5754.73,
+    "uscite": 8523.95,
+    "flusso": -2769.22,
+    "saldoFine": 10948.97,
+    "mov": 72
    }
   ],
-  "saldoCorrente": 13718.19,
+  "saldoCorrente": 10948.97,
   "storico": [
    {
     "data": "2026-01-01",
@@ -3357,6 +3368,10 @@
    {
     "data": "2026-04-30",
     "saldo": 13718.19
+   },
+   {
+    "mese": "Mag",
+    "saldo": 10948.97
    }
   ]
  },
@@ -3481,13 +3496,15 @@
    {
     "id": "IVA-Q1-2026",
     "periodo": "Q1 2026 (gen-feb-mar)",
-    "stato": "credito",
+    "stato": "chiuso",
     "scadenza": "16/05/2026",
     "ivaVendite": 1009.7,
     "ivaAcquisti": 1613.57,
-    "saldo": -603.87,
+    "saldo": -582.14,
     "saldoTipo": "credito",
-    "note": "CREDITO €603,87 — riportato a Q2. NESSUN versamento il 16/05. Fonte: registro ufficiale commercialista."
+    "note": "CREDITO €603,87 — riportato a Q2. NESSUN versamento il 16/05. Fonte: registro ufficiale commercialista.",
+    "creditoIva": 582.14,
+    "importoVersamento": 0
    },
    {
     "id": "IVA-Q2-2026",
