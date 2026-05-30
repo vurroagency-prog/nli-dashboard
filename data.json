@@ -2399,13 +2399,663 @@
   {
    "mese": "Maggio 2026",
    "label": "Mag",
-   "entrate": [],
-   "uscite": [],
-   "totaleEntrate": "€0,00",
-   "totaleUscite": "−€0,00",
-   "netto": "€0,00",
-   "utileNetto": "€0,00",
-   "ebitda": "€0,00"
+   "entrate": [
+    {
+     "data": "05/05",
+     "voce": "ACCREDITO BEU CON CONTABILE",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€305,84",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "ACCREDITO BEU CON CONTABILE",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€1.098,55",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "06/05",
+     "voce": "ACCREDITO BEU CON CONTABILE",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€975,94",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "11/05",
+     "voce": "ACCREDITO BONIFICO ISTANTANEO",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€283,63",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "20/05",
+     "voce": "ACCREDITO BEU CON CONTABILE",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€726,11",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "ACCREDITO BEU CON CONTABILE",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€399,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "29/05",
+     "voce": "ACCREDITO BEU CON CONTABILE",
+     "voceBilancio": "A1_ricavi",
+     "importo": "€1.965,66",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    }
+   ],
+   "uscite": [
+    {
+     "data": "04/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "distribuzione_utili",
+     "importo": "−€500,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B8_godimento",
+     "importo": "−€350,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "PAGAMENTO DELEGA F24",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€338,89",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B14_royalties",
+     "importo": "−€170,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B14_royalties",
+     "importo": "−€170,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "PAGAMENTO DELEGA F24",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€152,41",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€106,14",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "PAGAMENTO POS",
+     "voceBilancio": "B7_software_operativi",
+     "importo": "−€94,40",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "PAGAMENTO DELEGA F24",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€65,03",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "PAGAMENTO DELEGA F24",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€35,10",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "04/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€120,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€97,48",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€38,78",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "PAGAMENTO POS",
+     "voceBilancio": "B7_software_operativi",
+     "importo": "−€12,94",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "PAGAMENTO ADUE",
+     "voceBilancio": "B7_spedizioni",
+     "importo": "−€1,34",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "05/05",
+     "voce": "COMMISSIONI E SPESE ADUE",
+     "voceBilancio": "B7_spedizioni",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "07/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€42,63",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "07/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "08/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B7_servizi",
+     "importo": "−€632,92",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "08/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "11/05",
+     "voce": "PAGAMENTO ADUE",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€83,79",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "11/05",
+     "voce": "COMMISSIONI E SPESE ADUE",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "13/05",
+     "voce": "PAGAMENTO ADUE",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€43,05",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "13/05",
+     "voce": "PAGAMENTO ADUE",
+     "voceBilancio": "B7_spedizioni",
+     "importo": "−€34,65",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "13/05",
+     "voce": "COMMISSIONI E SPESE ADUE",
+     "voceBilancio": "B7_spedizioni",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "13/05",
+     "voce": "COMMISSIONI E SPESE ADUE",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "14/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B7_consulenze_legali",
+     "importo": "−€733,34",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "14/05",
+     "voce": "PAGAMENTO ADUE",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€169,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "14/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "14/05",
+     "voce": "COMMISSIONI E SPESE ADUE",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "15/05",
+     "voce": "PAGAMENTO DELEGA F24",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€70,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "18/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "distribuzione_utili",
+     "importo": "−€1.200,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "18/05",
+     "voce": "PAGAMENTO DELEGA F24",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€296,64",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "18/05",
+     "voce": "PAGAMENTO DELEGA F24",
+     "voceBilancio": "B14_imposte",
+     "importo": "−€135,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "18/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€42,70",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "18/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "18/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "22/05",
+     "voce": "PAGAMENTO POS",
+     "voceBilancio": "B7_software_operativi",
+     "importo": "−€12,08",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "25/05",
+     "voce": "PAGAMENTO ADUE",
+     "voceBilancio": "B7_servizi",
+     "importo": "−€41,36",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "25/05",
+     "voce": "COMMISSIONI E SPESE ADUE",
+     "voceBilancio": "B7_servizi",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "27/05",
+     "voce": "PAGAMENTO ADUE",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€33,02",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "27/05",
+     "voce": "PAGAMENTO ADUE",
+     "voceBilancio": "B7_spedizioni",
+     "importo": "−€29,76",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "27/05",
+     "voce": "COMMISSIONI E SPESE ADUE",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "27/05",
+     "voce": "COMMISSIONI E SPESE ADUE",
+     "voceBilancio": "B7_spedizioni",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B7_rimborsi_spese_soci",
+     "importo": "−€849,41",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B9_personale",
+     "importo": "−€662,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B9_personale",
+     "importo": "−€212,20",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B7_consulenza_lavoro",
+     "importo": "−€97,60",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "28/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "29/05",
+     "voce": "PAGAMENTO POS",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€196,62",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "29/05",
+     "voce": "PAGAMENTO ADUE",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€105,57",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "29/05",
+     "voce": "COMMISSIONI E SPESE ADUE",
+     "voceBilancio": "B6_materie_prime",
+     "importo": "−€0,90",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "30/05",
+     "voce": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "B7_servizi",
+     "importo": "−€522,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    },
+    {
+     "data": "30/05",
+     "voce": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
+     "voceBilancio": "C_spese_bancarie",
+     "importo": "−€1,00",
+     "note": "✓ Ric.",
+     "competenza": "2026",
+     "riconciliato": true
+    }
+   ],
+   "totaleEntrate": "€5.754,73",
+   "totaleUscite": "−€8.523,95",
+   "netto": "−€2.769,22",
+   "utileNetto": "−€2.769,22",
+   "ebitda": "−€2.769,22"
   }
  ],
  "bancaAliasDescrizioni": {
