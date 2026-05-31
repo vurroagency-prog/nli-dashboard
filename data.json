@@ -3893,35 +3893,43 @@
     "numFattureAcquisto": 91,
     "topCliente": "Progesi - Societa' Per Azioni",
     "topClienteImporto": 15028.0,
-    "topClientePct": 28.5
+    "topClientePct": 28.5,
+    "utilePostIRAP": 16539.0,
+    "_nota": "utile da Dichiarazione Redditi 2023; ricavi/costi pieni 2023 da confermare con bilancio ufficiale"
    },
    "2024": {
     "ricaviNetto": 182728.76,
     "ricaviLordo": 222925.65,
-    "costiNetto": 54989.88,
+    "costiNetto": 117331.28,
     "costiLordo": 65405.73,
-    "margine": 127738.88,
-    "marginePct": 69.9,
+    "margine": 65397.48,
+    "marginePct": 35.8,
     "numClienti": 80,
     "numFattureVendita": 120,
     "numFattureAcquisto": 186,
     "topCliente": "Avangarde Consulting S.R.L.",
     "topClienteImporto": 38260.0,
-    "topClientePct": 20.9
+    "topClientePct": 20.9,
+    "utileGestionale": 65397.48,
+    "irap": 4640.98,
+    "utilePostIRAP": 60756.5
    },
    "2025": {
-    "ricaviNetto": 174135.51,
+    "ricaviNetto": 174135.5,
     "ricaviLordo": 212579.53,
-    "costiNetto": 49385.05,
+    "costiNetto": 100536.12,
     "costiLordo": 58017.75,
-    "margine": 124750.46,
-    "marginePct": 71.6,
+    "margine": 73599.38,
+    "marginePct": 42.3,
     "numClienti": 59,
     "numFattureVendita": 88,
     "numFattureAcquisto": 214,
     "topCliente": "Silicondev Spa",
     "topClienteImporto": 68615.52,
-    "topClientePct": 39.4
+    "topClientePct": 39.4,
+    "utileGestionale": 73599.38,
+    "irap": 3786.29,
+    "utilePostIRAP": 69813.09
    },
    "2026": {
     "ricaviNetto": 11147.15,
@@ -4356,7 +4364,7 @@
    "variazionePct": -69.7,
    "note": "Esteso a gen-apr 2026 (vs gen-apr 2025) — confronto YTD."
   },
-  "note": "Riepilogo 2026 aggiornato a gen-apr (8 mag 2026): ricavi netto €11.147. costi €16.667. margine €-5.520 (-49.5%). YoY gen-apr: -69.7%. Top cliente 2026: Gima Costruzioni s.r.l. (17.4%).",
+  "note": "Storico allineato 31/05: utili post-IRAP verificati (2023 €16.539 da dichiarazione, 2024 €60.757, 2025 €69.813). Costi 2024/2025 corretti coi totali veri del conto economico (prima erano sottostimati).",
   "yoyGenApr": {
    "ricavi2025": 36818.89,
    "ricavi2026": 11147.15,
