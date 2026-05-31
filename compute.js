@@ -108,10 +108,12 @@
   // "2026-05-16" -> "16 Mag 2026"
   function dataLunga(d) { var p = parseISO(d); return p.day + ' ' + MESI_ABBR[p.m - 1] + ' ' + p.y; }
 
-  // movimenti bancari (esclude conto personale socio)
+  // movimenti realmente transitati sul conto NLI (= estratto conto).
+  // Esclude: conto personale del socio (anticipazioni con carta personale) e i
+  // movimenti marcati cassa:false (riepiloghi gestionali non presenti in E/C).
   function movBanca(reg) {
     return (reg.movimenti || []).filter(function (m) {
-      return m.conto !== 'PERS-MARCO-001';
+      return m.conto !== 'PERS-MARCO-001' && m.cassa !== false;
     });
   }
 
