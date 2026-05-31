@@ -270,31 +270,40 @@
   }
 
   // ================================================================== IVA
-  // L'IVA e' un dato ufficiale (liquidazione a cura del commercialista) gia'
-  // strutturato in registro.iva.trimestri. Qui si mappa sul contratto che il
-  // rendering si aspetta (ivaDebito/ivaCredito/mesi/breakdown), senza inventare.
+  // I totali debito/credito per trimestre sono DATI (somma fatture per aliquota,
+  // con la liquidazione ufficiale Mascolo dove presente). Tutto il resto e'
+  // FORMULA a catena: credito riportato dal trimestre precedente, saldo,
+  // versamento e stato (dedotto dalla data). Niente piu' valori incollati.
   function calcIVA(reg, statics) {
     var iva = reg.iva || {};
     var anno = (reg.meta && reg.meta.annoFiscale) || 2026;
+    var oggi = new Date();
+    var prevCredito = 0; // credito IVA che si riporta al trimestre successivo
     var trimestri = (iva.trimestri || []).map(function (t) {
       var debito = (t.ivaDebito && t.ivaDebito.totale) || 0;
       var credito = (t.ivaCredito && t.ivaCredito.totale) || 0;
-      var creditoRip = t.creditoRiportato || 0;
+      var creditoRip = round2(prevCredito); // FORMULA: riportato dal trim precedente
       var saldo, creditoIva, importoVers;
       if (t.liquidazioneUfficiale && typeof t.liquidazioneUfficiale.credito === 'number') {
-        // liquidazione UFFICIALE Mascolo: e' la verita'
+        // liquidazione UFFICIALE Mascolo: prevale (gia' al netto)
         creditoIva = t.liquidazioneUfficiale.credito;
-        saldo = -creditoIva;
+        saldo = round2(-creditoIva);
         importoVers = 0;
-        credito = round2(debito + creditoIva); // coerenza: acquisti = vendite + credito
-      } else if (typeof t.saldoIva === 'number') {
-        saldo = t.saldoIva;
-        creditoIva = t.creditoIva || (saldo < 0 ? -saldo : 0);
-        importoVers = t.importoVersamento || (saldo > 0 ? saldo : 0);
+        credito = round2(debito + creditoIva); // coerenza display: acquisti = vendite + credito
       } else {
-        saldo = round2(debito - credito - creditoRip);
+        saldo = round2(debito - credito - creditoRip); // FORMULA
         creditoIva = saldo < 0 ? -saldo : 0;
         importoVers = saldo > 0 ? saldo : 0;
+      }
+      prevCredito = creditoIva; // a catena verso il trimestre dopo
+      // STATO dalla data: chiuso se il trimestre e' finito, in_corso se siamo dentro, altrimenti non_iniziato
+      var mesiArr = (t.mesi || []).map(function (m) { return parseISO(m + '-01').m; });
+      var stato = 'non_iniziato';
+      if (mesiArr.length) {
+        var inizio = new Date(anno, mesiArr[0] - 1, 1);
+        var fine = new Date(anno, mesiArr[mesiArr.length - 1], 0); // ultimo giorno
+        if (oggi > fine) stato = 'chiuso';
+        else if (oggi >= inizio) stato = 'in_corso';
       }
       var mesiLabel = (t.mesi || []).map(function (m) { return MESI_ABBR[parseISO(m + '-01').m - 1]; });
       var mesiStr = mesiLabel.length ? mesiLabel[0] + '-' + mesiLabel[mesiLabel.length - 1] : '';
@@ -303,7 +312,7 @@
         id: t.id,
         periodo: t.periodo + ' ' + anno,
         mesi: mesiStr,
-        stato: t.stato,
+        stato: stato,
         scadenza: t.scadenzaVersamento ? ddmmYYYY(t.scadenzaVersamento) : '',
         ivaDebito: round2(debito),
         ivaCredito: round2(credito),
