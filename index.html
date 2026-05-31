@@ -1033,7 +1033,7 @@
     });
     // KPI YoY YTD (preferenza yoyGenApr > yoyGenFeb)
     var yoyYtd = s.yoyGenApr || s.yoyGenFeb || {};
-    var yoyLabel = s.yoyGenApr ? 'YoY Gen-Apr' : 'YoY Gen-Feb';
+    var yoyLabel = yoyYtd.label || (s.yoyGenApr ? 'YoY Gen-Apr' : 'YoY Gen-Feb');
     if (yoyYtd.variazionePct != null) {
       var cls = yoyYtd.variazionePct >= 0 ? 'positive' : 'negative';
       kpiHtml += '<div class="kpi-card"><div class="kpi-label">' + yoyLabel + '</div><div class="kpi-value ' + cls + '">' + (yoyYtd.variazionePct >= 0 ? '+' : '') + yoyYtd.variazionePct.toFixed(1) + '%</div><div class="kpi-sub">' + fmtK(yoyYtd.ricavi2026) + ' vs ' + fmtK(yoyYtd.ricavi2025) + ' (2025)</div></div>';

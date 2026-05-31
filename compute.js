@@ -684,6 +684,27 @@
       'Anticipazioni socio Marco (carta personale): €' + nf(antic) + '.';
   }
 
+  // YoY ricavi calcolato dal vivo: confronta il 2026 (competenza) col 2025
+  // SULLO STESSO periodo coperto dalle FV 2026 (si auto-estende a nuovi mesi).
+  function calcYoY(reg, statics) {
+    var anno = String(reg.meta.annoFiscale || 2026);
+    var ultimoMese = 0;
+    (reg.fatture || []).forEach(function (f) {
+      if ((f.tipo || f.direzione) !== 'vendita') return;
+      var comp = f.competenza ? String(f.competenza) : String(parseISO(f.data).y);
+      if (comp !== anno) return;
+      var m = parseISO(f.data).m;
+      if (m > ultimoMese) ultimoMese = m;
+    });
+    if (!ultimoMese) return (statics.storico && statics.storico.yoyGenApr) || null;
+    var r2026 = calcRicaviCompetenza(reg).netto;
+    var mens = (statics.storico && statics.storico.mensile) || [];
+    var r2025 = round2(mens.filter(function (x) { return String(x.anno) === '2025' && x.mese <= ultimoMese; })
+      .reduce(function (s, x) { return s + (x.ricavi || 0); }, 0));
+    var pct = r2025 ? round2((r2026 - r2025) / r2025 * 100) : 0;
+    return { ricavi2025: r2025, ricavi2026: r2026, variazionePct: pct, label: 'YoY Gen-' + MESI_ABBR[ultimoMese - 1] };
+  }
+
   // ============================================================ BUILD COMPLETO
   function buildDashboardData(reg, statics) {
     statics = statics || {};
@@ -714,8 +735,18 @@
       alert: statics.alert || [],
       previsionale: statics.previsionale || [],
       forecastCassa: statics.forecastCassa || {},
-      storico: statics.storico || {}
+      storico: yoyLive(reg, statics)
     };
+  }
+
+  // storico statico con il YoY ricalcolato dal vivo
+  function yoyLive(reg, statics) {
+    var st = statics.storico || {};
+    var yoy = calcYoY(reg, statics);
+    if (!yoy) return st;
+    var out = {}; for (var k in st) out[k] = st[k];
+    out.yoyGenApr = yoy;
+    return out;
   }
 
   function aliasDescrizioni(reg, statics) {
