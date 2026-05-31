@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NLI — Dashboard Contabilità</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script src="compute.js?v=20260531"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -357,8 +358,25 @@
 
   async function loadData() {
     try {
-      const resp = await fetch('data.json?' + Date.now());
-      const d = await resp.json();
+      // DASHBOARD-A-FORMULE: legge la fonte grezza (registro.json) + gli input
+      // non derivabili (data.static.json) e CALCOLA tutto dal vivo via compute.js.
+      // Niente numeri incollati a mano. Fallback su data.json se il builder manca.
+      const bust = '?' + Date.now();
+      let d;
+      try {
+        // registro.json completo (uso locale) se presente; online si usa
+        // registro.public.json (sanitizzato: no IBAN/CF/P.IVA/redditi soci/paghe).
+        let regResp = await fetch('registro.json' + bust);
+        if (!regResp.ok) regResp = await fetch('registro.public.json' + bust);
+        const staticResp = await fetch('data.static.json' + bust);
+        const registro = await regResp.json();
+        const statics = await staticResp.json();
+        d = NLICompute.buildDashboardData(registro, statics);
+      } catch (e) {
+        console.warn('Builder non disponibile, fallback su data.json:', e);
+        const resp = await fetch('data.json' + bust);
+        d = await resp.json();
+      }
 
       // Last update
       document.getElementById('last-update-date').textContent = d.lastUpdate;

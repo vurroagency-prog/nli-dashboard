@@ -1,0 +1,6 @@
+# Registro COMPLETO: mai pubblicare (contiene IBAN/CF/P.IVA/redditi soci/paghe).
+# Online si pubblica solo registro.public.json (sanitizzato da build-public.mjs).
+registro.json
+# file di test/temporanei
+__smoke*.html
+node_modules/

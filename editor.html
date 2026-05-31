@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NLI — Correggi causali movimenti</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="compute.js?v=20260531"></script>
+<style>
+  :root {
+    --bg:#0c0f14; --surface:#151921; --surface-2:#1c2230; --border:#2a3040;
+    --text:#e6e9ef; --text-dim:#8891a4; --blue:#4f8cff;
+    --green:#34d399; --amber:#fbbf24; --red:#f87171;
+    --edit:#7c5cff; --edit-glow:rgba(124,92,255,0.14);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+
+  /* login */
+  #login-screen { position:fixed; inset:0; background:var(--bg); display:flex; align-items:center; justify-content:center; z-index:9999; }
+  #login-screen.hidden { display:none; }
+  .login-box { width:100%; max-width:400px; padding:48px 40px; background:var(--surface); border:1px solid var(--border); border-radius:16px; text-align:center; }
+  .login-box h1 { font-size:22px; margin-bottom:8px; }
+  .login-sub { font-size:13px; color:var(--text-dim); margin-bottom:32px; }
+  .login-box input { width:100%; padding:14px 18px; background:var(--surface-2); border:1px solid var(--border); border-radius:10px; color:var(--text); font-size:15px; outline:none; }
+  .login-box button { width:100%; margin-top:14px; padding:14px; background:var(--blue); border:none; border-radius:10px; color:#fff; font-size:15px; font-weight:600; cursor:pointer; }
+  .login-error { color:var(--red); font-size:13px; margin-top:14px; min-height:18px; }
+
+  .topbar { display:flex; align-items:center; justify-content:space-between; padding:16px 28px; border-bottom:1px solid var(--border); background:var(--surface); position:sticky; top:0; z-index:100; flex-wrap:wrap; gap:12px; }
+  .topbar h1 { font-size:18px; font-weight:700; }
+  .topbar .sub { font-size:12px; color:var(--text-dim); }
+  .topbar a { color:var(--blue); font-size:13px; text-decoration:none; }
+
+  .wrap { padding:24px 28px 80px; max-width:1280px; margin:0 auto; }
+
+  .help { background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--green); border-radius:12px; padding:18px 22px; margin-bottom:20px; }
+  .help h2 { font-size:15px; margin-bottom:10px; color:var(--green); }
+  .help ol { margin:0 0 0 18px; font-size:14px; }
+  .help li { margin-bottom:5px; }
+  .help .calm { margin-top:12px; font-size:13px; color:var(--text-dim); background:var(--surface-2); border-radius:8px; padding:10px 14px; }
+
+  .toolbar { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:16px; }
+  .toolbar input[type=text], .toolbar select { padding:10px 14px; background:var(--surface-2); border:1px solid var(--border); border-radius:9px; color:var(--text); font-family:inherit; font-size:14px; outline:none; }
+  .toolbar input[type=text] { min-width:220px; }
+  .toolbar label.chk { display:flex; align-items:center; gap:7px; font-size:13px; color:var(--text-dim); cursor:pointer; }
+  .spacer { flex:1; }
+  .counter { font-size:13px; color:var(--text-dim); }
+  .counter b { color:var(--edit); }
+
+  .btn { padding:11px 20px; border:none; border-radius:9px; font-family:inherit; font-size:14px; font-weight:600; cursor:pointer; }
+  .btn-save { background:var(--green); color:#06281d; }
+  .btn-save:disabled { background:var(--surface-2); color:var(--text-dim); cursor:not-allowed; }
+  .btn-ghost { background:var(--surface-2); color:var(--text-dim); border:1px solid var(--border); }
+
+  table { width:100%; border-collapse:collapse; background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; font-size:13.5px; }
+  thead th { text-align:left; padding:12px 14px; background:var(--surface-2); color:var(--text-dim); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.4px; position:sticky; top:64px; }
+  tbody td { padding:10px 14px; border-top:1px solid var(--border); vertical-align:middle; }
+  tbody tr:hover { background:var(--surface-2); }
+  tr.edited { background:var(--edit-glow) !important; }
+  tr.edited td:first-child { border-left:3px solid var(--edit); }
+  .imp-pos { color:var(--green); font-weight:600; white-space:nowrap; }
+  .imp-neg { color:var(--red); font-weight:600; white-space:nowrap; }
+  .desc { color:var(--text-dim); font-size:12.5px; }
+  td select { padding:7px 10px; background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--text); font-family:inherit; font-size:13px; outline:none; max-width:230px; }
+  td select.changed { border-color:var(--edit); background:var(--edit-glow); }
+  td select.warn { border-color:var(--amber); }
+  .badge-ver { display:inline-block; background:var(--amber); color:#3a2c00; font-size:11px; font-weight:700; padding:2px 8px; border-radius:20px; }
+  .empty { text-align:center; color:var(--text-dim); padding:40px; }
+
+  .savebar { position:fixed; bottom:0; left:0; right:0; background:var(--surface); border-top:1px solid var(--border); padding:14px 28px; display:flex; align-items:center; gap:16px; z-index:200; }
+  .savebar .msg { font-size:13px; color:var(--text-dim); flex:1; }
+  .savebar .msg b { color:var(--edit); }
+  .file-fallback { background:var(--surface); border:1px dashed var(--amber); border-radius:12px; padding:22px; text-align:center; margin-bottom:20px; }
+  .file-fallback input[type=file] { margin-top:10px; color:var(--text-dim); }
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-box">
+    <h1>🔧 Correttore causali</h1>
+    <div class="login-sub">Next Level Italia — area riservata soci</div>
+    <input type="password" id="pwd" placeholder="Password" autofocus>
+    <button onclick="doLogin()">Entra</button>
+    <div class="login-error" id="login-err"></div>
+  </div>
+</div>
+
+<div class="topbar">
+  <div>
+    <h1>🔧 Correggi le causali dei movimenti</h1>
+    <div class="sub" id="sub-info">Caricamento…</div>
+  </div>
+  <a href="index.html">← Torna alla dashboard</a>
+</div>
+
+<div class="wrap">
+  <div class="help">
+    <h2>Come funziona — 4 passi</h2>
+    <ol>
+      <li>Trova il movimento con la categoria sbagliata (usa la ricerca o il filtro "Solo da verificare").</li>
+      <li>Cambia la categoria dal menù a tendina. La riga si colora di viola = modificata.</li>
+      <li>Premi <b>"Scarica registro aggiornato"</b> in basso: scarica un file <code>registro.json</code>.</li>
+      <li>Sostituisci il vecchio <code>registro.json</code> nella cartella del progetto con quello scaricato, poi fai il <b>commit</b>. La dashboard si ricalcola da sola.</li>
+    </ol>
+    <div class="calm">😌 Tranquilla/o: qui <b>non si rompe niente</b>. Finché non scarichi il file e non fai il commit, non cambia assolutamente nulla. Puoi solo cambiare la <b>categoria</b> (la causale) di un movimento e, se serve, l'anno di competenza. Importi, date e saldi NON si toccano.</div>
+  </div>
+
+  <div id="file-fallback" class="file-fallback" style="display:none;">
+    <div>Non riesco a leggere <code>registro.json</code> da questa cartella.</div>
+    <div style="font-size:13px;color:var(--text-dim);margin-top:6px;">Selezionalo a mano (è nella cartella del progetto NLI):</div>
+    <input type="file" id="file-input" accept=".json,application/json">
+  </div>
+
+  <div id="ui" style="display:none;">
+    <div class="toolbar">
+      <input type="text" id="search" placeholder="🔍 Cerca per controparte o descrizione…">
+      <select id="filter-mese"><option value="">Tutti i mesi</option></select>
+      <select id="filter-tipo">
+        <option value="">Entrate + uscite</option>
+        <option value="entrata">Solo entrate</option>
+        <option value="uscita">Solo uscite</option>
+      </select>
+      <label class="chk"><input type="checkbox" id="filter-ver"> Solo da verificare ⚠</label>
+      <div class="spacer"></div>
+      <div class="counter" id="counter">0 movimenti</div>
+    </div>
+
+    <table>
+      <thead><tr>
+        <th style="width:88px;">Data</th>
+        <th>Movimento</th>
+        <th style="width:120px;text-align:right;">Importo</th>
+        <th style="width:250px;">Categoria (causale)</th>
+        <th style="width:120px;">Competenza</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" style="display:none;">Nessun movimento con questi filtri.</div>
+  </div>
+</div>
+
+<div class="savebar" id="savebar" style="display:none;">
+  <div class="msg" id="save-msg">Nessuna modifica ancora. Cambia una categoria per iniziare.</div>
+  <button class="btn btn-ghost" onclick="resetAll()">Annulla modifiche</button>
+  <button class="btn btn-save" id="btn-save" disabled onclick="scarica()">⬇ Scarica registro aggiornato</button>
+</div>
+
+<script>
+const HASH = 'ed9ec9d0b70b2b77ff7dbc74cddd4673fbcc4020fe75483d9d071830830e3aef';
+const CATS = NLICompute.CATEGORIE;
+const COMPETENZE = ['2026','2025','2024','misto','da_verificare',''];
+
+let registro = null;      // oggetto completo
+let original = {};        // id -> {categoria, competenza} originali
+let movimenti = [];
+
+// ---- auth
+async function sha256(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');}
+async function doLogin(){
+  const v=document.getElementById('pwd').value;
+  if(await sha256(v)===HASH){ sessionStorage.setItem('nli_dash_auth','true'); document.getElementById('login-screen').classList.add('hidden'); init(); }
+  else document.getElementById('login-err').textContent='Password errata.';
+}
+document.getElementById('pwd').addEventListener('keydown',e=>{ if(e.key==='Enter') doLogin(); });
+if(sessionStorage.getItem('nli_dash_auth')==='true'){ document.getElementById('login-screen').classList.add('hidden'); init(); }
+
+// ---- load
+async function init(){
+  try {
+    const r = await fetch('registro.json?'+Date.now());
+    if(!r.ok) throw new Error('no file');
+    registro = await r.json();
+    setup();
+  } catch(e){
+    document.getElementById('file-fallback').style.display='block';
+    document.getElementById('sub-info').textContent='In attesa del file registro.json…';
+    document.getElementById('file-input').addEventListener('change', onFile);
+  }
+}
+function onFile(ev){
+  const f=ev.target.files[0]; if(!f) return;
+  const rd=new FileReader();
+  rd.onload=()=>{ try{ registro=JSON.parse(rd.result); document.getElementById('file-fallback').style.display='none'; setup(); }catch(e){ alert('File non valido: '+e.message); } };
+  rd.readAsText(f);
+}
+
+function setup(){
+  // protezione: mai modificare/salvare la versione pubblica sanitizzata
+  if(registro.meta && registro.meta.versionePubblica){
+    alert('⚠ Hai aperto la versione PUBBLICA (sanitizzata) del registro.\n\nNon va corretta qui: ti mancano dati e rischieresti di sovrascrivere quello vero.\n\nSeleziona il file registro.json COMPLETO dalla cartella del progetto.');
+    registro=null;
+    document.getElementById('file-fallback').style.display='block';
+    document.getElementById('ui').style.display='none';
+    document.getElementById('savebar').style.display='none';
+    document.getElementById('file-input').addEventListener('change', onFile);
+    return;
+  }
+  movimenti = (registro.movimenti||[]).slice().sort((a,b)=> (a.data<b.data?1:-1)); // recenti prima
+  original = {};
+  movimenti.forEach(m=> original[m.id]={categoria:m.categoria||'', competenza:m.competenza!=null?String(m.competenza):''});
+  // filtro mesi
+  const mesi=[...new Set(movimenti.map(m=>String(m.data).slice(0,7)))].sort().reverse();
+  const fm=document.getElementById('filter-mese');
+  mesi.forEach(k=>{ const o=document.createElement('option'); o.value=k; o.textContent=meseLabel(k); fm.appendChild(o); });
+  document.getElementById('ui').style.display='block';
+  document.getElementById('savebar').style.display='flex';
+  document.getElementById('sub-info').textContent = movimenti.length+' movimenti · fonte registro.json · '+(registro.meta&&registro.meta.ultimoAggiornamento||'');
+  ['search','filter-mese','filter-tipo','filter-ver'].forEach(id=>document.getElementById(id).addEventListener('input',render));
+  render();
+}
+function meseLabel(k){const M=['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];const[y,m]=k.split('-');return M[+m-1]+' '+y;}
+function eur(n){return (n<0?'−':'')+'€'+Math.abs(n).toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+function render(){
+  const q=document.getElementById('search').value.toLowerCase();
+  const fmese=document.getElementById('filter-mese').value;
+  const ftipo=document.getElementById('filter-tipo').value;
+  const fver=document.getElementById('filter-ver').checked;
+  const list=movimenti.filter(m=>{
+    if(fmese && String(m.data).slice(0,7)!==fmese) return false;
+    if(ftipo && m.tipo!==ftipo) return false;
+    if(fver && m.categoria!=='DA_VERIFICARE') return false;
+    if(q){ const hay=((m.controparte||'')+' '+(m.descrizione||'')).toLowerCase(); if(hay.indexOf(q)<0) return false; }
+    return true;
+  });
+  const tb=document.getElementById('rows'); tb.innerHTML='';
+  list.forEach(m=>{
+    const tr=document.createElement('tr');
+    const changed = original[m.id].categoria!==(m.categoria||'') || original[m.id].competenza!==(m.competenza!=null?String(m.competenza):'');
+    if(changed) tr.className='edited';
+    const imp = m.tipo==='uscita' ? '<span class="imp-neg">'+eur(-Math.abs(m.importo))+'</span>' : '<span class="imp-pos">'+eur(Math.abs(m.importo))+'</span>';
+    const ver = m.categoria==='DA_VERIFICARE' ? ' <span class="badge-ver">DA VERIFICARE</span>' : '';
+    const opts = CATS.map(c=>'<option value="'+c.id+'"'+(c.id===m.categoria?' selected':'')+'>'+esc(c.label)+'</option>').join('');
+    const optsComp = COMPETENZE.map(c=>'<option value="'+c+'"'+(c===(m.competenza!=null?String(m.competenza):'')?' selected':'')+'>'+(c||'—')+'</option>').join('');
+    tr.innerHTML =
+      '<td>'+fmtData(m.data)+'</td>'+
+      '<td><b>'+esc(m.controparte||'(senza controparte)')+'</b>'+ver+'<br><span class="desc">'+esc(m.descrizione||'')+'</span></td>'+
+      '<td style="text-align:right;">'+imp+'</td>'+
+      '<td><select data-id="'+m.id+'" data-f="categoria" class="'+(original[m.id].categoria!==(m.categoria||'')?'changed':'')+(m.categoria==='DA_VERIFICARE'?' warn':'')+'">'+opts+'</select></td>'+
+      '<td><select data-id="'+m.id+'" data-f="competenza" class="'+(original[m.id].competenza!==(m.competenza!=null?String(m.competenza):'')?'changed':'')+'">'+optsComp+'</select></td>';
+    tb.appendChild(tr);
+  });
+  tb.querySelectorAll('select').forEach(s=> s.addEventListener('change', onChange));
+  document.getElementById('empty').style.display = list.length?'none':'block';
+  document.getElementById('counter').textContent = list.length+' movimenti mostrati · '+movimenti.length+' totali';
+  updateSavebar();
+}
+function fmtData(d){const p=String(d).split('-');return p[2]+'/'+p[1]+'/'+p[0].slice(2);}
+
+function onChange(e){
+  const id=e.target.dataset.id, f=e.target.dataset.f, v=e.target.value;
+  const m=movimenti.find(x=>x.id===id);
+  if(f==='categoria') m.categoria=v;
+  else m.competenza = v===''?undefined:v;
+  render();
+}
+
+function countEdits(){ return movimenti.filter(m=> original[m.id].categoria!==(m.categoria||'') || original[m.id].competenza!==(m.competenza!=null?String(m.competenza):'')).length; }
+function updateSavebar(){
+  const n=countEdits();
+  document.getElementById('btn-save').disabled = n===0;
+  document.getElementById('save-msg').innerHTML = n===0
+    ? 'Nessuna modifica ancora. Cambia una categoria per iniziare.'
+    : 'Hai modificato <b>'+n+'</b> '+(n===1?'movimento':'movimenti')+'. Scarica il file per salvare.';
+}
+function resetAll(){
+  if(countEdits()>0 && !confirm('Annullo tutte le modifiche non salvate?')) return;
+  movimenti.forEach(m=>{ m.categoria=original[m.id].categoria; m.competenza=original[m.id].competenza===''?undefined:original[m.id].competenza; });
+  render();
+}
+
+function scarica(){
+  const edits = movimenti.filter(m=> original[m.id].categoria!==(m.categoria||'') || original[m.id].competenza!==(m.competenza!=null?String(m.competenza):''));
+  // riscrivi registro completo con le modifiche (preserva tutto il resto)
+  const byId={}; movimenti.forEach(m=>byId[m.id]=m);
+  registro.movimenti = (registro.movimenti||[]).map(m=> byId[m.id]?byId[m.id]:m);
+  if(registro.meta) registro.meta.ultimoAggiornamento = new Date().toISOString().slice(0,10)+' (causali corrette da editor)';
+  const blob=new Blob([JSON.stringify(registro,null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='registro.json'; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+  alert('✅ Scaricato registro.json con '+edits.length+' '+(edits.length===1?'correzione':'correzioni')+'.\n\nOra: sostituisci il vecchio registro.json nella cartella del progetto con questo, poi fai il commit. La dashboard si aggiorna da sola.');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,841 @@
+{
+ "lastUpdate": "30 maggio 2026",
+ "statusMessage": "Fonte: registro.json (247 mov., 132 fatt., 37 scad.). E/C ufficiali Intesa SP gen-apr 2026: 100% riconciliati. Saldo banca 30/04: €13.718,19. IVA Q1: CREDITO €603,87.",
+ "statoLavori": "Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. E/C gen-apr 2026: 141 movimenti, 87.2% riconciliati. 132 fatture in registro. Anticipazioni socio Marco: €2.775,73 (19 fatture carta personale, KM tutti chiusi).",
+ "suggerimenti": "PRIORITÀ MAGGIO 2026: 1) INPS Marco €1.137 (16/05) — F24 da Mascolo. 2) Timeflow rata 3 €733 (13/05). 3) INAIL 2a rata €69 (18/05). 4) Chiarire MOV-0242 €1.096 del 30/04 con Mascolo (probabile F24 ritenute aprile). 5) Chiarire F24 €1.663 del 16/03. 6) Sollecitare €3.811 da 4 clienti feb. 7) Rimborso anticipazioni Marco €2.775,73 (saldo netto post-compensazione). 8) RICAVI: gen-apr competenza €11.148 vs 2025 -73% — focus vendite. 9) IVA Q2 in corso: già €1.443 debito provvisorio (FV apr), - €604 credito Q1 = €839 netto.",
+ "setupChecklist": [
+  {
+   "label": "Visura camerale",
+   "desc": "Costituzione 29/05/2023, REA BA-652782. Sede: Via Fieramosca 20, Bari. Quote 50/50",
+   "done": true
+  },
+  {
+   "label": "Regime fiscale e IVA",
+   "desc": "Semplificato, IVA trimestrale",
+   "done": true
+  },
+  {
+   "label": "Dati bancari",
+   "desc": "Intesa Sanpaolo — IBAN acquisito, E/C gen+feb importati, quadratura OK",
+   "done": true
+  },
+  {
+   "label": "Software fatturazione",
+   "desc": "Danea Easyfatt",
+   "done": true
+  },
+  {
+   "label": "Dipendenti/collaboratori",
+   "desc": "1 dipendente (Sajay) + 1 collaboratore (Festa Daniele). Ex dip. Claudia cessata 31/12/2025, TFR pagato",
+   "done": true
+  },
+  {
+   "label": "Contratto locazione sede",
+   "desc": "Via Fieramosca 20, Bari — €350/mese, 17/03/2025-16/03/2031",
+   "done": true
+  },
+  {
+   "label": "Welfare aziendale",
+   "desc": "€2.000/anno per dipendente, regolamento archiviato",
+   "done": true
+  },
+  {
+   "label": "Commercialista",
+   "desc": "Pietro Mascolo (Altamura) — €2.400/anno, contratto archiviato",
+   "done": true
+  },
+  {
+   "label": "Estratti conto gen+feb",
+   "desc": "Gen: 43 mov, quadratura OK (93%). Feb: 42 mov, quadratura OK (90,5%). Totale 95 movimenti",
+   "done": true
+  },
+  {
+   "label": "Buste paga dic 2025 + gen+feb 2026",
+   "desc": "LUL + Prima Nota archiviati. F24 gen €398 OK, F24 feb €650→€764 OK, F24 mar €220 in scadenza",
+   "done": true
+  },
+  {
+   "label": "Fatture registrate",
+   "desc": "67 fatture (gen-feb 2026). Archivio SDI completo (268 inviate + 538 ricevute, 2023-2026)",
+   "done": true
+  },
+  {
+   "label": "Documenti commercialista",
+   "desc": "Round 1-3 feb processati: affitto, energia, dipendenti, marchio. R4-R6 (fatture estere) in corso",
+   "done": true
+  }
+ ],
+ "alert": [
+  {
+   "tipo": "danger",
+   "testo": "🔴 INPS Marco €1.137 — scadenza 16/05. F24 da richiedere a Mascolo."
+  },
+  {
+   "tipo": "success",
+   "testo": "✅ IVA Q1 a CREDITO €603,87 — riportato a Q2, nessun versamento il 16/05."
+  },
+  {
+   "tipo": "warning",
+   "testo": "⚠️ Timeflow D.I. n.506 — rata 3 di 4: €733,33 il 13/05."
+  },
+  {
+   "tipo": "warning",
+   "testo": "⚠️ MOV-0242 €1.096,17 del 30/04 — Pagamento disposiz. n.003: probabile F24 contributi/ritenute aprile, da confermare con Mascolo."
+  },
+  {
+   "tipo": "warning",
+   "testo": "⚠️ F24 €1.663 del 16/03 ancora da identificare — chiedere a Mascolo (INPS? IRAP? Altro?)"
+  },
+  {
+   "tipo": "info",
+   "testo": "ℹ️ Saldo banca 30/04: €13.718,19 — E/C ufficiale (72 mov., 100% riconciliati)."
+  },
+  {
+   "tipo": "info",
+   "testo": "ℹ️ Anticipazioni socio Marco: €2.775,73 (19 fatture pagate con carta personale gen-mar). KM tutti chiusi."
+  },
+  {
+   "tipo": "info",
+   "testo": "ℹ️ Crediti clienti €3.811 da incassare — 4 fatture feb (De Giglio, Digitality, Dinamica, Piesse)."
+  }
+ ],
+ "previsionale": [
+  {
+   "mese": "Marzo 2026",
+   "voci": [
+    {
+     "voce": "Affitto sede",
+     "tipo": "uscita",
+     "importo": "€350",
+     "certezza": "certo"
+    },
+    {
+     "voce": "Stipendio Sajay",
+     "tipo": "uscita",
+     "importo": "€662",
+     "certezza": "certo"
+    },
+    {
+     "voce": "F24 contributi/ritenute febbraio",
+     "tipo": "uscita",
+     "importo": "€220",
+     "certezza": "certo"
+    },
+    {
+     "voce": "Ritenuta d'acconto Avv. Palumbo",
+     "tipo": "uscita",
+     "importo": "€30",
+     "certezza": "certo"
+    },
+    {
+     "voce": "Ritenute royalties marchio (Sala+Vurro)",
+     "tipo": "uscita",
+     "importo": "€60",
+     "certezza": "certo"
+    },
+    {
+     "voce": "Roly fatture scadute (05/03 + 12/03)",
+     "tipo": "uscita",
+     "importo": "€268",
+     "certezza": "certo"
+    },
+    {
+     "voce": "Anticipazioni Marco — acquisti carta personale gen-feb",
+     "tipo": "uscita",
+     "importo": "€2.480",
+     "certezza": "certo"
+    },
+    {
+     "voce": "Fornitori/SDD ricorrenti",
+     "tipo": "uscita",
+     "importo": "~€1.000",
+     "certezza": "stimato"
+    },
+    {
+     "voce": "Incassi clienti attesi",
+     "tipo": "entrata",
+     "importo": "~€3.000",
+     "certezza": "stimato"
+    },
+    {
+     "voce": "Ecomondi FV5 da incassare",
+     "tipo": "entrata",
+     "importo": "€625",
+     "certezza": "certo"
+    }
+   ],
+   "totaleUsciteStimate": "~€7.160",
+   "totaleEntrateStimate": "~€3.625",
+   "saldoStimato": "~€13.269"
+  },
+  {
+   "mese": "Aprile 2026",
+   "voci": [
+    {
+     "voce": "Affitto sede",
+     "tipo": "uscita",
+     "importo": "€350",
+     "certezza": "certo"
+    },
+    {
+     "voce": "Stipendio Sajay",
+     "tipo": "uscita",
+     "importo": "€662",
+     "certezza": "certo"
+    },
+    {
+     "voce": "F24 contributi/ritenute marzo",
+     "tipo": "uscita",
+     "importo": "~€220",
+     "certezza": "stimato"
+    },
+    {
+     "voce": "Commercialista (rateo trim.)",
+     "tipo": "uscita",
+     "importo": "€600",
+     "certezza": "certo"
+    },
+    {
+     "voce": "Fornitori/SDD ricorrenti",
+     "tipo": "uscita",
+     "importo": "~€1.000",
+     "certezza": "stimato"
+    },
+    {
+     "voce": "Fatture clienti",
+     "tipo": "entrata",
+     "importo": "~€5.000",
+     "certezza": "stimato"
+    }
+   ],
+   "totaleUsciteStimate": "~€2.832",
+   "totaleEntrateStimate": "~€5.000",
+   "saldoStimato": "~€15.437"
+  }
+ ],
+ "forecastCassa": {
+  "titolo": "Previsione Cassa 2026",
+  "nota": "Reale gennaio→maggio (estratti conto ufficiali). Da giugno: solo incassi già firmati (proforma + manutenzioni a rate), nessun nuovo ordine ipotizzato. Tasse calcolate internamente.",
+  "realCount": 5,
+  "labels": [
+   "Gen",
+   "Feb",
+   "Mar",
+   "Apr",
+   "Mag",
+   "Giu",
+   "Lug",
+   "Ago",
+   "Set",
+   "Ott",
+   "Nov",
+   "Dic"
+  ],
+  "incassi": [
+   28350,
+   18019,
+   8994,
+   5329,
+   9089,
+   1986,
+   3038,
+   347,
+   168,
+   47,
+   1104,
+   47
+  ],
+  "uscite": [
+   21314,
+   13521,
+   8796,
+   8626,
+   11459,
+   6744,
+   3016,
+   4165,
+   2528,
+   2508,
+   4195,
+   3308
+  ],
+  "saldo": [
+   11442,
+   16804,
+   17015,
+   13718,
+   10949,
+   6191,
+   6212,
+   2394,
+   33,
+   -2429,
+   -5519,
+   -8780
+  ],
+  "kpi": {
+   "saldoOggi": 10949,
+   "saldoFine": -8780,
+   "meseSottoZero": "Ottobre",
+   "venditeNecessarie": 13780
+  }
+ },
+ "storico": {
+  "annuale": {
+   "2023": {
+    "ricaviNetto": 52816.2,
+    "ricaviLordo": 64435.78,
+    "costiNetto": 23490.4,
+    "costiLordo": 27688.83,
+    "margine": 29325.8,
+    "marginePct": 55.5,
+    "numClienti": 32,
+    "numFattureVendita": 37,
+    "numFattureAcquisto": 91,
+    "topCliente": "Progesi - Societa' Per Azioni",
+    "topClienteImporto": 15028.0,
+    "topClientePct": 28.5,
+    "utilePostIRAP": 16539.0,
+    "_nota": "utile da Dichiarazione Redditi 2023; ricavi/costi pieni 2023 da confermare con bilancio ufficiale"
+   },
+   "2024": {
+    "ricaviNetto": 182728.76,
+    "ricaviLordo": 222925.65,
+    "costiNetto": 117331.28,
+    "costiLordo": 65405.73,
+    "margine": 65397.48,
+    "marginePct": 35.8,
+    "numClienti": 80,
+    "numFattureVendita": 120,
+    "numFattureAcquisto": 186,
+    "topCliente": "Avangarde Consulting S.R.L.",
+    "topClienteImporto": 38260.0,
+    "topClientePct": 20.9,
+    "utileGestionale": 65397.48,
+    "irap": 4640.98,
+    "utilePostIRAP": 60756.5
+   },
+   "2025": {
+    "ricaviNetto": 174135.5,
+    "ricaviLordo": 212579.53,
+    "costiNetto": 100536.12,
+    "costiLordo": 58017.75,
+    "margine": 73599.38,
+    "marginePct": 42.3,
+    "numClienti": 59,
+    "numFattureVendita": 88,
+    "numFattureAcquisto": 214,
+    "topCliente": "Silicondev Spa",
+    "topClienteImporto": 68615.52,
+    "topClientePct": 39.4,
+    "utileGestionale": 73599.38,
+    "irap": 3786.29,
+    "utilePostIRAP": 69813.09
+   },
+   "2026": {
+    "ricaviNetto": 11147.15,
+    "ricaviLordo": 13599.53,
+    "costiNetto": 16666.74,
+    "costiLordo": 18743.97,
+    "margine": -5519.59,
+    "marginePct": -49.5,
+    "numClienti": 16,
+    "numFattureVendita": 10,
+    "numFattureAcquisto": 96,
+    "topCliente": "Gima Costruzioni s.r.l.",
+    "topClienteImporto": 1939.6,
+    "topClientePct": 17.4
+   }
+  },
+  "mensile": [
+   {
+    "anno": "2023",
+    "mese": 6,
+    "label": "Giu 2023",
+    "ricavi": 1468.6,
+    "costi": 963.44,
+    "margine": 505.16
+   },
+   {
+    "anno": "2023",
+    "mese": 7,
+    "label": "Lug 2023",
+    "ricavi": 1223.5,
+    "costi": 3816.42,
+    "margine": -2592.92
+   },
+   {
+    "anno": "2023",
+    "mese": 8,
+    "label": "Ago 2023",
+    "ricavi": 848.12,
+    "costi": 2363.09,
+    "margine": -1514.97
+   },
+   {
+    "anno": "2023",
+    "mese": 9,
+    "label": "Set 2023",
+    "ricavi": 0,
+    "costi": 1570.56,
+    "margine": -1570.56
+   },
+   {
+    "anno": "2023",
+    "mese": 10,
+    "label": "Ott 2023",
+    "ricavi": 9642.58,
+    "costi": 4576.53,
+    "margine": 5066.05
+   },
+   {
+    "anno": "2023",
+    "mese": 11,
+    "label": "Nov 2023",
+    "ricavi": 10537.83,
+    "costi": 5891.48,
+    "margine": 4646.35
+   },
+   {
+    "anno": "2023",
+    "mese": 12,
+    "label": "Dic 2023",
+    "ricavi": 29095.57,
+    "costi": 4308.88,
+    "margine": 24786.69
+   },
+   {
+    "anno": "2024",
+    "mese": 1,
+    "label": "Gen 2024",
+    "ricavi": 5356.2,
+    "costi": 1125.46,
+    "margine": 4230.74
+   },
+   {
+    "anno": "2024",
+    "mese": 2,
+    "label": "Feb 2024",
+    "ricavi": 14069.96,
+    "costi": 1543.42,
+    "margine": 12526.54
+   },
+   {
+    "anno": "2024",
+    "mese": 3,
+    "label": "Mar 2024",
+    "ricavi": 2471.48,
+    "costi": 2485.58,
+    "margine": -14.1
+   },
+   {
+    "anno": "2024",
+    "mese": 4,
+    "label": "Apr 2024",
+    "ricavi": 9561.49,
+    "costi": 2161.72,
+    "margine": 7399.77
+   },
+   {
+    "anno": "2024",
+    "mese": 5,
+    "label": "Mag 2024",
+    "ricavi": 11754.6,
+    "costi": 3361.3,
+    "margine": 8393.3
+   },
+   {
+    "anno": "2024",
+    "mese": 6,
+    "label": "Giu 2024",
+    "ricavi": 13409.94,
+    "costi": 2285.8,
+    "margine": 11124.14
+   },
+   {
+    "anno": "2024",
+    "mese": 7,
+    "label": "Lug 2024",
+    "ricavi": 14777.55,
+    "costi": 1808.23,
+    "margine": 12969.32
+   },
+   {
+    "anno": "2024",
+    "mese": 8,
+    "label": "Ago 2024",
+    "ricavi": 9858.46,
+    "costi": 6615.37,
+    "margine": 3243.09
+   },
+   {
+    "anno": "2024",
+    "mese": 9,
+    "label": "Set 2024",
+    "ricavi": 12688.97,
+    "costi": 4215.98,
+    "margine": 8472.99
+   },
+   {
+    "anno": "2024",
+    "mese": 10,
+    "label": "Ott 2024",
+    "ricavi": 36279.79,
+    "costi": 11658.89,
+    "margine": 24620.9
+   },
+   {
+    "anno": "2024",
+    "mese": 11,
+    "label": "Nov 2024",
+    "ricavi": 13715.86,
+    "costi": 11483.69,
+    "margine": 2232.17
+   },
+   {
+    "anno": "2024",
+    "mese": 12,
+    "label": "Dic 2024",
+    "ricavi": 38784.46,
+    "costi": 6244.44,
+    "margine": 32540.02
+   },
+   {
+    "anno": "2025",
+    "mese": 1,
+    "label": "Gen 2025",
+    "ricavi": 5818.13,
+    "costi": 2603.29,
+    "margine": 3214.84
+   },
+   {
+    "anno": "2025",
+    "mese": 2,
+    "label": "Feb 2025",
+    "ricavi": 6911.84,
+    "costi": 3435.25,
+    "margine": 3476.59
+   },
+   {
+    "anno": "2025",
+    "mese": 3,
+    "label": "Mar 2025",
+    "ricavi": 12619.85,
+    "costi": 6095.16,
+    "margine": 6524.69
+   },
+   {
+    "anno": "2025",
+    "mese": 4,
+    "label": "Apr 2025",
+    "ricavi": 11469.07,
+    "costi": 3195.85,
+    "margine": 8273.22
+   },
+   {
+    "anno": "2025",
+    "mese": 5,
+    "label": "Mag 2025",
+    "ricavi": 16376.21,
+    "costi": 2561.92,
+    "margine": 13814.29
+   },
+   {
+    "anno": "2025",
+    "mese": 6,
+    "label": "Giu 2025",
+    "ricavi": 10550.47,
+    "costi": 5627.2,
+    "margine": 4923.27
+   },
+   {
+    "anno": "2025",
+    "mese": 7,
+    "label": "Lug 2025",
+    "ricavi": 13621.45,
+    "costi": 2203.23,
+    "margine": 11418.22
+   },
+   {
+    "anno": "2025",
+    "mese": 8,
+    "label": "Ago 2025",
+    "ricavi": 10147.57,
+    "costi": 1616.64,
+    "margine": 8530.93
+   },
+   {
+    "anno": "2025",
+    "mese": 9,
+    "label": "Set 2025",
+    "ricavi": 9944.0,
+    "costi": 5961.02,
+    "margine": 3982.98
+   },
+   {
+    "anno": "2025",
+    "mese": 10,
+    "label": "Ott 2025",
+    "ricavi": 18847.08,
+    "costi": 4254.91,
+    "margine": 14592.17
+   },
+   {
+    "anno": "2025",
+    "mese": 11,
+    "label": "Nov 2025",
+    "ricavi": 30536.81,
+    "costi": 5887.77,
+    "margine": 24649.04
+   },
+   {
+    "anno": "2025",
+    "mese": 12,
+    "label": "Dic 2025",
+    "ricavi": 27293.03,
+    "costi": 5942.81,
+    "margine": 21350.22
+   },
+   {
+    "anno": "2026",
+    "mese": 1,
+    "label": "Gen 2026",
+    "ricavi": -263.6,
+    "costi": 2953.6,
+    "margine": -3217.2
+   },
+   {
+    "anno": "2026",
+    "mese": 2,
+    "label": "Feb 2026",
+    "ricavi": 3636.18,
+    "costi": 2078.47,
+    "margine": 1557.71
+   },
+   {
+    "anno": "2026",
+    "mese": 3,
+    "label": "Mar 2026",
+    "ricavi": 1216.9,
+    "costi": 3777.34,
+    "margine": -2560.44
+   },
+   {
+    "anno": "2026",
+    "mese": 4,
+    "label": "Apr 2026",
+    "ricavi": 6557.67,
+    "costi": 1716.74,
+    "margine": 4840.93
+   }
+  ],
+  "clienti": {
+   "2023": [
+    {
+     "nome": "Progesi - Societa' Per Azioni",
+     "importo": 15028.0,
+     "percentuale": 28.4
+    },
+    {
+     "nome": "Nicola Lomaistro",
+     "importo": 4397.8,
+     "percentuale": 8.3
+    },
+    {
+     "nome": "Meridional Indotti S.R.L.",
+     "importo": 4127.09,
+     "percentuale": 7.8
+    },
+    {
+     "nome": "Elettrik Sistemi Di Gentile U. S.N.",
+     "importo": 3029.4,
+     "percentuale": 5.7
+    },
+    {
+     "nome": "Splendor S.R.L.",
+     "importo": 2806.63,
+     "percentuale": 5.3
+    },
+    {
+     "nome": "Altri",
+     "importo": 23445.28,
+     "percentuale": 44.4
+    }
+   ],
+   "2024": [
+    {
+     "nome": "Avangarde Consulting S.R.L.",
+     "importo": 38260.0,
+     "percentuale": 20.8
+    },
+    {
+     "nome": "Progesi - Societa' Per Azioni",
+     "importo": 21946.0,
+     "percentuale": 12.0
+    },
+    {
+     "nome": "G.D.M. Service Di Di Modugno Gianlu",
+     "importo": 6999.45,
+     "percentuale": 3.8
+    },
+    {
+     "nome": "V.M.Costruzioni Srl",
+     "importo": 6996.68,
+     "percentuale": 3.8
+    },
+    {
+     "nome": "Security Dealers System S.R.L.",
+     "importo": 5227.73,
+     "percentuale": 2.8
+    },
+    {
+     "nome": "Altri",
+     "importo": 104091.29,
+     "percentuale": 56.7
+    }
+   ],
+   "2025": [
+    {
+     "nome": "Silicondev Spa",
+     "importo": 68615.52,
+     "percentuale": 38.2
+    },
+    {
+     "nome": "Gd Tech Di Spezzacatena Corrado",
+     "importo": 8638.77,
+     "percentuale": 4.8
+    },
+    {
+     "nome": "Avangarde Enterprise S.R.L.",
+     "importo": 7830.0,
+     "percentuale": 4.4
+    },
+    {
+     "nome": "Dentitalia  S.R.L.",
+     "importo": 6050.0,
+     "percentuale": 3.4
+    },
+    {
+     "nome": "Avangarde Consulting S.R.L.",
+     "importo": 5130.0,
+     "percentuale": 2.9
+    },
+    {
+     "nome": "Altri",
+     "importo": 83577.32,
+     "percentuale": 46.5
+    }
+   ],
+   "2026": [
+    {
+     "nome": "Piesse S.R.L.S.",
+     "importo": 1080.8,
+     "percentuale": 27.5
+    },
+    {
+     "nome": "Giuseppe De Giglio",
+     "importo": 1051.53,
+     "percentuale": 26.7
+    },
+    {
+     "nome": "Dinamica Pulizie Di Volpe Francesco",
+     "importo": 641.5,
+     "percentuale": 16.3
+    },
+    {
+     "nome": "Ecomondi Di Messina Costantinlucio",
+     "importo": 512.35,
+     "percentuale": 13.0
+    },
+    {
+     "nome": "Digitality Consulting S.R.L.",
+     "importo": 350.0,
+     "percentuale": 8.9
+    },
+    {
+     "nome": "Altri",
+     "importo": 300.0,
+     "percentuale": 7.6
+    }
+   ]
+  },
+  "yoyGenFeb": {
+   "ricavi2025": 36818.89,
+   "ricavi2026": 11147.15,
+   "variazionePct": -69.7,
+   "note": "Esteso a gen-apr 2026 (vs gen-apr 2025) — confronto YTD."
+  },
+  "note": "Storico allineato 31/05: utili post-IRAP verificati (2023 €16.539 da dichiarazione, 2024 €60.757, 2025 €69.813). Costi 2024/2025 corretti coi totali veri del conto economico (prima erano sottostimati).",
+  "yoyGenApr": {
+   "ricavi2025": 36818.89,
+   "ricavi2026": 11147.15,
+   "variazionePct": -69.7
+  }
+ },
+ "ebitdaTargetAnnuo": 100000,
+ "bancaAliasDescrizioni": {
+  "VULPIO": "Costruzioni Vulpio SRL (cliente)",
+  "SILICONDEV": "SiliconDev S.p.A. (cliente)",
+  "DE NICOLO": "De Nicolo C. S.r.l. (cliente)",
+  "DENTITALIA": "Dentitalia S.r.l. (cliente)",
+  "CASSANO": "Cassano SRL (cliente)",
+  "O.E.M.": "O.E.M. di De Lorenzo D. & C. (cliente)",
+  "MEC WELDING": "Mec Welding Service SRL (cliente)",
+  "SPLENDOR": "Splendor SRL (cliente)",
+  "RP SRL": "RP SRL (cliente)",
+  "EURO IMPIANTI": "Euro Impianti 2000 SRL (cliente)",
+  "NAPOLETANO": "Napoletano Nicola SRL (cliente — Trani)",
+  "ECOMONDI": "Ecomondi di Messina (cliente — Bari)",
+  "ELETTRA 2G": "Elettra 2G SRL (cliente/fornitore merce)",
+  "TEAMSYSTEM PAY": "TeamSystem Payments (incassi SDD aggregati)",
+  "TEAMSYSTEM S.P": "TeamSystem S.P.A. (CRM in Cloud)",
+  "METRIE": "Metrie Spol. S.r.o. (fornitore estero)",
+  "SIGGI": "Siggi Group (abbigliamento lavoro)",
+  "GOR FACTORY": "GOR Factory / Roly (abbigliamento lavoro)",
+  "ROLY": "GOR Factory / Roly (abbigliamento lavoro)",
+  "ROSSINI": "Rossini 1969 S.p.A. (abbigliamento lavoro)",
+  "PF CONCEPT": "PF Concept International (oggetti promozionali)",
+  "WTGROUP": "WTGroup KgSAS (fornitore)",
+  "LAPENNA": "Raffaele Lapenna (posteggio auto — forfettario)",
+  "PLUXEE": "Pluxee Italia (welfare / buoni pasto)",
+  "SENDCLOUD": "Sendcloud SRL (spedizioni)",
+  "OPUSCLIP": "OpusClip Inc. (software video AI — USA)",
+  "FASTWEB": "Fastweb SPA (telefonia/internet)",
+  "FRISBI": "Frisbi Società Benefit (energia elettrica)",
+  "AMAZON": "Amazon Business (materiali vari)",
+  "MEDIAMARKET": "MediaMarket S.p.A. (elettronica/telefonia)",
+  "MECCATRONICA": "Meccatronica Car Service (officina auto)",
+  "FATONE": "Studio Avv. Fatone Gasso (consulenza legale — rit. 20%)",
+  "PALUMBO": "Avv. Palumbo Chiara (proc. monitorio RP Srl — rit. 20%)",
+  "FESTA": "Festa Daniele (collaboratore — diritti autore)",
+  "SALA VURRO": "Silvana Nicola Sala Vurro (royalties marchio)",
+  "NICOLA VURRO": "Nicola Vurro (royalties marchio)",
+  "PANEBIANCO": "Antonia Panebianco (affitto sede €350/m)",
+  "FERNANDEZ": "Sajay Fernandez Espinosa (stipendio)",
+  "LOCONSOLE": "Claudia Loconsole (ex dipendente — cessata 31/12/2025)",
+  "ALESSANDRO VURRO": "Alessandro Vurro (ex socio)",
+  "HOSTINGER": "Hostinger (hosting VPS — Cipro)",
+  "ZAPIER": "Zapier Inc. (servizi automazione — USA)",
+  "SINTRA": "Sintra.ai (AI sales tool — USA)",
+  "CLAUDE": "Claude.ai / Anthropic (AI subscription — USA)",
+  "ELEMENTOR": "Elementor (website builder — Israele)",
+  "CANVA": "Canva (design tool — Australia)",
+  "ENVATO": "Envato (marketplace digitale — Australia)",
+  "GLOBAL PROJECT": "Global Project Costruzioni SRLS (cliente)",
+  "GIS": "GIS Professional Services SRLS (cliente)",
+  "AMIR": "Amir SRL (cliente)",
+  "DIGITALITY": "Digitality Consulting SRL (cliente)",
+  "MAIKII": "Maikii SRL (fornitore gadget)",
+  "PETRINI": "Valerio Petrini (fornitore da verificare)",
+  "V CONSULTING": "V Consulting SRL (consulente lavoro)"
+ },
+ "ivaTesti": {
+  "regime": "Trimestrale (contribuenti minori)",
+  "fonte": "Registro acquisti ufficiale Mascolo (Q1 chiuso)"
+ },
+ "bilancioTesti": {
+  "disclaimer": "Bilancio gestionale interno — importi al netto IVA (CE) e lordo IVA (SP). Non sostituisce la contabilita ufficiale del commercialista.",
+  "notaCompetenza": "Ricavi per competenza 2026 — gli incassi di fatture emesse nel 2025 (28k gen + 14k feb) non figurano nei ricavi. E normale vedere un risultato negativo nei primi mesi."
+ },
+ "_nota": "INPUT NON DERIVABILI dal registro: storico anni chiusi 2023-2025, forecast/previsionale, testi e checklist. Tutto il resto (movimenti, banca, IVA, KPI, bilancio, scadenze) e calcolato dal vivo da registro.json via compute.js."
+}
