@@ -544,7 +544,8 @@
     }
 
     var diffAB = round2(ceA.totale - totB);
-    var pf = mapPrevisioneFiscale(reg);
+    var b9tot = (sottoGruppi.filter(function (g) { return g.codice === 'B9'; })[0] || {}).totale || 0;
+    var pf = calcPrevisioneFiscale(reg, ceA.totale, totB, b9tot);
     var imposte = { totale: round2(pf.irap.importo), nota: 'IRAP a carico societa (IRPEF/INPS soci in tab Previsione Fiscale).' };
     var utile = round2(diffAB - ceC.totale - imposte.totale);
 
@@ -612,7 +613,7 @@
       dataRiferimento: (statics && statics.lastUpdate) || '',
       ce: ce,
       sp: sp,
-      previsioneFiscale: mapPrevisioneFiscale(reg)
+      previsioneFiscale: pf
     };
   }
 
@@ -638,36 +639,72 @@
     return { attivi: round2(attivi), passivi: round2(passivi) };
   }
 
-  function mapPrevisioneFiscale(reg) {
-    var s = (reg.previsioneFiscale && reg.previsioneFiscale.stima) || {};
-    var m = s.marco || {}, sj = s.sajay || {}, ir = s.irap || {};
-    var utileNeg = (s.utileAnteImposte || 0) <= 0;
+  // CALCOLO FISCALE DAL VIVO (come il foglio Excel dei soci).
+  // Utile di competenza -> IRAP societa + ripartizione 50/50 ai soci (SAS = tassazione
+  // per trasparenza) -> per ciascun socio: IRPEF a scaglioni + addizionali + (Marco) INPS.
+  function calcPrevisioneFiscale(reg, valoreA, valoreB, b9, _ignored) {
+    var p = (reg.previsioneFiscale && reg.previsioneFiscale.parametri) || {};
+    var scaglioni = p.scaglioniIRPEF || [{ da: 0, a: 28000, aliquota: 0.23 }, { da: 28001, a: 50000, aliquota: 0.35 }, { da: 50001, a: null, aliquota: 0.43 }];
+    var addiz = (p.addizionaleRegionale || 0) + (p.addizionaleComunale || 0);
+    var inps = p.inpsCommercianti || { fissoAnnuo: 4515, aliquotaEccedenza: 0.2448, minimaleReddito: 18415 };
+    var soci = (reg.previsioneFiscale && reg.previsioneFiscale.soci) || [];
+    var sajayDip = (soci.filter(function (s) { return /sajay/i.test(s.nome); })[0] || {}).redditoDipendente || 0;
+
+    function irpef(reddito) {
+      if (reddito <= 0) return 0;
+      var t = 0;
+      scaglioni.forEach(function (sc) {
+        var top = sc.a == null ? Infinity : sc.a;
+        var base = Math.max(0, Math.min(reddito, top) - (sc.da - 1 < 0 ? 0 : sc.da - 1));
+        // sc.da parte da 0 o 28001: la base è la porzione di reddito dentro lo scaglione
+        var lo = sc.da === 0 ? 0 : sc.da - 1;
+        base = Math.max(0, Math.min(reddito, top) - lo);
+        t += base * sc.aliquota;
+      });
+      return round2(t);
+    }
+
+    var utileAnte = round2(valoreA - valoreB);          // utile gestionale di competenza
+    var quota = round2(utileAnte / 2);                    // 50/50
+    var baseIRAP = Math.max(0, round2(utileAnte + (b9 || 0)));
+    var irapImporto = round2(baseIRAP * (p.aliquotaIRAP || 0.039));
+
+    // Marco (accomandatario): quota + IRPEF + addizionali + INPS commercianti
+    var mReddito = Math.max(0, quota);
+    var mIrpef = irpef(mReddito);
+    var mAddiz = round2(mReddito * addiz);
+    var mInpsFisso = inps.fissoAnnuo || 4515;            // dovuto sempre, anche con utile 0
+    var mInpsEcc = round2(Math.max(0, mReddito - (inps.minimaleReddito || 18415)) * (inps.aliquotaEccedenza || 0.2448));
+    var mTasse = round2(mIrpef + mAddiz + mInpsFisso + mInpsEcc);
+    var mNetto = round2(quota - mTasse);
+
+    // Sajay (accomandante): quota + reddito da dipendente, IRPEF + addizionali, no INPS commercianti
+    var sReddito = round2(Math.max(0, quota) + sajayDip);
+    var sIrpef = irpef(sReddito);
+    var sAddiz = round2(sReddito * addiz);
+    var sTasse = round2(sIrpef + sAddiz);
+    var sNetto = round2(quota - sTasse + sajayDip);
+
+    var totaleCarico = round2(irapImporto + mTasse + sTasse);
     return {
-      utileNegativo: utileNeg,
-      utileAnteImposte: round2(s.utileAnteImposte || 0),
-      baseImponibileIRAP: round2(s.baseImponibileIRAP || 0),
-      totaleCaricofiscale: round2(s.totaleCaricofiscale || 0),
-      percentualeSuUtile: s.percentualeSuUtile,
-      irap: { importo: round2(ir.importo || 0), aliquota: (reg.previsioneFiscale && reg.previsioneFiscale.parametri && reg.previsioneFiscale.parametri.aliquotaIRAP) || 0.039 },
+      utileNegativo: utileAnte <= 0,
+      utileAnteImposte: utileAnte,
+      baseImponibileIRAP: baseIRAP,
+      totaleCaricofiscale: totaleCarico,
+      percentualeSuUtile: utileAnte > 0 ? round2(totaleCarico / utileAnte * 100) / 100 : null,
+      irap: { importo: irapImporto, aliquota: p.aliquotaIRAP || 0.039 },
       marco: {
-        redditoImponibile: round2(m.redditoImponibile || 0),
-        irpef: round2(m.irpef || 0),
-        addizionali: round2(m.addizionali || 0),
-        inpsFisso: round2(m.inpsFisso || 0),
-        inpsEccedenza: round2(m.inpsEccedenza || 0),
-        totaleTasse: round2(m.totaleTasse || 0),
-        nettoStimato: round2(m.nettoStimato || 0),
-        aliquotaEffettiva: (m.redditoImponibile > 0) ? round2((m.totaleTasse || 0) / m.redditoImponibile * 100) / 100 : null
+        redditoImponibile: round2(mReddito), irpef: mIrpef, addizionali: mAddiz,
+        inpsFisso: round2(mInpsFisso), inpsEccedenza: mInpsEcc,
+        totaleTasse: mTasse, nettoStimato: mNetto,
+        aliquotaEffettiva: mReddito > 0 ? round2(mTasse / mReddito * 100) / 100 : null
       },
       sajay: {
-        redditoImponibile: round2(sj.redditoImponibile || sj.redditoDipendente || 0),
-        irpef: round2(sj.irpef || 0),
-        addizionali: round2(sj.addizionali || 0),
-        totaleTasse: round2(sj.totaleTasse || 0),
-        nettoStimato: round2(sj.nettoStimato || 0),
-        aliquotaEffettiva: (sj.redditoImponibile > 0) ? round2((sj.totaleTasse || 0) / sj.redditoImponibile * 100) / 100 : null
+        redditoImponibile: sReddito, irpef: sIrpef, addizionali: sAddiz,
+        totaleTasse: sTasse, nettoStimato: sNetto,
+        aliquotaEffettiva: sReddito > 0 ? round2(sTasse / sReddito * 100) / 100 : null
       },
-      disclaimer: (reg.previsioneFiscale && reg.previsioneFiscale.disclaimer) || s.nota || ''
+      disclaimer: 'Calcolo dal vivo sull\'utile di competenza maturato (SAS, tassazione per trasparenza 50/50). I costi non fatturati non sono nel CE → utile prudenziale. Liquidazione ufficiale a cura del commercialista.'
     };
   }
 
