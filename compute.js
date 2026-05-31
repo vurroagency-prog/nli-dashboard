@@ -662,6 +662,28 @@
     };
   }
 
+  // testi di sintesi calcolati dal vivo (non invecchiano)
+  function calcStatusMessage(reg, banca, iva, mensili) {
+    var nMov = (reg.movimenti || []).length, nFat = (reg.fatture || []).length, nSc = (reg.scadenze || []).length;
+    var ric = banca.riconciliazione || {};
+    var ultimo = mensili.length ? mensili[mensili.length - 1].label : '';
+    var q1 = (iva.trimestri || [])[0] || {};
+    var ivaTxt = q1.saldoTipo === 'credito' ? 'CREDITO €' + nf(q1.creditoIva) : '€' + nf(q1.saldo || 0);
+    return 'Fonte: registro.json (' + nMov + ' mov, ' + nFat + ' fatt, ' + nSc + ' scad). ' +
+      'Cassa gen-' + ultimo + ' riconciliata col saldo E/C ufficiale (' + (ric.mesiQuadrati || 0) + '/' + (ric.mesiTotali || 0) + ' mesi quadrati). ' +
+      'Saldo banca: ' + banca.saldoAttuale + '. IVA Q1: ' + ivaTxt + '.';
+  }
+  function calcStatoLavori(reg, banca) {
+    var ric = banca.riconciliazione || {};
+    var antic = (reg.movimenti || []).filter(function (m) { return m.conto === 'PERS-MARCO-001'; })
+      .reduce(function (s, m) { return s + Math.abs(m.importo || 0); }, 0);
+    var rc = calcRicaviCompetenza(reg);
+    return 'Soci: Marco Vurro 50% + Sajay Fernandez Espinosa 50%. ' +
+      'Cassa ' + ric.mesiQuadrati + '/' + ric.mesiTotali + ' mesi quadrati al centesimo con E/C ufficiale Intesa. ' +
+      (reg.fatture || []).length + ' fatture in registro. Ricavi competenza 2026: €' + nf(rc.netto) + '. ' +
+      'Anticipazioni socio Marco (carta personale): €' + nf(antic) + '.';
+  }
+
   // ============================================================ BUILD COMPLETO
   function buildDashboardData(reg, statics) {
     statics = statics || {};
@@ -682,9 +704,11 @@
       bilancio: calcBilancio(reg, banca, statics),
       bancaAliasDescrizioni: aliasDescrizioni(reg, statics),
 
-      // input non derivabili (statici): storico anni chiusi, forecast, testi, config
-      statusMessage: statics.statusMessage || '',
-      statoLavori: statics.statoLavori || '',
+      // testi di sintesi: CALCOLATI dal vivo (prima erano statici e invecchiavano)
+      statusMessage: calcStatusMessage(reg, banca, iva, mensili),
+      statoLavori: calcStatoLavori(reg, banca),
+
+      // input non derivabili (statici): storico anni chiusi, forecast, config
       suggerimenti: statics.suggerimenti || '',
       setupChecklist: statics.setupChecklist || [],
       alert: statics.alert || [],
