@@ -430,19 +430,38 @@
     return 'GEN-' + mensili[mensili.length - 1].label.toUpperCase();
   }
 
-  // ricavi per competenza: fatture vendita anno corrente, NC sottratte
+  // ricavi per competenza: vendite a cliente, meno NC emesse a cliente.
+  // (le NC da fornitore NON toccano i ricavi — vedi calcBilancio)
   function calcRicaviCompetenza(reg) {
     var anno = String(reg.meta.annoFiscale || 2026);
     var fv = 0, nc = 0, count = 0;
     (reg.fatture || []).forEach(function (f) {
       var dir = f.tipo || f.direzione;
+      if (dir !== 'vendita') return;
       var comp = f.competenza ? String(f.competenza) : String(parseISO(f.data).y);
       if (comp !== anno) return;
       var imp = f.imponibile || 0;
-      if (dir === 'vendita') { fv += imp; count++; }
-      else if (dir === 'nota_credito') { nc += Math.abs(imp); }
+      var vb = f.voceBilancio || '';
+      var isNCcliente = /note_credito|_nc_|^nc/i.test(vb) || /^NC/i.test(f.numero || '');
+      if (isNCcliente) nc += Math.abs(imp);
+      else { fv += imp; count++; }
     });
-    return { netto: round2(fv - nc), nota: count + ' FV emesse (competenza ' + anno + ', netto NC) — fonte registro' };
+    return { netto: round2(fv - nc), nota: count + ' FV emesse (competenza ' + anno + ', netto NC clienti) — fonte registro' };
+  }
+
+  // imponibile di una fattura: usa il campo se presente, altrimenti lo scorpora
+  // dall'importoTotale in base al regime IVA. Stima trasparente (non scrive nel
+  // registro): serve perché molte FA hanno solo importoTotale, non l'imponibile.
+  function imponibileDi(f) {
+    if (typeof f.imponibile === 'number') return f.imponibile;
+    var tot = f.importoTotale || 0;
+    var reg = f.regimeIva || '';
+    var div = 1;
+    if (reg === 'ordinario_22') div = 1.22;
+    else if (reg === 'ordinario_10') div = 1.10;
+    else if (reg === 'ridotto_4') div = 1.04;
+    // reverse_charge*, forfettario*, iva_estera*, esente, null -> costo = totale
+    return round2(tot / div);
   }
 
   // ================================================================ BILANCIO
@@ -452,23 +471,32 @@
     var labelGruppo = pianoLabels(reg);
 
     // ---- Conto Economico (competenza) dalle fatture
+    // NB: distinzione critica tra le note credito:
+    //   - NC a CLIENTE (tipo 'vendita' + voceBilancio note_credito) → riduce i RICAVI (A)
+    //   - NC da FORNITORE (tipo 'nota_credito') → riduce i COSTI del suo gruppo (B)
     var A = { vendite: 0, servizi: 0, nc: 0 };
     var B = {}; // gruppo -> {cat -> importo}
+    function addB(cat, val) {
+      var g = gruppoDi(cat);
+      if (g === 'A' || g === 'FUORI_CE') g = 'B7';
+      if (!B[g]) B[g] = {};
+      B[g][cat] = round2((B[g][cat] || 0) + val);
+    }
     (reg.fatture || []).forEach(function (f) {
       var dir = f.tipo || f.direzione;
       var comp = f.competenza ? String(f.competenza) : String(parseISO(f.data).y);
       if (comp !== anno) return;
-      var imp = f.imponibile || 0;
+      var imp = imponibileDi(f);
+      var vb = f.voceBilancio || f.categoria || '';
+      var isNCcliente = /note_credito|_nc_|^nc/i.test(vb) || /^NC/i.test(f.numero || '');
       if (dir === 'vendita') {
-        if ((f.voceBilancio || '').indexOf('vendite') >= 0) A.vendite += imp; else A.servizi += imp;
+        if (isNCcliente) A.nc += Math.abs(imp);                       // NC a cliente: riduce ricavi
+        else if (vb.indexOf('vendite') >= 0 || vb.indexOf('vendita') >= 0) A.vendite += imp;
+        else A.servizi += imp;
       } else if (dir === 'nota_credito') {
-        A.nc += Math.abs(imp);
+        addB(vb || 'DA_VERIFICARE', -Math.abs(imp));                  // NC da fornitore: riduce costi
       } else if (dir === 'acquisto') {
-        var cat = f.voceBilancio || f.categoria || 'DA_VERIFICARE';
-        var g = gruppoDi(cat);
-        if (g === 'A' || g === 'FUORI_CE') g = 'B7';
-        if (!B[g]) B[g] = {};
-        B[g][cat] = round2((B[g][cat] || 0) + imp);
+        addB(vb || 'DA_VERIFICARE', imp);
       }
     });
 

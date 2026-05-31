@@ -5722,13 +5722,15 @@
    "fileArchiviato": "02_FATTURE_OUT/2026-01-08_Elettra2G_NC-1-StornoMerce.pdf",
    "fonte": "sdi",
    "ritenuta": null,
-   "note": "Storno parziale merce non conforme",
+   "note": "Storno parziale merce non conforme | imponibile/IVA popolati da liquidazione IVA Q1 ufficiale (erano null) — 31/05",
    "pagamento": {
     "stato": "applicata",
     "dataPagamento": "2026-01-08",
     "movimentoId": "MOV-2026-0019"
    },
-   "voceBilancio": "A1_3_note_credito"
+   "voceBilancio": "A1_3_note_credito",
+   "imponibile": 450,
+   "iva": 99
   },
   {
    "id": "FAT-2026-0038",
@@ -5747,7 +5749,10 @@
     "dataPagamento": "2026-01-29",
     "movimentoId": "MOV-2026-0012"
    },
-   "voceBilancio": "A1_2_prestazioni_servizi"
+   "voceBilancio": "A1_2_prestazioni_servizi",
+   "imponibile": 300,
+   "iva": 66,
+   "note": " | imponibile/IVA popolati da liquidazione IVA Q1 ufficiale (erano null) — 31/05"
   },
   {
    "id": "FAT-2026-0039",
@@ -5761,13 +5766,15 @@
    "fileArchiviato": "02_FATTURE_OUT/2026-01-14_OEM_NC-3-StornoServizio.pdf",
    "fonte": "sdi",
    "ritenuta": null,
-   "note": "Dedotta dal pagamento OEM del 20/01",
+   "note": "Dedotta dal pagamento OEM del 20/01 | imponibile/IVA popolati da liquidazione IVA Q1 ufficiale (erano null) — 31/05",
    "pagamento": {
     "stato": "applicata",
     "dataPagamento": "2026-01-20",
     "movimentoId": "MOV-2026-0009"
    },
-   "voceBilancio": "A1_3_note_credito"
+   "voceBilancio": "A1_3_note_credito",
+   "imponibile": 32,
+   "iva": 7.04
   },
   {
    "id": "FAT-2026-0040",
@@ -5786,7 +5793,10 @@
     "dataPagamento": null,
     "movimentoId": null
    },
-   "voceBilancio": "A1_3_note_credito"
+   "voceBilancio": "A1_3_note_credito",
+   "imponibile": 81.6,
+   "iva": 17.95,
+   "note": " | imponibile/IVA popolati da liquidazione IVA Q1 ufficiale (erano null) — 31/05"
   },
   {
    "id": "FAT-2026-0041",
@@ -5805,7 +5815,10 @@
     "dataScadenza": null,
     "movimentoId": null
    },
-   "voceBilancio": "A1_1_vendita_merci"
+   "voceBilancio": "A1_1_vendita_merci",
+   "imponibile": 512.35,
+   "iva": 112.72,
+   "note": " | imponibile/IVA popolati da liquidazione IVA Q1 ufficiale (erano null) — 31/05"
   },
   {
    "id": "FAT-2026-0042",

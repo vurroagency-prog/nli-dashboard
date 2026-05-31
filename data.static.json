@@ -834,8 +834,8 @@
   "fonte": "Registro acquisti ufficiale Mascolo (Q1 chiuso)"
  },
  "bilancioTesti": {
-  "disclaimer": "Bilancio gestionale interno — importi al netto IVA (CE) e lordo IVA (SP). Non sostituisce la contabilita ufficiale del commercialista.",
-  "notaCompetenza": "Ricavi per competenza 2026 — gli incassi di fatture emesse nel 2025 (28k gen + 14k feb) non figurano nei ricavi. E normale vedere un risultato negativo nei primi mesi."
+  "disclaimer": "Bilancio gestionale interno provvisorio, non ufficiale (la contabilità ufficiale è del commercialista). CE per competenza economica.",
+  "notaCompetenza": "CE COSTI calcolato dalle FATTURE di competenza: NON include i costi non fatturati (stipendi, affitto, spese bancarie, imposte, royalties) che vivono nei movimenti → il costo totale reale è più alto. Ricavi e IVA sono allineati alla liquidazione ufficiale."
  },
  "_nota": "INPUT NON DERIVABILI dal registro: storico anni chiusi 2023-2025, forecast/previsionale, testi e checklist. Tutto il resto (movimenti, banca, IVA, KPI, bilancio, scadenze) e calcolato dal vivo da registro.json via compute.js."
 }
