@@ -984,16 +984,26 @@
   function renderForecast(f) {
     var eur = function(v) { return '€ ' + Math.round(v).toLocaleString('it-IT'); };
     var rc = f.realCount, K = f.kpi;
-    // Banner
-    document.getElementById('forecast-banner').innerHTML =
-      '⚠️ <b>Senza nuovi ordini la cassa va sotto zero a ' + esc(K.meseSottoZero) + '</b> e chiude l\'anno a <b>' + eur(K.saldoFine) + '</b>. ' +
-      'Per arrivare a fine 2026 con almeno €5.000 servono <b>~' + eur(K.venditeNecessarie) + ' di incassi</b> da nuove vendite (giugno→dicembre, ≈ €2.000/mese).';
+    // Banner — dinamico: dipende da come va l'anno proiettato col fatturato medio storico
+    var bann = document.getElementById('forecast-banner');
+    var bucoMese = (K.meseSottoZero && K.meseSottoZero !== '—');
+    if (K.saldoFine >= 5000 && !bucoMese) {
+      bann.style.borderColor = 'var(--green)'; bann.style.background = 'var(--green-glow)';
+      bann.innerHTML = '✓ <b>Con il fatturato medio degli ultimi 3 anni la cassa resta positiva tutto l\'anno</b> e chiude a <b style="color:var(--green)">' + eur(K.saldoFine) + '</b>. Proiezione su media storica (netto SiliconDev).';
+    } else if (K.saldoFine >= 0 && bucoMese) {
+      bann.style.borderColor = 'var(--amber)'; bann.style.background = 'var(--amber-glow)';
+      bann.innerHTML = '⚠️ <b>Buco di cassa temporaneo a ' + esc(K.meseSottoZero) + '</b> (stagionalità estiva), poi recupera e chiude l\'anno a <b style="color:var(--green)">' + eur(K.saldoFine) + '</b>. Tieni un cuscino per l\'estate. Proiezione su media fatturato 2023-2025 (netto SiliconDev).';
+    } else {
+      bann.style.borderColor = 'var(--red)'; bann.style.background = 'var(--red-glow)';
+      bann.innerHTML = '⚠️ <b>La cassa va sotto zero a ' + esc(K.meseSottoZero) + '</b> e chiude l\'anno a <b>' + eur(K.saldoFine) + '</b>. Servono <b>~' + eur(K.venditeNecessarie) + '</b> di vendite extra oltre la media storica.';
+    }
     // KPI
+    var fineCls = K.saldoFine >= 0 ? 'val' : 'val neg';
     document.getElementById('forecast-kpis').innerHTML =
-      '<div class="fk"><div class="lbl">Cassa oggi (30/05)</div><div class="val">' + eur(K.saldoOggi) + '</div></div>' +
-      '<div class="fk"><div class="lbl">Cassa prevista 31/12</div><div class="val neg">' + eur(K.saldoFine) + '</div></div>' +
-      '<div class="fk"><div class="lbl">Sotto zero da</div><div class="val amb">' + esc(K.meseSottoZero) + '</div></div>' +
-      '<div class="fk"><div class="lbl">Vendite da fare (giu-dic)</div><div class="val">' + eur(K.venditeNecessarie) + '</div></div>';
+      '<div class="fk"><div class="lbl">Cassa oggi</div><div class="val">' + eur(K.saldoOggi) + '</div></div>' +
+      '<div class="fk"><div class="lbl">Cassa prevista 31/12</div><div class="' + fineCls + '">' + eur(K.saldoFine) + '</div></div>' +
+      '<div class="fk"><div class="lbl">' + (bucoMese ? 'Buco di cassa a' : 'Cassa sempre positiva') + '</div><div class="val amb">' + esc(K.meseSottoZero) + '</div></div>' +
+      '<div class="fk"><div class="lbl">Vendite extra da fare</div><div class="val">' + eur(K.venditeNecessarie) + '</div></div>';
     document.getElementById('forecast-nota').textContent = f.nota;
 
     // pattern tratteggio per i mesi previsti

@@ -834,6 +834,7 @@
     var banca = calcBanca(reg, statics);
     var iva = calcIVA(reg, statics);
     var kpi = calcKPI(reg, banca, iva, mensili);
+    var forecast = calcForecastCassa(reg, statics, mensili, banca);
 
     return {
       // calcolati dal vivo dal registro
@@ -855,8 +856,8 @@
       suggerimenti: statics.suggerimenti || '',
       setupChecklist: statics.setupChecklist || [],
       alert: statics.alert || [],
-      previsionale: calcPrevisionaleFuturo(reg, statics),
-      forecastCassa: statics.forecastCassa || {},
+      previsionale: calcPrevisionaleFuturo(reg, statics, forecast),
+      forecastCassa: forecast,
       storico: yoyLive(reg, statics)
     };
   }
@@ -871,11 +872,63 @@
     return out;
   }
 
+  // FORECAST CASSA dal vivo: reali gen→ultimo mese (dai movimenti), poi proiezione:
+  // incassi = MEDIA vendite 2023-2025 netto SiliconDev (statics.mediaMensileVendite),
+  // uscite = media costi dei mesi a regime + scadenze straordinarie del mese.
+  function calcForecastCassa(reg, statics, mensili, banca) {
+    var anno = (reg.meta && reg.meta.annoFiscale) || 2026;
+    var media = (statics && statics.mediaMensileVendite) || [];
+    var saldoInizio = parseEuro(banca.saldoInizialeAnno);
+    var realiInc = {}, realiUsc = {}, ultimoReale = 0;
+    mensili.forEach(function (mm) {
+      var mIdx = MESI.indexOf(mm.mese.split(' ')[0]) + 1;
+      realiInc[mIdx] = parseEuro(mm.totaleEntrate);
+      realiUsc[mIdx] = parseEuro(mm.totaleUscite);
+      if (mIdx > ultimoReale) ultimoReale = mIdx;
+    });
+    // uscita operativa media: ultimi 3 mesi reali "a regime" (salta gennaio se straordinario)
+    var regime = [];
+    for (var k = Math.max(2, ultimoReale - 2); k <= ultimoReale; k++) if (realiUsc[k]) regime.push(realiUsc[k]);
+    var usciteMedia = regime.length ? round2(regime.reduce(function (a, b) { return a + b; }, 0) / regime.length) : 5000;
+    function scadMese(m) {
+      return round2((reg.scadenze || []).filter(function (s) {
+        if (!isISO(s.data) || typeof s.importo !== 'number') return false;
+        var p = parseISO(s.data);
+        return p.y === anno && p.m === m && s.stato !== 'pagato' && s.stato !== 'pagata' &&
+          /inps|inail|iva|imposte|acconto|cciaa/i.test((s.tipo || '') + ' ' + (s.descrizione || ''));
+      }).reduce(function (a, s) { return a + s.importo; }, 0));
+    }
+    var labels = [], incassi = [], uscite = [], saldo = [], prev = saldoInizio;
+    for (var m = 1; m <= 12; m++) {
+      var inc, usc;
+      if (m <= ultimoReale) { inc = realiInc[m] || 0; usc = realiUsc[m] || 0; }
+      else { inc = media[m - 1] || 0; usc = round2(usciteMedia + scadMese(m)); }
+      var fine = round2(prev + inc - usc);
+      labels.push(MESI_ABBR[m - 1]); incassi.push(Math.round(inc)); uscite.push(Math.round(usc)); saldo.push(Math.round(fine));
+      prev = fine;
+    }
+    var saldoOggi = Math.round(ultimoReale ? saldo[ultimoReale - 1] : saldoInizio);
+    var meseZero = null;
+    for (var i = 0; i < 12; i++) if (saldo[i] < 0) { meseZero = MESI[i]; break; }
+    return {
+      titolo: 'Previsione Cassa ' + anno,
+      nota: 'Reale gen→' + MESI_ABBR[ultimoReale - 1] + ' (estratti conto ufficiali). Da ' + (MESI_ABBR[ultimoReale] || 'fine anno') + ': incassi = MEDIA fatturato 2023-2025 netto SiliconDev, uscite = media costi mesi a regime + scadenze. Calcolato dal vivo.',
+      realCount: ultimoReale,
+      labels: labels, incassi: incassi, uscite: uscite, saldo: saldo,
+      kpi: {
+        saldoOggi: saldoOggi,
+        saldoFine: saldo[11],
+        meseSottoZero: meseZero || '—',
+        venditeNecessarie: saldo[11] < 5000 ? Math.round(5000 - saldo[11]) : 0
+      }
+    };
+  }
+
   // PREVISIONALE dal vivo: per ogni mese FUTURO genera le voci certe (ricorrenti +
   // scadenze del mese) + incassi attesi, con totali/saldo coerenti col grafico
   // Cash Flow (forecastCassa). I mesi passati non si mostrano (sono già realtà).
-  function calcPrevisionaleFuturo(reg, statics) {
-    var fc = (statics && statics.forecastCassa) || {};
+  function calcPrevisionaleFuturo(reg, statics, forecast) {
+    var fc = forecast || (statics && statics.forecastCassa) || {};
     var inc = fc.incassi || [], usc = fc.uscite || [], sal = fc.saldo || [];
     var anno = (reg.meta && reg.meta.annoFiscale) || 2026;
     var oggi = new Date();
