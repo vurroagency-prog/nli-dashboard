@@ -748,7 +748,7 @@
           // Riepilogo FAMIGLIA + TAX RATE
           var fam = pf.famiglia || {};
           var famHtml = '<div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:14px;">' +
-            '<div><span style="font-size:12px;color:var(--text-dim);">Fatturato netto</span><br><strong style="font-size:18px;">' + fmtEuro(fam.fatturatoNetto || 0) + '</strong></div>' +
+            '<div><span style="font-size:12px;color:var(--text-dim);">Utile lordo (ricavi − costi)</span><br><strong style="font-size:18px;">' + fmtEuro(fam.fatturatoNetto || 0) + '</strong></div>' +
             '<div><span style="font-size:12px;color:var(--text-dim);">Tasse sull\'utile</span><br><strong style="font-size:18px;color:var(--red);">' + fmtEuro(fam.caricoUtile || 0) + '</strong></div>' +
             '<div><span style="font-size:12px;color:var(--text-dim);">Resta in famiglia</span><br><strong style="font-size:18px;color:' + ((fam.utileNetto || 0) >= 0 ? 'var(--green)' : 'var(--red)') + ';">' + fmtEuro(fam.utileNetto || 0) + '</strong></div></div>';
           if (!pf.utileNegativo && fam.taxRate != null) {
