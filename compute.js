@@ -852,7 +852,7 @@
       suggerimenti: statics.suggerimenti || '',
       setupChecklist: statics.setupChecklist || [],
       alert: statics.alert || [],
-      previsionale: previsionaleFuturo(statics.previsionale || []),
+      previsionale: calcPrevisionaleFuturo(reg, statics),
       forecastCassa: statics.forecastCassa || {},
       storico: yoyLive(reg, statics)
     };
@@ -868,17 +868,48 @@
     return out;
   }
 
-  // Previsionale: tiene SOLO i mesi futuri (dal mese corrente in poi).
-  // I mesi passati sono già realtà — vivono nelle sezioni Banca/Uscite, non qui.
-  function previsionaleFuturo(prev) {
+  // PREVISIONALE dal vivo: per ogni mese FUTURO genera le voci certe (ricorrenti +
+  // scadenze del mese) + incassi attesi, con totali/saldo coerenti col grafico
+  // Cash Flow (forecastCassa). I mesi passati non si mostrano (sono già realtà).
+  function calcPrevisionaleFuturo(reg, statics) {
+    var fc = (statics && statics.forecastCassa) || {};
+    var inc = fc.incassi || [], usc = fc.uscite || [], sal = fc.saldo || [];
+    var anno = (reg.meta && reg.meta.annoFiscale) || 2026;
     var oggi = new Date();
-    var sogliaY = oggi.getFullYear(), sogliaM = oggi.getMonth() + 1;
-    return (prev || []).filter(function (p) {
-      var m = MESI.indexOf(String(p.mese || '').split(' ')[0]) + 1;
-      var y = parseInt(String(p.mese || '').split(' ')[1], 10) || sogliaY;
-      if (!m) return true;
-      return (y > sogliaY) || (y === sogliaY && m >= sogliaM);
-    });
+    var startM = (oggi.getFullYear() > anno) ? 13 : (oggi.getFullYear() < anno ? 1 : oggi.getMonth() + 1);
+    var ricorrenti = (reg.scadenzeRicorrenti || []).filter(function (r) { return r.attiva && typeof r.importo === 'number' && r.importo > 0; });
+    var out = [];
+    for (var m = startM; m <= 12; m++) {
+      var idx = m - 1;
+      var voci = [];
+      var certe = 0;
+      // ricorrenti certe (affitto, stipendio)
+      ricorrenti.forEach(function (r) {
+        voci.push({ voce: r.descrizione || r.beneficiario || r.tipo, tipo: 'uscita', importo: money(r.importo), certezza: 'certo' });
+        certe += r.importo;
+      });
+      // scadenze puntuali del mese (INPS/INAIL/IVA/F24)
+      (reg.scadenze || []).forEach(function (s) {
+        if (!isISO(s.data) || typeof s.importo !== 'number' || s.importo <= 0) return;
+        var p = parseISO(s.data);
+        if (p.y !== anno || p.m !== m || s.stato === 'pagato' || s.stato === 'pagata') return;
+        voci.push({ voce: s.descrizione, tipo: 'uscita', importo: money(s.importo), certezza: s.stato === 'da_pagare' ? 'certo' : 'stimato' });
+        certe += s.importo;
+      });
+      // altri costi operativi stimati (per quadrare col forecast)
+      var altri = round2((usc[idx] || 0) - certe);
+      if (altri > 1) voci.push({ voce: 'Altri costi operativi (software, fornitori, F24)', tipo: 'uscita', importo: money(altri), certezza: 'stimato' });
+      // incassi attesi
+      if ((inc[idx] || 0) > 0) voci.push({ voce: 'Incassi attesi (proforma + manutenzioni a rate)', tipo: 'entrata', importo: money(inc[idx]), certezza: 'stimato' });
+      out.push({
+        mese: MESI[m - 1] + ' ' + anno,
+        saldoStimato: '~' + money(sal[idx] || 0),
+        voci: voci,
+        totaleUsciteStimate: money(usc[idx] || 0),
+        totaleEntrateStimate: money(inc[idx] || 0)
+      });
+    }
+    return out;
   }
 
   function aliasDescrizioni(reg, statics) {
