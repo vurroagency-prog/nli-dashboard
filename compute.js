@@ -886,9 +886,17 @@
       realiUsc[mIdx] = parseEuro(mm.totaleUscite);
       if (mIdx > ultimoReale) ultimoReale = mIdx;
     });
-    // uscita operativa media: ultimi 3 mesi reali "a regime" (salta gennaio se straordinario)
+    // uscita operativa RICORRENTE media: ultimi 3 mesi reali, ESCLUSE le voci
+    // straordinarie/una-tantum (distribuzione utili, rimborsi/anticipi soci, da verificare)
+    // che gonfierebbero la stima. Le tasse periodiche grosse si aggiungono via scadMese.
+    var STRAORD = /distribuzione_utili|STR_strao|anticipazione_socio|rimborsi_spese_soci|DA_VERIFICARE/i;
+    var uscOp = {};
+    movBanca(reg).forEach(function (m) {
+      if (m.tipo !== 'uscita' || STRAORD.test(m.categoria || '')) return;
+      var mi = parseISO(m.data).m; uscOp[mi] = (uscOp[mi] || 0) + Math.abs(m.importo);
+    });
     var regime = [];
-    for (var k = Math.max(2, ultimoReale - 2); k <= ultimoReale; k++) if (realiUsc[k]) regime.push(realiUsc[k]);
+    for (var k = Math.max(2, ultimoReale - 2); k <= ultimoReale; k++) if (uscOp[k]) regime.push(uscOp[k]);
     var usciteMedia = regime.length ? round2(regime.reduce(function (a, b) { return a + b; }, 0) / regime.length) : 5000;
     function scadMese(m) {
       return round2((reg.scadenze || []).filter(function (s) {
