@@ -85,7 +85,11 @@
               'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
   var MESI_ABBR = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
 
-  function round2(n) { return Math.round((n + Number.EPSILON) * 100) / 100; }
+  function round2(n) {
+    var x = Number(n);
+    if (!isFinite(x)) return 0;                       // blinda NaN/undefined/stringhe
+    return (x < 0 ? -1 : 1) * Math.round(Math.abs(x) * 100 + Number.EPSILON) / 100; // simmetrico sui negativi
+  }
 
   // "1534.76" -> "1.534,76"
   function nf(n) {
@@ -108,21 +112,22 @@
   // "2026-05-16" -> "16 Mag 2026"
   function dataLunga(d) { var p = parseISO(d); return p.day + ' ' + MESI_ABBR[p.m - 1] + ' ' + p.y; }
 
-  // movimenti realmente transitati sul conto NLI (= estratto conto).
-  // Esclude: conto personale del socio (anticipazioni con carta personale) e i
-  // movimenti marcati cassa:false (riepiloghi gestionali non presenti in E/C).
+  // movimenti realmente transitati sul conto NLI (= estratto conto), anno fiscale corrente.
+  // WHITELIST: solo conto Intesa o conto non specificato (storici null). Esclude conto
+  // personale socio e movimenti marcati cassa:false (riepiloghi non presenti in E/C).
   function movBanca(reg) {
+    var anno = (reg.meta && reg.meta.annoFiscale) || 2026;
     return (reg.movimenti || []).filter(function (m) {
-      return m.conto !== 'PERS-MARCO-001' && m.cassa !== false;
+      var contoOk = (m.conto === 'BANCA-ISP-001' || m.conto == null);
+      return contoOk && m.cassa !== false && parseISO(m.data).y === anno;
     });
   }
 
   // =========================================================== MOVIMENTI MENSILI
   function calcMensili(reg) {
     var byMonth = {}; // "2026-01" -> {entrate:[], uscite:[]}
-    movBanca(reg).forEach(function (m) {
+    movBanca(reg).forEach(function (m) {   // movBanca filtra già per anno fiscale e conto
       var p = parseISO(m.data);
-      if (p.y !== reg.meta.annoFiscale && p.y !== 2026) { /* tieni anno corrente */ }
       var key = p.y + '-' + pad2(p.m);
       if (!byMonth[key]) byMonth[key] = { y: p.y, m: p.m, entrate: [], uscite: [] };
       var voce = (m.controparte || '') + (m.descrizione ? ' — ' + m.descrizione : '');
@@ -166,12 +171,14 @@
     var conto = (reg.conti || []).find(function (c) { return c.id === 'BANCA-ISP-001'; }) || {};
     var saldi = (reg.saldi || []).filter(function (s) { return s.contoId === 'BANCA-ISP-001'; })
                                  .sort(function (a, b) { return a.data < b.data ? -1 : 1; });
+    var annoFisc = (reg.meta && reg.meta.annoFiscale) || 2026;
     var saldoInizio = (saldi[0] && /-01-01$/.test(saldi[0].data)) ? saldi[0].importo : (saldi[0] ? saldi[0].importo : 0);
-    var saldoFineByMonth = {}; // m(1-12) -> importo ufficiale fine mese
+    var saldoFineByMonth = {}; // 'YYYY-MM' -> importo ufficiale fine mese (anno fiscale)
     saldi.forEach(function (s) {
       var p = parseISO(s.data);
-      // ultimo saldo per ciascun mese = saldo di fine mese
-      saldoFineByMonth[p.m] = s.importo;
+      if (p.y !== annoFisc) return;
+      // saldi ordinati per data: l'ultimo del mese (data più alta) vince = saldo di fine mese
+      saldoFineByMonth[p.y + '-' + pad2(p.m)] = s.importo;
     });
     var saldoAttuale = saldi.length ? saldi[saldi.length - 1].importo : 0;
 
@@ -180,12 +187,14 @@
     var prevFine = saldoInizio;
     var totE = 0, totU = 0, totMov = 0;
     var riepilogo = mens.map(function (mm) {
-      var mIdx = MESI.indexOf(mm.mese.split(' ')[0]) + 1;
+      var parts = mm.mese.split(' ');
+      var mIdx = MESI.indexOf(parts[0]) + 1;
+      var key = parts[1] + '-' + pad2(mIdx);
       var e = parseEuro(mm.totaleEntrate), u = parseEuro(mm.totaleUscite);
       var n = e - u;
       var nMov = mm.entrate.length + mm.uscite.length;
       var inizio = prevFine;
-      var fine = (saldoFineByMonth[mIdx] != null) ? saldoFineByMonth[mIdx] : round2(inizio + n);
+      var fine = (saldoFineByMonth[key] != null) ? saldoFineByMonth[key] : round2(inizio + n);
       prevFine = fine;
       totE += e; totU += u; totMov += nMov;
       return {
@@ -260,12 +269,23 @@
     };
   }
 
+  // Robusto sia al formato italiano "1.534,76" sia a "1534.76": l'ULTIMO separatore
+  // (virgola o punto) è il decimale; gli altri sono migliaia.
   function parseEuro(s) {
     if (typeof s === 'number') return s;
     if (!s) return 0;
-    var neg = /[−-]/.test(String(s).trim().charAt(0)) || String(s).indexOf('−') === 0;
-    var n = parseFloat(String(s).replace(/[^\d,.-]/g, '').replace(/\./g, '').replace(',', '.'));
-    if (isNaN(n)) n = 0;
+    var str = String(s).trim();
+    var neg = str.charAt(0) === '−' || str.charAt(0) === '-';
+    var d = str.replace(/[^\d.,]/g, '');
+    var lastComma = d.lastIndexOf(','), lastDot = d.lastIndexOf('.');
+    var dec = Math.max(lastComma, lastDot);
+    var n;
+    if (dec === -1) n = parseFloat(d.replace(/[.,]/g, '')) || 0;
+    else {
+      var intPart = d.slice(0, dec).replace(/[.,]/g, '');
+      var fracPart = d.slice(dec + 1).replace(/[.,]/g, '');
+      n = parseFloat(intPart + '.' + fracPart) || 0;
+    }
     return neg && n > 0 ? -n : n;
   }
 
@@ -378,17 +398,18 @@
       });
   }
 
-  // somma importi scadenze "da pagare" nei prossimi N giorni (per il KPI)
-  function scadenzeImminenti(reg, giorni) {
-    var oggi = new Date();
+  // somma importi scadenze "da pagare": SCADUTE non pagate (passato) + imminenti (prossimi N giorni)
+  function scadenzeImminenti(reg, giorni, dataRif) {
+    var oggi = dataRif || new Date();
     var limite = new Date(oggi.getTime() + giorni * 86400000);
-    var tot = 0, n = 0;
+    var tot = 0, n = 0, scaduteTot = 0, scaduteN = 0;
     (reg.scadenze || []).forEach(function (s) {
-      if (s.stato !== 'da_pagare' || !isISO(s.data)) return;
+      if (s.stato !== 'da_pagare' || !isISO(s.data) || typeof s.importo !== 'number') return;
       var d = new Date(s.data + 'T00:00:00');
-      if (d >= oggi && d <= limite && typeof s.importo === 'number') { tot += s.importo; n++; }
+      if (d < oggi) { scaduteTot += s.importo; scaduteN++; tot += s.importo; n++; }       // SCADUTA non pagata
+      else if (d <= limite) { tot += s.importo; n++; }                                     // imminente
     });
-    return { totale: round2(tot), count: n };
+    return { totale: round2(tot), count: n, scaduteTot: round2(scaduteTot), scaduteCount: scaduteN };
   }
   function tipoFreq(t) {
     switch (t) {
@@ -427,7 +448,7 @@
       { label: 'IVA Q1 — SALDO', value: ivaSaldoLabel, sub: q1.note ? 'Liquidazione Q1' : '', class: q1.saldoTipo === 'credito' ? 'success' : 'neutral' },
       { label: 'Saldo Banca', value: banca.saldoAttuale, sub: 'Da E/C ufficiale', class: 'positive' },
       { label: 'FLUSSO ' + (ultimo ? ultimo.label.toUpperCase() + ' ' + ultimo.mese.split(' ')[1] : ''), value: moneySigned(nettoUltimo), sub: 'Netto ultimo mese', class: nettoUltimo >= 0 ? 'positive' : 'negative' },
-      { label: 'SCADENZE PROSSIMI 45GG', value: scad.count ? money(scad.totale) : '—', sub: scad.count + ' adempimenti da pagare', class: scad.totale > 0 ? 'danger' : 'success' }
+      { label: 'DA PAGARE (scadute + 45gg)', value: scad.count ? money(scad.totale) : '—', sub: (scad.scaduteCount ? '⚠ ' + scad.scaduteCount + ' SCADUTE (' + money(scad.scaduteTot) + ') + ' : '') + (scad.count - scad.scaduteCount) + ' in arrivo', class: scad.scaduteCount > 0 ? 'danger' : (scad.totale > 0 ? 'neutral' : 'success') }
     ];
   }
   function compactEuro(n) {
@@ -487,6 +508,7 @@
     var B = {}; // gruppo -> {cat -> importo}
     function addB(cat, val) {
       var g = gruppoDi(cat);
+      if (g === 'B10') return;            // cespiti: NON spesati nel CE (vanno a SP + ammortamento)
       if (g === 'A' || g === 'FUORI_CE') g = 'B7';
       if (!B[g]) B[g] = {};
       B[g][cat] = round2((B[g][cat] || 0) + val);
@@ -549,8 +571,14 @@
     // ---- CASCATA: EBITDA -> EBIT -> EBT -> Utile netto (tutto live)
     var ebitda = diffAB; // Ricavi - Costi operativi (i miei B non includono ammortamenti ne oneri fin.)
     var ammortamenti = round2((reg.immobilizzazioni || []).reduce(function (s, i) {
-      var q = (typeof i['ammortamento' + anno] === 'number') ? i['ammortamento' + anno]
-            : round2((i.costoAcquisto || i.valore || 0) * (i.aliquota || 0));
+      var q;
+      if (typeof i['ammortamento' + anno] === 'number') q = i['ammortamento' + anno];
+      else {
+        // fallback: primo anno usa aliquotaPrimoAnno (dimezzata), poi aliquota piena
+        var primoAnno = i.dataAcquisto && String(parseISO(i.dataAcquisto).y) === anno;
+        var al = (primoAnno && i.aliquotaPrimoAnno != null) ? i.aliquotaPrimoAnno : (i.aliquota || 0);
+        q = round2((i.costoAcquisto || i.valore || 0) * al);
+      }
       return s + q;
     }, 0));
     // oneri finanziari (C) dai MOVIMENTI di competenza (spese bancarie/oneri) — non sono fatture
@@ -585,13 +613,16 @@
 
     // ---- Stato Patrimoniale (voci primarie registro + cassa calcolata)
     var imm = (reg.immobilizzazioni || []).reduce(function (s, i) {
-      return s + (i.valoreResiduo != null ? i.valoreResiduo : (i.valore || 0));
+      var v = (i.valoreNetto != null) ? i.valoreNetto : (i.valoreResiduo != null ? i.valoreResiduo : (i.costoAcquisto || i.valore || 0));
+      return s + v;
     }, 0);
-    var cauzione = (reg.vociManualiSP || []).filter(function (v) { return /cauzion/i.test(v.descrizione || v.label || ''); })
-      .reduce(function (s, v) { return s + (v.importo || 0); }, 0);
-    var capitale = (reg.vociManualiSP || []).filter(function (v) { return /capitale/i.test(v.descrizione || v.label || ''); })
-      .reduce(function (s, v) { return s + (v.importo || 0); }, 0);
-    var debitiSoci = (reg.debitiVersoSoci || []).reduce(function (s, d) { return s + (d.importo || d.saldo || 0); }, 0);
+    function vociSP(rx) {
+      return (reg.vociManualiSP || []).filter(function (v) { return rx.test(v.voce || v.descrizione || v.label || ''); })
+        .reduce(function (s, v) { return s + (v.importo || 0); }, 0);
+    }
+    var cauzione = vociSP(/cauzion/i);
+    var capitale = vociSP(/capitale/i);
+    var debitiSoci = (reg.debitiVersoSoci || []).reduce(function (s, d) { return s + (d.saldo != null ? d.saldo : (d.importo || 0)); }, 0);
     var creditoIVA = (calcIVA(reg, statics).trimestri[0] || {}).creditoIva || 0;
     var liquidita = parseEuro(banca.saldoAttuale);
     var risconti = riscontiTotali(reg);
