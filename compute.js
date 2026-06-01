@@ -208,13 +208,8 @@
       };
     });
 
-    // RICONCILIAZIONE — criterio robusto: la quadratura con l'E/C ufficiale.
-    // Il flag `riconciliato` sul singolo movimento e' incompleto (i ~152 mov.
-    // storici gen-apr non lo hanno), quindi NON e' una metrica affidabile.
-    // Un mese e' "riconciliato" se la somma dei suoi movimenti combacia col
-    // saldo di fine mese dell'E/C ufficiale (tolleranza 1€). Un movimento e'
-    // riconciliato se il suo mese quadra OPPURE ha flag riconciliato===true.
-    var meseQuadra = {}; // m(1-12) -> bool
+    // QUADRATURA E/C (i saldi tornano) — info di controllo, mese per mese.
+    var meseQuadra = {};
     var prevF = saldoInizio;
     riepilogo.forEach(function (r) {
       var mIdx = MESI.indexOf(r.mese.split(' ')[0]) + 1;
@@ -222,24 +217,30 @@
       meseQuadra[mIdx] = Math.abs(round2(diff)) < 1;
       prevF = parseEuro(r.saldoFine);
     });
+    var mesiTot = Object.keys(meseQuadra).length;
+    var mesiOk = Object.keys(meseQuadra).filter(function (k) { return meseQuadra[k]; }).length;
+
+    // RICONCILIAZIONE = movimenti IDENTIFICATI (con controparte/nome reale).
+    // Un movimento è "da riconciliare" se non sappiamo ancora chi è (controparte
+    // vuota o generica "(da E/C)"). Questi vanno completati a mano dall'editor.
     var mb = movBanca(reg);
+    function identificato(m) {
+      var c = (m.controparte || '').trim();
+      return c !== '' && c !== '(da E/C)' && c !== '-' && c !== '(senza controparte)';
+    }
     var ric = 0;
     var aperti = [];
     mb.forEach(function (m) {
-      var mIdx = parseISO(m.data).m;
-      var isRic = (m.riconciliato === true) || meseQuadra[mIdx];
-      if (isRic) { ric++; return; }
+      if (identificato(m)) { ric++; return; }
       aperti.push({
         id: m.id,
         data: m.data,
-        controparte: m.controparte || m.descrizione || '',
+        controparte: m.descrizioneBanca || m.descrizione || '(da identificare)',
         importo: money(Math.abs(m.importo)),
         tipo: m.tipo,
-        motivo: m.descrizione || ''
+        motivo: 'Da identificare — apri "Correggi causali" e scrivi chi è'
       });
     });
-    var mesiTot = Object.keys(meseQuadra).length;
-    var mesiOk = Object.keys(meseQuadra).filter(function (k) { return meseQuadra[k]; }).length;
 
     return {
       conto: conto.istituto || 'Intesa Sanpaolo',
@@ -851,7 +852,7 @@
       suggerimenti: statics.suggerimenti || '',
       setupChecklist: statics.setupChecklist || [],
       alert: statics.alert || [],
-      previsionale: statics.previsionale || [],
+      previsionale: previsionaleFuturo(statics.previsionale || []),
       forecastCassa: statics.forecastCassa || {},
       storico: yoyLive(reg, statics)
     };
@@ -865,6 +866,19 @@
     var out = {}; for (var k in st) out[k] = st[k];
     out.yoyGenApr = yoy;
     return out;
+  }
+
+  // Previsionale: tiene SOLO i mesi futuri (dal mese corrente in poi).
+  // I mesi passati sono già realtà — vivono nelle sezioni Banca/Uscite, non qui.
+  function previsionaleFuturo(prev) {
+    var oggi = new Date();
+    var sogliaY = oggi.getFullYear(), sogliaM = oggi.getMonth() + 1;
+    return (prev || []).filter(function (p) {
+      var m = MESI.indexOf(String(p.mese || '').split(' ')[0]) + 1;
+      var y = parseInt(String(p.mese || '').split(' ')[1], 10) || sogliaY;
+      if (!m) return true;
+      return (y > sogliaY) || (y === sogliaY && m >= sogliaM);
+    });
   }
 
   function aliasDescrizioni(reg, statics) {

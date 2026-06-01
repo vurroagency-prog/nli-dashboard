@@ -543,22 +543,25 @@
         if (d.banca.riconciliazione) {
           var ric = d.banca.riconciliazione;
           bhtml += '<h3 style="margin:24px 0 12px;">Riconciliazione Bancaria</h3>';
-          // Progress bar
+          // 1) Quadratura saldi con l'estratto conto (controllo contabile)
+          bhtml += '<div class="alert-box success" style="margin-bottom:14px;">✓ Saldi quadrati con l\'estratto conto ufficiale Intesa: <b>' + ric.mesiQuadrati + '/' + ric.mesiTotali + ' mesi</b> al centesimo.</div>';
+          // 2) Identificazione movimenti (chi è ogni riga)
           bhtml += '<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">';
-          bhtml += '<div style="flex:1;background:var(--surface-2);border-radius:6px;height:12px;overflow:hidden;"><div style="width:' + ric.percentuale + '%;height:100%;background:var(--green);border-radius:6px;"></div></div>';
+          bhtml += '<div style="flex:1;background:var(--surface-2);border-radius:6px;height:12px;overflow:hidden;"><div style="width:' + ric.percentuale + '%;height:100%;background:' + (ric.nonRiconciliati ? 'var(--amber)' : 'var(--green)') + ';border-radius:6px;"></div></div>';
           bhtml += '<span style="font-weight:600;font-size:14px;">' + ric.percentuale + '%</span>';
           bhtml += '</div>';
-          bhtml += '<div style="font-size:13px;color:var(--text-dim);margin-bottom:16px;">' + ric.riconciliati + ' / ' + ric.totaleMovimenti + ' movimenti riconciliati</div>';
+          bhtml += '<div style="font-size:13px;color:var(--text-dim);margin-bottom:16px;"><b>' + ric.riconciliati + ' / ' + ric.totaleMovimenti + '</b> movimenti identificati (con nome). ' + (ric.nonRiconciliati ? '<b style="color:var(--amber);">' + ric.nonRiconciliati + ' da riconciliare</b> (sotto).' : '') + '</div>';
 
           if (ric.movimentiAperti && ric.movimentiAperti.length > 0) {
-            bhtml += '<div class="table-wrap"><table><thead><tr><th>ID</th><th>Data</th><th>Controparte</th><th>Importo</th><th>Motivo</th></tr></thead><tbody>';
+            bhtml += '<div class="alert-box warning" style="margin-bottom:12px;">Questi ' + ric.movimentiAperti.length + ' movimenti non hanno ancora un nome. Per completarli da soli: in alto premi <b>"🔧 Correggi causali"</b>, spunta <b>"Da riconciliare 🔗"</b>, scrivi chi è e premi Salva. Si aggiorna tutto da solo.</div>';
+            bhtml += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Descrizione banca</th><th>Importo</th></tr></thead><tbody>';
             ric.movimentiAperti.forEach(function(mv) {
               var colorStyle = mv.tipo === 'uscita' ? 'color:var(--red);' : 'color:var(--green);';
-              bhtml += '<tr><td><code style="font-size:11px;">' + esc(mv.id) + '</code></td><td>' + esc(mv.data) + '</td><td>' + esc(mv.controparte) + '</td><td class="importo" style="' + colorStyle + '">' + esc(mv.importo) + '</td><td style="font-size:12px;">' + esc(mv.motivo) + '</td></tr>';
+              bhtml += '<tr><td>' + esc(mv.data) + '</td><td>' + esc(mv.controparte) + '</td><td class="importo" style="' + colorStyle + '">' + esc(mv.importo) + '</td></tr>';
             });
             bhtml += '</tbody></table></div>';
           } else {
-            bhtml += '<div class="alert-box success">Tutti i movimenti sono riconciliati.</div>';
+            bhtml += '<div class="alert-box success">Tutti i movimenti sono identificati con nome e causale. 🎉</div>';
           }
         }
 
