@@ -839,18 +839,18 @@
  },
  "_nota": "INPUT NON DERIVABILI dal registro: storico anni chiusi 2023-2025, forecast/previsionale, testi e checklist. Tutto il resto (movimenti, banca, IVA, KPI, bilancio, scadenze) e calcolato dal vivo da registro.json via compute.js.",
  "mediaMensileVendite": [
-  3724.78,
-  5827.27,
+  2478.44,
+  1781.27,
   2580.44,
-  4676.85,
-  6926.94,
-  6138.34,
-  7191.67,
-  5083.38,
-  4976.32,
-  19042.43,
-  16513.5,
-  31205.61
+  2653.85,
+  5260.27,
+  4471.67,
+  5275.0,
+  3333.38,
+  3226.32,
+  15816.43,
+  12594.17,
+  27671.61
  ],
- "mediaVenditeNota": "Media mensile fatturato vendite 2023-2025 (netto SiliconDev = lavoro consulenza fratello). Base per incassi attesi mesi futuri. NB: 2023 parziale (azienda dal 29/05/2023)."
+ "mediaVenditeNota": "Media mensile fatturato vendite 2023-2025 netto clienti consulenza del fratello (SiliconDev, Avangarde Consulting, Progesi). Base incassi futuri. 2023 parziale (azienda dal 29/05/2023)."
 }
