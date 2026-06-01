@@ -545,9 +545,29 @@
 
     var diffAB = round2(ceA.totale - totB);
     var b9tot = (sottoGruppi.filter(function (g) { return g.codice === 'B9'; })[0] || {}).totale || 0;
-    var pf = calcPrevisioneFiscale(reg, ceA.totale, totB, b9tot);
+
+    // ---- CASCATA: EBITDA -> EBIT -> EBT -> Utile netto (tutto live)
+    var ebitda = diffAB; // Ricavi - Costi operativi (i miei B non includono ammortamenti ne oneri fin.)
+    var ammortamenti = round2((reg.immobilizzazioni || []).reduce(function (s, i) {
+      var q = (typeof i['ammortamento' + anno] === 'number') ? i['ammortamento' + anno]
+            : round2((i.costoAcquisto || i.valore || 0) * (i.aliquota || 0));
+      return s + q;
+    }, 0));
+    // oneri finanziari (C) dai MOVIMENTI di competenza (spese bancarie/oneri) — non sono fatture
+    var oneriFin = round2((reg.movimenti || []).filter(function (m) {
+      return /^C/.test(m.categoria || '') && m.conto !== 'PERS-MARCO-001' && m.cassa !== false
+        && (m.competenza ? String(m.competenza) === anno : String(parseISO(m.data).y) === anno);
+    }).reduce(function (s, m) { return s + (m.tipo === 'uscita' ? Math.abs(m.importo) : -Math.abs(m.importo)); }, 0));
+    var ebit = round2(ebitda - ammortamenti);
+    var ebt = round2(ebit - oneriFin);
+    var baseIRAP = Math.max(0, round2(diffAB + b9tot)); // base IRAP: (A-B)+B9 (personale non deducibile SAS)
+
+    var pf = calcPrevisioneFiscale(reg, ebt, baseIRAP);  // tasse calcolate sull'EBT vero
     var imposte = { totale: round2(pf.irap.importo), nota: 'IRAP a carico societa (IRPEF/INPS soci in tab Previsione Fiscale).' };
-    var utile = round2(diffAB - ceC.totale - imposte.totale);
+    var utileNetto = round2(ebt - imposte.totale);
+
+    // ceC = sezione C visualizzata nel CE (usa gli oneri reali dai movimenti)
+    if (!ceC.dettaglio.length && oneriFin) ceC = { label: 'C) Spese e oneri finanziari', totale: oneriFin, dettaglio: [{ label: 'Spese bancarie e oneri (da movimenti)', importo: oneriFin }] };
 
     var ce = {
       label: 'Conto Economico (competenza ' + anno + ')',
@@ -556,7 +576,11 @@
       diffAB: { importo: diffAB },
       C: ceC,
       imposte: imposte,
-      utile: { importo: utile }
+      utile: { importo: utileNetto },
+      cascata: {
+        ebitda: ebitda, ammortamenti: ammortamenti, ebit: ebit,
+        oneriFinanziari: oneriFin, ebt: ebt, imposte: imposte.totale, utileNetto: utileNetto
+      }
     };
 
     // ---- Stato Patrimoniale (voci primarie registro + cassa calcolata)
@@ -640,9 +664,10 @@
   }
 
   // CALCOLO FISCALE DAL VIVO (come il foglio Excel dei soci).
-  // Utile di competenza -> IRAP societa + ripartizione 50/50 ai soci (SAS = tassazione
-  // per trasparenza) -> per ciascun socio: IRPEF a scaglioni + addizionali + (Marco) INPS.
-  function calcPrevisioneFiscale(reg, valoreA, valoreB, b9, _ignored) {
+  // utileAnte = EBT (utile ante imposte, dopo ammortamenti e oneri finanziari).
+  // Si ripartisce 50/50 ai soci (SAS = tassazione per trasparenza); IRAP a parte sulla
+  // sua base (baseIRAP). Per socio: IRPEF a scaglioni + addizionali + (Marco) INPS.
+  function calcPrevisioneFiscale(reg, utileAnteIn, baseIRAPin) {
     var p = (reg.previsioneFiscale && reg.previsioneFiscale.parametri) || {};
     var scaglioni = p.scaglioniIRPEF || [{ da: 0, a: 28000, aliquota: 0.23 }, { da: 28001, a: 50000, aliquota: 0.35 }, { da: 50001, a: null, aliquota: 0.43 }];
     var addiz = (p.addizionaleRegionale || 0) + (p.addizionaleComunale || 0);
@@ -664,9 +689,9 @@
       return round2(t);
     }
 
-    var utileAnte = round2(valoreA - valoreB);          // utile gestionale di competenza
+    var utileAnte = round2(utileAnteIn);                  // EBT (utile ante imposte)
     var quota = round2(utileAnte / 2);                    // 50/50
-    var baseIRAP = Math.max(0, round2(utileAnte + (b9 || 0)));
+    var baseIRAP = Math.max(0, round2(baseIRAPin || 0));
     var irapImporto = round2(baseIRAP * (p.aliquotaIRAP || 0.039));
 
     // Marco (accomandatario): quota + IRPEF + addizionali + INPS commercianti

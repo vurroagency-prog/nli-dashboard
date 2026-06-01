@@ -661,20 +661,26 @@
           ceHtml += ceSub(sg.codice + ' — ' + sg.label, sg.totale);
           (sg.dettaglio || []).forEach(function(r) { ceHtml += ceDetail(r.label, r.importo); });
         });
-        // Diff A-B
-        var diffAB = ce.diffAB.importo;
-        var diffColor = diffAB >= 0 ? 'var(--green)' : 'var(--red)';
-        ceHtml += '<tr style="background:var(--surface-2);font-weight:700;border-top:2px solid var(--border);"><td>Differenza A - B</td><td class="importo" style="text-align:right;font-weight:700;color:' + diffColor + ';">' + fmtEuro(diffAB) + '</td></tr>';
-        // C
-        ceHtml += ceMacro(ce.C.label || 'C) Oneri finanziari', ce.C.totale);
-        (ce.C.dettaglio || []).forEach(function(r) { ceHtml += ceDetail(r.label, r.importo); });
-        // Imposte
-        ceHtml += ceMacro('Imposte sul reddito', ce.imposte.totale);
-        if (ce.imposte.nota) ceHtml += '<tr><td colspan="2" style="padding-left:32px;color:var(--text-dim);font-size:12px;">' + esc(ce.imposte.nota) + '</td></tr>';
-        // Utile
-        var utileVal = ce.utile.importo;
+        // CASCATA: EBITDA -> EBIT -> EBT -> Utile netto
+        var casc = ce.cascata || {};
+        function ceStep(label, val, opt) {
+          opt = opt || {};
+          var col = opt.color || (val >= 0 ? '' : 'var(--red)');
+          var bg = opt.strong ? 'background:var(--surface-2);font-weight:700;border-top:2px solid var(--border);' : '';
+          var sz = opt.big ? 'font-size:16px;' : '';
+          return '<tr style="' + bg + '"><td style="' + sz + (opt.sub ? 'padding-left:32px;color:var(--text-dim);' : 'font-weight:600;') + '">' + esc(label) + '</td><td class="importo" style="text-align:right;' + sz + (opt.strong ? 'font-weight:700;' : '') + (col ? 'color:' + col + ';' : '') + '">' + fmtEuro(val) + '</td></tr>';
+        }
+        ceHtml += ceStep('EBITDA (margine operativo: A − B)', casc.ebitda != null ? casc.ebitda : ce.diffAB.importo, { strong: true });
+        ceHtml += ceStep('− Ammortamenti', -(casc.ammortamenti || 0), { sub: true });
+        ceHtml += ceStep('= EBIT (risultato operativo)', casc.ebit != null ? casc.ebit : ce.diffAB.importo, { strong: true });
+        ceHtml += ceStep('− Oneri finanziari (spese bancarie)', -(casc.oneriFinanziari || 0), { sub: true });
+        ceHtml += ceStep('= EBT — Utile ante imposte', casc.ebt != null ? casc.ebt : 0, { strong: true });
+        ceHtml += ceStep('− Imposte società (IRAP)', -(casc.imposte || 0), { sub: true });
+        if (ce.imposte && ce.imposte.nota) ceHtml += '<tr><td colspan="2" style="padding-left:32px;color:var(--text-dim);font-size:11px;">' + esc(ce.imposte.nota) + '</td></tr>';
+        var utileVal = casc.utileNetto != null ? casc.utileNetto : ce.utile.importo;
         var utileColor = utileVal >= 0 ? 'var(--green)' : 'var(--red)';
-        ceHtml += '<tr style="background:var(--surface-2);font-weight:700;border-top:3px double var(--border);"><td style="font-size:16px;">UTILE / PERDITA</td><td class="importo" style="text-align:right;font-weight:700;font-size:16px;color:' + utileColor + ';">' + fmtEuro(utileVal) + '</td></tr>';
+        ceHtml += '<tr style="background:var(--surface-2);font-weight:700;border-top:3px double var(--border);"><td style="font-size:16px;">= UTILE / PERDITA NETTO</td><td class="importo" style="text-align:right;font-weight:700;font-size:16px;color:' + utileColor + ';">' + fmtEuro(utileVal) + '</td></tr>';
+        ceHtml += '<tr><td colspan="2" style="padding:8px 14px;color:var(--text-dim);font-size:11px;">Nota: l\'IRPEF e l\'INPS dei soci non sono in questo CE (sono imposte personali dei soci) — vedi riquadro Previsione Fiscale sotto.</td></tr>';
         ceHtml += '</tbody>';
         document.getElementById('bilancio-ce-table').innerHTML = ceHtml;
         // SP Attivo
