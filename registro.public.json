@@ -1827,7 +1827,7 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0098",
@@ -1845,49 +1845,61 @@
    "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
    "controparte": "Clienti (via TeamSystem)",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0099",
    "data": "2026-04-24",
    "tipo": "uscita",
    "importo": 267.13,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Siggi Group saldo proforma N. 26SOV-07480 del 24.04.2026",
    "descrizioneEstesa": "0126042486743787 02INTER20260424HSRT1506508473 0306923012197909485124199999IT Bonifico da Voi disposto a favore di: Siggi Group saldo proforma N. 26SOV-07480 del 24.04.2026",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Siggi Group — Saldo proforma 26SOV-07480",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Siggi Group",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0100",
    "data": "2026-04-24",
    "tipo": "uscita",
    "importo": 109.8,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "We Safe srl saldo fattura no. 0902",
    "descrizioneEstesa": "0126042486731815 02INTER20260424HSRT1499247306 0306923011806912485124199999IT Bonifico da Voi disposto a favore di: We Safe srl saldo fattura no. 0902",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "We Safe srl — Saldo fattura n.0902",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "We Safe srl",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0101",
    "data": "2026-04-24",
    "tipo": "uscita",
    "importo": 45.1,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Mid ocean brands b.v. saldo fatura no.105834542 del 23.04.20",
    "descrizioneEstesa": "0126042486737772 02INTER20260424HSRT1502875394 0306923011999312485124199999IT Bonifico da Voi disposto a favore di: Mid ocean brands b.v. saldo fatura no.105834542 del 23.04.2026",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Mid Ocean Brands B.V. — Saldo fattura n.105834542",
    "categoria": "B6_materie_prime",
-   "voceBilancio": "B6_materie_prime"
+   "voceBilancio": "B6_materie_prime",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Mid ocean brands b.v",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0102",
@@ -1905,7 +1917,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0103",
@@ -1923,21 +1935,25 @@
    "descrizioneBanca": "PAGAMENTO ADUE",
    "controparte": "Frisbi Societa' Benefit S.R.L",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0104",
    "data": "2026-04-22",
    "tipo": "uscita",
    "importo": 21.96,
-   "descrizione": "PAGAMENTO POS",
+   "descrizione": "Pagamento POS",
    "descrizioneEstesa": "EFFETTUATO IL 19/04/2026 ALLE ORE 17:25 MEDIANTE LA CARTA 4108 XXXX XXXX XX18 PRESSO CLAUDE.AI SUBSCRIPTION ANTHROPIC.COM",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Claude.ai Subscription — Anthropic.com",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "controparte": "Claude.Ai Subscription Anthropic.Com",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0105",
@@ -1955,14 +1971,14 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0106",
    "data": "2026-04-21",
    "tipo": "uscita",
    "importo": 20.99,
-   "descrizione": "PAGAMENTO POS",
+   "descrizione": "Pagamento POS",
    "descrizioneEstesa": "EFFETTUATO IL 18/04/2026 ALLE ORE 09:31 MEDIANTE LA CARTA 4108 XXXX XXXX XX18 PRESSO SITEGROUND HOSTING MADRID",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
@@ -1970,14 +1986,18 @@
    "nota": "SiteGround — rinnovo dominio euroimpianti.info (FAT-2026-0132)",
    "categoria": "B7_servizi",
    "voceBilancio": "B7_servizi",
-   "fatturaId": "FAT-2026-0132"
+   "fatturaId": "FAT-2026-0132",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "controparte": "Siteground Hosting Madrid",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0107",
    "data": "2026-04-21",
    "tipo": "uscita",
    "importo": 19.99,
-   "descrizione": "PAGAMENTO POS",
+   "descrizione": "Pagamento POS",
    "descrizioneEstesa": "EFFETTUATO IL 16/04/2026 ALLE ORE 09:21 MEDIANTE LA CARTA 4108 XXXX XXXX XX18 PRESSO SITEGROUND HOSTING MADRID",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
@@ -1985,21 +2005,29 @@
    "nota": "SiteGround — rinnovo dominio nextlevelitalia.com (FAT-2026-0131)",
    "categoria": "B7_servizi",
    "voceBilancio": "B7_servizi",
-   "fatturaId": "FAT-2026-0131"
+   "fatturaId": "FAT-2026-0131",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "controparte": "Siteground Hosting Madrid",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0108",
    "data": "2026-04-21",
    "tipo": "uscita",
    "importo": 0.86,
-   "descrizione": "PAGAMENTO POS",
+   "descrizione": "Pagamento POS",
    "descrizioneEstesa": "EFFETTUATO IL 16/04/2026 ALLE ORE 08:47 MEDIANTE LA CARTA 4108 XXXX XXXX XX18 PRESSO FACEBK *DBEMLLVT52 DUBLIN 2",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Facebook Ads — addebito",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "controparte": "Facebk *Dbemllvt52 Dublin 2",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0109",
@@ -2031,7 +2059,7 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0111",
@@ -2049,63 +2077,79 @@
    "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
    "controparte": "Clienti (via TeamSystem)",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0112",
    "data": "2026-04-17",
    "tipo": "uscita",
    "importo": 10,
-   "descrizione": "PAGAMENTO POS",
+   "descrizione": "Pagamento POS",
    "descrizioneEstesa": "EFFETTUATO IL 14/04/2026 ALLE ORE 09:14 MEDIANTE LA CARTA 4108 XXXX XXXX XX18 PRESSO FACEBK *5CHX4MZML2 fb.me/ads",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Facebook Ads — addebito",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "controparte": "Facebk *5Chx4Mzml2 Fb.Me/Ads",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0113",
    "data": "2026-04-16",
    "tipo": "uscita",
    "importo": 220.1,
-   "descrizione": "PAGAMENTO DELEGA F24",
+   "descrizione": "F24 / tributi",
    "descrizioneEstesa": "",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "F24 — contributi/ritenute marzo",
    "categoria": "B14_imposte",
-   "voceBilancio": "B14_imposte"
+   "voceBilancio": "B14_imposte",
+   "descrizioneBanca": "PAGAMENTO DELEGA F24",
+   "controparte": "Agenzia delle Entrate",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0114",
    "data": "2026-04-16",
    "tipo": "uscita",
    "importo": 60,
-   "descrizione": "PAGAMENTO DELEGA F24",
+   "descrizione": "F24 / tributi",
    "descrizioneEstesa": "",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "F24 — ritenuta royalties marzo",
    "categoria": "B14_imposte",
-   "voceBilancio": "B14_imposte"
+   "voceBilancio": "B14_imposte",
+   "descrizioneBanca": "PAGAMENTO DELEGA F24",
+   "controparte": "Agenzia delle Entrate",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0115",
    "data": "2026-04-15",
    "tipo": "uscita",
    "importo": 84.91,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Reflects invoice no. MUS52615195 / Customer-No. 59969",
    "descrizioneEstesa": "0126041577789742 02INTER20260415HSRT1469449729 0306922729503102485124199999IT Bonifico da Voi disposto a favore di: Reflects invoice no. MUS52615195 / Customer-No. 59969",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Reflects — Invoice MUS52615195",
    "categoria": "B6_materie_prime",
-   "voceBilancio": "B6_materie_prime"
+   "voceBilancio": "B6_materie_prime",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Reflects",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0116",
@@ -2137,7 +2181,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0118",
@@ -2155,21 +2199,25 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0119",
    "data": "2026-04-14",
    "tipo": "uscita",
    "importo": 245.17,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Siggi Group saldo proforma 26SOV-00070 del 07.01.2026",
    "descrizioneEstesa": "0126041476758339 02INTER20260414HSRT1603935238 0306922694975506485124199999IT Bonifico da Voi disposto a favore di: Siggi Group saldo proforma 26SOV-00070   del 07.01.2026",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Siggi Group — Saldo proforma 26SOV-00070",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Siggi Group",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0120",
@@ -2187,21 +2235,25 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0121",
    "data": "2026-04-13",
    "tipo": "uscita",
    "importo": 733.33,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Timeflow S.R.L. Saldo transazione D.I. n.506/2026 seconda ra",
    "descrizioneEstesa": "0126041374993324 02INTER20260413HSRT1365636983 0306922637637012485124199999IT Bonifico da Voi disposto a favore di: Timeflow S.R.L. Saldo transazione D.I. n.506/2026 seconda rata",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Timeflow S.R.L. — Decreto Ingiuntivo n.506/2026 rata 2/4",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Timeflow S.R.L",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0122",
@@ -2219,21 +2271,25 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0123",
    "data": "2026-04-09",
    "tipo": "uscita",
    "importo": 550,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "0126040970983122 02INTER20260409HSRT1360319740 0306922506433603485124199999IT Bonifico da Voi disposto a favore di: Luca Maitan Contratto cessione diritti d'autore per 1 sito",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Luca Maitan — Cessione diritti d'autore (1 sito)",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Luca Maitan Contratto cessione diritti d'auto",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0124",
@@ -2265,7 +2321,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0126",
@@ -2283,21 +2339,25 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0127",
    "data": "2026-04-09",
    "tipo": "entrata",
    "importo": 649.04,
-   "descrizione": "ACCREDITO BEU CON CONTABILE",
+   "descrizione": "Accredito/incasso cliente",
    "descrizioneEstesa": "COD.DISP.: 0126040903603258 CASH Q66C77ZC556R817757290711490.0629074 SALDO FT.N. 74 DEL 18/12/25 Bonifico a Vostro favore disposto da: MITT.: LOBASCIO SERRAMENTI SAS DI LOBASCIO BENEF.: NEXT LEVEL - VAI DI DRAGONE, 478/B BIC. ORD.: BCITITMM",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Lobascio Serramenti SAS — Saldo Ft.74 del 18/12/2025",
    "categoria": "A1_ricavi_vendite",
-   "voceBilancio": "A1_ricavi_vendite"
+   "voceBilancio": "A1_ricavi_vendite",
+   "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
+   "controparte": "LOBASCIO SERRAMENTI SAS DI LOBASCIO BENEF.: N",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0128",
@@ -2315,14 +2375,14 @@
    "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
    "controparte": "Clienti (via TeamSystem)",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0129",
    "data": "2026-04-07",
    "tipo": "uscita",
    "importo": 662,
-   "descrizione": "Stipendio netto",
+   "descrizione": "Sajay Fernandez espinosa stipendio marzo 2026",
    "descrizioneEstesa": "0126040246574259 NOTPROVIDED 0306910994253312S90512405124IT Bonifico da Voi disposto a favore di: Sajay Fernandez espinosa stipendio marzo 2026",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
@@ -2331,37 +2391,45 @@
    "categoria": "B9_personale",
    "voceBilancio": "B9_personale",
    "descrizioneBanca": "DISPOSIZIONE DI BONIFICO",
-   "controparte": "Sajay Fernandez Espinosa",
+   "controparte": "Sajay Fernandez espinosa",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0130",
    "data": "2026-04-07",
    "tipo": "uscita",
    "importo": 24.28,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Sinfotech.it srl Saldo conferma d'ordine n. ZHADJUWAP del 07",
    "descrizioneEstesa": "0126040768609726 02INTER20260407HSRT1412297153 0306922431811306485124199999IT Bonifico da Voi disposto a favore di: Sinfotech.it srl Saldo conferma d'ordine n. ZHADJUWAP del 07.04.2026",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Sinfotech.it srl — Conferma d'ordine ZHADJUWAP",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Sinfotech.it srl",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0131",
    "data": "2026-04-07",
    "tipo": "uscita",
    "importo": 3.89,
-   "descrizione": "PAGAMENTO POS",
+   "descrizione": "Pagamento POS",
    "descrizioneEstesa": "EFFETTUATO IL 01/04/2026 ALLE ORE 19:31 MEDIANTE LA CARTA 4108 XXXX XXXX XX18 PRESSO Google CLOUD PSQNP3 Milan",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Google Cloud — addebito",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "controparte": "Google Cloud Psqnp3 Milan",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0132",
@@ -2379,7 +2447,7 @@
    "descrizioneBanca": "COMMISSIONE DISPOSIZIONE DI BONIFICO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0133",
@@ -2397,7 +2465,7 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0134",
@@ -2418,28 +2486,36 @@
    "data": "2026-04-03",
    "tipo": "uscita",
    "importo": 240.23,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Wtgroup Kgsas Saldo fattura n. 20260124",
    "descrizioneEstesa": "0126040365641907 02INTER20260403HSRT1421188359 0306922338248312485124199999IT Bonifico da Voi disposto a favore di: Wtgroup Kgsas Saldo fattura n. 20260124",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "WT Group KGSAS — Saldo fattura n.20260124",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Wtgroup Kgsas",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0136",
    "data": "2026-04-03",
    "tipo": "uscita",
    "importo": 186.7,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Pluxee Italia Srl saldo ordine n.RDA2600031225",
    "descrizioneEstesa": "0126040365930703 02INTER20260403HSRT1552037299 0306922348258400485124199999IT Bonifico da Voi disposto a favore di: Pluxee Italia Srl saldo ordine n.RDA2600031225",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Pluxee Italia Srl — Ordine RDA2600031225",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Pluxee Italia Srl",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0137",
@@ -2457,14 +2533,14 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0138",
    "data": "2026-04-02",
    "tipo": "uscita",
    "importo": 350,
-   "descrizione": "Affitto sede Via Fieramosca 20, Bari",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "0126040264292722 02INTER20260402HSRT1399766560 0306922293145304485124199999IT Bonifico da Voi disposto a favore di: Panebianco Antonia affitto mese aprile",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
@@ -2473,51 +2549,63 @@
    "categoria": "B8_godimento_beni",
    "voceBilancio": "B8_godimento_beni",
    "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "controparte": "Panebianco Antonia",
+   "controparte": "Panebianco Antonia affitto mese aprile",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0139",
    "data": "2026-04-02",
    "tipo": "uscita",
    "importo": 170,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "0126040264300675 02INTER20260402HSRT1402626823 0306922293425801485124199999IT Bonifico da Voi disposto a favore di: Silvana Sala Nicola Vurro pagamento royalties per marchio Next level aprile",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Royalties marchio aprile — Silvana Sala / Nicola Vurro",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Silvana Sala Nicola Vurro pagamento royalties",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0140",
    "data": "2026-04-02",
    "tipo": "uscita",
    "importo": 120,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Raffaele Lapenna Saldo fattura n.FPR 30/26 del 1.04.2026",
    "descrizioneEstesa": "0126040264332677 02INTER20260402HSRT1413649553 0306922294523708485124199999IT Bonifico da Voi disposto a favore di: Raffaele Lapenna Saldo fattura n.FPR 30/26 del 1.04.2026",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Raffaele Lapenna — Fattura FPR 30/26 del 01.04.2026",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Raffaele Lapenna",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0141",
    "data": "2026-04-02",
    "tipo": "uscita",
    "importo": 97.33,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Xd Connects b.v. SALDO FATTURA N. IN1905612 DEL 09.03.2026",
    "descrizioneEstesa": "0126040264417876 02INTER20260402HSRT1443639972 0306922297462402485124199999IT Bonifico da Voi disposto a favore di: Xd Connects b.v. SALDO FATTURA N. IN1905612 DEL 09.03.2026",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "XD Connects B.V. — Fattura IN1905612 del 09.03.2026",
    "categoria": "B6_materie_prime",
-   "voceBilancio": "B6_materie_prime"
+   "voceBilancio": "B6_materie_prime",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Xd Connects b.v",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0142",
@@ -2535,21 +2623,25 @@
    "descrizioneBanca": "IMPOSTA DI BOLLO E/C E RENDICONTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0144",
    "data": "2026-04-01",
    "tipo": "uscita",
    "importo": 847.38,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Marco Vurro Rimborso chilometrico Marzo Marco Vurro",
    "descrizioneEstesa": "0126040162991710 02INTER20260401HSRT1439158485 0306922251137609485124199999IT Bonifico da Voi disposto a favore di: Marco Vurro Rimborso chilometrico Marzo Marco Vurro",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Rimborso chilometrico marzo — Marco Vurro",
    "categoria": "B9_personale",
-   "voceBilancio": "B9_personale"
+   "voceBilancio": "B9_personale",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Marco Vurro",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0145",
@@ -2581,7 +2673,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0147",
@@ -2599,7 +2691,7 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0148",
@@ -2631,49 +2723,61 @@
    "descrizioneBanca": "CANONE MENSILE BASE E SERVIZI AGGIUNTIVI",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0150",
    "data": "2026-03-31",
    "tipo": "entrata",
    "importo": 399,
-   "descrizione": "ACCREDITO BONIFICO ISTANTANEO",
+   "descrizione": "Accredito/incasso cliente",
    "descrizioneEstesa": "COD. DISP.: 0126033161973858 CASH 0012026033117082466964024992 Acconto Fattura n.66/2025 Bonifico a Vostro favore disposto da: MITT.: GIS PROFESSIONAL SERVICES SRLS BENEF.: NEXT LEVEL ITALIA SAS BIC. ORD.: UNCRITMM",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "GIS Professional Services — Acconto Fattura n.66/2025",
    "categoria": "A1_ricavi_vendite",
-   "voceBilancio": "A1_ricavi_vendite"
+   "voceBilancio": "A1_ricavi_vendite",
+   "descrizioneBanca": "ACCREDITO BONIFICO ISTANTANEO",
+   "controparte": "GIS PROFESSIONAL SERVICES SRLS BENEF.: NEXT L",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0151",
    "data": "2026-03-31",
    "tipo": "entrata",
    "importo": 796.63,
-   "descrizione": "ACCREDITO BEU CON CONTABILE",
+   "descrizione": "Accredito/incasso cliente",
    "descrizioneEstesa": "COD.DISP.: 0126033032715714 CASH NOTPROVIDED ACCONTO FATTURA PROFORMA N. 11 DEL 27-03-2026 Bonifico a Vostro favore disposto da: MITT.: COSTRUZIONI VULPIO SOCIETA  A RESPO BENEF.: NEXT LEVEL ITALIA S.A.S. DI MARCO V BIC. ORD.: FIBKITMMXXX",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Costruzioni Vulpio — Acconto Fattura Proforma n.11 del 27/03/2026",
    "categoria": "A1_ricavi_vendite",
-   "voceBilancio": "A1_ricavi_vendite"
+   "voceBilancio": "A1_ricavi_vendite",
+   "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
+   "controparte": "COSTRUZIONI VULPIO SOCIETA A RESPO BENEF.: NE",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0152",
    "data": "2026-03-30",
    "tipo": "uscita",
    "importo": 17.98,
-   "descrizione": "PAGAMENTO EFFETTUATO SU POS ESTERO",
+   "descrizione": "Pagamento POS",
    "descrizioneEstesa": "EFFETTUATO IL 26/03/2026 ALLE ORE 09:06 (ORA AUTORIZZAZIONE) MEDIANTE LA CARTA 4108 XXXX XXXX XX18 PRESSO OPENAI OPENAI.COM (CTV. DI             20,00 USD AL CAMBIO DI 0,865501) Commissione di conversione applicata dal circuito EUR         0,17 Commissione di conversione valuta EUR 0,50",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "OpenAI — $20 USD (cambio 0,8655)",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "PAGAMENTO EFFETTUATO SU POS ESTERO",
+   "controparte": "Openai Openai.Com",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0153",
@@ -2691,14 +2795,14 @@
    "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
    "controparte": "Clienti (via TeamSystem)",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0154",
    "data": "2026-03-27",
    "tipo": "uscita",
    "importo": 39.97,
-   "descrizione": "F24 / tributi (CBILL)",
+   "descrizione": "F24 / tributi",
    "descrizioneEstesa": "NOME AZIENDA AGENZIA DELLE ENTRATE - RISCOSSIONE CODICE AZIENDA AJZ8Z , IUV 80097129734072855 NUMERO AVVISO 180097129734072855 DATA INCASSO 20260327 VIA -  INTERNET",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
@@ -2709,7 +2813,7 @@
    "descrizioneBanca": "PAGAMENTO BOLLETTA CBILL",
    "controparte": "Agenzia delle Entrate",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0155",
@@ -2727,21 +2831,25 @@
    "descrizioneBanca": "COMMISSIONE PAGAMENTO CBILL / PAGOPA",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0156",
    "data": "2026-03-26",
    "tipo": "uscita",
    "importo": 146.4,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "V consulting srl Saldo fattura n.913/00",
    "descrizioneEstesa": "0126032696731474 02INTER20260326HSRT1382158870 0306922053813903485124199999IT Bonifico da Voi disposto a favore di: V consulting srl Saldo fattura n.913/00",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "V Consulting SRL — Fattura n.913/00",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "V consulting srl",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0157",
@@ -2759,7 +2867,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0158",
@@ -2777,7 +2885,7 @@
    "descrizioneBanca": "PAGAMENTO ADUE",
    "controparte": "Fastweb Spa",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0159",
@@ -2795,54 +2903,66 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0160",
    "data": "2026-03-24",
    "tipo": "uscita",
    "importo": 600,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "0126032494858442 02INTER20260324HSRT1411418171 0306921995892807485124199999IT Bonifico da Voi disposto a favore di: Marco Vurro ANTICIPO QUOTE 2025",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
-   "nota": "Anticipo quote 2025 — Marco Vurro"
+   "nota": "Anticipo quote 2025 — Marco Vurro",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Marco Vurro ANTICIPO QUOTE 2025",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0161",
    "data": "2026-03-24",
    "tipo": "uscita",
    "importo": 88.49,
-   "descrizione": "PAGAMENTO POS",
+   "descrizione": "Pagamento POS",
    "descrizioneEstesa": "EFFETTUATO IL 19/03/2026 ALLE ORE 15:22 MEDIANTE LA CARTA 4108 XXXX XXXX XX18 PRESSO CLAUDE.AI SUBSCRIPTION ANTHROPIC.COM",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Claude.ai Subscription — Anthropic.com",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "controparte": "Claude.Ai Subscription Anthropic.Com",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0162",
    "data": "2026-03-24",
    "tipo": "uscita",
    "importo": 42,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "0126032495046167 02INTER20260324HSRT1519147447 0306922001939801485124199999IT Bonifico da Voi disposto a favore di: Panebianco Antonia pagamento erario locale -quota 50 percento",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Quota erario locale 50% — Panebianco Antonia",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Panebianco Antonia pagamento erario locale -q",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0163",
    "data": "2026-03-24",
    "tipo": "uscita",
    "importo": 12.99,
-   "descrizione": "PAGAMENTO POS",
+   "descrizione": "Pagamento POS",
    "descrizioneEstesa": "EFFETTUATO IL 21/03/2026 ALLE ORE 18:14 MEDIANTE LA CARTA 4108 XXXX XXXX XX18 PRESSO SITEGROUND HOSTING MADRID",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
@@ -2850,7 +2970,11 @@
    "nota": "SiteGround — rinnovo dominio gimacostruzioni.it (FAT-2026-0130)",
    "categoria": "B7_servizi",
    "voceBilancio": "B7_servizi",
-   "fatturaId": "FAT-2026-0130"
+   "fatturaId": "FAT-2026-0130",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "controparte": "Siteground Hosting Madrid",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0164",
@@ -2868,7 +2992,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0165",
@@ -2886,21 +3010,25 @@
    "descrizioneBanca": "PAGAMENTO ADUE",
    "controparte": "Frisbi Societa' Benefit S.R.L",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0166",
    "data": "2026-03-23",
    "tipo": "uscita",
    "importo": 21.96,
-   "descrizione": "PAGAMENTO POS",
+   "descrizione": "Pagamento POS",
    "descrizioneEstesa": "EFFETTUATO IL 18/03/2026 ALLE ORE 18:29 MEDIANTE LA CARTA 4108 XXXX XXXX XX18 PRESSO CLAUDE.AI SUBSCRIPTION ANTHROPIC.COM",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Claude.ai Subscription — Anthropic.com",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "controparte": "Claude.Ai Subscription Anthropic.Com",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0167",
@@ -2918,7 +3046,7 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0168",
@@ -2936,35 +3064,43 @@
    "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
    "controparte": "Clienti (via TeamSystem)",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0169",
    "data": "2026-03-20",
    "tipo": "entrata",
    "importo": 470.81,
-   "descrizione": "ACCREDITO BEU CON CONTABILE",
+   "descrizione": "Accredito/incasso cliente",
    "descrizioneEstesa": "COD.DISP.: 0126032001137779 CASH NOT PROVIDED PAGAMENTO ABBIGLIAMENTO DA LAVORO Bonifico a Vostro favore disposto da: MITT.: EDIL SPECIAL DI OCCHIOGROSSO AGOSTINO BENEF.: NEXT LEVEL ITALIA S.A.S BIC. ORD.: BPBAIT3BXXX",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Edil Special — Pagamento abbigliamento da lavoro",
    "categoria": "A1_ricavi_vendite",
-   "voceBilancio": "A1_ricavi_vendite"
+   "voceBilancio": "A1_ricavi_vendite",
+   "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
+   "controparte": "EDIL SPECIAL DI OCCHIOGROSSO AGOSTINO BENEF.:",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0170",
    "data": "2026-03-19",
    "tipo": "uscita",
    "importo": 298.9,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "WORK GIANTO S.R.L.- SOCIETA' UNIPERSONAL saldo fattura n.71",
    "descrizioneEstesa": "0126031990664623 02INTER20260319HSRT1443299906 0306921864663600485124199999IT Bonifico da Voi disposto a favore di: WORK GIANTO S.R.L.- SOCIETA' UNIPERSONAL saldo fattura n.71",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Work Gianto S.R.L. — Saldo fattura n.71",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "WORK GIANTO S.R.L.- SOCIETA' UNIPERSONAL",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0171",
@@ -2982,7 +3118,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0172",
@@ -3014,21 +3150,25 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0174",
    "data": "2026-03-17",
    "tipo": "uscita",
    "importo": 300,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Marco Vurro Rimborso Km Marzo",
    "descrizioneEstesa": "0126031788772124 02INTER20260317HSRT1501795606 0306921805477907485124199999IT Bonifico da Voi disposto a favore di: Marco Vurro Rimborso Km Marzo",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Rimborso Km marzo (acconto) — Marco Vurro",
    "categoria": "B9_personale",
-   "voceBilancio": "B9_personale"
+   "voceBilancio": "B9_personale",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Marco Vurro",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0175",
@@ -3046,49 +3186,61 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0176",
    "data": "2026-03-16",
    "tipo": "uscita",
    "importo": 1663,
-   "descrizione": "PAGAMENTO DELEGA F24",
+   "descrizione": "F24 / tributi",
    "descrizioneEstesa": "",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "F24 — IRPEF/contributi dipendente febbraio",
    "categoria": "B14_imposte",
-   "voceBilancio": "B14_imposte"
+   "voceBilancio": "B14_imposte",
+   "descrizioneBanca": "PAGAMENTO DELEGA F24",
+   "controparte": "Agenzia delle Entrate",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0177",
    "data": "2026-03-16",
    "tipo": "uscita",
    "importo": 220.1,
-   "descrizione": "PAGAMENTO DELEGA F24",
+   "descrizione": "F24 / tributi",
    "descrizioneEstesa": "",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "F24 — contributi/ritenute febbraio",
    "categoria": "B14_imposte",
-   "voceBilancio": "B14_imposte"
+   "voceBilancio": "B14_imposte",
+   "descrizioneBanca": "PAGAMENTO DELEGA F24",
+   "controparte": "Agenzia delle Entrate",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0178",
    "data": "2026-03-16",
    "tipo": "uscita",
    "importo": 60,
-   "descrizione": "PAGAMENTO DELEGA F24",
+   "descrizione": "F24 / tributi",
    "descrizioneEstesa": "",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "F24 — ritenuta royalties febbraio",
    "categoria": "B14_imposte",
-   "voceBilancio": "B14_imposte"
+   "voceBilancio": "B14_imposte",
+   "descrizioneBanca": "PAGAMENTO DELEGA F24",
+   "controparte": "Agenzia delle Entrate",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0179",
@@ -3106,21 +3258,25 @@
    "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
    "controparte": "Clienti (via TeamSystem)",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0180",
    "data": "2026-03-13",
    "tipo": "uscita",
    "importo": 733.33,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "TIMEFLOW S.R.L. Saldo transazione D.I. n.506/2026 prima rata",
    "descrizioneEstesa": "0126031385208302 02INTER20260313HSRT1578027047 0306925690904604485124199999IT Bonifico da Voi disposto a favore di: TIMEFLOW S.R.L. Saldo transazione D.I. n.506/2026 prima rata",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Timeflow S.R.L. — Decreto Ingiuntivo n.506/2026 rata 1/4",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "TIMEFLOW S.R.L",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0181",
@@ -3138,21 +3294,25 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0182",
    "data": "2026-03-12",
    "tipo": "uscita",
    "importo": 372.02,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "0126031283585215 02INTER20260312HSRT1347486367 0306925637751504485124199999IT Bonifico da Voi disposto a favore di: Avvocato Chiara Palumbo Next Level S.a.s. / D'Attolico Donato & C. S.r.l. richiesta acconto e nota proforma",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Avv. Chiara Palumbo — acconto/proforma (D'Attolico)",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Avvocato Chiara Palumbo Next Level S.a.s. / D",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0183",
@@ -3184,7 +3344,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0185",
@@ -3202,35 +3362,43 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0186",
    "data": "2026-03-11",
    "tipo": "entrata",
    "importo": 200,
-   "descrizione": "ACCREDITO BONIFICO ISTANTANEO",
+   "descrizione": "Accredito/incasso cliente",
    "descrizioneEstesa": "COD. DISP.: 0126031182951470 CASH NOTPROVIDED Saldo vostra fattura pro forma n8  fattura 11 Bonifico a Vostro favore disposto da: MITT.: AMIR SRL BENEF.: NEXT LEVEL ITALIA S.A.S. DI MARCO V BIC. ORD.: SELBIT2BXXX",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Amir SRL — Saldo fattura proforma n.11",
    "categoria": "A1_ricavi_vendite",
-   "voceBilancio": "A1_ricavi_vendite"
+   "voceBilancio": "A1_ricavi_vendite",
+   "descrizioneBanca": "ACCREDITO BONIFICO ISTANTANEO",
+   "controparte": "AMIR SRL BENEF.: NEXT LEVEL ITALIA S.A.S. DI ",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0187",
    "data": "2026-03-10",
    "tipo": "uscita",
    "importo": 120,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Raffaele Lapenna Saldo fattura n.FPR 28/26 del 03.03.2026",
    "descrizioneEstesa": "0126031081208861 02INTER20260310HSRT1340386070 0306925559360810485124199999IT Bonifico da Voi disposto a favore di: Raffaele Lapenna Saldo fattura n.FPR 28/26 del 03.03.2026",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Raffaele Lapenna — Fattura FPR 28/26 del 03.03.2026",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Raffaele Lapenna",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0188",
@@ -3248,21 +3416,25 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0189",
    "data": "2026-03-05",
    "tipo": "uscita",
    "importo": 169.73,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Pluxee Italia Srl saldo ordine n.RDA2600022386",
    "descrizioneEstesa": "0126030576704525 02INTER20260305HSRT1448638854 0306925415227412485124199999IT Bonifico da Voi disposto a favore di: Pluxee Italia Srl saldo ordine n.RDA2600022386",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Pluxee Italia Srl — Ordine RDA2600022386",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Pluxee Italia Srl",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0190",
@@ -3294,7 +3466,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0192",
@@ -3312,14 +3484,14 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0193",
    "data": "2026-03-04",
    "tipo": "uscita",
    "importo": 663,
-   "descrizione": "Stipendio netto",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "0126030475365261 02INTER20260304HSRT1367126114 0306925372512605485124199999IT Bonifico da Voi disposto a favore di: Sajay Fernandez espinosa busta paga mese febbraio",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
@@ -3328,9 +3500,9 @@
    "categoria": "B9_personale",
    "voceBilancio": "B9_personale",
    "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "controparte": "Sajay Fernandez Espinosa",
+   "controparte": "Sajay Fernandez espinosa busta paga mese febb",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0194",
@@ -3362,7 +3534,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0196",
@@ -3380,42 +3552,50 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0197",
    "data": "2026-03-04",
    "tipo": "entrata",
    "importo": 3715.25,
-   "descrizione": "ACCREDITO BEU CON CONTABILE",
+   "descrizione": "Accredito/incasso cliente",
    "descrizioneEstesa": "COD.DISP.: 0126030409615304 CASH 120260303094423312XNLHM775XDNWTBYCU SUPP SALDO FATT.29989 06.11.25 Bonifico a Vostro favore disposto da: MITT.: DENTITALIA SOCIETA' A RESPONSABILITA' LIMITATA BENEF.: NEXT LEVEL ITALIA S.A.S DI MARCO VU BIC. ORD.: BPBAIT3BXXX",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Dentitalia SRL — Saldo Fatt.29989 del 06/11/2025",
    "categoria": "A1_ricavi_vendite",
-   "voceBilancio": "A1_ricavi_vendite"
+   "voceBilancio": "A1_ricavi_vendite",
+   "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
+   "controparte": "DENTITALIA SOCIETA' A RESPONSABILITA' LIMITAT",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0198",
    "data": "2026-03-03",
    "tipo": "uscita",
    "importo": 424.4,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "0126030374224933 02INTER20260303HSRT1377156124 0306925336347009485124199999IT Bonifico da Voi disposto a favore di: Pluxee Italia Fattura n. VC26000144",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Pluxee Italia — Fattura VC26000144",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Pluxee Italia Fattura n. VC26000144",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0199",
    "data": "2026-03-03",
    "tipo": "uscita",
    "importo": 350,
-   "descrizione": "Affitto sede Via Fieramosca 20, Bari",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "0126030374233360 02INTER20260303HSRT1380445759 0306925336617712485124199999IT Bonifico da Voi disposto a favore di: Panebianco Antonia affitto mese marzo",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
@@ -3424,37 +3604,45 @@
    "categoria": "B8_godimento_beni",
    "voceBilancio": "B8_godimento_beni",
    "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "controparte": "Panebianco Antonia",
+   "controparte": "Panebianco Antonia affitto mese marzo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0200",
    "data": "2026-03-03",
    "tipo": "uscita",
    "importo": 170,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "0126030374241540 02INTER20260303HSRT1383735684 0306925336894511485124199999IT Bonifico da Voi disposto a favore di: Silvana Sala Nicola Vurro pagamento royalties per marchio Next level marzo",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Royalties marchio marzo — Silvana Sala / Nicola Vurro",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Silvana Sala Nicola Vurro pagamento royalties",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0201",
    "data": "2026-03-03",
    "tipo": "uscita",
    "importo": 41.74,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "0126030374261490 02INTER20260303HSRT1391458336 0306925337563001485124199999IT Bonifico da Voi disposto a favore di: Amministratore Condominio Condominio via Ettore Fieramosca 20 mensile gennaio e marzo e acqua  I emissione 26",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Condominio Via Fieramosca 20 — gen+mar+acqua",
    "categoria": "B7_servizi",
-   "voceBilancio": "B7_servizi"
+   "voceBilancio": "B7_servizi",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Amministratore Condominio Condominio via Etto",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0202",
@@ -3472,7 +3660,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0203",
@@ -3490,7 +3678,7 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0204",
@@ -3511,14 +3699,18 @@
    "data": "2026-03-02",
    "tipo": "uscita",
    "importo": 895.48,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Marco Vurro Rimborso KM Febbraio 2026",
    "descrizioneEstesa": "0126030272810330 02INTER20260302HSRT1359669307 0306925291419312485124199999IT Bonifico da Voi disposto a favore di: Marco Vurro Rimborso KM Febbraio 2026",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
    "nota": "Rimborso KM febbraio 2026 — Marco Vurro",
    "categoria": "B9_personale",
-   "voceBilancio": "B9_personale"
+   "voceBilancio": "B9_personale",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Marco Vurro",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0206",
@@ -3564,7 +3756,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0209",
@@ -3582,7 +3774,7 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0210",
@@ -3600,14 +3792,14 @@
    "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
    "controparte": "Clienti (via TeamSystem)",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0211",
    "data": "2026-03-03",
    "tipo": "uscita",
    "importo": 170,
-   "descrizione": "Royalties marchio Next Level",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "Bonifico a favore di: Silvana Sala Nicola Vurro pagamento royalties per marchio Next level marzo (2° quota)",
    "categoria": "B14_royalties",
    "nota": "Royalties marchio NL marzo — 2° quota (€170 × 2 = €340 totale mensile)",
@@ -3616,9 +3808,9 @@
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_xlsx",
    "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "controparte": "Sala Silvana / Vurro Nicola",
+   "controparte": "Silvana Sala Nicola Vurro pagamento royalties",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0212",
@@ -3636,7 +3828,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0213",
@@ -3654,7 +3846,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0214",
@@ -3672,7 +3864,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0215",
@@ -3690,7 +3882,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0216",
@@ -3708,14 +3900,14 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0217",
    "data": "2026-04-02",
    "tipo": "uscita",
    "importo": 170,
-   "descrizione": "Royalties marchio Next Level",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "Bonifico a favore di: Silvana Sala Nicola Vurro pagamento royalties per marchio Next level aprile (2° quota)",
    "categoria": "B14_royalties",
    "nota": "Royalties marchio NL aprile — 2° quota",
@@ -3724,9 +3916,9 @@
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_xlsx",
    "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "controparte": "Sala Silvana / Vurro Nicola",
+   "controparte": "Silvana Sala Nicola Vurro pagamento royalties",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0218",
@@ -3744,7 +3936,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0219",
@@ -3762,7 +3954,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0220",
@@ -3780,7 +3972,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0221",
@@ -3798,7 +3990,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0222",
@@ -3816,7 +4008,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0223",
@@ -3834,7 +4026,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0224",
@@ -3852,7 +4044,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0225",
@@ -3870,7 +4062,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0226",
@@ -3888,21 +4080,25 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0227",
    "data": "2026-04-28",
    "tipo": "uscita",
    "importo": 847.38,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Marco Vurro Rimborso km Marzo",
    "descrizioneEstesa": "Bonifico a favore di: Marco Vurro Rimborso km Marzo — ⚠️ VERIFICARE: rimborso KM marzo già pagato il 01/04!",
    "categoria": "B9_personale",
    "nota": "DUPLICATO ERRONEO: Marco si è fatto un secondo bonifico identico al MOV-2026-0144 (01/04 €847,38) per errore. Causale 'rimborso km marzo' coerente con il duplicato. Overpayment compensato via RIM-2026-0003.",
    "voceBilancio": "B9_personale",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
-   "fonte": "estratto_conto_xlsx"
+   "fonte": "estratto_conto_xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Marco Vurro",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0228",
@@ -3920,7 +4116,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0229",
@@ -4128,7 +4324,7 @@
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0242",
@@ -4149,28 +4345,36 @@
    "data": "2026-04-30",
    "tipo": "uscita",
    "importo": 686,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Bonifico in uscita",
    "descrizioneEstesa": "0126043092332361 02INTER20260430HSRT1363536343 BONIFICO A FAVORE DI SAJAY FERNANDEZ ESPINOSA BUSTA PAGA MESE APRILE",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_pdf",
    "nota": "Sajay — busta paga aprile 2026",
    "categoria": "B9_personale_dipendenti",
-   "voceBilancio": "B9_personale_dipendenti"
+   "voceBilancio": "B9_personale_dipendenti",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Sajay Fernandez espinosa busta paga mese apri",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0244",
    "data": "2026-04-30",
    "tipo": "uscita",
    "importo": 178.21,
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "descrizione": "Pluxee Italia Srl saldo conferma d'ordine no: RDA2600038107 ",
    "descrizioneEstesa": "0126043092590310 02INTER20260430HSRT1452766060 BONIFICO A FAVORE DI PLUXEE ITALIA SRL SALDO CONFERMA D'ORDINE NO RDA2600038107 DEL 30.04.2026",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_pdf",
    "nota": "Pluxee — saldo ordine RDA2600038107 (buoni pasto/welfare aprile)",
    "categoria": "B9_personale_dipendenti",
-   "voceBilancio": "B9_personale_dipendenti"
+   "voceBilancio": "B9_personale_dipendenti",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Pluxee Italia Srl",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0245",
@@ -4188,7 +4392,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0246",
@@ -4206,7 +4410,7 @@
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0247",
@@ -4224,44 +4428,50 @@
    "descrizioneBanca": "CANONE MENSILE BASE E SERVIZI AGGIUNTIVI",
    "controparte": "Intesa Sanpaolo",
    "riconciliato": true,
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0248",
    "data": "2026-04-30",
    "tipo": "uscita",
    "importo": 0.3,
-   "descrizione": "PAGAMENTO POS",
+   "descrizione": "Pagamento POS",
    "descrizioneEstesa": "EFFETTUATO IL 27/04/2026 ALLE ORE 15:01 MEDIANTE LA CARTA 4108 XXXX XXXX XX18 PRESSO FACEBK AMG6UMVT52 DUBLIN 2",
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_pdf",
    "nota": "Facebook Ads — micropagamento (data valuta 27/04, contabilizzato 30/04)",
    "categoria": "B7_pubblicita",
-   "voceBilancio": "B7_pubblicita"
+   "voceBilancio": "B7_pubblicita",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "controparte": "Facebk *Amg6Umvt52 Dublin 2",
+   "riconciliato": true,
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0249",
    "data": "2026-05-04",
    "tipo": "uscita",
    "importo": 500,
-   "controparte": "(da E/C)",
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Sajay Fernandez espinosa",
+   "descrizione": "Sajay Fernandez espinosa acconto utili 2025",
    "categoria": "distribuzione_utili",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0250",
    "data": "2026-05-04",
    "tipo": "uscita",
    "importo": 350,
-   "controparte": "Panebianco Antonia",
-   "descrizione": "Affitto sede Via Fieramosca 20, Bari",
+   "controparte": "Panebianco Antonia affitto locale mese maggio",
+   "descrizione": "Bonifico in uscita",
    "categoria": "B8_godimento",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
@@ -4270,30 +4480,32 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0251",
    "data": "2026-05-04",
    "tipo": "uscita",
    "importo": 338.89,
-   "controparte": "(da E/C)",
-   "descrizione": "PAGAMENTO DELEGA F24",
+   "controparte": "Agenzia delle Entrate",
+   "descrizione": "F24 / tributi",
    "categoria": "B14_imposte",
    "metodo": "addebito",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "PAGAMENTO DELEGA F24",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0252",
    "data": "2026-05-04",
    "tipo": "uscita",
    "importo": 170,
-   "controparte": "Sala Silvana / Vurro Nicola",
-   "descrizione": "Royalties marchio Next Level",
+   "controparte": "Silvana Sala Nicola Vurro pagamento royalties",
+   "descrizione": "Bonifico in uscita",
    "categoria": "B14_royalties",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
@@ -4302,15 +4514,15 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0253",
    "data": "2026-05-04",
    "tipo": "uscita",
    "importo": 170,
-   "controparte": "Sala Silvana / Vurro Nicola",
-   "descrizione": "Royalties marchio Next Level",
+   "controparte": "Silvana Sala Nicola Vurro pagamento royalties",
+   "descrizione": "Bonifico in uscita",
    "categoria": "B14_royalties",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
@@ -4319,82 +4531,92 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0254",
    "data": "2026-05-04",
    "tipo": "uscita",
    "importo": 152.41,
-   "controparte": "(da E/C)",
-   "descrizione": "PAGAMENTO DELEGA F24",
+   "controparte": "Agenzia delle Entrate",
+   "descrizione": "F24 / tributi",
    "categoria": "B14_imposte",
    "metodo": "addebito",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "PAGAMENTO DELEGA F24",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0255",
    "data": "2026-05-04",
    "tipo": "uscita",
    "importo": 106.14,
-   "controparte": "(da E/C)",
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Work Gianto Srl",
+   "descrizione": "Work Gianto Srl Saldo fattura n.173 del 30.04.2026",
    "categoria": "B6_materie_prime",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0256",
    "data": "2026-05-04",
    "tipo": "uscita",
    "importo": 94.4,
-   "controparte": "(da E/C)",
-   "descrizione": "PAGAMENTO POS",
+   "controparte": "Claude.Ai Subscription Anthropic.Com",
+   "descrizione": "Pagamento POS",
    "categoria": "B7_software_operativi",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0257",
    "data": "2026-05-04",
    "tipo": "uscita",
    "importo": 65.03,
-   "controparte": "(da E/C)",
-   "descrizione": "PAGAMENTO DELEGA F24",
+   "controparte": "Agenzia delle Entrate",
+   "descrizione": "F24 / tributi",
    "categoria": "B14_imposte",
    "metodo": "addebito",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "PAGAMENTO DELEGA F24",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0258",
    "data": "2026-05-04",
    "tipo": "uscita",
    "importo": 35.1,
-   "controparte": "(da E/C)",
-   "descrizione": "PAGAMENTO DELEGA F24",
+   "controparte": "Agenzia delle Entrate",
+   "descrizione": "F24 / tributi",
    "categoria": "B14_imposte",
    "metodo": "addebito",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "PAGAMENTO DELEGA F24",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0259",
@@ -4411,7 +4633,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0260",
@@ -4428,7 +4650,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0261",
@@ -4445,7 +4667,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0262",
@@ -4462,7 +4684,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0263",
@@ -4479,67 +4701,75 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0264",
    "data": "2026-05-05",
    "tipo": "uscita",
    "importo": 120,
-   "controparte": "(da E/C)",
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Raffaele Lapenna",
+   "descrizione": "Raffaele Lapenna Saldo fattura n.49/26 del 04.05.2026",
    "categoria": "B6_materie_prime",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0265",
    "data": "2026-05-05",
    "tipo": "uscita",
    "importo": 97.48,
-   "controparte": "(da E/C)",
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Xd connects b.v",
+   "descrizione": "Xd connects b.v. SALDO ORDINE N. SC2208583-1 DEL 05.05.2026",
    "categoria": "B6_materie_prime",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0266",
    "data": "2026-05-05",
    "tipo": "uscita",
    "importo": 38.78,
-   "controparte": "(da E/C)",
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Wtgroup Kgsas",
+   "descrizione": "Wtgroup Kgsas Saldo fattura n. RK-2026-20260169",
    "categoria": "B6_materie_prime",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0267",
    "data": "2026-05-05",
    "tipo": "uscita",
    "importo": 12.94,
-   "controparte": "(da E/C)",
-   "descrizione": "PAGAMENTO POS",
+   "controparte": "Google Cloud W9Bpgr Milan",
+   "descrizione": "Pagamento POS",
    "categoria": "B7_software_operativi",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0268",
@@ -4571,7 +4801,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0270",
@@ -4588,7 +4818,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0271",
@@ -4605,7 +4835,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0272",
@@ -4637,52 +4867,58 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0274",
    "data": "2026-05-05",
    "tipo": "entrata",
    "importo": 1098.55,
-   "controparte": "(da E/C)",
-   "descrizione": "ACCREDITO BEU CON CONTABILE",
+   "controparte": "EDIL SPECIAL DI OCCHIOGROSSO AGOSTINO BENEF.:",
+   "descrizione": "Accredito/incasso cliente",
    "categoria": "A1_ricavi",
    "metodo": "addebito",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0275",
    "data": "2026-05-06",
    "tipo": "entrata",
    "importo": 975.94,
-   "controparte": "(da E/C)",
-   "descrizione": "ACCREDITO BEU CON CONTABILE",
+   "controparte": "RIVOLUZIONE CASA S.R.L. BENEF.: NEXT LEVEL IT",
+   "descrizione": "Accredito/incasso cliente",
    "categoria": "A1_ricavi",
    "metodo": "addebito",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0276",
    "data": "2026-05-07",
    "tipo": "uscita",
    "importo": 42.63,
-   "controparte": "(da E/C)",
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Pf Concept international",
+   "descrizione": "Pf Concept international Saldo fattura n. 1926006529",
    "categoria": "B6_materie_prime",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0277",
@@ -4699,7 +4935,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0278",
@@ -4716,7 +4952,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0279",
@@ -4733,7 +4969,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0280",
@@ -4770,15 +5006,17 @@
    "data": "2026-05-11",
    "tipo": "entrata",
    "importo": 283.63,
-   "controparte": "(da E/C)",
-   "descrizione": "ACCREDITO BONIFICO ISTANTANEO",
+   "controparte": "CAMASTA IMPIANTI S.A.S. DI CAMASTA ST EFANO E",
+   "descrizione": "Accredito/incasso cliente",
    "categoria": "A1_ricavi",
    "metodo": "bonifico",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "ACCREDITO BONIFICO ISTANTANEO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0283",
@@ -4795,7 +5033,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "PAGAMENTO ADUE",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0284",
@@ -4827,7 +5065,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0286",
@@ -4844,22 +5082,24 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0287",
    "data": "2026-05-14",
    "tipo": "uscita",
    "importo": 733.34,
-   "controparte": "(da E/C)",
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "TIMEFLOW s.r.l",
+   "descrizione": "TIMEFLOW s.r.l. Saldo transazione D.I. n. 506/2026 terza rat",
    "categoria": "B7_consulenze_legali",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0288",
@@ -4876,7 +5116,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "PAGAMENTO ADUE",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0289",
@@ -4893,7 +5133,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0290",
@@ -4910,82 +5150,92 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0291",
    "data": "2026-05-15",
    "tipo": "uscita",
    "importo": 70,
-   "controparte": "(da E/C)",
-   "descrizione": "PAGAMENTO DELEGA F24",
+   "controparte": "Agenzia delle Entrate",
+   "descrizione": "F24 / tributi",
    "categoria": "B14_imposte",
    "metodo": "addebito",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "PAGAMENTO DELEGA F24",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0292",
    "data": "2026-05-18",
    "tipo": "uscita",
    "importo": 1200,
-   "controparte": "(da E/C)",
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Marco Vurro Anticipo Quote 2025",
+   "descrizione": "Bonifico in uscita",
    "categoria": "distribuzione_utili",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0293",
    "data": "2026-05-18",
    "tipo": "uscita",
    "importo": 296.64,
-   "controparte": "(da E/C)",
-   "descrizione": "PAGAMENTO DELEGA F24",
+   "controparte": "Agenzia delle Entrate",
+   "descrizione": "F24 / tributi",
    "categoria": "B14_imposte",
    "metodo": "addebito",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "PAGAMENTO DELEGA F24",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0294",
    "data": "2026-05-18",
    "tipo": "uscita",
    "importo": 135,
-   "controparte": "(da E/C)",
-   "descrizione": "PAGAMENTO DELEGA F24",
+   "controparte": "Agenzia delle Entrate",
+   "descrizione": "F24 / tributi",
    "categoria": "B14_imposte",
    "metodo": "addebito",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "PAGAMENTO DELEGA F24",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0295",
    "data": "2026-05-18",
    "tipo": "uscita",
    "importo": 42.7,
-   "controparte": "(da E/C)",
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Maikii srl",
+   "descrizione": "Maikii srl saldo conferma d'ordine n.MK543387",
    "categoria": "B6_materie_prime",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0296",
@@ -5002,7 +5252,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0297",
@@ -5019,37 +5269,41 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0298",
    "data": "2026-05-20",
    "tipo": "entrata",
    "importo": 726.11,
-   "controparte": "(da E/C)",
-   "descrizione": "ACCREDITO BEU CON CONTABILE",
+   "controparte": "GIAMI IMPIANTI DI CALEMMA GIOVANNI BENEF.: NE",
+   "descrizione": "Accredito/incasso cliente",
    "categoria": "A1_ricavi",
    "metodo": "addebito",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0299",
    "data": "2026-05-22",
    "tipo": "uscita",
    "importo": 12.08,
-   "controparte": "(da E/C)",
-   "descrizione": "PAGAMENTO POS",
+   "controparte": "Wwwarubait Bibbiena",
+   "descrizione": "Pagamento POS",
    "categoria": "B7_software_operativi",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0300",
@@ -5146,23 +5400,25 @@
    "data": "2026-05-28",
    "tipo": "uscita",
    "importo": 849.41,
-   "controparte": "(da E/C)",
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Marco Vurro",
+   "descrizione": "Marco Vurro Rimborso kilometrico mese maggio",
    "categoria": "B7_rimborsi_spese_soci",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0307",
    "data": "2026-05-28",
    "tipo": "uscita",
    "importo": 662,
-   "controparte": "Sajay Fernandez Espinosa",
-   "descrizione": "Stipendio netto",
+   "controparte": "Sajay Fernandez espinosa busta paga mese magg",
+   "descrizione": "Bonifico in uscita",
    "categoria": "B9_personale",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
@@ -5171,37 +5427,41 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0308",
    "data": "2026-05-28",
    "tipo": "uscita",
    "importo": 212.2,
-   "controparte": "(da E/C)",
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "Pluxee Italia Fattura n. VC26000393 del 13.04",
+   "descrizione": "Bonifico in uscita",
    "categoria": "B9_personale",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0309",
    "data": "2026-05-28",
    "tipo": "uscita",
    "importo": 97.6,
-   "controparte": "(da E/C)",
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "V consulting srl",
+   "descrizione": "V consulting srl Saldo fattura n.1553/00",
    "categoria": "B7_consulenza_lavoro",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0310",
@@ -5218,7 +5478,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0311",
@@ -5235,7 +5495,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0312",
@@ -5252,7 +5512,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0313",
@@ -5269,37 +5529,41 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0314",
    "data": "2026-05-28",
    "tipo": "entrata",
    "importo": 399,
-   "controparte": "(da E/C)",
-   "descrizione": "ACCREDITO BEU CON CONTABILE",
+   "controparte": "GIS PROFESSIONAL SERVICES - SOCIETA BENEF.: N",
+   "descrizione": "Accredito/incasso cliente",
    "categoria": "A1_ricavi",
    "metodo": "addebito",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0315",
    "data": "2026-05-29",
    "tipo": "uscita",
    "importo": 196.62,
-   "controparte": "(da E/C)",
-   "descrizione": "PAGAMENTO POS",
+   "controparte": "Alibabacom Luxembourg",
+   "descrizione": "Pagamento POS",
    "categoria": "B6_materie_prime",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "PAGAMENTO POS",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0316",
@@ -5316,7 +5580,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "PAGAMENTO ADUE",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0317",
@@ -5333,37 +5597,41 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COMMISSIONI E SPESE ADUE",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0318",
    "data": "2026-05-29",
    "tipo": "entrata",
    "importo": 1965.66,
-   "controparte": "(da E/C)",
-   "descrizione": "ACCREDITO BEU CON CONTABILE",
+   "controparte": "COSTRUZIONI VULPIO SOCIETA A RESPO BENEF.: NE",
+   "descrizione": "Accredito/incasso cliente",
    "categoria": "A1_ricavi",
    "metodo": "addebito",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "ACCREDITO BEU CON CONTABILE",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0319",
    "data": "2026-05-30",
    "tipo": "uscita",
    "importo": 522,
-   "controparte": "(da E/C)",
-   "descrizione": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "controparte": "MASCOLO dott. Pietro contabilita generale e I",
+   "descrizione": "Bonifico in uscita",
    "categoria": "B7_servizi",
    "metodo": "pos",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "Movimenti_Conto_30052026.xlsx"
+   "fonte": "Movimenti_Conto_30052026.xlsx",
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "fonteRiconciliazione": "auto-estesa-31052026"
   },
   {
    "id": "MOV-2026-0320",
@@ -5380,7 +5648,7 @@
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
-   "fonteRiconciliazione": "auto-sicuro-31052026"
+   "fonteRiconciliazione": "auto-estesa-31052026"
   }
  ],
  "fatture": [
