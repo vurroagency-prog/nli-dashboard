@@ -131,13 +131,16 @@
       var key = p.y + '-' + pad2(p.m);
       if (!byMonth[key]) byMonth[key] = { y: p.y, m: p.m, entrate: [], uscite: [] };
       var voce = (m.controparte || '') + (m.descrizione ? ' — ' + m.descrizione : '');
+      var cp = (m.controparte || '').trim();
+      var identificato = cp !== '' && cp !== '(da E/C)' && cp !== '-' && cp !== '(senza controparte)';
       var row = {
         data: ddmm(m.data),
         voce: voce.trim().replace(/^—\s*/, ''),
         voceBilancio: m.categoria || 'DA_VERIFICARE',
         importo: m.tipo === 'uscita' ? money(-Math.abs(m.importo)) : money(Math.abs(m.importo)),
-        note: m.riconciliato ? '✓ Ric.' : '',
+        anno: m.competenza ? String(m.competenza) : '',
         competenza: m.competenza ? String(m.competenza) : '',
+        daRiconciliare: !identificato,
         riconciliato: !!m.riconciliato,
         _v: Math.abs(m.importo)
       };

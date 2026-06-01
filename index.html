@@ -451,7 +451,7 @@
             else tot2026 += imp;
           });
           let html = '<div class="card month-card"><div class="month-header"><h3>' + esc(m.mese) + '</h3><div class="month-saldo" style="color:var(--green);">Incassi: ' + esc(m.totaleEntrate) + '</div></div>';
-          html += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Voce</th><th>Voce Bilancio</th><th>Importo</th><th>Note</th></tr></thead><tbody>';
+          html += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Voce</th><th>Voce Bilancio</th><th>Anno</th><th>Importo</th></tr></thead><tbody>';
           html += m.entrate.map(e => {
             const comp = e.competenza || '2026';
             let rowClass = '';
@@ -465,7 +465,8 @@
             } else if (comp === '2026') {
               badgeHtml = ' <span class="badge-competenza comp-2026">2026</span>';
             }
-            return '<tr' + rowClass + '><td><strong>' + esc(e.data) + '</strong></td><td>' + esc(e.voce) + '</td><td>' + esc(e.voceBilancio) + '</td><td class="importo">' + esc(e.importo) + badgeHtml + '</td><td>' + esc(e.note) + '</td></tr>';
+            var ricBadge = e.daRiconciliare ? ' <span class="badge-competenza" style="background:rgba(124,92,255,0.16);color:#9d86ff;">da riconciliare</span>' : '';
+            return '<tr' + rowClass + '><td><strong>' + esc(e.data) + '</strong></td><td>' + esc(e.voce) + ricBadge + '</td><td>' + esc(e.voceBilancio) + '</td><td>' + badgeHtml + '</td><td class="importo">' + esc(e.importo) + '</td></tr>';
           }).join('');
           html += '</tbody></table></div>';
           html += '<div class="totals-row"><span>Totale incassi: <span class="val" style="color:var(--green);">' + esc(m.totaleEntrate) + '</span></span></div>';
@@ -493,8 +494,12 @@
           const ebitdaVal = m.ebitda || '—';
           const ebitdaColor = ebitdaVal.includes('−') ? 'var(--red)' : (ebitdaVal === '—' ? 'var(--text-dim)' : 'var(--green)');
           let html = '<div class="card month-card"><div class="month-header"><h3>' + esc(m.mese) + '</h3><div class="month-saldo" style="color:var(--red);">Totale: ' + esc(m.totaleUscite) + ' <span style="margin-left:12px;color:' + ebitdaColor + '">EBITDA: ' + esc(ebitdaVal) + '</span></div></div>';
-          html += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Voce</th><th>Voce Bilancio</th><th>Importo</th><th>Note</th></tr></thead><tbody>';
-          html += m.uscite.map(e => '<tr><td><strong>' + esc(e.data) + '</strong></td><td>' + esc(e.voce) + '</td><td>' + esc(e.voceBilancio) + '</td><td class="importo">' + esc(e.importo) + '</td><td>' + esc(e.note) + '</td></tr>').join('');
+          html += '<div class="table-wrap"><table><thead><tr><th>Data</th><th>Voce</th><th>Voce Bilancio</th><th>Anno</th><th>Importo</th></tr></thead><tbody>';
+          html += m.uscite.map(e => {
+            var annoBadge = e.anno ? '<span class="badge-competenza comp-' + (e.anno === '2025' ? '2025' : (e.anno === '2026' ? '2026' : 'verify')) + '">' + esc(e.anno) + '</span>' : '';
+            var ricBadge = e.daRiconciliare ? ' <span class="badge-competenza" style="background:rgba(124,92,255,0.16);color:#9d86ff;">da riconciliare</span>' : '';
+            return '<tr><td><strong>' + esc(e.data) + '</strong></td><td>' + esc(e.voce) + ricBadge + '</td><td>' + esc(e.voceBilancio) + '</td><td>' + annoBadge + '</td><td class="importo">' + esc(e.importo) + '</td></tr>';
+          }).join('');
           html += '</tbody></table></div>';
           html += '<div class="totals-row"><span>Totale uscite: <span class="val" style="color:var(--red);">' + esc(m.totaleUscite) + '</span></span></div>';
           html += '</div>';
