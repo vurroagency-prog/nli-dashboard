@@ -685,13 +685,29 @@
     var sTasse = round2(sIrpef + sAddiz);
     var sNetto = round2(quota - sTasse + sajayDip);
 
+    // TAX RATE a regola d'arte: il costo fiscale ATTRIBUIBILE all'utile.
+    // Per Sajay si esclude l'IRPEF che pagherebbe COMUNQUE sullo stipendio (carico marginale).
+    var sajayTasseStipendio = round2(irpef(sajayDip) + sajayDip * addiz);
+    var sajayCaricoUtile = round2(sTasse - sajayTasseStipendio);
+    var caricoUtile = round2(irapImporto + mTasse + sajayCaricoUtile); // Marco: tutto (no altri redditi)
+    var taxRate = utileAnte > 0 ? round2(caricoUtile / utileAnte * 100) / 100 : null;
+    var utileNettoFamiglia = round2(utileAnte - caricoUtile);
+
     var totaleCarico = round2(irapImporto + mTasse + sTasse);
     return {
       utileNegativo: utileAnte <= 0,
       utileAnteImposte: utileAnte,
       baseImponibileIRAP: baseIRAP,
       totaleCaricofiscale: totaleCarico,
-      percentualeSuUtile: utileAnte > 0 ? round2(totaleCarico / utileAnte * 100) / 100 : null,
+      percentualeSuUtile: taxRate,
+      famiglia: {
+        fatturatoNetto: utileAnte,
+        caricoUtile: caricoUtile,         // tasse attribuibili all'utile (no IRPEF stipendio Sajay)
+        utileNetto: utileNettoFamiglia,   // quanto resta in famiglia dall'utile
+        taxRate: taxRate,
+        sajayTasseStipendio: sajayTasseStipendio,
+        totaleCaricoConStipendio: totaleCarico
+      },
       irap: { importo: irapImporto, aliquota: p.aliquotaIRAP || 0.039 },
       marco: {
         redditoImponibile: round2(mReddito), irpef: mIrpef, addizionali: mAddiz,
