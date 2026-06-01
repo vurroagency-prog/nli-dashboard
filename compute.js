@@ -827,6 +827,151 @@
     return { ricavi2025: r2025, ricavi2026: r2026, variazionePct: pct, label: 'YoY Gen-' + MESI_ABBR[ultimoMese - 1] };
   }
 
+  // ========================================================== PARTITARIO F/C
+  // Anagrafica fornitori/clienti DERIVATA dalle fatture (chiave = P.IVA, fallback
+  // sul nome). Gli override manuali (nome pulito, merge alias, categoria, codice)
+  // vivono in reg.controparti[] e si applicano qui. Per ogni controparte:
+  // Fatturato / Pagato / Aperto, dedotti dallo stato pagamento delle fatture.
+  function normNome(s) { return String(s || '').trim().toUpperCase().replace(/\s+/g, ' '); }
+  function chiaveControparte(f) { return (f.partitaIva && String(f.partitaIva).trim()) || normNome(f.controparte) || '?'; }
+
+  function calcPartitario(reg) {
+    var overrides = reg.controparti || [];
+    var aliasMap = {}, ovByKey = {};
+    overrides.forEach(function (o) {
+      var k = String(o.chiave || '').trim(); if (!k) return;
+      ovByKey[k] = o;
+      (o.alias || []).forEach(function (a) { aliasMap[String(a).trim()] = k; aliasMap[normNome(a)] = k; });
+    });
+    function canon(k) { return aliasMap[k] || k; }
+
+    var acc = {};
+    (reg.fatture || []).forEach(function (f) {
+      var dirz = f.direzione; if (dirz !== 'acquisto' && dirz !== 'vendita') return;
+      var k = canon(chiaveControparte(f));
+      var a = acc[k] || (acc[k] = {
+        chiave: k, partitaIva: f.partitaIva || '', nomi: {}, dir: {},
+        fatturatoForn: 0, pagatoForn: 0, fatturatoCli: 0, incassatoCli: 0, fatture: []
+      });
+      if (f.partitaIva && !a.partitaIva) a.partitaIva = f.partitaIva;
+      var nm = String(f.controparte || '').trim(); if (nm) a.nomi[nm] = (a.nomi[nm] || 0) + 1;
+      var seg = f.tipoDocumento === 'nota_credito' ? -1 : 1;
+      var tot = seg * (f.importoTotale || 0);
+      var pag = f.pagamento || {};
+      var pagata = pag.stato === 'pagata' || pag.stato === 'pagato' || !!pag.movimentoId;
+      if (dirz === 'acquisto') { a.dir.forn = 1; a.fatturatoForn += tot; if (pagata) a.pagatoForn += tot; }
+      else { a.dir.cli = 1; a.fatturatoCli += tot; if (pagata) a.incassatoCli += tot; }
+      a.fatture.push({ id: f.id, data: f.data, direzione: dirz, importo: round2(tot), stato: pagata ? 'pagata' : (pag.stato || 'aperta'), nc: f.tipoDocumento === 'nota_credito' });
+    });
+
+    function buildList(which) {
+      var isForn = which === 'fornitori';
+      var out = [];
+      Object.keys(acc).forEach(function (k) {
+        var a = acc[k]; if (!a.dir[isForn ? 'forn' : 'cli']) return;
+        var ov = ovByKey[k] || {};
+        var nomeFreq = Object.keys(a.nomi).sort(function (x, y) { return a.nomi[y] - a.nomi[x]; })[0] || a.chiave;
+        var alias = Object.keys(a.nomi).filter(function (n) { return n !== nomeFreq; });
+        var fatt = isForn ? a.fatturatoForn : a.fatturatoCli;
+        var pag = isForn ? a.pagatoForn : a.incassatoCli;
+        var aperto = round2(fatt - pag);
+        var fatts = a.fatture.filter(function (x) { return x.direzione === (isForn ? 'acquisto' : 'vendita'); })
+                             .sort(function (x, y) { return x.data < y.data ? 1 : -1; });
+        out.push({
+          chiave: k, codice: ov.codice || '',
+          ragioneSociale: ov.ragioneSociale || nomeFreq,
+          partitaIva: a.partitaIva || '',
+          tipo: (a.dir.forn && a.dir.cli) ? 'entrambi' : (isForn ? 'fornitore' : 'cliente'),
+          categoriaDefault: ov.categoriaDefault || '', note: ov.note || '',
+          nFatture: fatts.length,
+          fatturato: round2(fatt), pagato: round2(pag), aperto: aperto,
+          fatturatoFmt: money(round2(fatt)), pagatoFmt: money(round2(pag)), apertoFmt: money(aperto),
+          daSistemare: !ovByKey[k] && alias.length > 0,
+          alias: alias, fatture: fatts
+        });
+      });
+      return out.sort(function (x, y) { return y.fatturato - x.fatturato; });
+    }
+
+    var fornitori = buildList('fornitori'), clienti = buildList('clienti');
+    function tot(list, campo) { return round2(list.reduce(function (s, r) { return s + r[campo]; }, 0)); }
+    return {
+      fornitori: fornitori, clienti: clienti,
+      totali: {
+        fornitori: { n: fornitori.length, fatturato: money(tot(fornitori, 'fatturato')), pagato: money(tot(fornitori, 'pagato')), aperto: money(tot(fornitori, 'aperto')) },
+        clienti: { n: clienti.length, fatturato: money(tot(clienti, 'fatturato')), incassato: money(tot(clienti, 'pagato')), aperto: money(tot(clienti, 'aperto')) }
+      }
+    };
+  }
+
+  // ========================================================= RICONCILIAZIONE
+  // Espone fatture (aperte/collegate) e movimenti di pagamento, per abbinarli.
+  // Flusso: si parte dalle FATTURE APERTE (poche) e si abbina il movimento che
+  // le paga; un movimento puo' coprire piu' fatture (fattureCollegate[]).
+  function fattAperta(f) { var p = f.pagamento || {}; return !(p.stato === 'pagata' || p.stato === 'pagato' || p.movimentoId); }
+  function calcRiconciliazione(reg) {
+    var fatture = (reg.fatture || []).filter(function (f) { return f.direzione === 'acquisto' || f.direzione === 'vendita'; }).map(function (f) {
+      var nc = f.tipoDocumento === 'nota_credito';
+      return {
+        id: f.id, direzione: f.direzione, controparte: f.controparte || '', partitaIva: f.partitaIva || '',
+        data: f.data, importo: round2((nc ? -1 : 1) * (f.importoTotale || 0)), importoFmt: money(round2((nc ? -1 : 1) * (f.importoTotale || 0))),
+        nc: nc, aperta: fattAperta(f), movimentoId: (f.pagamento || {}).movimentoId || ''
+      };
+    });
+    var movimenti = movBanca(reg).filter(function (m) { return m.tipo === 'uscita' || m.tipo === 'entrata'; }).map(function (m) {
+      return {
+        id: m.id, data: m.data, tipo: m.tipo, controparte: m.controparte || '',
+        importo: round2(Math.abs(m.importo)), importoFmt: money(round2(Math.abs(m.importo))),
+        descrizione: m.descrizione || m.descrizioneBanca || '', fattureCollegate: (m.fattureCollegate || []).slice()
+      };
+    });
+    var aperte = fatture.filter(function (f) { return f.aperta; });
+    return {
+      fatture: fatture, movimenti: movimenti,
+      conta: { aperte: aperte.length, aperteAcquisto: aperte.filter(function (f) { return f.direzione === 'acquisto'; }).length, aperteVendita: aperte.filter(function (f) { return f.direzione === 'vendita'; }).length }
+    };
+  }
+
+  // ========================================================= COSTI RICORRENTI
+  // Normalizza scadenzeRicorrenti per la gestione e il previsionale.
+  // mensilizzato = importo riportato a mese secondo la frequenza (annuale=/12, trimestrale=/3).
+  var FREQ_FATTORE = { mensile: 1, bimestrale: 1 / 2, trimestrale: 1 / 3, semestrale: 1 / 6, annuale: 1 / 12 };
+  function calcCostiRicorrenti(reg) {
+    var lista = (reg.scadenzeRicorrenti || []).map(function (r) {
+      var freq = r.frequenza || 'mensile';
+      var imp = (typeof r.importo === 'number') ? r.importo : null;
+      var fatt = FREQ_FATTORE[freq] != null ? FREQ_FATTORE[freq] : 1;
+      var mensile = (imp != null) ? round2(imp * fatt) : null;
+      return {
+        id: r.id, tipo: r.tipo || '', descrizione: r.descrizione || r.tipo || r.beneficiario || '(senza nome)',
+        beneficiario: r.beneficiario || '', importo: imp, importoFmt: imp != null ? money(imp) : '—',
+        frequenza: freq, categoria: r.categoria || '', attiva: r.attiva !== false,
+        mensilizzato: mensile, mensilizzatoFmt: mensile != null ? money(mensile) : '—',
+        inizioValidita: r.inizioValidita || '', fineValidita: r.fineValidita || '',
+        note: r.note || '', variabile: imp == null
+      };
+    });
+    var attiviFissi = lista.filter(function (x) { return x.attiva && x.mensilizzato != null; });
+    var totMensile = round2(attiviFissi.reduce(function (s, x) { return s + x.mensilizzato; }, 0));
+    return {
+      lista: lista, totaleMensile: totMensile, totaleMensileFmt: money(totMensile),
+      totaleAnnuo: round2(totMensile * 12), totaleAnnuoFmt: money(round2(totMensile * 12)),
+      nAttivi: attiviFissi.length, nVariabili: lista.filter(function (x) { return x.attiva && x.variabile; }).length,
+      nDisattivi: lista.filter(function (x) { return !x.attiva; }).length
+    };
+  }
+  // costi fissi ricorrenti attivi e validi nel mese (anno-m), riportati a mese
+  function fissiMese(reg, anno, m) {
+    var mISO = anno + '-' + pad2(m);
+    return round2((reg.scadenzeRicorrenti || []).reduce(function (s, r) {
+      if (r.attiva === false || typeof r.importo !== 'number') return s;
+      if (r.inizioValidita && String(r.inizioValidita).slice(0, 7) > mISO) return s;
+      if (r.fineValidita && String(r.fineValidita).slice(0, 7) < mISO) return s;
+      var fatt = FREQ_FATTORE[r.frequenza || 'mensile']; if (fatt == null) fatt = 1;
+      return s + r.importo * fatt;
+    }, 0));
+  }
+
   // ============================================================ BUILD COMPLETO
   function buildDashboardData(reg, statics) {
     statics = statics || {};
@@ -858,6 +1003,7 @@
       alert: statics.alert || [],
       previsionale: calcPrevisionaleFuturo(reg, statics, forecast),
       forecastCassa: forecast,
+      partitario: calcPartitario(reg),
       storico: yoyLive(reg, statics)
     };
   }
@@ -888,8 +1034,8 @@
     });
     // uscita operativa RICORRENTE media: ultimi 3 mesi reali, ESCLUSE le voci
     // straordinarie/una-tantum (distribuzione utili, rimborsi/anticipi soci, da verificare)
-    // che gonfierebbero la stima. Le tasse periodiche grosse si aggiungono via scadMese.
-    var STRAORD = /distribuzione_utili|STR_strao|anticipazione_socio|rimborsi_spese_soci|DA_VERIFICARE/i;
+    // E le imposte/F24 (che si aggiungono SOLO via scadMese, sennò sarebbero contate due volte).
+    var STRAORD = /distribuzione_utili|STR_strao|anticipazione_socio|rimborsi_spese_soci|DA_VERIFICARE|B14_imposte|TRIB_debiti/i;
     var uscOp = {};
     movBanca(reg).forEach(function (m) {
       if (m.tipo !== 'uscita' || STRAORD.test(m.categoria || '')) return;
@@ -898,6 +1044,13 @@
     var regime = [];
     for (var k = Math.max(2, ultimoReale - 2); k <= ultimoReale; k++) if (uscOp[k]) regime.push(uscOp[k]);
     var usciteMedia = regime.length ? round2(regime.reduce(function (a, b) { return a + b; }, 0) / regime.length) : 5000;
+    // costi fissi ricorrenti gia' censiti da Marco (mensilizzati). Cio' che la media
+    // reale ha in piu' = costi operativi NON ancora dettagliati: cala man mano che
+    // i ricorrenti vengono censiti, cosi' la stima non sotto/sovra-stima.
+    var fissiTot = calcCostiRicorrenti(reg).totaleMensile;
+    var altriCosti = round2(Math.max(0, usciteMedia - fissiTot)); // fallback se manca lo storico merce
+    // costi variabili (merce/fornitori) STAGIONALI: media dello stesso mese 2024-2025
+    var variabili = (statics && statics.mediaMensileCostiMerce) || [];
     function scadMese(m) {
       return round2((reg.scadenze || []).filter(function (s) {
         if (!isISO(s.data) || typeof s.importo !== 'number') return false;
@@ -910,7 +1063,7 @@
     for (var m = 1; m <= 12; m++) {
       var inc, usc;
       if (m <= ultimoReale) { inc = realiInc[m] || 0; usc = realiUsc[m] || 0; }
-      else { inc = media[m - 1] || 0; usc = round2(usciteMedia + scadMese(m)); }
+      else { inc = media[m - 1] || 0; var varM = (variabili[m - 1] != null) ? variabili[m - 1] : altriCosti; usc = round2(fissiMese(reg, anno, m) + varM + scadMese(m)); }
       var fine = round2(prev + inc - usc);
       labels.push(MESI_ABBR[m - 1]); incassi.push(Math.round(inc)); uscite.push(Math.round(usc)); saldo.push(Math.round(fine));
       prev = fine;
@@ -920,7 +1073,7 @@
     for (var i = 0; i < 12; i++) if (saldo[i] < 0) { meseZero = MESI[i]; break; }
     return {
       titolo: 'Previsione Cassa ' + anno,
-      nota: 'Reale gen→' + MESI_ABBR[ultimoReale - 1] + ' (estratti conto ufficiali). Da ' + (MESI_ABBR[ultimoReale] || 'fine anno') + ': incassi = MEDIA fatturato 2023-2025 netto SiliconDev, uscite = media costi mesi a regime + scadenze. Calcolato dal vivo.',
+      nota: 'Reale gen→' + MESI_ABBR[ultimoReale - 1] + ' (estratti conto ufficiali). Da ' + (MESI_ABBR[ultimoReale] || 'fine anno') + ': incassi = MEDIA fatturato 2023-2025 netto clienti consulenza; uscite = costi fissi ricorrenti (da te definiti) + costi merce stagionali (media stesso mese 2024-2025) + scadenze fiscali del mese. Imposte non più contate due volte. Calcolato dal vivo.',
       realCount: ultimoReale,
       labels: labels, incassi: incassi, uscite: uscite, saldo: saldo,
       kpi: {
@@ -941,16 +1094,23 @@
     var anno = (reg.meta && reg.meta.annoFiscale) || 2026;
     var oggi = new Date();
     var startM = (oggi.getFullYear() > anno) ? 13 : (oggi.getFullYear() < anno ? 1 : oggi.getMonth() + 1);
-    var ricorrenti = (reg.scadenzeRicorrenti || []).filter(function (r) { return r.attiva && typeof r.importo === 'number' && r.importo > 0; });
+    // i costi fissi del mese sono calcolati nel loop (validità + mensilizzazione per frequenza)
     var out = [];
     for (var m = startM; m <= 12; m++) {
       var idx = m - 1;
       var voci = [];
       var certe = 0;
-      // ricorrenti certe (affitto, stipendio)
-      ricorrenti.forEach(function (r) {
-        voci.push({ voce: r.descrizione || r.beneficiario || r.tipo, tipo: 'uscita', importo: money(r.importo), certezza: 'certo' });
-        certe += r.importo;
+      // costi fissi ricorrenti attivi e validi questo mese (mensilizzati per frequenza)
+      var mISO = anno + '-' + pad2(m);
+      (reg.scadenzeRicorrenti || []).forEach(function (r) {
+        if (r.attiva === false || typeof r.importo !== 'number' || r.importo <= 0) return;
+        if (r.inizioValidita && String(r.inizioValidita).slice(0, 7) > mISO) return;
+        if (r.fineValidita && String(r.fineValidita).slice(0, 7) < mISO) return;
+        var fatt = FREQ_FATTORE[r.frequenza || 'mensile']; if (fatt == null) fatt = 1;
+        var q = round2(r.importo * fatt);
+        var etich = (r.descrizione || r.beneficiario || r.tipo) + ((r.frequenza && r.frequenza !== 'mensile') ? ' (quota mens.)' : '');
+        voci.push({ voce: etich, tipo: 'uscita', importo: money(q), certezza: 'certo' });
+        certe += q;
       });
       // scadenze puntuali del mese (INPS/INAIL/IVA/F24)
       (reg.scadenze || []).forEach(function (s) {
@@ -962,7 +1122,7 @@
       });
       // altri costi operativi stimati (per quadrare col forecast)
       var altri = round2((usc[idx] || 0) - certe);
-      if (altri > 1) voci.push({ voce: 'Altri costi operativi (software, fornitori, F24)', tipo: 'uscita', importo: money(altri), certezza: 'stimato' });
+      if (altri > 1) voci.push({ voce: 'Altri costi operativi non ancora dettagliati', tipo: 'uscita', importo: money(altri), certezza: 'stimato' });
       // incassi attesi
       if ((inc[idx] || 0) > 0) voci.push({ voce: 'Incassi attesi (proforma + manutenzioni a rate)', tipo: 'entrata', importo: money(inc[idx]), certezza: 'stimato' });
       out.push({
@@ -987,6 +1147,6 @@
     gruppoDi: gruppoDi,
     parseEuro: parseEuro,
     // esposte per il gate / debug
-    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze }
+    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti }
   };
 });
