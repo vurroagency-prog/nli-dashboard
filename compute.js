@@ -1210,16 +1210,22 @@
     ordini.forEach(function (o) {
       if (isEscluso(o) || o.stato === 'annullato') return;
       var y = (o.data || '').slice(0, 4); if (!y) return;
-      var a = perAnnoMap[y] || (perAnnoMap[y] = { count: 0, fatturato: 0, margine: 0 });
+      var a = perAnnoMap[y] || (perAnnoMap[y] = { count: 0, fatturato: 0, margine: 0, fatturatoMarg: 0, senzaMargine: 0 });
       a.count++;
       a.fatturato += (o.vendita && o.vendita.fatturatoNetto) || 0;
-      if (typeof o.margineContribuzione === 'number') a.margine += o.margineContribuzione;
+      // marginePerc coerente: il % si calcola SOLO sul fatturato degli ordini che hanno un
+      // margine calcolato (gli ordini solo-sito senza costo sviluppo Luca restano "incompleti"
+      // e non gonfiano la percentuale). senzaMargine = quanti ordini aspettano il costo.
+      if (typeof o.margineContribuzione === 'number') {
+        a.margine += o.margineContribuzione;
+        a.fatturatoMarg += (o.vendita && o.vendita.fatturatoNetto) || 0;
+      } else { a.senzaMargine++; }
     });
     var perAnno = Object.keys(perAnnoMap).sort().map(function (y) {
       var a = perAnnoMap[y];
       return { anno: y, count: a.count, fatturato: round2(a.fatturato), fatturatoFmt: money(a.fatturato),
-        margine: round2(a.margine), margineFmt: money(a.margine),
-        marginePerc: a.fatturato > 0 ? Math.round(a.margine / a.fatturato * 100) : null };
+        margine: round2(a.margine), margineFmt: money(a.margine), senzaMargine: a.senzaMargine,
+        marginePerc: a.fatturatoMarg > 0 ? Math.round(a.margine / a.fatturatoMarg * 100) : null };
     });
 
     var STATO = { incassato: { label: 'Pagato', cls: 'ok' }, parziale: { label: 'In parte', cls: 'warn' }, aperto: { label: 'Da incassare', cls: 'open' }, annullato: { label: 'Annullato', cls: 'cancelled' } };

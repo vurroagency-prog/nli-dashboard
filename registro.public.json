@@ -7,6 +7,7 @@
   "annoFiscale": 2026,
   "note": "Importati 0 movimenti e 16 fatture marzo-aprile",
   "ultimaRegistrazioneMaggio": "2026-05-30: saldo + IVA Q1 ufficiale. Movimenti riga-per-riga NON importati (PDF E/C non parsabile in modo affidabile - serve export CSV/Excel dal portale Intesa).",
+  "notaCosti2026": "Costi 2026 = job costing: COGS reale da match codice articolo<->fattura fornitore (Rossini/Siggi/Maikii); fallback markup ufficiale NL per Roly/esteri (no fattura SDI). Stampa/ricamo/trasporto/SDD a costo=addebito (markup uff. 1x). Grafica=foglio Dani x60E/h. Ordini solo-sito: margine non calcolato (manca compenso Luca).",
   "versionePubblica": "sanitizzata per pubblicazione (no IBAN/CF/P.IVA/redditi soci/paghe)"
  },
  "conti": [
@@ -9476,6 +9477,41 @@
    "id": "DM-2026-rimkmapr-saldo",
    "campo": "rimborsi.RIM-2026-0004.saldo",
    "nota": "KM aprile: pagato €847,38 vs dovuto €856,07. Differenza €8,69 ancora da saldare a Marco Vurro (RIM-2026-0004)."
+  },
+  {
+   "tipo": "costo_ordine",
+   "ordine": "ORD-2026-0001",
+   "descrizione": "Compenso Luca/sviluppo sito ordine ORD-2026-0001 (SPLENDOR S.R.L.)",
+   "stato": "aperto"
+  },
+  {
+   "tipo": "costo_ordine",
+   "ordine": "ORD-2026-0002",
+   "descrizione": "Compenso Luca/sviluppo sito ordine ORD-2026-0002 (Gima Costruzioni s.r.l.)",
+   "stato": "aperto"
+  },
+  {
+   "tipo": "costo_ordine",
+   "ordine": "ORD-2026-0003",
+   "descrizione": "Compenso Luca/sviluppo sito ordine ORD-2026-0003 (Gima Costruzioni s.r.l.)",
+   "stato": "aperto"
+  },
+  {
+   "tipo": "costo_ordine",
+   "ordine": "ORD-2026-0018",
+   "descrizione": "Compenso Luca/sviluppo sito ordine ORD-2026-0018 (EMMETI IMPIANTI S.A.S. DI)",
+   "stato": "aperto"
+  },
+  {
+   "tipo": "costo_ordine",
+   "ordine": "ORD-2026-0019",
+   "descrizione": "Compenso Luca/sviluppo sito ordine ORD-2026-0019 (ANGELILLO IMPIANTI S.N.C.)",
+   "stato": "aperto"
+  },
+  {
+   "tipo": "fonte_costi",
+   "descrizione": "Listino/PDF fornitore Roly (GOR Factory, estero fuori SDI) per costo merce reale RY/RR",
+   "stato": "aperto"
   }
  ],
  "iva": {
