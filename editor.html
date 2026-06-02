@@ -72,13 +72,15 @@
   .savebar .msg b { color:var(--edit); }
   .file-fallback { background:var(--surface); border:1px dashed var(--amber); border-radius:12px; padding:22px; text-align:center; margin-bottom:20px; }
   .file-fallback input[type=file] { margin-top:10px; color:var(--text-dim); }
+
+  .eic { width:1em; height:1em; vertical-align:-0.14em; display:inline-block; }
 </style>
 </head>
 <body>
 
 <div id="login-screen">
   <div class="login-box">
-    <h1>🔧 Correttore causali</h1>
+    <h1><svg class="eic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Correttore causali</h1>
     <div class="login-sub">Next Level Italia — area riservata soci</div>
     <input type="password" id="pwd" placeholder="Password" autofocus>
     <button onclick="doLogin()">Entra</button>
@@ -88,7 +90,7 @@
 
 <div class="topbar">
   <div>
-    <h1>🔧 Correggi le causali dei movimenti</h1>
+    <h1><svg class="eic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Correggi le causali dei movimenti</h1>
     <div class="sub" id="sub-info">Caricamento…</div>
   </div>
   <a href="index.html">← Torna alla dashboard</a>
@@ -103,7 +105,7 @@
       <li>Premi <b>"Scarica registro aggiornato"</b> in basso: scarica un file <code>registro.json</code>.</li>
       <li>Sostituisci il vecchio <code>registro.json</code> nella cartella del progetto con quello scaricato, poi fai il <b>commit</b>. La dashboard si ricalcola da sola.</li>
     </ol>
-    <div class="calm">😌 Tranquilla/o: qui <b>non si rompe niente</b>. Finché non scarichi il file e non fai il commit, non cambia assolutamente nulla. Puoi solo cambiare la <b>categoria</b> (la causale) di un movimento e, se serve, l'anno di competenza. Importi, date e saldi NON si toccano.</div>
+    <div class="calm"><svg class="eic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/></svg> Tranquilla/o: qui <b>non si rompe niente</b>. Finché non scarichi il file e non fai il commit, non cambia assolutamente nulla. Puoi solo cambiare la <b>categoria</b> (la causale) di un movimento e, se serve, l'anno di competenza. Importi, date e saldi NON si toccano.</div>
   </div>
 
   <div id="file-fallback" class="file-fallback" style="display:none;">
@@ -114,14 +116,14 @@
 
   <div id="ui" style="display:none;">
     <div class="toolbar">
-      <input type="text" id="search" placeholder="🔍 Cerca per controparte o descrizione…">
+      <input type="text" id="search" placeholder="Cerca per controparte o descrizione…">
       <select id="filter-mese"><option value="">Tutti i mesi</option></select>
       <select id="filter-tipo">
         <option value="">Entrate + uscite</option>
         <option value="entrata">Solo entrate</option>
         <option value="uscita">Solo uscite</option>
       </select>
-      <label class="chk"><input type="checkbox" id="filter-ver"> Solo da verificare ⚠</label>
+      <label class="chk"><input type="checkbox" id="filter-ver"> Solo da verificare <svg class="eic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></label>
       <div class="spacer"></div>
       <div class="counter" id="counter">0 movimenti</div>
     </div>
@@ -188,7 +190,7 @@ function onFile(ev){
 function setup(){
   // protezione: mai modificare/salvare la versione pubblica sanitizzata
   if(registro.meta && registro.meta.versionePubblica){
-    alert('⚠ Hai aperto la versione PUBBLICA (sanitizzata) del registro.\n\nNon va corretta qui: ti mancano dati e rischieresti di sovrascrivere quello vero.\n\nSeleziona il file registro.json COMPLETO dalla cartella del progetto.');
+    alert('Hai aperto la versione PUBBLICA (sanitizzata) del registro.\n\nNon va corretta qui: ti mancano dati e rischieresti di sovrascrivere quello vero.\n\nSeleziona il file registro.json COMPLETO dalla cartella del progetto.');
     registro=null;
     document.getElementById('file-fallback').style.display='block';
     document.getElementById('ui').style.display='none';
@@ -280,7 +282,7 @@ function scarica(){
   const blob=new Blob([JSON.stringify(registro,null,2)],{type:'application/json'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='registro.json'; a.click();
   setTimeout(()=>URL.revokeObjectURL(a.href),2000);
-  alert('✅ Scaricato registro.json con '+edits.length+' '+(edits.length===1?'correzione':'correzioni')+'.\n\nOra: sostituisci il vecchio registro.json nella cartella del progetto con questo, poi fai il commit. La dashboard si aggiorna da sola.');
+  alert('Scaricato registro.json con '+edits.length+' '+(edits.length===1?'correzione':'correzioni')+'.\n\nOra: sostituisci il vecchio registro.json nella cartella del progetto con questo, poi fai il commit. La dashboard si aggiorna da sola.');
 }
 </script>
 </body>
