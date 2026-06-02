@@ -1064,7 +1064,7 @@
     //      (registro.portafoglioOrdini.perMese, derivate dai Payments Danea con Paid=false e data futura)
     //  (2) nuovi ordini stimati = MEDIA storica del mese MENO la quota gia a portafoglio
     //      (se il portafoglio supera la media -> stima 0, vince il dato certo).
-    var portMese = (reg.portafoglioOrdini && reg.portafoglioOrdini.perMese) || {};
+    var portMese = calcPortafoglioPerMese(reg).perMese || {};
     var labels = [], incassi = [], incassiCerti = [], incassiStimati = [], uscite = [], saldo = [], prev = saldoInizio;
     for (var m = 1; m <= 12; m++) {
       var inc, usc, certo = 0, stima = 0;
@@ -1094,7 +1094,7 @@
         meseSottoZero: meseZero || '—',
         venditeNecessarie: saldo[11] < 5000 ? Math.round(5000 - saldo[11]) : 0,
         incassiCertiResidui: Math.round(incassiCertiResidui),
-        portafoglioTotaleFuturo: Math.round((reg.portafoglioOrdini && reg.portafoglioOrdini.totaleRateCerte) || 0)
+        portafoglioTotaleFuturo: Math.round(calcPortafoglioPerMese(reg).totaleRateCerte || 0)
       }
     };
   }
@@ -1154,6 +1154,31 @@
     return out;
   }
 
+  // PORTAFOGLIO rate certe future: calcolato DAL VIVO dalle rate degli ordini
+  // (pagamento.rate con pagato=false e data futura), ESCLUSI gli ordini annullati.
+  // Fallback al snapshot reg.portafoglioOrdini quando reg.ordini non c'e' (versione
+  // pubblica sanitizzata). Cosi annullare/eliminare un ordine aggiorna subito il forecast.
+  function calcPortafoglioPerMese(reg) {
+    var today;
+    try { today = new Date().toISOString().slice(0, 10); } catch (e) { today = '2026-06-02'; }
+    if (reg.ordini && reg.ordini.length) {
+      var perMese = {}, tot = 0, n = 0, rate = [];
+      reg.ordini.forEach(function (o) {
+        if (o.stato === 'annullato') return;
+        var rr = (o.pagamento && o.pagamento.rate) || [];
+        rr.forEach(function (x) {
+          if (x.pagato || !x.data || x.data <= today) return;
+          var m = x.data.slice(0, 7);
+          perMese[m] = round2((perMese[m] || 0) + x.importo); tot += x.importo; n++;
+          rate.push({ cliente: o.cliente, data: x.data, importo: x.importo });
+        });
+      });
+      return { perMese: perMese, totaleRateCerte: round2(tot), numeroRate: n, rate: rate, fonte: 'live-da-ordini' };
+    }
+    var pf = reg.portafoglioOrdini || {};
+    return { perMese: pf.perMese || {}, totaleRateCerte: pf.totaleRateCerte || 0, numeroRate: pf.numeroRate || 0, rate: [], fonte: 'snapshot' };
+  }
+
   // ORDINI (proforma Danea consolidate): riepilogo per anno + lista 2026 con stato
   // incasso reale + portafoglio rate certe future. Read-only. Difensiva: se manca
   // reg.ordini (versione pubblica sanitizzata) ritorna struttura vuota.
@@ -1165,7 +1190,7 @@
 
     var perAnnoMap = {};
     ordini.forEach(function (o) {
-      if (isEscluso(o)) return;
+      if (isEscluso(o) || o.stato === 'annullato') return;
       var y = (o.data || '').slice(0, 4); if (!y) return;
       var a = perAnnoMap[y] || (perAnnoMap[y] = { count: 0, fatturato: 0, margine: 0 });
       a.count++;
@@ -1179,7 +1204,7 @@
         marginePerc: a.fatturato > 0 ? Math.round(a.margine / a.fatturato * 100) : null };
     });
 
-    var STATO = { incassato: { label: 'Pagato', cls: 'ok' }, parziale: { label: 'In parte', cls: 'warn' }, aperto: { label: 'Da incassare', cls: 'open' } };
+    var STATO = { incassato: { label: 'Pagato', cls: 'ok' }, parziale: { label: 'In parte', cls: 'warn' }, aperto: { label: 'Da incassare', cls: 'open' }, annullato: { label: 'Annullato', cls: 'cancelled' } };
     var ordini2026 = ordini.filter(function (o) { return (o.data || '').slice(0, 4) === '2026'; }).map(function (o) {
       var valore = (o.vendita && (o.vendita.totale || o.vendita.fatturatoNetto)) || 0;
       var ric = o.riconciliazione || null;
@@ -1187,22 +1212,21 @@
       var st = STATO[o.stato] || STATO.aperto;
       var label = st.label, cls = st.cls;
       var manca = Math.max(0, round2(valore - inc));
-      return { cliente: o.cliente, data: o.data, valore: round2(valore), valoreFmt: money(valore),
+      return { id: o.id, numProforma: o.numProforma, cliente: o.cliente, data: o.data, valore: round2(valore), valoreFmt: money(valore),
         stato: o.stato, statoLabel: label, statoCls: cls,
         incassato: round2(inc), incassatoFmt: inc > 0 ? money(inc) : '—',
         lag: ric ? ric.lagGiorni : null, manca: manca, mancaFmt: manca > 0 ? money(manca) : '—',
         nota: o.notaRiconciliazione || null };
     });
 
-    var pf = reg.portafoglioOrdini || {};
-    var perMese = pf.perMese || {};
+    var pfLive = calcPortafoglioPerMese(reg);
+    var perMese = pfLive.perMese || {};
     var mesiOrd = Object.keys(perMese).sort().map(function (k) {
       var mi = parseInt(k.split('-')[1], 10);
       return { mese: k, meseFmt: MESI_ABBR[mi - 1] + ' ' + k.split('-')[0], importo: perMese[k], importoFmt: money(perMese[k]) };
     });
-    var portafoglio = { totale: pf.totaleRateCerte || 0, totaleFmt: money(pf.totaleRateCerte || 0),
-      numeroRate: pf.numeroRate || 0, perMese: mesiOrd, nota: pf.nota || null,
-      batchDaSpacchettare: (pf.batchSddDaSpacchettare || []).length, notaBatch: pf.notaBatchCiechi || null };
+    var portafoglio = { totale: pfLive.totaleRateCerte || 0, totaleFmt: money(pfLive.totaleRateCerte || 0),
+      numeroRate: pfLive.numeroRate || 0, perMese: mesiOrd, nota: (reg.portafoglioOrdini || {}).nota || null };
 
     return { perAnno: perAnno, ordini2026: ordini2026, portafoglio: portafoglio, nessunDato: ordini.length === 0 };
   }
@@ -1218,6 +1242,6 @@
     gruppoDi: gruppoDi,
     parseEuro: parseEuro,
     // esposte per il gate / debug
-    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini }
+    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese }
   };
 });
