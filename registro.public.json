@@ -2,7 +2,7 @@
  "meta": {
   "versione": "1.0.0",
   "schema": "registro_contabile_nli",
-  "ultimoAggiornamento": "2026-06-01 (causali corrette da dashboard)",
+  "ultimoAggiornamento": "2026-06-02",
   "ragioneSociale": "NEXT LEVEL ITALIA S.A.S. DI VURRO MARCO",
   "annoFiscale": 2026,
   "note": "Importati 0 movimenti e 16 fatture marzo-aprile",
@@ -108,7 +108,8 @@
    "competenza": "2025",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "estratto_conto_gen_2026"
+   "fonte": "estratto_conto_gen_2026",
+   "esclusoBusiness": true
   },
   {
    "id": "MOV-2026-0003",
@@ -132,7 +133,6 @@
      "commissione": 1.3,
      "importoNetto": 1535.68,
      "causale": "Saldo Proforma n. 68 del 11/11/2025",
-     "email": "artigianscavisrl@libero.it",
      "competenza": "2025"
     },
     {
@@ -141,7 +141,6 @@
      "commissione": 1.3,
      "importoNetto": 590.18,
      "causale": "Saldo Proforma n. 74 del 19/11/2025",
-     "email": "cubicasas2018@gmail.com",
      "competenza": "2025"
     }
    ],
@@ -200,7 +199,6 @@
      "commissione": 1.3,
      "importoNetto": 1197.77,
      "causale": "Seconda rata Proforma n. 57 del 02/10/2025",
-     "email": "gdtechcorrado@gmail.com",
      "competenza": "2025"
     },
     {
@@ -209,7 +207,6 @@
      "commissione": 1.3,
      "importoNetto": 418.15,
      "causale": "Saldo Fattura n. 71 del 01/12/2025",
-     "email": "amministrazione@sdssrl.it",
      "competenza": "2025"
     },
     {
@@ -218,7 +215,6 @@
      "commissione": 1.3,
      "importoNetto": 186.22,
      "causale": "Acconto 30% Proforma n. 80 del 18/12/2025",
-     "email": "ecomondi@libero.it",
      "competenza": "2025"
     },
     {
@@ -227,7 +223,6 @@
      "commissione": 1.3,
      "importoNetto": 110.87,
      "causale": "Acconto 30% Proforma n. 81 del 18/12/2025",
-     "email": "sia.imp_costruz_srl@libero.it",
      "competenza": "2025"
     }
    ],
@@ -270,7 +265,6 @@
      "commissione": 1.3,
      "importoNetto": 208.18,
      "causale": "Rata manutenzione + sito Proforma n.29 e 30 del 06.05.2024",
-     "email": "fornitori@nextlevel-italia.com",
      "competenza": "2026"
     }
    ],
@@ -315,7 +309,6 @@
      "commissione": 1.3,
      "importoNetto": 707.64,
      "causale": "Acconto fattura proforma n.2 del 16/02/2026",
-     "email": "info@gimacostruzioni.com",
      "competenza": "2026"
     },
     {
@@ -324,7 +317,6 @@
      "commissione": 1.3,
      "importoNetto": 119.48,
      "causale": "24 mesi manutenzione sito sureness-srl.it — Proforma n.46 del 08/07/2024",
-     "email": "fornitori@nextlevel-italia.com",
      "competenza": "2026"
     },
     {
@@ -333,7 +325,6 @@
      "commissione": 1.3,
      "importoNetto": 119.48,
      "causale": "24 mesi manutenzione sito Emmetiimpianti.it — Proforma n.10 del 15/02/2024",
-     "email": "fornitori@nextlevel-italia.com",
      "competenza": "2026"
     },
     {
@@ -342,7 +333,6 @@
      "commissione": 1.3,
      "importoNetto": 45.42,
      "causale": "24 mesi manutenzione sito coisa-italia.it — Proforma n.2 del 16/01/2025",
-     "email": "amministrazione@coisa.it",
      "competenza": "2026"
     }
    ],
@@ -1029,7 +1019,19 @@
    "fattureCollegate": [],
    "fonte": "estratto_conto_feb_2026",
    "riferimentoTS": "TS-BIXB7T7PK4",
-   "note": "In attesa breakdown TS Payments per determinare competenza e dettaglio clienti"
+   "note": "Mono-cliente Tecno soluzioni (saldo pf69/2025). Spacchettato da TSPay charges 02/06.",
+   "dettaglioClienti": [
+    {
+     "cliente": "Tecno soluzioni di Iosca Saverio & C. s.a.s.",
+     "proformaNum": "69",
+     "proformaAnno": "2025",
+     "importoLordo": 1445.48,
+     "commissione": 1.3,
+     "importoNetto": 1444.18,
+     "causale": "Saldo Proforma n. 69 del 11.11.2025",
+     "competenza": "2025"
+    }
+   ]
   },
   {
    "id": "MOV-2026-0055",
@@ -1046,7 +1048,19 @@
    "fattureCollegate": [],
    "fonte": "estratto_conto_feb_2026",
    "riferimentoTS": "TS-BI3VU2F4ZQ",
-   "note": "In attesa breakdown TS Payments per determinare competenza e dettaglio clienti"
+   "note": "Mono-cliente De Giglio (acconto 30% pf5/2026). Spacchettato da TSPay charges 02/06.",
+   "dettaglioClienti": [
+    {
+     "cliente": "DE GIGLIO GIUSEPPE",
+     "proformaNum": "5",
+     "proformaAnno": "2026",
+     "importoLordo": 387.06,
+     "commissione": 1.3,
+     "importoNetto": 385.76,
+     "causale": "Acconto 30% Proforma n. 5 del 23.01.2026",
+     "competenza": "2026"
+    }
+   ]
   },
   {
    "id": "MOV-2026-0056",
@@ -1080,35 +1094,43 @@
    "riferimentoTS": "TS-BJAJMOWEDE",
    "dettaglioClienti": [
     {
-     "cliente": "GD Tech di Spezzacatena Corrado",
-     "proforma": "57 del 02/10/2025",
-     "causale": "3a rata",
-     "netto": 1097.86,
-     "competenza": "2025"
+     "cliente": "GD TECH DI SPEZZACATENA CORRADO",
+     "proformaNum": "57",
+     "proformaAnno": "2025",
+     "importoLordo": 1099.16,
+     "commissione": 1.3,
+     "importoNetto": 1097.86,
+     "causale": "Terza rata Proforma n. 57 del 02.10.2025"
     },
     {
-     "cliente": "Ecomondi",
-     "proforma": "80 del 18/12/2025",
-     "causale": "saldo",
-     "netto": 436.25,
-     "competenza": "2025"
+     "cliente": "ECOMONDI DI MESSINA COSTANTINLUCIO",
+     "proformaNum": "80",
+     "proformaAnno": "2025",
+     "importoLordo": 437.55,
+     "commissione": 1.3,
+     "importoNetto": 436.25,
+     "causale": "Saldo Proforma n. 80 del 18.12.2025"
     },
     {
-     "cliente": "Lavanderia NI.DA. srl",
-     "proforma": "79 del 11/12/2025",
-     "causale": "saldo",
-     "netto": 578.84,
-     "competenza": "2025"
+     "cliente": "LAVANDERIA NI.DA. S.R.L.",
+     "proformaNum": "79",
+     "proformaAnno": "2025",
+     "importoLordo": 580.14,
+     "commissione": 1.3,
+     "importoNetto": 578.84,
+     "causale": "Saldo proforma n.79 del 11.12.2025 Lavanderia NI.DA. srl"
     },
     {
-     "cliente": "Piesse srls",
-     "proforma": "6 del 04/02/2026",
-     "causale": "acconto 30%",
-     "netto": 395.52,
-     "competenza": "2026"
+     "cliente": "PIESSE S.R.L.S.",
+     "proformaNum": "6",
+     "proformaAnno": "2026",
+     "importoLordo": 396.82,
+     "commissione": 1.3,
+     "importoNetto": 395.52,
+     "causale": "Acconto Proforma n.6 del 04.02.26"
     }
    ],
-   "note": "Competenza mista: €2.112,95 su proforma 2025 (GD Tech + Ecomondi + Lavanderia NI.DA.), €395,52 su proforma 2026 (Piesse). Fonte: export CSV TS Pay feb 2026."
+   "note": "Spacchettato da TSPay transaction_period (fonte autorevole) 02/06. Sostituisce dettaglio a mano impreciso."
   },
   {
    "id": "MOV-2026-0058",
@@ -1157,36 +1179,43 @@
    "riferimentoTS": "TS-BJE5BM6FY4",
    "dettaglioClienti": [
     {
-     "cliente": "ArtigianLab srl",
-     "proforma": "29+30 del 06/05/2024",
-     "causale": "rata manutenzione+sito",
-     "netto": 208.18,
-     "competenza": "2024",
-     "note": "Proforma pluriennale 2024"
+     "cliente": "PROGETTO COSTRUIRE ARTIGIANLAB SOCIETA' A RESPONSABILITA' LIMITAT",
+     "proformaNum": "29",
+     "proformaAnno": "2024",
+     "importoLordo": 209.48,
+     "commissione": 1.3,
+     "importoNetto": 208.18,
+     "causale": "Rata manutenzione + sito Proforma n.29 e 30 del 06.05.2024 Progetto costruire artigianLab srl"
     },
     {
-     "cliente": "De Giglio Giuseppe",
-     "proforma": "5 del 23/01/2026",
-     "causale": "saldo",
-     "netto": 894.51,
-     "competenza": "2026"
+     "cliente": "DE GIGLIO GIUSEPPE",
+     "proformaNum": "5",
+     "proformaAnno": "2026",
+     "importoLordo": 895.81,
+     "commissione": 1.3,
+     "importoNetto": 894.51,
+     "causale": "Saldo Proforma n. 5 del 23.01.2026"
     },
     {
-     "cliente": "Emmetiimpianti.it",
-     "proforma": "10 del 15/02/2024",
-     "causale": "24 mesi manutenzione sito",
-     "netto": 119.48,
-     "competenza": "pluriennale_2024_2026"
+     "cliente": "(da verificare)",
+     "proformaNum": "10",
+     "proformaAnno": "2024",
+     "importoLordo": 120.78,
+     "commissione": 1.3,
+     "importoNetto": 119.48,
+     "causale": "Proforma n.10 del 15.02.2024"
     },
     {
-     "cliente": "Sureness srl",
-     "proforma": "46 del 08/07/2024",
-     "causale": "24 mesi manutenzione sito",
-     "netto": 119.48,
-     "competenza": "pluriennale_2024_2026"
+     "cliente": "SURENESS S.R.L.",
+     "proformaNum": "46",
+     "proformaAnno": "2024",
+     "importoLordo": 120.78,
+     "commissione": 1.3,
+     "importoNetto": 119.48,
+     "causale": "Proforma n. 46 del 08.07.2024"
     }
    ],
-   "note": "Competenza mista: €894,51 su 2026 (De Giglio), €208,18 su 2024 (ArtigianLab), €238,96 pluriennale 2024-2026 (Emmeti+Sureness — valutare risconti). Fonte: export CSV TS Pay feb 2026."
+   "note": "Spacchettato da TSPay transaction_period (fonte autorevole) 02/06. Sostituisce dettaglio a mano impreciso."
   },
   {
    "id": "MOV-2026-0061",
@@ -1218,7 +1247,8 @@
    "competenza": "2025",
    "riconciliato": true,
    "fattureCollegate": [],
-   "fonte": "estratto_conto_feb_2026"
+   "fonte": "estratto_conto_feb_2026",
+   "esclusoBusiness": true
   },
   {
    "id": "MOV-2026-0063",
@@ -1780,21 +1810,25 @@
    "riferimentoTS": "TS-BJJQTZTZQ4",
    "dettaglioClienti": [
     {
-     "cliente": "Coisa Italia",
-     "proforma": "2 del 16/01/2025",
-     "causale": "24 mesi manutenzione sito",
-     "netto": 45.42,
-     "competenza": "pluriennale_2025_2026"
+     "cliente": "CO.I.S.A. COSTRUZIONI INDUSTRIALI STRADALI ABITATIVE S.R.L.",
+     "proformaNum": "2",
+     "proformaAnno": "2025",
+     "importoLordo": 46.72,
+     "commissione": 1.3,
+     "importoNetto": 45.42,
+     "causale": "Proforma n.2 del 16.01.2025 manutenzione sito"
     },
     {
-     "cliente": "Dinamiche Pulizie di Volpe Francesco",
-     "proforma": "7 del 12/02/2026",
-     "causale": "acconto 30%",
-     "netto": 233.49,
-     "competenza": "2026"
+     "cliente": "DINAMICA PULIZIE DI VOLPE FRANCESCO",
+     "proformaNum": "7",
+     "proformaAnno": "2026",
+     "importoLordo": 234.79,
+     "commissione": 1.3,
+     "importoNetto": 233.49,
+     "causale": "Acconto 30% Proforma n.7 del 12.02.2026"
     }
    ],
-   "note": "Competenza mista: €233,49 su 2026 (Dinamiche Pulizie), €45,42 pluriennale 2025-2026 (Coisa Italia — valutare risconto). Non presente in E/C importato — riconciliare. Fonte: export CSV TS Pay feb 2026. | Riepilogo gestionale non presente in E/C reale (verificato con export Intesa 31/05) — escluso dai totali cassa.",
+   "note": "Spacchettato da TSPay transaction_period (fonte autorevole) 02/06. Sostituisce dettaglio a mano impreciso.",
    "cassa": false
   },
   {
@@ -8796,6 +8830,17 @@
    "MAIKII": "Maikii SRL (fornitore gadget)",
    "PETRINI": "Valerio Petrini (fornitore da verificare)",
    "V CONSULTING": "V Consulting SRL (consulente lavoro)"
+  },
+  "clientiEsclusiBusiness": {
+   "attivo": true,
+   "motivo": "Business del fratello (consulenza momentanea, fuori dal core NLI, fratello ora fuori azienda). Esclusi da fatturato/margini/forecast vendite; RESTANO in cassa/banca perche' incassi reali sul conto.",
+   "clienti": [
+    "SiliconDev",
+    "Avangarde Consulting",
+    "Progesi"
+   ],
+   "pattern": "silicon\\s*dev|avangarde\\s*consulting|progesi",
+   "nota": "Pattern ristretto a 'Avangarde Consulting'. 'Avangarde Enterprise' non e' un cliente (ne' di Marco ne' del fratello), resta comunque fuori dal match."
   }
  },
  "riconciliazione": {
@@ -10366,5 +10411,38 @@
    "competenza2027": 0,
    "stato": "attivo | chiuso"
   }
+ },
+ "portafoglioOrdini": {
+  "generatoIl": "2026-06-02",
+  "fonte": "proforme NL.DefXml (Payments con Paid=false e data futura)",
+  "nota": "Rate gia contrattualizzate non ancora incassate, con scadenza futura. Base certa del forecast cassa (componente 1). Esclude rate passate non pagate (stantie/da verificare). Solo proforme con piano pagamenti in Danea (22/177) hanno rate.",
+  "totaleRateCerte": 13668.47,
+  "numeroRate": 54,
+  "perMese": {
+   "2026-06": 1608.69,
+   "2026-07": 2828.69,
+   "2026-08": 137,
+   "2026-09": 137,
+   "2026-10": 137,
+   "2026-11": 1194.43,
+   "2026-12": 137,
+   "2027-01": 137,
+   "2027-02": 137,
+   "2027-03": 1484.49,
+   "2027-04": 137,
+   "2027-05": 137,
+   "2027-06": 1484.49,
+   "2027-07": 137,
+   "2027-08": 137,
+   "2027-09": 1484.49,
+   "2027-10": 137,
+   "2027-11": 137,
+   "2027-12": 1484.49,
+   "2028-01": 137,
+   "2028-02": 137.14,
+   "2028-03": 90.28,
+   "2028-04": 90.28
+  },
+  "notaBatchCiechi": "Batch SDD TeamSystem mar-mag 2026 non spacchettabili: manca export TSPay (charges/transaction_period) di quel periodo. Servono i CSV TSPay aggiornati per agganciare gli incassi marzo-maggio agli ordini 2026."
  }
 }

@@ -10,7 +10,7 @@
  */
 import { readFileSync, writeFileSync } from 'fs';
 
-const SENSITIVE_KEYS = ['iban', 'IBAN', 'piva', 'partitaIva', 'codiceFiscale', 'cf'];
+const SENSITIVE_KEYS = ['iban', 'IBAN', 'piva', 'partitaIva', 'codiceFiscale', 'cf', 'email'];
 const removed = {};
 
 // maschera dati sensibili dentro testo libero (note/descrizioni)
@@ -44,6 +44,20 @@ const pub = strip(reg);
 // sezioni top-level con dati personali → via del tutto
 ['dettaglioPaghe', 'rimborsi'].forEach(s => { if (pub[s] !== undefined) { delete pub[s]; removed['§' + s] = 1; } });
 
+// ORDINI: margini di contribuzione, costi per voce, P.IVA clienti → dati commerciali
+// sensibili, MAI pubblici. Via tutta la sezione.
+if (pub.ordini !== undefined) { delete pub.ordini; removed['§ordini'] = 1; }
+
+// PORTAFOGLIO ORDINI: tieni solo gli aggregati che servono al forecast pubblico
+// (perMese/totale/numeroRate/nota); togli il dettaglio per-cliente delle rate e gli ID batch.
+if (pub.portafoglioOrdini) {
+  delete pub.portafoglioOrdini.rate;
+  delete pub.portafoglioOrdini.batchSddDaSpacchettare;
+  removed['§portafoglioOrdini.rate+batch'] = 1;
+}
+// nota esplicativa sugli ordini ora orfana (ordini rimosso) → via
+if (pub.meta && pub.meta.notaOrdini) { delete pub.meta.notaOrdini; removed['§meta.notaOrdini'] = 1; }
+
 // previsione fiscale: togli il dettaglio per-socio (redditi/netti), tieni gli aggregati societari
 if (pub.previsioneFiscale) {
   delete pub.previsioneFiscale.soci;
@@ -63,7 +77,7 @@ writeFileSync('./registro.public.json', JSON.stringify(pub, null, 1));
 // verifica anti-leak: nessuna chiave sensibile residua nel file scritto
 const raw = readFileSync('./registro.public.json', 'utf8');
 const leaks = [];
-[/"iban"/i, /"partitaIva"/, /"piva"/, /"codiceFiscale"/, /\bIT\d{2}[A-Z0-9]{10,}/].forEach(rx => {
+[/"iban"/i, /"partitaIva"/, /"piva"/, /"codiceFiscale"/, /"email"/, /"margineContribuzione"/, /"margine"/, /\bIT\d{2}[A-Z0-9]{10,}/].forEach(rx => {
   if (rx.test(raw)) leaks.push(rx.toString());
 });
 

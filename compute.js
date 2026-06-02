@@ -1059,28 +1059,42 @@
           /inps|inail|iva|imposte|acconto|cciaa/i.test((s.tipo || '') + ' ' + (s.descrizione || ''));
       }).reduce(function (a, s) { return a + s.importo; }, 0));
     }
-    var labels = [], incassi = [], uscite = [], saldo = [], prev = saldoInizio;
+    // INCASSI FUTURI A 2 COMPONENTI (no doppio conteggio):
+    //  (1) rate certe a portafoglio = proforma gia contrattualizzate non ancora incassate
+    //      (registro.portafoglioOrdini.perMese, derivate dai Payments Danea con Paid=false e data futura)
+    //  (2) nuovi ordini stimati = MEDIA storica del mese MENO la quota gia a portafoglio
+    //      (se il portafoglio supera la media -> stima 0, vince il dato certo).
+    var portMese = (reg.portafoglioOrdini && reg.portafoglioOrdini.perMese) || {};
+    var labels = [], incassi = [], incassiCerti = [], incassiStimati = [], uscite = [], saldo = [], prev = saldoInizio;
     for (var m = 1; m <= 12; m++) {
-      var inc, usc;
+      var inc, usc, certo = 0, stima = 0;
       if (m <= ultimoReale) { inc = realiInc[m] || 0; usc = realiUsc[m] || 0; }
-      else { inc = media[m - 1] || 0; var varM = (variabili[m - 1] != null) ? variabili[m - 1] : altriCosti; usc = round2(fissiMese(reg, anno, m) + varM + scadMese(m)); }
+      else {
+        certo = round2(portMese[anno + '-' + pad2(m)] || 0);
+        stima = round2(Math.max(0, (media[m - 1] || 0) - certo));
+        inc = round2(certo + stima);
+        var varM = (variabili[m - 1] != null) ? variabili[m - 1] : altriCosti; usc = round2(fissiMese(reg, anno, m) + varM + scadMese(m));
+      }
       var fine = round2(prev + inc - usc);
-      labels.push(MESI_ABBR[m - 1]); incassi.push(Math.round(inc)); uscite.push(Math.round(usc)); saldo.push(Math.round(fine));
+      labels.push(MESI_ABBR[m - 1]); incassi.push(Math.round(inc)); incassiCerti.push(Math.round(certo)); incassiStimati.push(Math.round(stima)); uscite.push(Math.round(usc)); saldo.push(Math.round(fine));
       prev = fine;
     }
+    var incassiCertiResidui = incassiCerti.reduce(function (a, b) { return a + b; }, 0);
     var saldoOggi = Math.round(ultimoReale ? saldo[ultimoReale - 1] : saldoInizio);
     var meseZero = null;
     for (var i = 0; i < 12; i++) if (saldo[i] < 0) { meseZero = MESI[i]; break; }
     return {
       titolo: 'Previsione Cassa ' + anno,
-      nota: 'Reale gen→' + MESI_ABBR[ultimoReale - 1] + ' (estratti conto ufficiali). Da ' + (MESI_ABBR[ultimoReale] || 'fine anno') + ': incassi = MEDIA fatturato 2023-2025 netto clienti consulenza; uscite = costi fissi ricorrenti (da te definiti) + costi merce stagionali (media stesso mese 2024-2025) + scadenze fiscali del mese. Imposte non più contate due volte. Calcolato dal vivo.',
+      nota: 'Reale gen→' + MESI_ABBR[ultimoReale - 1] + ' (estratti conto ufficiali). Da ' + (MESI_ABBR[ultimoReale] || 'fine anno') + ' gli incassi sono divisi in due: (1) rate già contrattualizzate (proforma a portafoglio, certe) + (2) nuovi ordini stimati = media fatturato 2023-2025 netto consulenza, meno la quota già a portafoglio (niente doppio conteggio). Uscite = costi fissi ricorrenti + costi merce stagionali (media stesso mese 2024-2025) + scadenze fiscali del mese. Calcolato dal vivo.',
       realCount: ultimoReale,
-      labels: labels, incassi: incassi, uscite: uscite, saldo: saldo,
+      labels: labels, incassi: incassi, incassiCerti: incassiCerti, incassiStimati: incassiStimati, uscite: uscite, saldo: saldo,
       kpi: {
         saldoOggi: saldoOggi,
         saldoFine: saldo[11],
         meseSottoZero: meseZero || '—',
-        venditeNecessarie: saldo[11] < 5000 ? Math.round(5000 - saldo[11]) : 0
+        venditeNecessarie: saldo[11] < 5000 ? Math.round(5000 - saldo[11]) : 0,
+        incassiCertiResidui: Math.round(incassiCertiResidui),
+        portafoglioTotaleFuturo: Math.round((reg.portafoglioOrdini && reg.portafoglioOrdini.totaleRateCerte) || 0)
       }
     };
   }
@@ -1123,8 +1137,12 @@
       // altri costi operativi stimati (per quadrare col forecast)
       var altri = round2((usc[idx] || 0) - certe);
       if (altri > 1) voci.push({ voce: 'Altri costi operativi non ancora dettagliati', tipo: 'uscita', importo: money(altri), certezza: 'stimato' });
-      // incassi attesi
-      if ((inc[idx] || 0) > 0) voci.push({ voce: 'Incassi attesi (proforma + manutenzioni a rate)', tipo: 'entrata', importo: money(inc[idx]), certezza: 'stimato' });
+      // incassi attesi — 2 componenti: rate certe a portafoglio + nuovi ordini stimati
+      var incCerti = fc.incassiCerti || [], incStimati = fc.incassiStimati || [];
+      if ((incCerti[idx] || 0) > 0) voci.push({ voce: 'Rate già firmate dai clienti (manutenzioni + saldi proforma)', tipo: 'entrata', importo: money(incCerti[idx]), certezza: 'certo' });
+      if ((incStimati[idx] || 0) > 0) voci.push({ voce: 'Nuovi ordini stimati (sulla media degli ultimi 3 anni)', tipo: 'entrata', importo: money(incStimati[idx]), certezza: 'stimato' });
+      // fallback se il forecast non porta la suddivisione
+      if (!incCerti.length && !incStimati.length && (inc[idx] || 0) > 0) voci.push({ voce: 'Incassi attesi (proforma + manutenzioni a rate)', tipo: 'entrata', importo: money(inc[idx]), certezza: 'stimato' });
       out.push({
         mese: MESI[m - 1] + ' ' + anno,
         saldoStimato: '~' + money(sal[idx] || 0),
@@ -1134,6 +1152,60 @@
       });
     }
     return out;
+  }
+
+  // ORDINI (proforma Danea consolidate): riepilogo per anno + lista 2026 con stato
+  // incasso reale + portafoglio rate certe future. Read-only. Difensiva: se manca
+  // reg.ordini (versione pubblica sanitizzata) ritorna struttura vuota.
+  function calcOrdini(reg) {
+    var ordini = reg.ordini || [];
+    var esclusi = (reg.configurazione || {}).clientiEsclusiBusiness || {};
+    var rxEsc = (esclusi.attivo && esclusi.pattern) ? new RegExp(esclusi.pattern, 'i') : null;
+    function isEscluso(o) { return rxEsc ? rxEsc.test(o.cliente || '') : false; }
+
+    var perAnnoMap = {};
+    ordini.forEach(function (o) {
+      if (isEscluso(o)) return;
+      var y = (o.data || '').slice(0, 4); if (!y) return;
+      var a = perAnnoMap[y] || (perAnnoMap[y] = { count: 0, fatturato: 0, margine: 0 });
+      a.count++;
+      a.fatturato += (o.vendita && o.vendita.fatturatoNetto) || 0;
+      if (typeof o.margineContribuzione === 'number') a.margine += o.margineContribuzione;
+    });
+    var perAnno = Object.keys(perAnnoMap).sort().map(function (y) {
+      var a = perAnnoMap[y];
+      return { anno: y, count: a.count, fatturato: round2(a.fatturato), fatturatoFmt: money(a.fatturato),
+        margine: round2(a.margine), margineFmt: money(a.margine),
+        marginePerc: a.fatturato > 0 ? Math.round(a.margine / a.fatturato * 100) : null };
+    });
+
+    var STATO = { incassato: { label: 'Pagato', cls: 'ok' }, parziale: { label: 'In parte', cls: 'warn' }, aperto: { label: 'Da incassare', cls: 'open' } };
+    var ordini2026 = ordini.filter(function (o) { return (o.data || '').slice(0, 4) === '2026'; }).map(function (o) {
+      var valore = (o.vendita && (o.vendita.totale || o.vendita.fatturatoNetto)) || 0;
+      var ric = o.riconciliazione || null;
+      var inc = ric ? (ric.totaleIncassatoLordo || 0) : 0;
+      var st = STATO[o.stato] || STATO.aperto;
+      var label = st.label, cls = st.cls;
+      if (o.stato === 'aperto' && o.notaRiconciliazione) { label = 'Da confermare'; cls = 'unknown'; }
+      var manca = Math.max(0, round2(valore - inc));
+      return { cliente: o.cliente, data: o.data, valore: round2(valore), valoreFmt: money(valore),
+        stato: o.stato, statoLabel: label, statoCls: cls,
+        incassato: round2(inc), incassatoFmt: inc > 0 ? money(inc) : '—',
+        lag: ric ? ric.lagGiorni : null, manca: manca, mancaFmt: manca > 0 ? money(manca) : '—',
+        nota: o.notaRiconciliazione || null };
+    });
+
+    var pf = reg.portafoglioOrdini || {};
+    var perMese = pf.perMese || {};
+    var mesiOrd = Object.keys(perMese).sort().map(function (k) {
+      var mi = parseInt(k.split('-')[1], 10);
+      return { mese: k, meseFmt: MESI_ABBR[mi - 1] + ' ' + k.split('-')[0], importo: perMese[k], importoFmt: money(perMese[k]) };
+    });
+    var portafoglio = { totale: pf.totaleRateCerte || 0, totaleFmt: money(pf.totaleRateCerte || 0),
+      numeroRate: pf.numeroRate || 0, perMese: mesiOrd, nota: pf.nota || null,
+      batchDaSpacchettare: (pf.batchSddDaSpacchettare || []).length, notaBatch: pf.notaBatchCiechi || null };
+
+    return { perAnno: perAnno, ordini2026: ordini2026, portafoglio: portafoglio, nessunDato: ordini.length === 0 };
   }
 
   function aliasDescrizioni(reg, statics) {
@@ -1147,6 +1219,6 @@
     gruppoDi: gruppoDi,
     parseEuro: parseEuro,
     // esposte per il gate / debug
-    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti }
+    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini }
   };
 });
