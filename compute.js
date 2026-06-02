@@ -1179,6 +1179,24 @@
     return { perMese: pf.perMese || {}, totaleRateCerte: pf.totaleRateCerte || 0, numeroRate: pf.numeroRate || 0, rate: [], fonte: 'snapshot' };
   }
 
+  // COSTI di un singolo ordine. Modello a "voci libere" (costi.voci[] = {voce,importo,fatturaId})
+  // sopra una base storica congelata (costi.base): per gli ordini 2024-25 la base = il
+  // totaleCosti originale dei fogli Stats (non si tocca); per il 2026 base = 0 e l'operatore
+  // costruisce i costi da zero. totaleCosti = base + somma voci + compenso developer.
+  function calcCostiOrdine(o) {
+    o = o || {}; var c = o.costi || {};
+    var base = (typeof c.base === 'number') ? c.base : (typeof o.totaleCosti === 'number' ? o.totaleCosti : 0);
+    var voci = (c.voci || []).filter(function (v) { return v && (v.voce || typeof v.importo === 'number'); });
+    var vTot = 0; voci.forEach(function (v) { vTot += (typeof v.importo === 'number') ? v.importo : 0; });
+    var dev = (o.developer && typeof o.developer.compenso === 'number') ? o.developer.compenso : 0;
+    var tot = round2(base + vTot + dev);
+    var netto = (o.vendita && (o.vendita.fatturatoNetto || o.vendita.imponibile)) || 0;
+    var margine = round2(netto - tot);
+    return { base: round2(base), voci: voci, vociTotale: round2(vTot), developer: round2(dev),
+      totaleCosti: tot, totaleCostiFmt: money(tot), margine: margine, margineFmt: money(margine),
+      marginePerc: netto > 0 ? Math.round(margine / netto * 100) : null };
+  }
+
   // ORDINI (proforma Danea consolidate): riepilogo per anno + lista 2026 con stato
   // incasso reale + portafoglio rate certe future. Read-only. Difensiva: se manca
   // reg.ordini (versione pubblica sanitizzata) ritorna struttura vuota.
@@ -1242,6 +1260,6 @@
     gruppoDi: gruppoDi,
     parseEuro: parseEuro,
     // esposte per il gate / debug
-    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese }
+    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine }
   };
 });
