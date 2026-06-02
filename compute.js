@@ -1186,7 +1186,6 @@
       var inc = ric ? (ric.totaleIncassatoLordo || 0) : 0;
       var st = STATO[o.stato] || STATO.aperto;
       var label = st.label, cls = st.cls;
-      if (o.stato === 'aperto' && o.notaRiconciliazione) { label = 'Da confermare'; cls = 'unknown'; }
       var manca = Math.max(0, round2(valore - inc));
       return { cliente: o.cliente, data: o.data, valore: round2(valore), valoreFmt: money(valore),
         stato: o.stato, statoLabel: label, statoCls: cls,

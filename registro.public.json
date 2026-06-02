@@ -10443,6 +10443,6 @@
    "2028-03": 90.28,
    "2028-04": 90.28
   },
-  "notaBatchCiechi": "Batch SDD TeamSystem mar-mag 2026 non spacchettabili: manca export TSPay (charges/transaction_period) di quel periodo. Servono i CSV TSPay aggiornati per agganciare gli incassi marzo-maggio agli ordini 2026."
+  "notaBatchCiechi": "Ordini 2026 riconciliati al 100% da TSPay charges (export 02/06, fino a fine maggio) + bonifici diretti: 11 incassati, 5 parziali, 3 da incassare (rate future). Lo spacchettamento per-movimento bancario dei batch SDD mar-mag resta un TODO di pulizia dell'estratto conto (non impatta lo stato ordini)."
  }
 }
