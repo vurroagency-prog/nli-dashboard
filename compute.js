@@ -1004,6 +1004,7 @@
       previsionale: calcPrevisionaleFuturo(reg, statics, forecast),
       forecastCassa: forecast,
       forecastMargine: calcForecastMargine(reg, statics),
+      portafoglioOrdini: calcPortafoglioPerMese(reg),
       partitario: calcPartitario(reg),
       storico: yoyLive(reg, statics)
     };
