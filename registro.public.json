@@ -7,7 +7,7 @@
   "annoFiscale": 2026,
   "note": "Importati 0 movimenti e 16 fatture marzo-aprile",
   "ultimaRegistrazioneMaggio": "2026-05-30: saldo + IVA Q1 ufficiale. Movimenti riga-per-riga NON importati (PDF E/C non parsabile in modo affidabile - serve export CSV/Excel dal portale Intesa).",
-  "notaCosti2026": "Costi 2026 = job costing: COGS reale da match codice articolo<->fattura fornitore (Rossini/Siggi/Maikii); fallback markup ufficiale NL per Roly/esteri (no fattura SDI). Stampa/ricamo/trasporto/SDD a costo=addebito (markup uff. 1x). Grafica=foglio Dani x60E/h. Ordini solo-sito: margine non calcolato (manca compenso Luca).",
+  "notaCosti2026": "Costi 2026 = job costing. Costo MERCE da APP_ORDINI (cost master: prezzo d'acquisto per articolo, validato = costo reale fatture Rossini). Stampa/ricamo/trasporto/SDD a costo=addebito (markup uff. 1x workwear). Grafica=foglio Dani x60E/h. NEXTD (marchio proprio NextWear) escluso dal costo merce. Ordini solo-sito: margine non calcolato (compenso Luca inserito a mano da Marco).",
   "versionePubblica": "sanitizzata per pubblicazione (no IBAN/CF/P.IVA/redditi soci/paghe)"
  },
  "conti": [
@@ -9506,11 +9506,6 @@
    "tipo": "costo_ordine",
    "ordine": "ORD-2026-0019",
    "descrizione": "Compenso Luca/sviluppo sito ordine ORD-2026-0019 (ANGELILLO IMPIANTI S.N.C.)",
-   "stato": "aperto"
-  },
-  {
-   "tipo": "fonte_costi",
-   "descrizione": "Listino/PDF fornitore Roly (GOR Factory, estero fuori SDI) per costo merce reale RY/RR",
    "stato": "aperto"
   }
  ],
