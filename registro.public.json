@@ -8842,7 +8842,9 @@
    ],
    "pattern": "silicon\\s*dev|avangarde\\s*consulting|progesi",
    "nota": "Pattern ristretto a 'Avangarde Consulting'. 'Avangarde Enterprise' non e' un cliente (ne' di Marco ne' del fratello), resta comunque fuori dal match."
-  }
+  },
+  "margineMedioStimaOrdini": 0.5,
+  "margineMedioStimaOrdiniNota": "Margine % medio applicato ai ricavi stimati dei mesi futuri senza proforme (forecast a margine). Storico reale: 2024 65%, 2025 64%, 2026 47% merch. Default 50% prudente — alzalo se ti aspetti più siti."
  },
  "riconciliazione": {
   "processo": {

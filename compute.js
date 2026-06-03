@@ -1003,6 +1003,7 @@
       alert: statics.alert || [],
       previsionale: calcPrevisionaleFuturo(reg, statics, forecast),
       forecastCassa: forecast,
+      forecastMargine: calcForecastMargine(reg, statics),
       partitario: calcPartitario(reg),
       storico: yoyLive(reg, statics)
     };
@@ -1096,6 +1097,41 @@
         incassiCertiResidui: Math.round(incassiCertiResidui),
         portafoglioTotaleFuturo: Math.round(calcPortafoglioPerMese(reg).totaleRateCerte || 0)
       }
+    };
+  }
+
+  // FORECAST MARGINE: il "proforma comanda". Per ogni mese il margine REALE degli ordini
+  // (proforme) di quel mese; per i mesi futuri senza proforme = ricavo medio storico ×
+  // margine% atteso (configurabile in configurazione.margineMedioStimaOrdini, default 50%).
+  // Affianca il forecast cassa: la cassa dice quanto incassi, questo quanto guadagni.
+  function calcForecastMargine(reg, statics) {
+    var anno = (reg.meta && reg.meta.annoFiscale) || 2026;
+    var ordini = reg.ordini || [];
+    var esclusi = (reg.configurazione || {}).clientiEsclusiBusiness || {};
+    var rxEsc = (esclusi.attivo && esclusi.pattern) ? new RegExp(esclusi.pattern, 'i') : null;
+    var media = (statics && statics.mediaMensileVendite) || [];
+    var margPct = (reg.configurazione && typeof reg.configurazione.margineMedioStimaOrdini === 'number')
+      ? reg.configurazione.margineMedioStimaOrdini : 0.50;
+    var realeMese = {}, hannoOrdini = {}, senzaMargine = 0;
+    ordini.forEach(function (o) {
+      if (o.stato === 'annullato' || !isISO(o.data)) return;
+      if (rxEsc && rxEsc.test(o.cliente || '')) return;
+      var p = parseISO(o.data); if (p.y !== anno) return;
+      hannoOrdini[p.m] = true;
+      if (typeof o.margineContribuzione === 'number') realeMese[p.m] = (realeMese[p.m] || 0) + o.margineContribuzione;
+      else senzaMargine++;
+    });
+    var labels = [], margine = [], tipo = [], realizzato = 0, stimato = 0;
+    for (var m = 1; m <= 12; m++) {
+      labels.push(MESI_ABBR[m - 1]);
+      if (hannoOrdini[m]) { var v = round2(realeMese[m] || 0); margine.push(Math.round(v)); tipo.push('reale'); realizzato += v; }
+      else { var st = round2((media[m - 1] || 0) * margPct); margine.push(Math.round(st)); tipo.push('stima'); stimato += st; }
+    }
+    return {
+      titolo: 'Margine atteso ' + anno, marginePctStima: Math.round(margPct * 100),
+      labels: labels, margine: margine, tipo: tipo, ordiniSenzaMargine: senzaMargine,
+      kpi: { margineRealizzato: Math.round(realizzato), margineRealizzatoFmt: money(realizzato), margineStimatoResiduo: Math.round(stimato), margineStimatoResiduoFmt: money(stimato), margineAttesoAnno: Math.round(realizzato + stimato), margineAttesoAnnoFmt: money(realizzato + stimato) },
+      nota: 'Margine reale degli ordini (proforme) nei mesi con ordini; nei mesi futuri senza proforme = ricavo medio storico × ' + Math.round(margPct * 100) + '% (margine medio atteso, modificabile). Gli ordini solo-sito senza costo sviluppo Luca contano 0 finché non lo inserisci.'
     };
   }
 
@@ -1266,6 +1302,6 @@
     gruppoDi: gruppoDi,
     parseEuro: parseEuro,
     // esposte per il gate / debug
-    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine }
+    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine }
   };
 });
