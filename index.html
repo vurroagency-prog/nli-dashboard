@@ -234,6 +234,8 @@
       <div class="page-header"><h1>Previsionale</h1><p>Cash flow forecast — costi certi, stimati ed entrate attese</p></div>
       <div id="forecast-banner"></div>
       <div id="forecast-kpis" class="forecast-kpis"></div>
+      <div id="cassa-salute-cards"></div>
+      <div id="fiscale-forward"></div>
       <div class="charts-grid">
         <div class="chart-card"><h4 id="forecast-bar-title">Incassi vs Uscite 2026</h4><canvas id="chart-forecast-bar"></canvas></div>
         <div class="chart-card"><h4>Saldo del conto nel tempo</h4><canvas id="chart-forecast-saldo"></canvas></div>
@@ -788,6 +790,8 @@
 
       // Forecast cassa 2026
       if (d.forecastCassa) renderForecast(d.forecastCassa);
+      if (d.cassaSalute) renderCassaSalute(d.cassaSalute);
+      if (d.fiscale) renderFiscale(d.fiscale);
 
       // Storico
       if (d.storico) renderStorico(d);
@@ -990,7 +994,8 @@
     var bann = document.getElementById('forecast-banner');
     var bucoMese = (K.meseSottoZero && K.meseSottoZero !== '—');
     var firmatoTxt = K.incassiCertiResidui > 0 ? ' Di questi, <b style="color:var(--green)">' + eur(K.incassiCertiResidui) + '</b> sono già firmati dai clienti (rate e manutenzioni sicure); il resto è stimato sulla media degli ultimi 3 anni.' : '';
-    if (K.saldoFine >= 5000 && !bucoMese) {
+    var sogliaBann = (K.sogliaSicurezza != null) ? K.sogliaSicurezza : 5000;
+    if (K.saldoFine >= sogliaBann && !bucoMese) {
       bann.style.borderColor = 'var(--green)'; bann.style.background = 'var(--green-glow)';
       bann.innerHTML = '<svg class="eic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> <b>La cassa resta positiva tutto l\'anno</b> e chiude a <b style="color:var(--green)">' + eur(K.saldoFine) + '</b>.' + firmatoTxt;
     } else if (K.saldoFine >= 0 && bucoMese) {
@@ -1050,6 +1055,53 @@
             grid: { color: function(c){ return c.tick.value === 0 ? '#f87171' : 'rgba(42,48,64,0.5)'; } } } }
       }
     }));
+  }
+
+  // ---- Salute della cassa (burn, runway, saldo minimo, soglia, scenario worst-case)
+  function eurInt(v) { return '€ ' + Math.round(v || 0).toLocaleString('it-IT'); }
+  function dispData(iso) {
+    var p = String(iso).split('-'); var M = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
+    return (+p[2]) + ' ' + (M[(+p[1]) - 1] || '') + ' ' + p[0];
+  }
+  function renderCassaSalute(cs) {
+    var el = document.getElementById('cassa-salute-cards'); if (!el) return;
+    var rw = cs.runway || {}, burn = cs.burn || {}, sc = cs.scenarioSoloCerti || {};
+    var runwayTxt = rw.crescita ? 'In crescita' : ((rw.mesi != null ? rw.mesi.toLocaleString('it-IT') : '—') + ' mesi');
+    var sottoTxt = cs.meseSottoSoglia ? (esc(cs.meseSottoSoglia) + ' · ' + eurInt(cs.meseSottoSogliaSaldo)) : 'Mai sotto la soglia';
+    var html = '<div class="card" style="margin:16px 0;">' +
+      '<h3 style="margin:0 0 4px;">Salute della cassa</h3>' +
+      '<p style="color:var(--text-dim);font-size:13px;margin:0 0 14px;">Quanto reggi, quanto bruci al mese e quanto cuscino tenere</p>' +
+      '<div class="forecast-kpis">' +
+      '<div class="fk"><div class="lbl">Mesi di autonomia</div><div class="val">' + esc(runwayTxt) + '</div><div class="lbl">' + esc(rw.label || '') + '</div></div>' +
+      '<div class="fk"><div class="lbl">Quanto brucio al mese (netto)</div><div class="val ' + (burn.netto > 0 ? 'neg' : '') + '">' + eurInt(burn.netto) + '</div><div class="lbl">uscite − incassi, ultimi 3 mesi</div></div>' +
+      '<div class="fk"><div class="lbl">Uscite medie al mese</div><div class="val">' + eurInt(burn.gross) + '</div><div class="lbl">solo gestione: ' + eurInt(burn.operativo) + '</div></div>' +
+      '<div class="fk"><div class="lbl">Saldo più basso previsto</div><div class="val">' + eurInt(cs.saldoMinimo) + '</div><div class="lbl">' + esc(cs.saldoMinimoMese || '') + '</div></div>' +
+      '<div class="fk"><div class="lbl">Soglia di sicurezza</div><div class="val">' + eurInt(cs.sogliaSicurezza) + '</div><div class="lbl">' + esc(String(cs.sogliaSicurezzaMesi || '')) + ' mesi di costi fissi</div></div>' +
+      '<div class="fk"><div class="lbl">Mese sotto la soglia</div><div class="val amb">' + sottoTxt + '</div></div>' +
+      '<div class="fk"><div class="lbl">Senza nuove vendite, chiudi a</div><div class="val ' + ((sc.saldoFine || 0) < 0 ? 'neg' : '') + '">' + eurInt(sc.saldoFine) + '</div><div class="lbl">minimo ' + eurInt(sc.saldoMinimo) + ' a ' + esc(sc.saldoMinimoMese || '') + '</div></div>' +
+      '</div>';
+    if (cs.datiMancanti && cs.datiMancanti.length) html += '<div style="margin-top:10px;font-size:12px;color:var(--amber);">⚠ ' + cs.datiMancanti.map(esc).join(' · ') + '</div>';
+    html += '</div>';
+    el.innerHTML = html;
+  }
+
+  // ---- Tasse in arrivo (scadenzario fiscale forward 12 mesi + accantonamento)
+  function renderFiscale(fi) {
+    var el = document.getElementById('fiscale-forward'); if (!el) return;
+    var rows = (fi.scadenzarioForward || []).map(function (s) {
+      var imp = s.importoNoto ? eurInt(s.importo) : '<span style="color:var(--amber)">da quantificare</span>';
+      return '<tr><td>' + esc(dispData(s.data)) + '</td><td>' + esc(s.label) + '</td><td style="text-align:right">' + imp + '</td></tr>';
+    }).join('');
+    var html = '<div class="card" style="margin:16px 0;">' +
+      '<h3 style="margin:0 0 12px;">Tasse in arrivo (prossimi 12 mesi)</h3>' +
+      '<div class="forecast-kpis" style="margin-bottom:12px;">' +
+      '<div class="fk"><div class="lbl">Tasse ancora da pagare quest\'anno</div><div class="val neg">' + eurInt(fi.totaleTasseResidueAnno) + '</div></div>' +
+      '<div class="fk"><div class="lbl">Tasse da mettere da parte ogni mese</div><div class="val">' + eurInt(fi.accantonamentoMensile) + '</div><div class="lbl">spalmate su ' + esc(String(fi.mesiRimanenti)) + ' mesi</div></div>' +
+      '</div>' +
+      '<div class="table-wrap"><table style="width:100%"><thead><tr><th style="text-align:left">Scadenza</th><th style="text-align:left">Cosa</th><th style="text-align:right">Importo</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+    if (fi.datiMancanti && fi.datiMancanti.length) html += '<div style="margin-top:10px;font-size:12px;color:var(--amber);">⚠ ' + fi.datiMancanti.map(esc).join(' · ') + '</div>';
+    html += '</div>';
+    el.innerHTML = html;
   }
 
   function renderStorico(d) {

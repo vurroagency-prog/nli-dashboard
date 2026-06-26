@@ -91,6 +91,12 @@
     return (x < 0 ? -1 : 1) * Math.round(Math.abs(x) * 100 + Number.EPSILON) / 100; // simmetrico sui negativi
   }
 
+  function round1(n) {
+    var x = Number(n);
+    if (!isFinite(x)) return 0;
+    return Math.round(x * 10) / 10;
+  }
+
   // "1534.76" -> "1.534,76"
   function nf(n) {
     var x = round2(Math.abs(n || 0));
@@ -1003,6 +1009,8 @@
       alert: statics.alert || [],
       previsionale: calcPrevisionaleFuturo(reg, statics, forecast),
       forecastCassa: forecast,
+      cassaSalute: calcCassaSalute(reg, forecast),
+      fiscale: calcFiscale(reg),
       forecastMargine: calcForecastMargine(reg, statics),
       portafoglioOrdini: calcPortafoglioPerMese(reg),
       partitario: calcPartitario(reg),
@@ -1068,36 +1076,167 @@
     //      (se il portafoglio supera la media -> stima 0, vince il dato certo).
     var portMese = calcPortafoglioPerMese(reg).perMese || {};
     var labels = [], incassi = [], incassiCerti = [], incassiStimati = [], uscite = [], saldo = [], prev = saldoInizio;
+    // scenario "senza vendite nuove": curva di saldo che usa SOLO gli incassi certi
+    // (rate gia firmate a portafoglio), ignorando gli incassi stimati stagionali.
+    var saldoCerti = [], prevC = saldoInizio;
     for (var m = 1; m <= 12; m++) {
-      var inc, usc, certo = 0, stima = 0;
-      if (m <= ultimoReale) { inc = realiInc[m] || 0; usc = realiUsc[m] || 0; }
+      var inc, usc, certo = 0, stima = 0, incC;
+      if (m <= ultimoReale) { inc = realiInc[m] || 0; usc = realiUsc[m] || 0; incC = inc; }
       else {
         certo = round2(portMese[anno + '-' + pad2(m)] || 0);
         stima = round2(Math.max(0, (media[m - 1] || 0) - certo));
         inc = round2(certo + stima);
+        incC = certo;
         var varM = (variabili[m - 1] != null) ? variabili[m - 1] : altriCosti; usc = round2(fissiMese(reg, anno, m) + varM + scadMese(m));
       }
       var fine = round2(prev + inc - usc);
+      var fineC = round2(prevC + incC - usc);
       labels.push(MESI_ABBR[m - 1]); incassi.push(Math.round(inc)); incassiCerti.push(Math.round(certo)); incassiStimati.push(Math.round(stima)); uscite.push(Math.round(usc)); saldo.push(Math.round(fine));
-      prev = fine;
+      saldoCerti.push(Math.round(fineC));
+      prev = fine; prevC = fineC;
     }
     var incassiCertiResidui = incassiCerti.reduce(function (a, b) { return a + b; }, 0);
     var saldoOggi = Math.round(ultimoReale ? saldo[ultimoReale - 1] : saldoInizio);
     var meseZero = null;
     for (var i = 0; i < 12; i++) if (saldo[i] < 0) { meseZero = MESI[i]; break; }
+
+    // soglia di sicurezza cassa PARAMETRICA (sostituisce il vecchio 5000 hardcoded):
+    // mesi-cuscino (configurazione.sogliaSicurezzaMesi) x costi fissi mensili.
+    var sogliaMesi = (reg.configurazione && typeof reg.configurazione.sogliaSicurezzaMesi === 'number')
+      ? reg.configurazione.sogliaSicurezzaMesi : null;
+    var sogliaSicurezza = (sogliaMesi != null) ? round2(sogliaMesi * fissiTot) : null;
+
+    // BURN RATE: media uscite/incassi degli ultimi 3 mesi reali con movimenti
+    // (la finestra a 3 mesi mostra il trend recente, la media sull'intero anno lo mascherebbe).
+    var burnWin = [];
+    for (var bw = Math.max(1, ultimoReale - 2); bw <= ultimoReale; bw++) burnWin.push(bw);
+    function mediaSu(map) { var s = 0, n = 0; burnWin.forEach(function (mm) { if (map[mm] != null) { s += map[mm]; n++; } }); return n ? round2(s / n) : 0; }
+    var mIncassi = mediaSu(realiInc), mUscite = mediaSu(realiUsc), mUsciteOp = mediaSu(uscOp);
+    var burn = { gross: mUscite, netto: round2(mUscite - mIncassi), operativo: round2(mUsciteOp - mIncassi) };
+
+    // scenario "senza vendite nuove" (solo incassi certi gia firmati)
+    var scMin = saldoCerti.length ? Math.min.apply(null, saldoCerti) : 0;
+    var scenarioSoloCerti = {
+      saldo: saldoCerti, saldoFine: saldoCerti[11],
+      saldoMinimo: scMin, saldoMinimoMese: MESI[saldoCerti.indexOf(scMin)] || ''
+    };
     return {
       titolo: 'Previsione Cassa ' + anno,
       nota: 'Reale gen→' + MESI_ABBR[ultimoReale - 1] + ' (estratti conto ufficiali). Da ' + (MESI_ABBR[ultimoReale] || 'fine anno') + ' gli incassi sono divisi in due: (1) rate già contrattualizzate (proforma a portafoglio, certe) + (2) nuovi ordini stimati = media fatturato 2023-2025 netto consulenza, meno la quota già a portafoglio (niente doppio conteggio). Uscite = costi fissi ricorrenti + costi merce stagionali (media stesso mese 2024-2025) + scadenze fiscali del mese. Calcolato dal vivo.',
       realCount: ultimoReale,
       labels: labels, incassi: incassi, incassiCerti: incassiCerti, incassiStimati: incassiStimati, uscite: uscite, saldo: saldo,
+      burn: burn,
+      scenarioSoloCerti: scenarioSoloCerti,
       kpi: {
         saldoOggi: saldoOggi,
         saldoFine: saldo[11],
         meseSottoZero: meseZero || '—',
-        venditeNecessarie: saldo[11] < 5000 ? Math.round(5000 - saldo[11]) : 0,
+        sogliaSicurezza: sogliaSicurezza,
+        venditeNecessarie: (sogliaSicurezza != null && saldo[11] < sogliaSicurezza) ? Math.round(sogliaSicurezza - saldo[11]) : 0,
         incassiCertiResidui: Math.round(incassiCertiResidui),
         portafoglioTotaleFuturo: Math.round(calcPortafoglioPerMese(reg).totaleRateCerte || 0)
       }
+    };
+  }
+
+  // ===================================================== SALUTE CASSA (blocco 1)
+  // Compone burn rate, runway, saldo minimo, scenario worst-case e soglia di
+  // sicurezza in un unico oggetto leggibile (italiano operativo, Homer-proof).
+  function calcCassaSalute(reg, forecast) {
+    var cfg = reg.configurazione || {};
+    var cr = calcCostiRicorrenti(reg);
+    var fissi = cr.totaleMensile;
+    var sogliaMesi = (typeof cfg.sogliaSicurezzaMesi === 'number') ? cfg.sogliaSicurezzaMesi : null;
+    var dm = [];
+    var soglia = (forecast.kpi && forecast.kpi.sogliaSicurezza != null)
+      ? forecast.kpi.sogliaSicurezza
+      : (sogliaMesi != null ? round2(sogliaMesi * fissi) : null);
+    if (sogliaMesi == null) dm.push('Manca configurazione.sogliaSicurezzaMesi: soglia di sicurezza cassa non calcolabile.');
+    var saldoArr = (forecast && forecast.saldo) || [];
+    if (!saldoArr.length) dm.push('Forecast cassa non disponibile: saldo proiettato mancante.');
+
+    // saldo minimo proiettato + mese del minimo
+    var saldoMin = saldoArr.length ? Math.min.apply(null, saldoArr) : null;
+    var saldoMinMese = saldoArr.length ? (MESI[saldoArr.indexOf(saldoMin)] || '') : '';
+
+    // primo mese sotto zero (compat) e primo mese sotto la soglia di sicurezza
+    var meseZero = null;
+    for (var i = 0; i < saldoArr.length; i++) if (saldoArr[i] < 0) { meseZero = MESI[i]; break; }
+    var meseSottoSoglia = null, meseSottoSogliaSaldo = null;
+    if (soglia != null) {
+      for (var j = 0; j < saldoArr.length; j++) if (saldoArr[j] < soglia) { meseSottoSoglia = MESI[j]; meseSottoSogliaSaldo = saldoArr[j]; break; }
+    }
+
+    // burn + runway (mesi di autonomia = cassa oggi / quanto bruci al mese)
+    var burn = forecast.burn || { gross: 0, netto: 0, operativo: 0 };
+    var saldoOggi = (forecast.kpi && forecast.kpi.saldoOggi) || 0;
+    var runway;
+    if (burn.netto <= 0) {
+      runway = { mesi: null, crescita: true, label: 'Cassa in crescita: gli incassi coprono le uscite, autonomia ampia' };
+    } else {
+      var mesi = round1(saldoOggi / burn.netto);
+      runway = { mesi: mesi, crescita: false, label: 'Circa ' + mesi.toLocaleString('it-IT') + ' mesi di autonomia ai ritmi attuali' };
+    }
+
+    return {
+      burn: {
+        gross: burn.gross, netto: burn.netto, operativo: burn.operativo,
+        grossFmt: money(burn.gross), nettoFmt: money(burn.netto), operativoFmt: money(burn.operativo)
+      },
+      runway: runway,
+      saldoMinimo: saldoMin, saldoMinimoMese: saldoMinMese,
+      scenarioSoloCerti: forecast.scenarioSoloCerti || { saldo: [], saldoFine: 0, saldoMinimo: 0, saldoMinimoMese: '' },
+      sogliaSicurezza: soglia, sogliaSicurezzaMesi: sogliaMesi, costiFissiMensili: fissi,
+      meseSottoSoglia: meseSottoSoglia, meseSottoSogliaSaldo: meseSottoSogliaSaldo, meseSottoZero: meseZero,
+      datiMancanti: dm
+    };
+  }
+
+  // ===================================================== SCADENZARIO FISCALE (blocco 1)
+  // Tasse in arrivo nei prossimi 12 mesi + quanto accantonare ogni mese.
+  function calcFiscale(reg) {
+    var anno = (reg.meta && reg.meta.annoFiscale) || 2026;
+    var FISCALE = /inps|inail|iva|irap|irpef|versamento|cciaa|imposte|acconto|f24|ritenuta|diritto/i;
+    var oggi = new Date();
+    function isoOf(d) { return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); }
+    var oggiISO = isoOf(oggi);
+    var lim = new Date(oggi.getTime()); lim.setMonth(lim.getMonth() + 12);
+    var limISO = isoOf(lim);
+    var dm = [];
+
+    // elenco scadenze fiscali dei prossimi 12 mesi, NON ancora chiuse, ordinate per data.
+    // Le voci senza importo (es. IRPEF soci ancora da elaborare) restano MOSTRATE come
+    // "da quantificare" (importoNoto=false), mai omesse in silenzio.
+    var forward = (reg.scadenze || []).filter(function (s) {
+      if (!isISO(s.data) || STATI_CHIUSI[s.stato]) return false;
+      if (!FISCALE.test((s.tipo || '') + ' ' + (s.descrizione || ''))) return false;
+      return s.data >= oggiISO && s.data <= limISO;
+    }).map(function (s) {
+      var noto = typeof s.importo === 'number';
+      return { id: s.id, data: s.data, tipo: s.tipo || '', importo: noto ? s.importo : null, importoNoto: noto, label: s.descrizione || tipoFreq(s.tipo) };
+    }).sort(function (a, b) { return a.data < b.data ? -1 : (a.data > b.data ? 1 : 0); });
+    if (forward.some(function (x) { return !x.importoNoto; }))
+      dm.push('Alcune scadenze fiscali non hanno ancora un importo: da quantificare col commercialista.');
+
+    // totale tasse ancora dovute ENTRO fine anno fiscale (solo da_pagare con importo noto)
+    var fineAnno = anno + '-12-31';
+    var totale = round2((reg.scadenze || []).filter(function (s) {
+      return isISO(s.data) && s.stato === 'da_pagare' && typeof s.importo === 'number' &&
+        FISCALE.test((s.tipo || '') + ' ' + (s.descrizione || '')) && parseISO(s.data).y === anno && s.data <= fineAnno;
+    }).reduce(function (a, s) { return a + s.importo; }, 0));
+
+    // mesi che restano fino a fine anno fiscale (per spalmare l'accantonamento)
+    var mesiRimanenti;
+    if (oggi.getFullYear() < anno) mesiRimanenti = 12;
+    else if (oggi.getFullYear() > anno) mesiRimanenti = 1;
+    else mesiRimanenti = Math.max(1, 12 - oggi.getMonth());
+
+    return {
+      scadenzarioForward: forward,
+      totaleTasseResidueAnno: totale,
+      accantonamentoMensile: round2(totale / mesiRimanenti),
+      mesiRimanenti: mesiRimanenti,
+      datiMancanti: dm
     };
   }
 
@@ -1303,6 +1442,6 @@
     gruppoDi: gruppoDi,
     parseEuro: parseEuro,
     // esposte per il gate / debug
-    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine }
+    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine, calcCassaSalute: calcCassaSalute, calcFiscale: calcFiscale }
   };
 });
