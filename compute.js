@@ -709,12 +709,31 @@
   // Si ripartisce 50/50 ai soci (SAS = tassazione per trasparenza); IRAP a parte sulla
   // sua base (baseIRAP). Per socio: IRPEF a scaglioni + addizionali + (Marco) INPS.
   function calcPrevisioneFiscale(reg, utileAnteIn, baseIRAPin) {
-    var p = (reg.previsioneFiscale && reg.previsioneFiscale.parametri) || {};
+    var pf = reg.previsioneFiscale || {};
+    var anno = String((reg.meta && reg.meta.annoFiscale) || 2026);
+    var warns = [];
+    // PARAMETRI fiscali DATATI per anno (fonte canonica). Anno mancante -> segnala in datiMancanti,
+    // MAI applicare le aliquote di un altro anno in silenzio (es. minimali 2026 sul 2027).
+    var p = pf.parametriPerAnno && pf.parametriPerAnno[anno];
+    if (!p) {
+      p = pf.parametri || {};
+      warns.push('Parametri fiscali ' + anno + ' assenti in parametriPerAnno: uso il blocco legacy "parametri". Aggiungi parametriPerAnno["' + anno + '"].');
+    }
     var scaglioni = p.scaglioniIRPEF || [{ da: 0, a: 28000, aliquota: 0.23 }, { da: 28001, a: 50000, aliquota: 0.35 }, { da: 50001, a: null, aliquota: 0.43 }];
     var addiz = (p.addizionaleRegionale || 0) + (p.addizionaleComunale || 0);
     var inps = p.inpsCommercianti || { fissoAnnuo: 4515, aliquotaEccedenza: 0.2448, minimaleReddito: 18415 };
-    var soci = (reg.previsioneFiscale && reg.previsioneFiscale.soci) || [];
+    // COMPAGINE datata per anno (fonte delle quote). Anno mancante -> segnala.
+    var soci = pf.sociPerAnno && pf.sociPerAnno[anno];
+    if (!soci) {
+      soci = pf.soci || [];
+      if (pf.sociPerAnno) warns.push('Compagine ' + anno + ' assente in sociPerAnno: uso "soci" legacy.');
+    }
+    function quotaDi(rx) { var s = soci.filter(function (x) { return rx.test(x.nome || ''); })[0]; return s ? (s.quota == null ? null : s.quota) : null; }
     var sajayDip = (soci.filter(function (s) { return /sajay/i.test(s.nome); })[0] || {}).redditoDipendente || 0;
+    var qMarco = quotaDi(/marco/i);
+    var qSajay = quotaDi(/sajay/i);
+    if (qMarco == null) { qMarco = 0; warns.push('Quota di Marco non trovata nella compagine ' + anno + '.'); }
+    if (qSajay == null) { qSajay = 0; warns.push('Quota di Sajay non trovata nella compagine ' + anno + '.'); }
 
     function irpef(reddito) {
       if (reddito <= 0) return 0;
@@ -731,29 +750,34 @@
     }
 
     var utileAnte = round2(utileAnteIn);                  // EBT (utile ante imposte)
-    var quota = round2(utileAnte / 2);                    // 50/50
+    // quote da DATO (sociPerAnno), non piu il 50/50 cablato: per il 2026 e 50/50, ma il motore
+    // ora legge la quota reale dell'anno (es. 2025 = 25% a testa) invece di assumerla.
+    var quotaMarco = round2(utileAnte * qMarco);
+    var quotaSajay = round2(utileAnte * qSajay);
     var baseIRAP = Math.max(0, round2(baseIRAPin || 0));
     var irapImporto = round2(baseIRAP * (p.aliquotaIRAP || 0.039));
 
     // Marco (accomandatario): quota + IRPEF + addizionali + INPS commercianti
-    var mReddito = Math.max(0, quota);
+    var mReddito = Math.max(0, quotaMarco);
     var mIrpef = irpef(mReddito);
     var mAddiz = round2(mReddito * addiz);
     var mInpsFisso = inps.fissoAnnuo || 4515;            // dovuto sempre, anche con utile 0
     var mInpsEcc = round2(Math.max(0, mReddito - (inps.minimaleReddito || 18415)) * (inps.aliquotaEccedenza || 0.2448));
     var mTasse = round2(mIrpef + mAddiz + mInpsFisso + mInpsEcc);
-    var mNetto = round2(quota - mTasse);
+    var mNetto = round2(quotaMarco - mTasse);
 
     // Sajay (accomandante): quota + reddito da dipendente, IRPEF + addizionali, no INPS commercianti
-    var sReddito = round2(Math.max(0, quota) + sajayDip);
+    var sReddito = round2(Math.max(0, quotaSajay) + sajayDip);
     var sIrpef = irpef(sReddito);
     var sAddiz = round2(sReddito * addiz);
     var sTasse = round2(sIrpef + sAddiz);
-    var sNetto = round2(quota - sTasse + sajayDip);
+    var sNetto = round2(quotaSajay - sTasse + sajayDip);
 
     // TAX RATE a regola d'arte: il costo fiscale ATTRIBUIBILE all'utile.
     // Per Sajay si esclude l'IRPEF che pagherebbe COMUNQUE sullo stipendio (carico marginale).
-    var sajayTasseStipendio = round2(irpef(sajayDip) + sajayDip * addiz);
+    var sajayIrpefStip = irpef(sajayDip);
+    var sajayAddizStip = round2(sajayDip * addiz);
+    var sajayTasseStipendio = round2(sajayIrpefStip + sajayAddizStip);
     var sajayCaricoUtile = round2(sTasse - sajayTasseStipendio);
     var caricoUtile = round2(irapImporto + mTasse + sajayCaricoUtile); // Marco: tutto (no altri redditi)
     var taxRate = utileAnte > 0 ? round2(caricoUtile / utileAnte * 100) / 100 : null;
@@ -775,18 +799,69 @@
         totaleCaricoConStipendio: totaleCarico
       },
       irap: { importo: irapImporto, aliquota: p.aliquotaIRAP || 0.039 },
+      // componenti del SOLO carico attribuibile all'utile (IRPEF Sajay = marginale, esclude lo stipendio).
+      // La somma = famiglia.caricoUtile. Usato dalla pressione fiscale (D3) per il mix imposte.
+      componentiCaricoUtile: {
+        irap: irapImporto,
+        irpef: round2(mIrpef + sIrpef - sajayIrpefStip),
+        addizionali: round2(mAddiz + sAddiz - sajayAddizStip),
+        inps: round2(mInpsFisso + mInpsEcc)
+      },
       marco: {
+        quota: qMarco,
         redditoImponibile: round2(mReddito), irpef: mIrpef, addizionali: mAddiz,
         inpsFisso: round2(mInpsFisso), inpsEccedenza: mInpsEcc,
         totaleTasse: mTasse, nettoStimato: mNetto,
         aliquotaEffettiva: mReddito > 0 ? round2(mTasse / mReddito * 100) / 100 : null
       },
       sajay: {
+        quota: qSajay,
         redditoImponibile: sReddito, irpef: sIrpef, addizionali: sAddiz,
         totaleTasse: sTasse, nettoStimato: sNetto,
         aliquotaEffettiva: sReddito > 0 ? round2(sTasse / sReddito * 100) / 100 : null
       },
-      disclaimer: 'Calcolo dal vivo sull\'utile di competenza maturato (SAS, tassazione per trasparenza 50/50). I costi non fatturati non sono nel CE → utile prudenziale. Liquidazione ufficiale a cura del commercialista.'
+      _warnings: warns,
+      disclaimer: 'Calcolo dal vivo sull\'utile di competenza maturato (SAS, tassazione per trasparenza, quote da compagine datata). I costi non fatturati non sono nel CE → utile prudenziale. Liquidazione ufficiale a cura del commercialista.'
+    };
+  }
+
+  // PRESSIONE FISCALE (Domanda 3): "su 100€ di utile quanto se ne va in tasse?".
+  // L'utile di competenza dell'anno in corso e progressivo e spesso NEGATIVO (nel CE entrano solo i
+  // costi fatturati) -> il tax rate sull'EBT parziale e fuorviante. Qui si stima la pressione "a regime"
+  // su una base ANNUALIZZATA positiva = utile ante imposte dell'ULTIMO ANNO CHIUSO (statics.storico),
+  // applicando compagine e aliquote dell'anno fiscale corrente. E uno scenario, etichettato come tale.
+  function calcPressioneFiscale(reg, statics) {
+    var anno = String((reg.meta && reg.meta.annoFiscale) || 2026);
+    var storico = (statics && statics.storico && statics.storico.annuale) || {};
+    var anniChiusi = Object.keys(storico).filter(function (y) { return +y < +anno && /^\d{4}$/.test(y); }).sort();
+    if (!anniChiusi.length) return { disponibile: false, datiMancanti: ['Nessun anno chiuso nello storico: impossibile stimare la pressione fiscale a regime.'] };
+    var annoBase = anniChiusi[anniChiusi.length - 1];
+    var s = storico[annoBase] || {};
+    var baseUtile = (typeof s.utileGestionale === 'number') ? s.utileGestionale
+      : (typeof s.utilePostIRAP === 'number') ? s.utilePostIRAP : null;
+    if (baseUtile == null) return { disponibile: false, datiMancanti: ['Utile ' + annoBase + ' assente nello storico (utileGestionale/utilePostIRAP).'] };
+    // baseIRAP a regime approssimata con l'utile ante imposte: per la SAS (A-B)+B9 ~ EBT
+    // (l'addback del personale non deducibile compensa grossomodo ammortamenti/oneri). Dichiarato in nota.
+    var pf = calcPrevisioneFiscale(reg, baseUtile, baseUtile);
+    // carico ATTRIBUIBILE all'utile (marginale): esclude l'IRPEF che Sajay paga comunque sullo stipendio.
+    var imp = pf.componentiCaricoUtile;
+    var totale = round2(pf.famiglia.caricoUtile);
+    var rate = pf.famiglia.taxRate; // = caricoUtile / utileAnte, gia su baseUtile
+    function pct(x) { return totale > 0 ? round2(x / totale * 100) / 100 : 0; }
+    return {
+      disponibile: true,
+      annoBase: annoBase,
+      annoCompagine: anno,
+      baseUtileAnteImposte: round2(baseUtile),
+      totaleImposte: totale,                          // carico attribuibile all'utile (marginale)
+      totaleImposteLorde: pf.totaleCaricofiscale,     // carico lordo famiglia (include IRPEF su stipendio Sajay)
+      pressioneFiscale: rate,
+      pressioneFiscalePct: rate == null ? null : Math.round(rate * 1000) / 10,
+      nettoFamiglia: pf.famiglia.utileNetto,
+      imposte: imp,
+      mix: { irap: pct(imp.irap), irpef: pct(imp.irpef), addizionali: pct(imp.addizionali), inps: pct(imp.inps) },
+      nota: 'Scenario A REGIME: pressione fiscale sull\'utile ante imposte dell\'ultimo anno chiuso (' + annoBase + ': €' + nf(round2(baseUtile)) + '), con compagine e aliquote ' + anno + '. E il carico marginale ATTRIBUIBILE all\'utile (l\'IRPEF che Sajay pagherebbe comunque sullo stipendio e esclusa). L\'anno in corso e in perdita di competenza, quindi il tax rate sul progressivo non e significativo. baseIRAP approssimata con l\'utile ante imposte.',
+      datiMancanti: pf._warnings || []
     };
   }
 
@@ -1010,7 +1085,7 @@
       previsionale: calcPrevisionaleFuturo(reg, statics, forecast),
       forecastCassa: forecast,
       cassaSalute: calcCassaSalute(reg, forecast),
-      fiscale: calcFiscale(reg),
+      fiscale: calcFiscale(reg, statics),
       forecastMargine: calcForecastMargine(reg, statics),
       portafoglioOrdini: calcPortafoglioPerMese(reg),
       partitario: calcPartitario(reg),
@@ -1194,7 +1269,7 @@
 
   // ===================================================== SCADENZARIO FISCALE (blocco 1)
   // Tasse in arrivo nei prossimi 12 mesi + quanto accantonare ogni mese.
-  function calcFiscale(reg) {
+  function calcFiscale(reg, statics) {
     var anno = (reg.meta && reg.meta.annoFiscale) || 2026;
     var FISCALE = /inps|inail|iva|irap|irpef|versamento|cciaa|imposte|acconto|f24|ritenuta|diritto/i;
     var oggi = new Date();
@@ -1231,11 +1306,15 @@
     else if (oggi.getFullYear() > anno) mesiRimanenti = 1;
     else mesiRimanenti = Math.max(1, 12 - oggi.getMonth());
 
+    var pressione = calcPressioneFiscale(reg, statics);
+    if (pressione.datiMancanti && pressione.datiMancanti.length) dm = dm.concat(pressione.datiMancanti);
+
     return {
       scadenzarioForward: forward,
       totaleTasseResidueAnno: totale,
       accantonamentoMensile: round2(totale / mesiRimanenti),
       mesiRimanenti: mesiRimanenti,
+      pressioneFiscale: pressione,
       datiMancanti: dm
     };
   }
@@ -1442,6 +1521,6 @@
     gruppoDi: gruppoDi,
     parseEuro: parseEuro,
     // esposte per il gate / debug
-    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine, calcCassaSalute: calcCassaSalute, calcFiscale: calcFiscale }
+    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine, calcCassaSalute: calcCassaSalute, calcFiscale: calcFiscale, calcPrevisioneFiscale: calcPrevisioneFiscale, calcPressioneFiscale: calcPressioneFiscale }
   };
 });
