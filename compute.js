@@ -1137,6 +1137,7 @@
       fiscale: calcFiscale(reg, statics),
       forecastMargine: calcForecastMargine(reg, statics),
       ebitdaGestionale: calcEbitdaGestionale(reg, statics),
+      recinto: calcRecinto(reg, statics, banca, iva),
       utiliSoci: calcUtiliSoci(reg, statics),
       portafoglioOrdini: calcPortafoglioPerMese(reg),
       partitario: calcPartitario(reg),
@@ -1431,6 +1432,127 @@
     };
   }
 
+  // ====================================== RECINTO / ACCANTONAMENTO TASSE (Domanda 2)
+  // "Quanto devo tenere da parte per il Fisco, e quanto dei soldi sul conto operativo è davvero mio?"
+  // Recinto = soldi da spostare sul 2° conto (accantonamento) per coprire le obbligazioni fiscali
+  // FUTURE non ancora pagate. Perimetro deciso da Marco: SOLO tasse + contributi + IRPEF soci.
+  // NIENTE TFR, NIENTE liquidazione soci usciti (non sono Fisco). 3 componenti, senza doppi conteggi:
+  //   A) scadenze fiscali già a calendario (IRAP, INPS, INAIL, CCIAA) — l'IVA è esclusa qui
+  //   B) IVA dovuta DERIVATA dai trimestri non ancora versati (calcIVA, a catena col credito Q1)
+  //   C) IRPEF+addizionali soci attuali sulla quota di partecipazione (STIMA: il saldo definitivo lo
+  //      darà la dichiarazione PF, ancora da elaborare) — INPS escluso (già contato in A).
+  function calcRecinto(reg, statics, banca, iva) {
+    var anno = (reg.meta && reg.meta.annoFiscale) || 2026;
+    var annoStr = String(anno);
+    var dm = [];
+
+    // --- A) scadenze fiscali a calendario, da_pagare, IVA esclusa (presa derivata in B) ---
+    var FISC = /inps|inail|irap|irpef|cciaa|camerale|imposte|acconto|ritenuta|diritto annual|addizional|f24/i;
+    var vociA = (reg.scadenze || []).filter(function (s) {
+      if (!isISO(s.data) || s.stato !== 'da_pagare' || typeof s.importo !== 'number') return false;
+      var txt = (s.tipo || '') + ' ' + (s.descrizione || '');
+      if (!FISC.test(txt) || /iva/i.test(txt)) return false;
+      return true; // tutte le obbligazioni fiscali ancora da pagare (anche se scadono nel 2027, es. 4a rata INPS)
+    }).map(function (s) {
+      return { id: s.id, data: s.data, importo: round2(s.importo), label: s.descrizione || s.tipo || '' };
+    }).sort(function (a, b) { return a.data < b.data ? -1 : (a.data > b.data ? 1 : 0); });
+    var totA = round2(vociA.reduce(function (a, v) { return a + v.importo; }, 0));
+
+    // --- B) IVA dovuta futura: trimestri con versamento > 0 (Q1 in credito non versa) ---
+    var vociB = (iva.trimestri || []).filter(function (t) { return t.importoVersamento > 0; })
+      .map(function (t) { return { periodo: t.periodo, scadenza: t.scadenza, importo: round2(t.importoVersamento) }; });
+    var totB = round2(vociB.reduce(function (a, v) { return a + v.importo; }, 0));
+
+    // --- C) IRPEF+addizionali soci attuali sulla quota di partecipazione (STIMA, manca PF) ---
+    var totC = 0, stimaC = null;
+    var imp = (reg.previsioneFiscale && reg.previsioneFiscale.impostePerAnno && reg.previsioneFiscale.impostePerAnno[annoStr]) || {};
+    var redSocio = imp.irpefSoci && imp.irpefSoci.redditoPartecipazionePerSocio;
+    var soci = (reg.previsioneFiscale && reg.previsioneFiscale.sociPerAnno && reg.previsioneFiscale.sociPerAnno[annoStr]) || [];
+    var sociAttuali = soci.filter(function (s) { return !s.uscita; });
+    if (typeof redSocio === 'number' && sociAttuali.length) {
+      var q0 = sociAttuali[0].quota;
+      var quoteUguali = sociAttuali.every(function (s) { return s.quota === q0; });
+      if (quoteUguali && q0 > 0) {
+        // utile fittizio tale che ogni socio riceva quota = reddito di partecipazione (quote uguali).
+        // Riuso calcPrevisioneFiscale: componentiCaricoUtile.irpef/addizionali sono il carico
+        // MARGINALE (per Sajay esclude l'IRPEF già trattenuta sullo stipendio). L'INPS è escluso
+        // di proposito (il fisso è già nelle scadenze in A).
+        var utileFitt = round2(redSocio / q0);
+        var pfStima = calcPrevisioneFiscale(reg, utileFitt, 0);
+        var c = pfStima.componentiCaricoUtile || {};
+        totC = round2((c.irpef || 0) + (c.addizionali || 0));
+        stimaC = { redditoPartecipazionePerSocio: redSocio, nSoci: sociAttuali.length, irpefPiuAddizionali: totC };
+        dm.push('IRPEF soci nel recinto è una STIMA sulla sola quota NL (€' + nf(redSocio) + '/socio): saldo+acconti definitivi li darà la dichiarazione PF (non ancora elaborata).');
+      } else dm.push('Quote soci ' + annoStr + ' non uguali: IRPEF recinto non stimata in automatico.');
+    } else dm.push('Reddito di partecipazione per socio assente in impostePerAnno[' + annoStr + '].irpefSoci: IRPEF soci non inclusa nel recinto.');
+
+    var totale = round2(totA + totB + totC);
+
+    // --- 2° conto (accantonamento) ---
+    var contoAcc = (reg.conti || []).filter(function (cc) { return cc.tipo === 'conto_accantonamento'; })[0];
+    var saldoAcc = contoAcc && typeof contoAcc.saldoAttuale === 'number' ? round2(contoAcc.saldoAttuale) : null;
+    if (!contoAcc) dm.push('2° conto (accantonamento) non configurato in registro.conti.');
+    else if (saldoAcc == null) dm.push('Saldo del 2° conto (accantonamento) non ancora disponibile: serve l\'E/C del conto.');
+
+    var ammanco = round2(Math.max(0, totale - (saldoAcc || 0)));   // quanto manca nel recinto = da spostare oggi
+    var saldoOperativo = round2(parseEuro(banca.saldoAttuale));
+    var saldoOperativoLibero = round2(saldoOperativo - ammanco);   // soldi sul conto operativo davvero "tuoi"
+
+    return {
+      totale: totale,
+      componenti: {
+        tasseCalendario: { totale: totA, voci: vociA },
+        iva: { totale: totB, voci: vociB },
+        irpefSoci: { totale: totC, stima: stimaC }
+      },
+      contoAccantonamento: { configurato: !!contoAcc, id: (contoAcc && contoAcc.id) || null, saldo: saldoAcc },
+      ammancoRecinto: ammanco,
+      daVersareOggi: ammanco,
+      coperto: saldoAcc != null ? round2(Math.min(totale, saldoAcc)) : 0,
+      saldoOperativo: saldoOperativo,
+      saldoOperativoLibero: saldoOperativoLibero,
+      percentualeAccantonamento: calcPercentualeAccantonamento(reg, statics),
+      perimetro: 'Tasse + contributi + IRPEF soci. Esclusi TFR e liquidazione soci usciti.',
+      datiMancanti: dm
+    };
+  }
+
+  // % DA ACCANTONARE PER OGNI INCASSO (conto recinto). Modello v1 trasparente e parametrico:
+  // su ogni euro incassato dal business proprio tornano al Fisco (a) l'IVA addebitata al cliente
+  // (partita di giro) e (b) le imposte sul reddito generato = margine a regime × pressione fiscale.
+  // Due basi: % sull'imponibile e % sull'incassato LORDO (imponibile+IVA), quest'ultima la operativa
+  // ("quando entra un bonifico, sposta il X%"). Margine = ultimo anno chiuso, correggibile in config.
+  function calcPercentualeAccantonamento(reg, statics) {
+    var dm = [];
+    var acc = (reg.configurazione && reg.configurazione.accantonamento) || {};
+    var aliquotaIVA = typeof acc.aliquotaIVAmedia === 'number' ? acc.aliquotaIVAmedia : 0.22;
+    var ebitda = calcEbitdaGestionale(reg, statics);
+    var pressione = calcPressioneFiscale(reg, statics);
+    var margine = typeof acc.margineBusinessProprio === 'number' ? acc.margineBusinessProprio
+      : (ebitda.regime && ebitda.regime.marginePct);
+    var pf = pressione.disponibile ? pressione.pressioneFiscale : null;
+    if (margine == null || pf == null) {
+      dm.push('Margine a regime o pressione fiscale non disponibili: % accantonamento non calcolabile.');
+      return { disponibile: false, datiMancanti: dm };
+    }
+    var impRedd = margine * pf;                       // frazione dell'imponibile che va in imposte sul reddito
+    var frazImponibile = aliquotaIVA + impRedd;       // su €1 di imponibile
+    var frazIncassato = frazImponibile / (1 + aliquotaIVA); // su €1 incassato lordo IVA
+    if (typeof acc.margineBusinessProprio !== 'number')
+      dm.push('Margine usato = a regime ' + (ebitda.regime && ebitda.regime.anno) + ' (' + Math.round(margine * 100) + '%), include i clienti del fratello → può sovrastimare. Imposta configurazione.accantonamento.margineBusinessProprio per il business proprio.');
+    return {
+      disponibile: true,
+      aliquotaIVAmedia: aliquotaIVA,
+      marginePct: round2(margine * 100),
+      pressioneFiscalePct: round2(pf * 100),
+      imposteRedditoSuImponibilePct: round2(impRedd * 100),
+      pctSuImponibile: round2(frazImponibile * 100),
+      pctSuIncassatoLordo: round2(frazIncassato * 100),
+      nota: 'Ogni volta che entra un bonifico cliente, sposta circa il ' + Math.round(frazIncassato * 100) + '% nel conto accantonamento. Modello v1 (IVA ' + Math.round(aliquotaIVA * 100) + '% + margine × pressione fiscale).',
+      datiMancanti: dm
+    };
+  }
+
   // BLOCCO 3 (Domanda 5): "quanti utili ho generato e quanti me ne restano, per socio".
   // Attribuito = utile società POST-IRAP per anno chiuso (storico) × quota del socio
   //   in quell'anno (previsioneFiscale.sociPerAnno), al netto delle decurtazioni di
@@ -1719,6 +1841,6 @@
     gruppoDi: gruppoDi,
     parseEuro: parseEuro,
     // esposte per il gate / debug
-    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine, calcCassaSalute: calcCassaSalute, calcFiscale: calcFiscale, calcPrevisioneFiscale: calcPrevisioneFiscale, calcPressioneFiscale: calcPressioneFiscale, calcEbitdaGestionale: calcEbitdaGestionale, calcUtiliSoci: calcUtiliSoci }
+    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine, calcCassaSalute: calcCassaSalute, calcFiscale: calcFiscale, calcPrevisioneFiscale: calcPrevisioneFiscale, calcPressioneFiscale: calcPressioneFiscale, calcEbitdaGestionale: calcEbitdaGestionale, calcRecinto: calcRecinto, calcPercentualeAccantonamento: calcPercentualeAccantonamento, calcUtiliSoci: calcUtiliSoci }
   };
 });

@@ -215,6 +215,7 @@
     <div class="tab-panel" id="tab-scadenzario">
       <div class="page-header"><h1>Scadenzario</h1><p>Scadenze fiscali, contributive e amministrative</p></div>
       <div id="scadenzario-alert" class="alert-box info" style="margin-bottom:24px;">Regime semplificato — IVA trimestrale. Tutti gli adempimenti sono gestiti dal commercialista.</div>
+      <div class="card" id="recinto-card" style="margin-bottom:24px;"><h3>Da tenere da parte per il Fisco (conto accantonamento)</h3><div id="recinto-body"></div></div>
       <div class="card"><div class="table-wrap"><table><thead><tr><th>Scadenza</th><th>Adempimento</th><th>Frequenza</th><th>Chi</th><th>Stato</th></tr></thead><tbody id="scadenze-body"></tbody></table></div></div>
     </div>
     <!-- Entrate -->
@@ -852,6 +853,7 @@
       // Forecast cassa 2026
       if (d.forecastCassa) renderForecast(d.forecastCassa);
       if (d.cassaSalute) renderCassaSalute(d.cassaSalute);
+      if (d.recinto) renderRecinto(d.recinto);
       if (d.fiscale) renderFiscale(d.fiscale);
 
       // Storico
@@ -860,6 +862,42 @@
     } catch (err) {
       console.error('Errore caricamento data.json:', err);
     }
+  }
+
+  function renderRecinto(r) {
+    var body = document.getElementById('recinto-body');
+    if (!body) return;
+    var pa = r.percentualeAccantonamento || {};
+    var liberoNeg = r.saldoOperativoLibero < 0;
+    var h = '';
+    h += '<p style="margin:0 0 14px;color:var(--text-dim);">Questi sono i soldi che NON sono tuoi: prima o poi tornano allo Stato (tasse, IVA, IRPEF). Tienili su un conto separato e non spenderli. Niente qui tocca i tuoi conti: è solo un promemoria di quanto mettere via.</p>';
+    // numero grande: da versare oggi
+    h += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;">';
+    h += '<div style="padding:16px;border-radius:8px;background:var(--surface-2);"><div style="font-size:13px;color:var(--text-dim);">Da spostare sul conto accantonamento</div><div style="font-size:26px;font-weight:700;color:var(--amber,#d97706);">' + eurInt(r.daVersareOggi) + '</div><div style="font-size:12px;color:var(--text-dim);">totale tasse future non ancora pagate</div></div>';
+    h += '<div style="padding:16px;border-radius:8px;background:var(--surface-2);"><div style="font-size:13px;color:var(--text-dim);">Sul conto operativo (Intesa)</div><div style="font-size:26px;font-weight:700;">' + eurInt(r.saldoOperativo) + '</div><div style="font-size:12px;color:var(--text-dim);">il saldo di oggi</div></div>';
+    h += '<div style="padding:16px;border-radius:8px;background:var(--surface-2);"><div style="font-size:13px;color:var(--text-dim);">Di cui davvero tuoi</div><div style="font-size:26px;font-weight:700;color:' + (liberoNeg ? 'var(--red)' : 'var(--green)') + ';">' + eurInt(r.saldoOperativoLibero) + '</div><div style="font-size:12px;color:var(--text-dim);">operativo − tasse da accantonare</div></div>';
+    h += '</div>';
+    if (liberoNeg) h += '<div class="alert-box warning" style="margin-top:14px;">In banca non basta a coprire tutte le tasse future messe insieme. Niente panico: sono scadenze spalmate nei prossimi mesi. La regola: <b>non prelevare utili</b> finché questo numero è rosso.</div>';
+    // componenti
+    var c = r.componenti || {};
+    h += '<table style="width:100%;margin-top:16px;font-size:13px;"><tbody>';
+    h += '<tr><td style="color:var(--text-dim);">Tasse e contributi già a calendario (IRAP, INPS, INAIL, camerale)</td><td style="text-align:right;font-weight:600;">' + eurInt(c.tasseCalendario ? c.tasseCalendario.totale : 0) + '</td></tr>';
+    h += '<tr><td style="color:var(--text-dim);">IVA da versare (trimestri ancora aperti)</td><td style="text-align:right;font-weight:600;">' + eurInt(c.iva ? c.iva.totale : 0) + '</td></tr>';
+    h += '<tr><td style="color:var(--text-dim);">IRPEF soci sulla quota NL <span style="color:var(--amber,#d97706);">*stima</span></td><td style="text-align:right;font-weight:600;">' + eurInt(c.irpefSoci ? c.irpefSoci.totale : 0) + '</td></tr>';
+    h += '<tr style="border-top:2px solid var(--border);font-weight:700;"><td>Totale da tenere da parte</td><td style="text-align:right;">' + eurInt(r.totale) + '</td></tr>';
+    h += '</tbody></table>';
+    // % accantonamento per incasso
+    if (pa.disponibile) {
+      h += '<div style="margin-top:16px;padding:14px;border-radius:8px;background:var(--surface-2);">';
+      h += '<div style="font-size:13px;color:var(--text-dim);">Regola pratica per ogni incasso</div>';
+      h += '<div style="font-size:20px;font-weight:700;">Ogni bonifico cliente che entra → sposta il ' + Math.round(pa.pctSuIncassatoLordo) + '% qui</div>';
+      h += '<div style="font-size:12px;color:var(--text-dim);margin-top:4px;">' + Math.round(pa.aliquotaIVAmedia*100) + '% di IVA + ' + (pa.imposteRedditoSuImponibilePct).toFixed(0) + '% di imposte sul guadagno (margine ' + (pa.marginePct).toFixed(0) + '% × pressione ' + (pa.pressioneFiscalePct).toFixed(0) + '%).</div>';
+      h += '</div>';
+    }
+    // note (dati mancanti)
+    var note = (r.datiMancanti || []).concat(pa.datiMancanti || []);
+    if (note.length) h += '<p style="margin:12px 0 0;font-size:11px;color:var(--text-dim);">Nota: ' + esc(note.join(' · ')) + '</p>';
+    body.innerHTML = h;
   }
 
   function esc(str) {

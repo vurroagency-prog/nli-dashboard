@@ -106,11 +106,12 @@ const run = async () => {
   console.log('fetch chiamati:', [...new Set(fetchLog)].join(', '));
   console.log('elementi DOM toccati:', Object.keys(elCache).length);
   // spot-check: alcuni elementi devono aver ricevuto contenuto
-  const checks = ['last-update-date', 'iva-trimestri-body', 'bilancio-ce-table', 'overview-status'];
+  const checks = ['last-update-date', 'iva-trimestri-body', 'bilancio-ce-table', 'overview-status', 'recinto-body'];
   checks.forEach(id => {
     const el = elCache[id];
     const filled = el && (el.innerHTML || el.textContent);
     console.log(`  ${filled ? '✓' : '⚠'} #${id} ${filled ? 'popolato' : 'VUOTO'}`);
+    if (id === 'recinto-body' && el) console.log('    testo recinto: ' + String(el.innerHTML || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 320));
   });
   if (errors.length) {
     console.log(`\n❌ ${errors.length} ERRORI runtime nel rendering:`);

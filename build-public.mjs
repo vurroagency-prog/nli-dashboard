@@ -95,6 +95,18 @@ if (pub.costiStruttura && pub.costiStruttura.personaleAnnuo) {
   removed['§costiStruttura(nomi)'] = 1;
 }
 
+// BLOCCO 5 (recinto): il reddito di partecipazione per socio è un reddito PERSONALE → via.
+// Senza, calcRecinto azzera la componente IRPEF e lo segnala (no degrado silenzioso).
+if (pub.previsioneFiscale && pub.previsioneFiscale.impostePerAnno) {
+  Object.keys(pub.previsioneFiscale.impostePerAnno).forEach(y => {
+    const irs = pub.previsioneFiscale.impostePerAnno[y] && pub.previsioneFiscale.impostePerAnno[y].irpefSoci;
+    if (irs) {
+      if (irs.redditoPartecipazionePerSocio !== undefined) { delete irs.redditoPartecipazionePerSocio; removed['§redditoPartecipazione'] = 1; }
+      if (irs.fonteReddito !== undefined) delete irs.fonteReddito;
+    }
+  });
+}
+
 // marcatore
 pub.meta = pub.meta || {};
 pub.meta.versionePubblica = 'sanitizzata per pubblicazione (no IBAN/CF/P.IVA/redditi soci/paghe)';
@@ -107,7 +119,7 @@ const leaks = [];
 // NB: i nomi soci sono già nei movimenti pubblicati (scelta pre-esistente); il gate copre i
 // vettori NUOVI: il blocco riserveUtili dev'essere rimosso e i redditi personali azzerati.
 [/"iban"/i, /"partitaIva"/, /"piva"/, /"codiceFiscale"/, /"email"/, /"margineContribuzione"/, /"margine"/, /\bIT\d{2}[A-Z0-9]{10,}/,
- /"riserveUtili"/, /"redditoDipendente":\s*[1-9]/].forEach(rx => {
+ /"riserveUtili"/, /"redditoDipendente":\s*[1-9]/, /"redditoPartecipazionePerSocio"/].forEach(rx => {
   if (rx.test(raw)) leaks.push(rx.toString());
 });
 

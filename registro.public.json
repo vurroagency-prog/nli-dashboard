@@ -25,6 +25,15 @@
    "intestatario": "Marco Vurro",
    "note": "Spese aziendali anticipate — da rimborsare via bonifico NLI",
    "attivo": true
+  },
+  {
+   "id": "BANCA-ISP-002",
+   "tipo": "conto_accantonamento",
+   "istituto": "Intesa Sanpaolo",
+   "intestatario": "Next Level Italia SAS",
+   "attivo": true,
+   "saldoAttuale": null,
+   "note": "2° conto NLI (recinto): qui si spostano i soldi destinati a tasse + IVA + IRPEF soci. saldoAttuale e i giroconti operativo↔accantonamento vanno popolati dall'E/C del 2° conto (non ancora fornito)."
   }
  ],
  "saldi": [
@@ -8519,11 +8528,11 @@
    "tipo": "inps",
    "descrizione": "INPS Commercianti Marco — 1a rata fisso 2026",
    "importo": 1137,
-   "stato": "da_pagare",
+   "stato": "pagato",
    "chi": "Marco (conto personale, poi rimborso NLI)",
    "fonte": "registro.json > previsioneFiscale",
    "movimentoCollegato": null,
-   "nota": "Importo stimato ~€1.137. Confermare con F24 commercialista. Marco paga da conto personale."
+   "nota": "Pagata da Marco dal conto personale (scad. 16/05/2026) — confermato da Marco 27/06. Non transita sul conto NLI. Restano 3 rate (SCAD-0028/0029/0030)."
   },
   {
    "id": "SCAD-2026-0028",
@@ -8894,7 +8903,12 @@
   },
   "margineMedioStimaOrdini": 0.5,
   "margineMedioStimaOrdiniNota": "Margine % medio applicato ai ricavi stimati dei mesi futuri senza proforme (forecast a margine). Storico reale: 2024 65%, 2025 64%, 2026 47% merch. Default 50% prudente — alzalo se ti aspetti più siti.",
-  "sogliaSicurezzaMesi": 1.5
+  "sogliaSicurezzaMesi": 1.5,
+  "accantonamento": {
+   "aliquotaIVAmedia": 0.22,
+   "margineBusinessProprio": null,
+   "nota": "Parametri della % da accantonare per ogni incasso (conto recinto). aliquotaIVAmedia = aliquota media sulle vendite (tutte 22%). margineBusinessProprio = margine % atteso sul business proprio (escludendo i clienti del fratello Alessandro); se null usa il margine a regime dell'ultimo anno chiuso dallo storico (che però include i clienti del fratello → sovrastima). Impostarlo per affinare."
+  }
  },
  "riconciliazione": {
   "processo": {
@@ -10741,7 +10755,7 @@
     },
     "irpefSoci": {
      "stato": "in_attesa",
-     "nota": "Dichiarazioni Redditi PF Marco e Sajay non ancora elaborate; incarico richiesto a Valerio il 26/06/2026."
+     "nota": "Dichiarazioni Redditi PF Marco e Sajay non ancora elaborate (Valerio ha rifiutato l'incarico il 26/06/2026). L'IRPEF nel recinto è una STIMA sulla sola quota NL €17.870/socio; il saldo+acconti definitivi (che dipendono dal quadro personale completo) li darà la dichiarazione PF."
     },
     "inpsEccedenzaMarco": {
      "importo": 0,
