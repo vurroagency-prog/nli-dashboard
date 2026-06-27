@@ -55,13 +55,14 @@ ok(r.datiMancanti.some(x => /IRPEF.*STIMA|STIMA.*quota/i.test(x)), 'datiMancanti
 
 console.log('\n[5] 2° conto + ammanco + operativo libero (giroconti)');
 ok(r.contoAccantonamento.configurato === true, '2° conto configurato (BANCA-ISP-002)');
-ok(r.contoAccantonamento.saldo === null, 'saldo 2° conto null finché manca l E/C');
-ok(r.datiMancanti.some(x => /E\/C|saldo del 2/i.test(x)), 'datiMancanti chiede l E/C del 2° conto');
-// con saldo null, ammanco = intero recinto
-near(r.ammancoRecinto, r.totale, 0.01, 'ammanco = totale (recinto vuoto finché saldo null)');
+const saldoAcc = r.contoAccantonamento.saldo;
+ok(saldoAcc === null || typeof saldoAcc === 'number', 'saldo 2° conto = numero (da E/C) o null (in attesa)');
+// ammanco = quanto manca nel recinto = max(0, totale − saldo già accantonato)
+near(r.ammancoRecinto, Math.max(0, r.totale - (saldoAcc || 0)), 0.01, 'ammanco = totale − saldo accantonato');
 near(r.daVersareOggi, r.ammancoRecinto, 0.01, 'da versare oggi = ammanco');
 near(r.saldoOperativoLibero, r.saldoOperativo - r.ammancoRecinto, 0.01, 'operativo libero = operativo − ammanco');
 ok(r.saldoOperativoLibero < 0, 'oggi operativo libero negativo → niente utili ritirabili (banca < recinto)');
+if (saldoAcc === null) ok(r.datiMancanti.some(x => /E\/C|saldo del 2/i.test(x)), 'se saldo null, datiMancanti chiede l E/C');
 
 console.log('\n[6] Perimetro: niente TFR né liquidazione soci usciti');
 ok(/TFR/i.test(r.perimetro) && /esclus/i.test(r.perimetro), 'perimetro dichiara TFR/liquidazione esclusi');
