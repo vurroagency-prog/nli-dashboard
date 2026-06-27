@@ -2762,11 +2762,9 @@
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
-   "nota": "Contributi — Disposizione elettronica n.002 marzo F24 pagato via disposizioni elettroniche (deleghe fiscali: ritenute su compensi collaboratori + contributi INPS dip. + addizionali). Dettaglio voci nei modelli F24 del commercialista/consulente lavoro.",
+   "nota": "Contributi — Disposizione elettronica n.002 marzo",
    "categoria": "B14_imposte",
-   "voceBilancio": "B14_imposte",
-   "controparte": "Agenzia delle Entrate (F24)",
-   "riconciliato": true
+   "voceBilancio": "B14_imposte"
   },
   {
    "id": "MOV-2026-0149",
@@ -3788,11 +3786,9 @@
    "stato": "abbinato",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_csv",
-   "nota": "Contributi — Disposizione elettronica n.002 F24 pagato via disposizioni elettroniche (deleghe fiscali: ritenute su compensi collaboratori + contributi INPS dip. + addizionali). Dettaglio voci nei modelli F24 del commercialista/consulente lavoro.",
+   "nota": "Contributi — Disposizione elettronica n.002",
    "categoria": "B14_imposte",
-   "voceBilancio": "B14_imposte",
-   "controparte": "Agenzia delle Entrate (F24)",
-   "riconciliato": true
+   "voceBilancio": "B14_imposte"
   },
   {
    "id": "MOV-2026-0207",
@@ -4406,12 +4402,10 @@
    "stato": "da_verificare",
    "contoId": "BANCA-ISP-001",
    "fonte": "estratto_conto_pdf",
-   "nota": "Pagamento multiplo n.003 — 30/04. Probabile F24 contributi/ritenute aprile (da confermare con Mascolo) F24 pagato via disposizioni elettroniche (deleghe fiscali: ritenute su compensi collaboratori + contributi INPS dip. + addizionali). Dettaglio voci nei modelli F24 del commercialista/consulente lavoro.",
-   "categoria": "B14_imposte",
-   "voceBilancio": "B14_imposte",
-   "competenza": "2026",
-   "controparte": "Agenzia delle Entrate (F24)",
-   "riconciliato": true
+   "nota": "Pagamento multiplo n.003 — 30/04. Probabile F24 contributi/ritenute aprile (da confermare con Mascolo)",
+   "categoria": "B6_materie_prime",
+   "voceBilancio": "DA_VERIFICARE",
+   "competenza": "2026"
   },
   {
    "id": "MOV-2026-0243",
