@@ -10756,7 +10756,9 @@
     },
     "irpefSoci": {
      "stato": "in_attesa",
-     "nota": "Dichiarazioni Redditi PF Marco e Sajay non ancora elaborate (Valerio ha rifiutato l'incarico il 26/06/2026). L'IRPEF nel recinto è una STIMA sulla sola quota NL €17.870/socio; il saldo+acconti definitivi (che dipendono dal quadro personale completo) li darà la dichiarazione PF."
+     "accantonamentoStimato": 1000,
+     "notaAccantonamento": "Tetto prudenziale ~€1.000 (totale soci) indicato da Marco sulla base dello storico reale, in attesa della dichiarazione PF. La stima teorica sugli scaglioni (~€9.124 su €17.870/socio) NON considera gli acconti IRPEF già versati nel 2025 né le detrazioni personali → sovrastima. Sostituire col saldo+acconti reali appena pronta la dichiarazione.",
+     "nota": "Dichiarazioni Redditi PF Marco e Sajay non ancora elaborate (Valerio ha rifiutato l'incarico il 26/06/2026). Nel recinto si usa l'accantonamento prudenziale €1.000 (accantonamentoStimato), non il calcolo teorico sugli scaglioni."
     },
     "inpsEccedenzaMarco": {
      "importo": 0,

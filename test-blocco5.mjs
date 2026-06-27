@@ -45,13 +45,11 @@ const ivaVersTot = data.iva.trimestri.filter(t => t.importoVersamento > 0).reduc
 near(B.totale, Math.round(ivaVersTot * 100) / 100, 0.02, 'B = somma versamenti IVA trimestrali dovuti');
 ok(!B.voci.some(v => /credito/i.test(v.periodo || '')), 'i trimestri in credito (Q1) non versano → non in B');
 
-console.log('\n[4] C) IRPEF soci = STIMA su quota partecipazione, INPS escluso (già in A)');
-ok(Cc.stima && Cc.stima.redditoPartecipazionePerSocio === 17870, 'reddito partecipazione 17.870/socio (da CU)');
-ok(Cc.stima.nSoci === 2, '2 soci attuali (Marco+Sajay)');
-near(Cc.totale, 9124.42, 1, 'IRPEF+addizionali stimata ~9.124 (Marco + marginale Sajay)');
-// invariante: C non deve includere l'INPS (che è in A). Su 17.870 < minimale, INPS eccedenza = 0.
-ok(Cc.totale < 11000, 'C non gonfiata dall INPS (escluso)');
-ok(r.datiMancanti.some(x => /IRPEF.*STIMA|STIMA.*quota/i.test(x)), 'datiMancanti segnala che IRPEF è una stima (manca PF)');
+console.log('\n[4] C) IRPEF soci = accantonamento prudenziale manuale (in attesa PF)');
+ok(Cc.stima && Cc.stima.fonte === 'manuale', 'IRPEF = importo manuale (non calcolo teorico)');
+near(Cc.totale, 1000, 0.01, 'IRPEF accantonamento prudenziale = 1.000 (storico reale, non teorico 9.124)');
+ok(Cc.totale < 9124, 'C molto più bassa della stima teorica sugli scaglioni');
+ok(r.datiMancanti.some(x => /attesa della dichiarazione PF|prudenziale/i.test(x)), 'datiMancanti segnala attesa dichiarazione PF');
 
 console.log('\n[5] 2° conto + ammanco + operativo libero (giroconti)');
 ok(r.contoAccantonamento.configurato === true, '2° conto configurato (BANCA-ISP-002)');
@@ -61,7 +59,7 @@ ok(saldoAcc === null || typeof saldoAcc === 'number', 'saldo 2° conto = numero 
 near(r.ammancoRecinto, Math.max(0, r.totale - (saldoAcc || 0)), 0.01, 'ammanco = totale − saldo accantonato');
 near(r.daVersareOggi, r.ammancoRecinto, 0.01, 'da versare oggi = ammanco');
 near(r.saldoOperativoLibero, r.saldoOperativo - r.ammancoRecinto, 0.01, 'operativo libero = operativo − ammanco');
-ok(r.saldoOperativoLibero < 0, 'oggi operativo libero negativo → niente utili ritirabili (banca < recinto)');
+ok(typeof r.saldoOperativoLibero === 'number', 'operativo libero è un numero (segno dipende dai dati correnti)');
 if (saldoAcc === null) ok(r.datiMancanti.some(x => /E\/C|saldo del 2/i.test(x)), 'se saldo null, datiMancanti chiede l E/C');
 
 console.log('\n[6] Perimetro: niente TFR né liquidazione soci usciti');

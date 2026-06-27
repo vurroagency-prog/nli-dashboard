@@ -1463,28 +1463,32 @@
       .map(function (t) { return { periodo: t.periodo, scadenza: t.scadenza, importo: round2(t.importoVersamento) }; });
     var totB = round2(vociB.reduce(function (a, v) { return a + v.importo; }, 0));
 
-    // --- C) IRPEF+addizionali soci attuali sulla quota di partecipazione (STIMA, manca PF) ---
+    // --- C) IRPEF soci: accantonamento PRUDENZIALE in attesa della dichiarazione PF ---
+    // Priorità all'importo MANUALE (accantonamentoStimato) indicato sullo storico reale: il calcolo
+    // teorico sugli scaglioni sovrastima perché ignora acconti già versati e detrazioni personali.
+    // Lo si usa solo come fallback (flaggato) se manca l'importo manuale.
     var totC = 0, stimaC = null;
     var imp = (reg.previsioneFiscale && reg.previsioneFiscale.impostePerAnno && reg.previsioneFiscale.impostePerAnno[annoStr]) || {};
-    var redSocio = imp.irpefSoci && imp.irpefSoci.redditoPartecipazionePerSocio;
+    var irs = imp.irpefSoci || {};
     var soci = (reg.previsioneFiscale && reg.previsioneFiscale.sociPerAnno && reg.previsioneFiscale.sociPerAnno[annoStr]) || [];
     var sociAttuali = soci.filter(function (s) { return !s.uscita; });
-    if (typeof redSocio === 'number' && sociAttuali.length) {
+    if (typeof irs.accantonamentoStimato === 'number') {
+      totC = round2(irs.accantonamentoStimato);
+      stimaC = { fonte: 'manuale', importo: totC, nota: irs.notaAccantonamento || '' };
+      dm.push('IRPEF soci nel recinto = accantonamento prudenziale €' + nf(totC) + ' (totale soci), in attesa della dichiarazione PF. Il calcolo teorico sugli scaglioni sovrastima (ignora acconti già versati e detrazioni).');
+    } else if (typeof irs.redditoPartecipazionePerSocio === 'number' && sociAttuali.length) {
+      // fallback teorico (sovrastima): IRPEF+addiz marginale sulla quota, INPS escluso (già in A)
+      var redSocio = irs.redditoPartecipazionePerSocio;
       var q0 = sociAttuali[0].quota;
       var quoteUguali = sociAttuali.every(function (s) { return s.quota === q0; });
       if (quoteUguali && q0 > 0) {
-        // utile fittizio tale che ogni socio riceva quota = reddito di partecipazione (quote uguali).
-        // Riuso calcPrevisioneFiscale: componentiCaricoUtile.irpef/addizionali sono il carico
-        // MARGINALE (per Sajay esclude l'IRPEF già trattenuta sullo stipendio). L'INPS è escluso
-        // di proposito (il fisso è già nelle scadenze in A).
-        var utileFitt = round2(redSocio / q0);
-        var pfStima = calcPrevisioneFiscale(reg, utileFitt, 0);
+        var pfStima = calcPrevisioneFiscale(reg, round2(redSocio / q0), 0);
         var c = pfStima.componentiCaricoUtile || {};
         totC = round2((c.irpef || 0) + (c.addizionali || 0));
-        stimaC = { redditoPartecipazionePerSocio: redSocio, nSoci: sociAttuali.length, irpefPiuAddizionali: totC };
-        dm.push('IRPEF soci nel recinto è una STIMA sulla sola quota NL (€' + nf(redSocio) + '/socio): saldo+acconti definitivi li darà la dichiarazione PF (non ancora elaborata).');
-      } else dm.push('Quote soci ' + annoStr + ' non uguali: IRPEF recinto non stimata in automatico.');
-    } else dm.push('Reddito di partecipazione per socio assente in impostePerAnno[' + annoStr + '].irpefSoci: IRPEF soci non inclusa nel recinto.');
+        stimaC = { fonte: 'teorica', redditoPartecipazionePerSocio: redSocio, nSoci: sociAttuali.length, irpefPiuAddizionali: totC };
+        dm.push('IRPEF soci = STIMA TEORICA sugli scaglioni (€' + nf(redSocio) + '/socio), probabile SOVRASTIMA: imposta accantonamentoStimato col saldo reale dalla dichiarazione PF.');
+      } else dm.push('Quote soci ' + annoStr + ' non uguali: IRPEF recinto non stimata.');
+    } else dm.push('IRPEF soci non quantificata (manca accantonamentoStimato e reddito partecipazione): non inclusa nel recinto.');
 
     var totale = round2(totA + totB + totC);
 
