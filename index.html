@@ -156,10 +156,13 @@
   <div class="login-box">
     <div class="login-logo">NLI <span>Dashboard</span></div>
     <div class="login-sub">Next Level Italia SAS — Area Riservata</div>
-    <div class="login-field">
-      <input type="password" id="pwd-input" placeholder="Password di accesso" autocomplete="off" autofocus>
-    </div>
-    <button class="login-btn" id="login-btn" onclick="tryLogin()">Accedi</button>
+    <form id="login-form" onsubmit="return tryLogin(event)">
+      <input type="text" id="user-input" name="username" autocomplete="username" value="soci@nextlevel-italia.com" tabindex="-1" aria-hidden="true" style="position:absolute;opacity:0;height:0;width:0;padding:0;border:0;pointer-events:none">
+      <div class="login-field">
+        <input type="password" id="pwd-input" name="password" placeholder="Password di accesso" autocomplete="current-password" autofocus>
+      </div>
+      <button class="login-btn" id="login-btn" type="submit">Accedi</button>
+    </form>
     <div class="login-error" id="login-error"></div>
     <div class="login-hint">Accesso riservato ai soci</div>
   </div>
@@ -319,7 +322,6 @@
   const SESSION_KEY = 'nli_dash_auth';
 
   if (sessionStorage.getItem(SESSION_KEY) === 'true') { showDashboard(); }
-  document.getElementById('pwd-input').addEventListener('keydown', function(e) { if (e.key === 'Enter') tryLogin(); });
 
   async function hashPassword(pwd) {
     const data = new TextEncoder().encode(pwd);
@@ -327,18 +329,27 @@
     return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
-  async function tryLogin() {
+  async function tryLogin(event) {
+    if (event) event.preventDefault();
     const pwd = document.getElementById('pwd-input').value;
-    if (!pwd) { document.getElementById('login-error').textContent = 'Inserisci la password'; return; }
+    if (!pwd) { document.getElementById('login-error').textContent = 'Inserisci la password'; return false; }
     const hash = await hashPassword(pwd);
     if (hash === HASH) {
       sessionStorage.setItem(SESSION_KEY, 'true');
+      // chiede al browser/gestore password di salvare le credenziali (Chrome/Edge)
+      if (window.PasswordCredential) {
+        try {
+          var cred = new PasswordCredential({ id: document.getElementById('user-input').value, password: pwd, name: 'NLI Dashboard' });
+          await navigator.credentials.store(cred);
+        } catch (e) { /* non bloccare il login se il salvataggio non è disponibile */ }
+      }
       showDashboard();
     } else {
       document.getElementById('login-error').textContent = 'Password errata';
       document.getElementById('pwd-input').value = '';
       document.getElementById('pwd-input').focus();
     }
+    return false;
   }
 
   function showDashboard() {

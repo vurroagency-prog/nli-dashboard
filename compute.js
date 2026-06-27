@@ -1387,6 +1387,11 @@
   // Per i soci USCITI vale il residuo di liquidazione ufficiale (riconciliato con E/C).
   function calcUtiliSoci(reg, statics) {
     var dm = [];
+    // Senza il blocco riserveUtili (prelievi/liquidazione per socio) la Domanda 5 non è
+    // rispondibile: nella versione PUBBLICA sanitizzata il blocco è rimosso → card nascosta.
+    if (!reg.riserveUtili) {
+      return { anniChiusi: [], utileCumulatoPostIRAP: 0, prelieviTotali: 0, liquidazioneUscitiTotale: 0, soci: [], nota: '', datiMancanti: ['Dettaglio utili per socio non disponibile in questa versione.'] };
+    }
     var ru = reg.riserveUtili || {};
     var sociPerAnno = (reg.previsioneFiscale || {}).sociPerAnno || {};
     var storico = (statics && statics.storico && statics.storico.annuale) || {};

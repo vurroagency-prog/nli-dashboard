@@ -66,6 +66,33 @@ if (pub.previsioneFiscale) {
     delete pub.previsioneFiscale.stima.sajay;
     removed['§previsioneFiscale.soci+stima(marco/sajay)'] = 1;
   }
+  // BLOCCO 2: compagine per anno → anonimizza (via nomi + redditi personali), tieni
+  // quote/tipo/imposte che servono al calcolo fiscale aggregato societario.
+  if (pub.previsioneFiscale.sociPerAnno) {
+    Object.keys(pub.previsioneFiscale.sociPerAnno).forEach(y => {
+      if (!/^\d{4}$/.test(y)) return;
+      pub.previsioneFiscale.sociPerAnno[y] = pub.previsioneFiscale.sociPerAnno[y].map((s, i) => ({
+        nome: 'Socio ' + (i + 1), quota: s.quota, tipo: s.tipo,
+        redditoDipendente: 0, altriRedditi: 0,
+        imposteApplicabili: s.imposteApplicabili, uscita: s.uscita
+      }));
+    });
+    removed['§sociPerAnno(anonimizzato)'] = 1;
+  }
+}
+
+// BLOCCO 3: utili maturati/prelevati/liquidazione PER SOCIO → via del tutto (PII + importi sensibili).
+// Il motore nasconde la card "Utili per socio" quando manca questo blocco.
+if (pub.riserveUtili !== undefined) { delete pub.riserveUtili; removed['§riserveUtili'] = 1; }
+
+// BLOCCO 4: costo personale → tieni l'importo aggregato (serve all'EBITDA pubblico),
+// togli i riferimenti nominativi nel testo.
+if (pub.costiStruttura && pub.costiStruttura.personaleAnnuo) {
+  pub.costiStruttura.personaleAnnuo.descrizione = 'Personale (costo aziendale annuo)';
+  delete pub.costiStruttura.personaleAnnuo.fonte;
+  delete pub.costiStruttura.personaleAnnuo.daConfermare;
+  if (pub.costiStruttura._nota) delete pub.costiStruttura._nota;
+  removed['§costiStruttura(nomi)'] = 1;
 }
 
 // marcatore
@@ -77,7 +104,10 @@ writeFileSync('./registro.public.json', JSON.stringify(pub, null, 1));
 // verifica anti-leak: nessuna chiave sensibile residua nel file scritto
 const raw = readFileSync('./registro.public.json', 'utf8');
 const leaks = [];
-[/"iban"/i, /"partitaIva"/, /"piva"/, /"codiceFiscale"/, /"email"/, /"margineContribuzione"/, /"margine"/, /\bIT\d{2}[A-Z0-9]{10,}/].forEach(rx => {
+// NB: i nomi soci sono già nei movimenti pubblicati (scelta pre-esistente); il gate copre i
+// vettori NUOVI: il blocco riserveUtili dev'essere rimosso e i redditi personali azzerati.
+[/"iban"/i, /"partitaIva"/, /"piva"/, /"codiceFiscale"/, /"email"/, /"margineContribuzione"/, /"margine"/, /\bIT\d{2}[A-Z0-9]{10,}/,
+ /"riserveUtili"/, /"redditoDipendente":\s*[1-9]/].forEach(rx => {
   if (rx.test(raw)) leaks.push(rx.toString());
 });
 

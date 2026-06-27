@@ -2,7 +2,7 @@
  "meta": {
   "versione": "1.0.0",
   "schema": "registro_contabile_nli",
-  "ultimoAggiornamento": "2026-06-02",
+  "ultimoAggiornamento": "2026-06-26",
   "ragioneSociale": "NEXT LEVEL ITALIA S.A.S. DI VURRO MARCO",
   "annoFiscale": 2026,
   "note": "Importati 0 movimenti e 16 fatture marzo-aprile",
@@ -408,7 +408,7 @@
    "importo": 10000,
    "controparte": "Alessandro Vurro + Claudia Loconsole",
    "descrizione": "Distribuzione utili soci uscenti — NON ricorrente",
-   "categoria": "STR_straordinario",
+   "categoria": "distribuzione_utili",
    "metodo": "bonifico",
    "conto": "BANCA-ISP-001",
    "riconciliato": true,
@@ -8378,24 +8378,24 @@
   },
   {
    "id": "SCAD-2026-0018",
-   "data": "2026-06-30",
+   "data": "2026-07-20",
    "tipo": "versamento",
-   "descrizione": "Saldo imposte 2025 + 1° acconto 2026 — IRAP (NLI) + IRPEF Marco + IRPEF Sajay + INPS eccedenza Marco. Importi dal commercialista, stima in previsioneFiscale.",
-   "importo": null,
-   "stato": "in_attesa_dati",
+   "descrizione": "1° acconto IRAP 2026 netto €854,50 (acconto lordo €1.359,50 − credito saldo IRAP 2025 €505). Proroga ISA 20/07. NB: IRPEF soci Marco/Sajay ancora da quantificare (dichiarazioni PF).",
+   "importo": 854.5,
+   "stato": "da_pagare",
    "chi": "commercialista",
-   "fonte": "registro.json > previsioneFiscale",
+   "fonte": "F24 Valerio Petrini 26/06/2026",
    "movimentoCollegato": null
   },
   {
    "id": "SCAD-2026-0019",
-   "data": "2026-06-30",
+   "data": "2026-07-20",
    "tipo": "versamento",
-   "descrizione": "Diritto annuale CCIAA",
-   "importo": null,
-   "stato": "in_attesa_dati",
+   "descrizione": "Diritto annuale CCIAA Bari 2026 (cod. 3850). Proroga ISA 20/07 (scad. ordinaria 30/06).",
+   "importo": 152,
+   "stato": "da_pagare",
    "chi": "commercialista",
-   "fonte": "normativa",
+   "fonte": "F24 Valerio Petrini 26/06/2026",
    "movimentoCollegato": null
   },
   {
@@ -8446,11 +8446,11 @@
    "id": "SCAD-2026-0024",
    "data": "2026-11-30",
    "tipo": "versamento",
-   "descrizione": "2° acconto 2026 — IRAP (NLI) + IRPEF Marco + IRPEF Sajay + INPS eccedenza Marco + Dichiarazione Redditi SP + PF. Importi dal commercialista, stima in previsioneFiscale.",
-   "importo": null,
-   "stato": "in_attesa_dati",
+   "descrizione": "2° acconto IRAP 2026 €1.359,50 (cod. 3813). NB: 2° acconto IRPEF soci ancora da quantificare.",
+   "importo": 1359.5,
+   "stato": "da_pagare",
    "chi": "commercialista",
-   "fonte": "registro.json > previsioneFiscale",
+   "fonte": "F24 Valerio Petrini 26/06/2026",
    "movimentoCollegato": null
   },
   {
@@ -8582,6 +8582,7 @@
    "beneficiario": "Panebianco Antonia",
    "descrizione": "Affitto sede Via Fieramosca 20, Bari",
    "categoria": "B8_godimento_beni",
+   "ceStruttura": true,
    "attiva": true,
    "inizioValidita": "2025-03-17",
    "fineValidita": "2031-03-16"
@@ -8754,6 +8755,7 @@
    "beneficiario": "Sala Silvana",
    "descrizione": "Royalty marchio NLI - Sala Silvana",
    "categoria": "B14_royalties",
+   "ceStruttura": true,
    "attiva": true,
    "inizioValidita": "2026-01-01",
    "fineValidita": null,
@@ -8768,12 +8770,21 @@
    "beneficiario": "Vurro Nicola",
    "descrizione": "Royalty marchio NLI - Vurro Nicola",
    "categoria": "B14_royalties",
+   "ceStruttura": true,
    "attiva": true,
    "inizioValidita": "2026-01-01",
    "fineValidita": null,
    "note": "Lordo €200/mese; netto €170 + ritenuta d'acconto €30 (20% su 75%, cod.1040, versata con F24). Redditi diversi art.67 TUIR, no IVA. Marchio reg. 302023000078576. Marca da bollo €2/ricevuta."
   }
  ],
+ "costiStruttura": {
+  "personaleAnnuo": {
+   "voce": "B9_personale",
+   "descrizione": "Personale (costo aziendale annuo)",
+   "importo": 11839.14,
+   "netto2026PerCassa": 662
+  }
+ },
  "configurazione": {
   "ebitdaTargetAnnuo": 100000,
   "bancaAlias": {
@@ -8844,7 +8855,8 @@
    "nota": "Pattern ristretto a 'Avangarde Consulting'. 'Avangarde Enterprise' non e' un cliente (ne' di Marco ne' del fratello), resta comunque fuori dal match."
   },
   "margineMedioStimaOrdini": 0.5,
-  "margineMedioStimaOrdiniNota": "Margine % medio applicato ai ricavi stimati dei mesi futuri senza proforme (forecast a margine). Storico reale: 2024 65%, 2025 64%, 2026 47% merch. Default 50% prudente — alzalo se ti aspetti più siti."
+  "margineMedioStimaOrdiniNota": "Margine % medio applicato ai ricavi stimati dei mesi futuri senza proforme (forecast a margine). Storico reale: 2024 65%, 2025 64%, 2026 47% merch. Default 50% prudente — alzalo se ti aspetti più siti.",
+  "sogliaSicurezzaMesi": 1.5
  },
  "riconciliazione": {
   "processo": {
@@ -10454,6 +10466,195 @@
     "minimaleReddito": 18415
    }
   },
+  "sociPerAnno": {
+   "2023": [
+    {
+     "nome": "Socio 1",
+     "quota": 0.25,
+     "tipo": "accomandatario",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF",
+      "INPS_commercianti"
+     ]
+    },
+    {
+     "nome": "Socio 2",
+     "quota": 0.25,
+     "tipo": "accomandante",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF"
+     ]
+    },
+    {
+     "nome": "Socio 3",
+     "quota": 0.25,
+     "tipo": "accomandante",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF"
+     ]
+    },
+    {
+     "nome": "Socio 4",
+     "quota": 0.25,
+     "tipo": "accomandante",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF"
+     ]
+    }
+   ],
+   "2024": [
+    {
+     "nome": "Socio 1",
+     "quota": 0.25,
+     "tipo": "accomandatario",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF",
+      "INPS_commercianti"
+     ]
+    },
+    {
+     "nome": "Socio 2",
+     "quota": 0.25,
+     "tipo": "accomandante",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF"
+     ]
+    },
+    {
+     "nome": "Socio 3",
+     "quota": 0.25,
+     "tipo": "accomandante",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF"
+     ]
+    },
+    {
+     "nome": "Socio 4",
+     "quota": 0.25,
+     "tipo": "accomandante",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF"
+     ]
+    }
+   ],
+   "2025": [
+    {
+     "nome": "Socio 1",
+     "quota": 0.25,
+     "tipo": "accomandatario",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF",
+      "INPS_commercianti"
+     ]
+    },
+    {
+     "nome": "Socio 2",
+     "quota": 0.25,
+     "tipo": "accomandante",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF"
+     ]
+    },
+    {
+     "nome": "Socio 3",
+     "quota": 0.25,
+     "tipo": "accomandante",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF"
+     ],
+     "uscita": "2025-12-29"
+    },
+    {
+     "nome": "Socio 4",
+     "quota": 0.25,
+     "tipo": "accomandante",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF"
+     ],
+     "uscita": "2025-12-29"
+    }
+   ],
+   "2026": [
+    {
+     "nome": "Socio 1",
+     "quota": 0.5,
+     "tipo": "accomandatario",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF",
+      "INPS_commercianti"
+     ]
+    },
+    {
+     "nome": "Socio 2",
+     "quota": 0.5,
+     "tipo": "accomandante",
+     "redditoDipendente": 0,
+     "altriRedditi": 0,
+     "imposteApplicabili": [
+      "IRPEF"
+     ]
+    }
+   ],
+   "_nota": "Compagine per anno (somma quote = 100%). Fonte: visura + CU + memoria liquidazione soci uscenti. 2023-2025: 4 soci al 25%; 2026: 2 soci 50/50 (Alessandro Vurro e Claudia Loconsole usciti con recesso 2025-12-29)."
+  },
+  "parametriPerAnno": {
+   "2026": {
+    "aliquotaIRAP": 0.039,
+    "formulaIRAP": "Valore produzione (A) - Costi produzione (B) + Costi personale (B9). Per SAS il personale non e deducibile IRAP.",
+    "scaglioniIRPEF": [
+     {
+      "da": 0,
+      "a": 28000,
+      "aliquota": 0.23
+     },
+     {
+      "da": 28001,
+      "a": 50000,
+      "aliquota": 0.35
+     },
+     {
+      "da": 50001,
+      "a": null,
+      "aliquota": 0.43
+     }
+    ],
+    "addizionaleRegionale": 0.0173,
+    "addizionaleComunale": 0.008,
+    "inpsCommercianti": {
+     "fissoAnnuo": 4515,
+     "rateTrimestrale": 1137,
+     "aliquotaEccedenza": 0.2448,
+     "minimaleReddito": 18415
+    }
+   },
+   "_nota": "Parametri fiscali DATATI per anno: fonte canonica del calcolo. Il blocco 'parametri' resta solo come fallback legacy. Anno mancante -> il motore segnala in datiMancanti, MAI applica le aliquote di un altro anno in silenzio. Per il 2027 aggiungere qui il set completo (scaglioni, INPS minimale/fisso/eccedenza, IRAP, addizionali)."
+  },
   "stima": {
    "dataAggiornamento": "2026-02-10",
    "utileAnteImposte": -9274.61,
@@ -10468,6 +10669,33 @@
    "totaleCaricofiscale": 4515,
    "percentualeSuUtile": null,
    "nota": "Utile negativo — nessuna imposta stimata tranne INPS fisso Marco 4.515/anno"
+  },
+  "impostePerAnno": {
+   "2026": {
+    "irap": {
+     "saldo2025": -505,
+     "acconto1Lordo": 1359.5,
+     "acconto1Netto": 854.5,
+     "acconto2": 1359.5,
+     "scadenzaAcconto1": "2026-07-20",
+     "scadenzaAcconto2": "2026-11-30"
+    },
+    "dirittoCamerale": {
+     "importo": 152,
+     "scadenza": "2026-07-20",
+     "scadenzaOrdinaria": "2026-06-30"
+    },
+    "irpefSoci": {
+     "stato": "in_attesa",
+     "nota": "Dichiarazioni Redditi PF Marco e Sajay non ancora elaborate; incarico richiesto a Valerio il 26/06/2026."
+    },
+    "inpsEccedenzaMarco": {
+     "importo": 0,
+     "nota": "Quota 2025 €17.870 sotto minimale ~€18.500 → eccedenza presumibilmente non dovuta. Da confermare Valerio."
+    },
+    "prorogaISA": true,
+    "fonte": "F24 commercialista Valerio Petrini, email 26/06/2026"
+   }
   }
  },
  "rateiRisconti": {
