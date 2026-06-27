@@ -2,7 +2,7 @@
  "meta": {
   "versione": "1.0.0",
   "schema": "registro_contabile_nli",
-  "ultimoAggiornamento": "2026-06-26",
+  "ultimoAggiornamento": "2026-06-27",
   "ragioneSociale": "NEXT LEVEL ITALIA S.A.S. DI VURRO MARCO",
   "annoFiscale": 2026,
   "note": "Importati 0 movimenti e 16 fatture marzo-aprile",
@@ -8114,6 +8114,44 @@
     "note": "POS VISA Intesa SP carta XX18, addebito 21/04 (3 giorni dopo data fattura)."
    },
    "note": "Renewal 1 Year Domain .info — euroimpianti.info (cliente Euroimpianti). Reverse charge intra-UE Art. 196 dir. 2006/112/CE. Da inviare a Mascolo per integrazione TD17."
+  },
+  {
+   "id": "FAT-2026-0133",
+   "tipo": "vendita",
+   "tipoDocumento": "TD01",
+   "data": "2026-05-21",
+   "numero": "17",
+   "controparte": "COSTRUZIONI VULPIO SOCIETA' A RESPONSABILITA' LIMITATA",
+   "imponibile": 2264.17,
+   "iva": 498.12,
+   "importoTotale": 2762.29,
+   "voceBilancio": "A1_ricavi_vendite",
+   "aliquotaIVA": 22,
+   "competenza": "2026",
+   "modalitaPagamento": "MP05",
+   "descrizione": "Abbigliamento da lavoro personalizzato (DTF + ricamo) — rif. proforma 11 / ordine 411",
+   "ordineCollegato": "ORD-2026-0010",
+   "stato": "registrata",
+   "fonte": "2026-05-21_CostruzioniVulpio_A1_ricavi_vendite.xml"
+  },
+  {
+   "id": "FAT-2026-0134",
+   "tipo": "vendita",
+   "tipoDocumento": "TD01",
+   "data": "2026-05-22",
+   "numero": "18",
+   "controparte": "RIVOLUZIONE CASA S.R.L.",
+   "imponibile": 799.95,
+   "iva": 175.99,
+   "importoTotale": 975.94,
+   "voceBilancio": "A1_ricavi_vendite",
+   "aliquotaIVA": 22,
+   "competenza": "2026",
+   "modalitaPagamento": "MP01",
+   "descrizione": "Abbigliamento da lavoro personalizzato (DTF) — rif. proforma 16 / ordine 418",
+   "ordineCollegato": "ORD-2026-0015",
+   "stato": "registrata",
+   "fonte": "2026-05-22_RivoluzioneCasa_A1_ricavi_vendite.xml"
   }
  ],
  "scadenze": [
@@ -9968,10 +10006,10 @@
     "scadenzaCollegata": "SCAD-2026-0020",
     "creditoRiportato": 603.87,
     "ivaDebito": {
-     "ordinario_22": 1442.68,
+     "ordinario_22": 2116.79,
      "ordinario_10": 0,
      "ridotto_4": 0,
-     "totale": 1442.68,
+     "totale": 2116.79,
      "dettaglioFatture": [
       {
        "id": "FAT-2026-0095",
@@ -10011,6 +10049,22 @@
        "importoTotale": 1673.03,
        "imponibile": 1371.34,
        "iva": 301.69,
+       "aliquota": "22%"
+      },
+      {
+       "id": "FAT-2026-0133",
+       "controparte": "COSTRUZIONI VULPIO SOCIETA' A RESPONSABILITA' LIMITATA",
+       "importoTotale": 2762.29,
+       "imponibile": 2264.17,
+       "iva": 498.12,
+       "aliquota": "22%"
+      },
+      {
+       "id": "FAT-2026-0134",
+       "controparte": "RIVOLUZIONE CASA S.R.L.",
+       "importoTotale": 975.94,
+       "imponibile": 799.95,
+       "iva": 175.99,
        "aliquota": "22%"
       }
      ]

@@ -44,9 +44,11 @@ ok(e.regime.marginePct > 0.35 && e.regime.marginePct < 0.50, 'margine a regime p
 
 console.log('\n[4] Il CE del periodo NON e inquinato dai costi struttura annui');
 const c = data.bilancio.ce.cascata;
-// baseline noto pre-Blocco4: EBITDA -2184,50 (solo fatture). Se la struttura fosse iniettata sarebbe ~-23k.
-near(c.ebitda, -2184.5, 0.01, 'EBITDA CE = baseline solo-fatture (struttura NON iniettata nel periodo)');
-ok(c.ebitda > -10000, 'EBITDA del periodo non e crollato dall iniezione struttura');
+// Invariante data-independent: la struttura annua (costiFissiAnnui ~20,8k) NON deve essere
+// iniettata nel CE del periodo. Se lo fosse, l'EBITDA crollerebbe di ~20,8k. Così il test non
+// si rompe quando si aggiungono fatture reali (cambia il baseline, non l'invariante).
+ok(c.ebitda > -data.ebitdaGestionale.costiFissiAnnui * 0.5, 'struttura annua NON iniettata nel CE del periodo (EBITDA non crolla di ~20k)');
+ok(Math.abs(c.ebitda - data.bilancio.ce.diffAB.importo) < 0.01, 'EBITDA CE = differenza A−B dalle sole fatture');
 
 console.log('\n[5] Trasparenza assunzione personale');
 ok(Array.isArray(e.datiMancanti) && e.datiMancanti.some(x => /personale/i.test(x)), 'datiMancanti segnala l assunzione 13a/14a sul personale');
