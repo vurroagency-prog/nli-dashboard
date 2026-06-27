@@ -977,7 +977,12 @@
 
     var acc = {};
     (reg.fatture || []).forEach(function (f) {
-      var dirz = f.direzione; if (dirz !== 'acquisto' && dirz !== 'vendita') return;
+      var dirz = f.direzione;
+      if (dirz !== 'acquisto' && dirz !== 'vendita') {           // 51 fatture hanno solo `tipo`, non `direzione`
+        if (f.tipo === 'acquisto' || f.tipo === 'vendita') dirz = f.tipo;
+        else if (f.tipo === 'nota_credito' || f.tipoDocumento === 'nota_credito') dirz = 'acquisto'; // NC TD24 = fornitore
+        else return;
+      }
       var k = canon(chiaveControparte(f));
       var a = acc[k] || (acc[k] = {
         chiave: k, partitaIva: f.partitaIva || '', nomi: {}, dir: {},
@@ -985,13 +990,13 @@
       });
       if (f.partitaIva && !a.partitaIva) a.partitaIva = f.partitaIva;
       var nm = String(f.controparte || '').trim(); if (nm) a.nomi[nm] = (a.nomi[nm] || 0) + 1;
-      var seg = f.tipoDocumento === 'nota_credito' ? -1 : 1;
+      var seg = (f.tipoDocumento === 'nota_credito' || f.tipo === 'nota_credito') ? -1 : 1;
       var tot = seg * (f.importoTotale || 0);
       var pag = f.pagamento || {};
       var pagata = pag.stato === 'pagata' || pag.stato === 'pagato' || !!pag.movimentoId;
       if (dirz === 'acquisto') { a.dir.forn = 1; a.fatturatoForn += tot; if (pagata) a.pagatoForn += tot; }
       else { a.dir.cli = 1; a.fatturatoCli += tot; if (pagata) a.incassatoCli += tot; }
-      a.fatture.push({ id: f.id, data: f.data, direzione: dirz, importo: round2(tot), stato: pagata ? 'pagata' : (pag.stato || 'aperta'), nc: f.tipoDocumento === 'nota_credito' });
+      a.fatture.push({ id: f.id, data: f.data, direzione: dirz, importo: round2(tot), stato: pagata ? 'pagata' : (pag.stato || 'aperta'), nc: (f.tipoDocumento === 'nota_credito' || f.tipo === 'nota_credito') });
     });
 
     function buildList(which) {
@@ -1031,6 +1036,227 @@
         fornitori: { n: fornitori.length, fatturato: money(tot(fornitori, 'fatturato')), pagato: money(tot(fornitori, 'pagato')), aperto: money(tot(fornitori, 'aperto')) },
         clienti: { n: clienti.length, fatturato: money(tot(clienti, 'fatturato')), incassato: money(tot(clienti, 'pagato')), aperto: money(tot(clienti, 'aperto')) }
       }
+    };
+  }
+
+  // ====================================================== PARTITARIO DANEA F/C
+  // Vista stile Danea Dare/Avere/Saldo agganciata ai PAGAMENTI REALI DELLA BANCA
+  // (non al campo f.pagamento, inaffidabile). Tre concetti chiave:
+  //  - Entity resolution P.IVA-aware: una mappa nome->P.IVA unifica le controparti
+  //    registrate con varianti di nome (es. Rossini con 3 grafie) in UNA riga.
+  //  - Fornitori: Avere = fatturato (fatture acquisto 2026), Dare = pagato in banca,
+  //    Saldo = Avere - Dare (>0 = dobbiamo ancora). Solo chi ha almeno 1 fattura 2026;
+  //    le uscite verso soggetti senza fattura 2026 confluiscono in "altriPagamenti".
+  //  - Clienti: Dare = fatturato (fatture vendita 2026), Avere = incassato in banca
+  //    (bonifici diretti + quote spacchettate dai batch SDD/TeamSystem via dettaglioClienti),
+  //    Saldo = Dare - Avere (>0 = ci deve). I batch SDD non ancora spacchettati e le
+  //    entrate non attribuibili confluiscono in "incassiDaAttribuire".
+  // CAVEAT: il registro e' 2026-only; i pagamenti 2026 saldano spesso fatture emesse a
+  // fine 2025 (fuori registro) -> i saldi qui NON combaciano col partitario Danea pluriennale.
+  function calcPartitarioDanea(reg) {
+    var BLACKLIST_ENTRATE = /rimbors|storno|giroconto|interess|f24|erario|agenzia delle entrate|\binps\b|cassa di previdenza/i;
+    // clienti del fratello, fuori dal core business (restano in cassa ma vanno segnalati)
+    var esclCfg = (reg.configurazione || {}).clientiEsclusiBusiness || {};
+    var esclPat = esclCfg.pattern || (esclCfg.clienti || []).map(function (s) {
+      return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s*');
+    }).join('|');
+    var reEsclusi = (esclCfg.attivo !== false && esclPat) ? new RegExp(esclPat, 'i') : null;
+    function isEscluso(nome, chiave) { return reEsclusi ? reEsclusi.test(String(nome || '') + ' ' + String(chiave || '')) : false; }
+
+    function estraiOrdine(causale) {
+      var s = String(causale || '');
+      var m = s.match(/proforma\s*n?\.?\s*(\d+)/i) || s.match(/(?:fatt|ft|fattura)\.?\s*n?\.?\s*(\d+)/i) || s.match(/\bn\.?\s*(\d+)/i);
+      return m ? m[1] : '';
+    }
+
+    // normalizzazione FORTE: rimuove punteggiatura e uniforma le forme societarie,
+    // cosi' "Rossini 1969 S.p.A." e "ROSSINI 1969 SPA" -> stessa stringa.
+    function normForte(s) {
+      return String(s || '').toUpperCase().replace(/[.,'`&]/g, ' ')
+        .replace(/\bSOC(IETA)?\s+A\s+RESP(ONSABILITA)?\s+LIMITAT\w*/g, ' SRL ')
+        .replace(/\bSOCIETA\s+SEMPLIFICAT\w*/g, ' SRLS ')
+        .replace(/\bS\s+R\s+L\s+S\b/g, ' SRLS ').replace(/\bS\s+R\s+L\b/g, ' SRL ')
+        .replace(/\bS\s+P\s+A\b/g, ' SPA ').replace(/\bS\s+A\s+S\b/g, ' SAS ').replace(/\bS\s+N\s+C\b/g, ' SNC ')
+        .replace(/\s+/g, ' ').trim();
+    }
+    // i nomi dall'estratto banca finiscono spesso con "...BENEF.: <troncato>": taglialo.
+    function tagliaBenef(s) { return String(s || '').split(/\bBENEF/i)[0].trim(); }
+
+    // override anagrafica (reg.controparti, oggi assente): alias->chiave + ragione sociale pulita
+    var overrides = reg.controparti || [], aliasMap = {}, ovByKey = {};
+    overrides.forEach(function (o) {
+      var k = String(o.chiave || '').trim(); if (!k) return; ovByKey[k] = o;
+      (o.alias || []).forEach(function (a) { aliasMap[normForte(a)] = k; });
+    });
+
+    // bancaAlias (curato da Marco): keyword -> nome canonico, per riconciliare i nomi
+    // grezzi/troncati dell'estratto conto col fornitore/cliente vero.
+    var bancaAlias = (reg.configurazione || {}).bancaAlias || {};
+    var aliasBanca = Object.keys(bancaAlias).map(function (kw) {
+      return { kw: normForte(kw), nome: String(bancaAlias[kw] || '').replace(/\s*\((cliente|fornitore)\)\s*$/i, '').trim() };
+    }).filter(function (x) { return x.kw.replace(/\s/g, '').length >= 3; });
+
+    // nome "pulito" per display + matching: taglia BENEF, applica bancaAlias se la keyword compare
+    function canonNome(nome) {
+      var base = tagliaBenef(nome) || String(nome || '').trim();
+      var nf = ' ' + normForte(base) + ' ';
+      for (var i = 0; i < aliasBanca.length; i++) { if (aliasBanca[i].kw && nf.indexOf(' ' + aliasBanca[i].kw + ' ') >= 0) return aliasBanca[i].nome; }
+      return base;
+    }
+
+    // mappa nome-forte -> P.IVA (da fatture+movimenti che la portano)
+    var nome2piva = {};
+    function learnPiva(nome, piva) { if (!piva) return; var n = normForte(canonNome(nome)); if (n && !nome2piva[n]) nome2piva[n] = String(piva).trim(); }
+    (reg.fatture || []).forEach(function (f) { learnPiva(f.controparte, f.partitaIva); });
+    (reg.movimenti || []).forEach(function (m) { learnPiva(m.controparte, m.partitaIva); });
+
+    function chiave(nome, piva) {
+      var nf = normForte(canonNome(nome));
+      if (aliasMap[nf]) return aliasMap[nf];
+      var p = (piva && String(piva).trim()) || nome2piva[nf] || '';
+      return p || nf || '?';
+    }
+
+    var acc = {};
+    function ensure(k) {
+      return acc[k] || (acc[k] = {
+        chiave: k, piva: '', nomi: {}, dirForn: false, dirCli: false,
+        fornAvere: 0, fornDare: 0, cliDare: 0, cliAvere: 0,
+        docForn: [], docCli: [], pagForn: [], incCli: [], ordini: {}, flags: {}
+      });
+    }
+    function nomePref(a) {
+      var keys = Object.keys(a.nomi); if (!keys.length) return ovByKey[a.chiave] && ovByKey[a.chiave].ragioneSociale || a.chiave;
+      return keys.sort(function (x, y) { return a.nomi[y] - a.nomi[x]; })[0];
+    }
+    function setPiva(a, nome, piva) {
+      if (piva && !a.piva) a.piva = String(piva).trim();
+      else if (!a.piva && nome2piva[normForte(canonNome(nome))]) a.piva = nome2piva[normForte(canonNome(nome))];
+    }
+
+    // 2) FATTURATO (fatture)
+    (reg.fatture || []).forEach(function (f) {
+      var dz = f.direzione;
+      if (dz !== 'acquisto' && dz !== 'vendita') {
+        if (f.tipo === 'acquisto' || f.tipo === 'vendita') dz = f.tipo;
+        else if (f.tipo === 'nota_credito' || f.tipoDocumento === 'nota_credito') dz = 'acquisto';
+        else return;
+      }
+      var k = chiave(f.controparte, f.partitaIva), a = ensure(k);
+      setPiva(a, f.controparte, f.partitaIva);
+      var nm = canonNome(f.controparte); if (nm) a.nomi[nm] = (a.nomi[nm] || 0) + 1;
+      var isNC = (f.tipoDocumento === 'nota_credito' || f.tipo === 'nota_credito');
+      var imp = round2((isNC ? -1 : 1) * (f.importoTotale || 0));
+      var daVerif = (f.tipoDocumento === 'TD24');                 // 4 TD24 congelate per Mascolo
+      var doc = { id: f.id, data: f.data, numero: f.numero || '', importo: imp, nc: isNC, daVerif: daVerif };
+      if (dz === 'acquisto') { a.dirForn = true; a.fornAvere = round2(a.fornAvere + imp); a.docForn.push(doc); if (daVerif) a.flags.daVerif = true; }
+      else { a.dirCli = true; a.cliDare = round2(a.cliDare + imp); a.docCli.push(doc); var od = estraiOrdine(f.numero); if (od) a.ordini[od] = 1; }
+    });
+
+    // 3) CASSA REALE (movBanca: 299 movimenti, PERS-MARCO esclusi)
+    var incassiDaAttribuire = 0, incMov = [], altriPag = 0, altriMov = [];
+    movBanca(reg).forEach(function (m) {
+      // 3a) batch SDD spacchettato -> attribuito ai singoli clienti
+      if (Array.isArray(m.dettaglioClienti) && m.dettaglioClienti.length) {
+        m.dettaglioClienti.forEach(function (d) {
+          var k = chiave(d.cliente, null), a = ensure(k); a.dirCli = true;
+          var nm = canonNome(d.cliente); if (nm) a.nomi[nm] = (a.nomi[nm] || 0) + 1;
+          setPiva(a, d.cliente, null);
+          // LORDO (non netto): è quanto il CLIENTE ha pagato → estingue il suo debito per intero.
+          // La commissione TeamSystem (~1,3%) è un costo nostro, non un credito residuo del cliente
+          // (prova: Ecomondi paga il lordo della fattura 2026 → saldo €0; col netto avrebbe un falso +€1,30).
+          // Conseguenza: Σ incassi clienti supera le entrate nette in banca di ~€27 (= commissioni TS).
+          var imp = round2(d.importoLordo || d.importoNetto || 0);
+          a.cliAvere = round2(a.cliAvere + imp);
+          var od = estraiOrdine(d.causale); if (od) a.ordini[od] = 1;
+          a.incCli.push({ id: m.id, data: m.data, importo: imp, descr: d.causale || '', via: 'SDD ' + (m.riferimentoTS || ''), ordine: od });
+        });
+        return;
+      }
+      // 3b) batch aggregato NON ancora spacchettato (Clienti via TeamSystem) -> limbo
+      if (m.tipo === 'entrata' && /via teamsystem|teamsystem payments/i.test(m.controparte || '')) {
+        incassiDaAttribuire = round2(incassiDaAttribuire + m.importo);
+        incMov.push({ id: m.id, data: m.data, importo: round2(m.importo), descr: m.descrizione || m.descrizioneBanca || '' });
+        return;
+      }
+      // 3c) entrata diretta -> incasso cliente (salvo blacklist non-cliente)
+      if (m.tipo === 'entrata') {
+        // entrate non-cliente (rimborsi, storni, interessi, F24, INPS): non sono incassi clienti.
+        // Le tracciamo nel limbo "da attribuire" invece di scartarle in silenzio (la descrizione le qualifica).
+        if (BLACKLIST_ENTRATE.test((m.controparte || '') + ' ' + (m.descrizione || ''))) {
+          incassiDaAttribuire = round2(incassiDaAttribuire + m.importo);
+          incMov.push({ id: m.id, data: m.data, importo: round2(m.importo), descr: m.descrizione || m.descrizioneBanca || '' });
+          return;
+        }
+        var kc = chiave(m.controparte, m.partitaIva);
+        if (kc === '?' || !kc) { incassiDaAttribuire = round2(incassiDaAttribuire + m.importo); incMov.push({ id: m.id, data: m.data, importo: round2(m.importo), descr: m.descrizione || '' }); return; }
+        var ac = ensure(kc); ac.dirCli = true;
+        var nmc = canonNome(m.controparte); if (nmc) ac.nomi[nmc] = (ac.nomi[nmc] || 0) + 1;
+        setPiva(ac, m.controparte, m.partitaIva);
+        ac.cliAvere = round2(ac.cliAvere + m.importo);
+        var odc = estraiOrdine(m.descrizione); if (odc) ac.ordini[odc] = 1;
+        ac.incCli.push({ id: m.id, data: m.data, importo: round2(m.importo), descr: m.descrizione || m.descrizioneBanca || '', via: 'bonifico', ordine: odc });
+        return;
+      }
+      // 3d) uscita -> pagamento fornitore SE la controparte ha gia una fattura acquisto 2026
+      var ku = chiave(m.controparte, m.partitaIva), au = acc[ku];
+      if (au && au.dirForn) {
+        au.fornDare = round2(au.fornDare + m.importo);
+        au.pagForn.push({ id: m.id, data: m.data, importo: round2(m.importo), descr: m.descrizione || m.descrizioneBanca || '' });
+        if (/include fatture 20\d\d|fatture 2025/i.test(m.descrizione || '')) au.flags.fuoriRegistro = true;
+      } else {
+        altriPag = round2(altriPag + m.importo);
+        altriMov.push({ id: m.id, data: m.data, importo: round2(m.importo), controparte: m.controparte || '', descr: m.descrizione || m.descrizioneBanca || '' });
+      }
+    });
+
+    // 4) costruzione liste
+    function rowForn(a) {
+      var avere = round2(a.fornAvere), dare = round2(a.fornDare), saldo = round2(avere - dare);
+      return {
+        chiave: a.chiave, ragioneSociale: (ovByKey[a.chiave] || {}).ragioneSociale || nomePref(a), partitaIva: a.piva || '',
+        avere: avere, dare: dare, saldo: saldo,
+        avereFmt: money(avere), dareFmt: money(dare), saldoFmt: money(saldo),
+        nFatture: a.docForn.length, nPagamenti: a.pagForn.length,
+        daVerif: !!a.flags.daVerif, fuoriRegistro: !!a.flags.fuoriRegistro,
+        documenti: a.docForn.slice().sort(function (x, y) { return x.data < y.data ? 1 : -1; }),
+        pagamenti: a.pagForn.slice().sort(function (x, y) { return x.data < y.data ? 1 : -1; })
+      };
+    }
+    function rowCli(a) {
+      var dare = round2(a.cliDare), avere = round2(a.cliAvere), saldo = round2(dare - avere);
+      var nome = (ovByKey[a.chiave] || {}).ragioneSociale || nomePref(a);
+      return {
+        chiave: a.chiave, ragioneSociale: nome, partitaIva: a.piva || '',
+        esclusoBusiness: isEscluso(nome, a.chiave),
+        ordini: Object.keys(a.ordini).sort(), dare: dare, avere: avere, saldo: saldo,
+        dareFmt: money(dare), avereFmt: money(avere), saldoFmt: money(saldo),
+        nFatture: a.docCli.length, nIncassi: a.incCli.length,
+        documenti: a.docCli.slice().sort(function (x, y) { return x.data < y.data ? 1 : -1; }),
+        incassi: a.incCli.slice().sort(function (x, y) { return x.data < y.data ? 1 : -1; })
+      };
+    }
+    var fornitori = [], clienti = [];
+    Object.keys(acc).forEach(function (k) {
+      var a = acc[k];
+      if (a.dirForn) fornitori.push(rowForn(a));
+      if (a.dirCli && (a.cliDare || a.cliAvere)) clienti.push(rowCli(a));
+    });
+    fornitori.sort(function (x, y) { return Math.abs(y.saldo) - Math.abs(x.saldo) || y.avere - x.avere; });
+    clienti.sort(function (x, y) { return Math.abs(y.saldo) - Math.abs(x.saldo) || y.dare - x.dare; });
+
+    function sum(list, c) { return round2(list.reduce(function (s, r) { return s + r[c]; }, 0)); }
+    var cliBiz = clienti.filter(function (c) { return !c.esclusoBusiness; });
+    return {
+      fornitori: fornitori, clienti: clienti,
+      incassiDaAttribuire: { totale: round2(incassiDaAttribuire), totaleFmt: money(round2(incassiDaAttribuire)), movimenti: incMov.sort(function (x, y) { return x.data < y.data ? 1 : -1; }) },
+      altriPagamenti: { totale: round2(altriPag), totaleFmt: money(round2(altriPag)), movimenti: altriMov.sort(function (x, y) { return x.data < y.data ? 1 : -1; }) },
+      totali: {
+        fornitori: { n: fornitori.length, avere: sum(fornitori, 'avere'), dare: sum(fornitori, 'dare'), saldo: sum(fornitori, 'saldo'), avereFmt: money(sum(fornitori, 'avere')), dareFmt: money(sum(fornitori, 'dare')), saldoFmt: money(sum(fornitori, 'saldo')) },
+        clienti: { n: clienti.length, dare: sum(clienti, 'dare'), avere: sum(clienti, 'avere'), saldo: sum(clienti, 'saldo'), dareFmt: money(sum(clienti, 'dare')), avereFmt: money(sum(clienti, 'avere')), saldoFmt: money(sum(clienti, 'saldo')),
+          nBusiness: cliBiz.length, dareBusiness: sum(cliBiz, 'dare'), avereBusiness: sum(cliBiz, 'avere'), saldoBusiness: sum(cliBiz, 'saldo'), dareBusinessFmt: money(sum(cliBiz, 'dare')), avereBusinessFmt: money(sum(cliBiz, 'avere')), saldoBusinessFmt: money(sum(cliBiz, 'saldo')) }
+      },
+      caveat: 'Solo documenti 2026. I pagamenti 2026 saldano spesso fatture emesse a fine 2025 (fuori dal registro): i saldi qui NON combaciano col partitario Danea pluriennale. Gli incassi via TeamSystem sono al lordo (quanto ha pagato il cliente); in banca arriva il netto, la piccola differenza sono le commissioni.'
     };
   }
 
@@ -1844,7 +2070,8 @@
     CATEGORIE: CATEGORIE,
     gruppoDi: gruppoDi,
     parseEuro: parseEuro,
+    money: money,
     // esposte per il gate / debug
-    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine, calcCassaSalute: calcCassaSalute, calcFiscale: calcFiscale, calcPrevisioneFiscale: calcPrevisioneFiscale, calcPressioneFiscale: calcPressioneFiscale, calcEbitdaGestionale: calcEbitdaGestionale, calcRecinto: calcRecinto, calcPercentualeAccantonamento: calcPercentualeAccantonamento, calcUtiliSoci: calcUtiliSoci }
+    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcPartitarioDanea: calcPartitarioDanea, movBanca: movBanca, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine, calcCassaSalute: calcCassaSalute, calcFiscale: calcFiscale, calcPrevisioneFiscale: calcPrevisioneFiscale, calcPressioneFiscale: calcPressioneFiscale, calcEbitdaGestionale: calcEbitdaGestionale, calcRecinto: calcRecinto, calcPercentualeAccantonamento: calcPercentualeAccantonamento, calcUtiliSoci: calcUtiliSoci }
   };
 });
