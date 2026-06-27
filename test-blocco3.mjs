@@ -26,8 +26,8 @@ const u = data.utiliSoci;
 console.log('\n[1] Riserve utili maturate per anno (post-IRAP, da storico − decurtazioni)');
 ok(u && Array.isArray(u.anniChiusi), 'utiliSoci.anniChiusi presente');
 ok(u.anniChiusi.join(',') === '2023,2024,2025', 'anni chiusi = 2023,2024,2025');
-// 16539 + 60756.5 + 69813.09 − 550 (Timeflow) = 146558.59
-near(u.utileCumulatoPostIRAP, 146558.59, 0.01, 'utile cumulato post-IRAP netto decurtazioni');
+// 16539 + 60756.5 + 69813.09 − 2200 (Timeflow) = 144908.59
+near(u.utileCumulatoPostIRAP, 144908.59, 0.01, 'utile cumulato post-IRAP netto decurtazioni');
 
 console.log('\n[2] Attribuzione pro-quota per socio (4 soci 25% 2023-2025)');
 ok(Array.isArray(u.soci) && u.soci.length === 4, '4 soci storici');
@@ -35,29 +35,30 @@ const marco = u.soci.find(s => /Marco/.test(s.nome));
 const sajay = u.soci.find(s => /Sajay/.test(s.nome));
 const ales = u.soci.find(s => /Alessandro/.test(s.nome));
 const claudia = u.soci.find(s => /Claudia/.test(s.nome));
-// 4134.75 + 15189.125 + (69263.09*0.25=17315.7725) = 36639.6475
-near(marco.attribuito, 36639.65, 0.01, 'Marco attribuito cumulato');
-near(sajay.attribuito, 36639.65, 0.01, 'Sajay attribuito cumulato');
+// utile cumulato 144908.59 / 4 = 36227.1475
+near(marco.attribuito, 36227.15, 0.01, 'Marco attribuito cumulato');
+near(sajay.attribuito, 36227.15, 0.01, 'Sajay attribuito cumulato');
 // somma attribuito = utile cumulato
 near(u.soci.reduce((a, s) => a + s.attribuito, 0), u.utileCumulatoPostIRAP, 0.05, 'Σ attribuito = utile cumulato');
 
-console.log('\n[3] Prelievi documentati per socio');
-near(marco.prelevato, 500, 0.01, 'Marco prelevato (MOV-0023)');
-near(sajay.prelevato, 500, 0.01, 'Sajay prelevato (MOV-0249)');
-near(ales.prelevato, 4095, 0.01, 'Alessandro prelevato (quota MOV-0015)');
-near(claudia.prelevato, 5905, 0.01, 'Claudia prelevato (quota MOV-0015)');
-near(u.prelieviTotali, 11000, 0.01, 'prelievi totali documentati = 10.000 + 500 + 500');
+console.log('\n[3] Prelievi acconto utili per socio (bank-verified: 2024 prima nota + 2025 E/C + 2026 registro)');
+near(marco.prelevato, 29149.86, 0.01, 'Marco prelevato (17341 + 11308,86 + 500)');
+near(sajay.prelevato, 22522.30, 0.01, 'Sajay prelevato (4200 + 17822,30 + 500)');
+near(ales.prelevato, 34310.32, 0.01, 'Alessandro prelevato (10510,25 + 19704,98 + 4095,09)');
+near(claudia.prelevato, 33463.18, 0.01, 'Claudia prelevato (5757,76 + 21800,51 + 5904,91)');
+near(u.prelieviTotali, 119445.66, 0.01, 'prelievi totali = somma per socio');
 
-console.log('\n[4] Residuo: usciti = liquidazione ufficiale; attuali = parziale flaggato');
+console.log('\n[4] Residuo bank-verified; usciti = liquidazione ufficiale');
 ok(ales.uscito && claudia.uscito, 'Alessandro e Claudia marcati usciti');
 ok(!marco.uscito && !sajay.uscito, 'Marco e Sajay soci attuali');
 near(ales.residuo, 1916.83, 0.01, 'Alessandro residuo = liquidazione ufficiale');
 near(claudia.residuo, 2763.97, 0.01, 'Claudia residuo = liquidazione ufficiale');
-ok(ales.residuoFonte === 'liquidazione' && claudia.residuoFonte === 'liquidazione', 'residuo usciti da liquidazione ufficiale');
 near(u.liquidazioneUscitiTotale, 4680.80, 0.01, 'liquidazione usciti totale');
-ok(marco.parziale && sajay.parziale, 'residuo soci attuali flaggato parziale (prelievi storici non censiti)');
-near(marco.residuo, 36139.65, 0.01, 'Marco residuo = attribuito − prelevato (sovrastimato)');
-ok(u.datiMancanti.some(d => /prelievi.*storici/i.test(d)), 'datiMancanti segnala prelievi storici da censire');
+ok(!marco.parziale && !sajay.parziale, 'residuo soci attuali NON più stima (bank-verified)');
+near(marco.residuo, 7077.29, 0.01, 'Marco residuo = attribuito − prelevato (verificato)');
+near(sajay.residuo, 13704.85, 0.01, 'Sajay residuo = attribuito − prelevato (verificato)');
+// il residuo calcolato dei soci usciti deve coincidere con la liquidazione (cross-check 0 warning)
+ok(!u.datiMancanti.some(d => /≠ liquidazione/.test(d)), 'residuo calcolato usciti coincide con liquidazione ufficiale');
 
 console.log('\n[5] Chiusura sbilancio SP');
 const sp = data.bilancio.sp;

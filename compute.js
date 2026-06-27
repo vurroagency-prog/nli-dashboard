@@ -1486,31 +1486,25 @@
     (ru.liquidazioneUsciti || []).forEach(function (l) { liqMap[l.socio] = l.residuoDaLiquidare || 0; });
     var liquidazioneUscitiTotale = round2((ru.liquidazioneUsciti || []).reduce(function (s, l) { return s + (l.residuoDaLiquidare || 0); }, 0));
 
-    var hasParziale = false;
     var soci = Object.keys(sociMap).map(function (nome) {
       var s = sociMap[nome];
       var attribuito = round2(s.attribuito);
       var prelevato = round2(prelMap[nome] || 0);
       var uscito = Object.prototype.hasOwnProperty.call(liqMap, nome);
-      var residuo, residuoFonte, parziale = false;
-      if (uscito) {
+      // Residuo = attribuito − prelevato, ora con prelievi BANK-VERIFIED per ogni socio/anno.
+      var residuo = round2(attribuito - prelevato);
+      // cross-check usciti con la liquidazione ufficiale: se diverge, segnala (non degrada silenzioso).
+      if (uscito && Math.abs(residuo - liqMap[nome]) > 1) {
+        dm.push('Residuo calcolato per ' + nome + ' (' + residuo + ') ≠ liquidazione ufficiale (' + round2(liqMap[nome]) + '): verificare prelievi.');
         residuo = round2(liqMap[nome]);
-        residuoFonte = 'liquidazione';
-      } else {
-        residuo = round2(attribuito - prelevato);
-        residuoFonte = 'attribuito-prelevato';
-        parziale = true; // prelievi storici non censiti → sovrastimato
-        hasParziale = true;
       }
       return {
         nome: nome, quotaUltimoAnno: s.quotaUltimoAnno,
         attribuito: attribuito, prelevato: prelevato,
-        residuo: residuo, uscito: uscito, parziale: parziale, residuoFonte: residuoFonte
+        residuo: residuo, uscito: uscito, parziale: false,
+        residuoFonte: uscito ? 'liquidazione' : 'verificato'
       };
     }).sort(function (a, b) { return b.attribuito - a.attribuito; });
-
-    if (hasParziale) dm.push('Prelievi utili storici 2023-2025 dei soci attuali (Marco/Sajay) non censiti dagli E/C: il residuo per socio attuale è SOVRASTIMATO (mostra solo attribuito − prelievi documentati).');
-    if (ru._datiMancanti) { /* già coperto sopra */ }
 
     return {
       anniChiusi: anniChiusi,
@@ -1518,7 +1512,7 @@
       prelieviTotali: prelieviTotali,
       liquidazioneUscitiTotale: liquidazioneUscitiTotale,
       soci: soci,
-      nota: 'Utile generato per socio = utile post-IRAP della società × quota, anno per anno (2023-2025, 4 soci al 25%). "Residuo" dei soci usciti = liquidazione ufficiale riconciliata; dei soci attuali = attribuito meno i soli prelievi documentati (sovrastimato finché non si censiscono i prelievi storici).',
+      nota: 'Utile generato per socio = utile post-IRAP della società × quota, anno per anno (2023-2025, 4 soci al 25%). Prelievi "acconto utili" per socio: 2024 da prima nota bancaria, 2025 da E/C ufficiale (netto stipendi/rimborsi), 2026 da registro. Residuo bank-verified; per i soci usciti coincide con la liquidazione ufficiale.',
       datiMancanti: dm
     };
   }

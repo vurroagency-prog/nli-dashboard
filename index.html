@@ -751,7 +751,7 @@
           uHtml += '<div style="padding:12px;border-radius:8px;background:var(--surface-2);"><div style="font-size:12px;color:var(--text-dim);">Utile totale 2023-2025</div><div style="font-size:20px;font-weight:700;color:var(--green);">' + fmtEuro(us.utileCumulatoPostIRAP) + '</div></div>';
           uHtml += '<div style="padding:12px;border-radius:8px;background:var(--surface-2);"><div style="font-size:12px;color:var(--text-dim);">Da liquidare ai soci usciti</div><div style="font-size:20px;font-weight:700;color:var(--red);">' + fmtEuro(us.liquidazioneUscitiTotale) + '</div></div>';
           uHtml += '</div>';
-          uHtml += '<p style="margin:12px 0 0;font-size:11px;color:var(--text-dim);">*Per Marco e Sajay il "Resta" \u00e8 una stima per eccesso: mancano ancora i prelievi degli anni passati dagli estratti conto. Per i soci usciti vale la liquidazione ufficiale (riconciliata con la banca).</p>';
+          uHtml += '<p style="margin:12px 0 0;font-size:11px;color:var(--text-dim);">Prelievi "acconto utili" verificati sugli estratti conto (2024 prima nota, 2025 E/C ufficiale netto stipendi/rimborsi, 2026 registro). Per i soci usciti il "Resta" coincide con la liquidazione ufficiale. Nota: il "Resta" \u00e8 il diritto contabile, non cassa pronta in banca.</p>';
           document.getElementById('bilancio-utilisoci-body').innerHTML = uHtml;
         } else {
           document.getElementById('bilancio-utilisoci-card').style.display = 'none';
