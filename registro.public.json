@@ -32,9 +32,9 @@
    "istituto": "Intesa Sanpaolo",
    "intestatario": "Next Level Italia SAS",
    "attivo": true,
-   "saldoAttuale": 30,
+   "saldoAttuale": 97.22,
    "saldoAggiornatoAl": "2026-06-27",
-   "note": "2° conto NLI (recinto): qui si spostano i soldi destinati a tasse + IVA + IRPEF soci. Saldo ~€30 (di fatto vuoto, nessun accantonamento ancora effettuato) — confermato da Marco 27/06. I giroconti operativo↔accantonamento vanno popolati quando arriva l'E/C dettagliato."
+   "note": "2° conto NLI (recinto, conto 1000/00015033): qui si spostano i soldi destinati a tasse + IVA + IRPEF soci. Saldo €97,22 al 27/06 (di fatto vuoto, accantonamento non ancora avviato) — screenshot Marco. I giroconti operativo↔accantonamento vanno popolati quando arriva l'E/C dettagliato."
   }
  ],
  "saldi": [
