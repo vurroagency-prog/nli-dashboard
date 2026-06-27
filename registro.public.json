@@ -88,6 +88,14 @@
    "fonte": "estratto_conto_Movimenti_Conto_30052026.pdf",
    "verificato": true,
    "nota": "E/C ufficiale 30/05. Maggio: incassi €5.754,73, uscite €8.523,95, netto -€2.769,22 (quadra al centesimo)"
+  },
+  {
+   "contoId": "BANCA-ISP-001",
+   "data": "2026-05-31",
+   "importo": 10948.47,
+   "fonte": "estratto_conto_Movimenti_Conto_27062026.xlsx",
+   "verificato": true,
+   "nota": "Saldo contabile finale 31/05 da export Excel ufficiale Intesa (al 27/06). Differenza vs 30/05 (-0,50) = canone mensile maggio MOV-2026-0321."
   }
  ],
  "movimenti": [
@@ -5708,6 +5716,23 @@
    "fonte": "Movimenti_Conto_30052026.xlsx",
    "descrizioneBanca": "COSTO BONIFICO ISTANTANEO DA VOI DISPOSTO",
    "fonteRiconciliazione": "auto-estesa-31052026"
+  },
+  {
+   "id": "MOV-2026-0321",
+   "data": "2026-05-31",
+   "tipo": "uscita",
+   "importo": 0.5,
+   "controparte": "Intesa Sanpaolo",
+   "descrizione": "Canone mensile conto (maggio)",
+   "categoria": "C_spese_bancarie",
+   "metodo": "addebito",
+   "conto": "BANCA-ISP-001",
+   "competenza": "2026",
+   "riconciliato": true,
+   "fattureCollegate": [],
+   "fonte": "Movimenti_Conto_27062026.xlsx",
+   "descrizioneBanca": "CANONE MENSILE BASE E SERVIZI AGGIUNTIVI",
+   "fonteRiconciliazione": "import-27062026"
   }
  ],
  "fatture": [
