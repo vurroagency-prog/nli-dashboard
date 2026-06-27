@@ -1087,6 +1087,7 @@
       cassaSalute: calcCassaSalute(reg, forecast),
       fiscale: calcFiscale(reg, statics),
       forecastMargine: calcForecastMargine(reg, statics),
+      ebitdaGestionale: calcEbitdaGestionale(reg, statics),
       portafoglioOrdini: calcPortafoglioPerMese(reg),
       partitario: calcPartitario(reg),
       storico: yoyLive(reg, statics)
@@ -1319,6 +1320,53 @@
     };
   }
 
+  // EBITDA / MARGINI GESTIONALI (Domanda 4). Il CE dell'anno in corso e PARZIALE (solo le fatture
+  // inserite) -> non se ne ricava un margine annuo affidabile. Qui diamo i numeri ANNUI utili:
+  // (1) costi fissi di struttura annui (il pavimento da coprire), (2) break-even ricavi,
+  // (3) margine gestionale "a regime" dall'ultimo anno chiuso (P&L completo nello storico).
+  function calcEbitdaGestionale(reg, statics) {
+    var anno = String((reg.meta && reg.meta.annoFiscale) || 2026);
+    var dm = [];
+    var dett = [];
+    (reg.scadenzeRicorrenti || []).forEach(function (r) {
+      if (!r.ceStruttura || r.attiva === false) return;
+      var fatt = FREQ_FATTORE[r.frequenza || 'mensile']; if (fatt == null) fatt = 1;
+      var annuo = round2((r.importo || 0) * fatt * 12);
+      if (annuo) dett.push({ voce: r.categoria || 'B7', label: r.descrizione || r.tipo || '', importo: annuo, fonte: 'ricorrente' });
+    });
+    var pers = reg.costiStruttura && reg.costiStruttura.personaleAnnuo;
+    if (pers && typeof pers.importo === 'number' && pers.importo > 0) {
+      dett.push({ voce: pers.voce || 'B9_personale', label: pers.descrizione || 'Personale', importo: round2(pers.importo), fonte: 'parametro' });
+      if (pers.daConfermare) dm.push('Costo personale annuo (€' + nf(round2(pers.importo)) + '): ' + pers.daConfermare);
+    }
+    var costiFissiAnnui = round2(dett.reduce(function (s, d) { return s + d.importo; }, 0));
+    var margContrib = (reg.configurazione && typeof reg.configurazione.margineMedioStimaOrdini === 'number')
+      ? reg.configurazione.margineMedioStimaOrdini : 0.50;
+    var breakEven = margContrib > 0 ? round2(costiFissiAnnui / margContrib) : null;
+    var storico = (statics && statics.storico && statics.storico.annuale) || {};
+    var anniChiusi = Object.keys(storico).filter(function (y) { return +y < +anno && /^\d{4}$/.test(y); }).sort();
+    var regime = null;
+    if (anniChiusi.length) {
+      var ab = anniChiusi[anniChiusi.length - 1], sa = storico[ab] || {};
+      if (typeof sa.ricaviNetto === 'number' && typeof sa.utileGestionale === 'number' && sa.ricaviNetto > 0) {
+        regime = {
+          anno: ab, ricavi: round2(sa.ricaviNetto), utileGestionale: round2(sa.utileGestionale),
+          marginePct: round2(sa.utileGestionale / sa.ricaviNetto * 100) / 100
+        };
+      }
+    } else dm.push('Nessun anno chiuso nello storico per il margine gestionale a regime.');
+    return {
+      costiFissiAnnui: costiFissiAnnui,
+      costiFissiMensili: round2(costiFissiAnnui / 12),
+      dettaglioStruttura: dett,
+      margineContribuzionePct: margContrib,
+      breakEvenRicaviAnnui: breakEven,
+      regime: regime,
+      nota: 'Costi fissi di struttura annui (affitto, royalty, personale) = il pavimento da coprire ogni anno. Break-even = ricavi annui che, al margine di contribuzione ' + Math.round(margContrib * 100) + '%, pareggiano i costi fissi. "A regime" = redditivita dell\'ultimo anno chiuso (P&L completo). Il CE dell\'anno in corso e parziale (solo fatture inserite), quindi non se ne ricava un margine annuo affidabile.',
+      datiMancanti: dm
+    };
+  }
+
   // FORECAST MARGINE: il "proforma comanda". Per ogni mese il margine REALE degli ordini
   // (proforme) di quel mese; per i mesi futuri senza proforme = ricavo medio storico ×
   // margine% atteso (configurabile in configurazione.margineMedioStimaOrdini, default 50%).
@@ -1521,6 +1569,6 @@
     gruppoDi: gruppoDi,
     parseEuro: parseEuro,
     // esposte per il gate / debug
-    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine, calcCassaSalute: calcCassaSalute, calcFiscale: calcFiscale, calcPrevisioneFiscale: calcPrevisioneFiscale, calcPressioneFiscale: calcPressioneFiscale }
+    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine, calcCassaSalute: calcCassaSalute, calcFiscale: calcFiscale, calcPrevisioneFiscale: calcPrevisioneFiscale, calcPressioneFiscale: calcPressioneFiscale, calcEbitdaGestionale: calcEbitdaGestionale }
   };
 });

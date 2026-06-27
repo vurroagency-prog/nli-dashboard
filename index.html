@@ -261,6 +261,7 @@
       <div id="bilancio-disclaimer" class="alert-box info" style="margin-bottom:16px;"></div>
       <div id="bilancio-nota-competenza" class="alert-box warning" style="margin-bottom:24px;"></div>
       <div class="card" id="bilancio-ce-card"><h3>Conto Economico</h3><div class="table-wrap"><table id="bilancio-ce-table"></table></div></div>
+      <div class="card" id="bilancio-struttura-card" style="margin-top:16px;"><h3>Costi fissi e punto di pareggio (annuo)</h3><div id="bilancio-struttura-body"></div></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;" id="bilancio-sp-grid">
         <div class="card" id="bilancio-sp-attivo"><h3>ATTIVO</h3><div class="table-wrap"><table id="bilancio-sp-attivo-table"></table></div></div>
         <div class="card" id="bilancio-sp-passivo"><h3>PASSIVO + PATRIMONIO NETTO</h3><div class="table-wrap"><table id="bilancio-sp-passivo-table"></table></div></div>
@@ -704,6 +705,21 @@
         ceHtml += '<tr><td colspan="2" style="padding:8px 14px;color:var(--text-dim);font-size:11px;">Nota: l\'IRPEF e l\'INPS dei soci non sono in questo CE (sono imposte personali dei soci) — vedi riquadro Previsione Fiscale sotto.</td></tr>';
         ceHtml += '</tbody>';
         document.getElementById('bilancio-ce-table').innerHTML = ceHtml;
+        // Costi fissi e punto di pareggio (Blocco 4) — numeri ANNUI, Homer-proof
+        var eg = d.ebitdaGestionale;
+        if (eg) {
+          var sHtml = '<p style="margin:0 0 12px;color:var(--text-dim);">Sono i costi che paghi ogni anno comunque, anche a zero vendite (affitto, royalty del marchio, stipendio). Non arrivano da fattura, quindi non si vedono nel Conto Economico qui sopra.</p>';
+          sHtml += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">';
+          sHtml += '<div style="padding:14px;border-radius:8px;background:var(--surface-2);"><div style="font-size:13px;color:var(--text-dim);">Costi fissi all\'anno</div><div style="font-size:22px;font-weight:700;color:var(--red);">' + fmtEuro(eg.costiFissiAnnui) + '</div><div style="font-size:12px;color:var(--text-dim);">' + fmtEuro(eg.costiFissiMensili) + ' al mese</div></div>';
+          sHtml += '<div style="padding:14px;border-radius:8px;background:var(--surface-2);"><div style="font-size:13px;color:var(--text-dim);">Vendite per andare in pari</div><div style="font-size:22px;font-weight:700;">' + fmtEuro(eg.breakEvenRicaviAnnui) + '</div><div style="font-size:12px;color:var(--text-dim);">a margine ' + Math.round(eg.margineContribuzionePct*100) + '%</div></div>';
+          if (eg.regime) sHtml += '<div style="padding:14px;border-radius:8px;background:var(--surface-2);"><div style="font-size:13px;color:var(--text-dim);">Margine quando gira (' + esc(eg.regime.anno) + ')</div><div style="font-size:22px;font-weight:700;color:var(--green);">' + (eg.regime.marginePct*100).toFixed(1) + '%</div><div style="font-size:12px;color:var(--text-dim);">su ' + fmtEuro(eg.regime.ricavi) + ' di vendite</div></div>';
+          sHtml += '</div>';
+          sHtml += '<table style="width:100%;margin-top:14px;font-size:13px;"><tbody>';
+          (eg.dettaglioStruttura||[]).forEach(function(x){ sHtml += '<tr><td style="color:var(--text-dim);">' + esc(x.label) + '</td><td style="text-align:right;">' + fmtEuro(x.importo) + '</td></tr>'; });
+          sHtml += '</tbody></table>';
+          if (eg.datiMancanti && eg.datiMancanti.length) sHtml += '<p style="margin:10px 0 0;font-size:11px;color:var(--text-dim);">Nota: ' + esc(eg.datiMancanti.join(' \u00b7 ')) + '</p>';
+          document.getElementById('bilancio-struttura-body').innerHTML = sHtml;
+        }
         // SP Attivo
         var sp = bil.sp;
         var spAttivoHtml = '<tbody>';
