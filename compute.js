@@ -646,17 +646,27 @@
     ];
     var totAttivo = attivoGruppi.reduce(function (s, g) { return s + g.importo; }, 0);
 
+    // BLOCCO 3: debito residuo verso i soci usciti (liquidazione) — passivo reale.
+    var liquidazUsciti = ((reg.riserveUtili || {}).liquidazioneUsciti || [])
+      .reduce(function (s, l) { return s + (l.residuoDaLiquidare || 0); }, 0);
     var passivoGruppi = [
       { label: 'Debiti verso soci', importo: round2(debitiSoci) },
+      { label: 'Debiti verso soci uscenti (liquidazione)', importo: round2(liquidazUsciti) },
       { label: 'Risconti passivi', importo: round2(risconti.passivi) }
     ];
     var totPassivo = passivoGruppi.reduce(function (s, g) { return s + g.importo; }, 0);
 
     var utileEsercizio = ce.diffAB.importo; // ante imposte gestionale
+    // BLOCCO 3: chiude lo sbilancio SP. Le riserve da utili 2023-2025 dei soci ATTUALI
+    // ancora in azienda NON sono ricostruibili al millesimo (mancano i prelievi storici
+    // per socio dagli E/C): il valore qui è il patrimonio netto residuo che fa quadrare
+    // lo SP (attivo − passivo − capitale − utile esercizio), flaggato come tale. Il dettaglio
+    // utile-per-socio (attribuito vs prelevato) vive in data.utiliSoci (D5).
+    var utiliPregressi = round2(totAttivo - totPassivo - round2(capitale) - round2(utileEsercizio));
     var pnDett = [
       { label: 'Capitale sociale', importo: round2(capitale) },
       { label: 'Utile esercizio (gestionale)', importo: round2(utileEsercizio) },
-      { label: 'Utili pregressi', importo: 0 }
+      { label: 'Utili pregressi (riserve residue soci attuali)', importo: utiliPregressi }
     ];
     var totPN = pnDett.reduce(function (s, g) { return s + g.importo; }, 0);
     var diff = round2(totAttivo - (totPassivo + totPN));
@@ -668,7 +678,7 @@
       verifica: {
         differenza: diff,
         stato: Math.abs(diff) < 1 ? 'quadrato' : 'sbilancio',
-        nota: 'Bilancio gestionale provvisorio: sbilancio atteso (utili pregressi 2023-2025 e riserve non ancora censiti).'
+        nota: 'SP quadrato: le riserve residue dei soci attuali (' + money(utiliPregressi) + ') sono il patrimonio netto residuo di quadratura. Il dettaglio prelievi storici per socio è ancora da censire (vedi utili per socio).'
       }
     };
 
@@ -1088,6 +1098,7 @@
       fiscale: calcFiscale(reg, statics),
       forecastMargine: calcForecastMargine(reg, statics),
       ebitdaGestionale: calcEbitdaGestionale(reg, statics),
+      utiliSoci: calcUtiliSoci(reg, statics),
       portafoglioOrdini: calcPortafoglioPerMese(reg),
       partitario: calcPartitario(reg),
       storico: yoyLive(reg, statics)
@@ -1367,6 +1378,93 @@
     };
   }
 
+  // BLOCCO 3 (Domanda 5): "quanti utili ho generato e quanti me ne restano, per socio".
+  // Attribuito = utile società POST-IRAP per anno chiuso (storico) × quota del socio
+  //   in quell'anno (previsioneFiscale.sociPerAnno), al netto delle decurtazioni di
+  //   competenza (es. decreto Timeflow). Questo è FORMULA-FIRST: derivato al 100%.
+  // Prelevato = SOLO i prelievi documentati (riserveUtili.prelievi). I prelievi storici
+  //   2023-2025 dei soci ATTUALI non sono ancora censiti → residuo SOVRASTIMATO e flaggato.
+  // Per i soci USCITI vale il residuo di liquidazione ufficiale (riconciliato con E/C).
+  function calcUtiliSoci(reg, statics) {
+    var dm = [];
+    var ru = reg.riserveUtili || {};
+    var sociPerAnno = (reg.previsioneFiscale || {}).sociPerAnno || {};
+    var storico = (statics && statics.storico && statics.storico.annuale) || {};
+    var annoCorrente = +((reg.meta && reg.meta.annoFiscale) || 2026);
+    // anni chiusi: presenti sia nello storico (utilePostIRAP) sia nella compagine, < anno corrente
+    var anniChiusi = Object.keys(storico)
+      .filter(function (y) { return /^\d{4}$/.test(y) && +y < annoCorrente && typeof storico[y].utilePostIRAP === 'number' && sociPerAnno[y]; })
+      .sort();
+    if (!anniChiusi.length) dm.push('Nessun anno chiuso con utile post-IRAP e compagine: utili per socio non calcolabili.');
+
+    var decurt = {}; // anno -> totale decurtazioni
+    (ru.decurtazioniUtile || []).forEach(function (d) { decurt[d.anno] = (decurt[d.anno] || 0) + (d.importo || 0); });
+
+    // utile distribuibile per anno e cumulato
+    var utileCumulato = 0;
+    anniChiusi.forEach(function (y) {
+      utileCumulato += (storico[y].utilePostIRAP - (decurt[y] || 0));
+    });
+    utileCumulato = round2(utileCumulato);
+
+    // mappa nome socio -> { attribuito, quotaUltimoAnno }
+    var sociMap = {};
+    anniChiusi.forEach(function (y) {
+      var utileDistrib = storico[y].utilePostIRAP - (decurt[y] || 0);
+      (sociPerAnno[y] || []).forEach(function (s) {
+        if (!sociMap[s.nome]) sociMap[s.nome] = { nome: s.nome, attribuito: 0, quotaUltimoAnno: 0 };
+        sociMap[s.nome].attribuito += utileDistrib * (s.quota || 0);
+        sociMap[s.nome].quotaUltimoAnno = s.quota || 0; // anniChiusi è ordinato: resta l'ultimo
+      });
+    });
+
+    // prelievi documentati per socio
+    var prelMap = {};
+    (ru.prelievi || []).forEach(function (p) { prelMap[p.socio] = (prelMap[p.socio] || 0) + (p.importo || 0); });
+    var prelieviTotali = round2((ru.prelievi || []).reduce(function (s, p) { return s + (p.importo || 0); }, 0));
+
+    // liquidazione ufficiale soci usciti
+    var liqMap = {};
+    (ru.liquidazioneUsciti || []).forEach(function (l) { liqMap[l.socio] = l.residuoDaLiquidare || 0; });
+    var liquidazioneUscitiTotale = round2((ru.liquidazioneUsciti || []).reduce(function (s, l) { return s + (l.residuoDaLiquidare || 0); }, 0));
+
+    var hasParziale = false;
+    var soci = Object.keys(sociMap).map(function (nome) {
+      var s = sociMap[nome];
+      var attribuito = round2(s.attribuito);
+      var prelevato = round2(prelMap[nome] || 0);
+      var uscito = Object.prototype.hasOwnProperty.call(liqMap, nome);
+      var residuo, residuoFonte, parziale = false;
+      if (uscito) {
+        residuo = round2(liqMap[nome]);
+        residuoFonte = 'liquidazione';
+      } else {
+        residuo = round2(attribuito - prelevato);
+        residuoFonte = 'attribuito-prelevato';
+        parziale = true; // prelievi storici non censiti → sovrastimato
+        hasParziale = true;
+      }
+      return {
+        nome: nome, quotaUltimoAnno: s.quotaUltimoAnno,
+        attribuito: attribuito, prelevato: prelevato,
+        residuo: residuo, uscito: uscito, parziale: parziale, residuoFonte: residuoFonte
+      };
+    }).sort(function (a, b) { return b.attribuito - a.attribuito; });
+
+    if (hasParziale) dm.push('Prelievi utili storici 2023-2025 dei soci attuali (Marco/Sajay) non censiti dagli E/C: il residuo per socio attuale è SOVRASTIMATO (mostra solo attribuito − prelievi documentati).');
+    if (ru._datiMancanti) { /* già coperto sopra */ }
+
+    return {
+      anniChiusi: anniChiusi,
+      utileCumulatoPostIRAP: utileCumulato,
+      prelieviTotali: prelieviTotali,
+      liquidazioneUscitiTotale: liquidazioneUscitiTotale,
+      soci: soci,
+      nota: 'Utile generato per socio = utile post-IRAP della società × quota, anno per anno (2023-2025, 4 soci al 25%). "Residuo" dei soci usciti = liquidazione ufficiale riconciliata; dei soci attuali = attribuito meno i soli prelievi documentati (sovrastimato finché non si censiscono i prelievi storici).',
+      datiMancanti: dm
+    };
+  }
+
   // FORECAST MARGINE: il "proforma comanda". Per ogni mese il margine REALE degli ordini
   // (proforme) di quel mese; per i mesi futuri senza proforme = ricavo medio storico ×
   // margine% atteso (configurabile in configurazione.margineMedioStimaOrdini, default 50%).
@@ -1569,6 +1667,6 @@
     gruppoDi: gruppoDi,
     parseEuro: parseEuro,
     // esposte per il gate / debug
-    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine, calcCassaSalute: calcCassaSalute, calcFiscale: calcFiscale, calcPrevisioneFiscale: calcPrevisioneFiscale, calcPressioneFiscale: calcPressioneFiscale, calcEbitdaGestionale: calcEbitdaGestionale }
+    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine, calcCassaSalute: calcCassaSalute, calcFiscale: calcFiscale, calcPrevisioneFiscale: calcPrevisioneFiscale, calcPressioneFiscale: calcPressioneFiscale, calcEbitdaGestionale: calcEbitdaGestionale, calcUtiliSoci: calcUtiliSoci }
   };
 });

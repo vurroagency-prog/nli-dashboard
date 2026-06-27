@@ -262,6 +262,7 @@
       <div id="bilancio-nota-competenza" class="alert-box warning" style="margin-bottom:24px;"></div>
       <div class="card" id="bilancio-ce-card"><h3>Conto Economico</h3><div class="table-wrap"><table id="bilancio-ce-table"></table></div></div>
       <div class="card" id="bilancio-struttura-card" style="margin-top:16px;"><h3>Costi fissi e punto di pareggio (annuo)</h3><div id="bilancio-struttura-body"></div></div>
+      <div class="card" id="bilancio-utilisoci-card" style="margin-top:16px;"><h3>Utili per socio (quanto hai guadagnato e quanto ti resta)</h3><div id="bilancio-utilisoci-body"></div></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;" id="bilancio-sp-grid">
         <div class="card" id="bilancio-sp-attivo"><h3>ATTIVO</h3><div class="table-wrap"><table id="bilancio-sp-attivo-table"></table></div></div>
         <div class="card" id="bilancio-sp-passivo"><h3>PASSIVO + PATRIMONIO NETTO</h3><div class="table-wrap"><table id="bilancio-sp-passivo-table"></table></div></div>
@@ -719,6 +720,30 @@
           sHtml += '</tbody></table>';
           if (eg.datiMancanti && eg.datiMancanti.length) sHtml += '<p style="margin:10px 0 0;font-size:11px;color:var(--text-dim);">Nota: ' + esc(eg.datiMancanti.join(' \u00b7 ')) + '</p>';
           document.getElementById('bilancio-struttura-body').innerHTML = sHtml;
+        }
+        // Utili per socio (Blocco 4 \u2014 Domanda 5), Homer-proof
+        var us = d.utiliSoci;
+        if (us && us.soci && us.soci.length) {
+          var uHtml = '<p style="margin:0 0 12px;color:var(--text-dim);">Quanto utile ha prodotto la societ\u00e0 negli anni chiusi (2023-2025, dopo le tasse della societ\u00e0) e quanta parte spetta a ogni socio in base alla sua quota. "Gi\u00e0 preso" = soldi gi\u00e0 usciti documentati. "Resta" = ancora da incassare/lasciato in azienda.</p>';
+          uHtml += '<table style="width:100%;font-size:13px;"><thead><tr style="color:var(--text-dim);text-align:right;"><th style="text-align:left;">Socio</th><th>Quota</th><th>Gli spetta</th><th>Gi\u00e0 preso</th><th>Resta</th></tr></thead><tbody>';
+          us.soci.forEach(function(s){
+            var note = s.uscito ? ' <span style="color:var(--text-dim);font-size:11px;">(uscito \u2014 da liquidare)</span>'
+                                 : (s.parziale ? ' <span style="color:var(--amber,#d97706);font-size:11px;">*stima</span>' : '');
+            uHtml += '<tr style="text-align:right;border-top:1px solid var(--border);"><td style="text-align:left;">' + esc(s.nome) + note + '</td>'
+              + '<td>' + Math.round((s.quotaUltimoAnno||0)*100) + '%</td>'
+              + '<td>' + fmtEuro(s.attribuito) + '</td>'
+              + '<td>' + fmtEuro(s.prelevato) + '</td>'
+              + '<td style="font-weight:700;">' + fmtEuro(s.residuo) + '</td></tr>';
+          });
+          uHtml += '</tbody></table>';
+          uHtml += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:14px;">';
+          uHtml += '<div style="padding:12px;border-radius:8px;background:var(--surface-2);"><div style="font-size:12px;color:var(--text-dim);">Utile totale 2023-2025</div><div style="font-size:20px;font-weight:700;color:var(--green);">' + fmtEuro(us.utileCumulatoPostIRAP) + '</div></div>';
+          uHtml += '<div style="padding:12px;border-radius:8px;background:var(--surface-2);"><div style="font-size:12px;color:var(--text-dim);">Da liquidare ai soci usciti</div><div style="font-size:20px;font-weight:700;color:var(--red);">' + fmtEuro(us.liquidazioneUscitiTotale) + '</div></div>';
+          uHtml += '</div>';
+          uHtml += '<p style="margin:12px 0 0;font-size:11px;color:var(--text-dim);">*Per Marco e Sajay il "Resta" \u00e8 una stima per eccesso: mancano ancora i prelievi degli anni passati dagli estratti conto. Per i soci usciti vale la liquidazione ufficiale (riconciliata con la banca).</p>';
+          document.getElementById('bilancio-utilisoci-body').innerHTML = uHtml;
+        } else {
+          document.getElementById('bilancio-utilisoci-card').style.display = 'none';
         }
         // SP Attivo
         var sp = bil.sp;
