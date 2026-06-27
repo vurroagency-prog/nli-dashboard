@@ -918,6 +918,45 @@
     return { ricavi2025: r2025, ricavi2026: r2026, variazionePct: pct, label: 'YoY Gen-' + MESI_ABBR[ultimoMese - 1] };
   }
 
+  // STORICO ANNO IN CORSO, DAL VIVO: per gli anni CHIUSI lo storico è statico (P&L
+  // ufficiale), ma l'anno corrente NON deve cristallizzarsi su uno snapshot — si calcola
+  // da registro.fatture a ogni apertura (ricavi/costi/clienti/n.fatture/top cliente).
+  function calcAnnoCorrenteLive(reg, statics) {
+    var anno = String((reg.meta && reg.meta.annoFiscale) || 2026);
+    var fv = [], fa = [], nc = 0;
+    (reg.fatture || []).forEach(function (f) {
+      var dir = f.tipo || f.direzione;
+      var comp = f.competenza ? String(f.competenza) : String(parseISO(f.data).y);
+      if (comp !== anno) return;
+      if (dir === 'vendita') {
+        var vb = f.voceBilancio || '';
+        var isNC = /note_credito|_nc_|^nc/i.test(vb) || /^NC/i.test(f.numero || '');
+        if (isNC) nc += Math.abs(f.imponibile || 0); else fv.push(f);
+      } else if (dir === 'acquisto') fa.push(f);
+    });
+    var ricaviNetto = round2(fv.reduce(function (s, f) { return s + (f.imponibile || 0); }, 0) - nc);
+    var costiNetto = round2(fa.reduce(function (s, f) { return s + imponibileDi(f); }, 0));
+    var perCliente = {};
+    fv.forEach(function (f) { if (f.controparte) perCliente[f.controparte] = (perCliente[f.controparte] || 0) + (f.imponibile || 0); });
+    var clienti = Object.keys(perCliente);
+    var top = clienti.sort(function (a, b) { return perCliente[b] - perCliente[a]; })[0] || '';
+    var topImp = top ? round2(perCliente[top]) : 0;
+    var base = (statics.storico && statics.storico.annuale && statics.storico.annuale[anno]) || {};
+    var out = {}; for (var k in base) out[k] = base[k];
+    out.ricaviNetto = ricaviNetto;
+    out.costiNetto = costiNetto;
+    out.margine = round2(ricaviNetto - costiNetto);
+    out.marginePct = ricaviNetto ? round2((ricaviNetto - costiNetto) / ricaviNetto * 100) : 0;
+    out.numClienti = clienti.length;
+    out.numFattureVendita = fv.length;
+    out.numFattureAcquisto = fa.length;
+    out.topCliente = top;
+    out.topClienteImporto = topImp;
+    out.topClientePct = ricaviNetto ? round2(topImp / ricaviNetto * 100) : 0;
+    out._live = true;
+    return out;
+  }
+
   // ========================================================== PARTITARIO F/C
   // Anagrafica fornitori/clienti DERIVATA dalle fatture (chiave = P.IVA, fallback
   // sul nome). Gli override manuali (nome pulito, merge alias, categoria, codice)
@@ -1074,7 +1113,7 @@
 
     return {
       // calcolati dal vivo dal registro
-      lastUpdate: statics.lastUpdate || (reg.meta && reg.meta.ultimoAggiornamento) || '',
+      lastUpdate: formatDataIT(reg.meta && reg.meta.ultimoAggiornamento) || statics.lastUpdate || '',
       ebitdaTargetAnnuo: (reg.configurazione && reg.configurazione.ebitdaTargetAnnuo) || statics.ebitdaTargetAnnuo || 100000,
       kpi: kpi,
       scadenze: calcScadenze(reg),
@@ -1108,11 +1147,25 @@
   // storico statico con il YoY ricalcolato dal vivo
   function yoyLive(reg, statics) {
     var st = statics.storico || {};
-    var yoy = calcYoY(reg, statics);
-    if (!yoy) return st;
     var out = {}; for (var k in st) out[k] = st[k];
-    out.yoyGenApr = yoy;
+    var yoy = calcYoY(reg, statics);
+    if (yoy) out.yoyGenApr = yoy;
+    // anno in corso calcolato dal vivo (clona annuale per non mutare lo statico)
+    var anno = String((reg.meta && reg.meta.annoFiscale) || 2026);
+    if (st.annuale && st.annuale[anno]) {
+      var ann = {}; for (var y in st.annuale) ann[y] = st.annuale[y];
+      ann[anno] = calcAnnoCorrenteLive(reg, statics);
+      out.annuale = ann;
+    }
     return out;
+  }
+
+  // data ISO (2026-06-26) -> "26 giugno 2026"; se già in forma testuale la lascia com'è.
+  function formatDataIT(s) {
+    if (!s) return '';
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(s));
+    if (!m) return String(s);
+    return parseInt(m[3], 10) + ' ' + MESI[parseInt(m[2], 10) - 1] + ' ' + m[1];
   }
 
   // FORECAST CASSA dal vivo: reali gen→ultimo mese (dai movimenti), poi proiezione:
