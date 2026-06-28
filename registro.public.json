@@ -6022,7 +6022,7 @@
   },
   {
    "id": "FAT-2026-0015",
-   "direzione": "acquisto",
+   "direzione": "nota_credito",
    "tipoDocumento": "nota_credito",
    "data": "2026-01-30",
    "controparte": "PF Concept International",
@@ -6036,7 +6036,8 @@
     "dataPagamento": "2026-01-26",
     "movimentoId": "MOV-2026-0036"
    },
-   "voceBilancio": "B6_merci_prodotti"
+   "voceBilancio": "B6_merci_prodotti",
+   "note": "NC fornitore vera (TD04 n.1926001124, SDI GHCAN). Riduce i costi B6. NB: PDF allegato misfiled = bolletta Frisbi 2602313E, da risistemare."
   },
   {
    "id": "FAT-2026-0016",
@@ -7169,20 +7170,6 @@
    "fonte": "2026-03-03_LapennaSviluppo_B8.xml"
   },
   {
-   "id": "FAT-2026-0072",
-   "tipo": "acquisto",
-   "tipoDocumento": "TD01",
-   "data": "2026-03-06",
-   "numero": "2604195E",
-   "controparte": "FRISBI SOCIETA' BENEFIT S.R.L",
-   "imponibile": 68.24,
-   "iva": 15.01,
-   "importoTotale": 83.25,
-   "voceBilancio": "B7_servizi",
-   "stato": "da_abbinare",
-   "fonte": "2026-03-06_Frisbi_B7.xml"
-  },
-  {
    "id": "FAT-2026-0073",
    "tipo": "acquisto",
    "tipoDocumento": "TD01",
@@ -7198,7 +7185,7 @@
   },
   {
    "id": "FAT-2026-0074",
-   "tipo": "acquisto",
+   "tipo": "nota_credito",
    "tipoDocumento": "TD04",
    "data": "2026-03-10",
    "numero": "4",
@@ -7208,7 +7195,9 @@
    "importoTotale": 1207.46,
    "voceBilancio": "B7_servizi",
    "stato": "da_abbinare",
-   "fonte": "2026-03-10_Timeflow_NC_B7.xml"
+   "fonte": "2026-03-10_Timeflow_NC_B7.xml",
+   "competenza": "2025",
+   "note": "NC TD04 n.4: storno parziale fatt.196/2024 (abbonamento ICT Marketplace Timeflow fino al 01/12/2025). Competenza 2024-2025, esclusa dal CE 2026. In 2026 = sopravvenienza attiva, da girare a Mascolo."
   },
   {
    "id": "FAT-2026-0075",
@@ -7223,20 +7212,6 @@
    "voceBilancio": "B14_imposte",
    "stato": "da_abbinare",
    "fonte": "2026-03-12_PalumboChiara_B14.xml"
-  },
-  {
-   "id": "FAT-2026-0076",
-   "tipo": "nota_credito",
-   "tipoDocumento": "TD24",
-   "data": "2026-03-25",
-   "numero": "41/9I",
-   "controparte": "TEAMSYSTEM S.P.A.",
-   "imponibile": 129,
-   "iva": 28.38,
-   "importoTotale": 157.38,
-   "voceBilancio": "B7_servizi",
-   "stato": "da_abbinare",
-   "fonte": "2026-03-25_TeamSystemSpA_B7.xml"
   },
   {
    "id": "FAT-2026-0077",
@@ -7279,20 +7254,6 @@
    "voceBilancio": "B7_servizi",
    "stato": "da_abbinare",
    "fonte": "2026-03-31_GoogleCloud_B7.xml"
-  },
-  {
-   "id": "FAT-2026-0080",
-   "tipo": "nota_credito",
-   "tipoDocumento": "TD24",
-   "data": "2026-03-31",
-   "numero": "FE26/08236",
-   "controparte": "ROSSINI 1969 SPA",
-   "imponibile": 1013.22,
-   "iva": 222.91,
-   "importoTotale": 1236.13,
-   "voceBilancio": "B6_materie_prime",
-   "stato": "da_abbinare",
-   "fonte": "2026-03-31_Rossini1969_B6.xml"
   },
   {
    "id": "FAT-2026-0081",
@@ -7394,17 +7355,18 @@
   },
   {
    "id": "FAT-2026-0088",
-   "tipo": "nota_credito",
+   "tipo": "acquisto",
    "tipoDocumento": "TD24",
    "data": "2026-04-13",
    "numero": "VC26000393",
    "controparte": "PLUXEE ITALIA S.r.l.",
-   "imponibile": 10,
+   "imponibile": 210,
    "iva": 2.2,
    "importoTotale": 212.2,
    "voceBilancio": "B9_personale",
    "stato": "da_abbinare",
-   "fonte": "2026-04-13_PluxeeNC_B9.xml"
+   "fonte": "2026-04-13_PluxeeNC_B9.xml",
+   "note": "TD24 fattura differita (non NC). 200 buono acquisto digitale = welfare/fringe benefit dipendente Sajay (B9, N2.2 esente) + 10 commissione (IVA 22% = 2,20). Totale 212,20 pagato il 28/05 (MOV-2026-0308)."
   },
   {
    "id": "FAT-2026-0089",
@@ -7422,7 +7384,7 @@
   },
   {
    "id": "FAT-2026-0090",
-   "tipo": "nota_credito",
+   "tipo": "acquisto",
    "tipoDocumento": "TD24",
    "data": "2026-04-17",
    "numero": "V26I004804",
@@ -7432,7 +7394,8 @@
    "importoTotale": 373.77,
    "voceBilancio": "B6_materie_prime",
    "stato": "da_abbinare",
-   "fonte": "2026-04-17_SiggiGroup_B6.xml"
+   "fonte": "2026-04-17_SiggiGroup_B6.xml",
+   "note": "TD24 = fattura differita (acquisto merce), non NC. Segno corretto 28/06 (era marcata nota_credito)."
   },
   {
    "id": "FAT-2026-0091",
