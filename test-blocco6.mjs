@@ -71,7 +71,9 @@ ok('scadenza senza data valida -> alert tecnico', alBad.some(a => /senza data/.t
 // ------------------------------------------------ generazione
 console.log('\n[4] Cosa genera l\'azienda');
 const gz = d.generazione || {};
-ok('6 righe della catena', Array.isArray(gz.righe) && gz.righe.length === 6, 'n=' + (gz.righe || []).length);
+const CHIAVI_CATENA = ['venduto', 'margine', 'fissi', 'utile', 'cassa', 'firmato'];
+ok('le 6 righe della catena ci sono tutte', CHIAVI_CATENA.every(k => (gz.righe || []).some(x => x.key === k)), 'keys=' + (gz.righe || []).map(x => x.key).join(','));
+ok('riga utili residui soci (solo versione privata)', (gz.righe || []).some(x => x.key === 'utiliResidui'));
 ok('utile = utile netto del CE', (() => {
   const r = (gz.righe || []).find(x => x.key === 'utile');
   return r && r.valoreFmt.replace(/[^\d,.-−]/g, '') !== '';

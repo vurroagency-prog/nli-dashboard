@@ -1639,8 +1639,20 @@
           sub: (finanz ? 'incassi meno uscite in banca, escluso il finanziamento ricevuto (' + money(finanz) + ': è un prestito da restituire, non cassa generata)' : 'incassi meno uscite in banca') + ' — saldo all\'ultimo estratto conto: ' + banca.saldoAttuale, cls: flusso >= 0 ? 'positive' : 'negative' },
         { key: 'firmato', label: 'Già firmato, da incassare', valoreFmt: money(pfLive.totaleRateCerte || 0),
           sub: (pfLive.numeroRate || 0) + ' rate future di ordini già chiusi', cls: 'positive' }
-      ]
+      ].concat(rigaUtiliResidui(reg, statics))
     };
+  }
+
+  // Riga "utili ancora da prelevare" per i soci attuali — solo versione privata:
+  // nella pubblica riserveUtili è rimosso e calcUtiliSoci non ha soci → riga assente.
+  function rigaUtiliResidui(reg, statics) {
+    var us = calcUtiliSoci(reg, statics);
+    var attuali = (us.soci || []).filter(function (s) { return !s.uscito; });
+    if (!attuali.length) return [];
+    var tot = round2(attuali.reduce(function (s, x) { return s + (x.residuo || 0); }, 0));
+    var dett = attuali.map(function (s) { return s.nome.split(' ')[0] + ' ' + money(s.residuo); }).join(' · ');
+    return [{ key: 'utiliResidui', label: 'Utili soci ancora da prelevare (2023-25)', valoreFmt: money(tot),
+      sub: dett + ' — si aggiorna da solo a ogni bonifico "anticipo quote"; dettaglio nella tab Bilancio', cls: 'neutral' }];
   }
 
   // ============================================================ BUILD COMPLETO
