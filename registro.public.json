@@ -8370,12 +8370,12 @@
   {
    "id": "SCAD-2026-0033",
    "tipo": "pagamento_fornitore",
-   "descrizione": "Timeflow S.R.L. — Decreto Ingiuntivo n.506/2026 rata 3/4",
+   "descrizione": "Timeflow S.R.L. — Decreto Ingiuntivo n.506/2026 rata 3/3 (finale)",
    "controparte": "Timeflow S.R.L.",
    "importo": 733.34,
    "data": "2026-05-13",
    "stato": "pagata",
-   "note": "4 rate mensili da €733,33 — D.I. ottenuto da Timeflow. Rate 1 e 2 già pagate (mar+apr 2026). | AGGIORNATO 05/07: rata 3 PAGATA il 14/05/2026 con MOV-2026-0287 (733,34: un centesimo in piu della rata teorica).",
+   "note": "3 rate mensili da €733,33 (totale D.I. €2.200,00 — conferma socio 05/07/2026; le vecchie note dicevano erroneamente 4 rate/€2.933,32). Rata finale pagata 14/05/2026 con MOV-2026-0287 (€733,34). D.I. SALDATO.",
    "dataPagamento": "2026-05-14",
    "movimentoCollegato": "MOV-2026-0287"
   },
@@ -8386,8 +8386,8 @@
    "controparte": "Timeflow S.R.L.",
    "importo": 733.33,
    "data": "2026-06-13",
-   "stato": "in_attesa_dati",
-   "note": "Ultima rata D.I. n.506/2026. Totale DI: €2.933,32. | CORREZIONE 05/07: era marcata pagata con dataPagamento 2026-04-13 e nota 'Timeflow rata 2 — bonifico €733,33 del 13/04/2026' — ma quello e il bonifico della RATA 2 (MOV-2026-0121). La rata 4 scadeva il 13/06: nei movimenti importati (fermi a fine maggio) non c'e prova del pagamento. Verificare su E/C giugno."
+   "stato": "annullata",
+   "note": "ANNULLATA 05/07: il D.I. n.506/2026 era in 3 rate, non 4 (conferma socio). Il debito Timeflow è saldato con la rata 3 del 14/05 (MOV-2026-0287). Questa scadenza non è mai esistita."
   },
   {
    "id": "SCAD-2026-0035",
@@ -8470,7 +8470,7 @@
    "chi": "commercialista",
    "fonte": "normativa (termine vigente 31/10, non 30/11)",
    "movimentoCollegato": null,
-   "nota": "⚠️ Al 26/06 senza incaricato: Valerio ha rifiutato, verificare che se ne occupi Mascolo."
+   "nota": "Incarico: verificare con Mascolo che copra anche la Redditi SP (le PF dei soci le fa lui — conferma socio 05/07)."
   },
   {
    "id": "SCAD-2026-0043",
@@ -8479,10 +8479,10 @@
    "descrizione": "Dichiarazioni Redditi PF soci — socio e socio (quadro RH quota utile 2025)",
    "importo": null,
    "stato": "in_attesa_dati",
-   "chi": "soci (socio e socio)",
+   "chi": "soci — la prepara Mascolo",
    "fonte": "normativa",
    "movimentoCollegato": null,
-   "nota": "⚠️ Al 26/06 senza incaricato: Valerio ha rifiutato il 26/06. Da qui escono saldo+acconti IRPEF personali."
+   "nota": "Se ne occupa Mascolo (conferma socio 05/07). Da qui escono saldo+acconti IRPEF personali dei soci."
   },
   {
    "id": "SCAD-2026-0044",
