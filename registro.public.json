@@ -6586,7 +6586,7 @@
    "tipo": "uscita",
    "importo": 849.41,
    "controparte": "Marco Vurro",
-   "descrizione": "Rimborso chilometrico giugno — ⚠️ prospetto KM mancante + policy \"stop KM da maggio\" da verificare",
+   "descrizione": "Rimborso chilometrico giugno — Marco (i rimborsi KM proseguono, conferma 05/07). Manca il prospetto KM in 06_PERSONALE.",
    "categoria": "B7_rimborsi_spese_soci",
    "metodo": "bonifico_istantaneo",
    "conto": "BANCA-ISP-001",
@@ -6634,10 +6634,10 @@
    "data": "2026-06-30",
    "tipo": "uscita",
    "importo": 2229.03,
-   "controparte": "Da identificare (2 disposizioni)",
-   "descrizione": "Pagamento n.002 disposizioni elettroniche — beneficiari da identificare (chiedere distinta a banca/Marco)",
+   "controparte": "Fornitori via Ri.Ba (2 effetti)",
+   "descrizione": "Addebito 2 Ri.Ba fornitori (conferma Marco 05/07: uno è Rossini). Ipotesi: Rossini FE26/05178 €717,81 (aperta, MP12) + effetto ignoto €1.511,22 (probabile fattura 2025). Dettaglio esatto: Intesa > portafoglio effetti.",
    "categoria": null,
-   "metodo": "bonifico",
+   "metodo": "riba",
    "conto": "BANCA-ISP-001",
    "competenza": "2026",
    "riconciliato": false,
@@ -7012,12 +7012,12 @@
    "tipo": "entrata",
    "importo": 220,
    "controparte": "D'ATTOLICO DONATO & C. S.A.S.",
-   "descrizione": "Incasso \"Accordo del 26/6/26\" — da attribuire (nessuna FV/proforma collegata)",
+   "descrizione": "Incasso accordo del 26/06/26 (post decreto ingiuntivo): fattura 2025 + rimborso costo decreto. Verificare se l'accordo prevede altre rate.",
    "categoria": "A1_ricavi",
    "metodo": "bonifico",
    "conto": "BANCA-ISP-001",
-   "competenza": "2026",
-   "riconciliato": false,
+   "competenza": "2025",
+   "riconciliato": true,
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_05072026.xlsx",
    "descrizioneBanca": "ACCREDITO BEU CON CONTABILE"
@@ -10771,11 +10771,11 @@
   },
   {
    "campo": "movimenti.MOV-2026-0407",
-   "nota": "FINANZIAMENTO €34.562,50 erogato 02/07: manca il contratto (istituto, durata, tasso, piano rate). Chiedere a Marco il contratto → 05_CONTRATTI/ + creare scadenze rate + voce debito SP."
+   "nota": "FINANZIAMENTO €34.562,50 erogato 02/07: Marco (05/07) ha archiviato il contratto FUORI dal repo. Servono i termini (istituto, durata, tasso, importo rata) per censire le rate come scadenze e aggiornare il residuo in vociManualiSP. Metterlo anche in 05_CONTRATTI."
   },
   {
    "campo": "movimenti.MOV-2026-0388",
-   "nota": "Pagamento disposizioni elettroniche €2.229,03 del 30/06 (n.002, 2 disposizioni): beneficiari ignoti. Chiedere distinta a Marco/banca (possibili stipendi/TFR?)."
+   "nota": "Addebito Ri.Ba €2.229,03 del 30/06 (MOV-2026-0388): 2 effetti, uno è Rossini (Marco 05/07). Estrarre il dettaglio effetti da Intesa (portafoglio Ri.Ba passive) per abbinarli alle fatture — candidata Rossini FE26/05178 €717,81."
   },
   {
    "campo": "movimenti.MOV-2026-0366",
@@ -10788,10 +10788,6 @@
   {
    "campo": "movimenti.MOV-2026-0345",
    "nota": "Pluxee fattura VC26000425 €424,40 pagata 08/06: XML non in archivio (probabile welfare €400 + commissioni). Recuperare da SDI/portale Pluxee."
-  },
-  {
-   "campo": "movimenti.MOV-2026-0411",
-   "nota": "Incasso €220 da D'ATTOLICO DONATO & C. (03/07, causale 'Accordo del 26/6/26'): nessuna FV/proforma collegata — emettere/attribuire fattura."
   },
   {
    "campo": "movimenti.MOV-2026-0344",
