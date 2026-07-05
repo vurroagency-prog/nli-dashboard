@@ -6454,7 +6454,7 @@
    "tipo": "uscita",
    "importo": 200,
    "controparte": "Marco Vurro",
-   "descrizione": "Anticipo quote/utili 2025 — Marco Vurro. ⚠️ Causale banca ERRATA ('Rimborso macchinario dft'): confermato Marco 05/07 che era un anticipo quote. Da segnalare a Mascolo.",
+   "descrizione": "Anticipo quote/utili 2025 — Marco Vurro",
    "categoria": "distribuzione_utili",
    "metodo": "bonifico_istantaneo",
    "conto": "BANCA-ISP-001",
@@ -6462,7 +6462,8 @@
    "riconciliato": true,
    "fattureCollegate": [],
    "fonte": "Movimenti_Conto_05072026.xlsx",
-   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO"
+   "descrizioneBanca": "BONIFICO ISTANTANEO DA VOI DISPOSTO",
+   "note": "La causale del bonifico in banca dice 'Rimborso macchinario dft' ma è errata: è un anticipo quote (conferma Marco 05/07). Segnalare a Mascolo per le scritture. Causale originale conservata in descrizioneBanca."
   },
   {
    "id": "MOV-2026-0378",
