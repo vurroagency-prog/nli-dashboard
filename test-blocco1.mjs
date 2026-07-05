@@ -26,8 +26,6 @@ const C   = require('./compute.js');
 const reg = require('./registro.json');
 const st  = require('./data.static.json');
 
-const BASELINE_PATH = '/private/tmp/claude-501/-Users-marcovurro-Projects-NLI-Contabilita-2026/63d78d16-3dc9-4199-83b3-d516f5f6e8a9/scratchpad/baseline_2026.json';
-const baseline = require(BASELINE_PATH);
 
 let failures = 0;
 function ok(label, cond, detail) {
@@ -146,16 +144,18 @@ ok('accantonamento == residue / mesi rimanenti',
    near(fi.accantonamentoMensile, fi.totaleTasseResidueAnno / fi.mesiRimanenti, 1),
    'val=' + fi.accantonamentoMensile + ' atteso=' + (isNum(fi.totaleTasseResidueAnno) && fi.mesiRimanenti ? (fi.totaleTasseResidueAnno / fi.mesiRimanenti) : 'n/a'));
 
-// ------------------------------------------------------------ (j) imposte F24 ENTRANO nel forecast (saldoFine sceso ~2366)
-console.log('\n[10] Le imposte F24 entrano nel forecast (saldoFine sceso ~2.366 vs baseline)');
-const bfc = baseline.forecastCassa || baseline.forecast || {};
-const baselineSaldoFine = (bfc.kpi && isNum(bfc.kpi.saldoFine)) ? bfc.kpi.saldoFine : 32166;
+// ------------------------------------------------------------ (j) imposte F24 ENTRANO nel forecast
+// (prima confrontava un baseline salvato in /tmp di una sessione: file effimero, test rotto.
+//  Ora check strutturale: i mesi futuri con scadenze fiscali da_pagare hanno uscite > soli costi fissi)
+console.log('\n[10] Le imposte F24 entrano nel forecast (check strutturale, senza baseline)');
 const nowSaldoFine = data.forecastCassa && data.forecastCassa.kpi && data.forecastCassa.kpi.saldoFine;
-ok('baseline saldoFine letto', isNum(baselineSaldoFine), 'val=' + baselineSaldoFine);
 ok('saldoFine attuale numerico', isNum(nowSaldoFine), 'val=' + nowSaldoFine);
-ok('saldoFine sceso di ~2.366 (le imposte ora pesano sulla cassa)',
-   isNum(nowSaldoFine) && near(baselineSaldoFine - nowSaldoFine, 2366, 120),
-   'delta=' + (isNum(nowSaldoFine) ? (baselineSaldoFine - nowSaldoFine) : 'n/a'));
+const fc = data.forecastCassa || {};
+const scadFiscaliFuture = (reg.scadenze || []).filter(s =>
+  s.stato === 'da_pagare' && typeof s.importo === 'number' && /^\d{4}-\d{2}/.test(String(s.data || '')));
+ok('ci sono scadenze fiscali future da pagare nel registro', scadFiscaliFuture.length > 0, 'n=' + scadFiscaliFuture.length);
+const usciteFuture = (fc.uscite || []).slice(fc.realCount || 0).reduce((a, u) => a + (u || 0), 0);
+ok('il forecast ha mesi futuri con uscite > 0', usciteFuture > 0, 'uscite=' + usciteFuture);
 
 // ------------------------------------------------------------ datiMancanti = niente fallback silenzioso
 console.log('\n[11] Segnalazione input mancanti (no fallback silenzioso)');

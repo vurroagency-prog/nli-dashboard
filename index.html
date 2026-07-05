@@ -185,6 +185,7 @@
     <div class="nav-tab" onclick="switchTab('bilancio')">Bilancio</div>
     <div class="nav-tab" onclick="switchTab('storico')">Storico</div>
     <div class="nav-tab" onclick="switchTab('scadenzario')">Scadenzario</div>
+    <div class="nav-tab" onclick="switchTab('tasse')">Tasse</div>
     <div class="nav-tab" onclick="switchTab('alert')">Alert</div>
     <div class="nav-tab" onclick="switchTab('setup')">Setup Iniziale</div>
   </div>
@@ -193,6 +194,7 @@
     <div class="tab-panel active" id="tab-overview">
       <div class="page-header"><h1>Panoramica</h1><p>KPI e stato generale di Next Level Italia SAS</p></div>
       <div id="overview-status" class="alert-box info" style="margin-bottom:28px;"></div>
+      <div class="card" id="generazione-card" style="margin-bottom:28px;"><h3>Cosa genera l'azienda</h3><div id="generazione-body" style="margin-top:14px;"></div></div>
       <div class="kpi-grid" id="kpi-grid"></div>
       <div class="section-header"><h3 style="color:var(--green);">Entrate</h3></div>
       <div class="charts-grid">
@@ -303,10 +305,16 @@
       </div>
     </div>
     <!-- Alert -->
+    <div class="tab-panel" id="tab-tasse">
+      <div class="page-header"><h1>Tasse</h1><p>Quanto mettere da parte, cosa risulta pagato e la guida a tutte le tasse dell'azienda</p></div>
+      <div id="tasse-soci"></div>
+      <div class="section-header"><h3>Guida: tutte le tasse dell'azienda e quando si pagano</h3></div>
+      <div id="tasse-guida"></div>
+    </div>
+    <!-- Alert -->
     <div class="tab-panel" id="tab-alert">
-      <div class="page-header"><h1>Alert e Suggerimenti</h1><p>Segnalazioni, anomalie e consigli proattivi</p></div>
+      <div class="page-header"><h1>Alert</h1><p>Calcolati in automatico da scadenze e dati in attesa — sempre aggiornati</p></div>
       <div id="alert-list"></div>
-      <div class="card" style="margin-top:16px;"><h3>Suggerimenti</h3><p id="suggerimenti-text"></p></div>
     </div>
     <!-- Setup -->
     <div class="tab-panel" id="tab-setup">
@@ -623,7 +631,11 @@
       alertList.innerHTML = d.alert.map(a =>
         '<div class="alert-box ' + esc(a.tipo) + '">' + esc(a.testo) + '</div>'
       ).join('');
-      document.getElementById('suggerimenti-text').textContent = d.suggerimenti;
+
+      // Tasse per socio + guida tasse + "Cosa genera l'azienda"
+      renderTasseSoci(d.tasseSoci);
+      renderGuidaTasse(d.guidaTasse);
+      renderGenerazione(d.generazione);
 
       // Setup checklist
       const cl = document.getElementById('setup-checklist');
@@ -862,6 +874,92 @@
     } catch (err) {
       console.error('Errore caricamento data.json:', err);
     }
+  }
+
+  // ---- Cosa genera l'azienda (Panoramica): catena venduto->margine->utile->cassa
+  function renderGenerazione(gz) {
+    var el = document.getElementById('generazione-body');
+    if (!el) return;
+    if (!gz || !gz.righe) { el.innerHTML = ''; return; }
+    el.innerHTML = '<div class="kpi-grid">' + gz.righe.map(function (r) {
+      return '<div class="kpi-card"><div class="kpi-label">' + esc(r.label) + '</div><div class="kpi-value ' + esc(r.cls) + '">' + esc(r.valoreFmt) + '</div><div class="kpi-sub">' + esc(r.sub) + '</div></div>';
+    }).join('') + '</div>';
+  }
+
+  // ---- Tab Tasse: schede per socio (stima / pagato / resta) + società
+  function renderTasseSoci(t) {
+    var el = document.getElementById('tasse-soci');
+    if (!el) return;
+    if (t && t.nascosto) { el.innerHTML = '<div class="alert-box info">Il dettaglio delle tasse per socio (stime e F24 pagati) è visibile solo sulla dashboard privata.</div>'; return; }
+    if (!t || !t.schede) { el.innerHTML = ''; return; }
+    var intro = '<div class="alert-box info" style="margin-bottom:20px;">La società non paga tasse sull\'utile: l\'utile si divide tra i soci e ognuno paga la propria parte con F24 personali. Qui vedi, per ciascuno: quanto mettere da parte, cosa risulta già pagato e le prossime date.' +
+      (t.utileNegativo ? ' <strong>Oggi l\'utile ' + t.anno + ' è in perdita: per l\'IRPEF vale l\'accantonamento prudenziale, la cifra vera arriva con la dichiarazione.</strong>' : '') + '</div>';
+    var cards = t.schede.map(function (s) {
+      var h = '<div class="card" style="margin-bottom:20px;"><h3>' + esc(s.label) + '</h3><p style="color:var(--text-dim);font-size:13px;margin:4px 0 14px;">' + esc(s.sub || '') + '</p>';
+      if (s.righeStima) {
+        h += '<div class="table-wrap"><table><thead><tr><th>Da mettere da parte (stima ' + t.anno + ')</th><th style="text-align:right;">Importo</th></tr></thead><tbody>';
+        h += s.righeStima.map(function (r) {
+          return '<tr><td>' + esc(r.label) + (r.nota ? ' <span style="color:var(--text-dim);font-size:12px;">— ' + esc(r.nota) + '</span>' : '') + '</td><td style="text-align:right;"><strong>' + esc(r.importoFmt) + '</strong></td></tr>';
+        }).join('');
+        h += '<tr style="border-top:2px solid var(--border);"><td><strong>Totale stimato</strong>' + (s.stimaParziale ? ' <span style="color:var(--text-dim);font-size:12px;">(una voce è ancora da definire)</span>' : '') + '</td><td style="text-align:right;"><strong>' + esc(s.stimaTotaleFmt) + '</strong></td></tr>';
+        h += '<tr><td>Già pagato nel ' + t.anno + ' <span style="color:var(--text-dim);font-size:12px;">— per cassa: anche rate dell\'anno prima pagate quest\'anno</span></td><td style="text-align:right;"><strong style="color:var(--green);">' + esc(s.versatoFmt) + '</strong></td></tr>';
+        h += '<tr><td><strong>Resta da mettere da parte</strong></td><td style="text-align:right;"><strong style="color:var(--amber);">' + esc(s.residuoFmt) + '</strong></td></tr>';
+        h += '</tbody></table></div>';
+      }
+      if (s.dovutoNoto && s.dovutoNoto.length) {
+        h += '<div class="table-wrap"><table><thead><tr><th>Già deciso dal commercialista (F24 pronti)</th><th>Quando</th><th style="text-align:right;">Importo</th></tr></thead><tbody>';
+        h += s.dovutoNoto.map(function (r) { return '<tr><td>' + esc(r.label) + '</td><td>' + esc(r.data || '') + '</td><td style="text-align:right;"><strong>' + esc(r.importoFmt) + '</strong></td></tr>'; }).join('');
+        h += '</tbody></table></div>';
+        h += '<p style="margin:10px 0;font-size:13px;">Pagato nel ' + t.anno + ' (F24 e addebiti registrati, incluse paghe e ritenute): <strong style="color:var(--green);">' + esc(s.versatoFmt) + '</strong>' + (s.daIdentificare ? ' <span class="badge upcoming">di cui ' + esc(NLICompute.money(s.daIdentificare)) + ' da chiarire col commercialista</span>' : '') + '</p>';
+      }
+      if (s.versamenti && s.versamenti.length) {
+        h += '<details style="margin-top:10px;"><summary style="cursor:pointer;color:var(--accent);font-size:13px;">Vedi i pagamenti registrati (' + s.versamenti.length + ')</summary>';
+        h += '<div class="table-wrap" style="margin-top:10px;"><table><thead><tr><th>Data</th><th>Cosa</th><th>Periodo</th><th style="text-align:right;">Importo</th></tr></thead><tbody>';
+        h += s.versamenti.map(function (v) {
+          return '<tr' + (v.daIdentificare ? ' style="background:var(--amber-glow);"' : '') + '><td>' + esc(v.dataFmt) + '</td><td>' + esc(v.tributo) + (v.daIdentificare ? ' <span class="badge upcoming">da identificare</span>' : '') + (v.nota ? ' <span style="color:var(--text-dim);font-size:12px;">' + esc(v.nota) + '</span>' : '') + '</td><td>' + esc(v.periodo) + '</td><td style="text-align:right;">' + esc(v.importoFmt) + '</td></tr>';
+        }).join('');
+        h += '</tbody></table></div></details>';
+      } else {
+        h += '<p style="color:var(--text-dim);font-size:13px;">Nessun pagamento registrato per il ' + t.anno + ' (si aggiornano quando arriva l\'F24 dal commercialista).</p>';
+      }
+      if (s.prossime && s.prossime.length) {
+        h += '<h4 style="margin:16px 0 8px;font-size:13px;color:var(--text-dim);">PROSSIME DATE</h4>';
+        h += s.prossime.map(function (p) {
+          return '<div style="display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;"><span><strong>' + esc(p.dataFmt) + '</strong> — ' + esc(p.descrizione) + '</span><span style="white-space:nowrap;">' + esc(p.importoFmt) + '</span></div>';
+        }).join('');
+      }
+      h += '</div>';
+      return h;
+    }).join('');
+    el.innerHTML = intro + cards;
+  }
+
+  // ---- Guida tasse: catalogo informativo incrociato con lo scadenzario reale
+  function renderGuidaTasse(g) {
+    var el = document.getElementById('tasse-guida');
+    if (!el) return;
+    if (!g || g.nessunDato) { el.innerHTML = '<div class="alert-box info">La guida compare quando il catalogo adempimenti è nel registro.</div>'; return; }
+    var intro = '<div class="alert-box info" style="margin:16px 0 20px;">Tutte le tasse e gli obblighi che genera la società, uno per uno: chi li paga, come si calcolano e quando. Il bollino a destra dice se la prossima data è già nello scadenzario.' + (g.annoRiferimento ? ' Date e importi del ' + g.annoRiferimento + '.' : '') + '</div>';
+    var html = g.gruppi.map(function (gr) {
+      var vs = gr.voci.map(function (v) {
+        var badge;
+        if (v.stato === 'ok') badge = '<span class="badge info">' + esc(v.statoLabel) + '</span>';
+        else if (v.stato === 'manca' || v.stato === 'verifica') badge = '<span class="badge upcoming">' + esc(v.statoLabel) + '</span>';
+        else badge = '<span class="badge" style="background:var(--surface-2);color:var(--text-dim);">' + esc(v.statoLabel) + '</span>';
+        var det = '<details' + (v.stato === 'na' ? ' style="opacity:.65;"' : '') + '>';
+        det += '<summary style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);"><span><strong>' + esc(v.nome) + '</strong> <span style="color:var(--text-dim);font-size:12px;">· paga: ' + esc(v.chi) + '</span></span><span style="white-space:nowrap;">' + badge + '</span></summary>';
+        det += '<div style="font-size:13px;line-height:1.65;padding:10px 4px 14px;color:var(--text);">';
+        det += '<p>' + esc(v.cosa) + '</p>';
+        if (v.comeSiCalcola && v.comeSiCalcola !== '—') det += '<p style="margin-top:6px;"><strong>Come si calcola:</strong> ' + esc(v.comeSiCalcola) + '</p>';
+        if (v.quando && v.quando !== '—') det += '<p style="margin-top:6px;"><strong>Quando si paga:</strong> ' + esc(v.quando) + '</p>';
+        if (v.codiciTributo) det += '<p style="margin-top:6px;"><strong>Codici tributo F24:</strong> ' + esc(v.codiciTributo) + '</p>';
+        if (v.notaApplicabile) det += '<p style="margin-top:6px;color:var(--text-dim);">' + esc(v.notaApplicabile) + '</p>';
+        det += '</div></details>';
+        return det;
+      }).join('');
+      return '<div class="card" style="margin-bottom:20px;"><h3>' + esc(gr.nome) + '</h3>' + vs + '</div>';
+    }).join('');
+    el.innerHTML = intro + html;
   }
 
   function renderRecinto(r) {

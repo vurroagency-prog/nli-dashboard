@@ -486,7 +486,7 @@
       if (isNCcliente) nc += Math.abs(imp);
       else { fv += imp; count++; }
     });
-    return { netto: round2(fv - nc), nota: count + ' FV emesse (competenza ' + anno + ', netto NC clienti) — fonte registro' };
+    return { netto: round2(fv - nc), numFV: count, nota: count + ' FV emesse (competenza ' + anno + ', netto NC clienti) — fonte registro' };
   }
 
   // imponibile di una fattura: usa il campo se presente, altrimenti lo scorpora
@@ -738,13 +738,6 @@
       soci = pf.soci || [];
       if (pf.sociPerAnno) warns.push('Compagine ' + anno + ' assente in sociPerAnno: uso "soci" legacy.');
     }
-    function quotaDi(rx) { var s = soci.filter(function (x) { return rx.test(x.nome || ''); })[0]; return s ? (s.quota == null ? null : s.quota) : null; }
-    var sajayDip = (soci.filter(function (s) { return /sajay/i.test(s.nome); })[0] || {}).redditoDipendente || 0;
-    var qMarco = quotaDi(/marco/i);
-    var qSajay = quotaDi(/sajay/i);
-    if (qMarco == null) { qMarco = 0; warns.push('Quota di Marco non trovata nella compagine ' + anno + '.'); }
-    if (qSajay == null) { qSajay = 0; warns.push('Quota di Sajay non trovata nella compagine ' + anno + '.'); }
-
     function irpef(reddito) {
       if (reddito <= 0) return 0;
       var t = 0;
@@ -760,40 +753,58 @@
     }
 
     var utileAnte = round2(utileAnteIn);                  // EBT (utile ante imposte)
-    // quote da DATO (sociPerAnno), non piu il 50/50 cablato: per il 2026 e 50/50, ma il motore
-    // ora legge la quota reale dell'anno (es. 2025 = 25% a testa) invece di assumerla.
-    var quotaMarco = round2(utileAnte * qMarco);
-    var quotaSajay = round2(utileAnte * qSajay);
     var baseIRAP = Math.max(0, round2(baseIRAPin || 0));
     var irapImporto = round2(baseIRAP * (p.aliquotaIRAP || 0.039));
 
-    // Marco (accomandatario): quota + IRPEF + addizionali + INPS commercianti
-    var mReddito = Math.max(0, quotaMarco);
-    var mIrpef = irpef(mReddito);
-    var mAddiz = round2(mReddito * addiz);
-    var mInpsFisso = inps.fissoAnnuo || 4515;            // dovuto sempre, anche con utile 0
-    var mInpsEcc = round2(Math.max(0, mReddito - (inps.minimaleReddito || 18415)) * (inps.aliquotaEccedenza || 0.2448));
-    var mTasse = round2(mIrpef + mAddiz + mInpsFisso + mInpsEcc);
-    var mNetto = round2(quotaMarco - mTasse);
+    // LOOP GENERICO SUI SOCI, pilotato da imposteApplicabili (dato in sociPerAnno), non dai
+    // nomi: un socio nuovo/uscente entra nel calcolo da solo. Quote da compagine datata.
+    // INPS commercianti solo se dichiarata; redditoDipendente/altriRedditi cumulati in dichiarazione.
+    var perSocio = soci.map(function (s) {
+      var q = s.quota == null ? 0 : s.quota;
+      var quotaUtile = round2(utileAnte * q);
+      var dip = s.redditoDipendente || 0;
+      var altri = s.altriRedditi || 0;
+      var imposte = s.imposteApplicabili || ['IRPEF'];
+      var haINPS = imposte.indexOf('INPS_commercianti') >= 0;
+      var reddito = round2(Math.max(0, quotaUtile) + dip + altri);
+      var vIrpef = irpef(reddito);
+      var vAddiz = round2(reddito * addiz);
+      var inpsFisso = haINPS ? (inps.fissoAnnuo || 4515) : 0;  // dovuto sempre, anche con utile 0
+      var inpsEcc = haINPS ? round2(Math.max(0, reddito - (inps.minimaleReddito || 18415)) * (inps.aliquotaEccedenza || 0.2448)) : 0;
+      var tasse = round2(vIrpef + vAddiz + inpsFisso + inpsEcc);
+      // carico ATTRIBUIBILE all'utile: si toglie l'IRPEF/addizionali che il socio pagherebbe
+      // comunque su stipendio/altri redditi (carico marginale, per il tax-rate famiglia).
+      var irpefAltri = irpef(round2(dip + altri));
+      var addizAltri = round2((dip + altri) * addiz);
+      return {
+        nome: s.nome || '?', tipo: s.tipo || '', quota: q, quotaUtile: quotaUtile,
+        redditoImponibile: reddito, irpef: vIrpef, addizionali: vAddiz,
+        inpsFisso: round2(inpsFisso), inpsEccedenza: inpsEcc, haINPS: haINPS,
+        totaleTasse: tasse, nettoStimato: round2(quotaUtile - tasse + dip + altri),
+        aliquotaEffettiva: reddito > 0 ? round2(tasse / reddito * 100) / 100 : null,
+        irpefAltriRedditi: irpefAltri, addizAltriRedditi: addizAltri,
+        tasseSuAltriRedditi: round2(irpefAltri + addizAltri),
+        caricoAttribuibileUtile: round2(tasse - irpefAltri - addizAltri)
+      };
+    });
+    if (!perSocio.length) warns.push('Nessun socio nella compagine ' + anno + ': previsione fiscale vuota.');
+    var quotaTot = round2(perSocio.reduce(function (a, x) { return a + x.quota; }, 0));
+    if (perSocio.length && Math.abs(quotaTot - 1) > 0.001) warns.push('Le quote dei soci ' + anno + ' sommano al ' + Math.round(quotaTot * 100) + '%, non 100%: controllare sociPerAnno.');
 
-    // Sajay (accomandante): quota + reddito da dipendente, IRPEF + addizionali, no INPS commercianti
-    var sReddito = round2(Math.max(0, quotaSajay) + sajayDip);
-    var sIrpef = irpef(sReddito);
-    var sAddiz = round2(sReddito * addiz);
-    var sTasse = round2(sIrpef + sAddiz);
-    var sNetto = round2(quotaSajay - sTasse + sajayDip);
-
-    // TAX RATE a regola d'arte: il costo fiscale ATTRIBUIBILE all'utile.
-    // Per Sajay si esclude l'IRPEF che pagherebbe COMUNQUE sullo stipendio (carico marginale).
-    var sajayIrpefStip = irpef(sajayDip);
-    var sajayAddizStip = round2(sajayDip * addiz);
-    var sajayTasseStipendio = round2(sajayIrpefStip + sajayAddizStip);
-    var sajayCaricoUtile = round2(sTasse - sajayTasseStipendio);
-    var caricoUtile = round2(irapImporto + mTasse + sajayCaricoUtile); // Marco: tutto (no altri redditi)
+    function sommaSoci(k) { return round2(perSocio.reduce(function (a, x) { return a + (x[k] || 0); }, 0)); }
+    var caricoUtile = round2(irapImporto + sommaSoci('caricoAttribuibileUtile'));
     var taxRate = utileAnte > 0 ? round2(caricoUtile / utileAnte * 100) / 100 : null;
     var utileNettoFamiglia = round2(utileAnte - caricoUtile);
+    var totaleCarico = round2(irapImporto + sommaSoci('totaleTasse'));
 
-    var totaleCarico = round2(irapImporto + mTasse + sTasse);
+    // alias per il render esistente (schede Marco/Sajay). Nome assente -> scheda a zero +
+    // warning esplicito (fail-loud, mai numeri di un altro socio).
+    function socioByNome(rx) { return perSocio.filter(function (x) { return rx.test(x.nome); })[0] || null; }
+    var M = socioByNome(/marco/i), S = socioByNome(/sajay/i);
+    if (!M) warns.push('Socio "Marco" non trovato nella compagine ' + anno + '.');
+    if (!S) warns.push('Socia "Sajay" non trovata nella compagine ' + anno + '.');
+    var ZERO_SOCIO = { quota: 0, redditoImponibile: 0, irpef: 0, addizionali: 0, inpsFisso: 0, inpsEccedenza: 0, totaleTasse: 0, nettoStimato: 0, aliquotaEffettiva: null, tasseSuAltriRedditi: 0, caricoAttribuibileUtile: 0 };
+
     return {
       utileNegativo: utileAnte <= 0,
       utileAnteImposte: utileAnte,
@@ -805,31 +816,21 @@
         caricoUtile: caricoUtile,         // tasse attribuibili all'utile (no IRPEF stipendio Sajay)
         utileNetto: utileNettoFamiglia,   // quanto resta in famiglia dall'utile
         taxRate: taxRate,
-        sajayTasseStipendio: sajayTasseStipendio,
+        sajayTasseStipendio: S ? S.tasseSuAltriRedditi : 0,
         totaleCaricoConStipendio: totaleCarico
       },
       irap: { importo: irapImporto, aliquota: p.aliquotaIRAP || 0.039 },
-      // componenti del SOLO carico attribuibile all'utile (IRPEF Sajay = marginale, esclude lo stipendio).
+      // componenti del SOLO carico attribuibile all'utile (IRPEF su stipendi = marginale, esclusa).
       // La somma = famiglia.caricoUtile. Usato dalla pressione fiscale (D3) per il mix imposte.
       componentiCaricoUtile: {
         irap: irapImporto,
-        irpef: round2(mIrpef + sIrpef - sajayIrpefStip),
-        addizionali: round2(mAddiz + sAddiz - sajayAddizStip),
-        inps: round2(mInpsFisso + mInpsEcc)
+        irpef: round2(sommaSoci('irpef') - sommaSoci('irpefAltriRedditi')),
+        addizionali: round2(sommaSoci('addizionali') - sommaSoci('addizAltriRedditi')),
+        inps: round2(sommaSoci('inpsFisso') + sommaSoci('inpsEccedenza'))
       },
-      marco: {
-        quota: qMarco,
-        redditoImponibile: round2(mReddito), irpef: mIrpef, addizionali: mAddiz,
-        inpsFisso: round2(mInpsFisso), inpsEccedenza: mInpsEcc,
-        totaleTasse: mTasse, nettoStimato: mNetto,
-        aliquotaEffettiva: mReddito > 0 ? round2(mTasse / mReddito * 100) / 100 : null
-      },
-      sajay: {
-        quota: qSajay,
-        redditoImponibile: sReddito, irpef: sIrpef, addizionali: sAddiz,
-        totaleTasse: sTasse, nettoStimato: sNetto,
-        aliquotaEffettiva: sReddito > 0 ? round2(sTasse / sReddito * 100) / 100 : null
-      },
+      perSocio: perSocio,
+      marco: M || ZERO_SOCIO,
+      sajay: S || ZERO_SOCIO,
       _warnings: warns,
       disclaimer: 'Calcolo dal vivo sull\'utile di competenza maturato (SAS, tassazione per trasparenza, quote da compagine datata). I costi non fatturati non sono nel CE → utile prudenziale. Liquidazione ufficiale a cura del commercialista.'
     };
@@ -1266,14 +1267,17 @@
   // le paga; un movimento puo' coprire piu' fatture (fattureCollegate[]).
   function fattAperta(f) { var p = f.pagamento || {}; return !(p.stato === 'pagata' || p.stato === 'pagato' || p.movimentoId); }
   function calcRiconciliazione(reg) {
-    var fatture = (reg.fatture || []).filter(function (f) { return f.direzione === 'acquisto' || f.direzione === 'vendita'; }).map(function (f) {
+    // direzione con fallback su tipo: 48 fatture storiche hanno solo `tipo` (stesso fix
+    // gia' applicato a calcPartitario/calcPartitarioDanea — senza, sparivano da "Abbina pagamenti")
+    var fatture = (reg.fatture || []).map(function (f) {
+      var dir = f.direzione || f.tipo;
       var nc = f.tipoDocumento === 'nota_credito';
       return {
-        id: f.id, direzione: f.direzione, controparte: f.controparte || '', partitaIva: f.partitaIva || '',
+        id: f.id, direzione: dir, controparte: f.controparte || '', partitaIva: f.partitaIva || '',
         data: f.data, importo: round2((nc ? -1 : 1) * (f.importoTotale || 0)), importoFmt: money(round2((nc ? -1 : 1) * (f.importoTotale || 0))),
         nc: nc, aperta: fattAperta(f), movimentoId: (f.pagamento || {}).movimentoId || ''
       };
-    });
+    }).filter(function (f) { return f.direzione === 'acquisto' || f.direzione === 'vendita'; });
     var movimenti = movBanca(reg).filter(function (m) { return m.tipo === 'uscita' || m.tipo === 'entrata'; }).map(function (m) {
       return {
         id: m.id, data: m.data, tipo: m.tipo, controparte: m.controparte || '',
@@ -1328,6 +1332,239 @@
     }, 0));
   }
 
+  // ======================================================= TASSE PER SOCIO
+  // Unisce STIMA (previsione fiscale live) e VERSATO REALE (previsioneFiscale.versamenti[],
+  // compilato dagli F24 del commercialista). Perimetri: marco | sajay | soci | societa.
+  function oggiISOdi(dataRif) {
+    try { return (dataRif || new Date()).toISOString().slice(0, 10); } catch (e) { return '2026-07-05'; }
+  }
+  function perimetroScadenza(s) {
+    var chi = String(s.chi || '').toLowerCase();
+    if (/marco/.test(chi)) return 'marco';
+    if (/sajay/.test(chi)) return 'sajay';
+    if (/soci/.test(chi)) return 'soci';
+    return 'societa';
+  }
+  function calcTasseSoci(reg, bilancio, dataRif) {
+    // versione pubblica sanitizzata: niente redditi/versamenti personali -> sezione nascosta
+    if (reg.meta && reg.meta.versionePubblica) return { nascosto: true };
+    var pf = reg.previsioneFiscale || {};
+    var anno = (reg.meta && reg.meta.annoFiscale) || 2026;
+    var oggiISO = oggiISOdi(dataRif);
+    var prev = bilancio && bilancio.previsioneFiscale; // stima live sull'EBT
+    var impAnno = (pf.impostePerAnno || {})[String(anno)] || {};
+
+    // versamenti dell'anno (per cassa), raggruppati per perimetro
+    var perPer = {};
+    (pf.versamenti || []).forEach(function (v) {
+      if (!isISO(v.data) || parseISO(v.data).y !== anno) return;
+      var k = v.perimetro || 'societa';
+      var g = perPer[k] || (perPer[k] = { totale: 0, daIdentificare: 0, lista: [] });
+      g.totale += (v.importo || 0);
+      if (v.daIdentificare) g.daIdentificare += (v.importo || 0);
+      g.lista.push({
+        id: v.id, data: v.data, dataFmt: dataLunga(v.data), tributo: v.tributo || '',
+        codici: (v.codiciTributo || []).join(', '), periodo: v.periodo || '',
+        importo: round2(v.importo || 0), importoFmt: money(round2(v.importo || 0)),
+        fonte: v.fonte || '', daIdentificare: !!v.daIdentificare, nota: v.nota || ''
+      });
+    });
+    Object.keys(perPer).forEach(function (k) {
+      var g = perPer[k];
+      g.totale = round2(g.totale); g.totaleFmt = money(g.totale);
+      g.daIdentificare = round2(g.daIdentificare);
+      g.lista.sort(function (a, b) { return a.data < b.data ? 1 : -1; });
+    });
+
+    // prossime scadenze aperte per perimetro ('soci' vale per entrambi)
+    var aperte = (reg.scadenze || []).filter(function (s) { return isISO(s.data) && !STATI_CHIUSI[s.stato] && s.data >= oggiISO; })
+      .sort(function (a, b) { return a.data < b.data ? -1 : 1; });
+    function prossimeDi(keys) {
+      return aperte.filter(function (s) { return keys.indexOf(perimetroScadenza(s)) >= 0; }).slice(0, 6).map(function (s) {
+        return { data: s.data, dataFmt: dataLunga(s.data), descrizione: s.descrizione,
+          importo: (typeof s.importo === 'number') ? s.importo : null,
+          importoFmt: (typeof s.importo === 'number' && s.importo) ? money(s.importo) : 'da definire',
+          stato: s.stato };
+      });
+    }
+
+    var irpefSoci = impAnno.irpefSoci || {};
+    var accantonamento = (typeof irpefSoci.accantonamentoStimato === 'number') ? irpefSoci.accantonamentoStimato : null;
+
+    function schedaSocio(key, socioPrev, quota) {
+      var righe = [];
+      if (socioPrev && socioPrev.inpsFisso) {
+        righe.push({ label: 'INPS commercianti (fisso, 4 rate)', importo: socioPrev.inpsFisso, importoFmt: money(socioPrev.inpsFisso), nota: 'dovuto comunque, anche in perdita' });
+        if (socioPrev.inpsEccedenza) righe.push({ label: 'INPS eccedenza sul reddito', importo: socioPrev.inpsEccedenza, importoFmt: money(socioPrev.inpsEccedenza), nota: '' });
+      }
+      if (prev && prev.utileNegativo) {
+        var acc = accantonamento != null ? round2(accantonamento * (quota || 0.5)) : null;
+        righe.push({ label: 'IRPEF + addizionali (quota utile)', importo: acc, importoFmt: acc != null ? '~' + money(acc) : 'da definire',
+          nota: 'utile ' + anno + ' oggi in perdita: la stima vera esce con la dichiarazione. Accantonamento prudenziale.' });
+      } else if (socioPrev) {
+        var irpefTot = round2((socioPrev.irpef || 0) + (socioPrev.addizionali || 0) - (socioPrev.tasseSuAltriRedditi || 0));
+        righe.push({ label: 'IRPEF + addizionali sulla quota utile', importo: irpefTot, importoFmt: money(irpefTot), nota: 'stima sugli scaglioni, saldo con la dichiarazione' });
+      }
+      var stimaTot = righe.reduce(function (a, r) { return a + (r.importo || 0); }, 0);
+      var g = perPer[key] || { totale: 0, totaleFmt: money(0), daIdentificare: 0, lista: [] };
+      return {
+        key: key, righeStima: righe, stimaTotale: round2(stimaTot), stimaTotaleFmt: money(round2(stimaTot)),
+        stimaParziale: righe.some(function (r) { return r.importo == null; }),
+        versato: g.totale, versatoFmt: g.totaleFmt, versamenti: g.lista,
+        residuo: round2(Math.max(0, stimaTot - g.totale)),
+        residuoFmt: money(round2(Math.max(0, stimaTot - g.totale))),
+        prossime: prossimeDi([key, 'soci'])
+      };
+    }
+
+    var marco = schedaSocio('marco', prev && prev.marco, prev && prev.marco && prev.marco.quota);
+    marco.label = 'Marco'; marco.sub = 'Socio accomandatario — paga con F24 personali (NLI gli bonifica l\'importo)';
+    var sajay = schedaSocio('sajay', prev && prev.sajay, prev && prev.sajay && prev.sajay.quota);
+    sajay.label = 'Sajay'; sajay.sub = 'Socia accomandante e dipendente — l\'IRPEF dello stipendio è già trattenuta in busta paga';
+
+    // società: niente stima-vs-versato (i versamenti includono paghe/ritenute mensili):
+    // dovuto NOTO dell'anno (IRAP + camerale da impostePerAnno) + versato YTD per cassa.
+    var gS = perPer.societa || { totale: 0, totaleFmt: money(0), daIdentificare: 0, lista: [] };
+    var irap = impAnno.irap || {};
+    var dovutoNoto = [];
+    if (typeof irap.acconto1Netto === 'number') dovutoNoto.push({ label: 'IRAP 1° acconto (netto credito 2025)', importoFmt: money(irap.acconto1Netto), data: irap.scadenzaAcconto1 || '' });
+    if (typeof irap.acconto2 === 'number') dovutoNoto.push({ label: 'IRAP 2° acconto', importoFmt: money(irap.acconto2), data: irap.scadenzaAcconto2 || '' });
+    if (impAnno.dirittoCamerale && typeof impAnno.dirittoCamerale.importo === 'number') dovutoNoto.push({ label: 'Diritto camerale CCIAA', importoFmt: money(impAnno.dirittoCamerale.importo), data: impAnno.dirittoCamerale.scadenza || '' });
+    var societa = {
+      key: 'societa', label: 'Società (NLI)', sub: 'IVA, IRAP, F24 del personale, ritenute, INAIL: li paga la società dal conto Intesa',
+      dovutoNoto: dovutoNoto, versato: gS.totale, versatoFmt: gS.totaleFmt,
+      daIdentificare: gS.daIdentificare, versamenti: gS.lista, prossime: prossimeDi(['societa'])
+    };
+
+    return {
+      anno: anno,
+      nota: pf.versamentiNota || '',
+      utileNegativo: !!(prev && prev.utileNegativo),
+      schede: [marco, sajay, societa],
+      totDaIdentificare: round2(Object.keys(perPer).reduce(function (a, k) { return a + perPer[k].daIdentificare; }, 0))
+    };
+  }
+
+  // ======================================================== ALERT DERIVATI
+  // Gli alert si CALCOLANO da scadenze + datiMancanti (prima erano testo statico in
+  // data.static.json e invecchiavano: a luglio mostravano ancora le priorita di maggio).
+  function calcAlertDerivati(reg, dataRif) {
+    var oggiISO = oggiISOdi(dataRif);
+    var oggi = new Date(oggiISO + 'T00:00:00');
+    var out = [];
+    var scadute = [], imminenti = [], daVerificare = [];
+    (reg.scadenze || []).forEach(function (s) {
+      if (STATI_CHIUSI[s.stato]) return;
+      if (!isISO(s.data)) return; // gestite a parte sotto
+      var lbl = ddmmYYYY(s.data) + ' — ' + s.descrizione + (typeof s.importo === 'number' && s.importo ? ' (€' + nf(s.importo) + ')' : '');
+      var giorni = Math.round((new Date(s.data + 'T00:00:00') - oggi) / 86400000);
+      if (s.stato === 'da_pagare') {
+        if (giorni < 0) scadute.push(lbl);
+        else if (giorni <= 30) imminenti.push({ lbl: lbl, giorni: giorni });
+      } else if (giorni < 0 && s.stato !== 'credito_iva') {
+        daVerificare.push(lbl); // in_attesa_dati / da_decidere con data passata (il credito IVA ha gia' l'esito)
+      }
+    });
+    scadute.forEach(function (l) { out.push({ tipo: 'danger', testo: '🔴 Scaduta e qui non risulta pagata: ' + l + ' — primo passo: controllare l\'estratto conto; se è stata pagata, basta segnarla nel registro.' }); });
+    imminenti.forEach(function (x) { out.push({ tipo: 'warning', testo: '⏰ Tra ' + x.giorni + ' giorni: ' + x.lbl }); });
+    if (daVerificare.length) {
+      out.push({ tipo: 'warning', testo: '❓ Da verificare (data passata, esito non registrato): ' + daVerificare.slice(0, 5).join(' · ') + (daVerificare.length > 5 ? ' · +' + (daVerificare.length - 5) + ' altre' : '') });
+    }
+    var senzaData = (reg.scadenze || []).filter(function (s) { return !STATI_CHIUSI[s.stato] && !isISO(s.data); });
+    if (senzaData.length) {
+      out.push({ tipo: 'warning', testo: '⚠️ ' + senzaData.length + ' promemoria senza data non compaiono nel calendario: ' + senzaData.map(function (s) { return s.id; }).join(', ') + '. È solo da sistemare nel registro (ci pensa Marco) — nessun pagamento a rischio in più.' });
+    }
+    var dm = reg.datiMancanti || [];
+    if (dm.length) {
+      var esempi = dm.slice(0, 2).map(function (x) {
+        var t = String(x.nota || x.campo || '');
+        return '«' + (t.length > 90 ? t.slice(0, 90) + '…' : t) + '»';
+      }).join(' · ');
+      out.push({ tipo: 'info', testo: '📋 ' + dm.length + ' informazioni da chiarire, es.: ' + esempi + '. Se ne occupa chi aggiorna il registro — nessuna azione richiesta qui.' });
+    }
+    if (!out.length) out.push({ tipo: 'success', testo: '✅ Nessun allarme: niente di scaduto e nessuna scadenza nei prossimi 30 giorni.' });
+    return out;
+  }
+
+  // ========================================================== GUIDA TASSE
+  // Sezione informativa: il catalogo di TUTTE le tasse/adempimenti della societa
+  // (registro.catalogoAdempimenti) incrociato con lo scadenzario reale: per ogni voce
+  // un badge dice se la prossima scadenza e' gia' censita o va ancora messa a registro.
+  function calcGuidaTasse(reg, dataRif) {
+    var cat = reg.catalogoAdempimenti || {};
+    var voci = cat.voci || [];
+    var oggiISO = oggiISOdi(dataRif);
+    var aperte = (reg.scadenze || []).filter(function (s) { return isISO(s.data) && !STATI_CHIUSI[s.stato]; });
+    var ricorrenti = (reg.scadenzeRicorrenti || []).filter(function (r) { return r.attiva !== false; });
+    var FREQ_LABEL = { mensile: 'ogni mese', bimestrale: 'ogni 2 mesi', trimestrale: 'ogni trimestre', semestrale: 'ogni 6 mesi', annuale: 'ogni anno' };
+    var gruppi = [], byName = {};
+    var conta = { ok: 0, manca: 0, na: 0 };
+    voci.forEach(function (v) {
+      var rx = null;
+      try { rx = v.matchScadenze ? new RegExp(v.matchScadenze, 'i') : null; } catch (e) {}
+      var mie = rx ? aperte.filter(function (s) { return rx.test(s.descrizione || ''); }) : [];
+      var future = mie.filter(function (s) { return s.data >= oggiISO; }).sort(function (a, b) { return a.data < b.data ? -1 : 1; });
+      var prossima = future[0] || null;
+      var stato, statoLabel;
+      if (!v.applicabile) { stato = 'na'; statoLabel = 'Non riguarda NLI'; conta.na++; }
+      else if (!rx) { stato = 'info'; statoLabel = 'Solo da sapere'; }
+      else if (prossima) { stato = 'ok'; statoLabel = 'In scadenzario: ' + dataLunga(prossima.data); conta.ok++; }
+      else if (rx && ricorrenti.some(function (r) { return rx.test(r.descrizione || ''); })) {
+        var ric = ricorrenti.filter(function (r) { return rx.test(r.descrizione || ''); })[0];
+        stato = 'ok'; statoLabel = 'Ricorrente attivo (' + (FREQ_LABEL[ric.frequenza || 'mensile'] || ric.frequenza) + ')'; conta.ok++;
+      }
+      else if (mie.length) { stato = 'verifica'; statoLabel = 'Data passata: controllare se è stata fatta'; }
+      else { stato = 'manca'; statoLabel = 'Non ancora nello scadenzario'; conta.manca++; }
+      var out = {
+        id: v.id, nome: v.nome, chi: v.chi || '', cosa: v.cosa || '', comeSiCalcola: v.comeSiCalcola || '',
+        quando: v.quando || '', codiciTributo: (v.codiciTributo || []).join(', '),
+        applicabile: v.applicabile !== false, notaApplicabile: v.notaApplicabile || '',
+        stato: stato, statoLabel: statoLabel,
+        prossimaData: prossima ? prossima.data : null,
+        prossimaFmt: prossima ? dataLunga(prossima.data) : null,
+        prossimaImporto: (prossima && typeof prossima.importo === 'number' && prossima.importo) ? money(prossima.importo) : null
+      };
+      var g = byName[v.gruppo];
+      if (!g) { g = byName[v.gruppo] = { nome: v.gruppo || 'Altro', voci: [] }; gruppi.push(g); }
+      g.voci.push(out);
+    });
+    return { annoRiferimento: cat.annoRiferimento || null, gruppi: gruppi, conta: conta, nessunDato: voci.length === 0 };
+  }
+
+  // ================================================== COSA GENERA L'AZIENDA
+  // La catena in una schermata: venduto -> margine -> costi fissi -> utile -> cassa,
+  // piu' il futuro gia' firmato. Tutto riusa i calcoli esistenti.
+  function calcGenerazione(reg, statics, banca, bilancio) {
+    var anno = (reg.meta && reg.meta.annoFiscale) || 2026;
+    var ric = calcRicaviCompetenza(reg);
+    var ord = calcOrdini(reg);
+    var rigaAnno = (ord.perAnno || []).filter(function (a) { return a.anno === String(anno); })[0] || null;
+    var cr = calcCostiRicorrenti(reg);
+    var cascata = (bilancio && bilancio.ce && bilancio.ce.cascata) || {};
+    var totE = parseEuro(banca.totali.entrate), totU = parseEuro(banca.totali.uscite);
+    var flusso = round2(totE - totU);
+    var pfLive = calcPortafoglioPerMese(reg);
+    return {
+      anno: anno,
+      righe: [
+        { key: 'venduto', label: 'Fatturato ' + anno + ' (dalle fatture emesse)', valoreFmt: money(ric.netto),
+          sub: (ric.numFV ? ric.numFV + ' fatture' : 'fatture') + ' emesse nel ' + anno + ', tolte le note di credito', cls: ric.netto >= 0 ? 'positive' : 'negative' },
+        { key: 'margine', label: 'Margine sugli ordini ' + anno,
+          valoreFmt: rigaAnno && rigaAnno.marginePerc != null ? rigaAnno.margineFmt + ' (' + rigaAnno.marginePerc + '%)' : '—',
+          sub: !rigaAnno ? 'dettaglio solo sulla dashboard privata' : (rigaAnno.senzaMargine > 0 ? rigaAnno.senzaMargine + ' ordini ancora senza costi caricati: il margine vero è più basso di così' : 'vendite meno costi diretti (merce, stampa, grafica)'),
+          cls: 'neutral' },
+        { key: 'fissi', label: 'Costi fissi', valoreFmt: cr.totaleMensileFmt + '/mese',
+          sub: cr.nAttivi + ' voci ricorrenti (' + cr.totaleAnnuoFmt + ' l\'anno)', cls: 'neutral' },
+        { key: 'utile', label: 'Utile ' + anno + ' (dalle fatture)', valoreFmt: money(cascata.utileNetto || 0),
+          sub: 'calcolato solo dalle fatture: mancano stipendi e tasse, quindi il risultato reale è più basso di così', cls: (cascata.utileNetto || 0) >= 0 ? 'positive' : 'negative' },
+        { key: 'cassa', label: 'Cassa generata ' + anno, valoreFmt: moneySigned(flusso),
+          sub: 'incassi meno uscite in banca — saldo all\'ultimo estratto conto: ' + banca.saldoAttuale, cls: flusso >= 0 ? 'positive' : 'negative' },
+        { key: 'firmato', label: 'Già firmato, da incassare', valoreFmt: money(pfLive.totaleRateCerte || 0),
+          sub: (pfLive.numeroRate || 0) + ' rate future di ordini già chiusi', cls: 'positive' }
+      ]
+    };
+  }
+
   // ============================================================ BUILD COMPLETO
   function buildDashboardData(reg, statics) {
     statics = statics || {};
@@ -1336,6 +1573,7 @@
     var iva = calcIVA(reg, statics);
     var kpi = calcKPI(reg, banca, iva, mensili);
     var forecast = calcForecastCassa(reg, statics, mensili, banca);
+    var bilancio = calcBilancio(reg, banca, statics);
 
     return {
       // calcolati dal vivo dal registro
@@ -1346,17 +1584,21 @@
       movimentiMensili: mensili,
       banca: banca,
       iva: iva,
-      bilancio: calcBilancio(reg, banca, statics),
+      bilancio: bilancio,
       bancaAliasDescrizioni: aliasDescrizioni(reg, statics),
 
       // testi di sintesi: CALCOLATI dal vivo (prima erano statici e invecchiavano)
       statusMessage: calcStatusMessage(reg, banca, iva, mensili),
       statoLavori: calcStatoLavori(reg, banca),
 
-      // input non derivabili (statici): storico anni chiusi, forecast, config
-      suggerimenti: statics.suggerimenti || '',
+      // ALERT derivati da scadenze+datiMancanti (prima statici: mostravano maggio a luglio).
+      // suggerimenti ritirati per lo stesso motivo (il tab Alert basta).
+      suggerimenti: '',
       setupChecklist: statics.setupChecklist || [],
-      alert: statics.alert || [],
+      alert: calcAlertDerivati(reg),
+      tasseSoci: calcTasseSoci(reg, bilancio),
+      guidaTasse: calcGuidaTasse(reg),
+      generazione: calcGenerazione(reg, statics, banca, bilancio),
       previsionale: calcPrevisionaleFuturo(reg, statics, forecast),
       forecastCassa: forecast,
       cassaSalute: calcCassaSalute(reg, forecast),
@@ -2072,6 +2314,6 @@
     parseEuro: parseEuro,
     money: money,
     // esposte per il gate / debug
-    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcPartitarioDanea: calcPartitarioDanea, movBanca: movBanca, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine, calcCassaSalute: calcCassaSalute, calcFiscale: calcFiscale, calcPrevisioneFiscale: calcPrevisioneFiscale, calcPressioneFiscale: calcPressioneFiscale, calcEbitdaGestionale: calcEbitdaGestionale, calcRecinto: calcRecinto, calcPercentualeAccantonamento: calcPercentualeAccantonamento, calcUtiliSoci: calcUtiliSoci }
+    _calc: { calcMensili: calcMensili, calcBanca: calcBanca, calcIVA: calcIVA, calcKPI: calcKPI, calcBilancio: calcBilancio, calcScadenze: calcScadenze, calcPartitario: calcPartitario, calcPartitarioDanea: calcPartitarioDanea, movBanca: movBanca, calcRiconciliazione: calcRiconciliazione, calcCostiRicorrenti: calcCostiRicorrenti, calcOrdini: calcOrdini, calcPortafoglioPerMese: calcPortafoglioPerMese, calcCostiOrdine: calcCostiOrdine, calcForecastMargine: calcForecastMargine, calcCassaSalute: calcCassaSalute, calcFiscale: calcFiscale, calcPrevisioneFiscale: calcPrevisioneFiscale, calcPressioneFiscale: calcPressioneFiscale, calcEbitdaGestionale: calcEbitdaGestionale, calcRecinto: calcRecinto, calcPercentualeAccantonamento: calcPercentualeAccantonamento, calcUtiliSoci: calcUtiliSoci, calcTasseSoci: calcTasseSoci, calcAlertDerivati: calcAlertDerivati, calcGuidaTasse: calcGuidaTasse, calcGenerazione: calcGenerazione }
   };
 });

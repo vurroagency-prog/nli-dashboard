@@ -106,7 +106,7 @@ const run = async () => {
   console.log('fetch chiamati:', [...new Set(fetchLog)].join(', '));
   console.log('elementi DOM toccati:', Object.keys(elCache).length);
   // spot-check: alcuni elementi devono aver ricevuto contenuto
-  const checks = ['last-update-date', 'iva-trimestri-body', 'bilancio-ce-table', 'overview-status', 'recinto-body'];
+  const checks = ['last-update-date', 'iva-trimestri-body', 'bilancio-ce-table', 'overview-status', 'recinto-body', 'tasse-soci', 'tasse-guida', 'generazione-body', 'alert-list'];
   checks.forEach(id => {
     const el = elCache[id];
     const filled = el && (el.innerHTML || el.textContent);

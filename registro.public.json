@@ -2,11 +2,9 @@
  "meta": {
   "versione": "1.0.0",
   "schema": "registro_contabile_nli",
-  "ultimoAggiornamento": "2026-06-27",
+  "ultimoAggiornamento": "2026-07-05",
   "ragioneSociale": "NEXT LEVEL ITALIA S.A.S. DI VURRO MARCO",
   "annoFiscale": 2026,
-  "note": "Importati 0 movimenti e 16 fatture marzo-aprile",
-  "ultimaRegistrazioneMaggio": "2026-05-30: saldo + IVA Q1 ufficiale. Movimenti riga-per-riga NON importati (PDF E/C non parsabile in modo affidabile - serve export CSV/Excel dal portale Intesa).",
   "notaCosti2026": "Costi 2026 = job costing. Costo MERCE da APP_ORDINI (cost master: prezzo d'acquisto per articolo, validato = costo reale fatture Rossini). Stampa/ricamo/trasporto/SDD a costo=addebito (markup uff. 1x workwear). Grafica=foglio Dani x60E/h. NEXTD (marchio proprio NextWear) escluso dal costo merce. Ordini solo-sito: margine non calcolato (compenso Luca inserito a mano da Marco).",
   "versionePubblica": "sanitizzata per pubblicazione (no IBAN/CF/P.IVA/redditi soci/paghe)"
  },
@@ -15,9 +13,7 @@
    "id": "BANCA-ISP-001",
    "tipo": "conto_corrente",
    "istituto": "Intesa Sanpaolo",
-   "attivo": true,
-   "saldoFineMar2026": 17014.81,
-   "saldoFine28Apr2026": 15762.83
+   "attivo": true
   },
   {
    "id": "PERS-MARCO-001",
@@ -6622,7 +6618,7 @@
    "fileArchiviato": "01_FATTURE_IN/2026-02-03_Canva_AbbonamentoDesign.pdf",
    "fonte": "fattura_originale",
    "ritenuta": null,
-   "note": "Canva abbonamento — pagato via PayPal (marcovurro@live.it). €139,90. Periodo non specificato in fattura — verificare se annuale per risconto.",
+   "note": "Canva abbonamento — pagato via PayPal ([email rimossa]). €139,90. Periodo non specificato in fattura — verificare se annuale per risconto.",
    "pagamento": {
     "stato": "pagata",
     "dataPagamento": "2026-02-03",
@@ -8011,7 +8007,7 @@
    "id": "SCAD-2026-0004",
    "data": "2026-02-16",
    "tipo": "inps",
-   "descrizione": "Bonifico a Marco per INPS Commercianti 4a rata 2025 — Marco paga F24 dal conto personale",
+   "descrizione": "Bonifico a socio per INPS Commercianti 4a rata 2025 — socio paga F24 dal conto personale",
    "importo": 1137.35,
    "stato": "pagato",
    "chi": "noi_marco",
@@ -8063,7 +8059,8 @@
    "stato": "in_attesa_dati",
    "chi": "commercialista",
    "fonte": "normativa",
-   "movimentoCollegato": null
+   "movimentoCollegato": null,
+   "nota": "Termine vigente: 16/03 (31/03 per i soli autonomi), non 28/02."
   },
   {
    "id": "SCAD-2026-0008",
@@ -8074,7 +8071,8 @@
    "stato": "in_attesa_dati",
    "chi": "commercialista",
    "fonte": "normativa",
-   "movimentoCollegato": null
+   "movimentoCollegato": null,
+   "nota": "Termine vigente: 16/03 (31/03 per i soli autonomi), non 28/02."
   },
   {
    "id": "SCAD-2026-0009",
@@ -8141,13 +8139,13 @@
    "id": "SCAD-2026-0032",
    "data": "2026-03-31",
    "tipo": "rimborso_spese",
-   "descrizione": "Rimborso km febbraio 2026 Marco Vurro — 12 trasferte, 1.750 km, Peugeot 3008 (€0,5117/km)",
+   "descrizione": "Rimborso km febbraio 2026 socio — 12 trasferte, 1.750 km, Peugeot 3008 (€0,5117/km)",
    "importo": 895.48,
    "stato": "pagata",
    "chi": "NLI",
    "fonte": "nota_spese_feb_2026",
    "movimentoCollegato": null,
-   "fileArchiviato": "06_PERSONALE/2026-02-28_VurroMarco_NLI_RimborsoKmFebbraio.pdf",
+   "fileArchiviato": "06_PERSONALE/2026-02-28_socio_NLI_RimborsoKmFebbraio.pdf",
    "note": "Pagato il 02/03/2026 con MOV-2026-0205 (bonifico €895,48)"
   },
   {
@@ -8223,23 +8221,25 @@
    "id": "SCAD-2026-0018",
    "data": "2026-07-20",
    "tipo": "versamento",
-   "descrizione": "1° acconto IRAP 2026 netto €854,50 (acconto lordo €1.359,50 − credito saldo IRAP 2025 €505). Proroga ISA 20/07. NB: IRPEF soci Marco/Sajay ancora da quantificare (dichiarazioni PF).",
+   "descrizione": "1° acconto IRAP 2026",
    "importo": 854.5,
    "stato": "da_pagare",
    "chi": "commercialista",
    "fonte": "F24 Valerio Petrini 26/06/2026",
-   "movimentoCollegato": null
+   "movimentoCollegato": null,
+   "nota": "Netto €854,50 = acconto lordo €1.359,50 − credito saldo IRAP 2025 €505. Proroga ISA 20/07. NB: IRPEF soci ancora da quantificare (dichiarazioni PF)."
   },
   {
    "id": "SCAD-2026-0019",
    "data": "2026-07-20",
    "tipo": "versamento",
-   "descrizione": "Diritto annuale CCIAA Bari 2026 (cod. 3850). Proroga ISA 20/07 (scad. ordinaria 30/06).",
+   "descrizione": "Diritto annuale Camera di Commercio 2026",
    "importo": 152,
    "stato": "da_pagare",
    "chi": "commercialista",
    "fonte": "F24 Valerio Petrini 26/06/2026",
-   "movimentoCollegato": null
+   "movimentoCollegato": null,
+   "nota": "Cod. 3850. Proroga ISA 20/07 (scadenza ordinaria 30/06)."
   },
   {
    "id": "SCAD-2026-0020",
@@ -8289,12 +8289,13 @@
    "id": "SCAD-2026-0024",
    "data": "2026-11-30",
    "tipo": "versamento",
-   "descrizione": "2° acconto IRAP 2026 €1.359,50 (cod. 3813). NB: 2° acconto IRPEF soci ancora da quantificare.",
+   "descrizione": "2° acconto IRAP 2026 (cod. 3813)",
    "importo": 1359.5,
    "stato": "da_pagare",
    "chi": "commercialista",
    "fonte": "F24 Valerio Petrini 26/06/2026",
-   "movimentoCollegato": null
+   "movimentoCollegato": null,
+   "nota": "€1.359,50. NB: 2° acconto IRPEF soci ancora da quantificare."
   },
   {
    "id": "SCAD-2026-0025",
@@ -8322,22 +8323,22 @@
    "id": "SCAD-2026-0027",
    "data": "2026-05-16",
    "tipo": "inps",
-   "descrizione": "INPS Commercianti Marco — 1a rata fisso 2026",
+   "descrizione": "INPS Commercianti socio — 1a rata fisso 2026",
    "importo": 1137,
    "stato": "pagato",
-   "chi": "Marco (conto personale, poi rimborso NLI)",
+   "chi": "socio (conto personale, poi rimborso NLI)",
    "fonte": "registro.json > previsioneFiscale",
    "movimentoCollegato": null,
-   "nota": "Pagata da Marco dal conto personale (scad. 16/05/2026) — confermato da Marco 27/06. Non transita sul conto NLI. Restano 3 rate (SCAD-0028/0029/0030)."
+   "nota": "Pagata da socio dal conto personale (scad. 16/05/2026) — confermato da socio 27/06. Non transita sul conto NLI. Restano 3 rate (SCAD-0028/0029/0030)."
   },
   {
    "id": "SCAD-2026-0028",
    "data": "2026-08-20",
    "tipo": "inps",
-   "descrizione": "INPS Commercianti Marco — 2a rata fisso 2026",
+   "descrizione": "INPS Commercianti socio — 2a rata fisso 2026",
    "importo": 1137,
    "stato": "da_pagare",
-   "chi": "Marco (conto personale, poi rimborso NLI)",
+   "chi": "socio (conto personale, poi rimborso NLI)",
    "fonte": "registro.json > previsioneFiscale",
    "movimentoCollegato": null,
    "nota": "Importo stimato ~€1.137. Confermare con F24 commercialista."
@@ -8346,10 +8347,10 @@
    "id": "SCAD-2026-0029",
    "data": "2026-11-16",
    "tipo": "inps",
-   "descrizione": "INPS Commercianti Marco — 3a rata fisso 2026",
+   "descrizione": "INPS Commercianti socio — 3a rata fisso 2026",
    "importo": 1137,
    "stato": "da_pagare",
-   "chi": "Marco (conto personale, poi rimborso NLI)",
+   "chi": "socio (conto personale, poi rimborso NLI)",
    "fonte": "registro.json > previsioneFiscale",
    "movimentoCollegato": null,
    "nota": "Importo stimato ~€1.137. Confermare con F24 commercialista."
@@ -8358,10 +8359,10 @@
    "id": "SCAD-2026-0030",
    "data": "2027-02-16",
    "tipo": "inps",
-   "descrizione": "INPS Commercianti Marco — 4a rata fisso 2026",
+   "descrizione": "INPS Commercianti socio — 4a rata fisso 2026",
    "importo": 1137,
    "stato": "da_pagare",
-   "chi": "Marco (conto personale, poi rimborso NLI)",
+   "chi": "socio (conto personale, poi rimborso NLI)",
    "fonte": "registro.json > previsioneFiscale",
    "movimentoCollegato": null,
    "nota": "Importo stimato ~€1.137. Confermare con F24 commercialista."
@@ -8371,10 +8372,12 @@
    "tipo": "pagamento_fornitore",
    "descrizione": "Timeflow S.R.L. — Decreto Ingiuntivo n.506/2026 rata 3/4",
    "controparte": "Timeflow S.R.L.",
-   "importo": 733.33,
-   "scadenza": "2026-05-13",
-   "stato": "da_pagare",
-   "note": "4 rate mensili da €733,33 — D.I. ottenuto da Timeflow. Rate 1 e 2 già pagate (mar+apr 2026)."
+   "importo": 733.34,
+   "data": "2026-05-13",
+   "stato": "pagata",
+   "note": "4 rate mensili da €733,33 — D.I. ottenuto da Timeflow. Rate 1 e 2 già pagate (mar+apr 2026). | AGGIORNATO 05/07: rata 3 PAGATA il 14/05/2026 con MOV-2026-0287 (733,34: un centesimo in piu della rata teorica).",
+   "dataPagamento": "2026-05-14",
+   "movimentoCollegato": "MOV-2026-0287"
   },
   {
    "id": "SCAD-2026-0034",
@@ -8382,17 +8385,15 @@
    "descrizione": "Timeflow S.R.L. — Decreto Ingiuntivo n.506/2026 rata 4/4",
    "controparte": "Timeflow S.R.L.",
    "importo": 733.33,
-   "scadenza": "2026-06-13",
-   "stato": "pagata",
-   "note": "Ultima rata D.I. n.506/2026. Totale DI: €2.933,32.",
-   "dataPagamento": "2026-04-13",
-   "notaPagamento": "Timeflow rata 2 — bonifico €733,33 del 13/04/2026"
+   "data": "2026-06-13",
+   "stato": "in_attesa_dati",
+   "note": "Ultima rata D.I. n.506/2026. Totale DI: €2.933,32. | CORREZIONE 05/07: era marcata pagata con dataPagamento 2026-04-13 e nota 'Timeflow rata 2 — bonifico €733,33 del 13/04/2026' — ma quello e il bonifico della RATA 2 (MOV-2026-0121). La rata 4 scadeva il 13/06: nei movimenti importati (fermi a fine maggio) non c'e prova del pagamento. Verificare su E/C giugno."
   },
   {
    "id": "SCAD-2026-0035",
    "descrizione": "F24 non identificato — pagato 16/03/2026 €1.663",
    "importo": 1663,
-   "scadenza": "2026-03-16",
+   "data": "2026-03-16",
    "stato": "pagata",
    "dataPagamento": "2026-03-16",
    "nota": "⚠️ F24 €1.663 pagato 16/03 — NON presente in scadenziario. Da identificare con Mascolo: INPS fisso? Saldo IRAP? Ritenute cumulate? Movimentato come PAGAMENTO DELEGA F24."
@@ -8401,7 +8402,7 @@
    "id": "SCAD-2026-0036",
    "descrizione": "F24 ritenute royalties aprile — pagato 16/04/2026 €60",
    "importo": 60,
-   "scadenza": "2026-04-16",
+   "data": "2026-04-16",
    "stato": "pagata",
    "dataPagamento": "2026-04-16",
    "nota": "F24 €60 ritenute royalties aprile — confermato E/C 16/04"
@@ -8410,10 +8411,126 @@
    "id": "SCAD-2026-0037",
    "descrizione": "Imposta bollo E/C e rendiconto bancario II trim 2026",
    "importo": 24.7,
-   "scadenza": "2026-04-02",
+   "data": "2026-04-02",
    "stato": "pagata",
    "dataPagamento": "2026-04-02",
    "nota": "Bollo bancario trimestrale — addebitato automaticamente 02/04/2026"
+  },
+  {
+   "id": "SCAD-2026-0038",
+   "data": "2026-09-30",
+   "tipo": "adempimento",
+   "descrizione": "Invio LIPE II trimestre 2026",
+   "importo": null,
+   "stato": "in_attesa_dati",
+   "chi": "commercialista",
+   "fonte": "normativa",
+   "movimentoCollegato": null
+  },
+  {
+   "id": "SCAD-2026-0039",
+   "data": "2026-11-30",
+   "tipo": "adempimento",
+   "descrizione": "Invio LIPE III trimestre 2026",
+   "importo": null,
+   "stato": "in_attesa_dati",
+   "chi": "commercialista",
+   "fonte": "normativa",
+   "movimentoCollegato": null
+  },
+  {
+   "id": "SCAD-2026-0040",
+   "data": "2027-02-28",
+   "tipo": "adempimento",
+   "descrizione": "Invio LIPE IV trimestre 2026 (o con dichiarazione IVA annuale)",
+   "importo": null,
+   "stato": "in_attesa_dati",
+   "chi": "commercialista",
+   "fonte": "normativa",
+   "movimentoCollegato": null
+  },
+  {
+   "id": "SCAD-2026-0041",
+   "data": "2026-10-31",
+   "tipo": "adempimento",
+   "descrizione": "Modello 770/2026 (ritenute anno 2025) — dichiarazione sostituto d'imposta",
+   "importo": null,
+   "stato": "in_attesa_dati",
+   "chi": "commercialista",
+   "fonte": "normativa (censita 05/07 da revisione: mancava del tutto)",
+   "movimentoCollegato": null
+  },
+  {
+   "id": "SCAD-2026-0042",
+   "data": "2026-10-31",
+   "tipo": "adempimento",
+   "descrizione": "Dichiarazione Redditi SP 2026 (anno 2025) + ISA",
+   "importo": null,
+   "stato": "in_attesa_dati",
+   "chi": "commercialista",
+   "fonte": "normativa (termine vigente 31/10, non 30/11)",
+   "movimentoCollegato": null,
+   "nota": "⚠️ Al 26/06 senza incaricato: Valerio ha rifiutato, verificare che se ne occupi Mascolo."
+  },
+  {
+   "id": "SCAD-2026-0043",
+   "data": "2026-10-31",
+   "tipo": "adempimento",
+   "descrizione": "Dichiarazioni Redditi PF soci — socio e socio (quadro RH quota utile 2025)",
+   "importo": null,
+   "stato": "in_attesa_dati",
+   "chi": "soci (socio e socio)",
+   "fonte": "normativa",
+   "movimentoCollegato": null,
+   "nota": "⚠️ Al 26/06 senza incaricato: Valerio ha rifiutato il 26/06. Da qui escono saldo+acconti IRPEF personali."
+  },
+  {
+   "id": "SCAD-2026-0044",
+   "data": "2026-07-20",
+   "tipo": "versamento",
+   "descrizione": "IRPEF soci — saldo 2025 + 1° acconto 2026 (F24 personali socio e socio, con addizionali)",
+   "importo": null,
+   "stato": "in_attesa_dati",
+   "chi": "soci (F24 personali)",
+   "fonte": "previsioneFiscale.irpefSoci",
+   "movimentoCollegato": null,
+   "nota": "Importo ignoto finché non si elaborano le dichiarazioni PF (accantonamento prudenziale €1.000 totale). Proroga ISA 20/07; pagando entro i 30 giorni successivi si aggiunge lo 0,40%."
+  },
+  {
+   "id": "SCAD-2026-0045",
+   "data": "2026-11-30",
+   "tipo": "versamento",
+   "descrizione": "IRPEF soci — 2° acconto 2026 (F24 personali socio e socio)",
+   "importo": null,
+   "stato": "in_attesa_dati",
+   "chi": "soci (F24 personali)",
+   "fonte": "previsioneFiscale.irpefSoci",
+   "movimentoCollegato": null,
+   "nota": "Da quantificare con le dichiarazioni PF."
+  },
+  {
+   "id": "SCAD-2026-0046",
+   "data": "2026-04-16",
+   "tipo": "versamento",
+   "descrizione": "Imposta di registro locazione sede — annualità 2026 (~€84, metà a carico NLI)",
+   "importo": 84,
+   "stato": "in_attesa_dati",
+   "chi": "noi (con locatrice al 50%)",
+   "fonte": "contratto locazione 17/03/2025 (DATI_NLI.md)",
+   "movimentoCollegato": null,
+   "nota": "⚠️ SCADUTA ~16/04 e nessuna traccia di versamento nel registro: verificare con Mascolo/Panebianco se è stata pagata (2% di €4.200, cod. 1501)."
+  },
+  {
+   "id": "SCAD-2026-0047",
+   "data": "2026-12-16",
+   "tipo": "versamento",
+   "descrizione": "Imposta sostitutiva rivalutazione TFR — acconto (cod. 1712)",
+   "importo": null,
+   "stato": "da_pagare",
+   "chi": "commercialista",
+   "fonte": "normativa",
+   "movimentoCollegato": null,
+   "nota": "Importo piccolo (~€4-5), lo calcola il consulente paghe col cedolino di dicembre."
   }
  ],
  "scadenzeRicorrenti": [
@@ -8618,6 +8735,21 @@
    "inizioValidita": "2026-01-01",
    "fineValidita": null,
    "note": "Lordo €200/mese; netto €170 + ritenuta d'acconto €30 (20% su 75%, cod.1040, versata con F24). Redditi diversi art.67 TUIR, no IVA. Marchio reg. 302023000078576. Marca da bollo €2/ricevuta."
+  },
+  {
+   "id": "RIC-018",
+   "tipo": "imposta",
+   "giorno": 2,
+   "importo": 25,
+   "beneficiario": "Intesa Sanpaolo (addebito automatico)",
+   "descrizione": "Bollo estratto conto e rendiconto bancario (trimestrale)",
+   "categoria": "C_oneri_finanziari",
+   "frequenza": "trimestrale",
+   "attiva": true,
+   "inizioValidita": "2026-01",
+   "fineValidita": null,
+   "ceStruttura": false,
+   "nota": "~€24,70-25,20 a trimestre, addebito automatico su E/C (gen/apr/lug/ott). Prima censito solo una tantum (SCAD-0037). ceStruttura=false: il bollo entra gia nel CE dagli oneri C dei movimenti (evita doppio conteggio nel break-even); qui serve solo al previsionale di cassa."
   }
  ],
  "costiStruttura": {
@@ -8760,464 +8892,12 @@
     "da_verificare": "Documentazione insufficiente — servono informazioni"
    }
   },
-  "mesi": {
-   "2026-01": {
-    "periodo": "Gennaio 2026",
-    "dataControllo": "2026-02-09",
-    "fonteEC": "03_BANCA/2026-01_EstrattoConto_IntesaSanpaolo.pdf",
-    "quadratura": {
-     "saldoIniziale": 2480.94,
-     "totaleEntrate": 28349.84,
-     "totaleUscite": 19388.88,
-     "saldoCalcolato": 11441.9,
-     "saldoEstrattoConto": 11441.9,
-     "differenza": 0,
-     "stato": "quadrato"
-    },
-    "riepilogo": {
-     "totaleMovimenti": 43,
-     "abbinati": 10,
-     "abbinatiParziali": 2,
-     "verificatiNoDoc": 28,
-     "daAbbinare": 3,
-     "daVerificare": 0,
-     "percentualeChiusi": 93
-    },
-    "abbinati": [
-     "MOV-2026-0009",
-     "MOV-2026-0012",
-     "MOV-2026-0019",
-     "MOV-2026-0022",
-     "MOV-2026-0030",
-     "MOV-2026-0034",
-     "MOV-2026-0035",
-     "MOV-2026-0039",
-     "MOV-2026-0040",
-     "MOV-2026-0042"
-    ],
-    "abbinatiParziali": [
-     {
-      "movimentoId": "MOV-2026-0026",
-      "controparte": "Pluxee Italia",
-      "importoMovimento": 536.87,
-      "importoFatture": 351.51,
-      "differenza": 185.36,
-      "fatture": [
-       "FAT-2026-0003",
-       "FAT-2026-0008"
-      ],
-      "ipotesi": "Differenza €185,36: possibile fattura 2025 non in registro, o buoni welfare non fatturati via SDI",
-      "azione": "Verificare con Pluxee o richiedere estratto conto clienti"
-     },
-     {
-      "movimentoId": "MOV-2026-0036",
-      "controparte": "PF Concept International",
-      "importoMovimento": 1104.02,
-      "importoFatture2026": 42.88,
-      "differenza": 1061.14,
-      "fatture": [
-       "FAT-2026-0004",
-       "FAT-2026-0015"
-      ],
-      "ipotesi": "Pagamento cumulativo: 2 fatture 2026 (€82,12 - NC €39,24 = €42,88) + fatture 2025 per €1.061,14",
-      "azione": "Nessuna — differenza giustificata da fatture anno precedente"
-     }
-    ],
-    "verificatiNoDoc": {
-     "entrate2025": {
-      "note": "Incassi di fatture emesse nel 2025 — non in registro 2026",
-      "movimenti": [
-       "MOV-2026-0001",
-       "MOV-2026-0002",
-       "MOV-2026-0004",
-       "MOV-2026-0005",
-       "MOV-2026-0007",
-       "MOV-2026-0011",
-       "MOV-2026-0013",
-       "MOV-2026-0014"
-      ],
-      "totale": 21470.99,
-      "giustificativo": "fattura_anno_precedente"
-     },
-     "stipendi": {
-      "movimenti": [
-       "MOV-2026-0016",
-       "MOV-2026-0037"
-      ],
-      "totale": 1298.49,
-      "giustificativo": "cedolino"
-     },
-     "affitto": {
-      "movimenti": [
-       "MOV-2026-0017"
-      ],
-      "totale": 350,
-      "giustificativo": "contratto"
-     },
-     "f24": {
-      "movimenti": [
-       "MOV-2026-0033"
-      ],
-      "totale": 398.43,
-      "giustificativo": "f24_scadenza",
-      "scadenzaCollegata": "SCAD-2026-0001"
-     },
-     "costiInterni": {
-      "note": "Distribuzione utili, rimborsi, royalties, restituzione quote, diritti autore",
-      "movimenti": [
-       "MOV-2026-0015",
-       "MOV-2026-0023",
-       "MOV-2026-0027",
-       "MOV-2026-0028",
-       "MOV-2026-0032",
-       "MOV-2026-0038",
-       "MOV-2026-0041"
-      ],
-      "totale": 11883.75,
-      "giustificativo": "interno"
-     },
-     "bancari": {
-      "movimenti": [
-       "MOV-2026-0018",
-       "MOV-2026-0043"
-      ],
-      "totale": 53.7,
-      "giustificativo": "bancario"
-     },
-     "incassiTSPayVerificati": {
-      "note": "Incassi TeamSystem Payments con dettaglio clienti verificato da export TS charges (gen+dic 2025)",
-      "movimenti": [
-       "MOV-2026-0003",
-       "MOV-2026-0006",
-       "MOV-2026-0008",
-       "MOV-2026-0010"
-      ],
-      "totale": 5239.07,
-      "giustificativo": "export_ts_charges_gen_dic_2025"
-     },
-     "fornitoriSenzaFattura2026": {
-      "note": "Pagamenti per fatture 2025 non in registro",
-      "movimenti": [
-       "MOV-2026-0021",
-       "MOV-2026-0025",
-       "MOV-2026-0029"
-      ],
-      "totale": 1509.17,
-      "giustificativo": "fattura_anno_precedente",
-      "dettaglio": [
-       {
-        "id": "MOV-2026-0021",
-        "controparte": "Siggi Group",
-        "importo": 128.6
-       },
-       {
-        "id": "MOV-2026-0025",
-        "controparte": "Rossini 1969",
-        "importo": 58.66,
-        "note": "Ri.Ba per fattura precedente"
-       },
-       {
-        "id": "MOV-2026-0029",
-        "controparte": "WT Group KG",
-        "importo": 1321.91,
-        "note": "Pagamento fatture precedenti"
-       }
-      ]
-     }
-    },
-    "daAbbinare": [
-     {
-      "movimentoId": "MOV-2026-0020",
-      "controparte": "Metrie Spol. S.r.o.",
-      "importoMovimento": 469.5,
-      "fattureDisponibili": [
-       "FAT-2026-0027",
-       "FAT-2026-0028",
-       "FAT-2026-0029"
-      ],
-      "importoFatture": 1264.4,
-      "ipotesi": "Pagamento parziale — €469,50 non corrisponde a nessuna singola fattura né a somma di coppie",
-      "azione": "Verificare con commercialista quale fattura copre. Pagamenti futuri per il residuo?"
-     },
-     {
-      "movimentoId": "MOV-2026-0024",
-      "controparte": "GOR Factory S.A. (Roly)",
-      "importoMovimento": 244.13,
-      "fattureDisponibili": [
-       "FAT-2026-0030",
-       "FAT-2026-0031",
-       "FAT-2026-0032",
-       "FAT-2026-0033"
-      ],
-      "importoFatture": 403.33,
-      "ipotesi": "SDD 12/01: FAT-0030 (€187,58) + parte FAT-0031 (€33,82) + spedizione? Totale €221,40 + €22,73",
-      "azione": "Richiedere a GOR/commercialista estratto conto fornitore"
-     },
-     {
-      "movimentoId": "MOV-2026-0031",
-      "controparte": "GOR Factory S.A. (Roly)",
-      "importoMovimento": 222.85,
-      "fattureDisponibili": [
-       "FAT-2026-0030",
-       "FAT-2026-0031",
-       "FAT-2026-0032",
-       "FAT-2026-0033"
-      ],
-      "importoFatture": 403.33,
-      "ipotesi": "SDD 15/01: FAT-0032 (€150,69) + FAT-0033 (€31,24) + €40,92 di spedizione/residuo?",
-      "azione": "Analizzare insieme a MOV-0024 — totale SDD GOR €466,98 vs fatture €403,33 (diff €63,65)"
-     }
-    ],
-    "daVerificare": [],
-    "fattureNonCollegate": {
-     "acquistoDaPagare": {
-      "note": "Fatture ricevute senza pagamento — atteso in E/C febbraio+",
-      "fatture": [
-       "FAT-2026-0016",
-       "FAT-2026-0017",
-       "FAT-2026-0018",
-       "FAT-2026-0019",
-       "FAT-2026-0020",
-       "FAT-2026-0022",
-       "FAT-2026-0023",
-       "FAT-2026-0024",
-       "FAT-2026-0025",
-       "FAT-2026-0026"
-      ],
-      "conteggio": 10,
-      "totale": 1565.94
-     },
-     "acquistoDaVerificare": {
-      "note": "TeamSystem CRM (Ri.Ba non trovata) + Metrie 3 + GOR 4 + Zapier (USD)",
-      "fatture": [
-       "FAT-2026-0006",
-       "FAT-2026-0027",
-       "FAT-2026-0028",
-       "FAT-2026-0029",
-       "FAT-2026-0030",
-       "FAT-2026-0031",
-       "FAT-2026-0032",
-       "FAT-2026-0033",
-       "FAT-2026-0036"
-      ],
-      "conteggio": 9,
-      "totale": 1855.1
-     },
-     "venditaDaIncassare": {
-      "fatture": [
-       "FAT-2026-0041"
-      ],
-      "conteggio": 1,
-      "totale": 625.07
-     },
-     "venditaDaApplicare": {
-      "note": "NC non ancora applicata",
-      "fatture": [
-       "FAT-2026-0040"
-      ],
-      "conteggio": 1,
-      "totale": 99.55
-     }
-    },
-    "contoPersonaleSocio": {
-     "note": "Spese aziendali pagate dal conto personale Marco Vurro — NON transitano su E/C Intesa Sanpaolo",
-     "gennaio": [
-      "MOV-2026-0045",
-      "MOV-2026-0046",
-      "MOV-2026-0047"
-     ],
-     "totaleGennaio": 1911.29,
-     "stato": "verificato_ec_personale"
-    }
-   },
-   "2026-02": {
-    "periodo": "Febbraio 2026",
-    "dataControllo": "2026-03-10",
-    "fonteEC": "03_BANCA/2026-02_EstrattoConto_IntesaSanpaolo.pdf",
-    "quadratura": {
-     "saldoIniziale": 11441.9,
-     "totaleEntrate": 17739.88,
-     "totaleUscite": 12377.92,
-     "saldoCalcolato": 16803.86,
-     "saldoEstrattoConto": 16803.86,
-     "differenza": 0,
-     "stato": "quadrato"
-    },
-    "riepilogo": {
-     "totaleMovimenti": 42,
-     "abbinati": 16,
-     "abbinatiParziali": 1,
-     "verificatiNoDoc": 21,
-     "daAbbinare": 3,
-     "daVerificare": 1,
-     "percentualeChiusi": 90.5
-    },
-    "abbinati": [
-     "MOV-2026-0061",
-     "MOV-2026-0066",
-     "MOV-2026-0068",
-     "MOV-2026-0069",
-     "MOV-2026-0070",
-     "MOV-2026-0071",
-     "MOV-2026-0072",
-     "MOV-2026-0074",
-     "MOV-2026-0076",
-     "MOV-2026-0077",
-     "MOV-2026-0084",
-     "MOV-2026-0085",
-     "MOV-2026-0086",
-     "MOV-2026-0089",
-     "MOV-2026-0091",
-     "MOV-2026-0092"
-    ],
-    "abbinatiParziali": [
-     {
-      "movimentoId": "MOV-2026-0076",
-      "controparte": "Rossini 1969 S.p.A.",
-      "importoMovimento": 3173.69,
-      "importoFatture2026": 457.65,
-      "differenza": 2716.04,
-      "fatture": [
-       "FAT-2026-0016",
-       "FAT-2026-0017"
-      ],
-      "ipotesi": "Pagamento cumulativo: 2 fatture gen 2026 (€457,65) + fatture 2025 (€2.716,04)",
-      "azione": "Nessuna — differenza giustificata da fatture anno precedente"
-     }
-    ],
-    "verificatiNoDoc": {
-     "entrate2025": {
-      "note": "Incassi di fatture emesse nel 2025",
-      "movimenti": [
-       "MOV-2026-0056",
-       "MOV-2026-0059",
-       "MOV-2026-0062"
-      ],
-      "giustificativo": "fattura_anno_precedente"
-     },
-     "incassiTSPayments": {
-      "note": "Incassi TeamSystem Payments. MOV-0057 (BJAJMOWEDE) e MOV-0060 (BJE5BM6FY4) hanno breakdown completo da export CSV TS Pay feb 2026 (sessione 24/03). MOV-0054 e MOV-0055 sono spillover gen — breakdown clienti nel CSV gen, non nel feb.",
-      "movimenti": [
-       "MOV-2026-0054",
-       "MOV-2026-0055",
-       "MOV-2026-0057",
-       "MOV-2026-0060"
-      ],
-      "giustificativo": "export_ts_charges_feb_2026"
-     },
-     "entrateClienti2026": {
-      "note": "Incassi clienti 2026 non collegati a fatture specifiche",
-      "movimenti": [
-       "MOV-2026-0058"
-      ],
-      "giustificativo": "proforma_acconto"
-     },
-     "stipendi": {
-      "movimenti": [
-       "MOV-2026-0063"
-      ],
-      "giustificativo": "cedolino"
-     },
-     "affitto": {
-      "movimenti": [
-       "MOV-2026-0044",
-       "MOV-2026-0067"
-      ],
-      "giustificativo": "contratto"
-     },
-     "royalties": {
-      "movimenti": [
-       "MOV-2026-0064",
-       "MOV-2026-0065"
-      ],
-      "giustificativo": "interno"
-     },
-     "f24_inps": {
-      "note": "F24 contributi/ritenute e INPS Commercianti",
-      "movimenti": [
-       "MOV-2026-0080",
-       "MOV-2026-0081",
-       "MOV-2026-0082",
-       "MOV-2026-0083",
-       "MOV-2026-0093"
-      ],
-      "giustificativo": "f24_scadenza"
-     },
-     "costiInterni": {
-      "note": "Rimborso km, TFR",
-      "movimenti": [
-       "MOV-2026-0079",
-       "MOV-2026-0088"
-      ],
-      "giustificativo": "interno"
-     },
-     "bancari": {
-      "movimenti": [
-       "MOV-2026-0094"
-      ],
-      "giustificativo": "bancario"
-     }
-    },
-    "daAbbinare": [
-     {
-      "movimentoId": "MOV-2026-0073",
-      "controparte": "Maikii SRL",
-      "importoMovimento": 79.3,
-      "azione": "Nessuna fattura SDI trovata. Verificare arrivo fattura fornitore gadget."
-     },
-     {
-      "movimentoId": "MOV-2026-0075",
-      "controparte": "Pluxee Italia SRL",
-      "importoMovimento": 12.05,
-      "azione": "Verificare se è una nuova fattura commissione o già FAT-2026-0008 (stesso importo)"
-     },
-     {
-      "movimentoId": "MOV-2026-0090",
-      "controparte": "PF Concept International",
-      "importoMovimento": 82.12,
-      "nota": "FAT-0004 (stesso importo €82,12) già pagata. Questa è probabilmente una nuova fattura.",
-      "azione": "Verificare arrivo fattura SDI PF Concept ft.1926000062."
-     }
-    ],
-    "daVerificare": [
-     {
-      "movimentoId": "MOV-2026-0078",
-      "controparte": "Valerio Petrini",
-      "importoMovimento": 641.28,
-      "nota": "Fornitore sconosciuto. Descrizione bancaria: 'preavviso fattura 02/01/2026'. Nessun match SDI.",
-      "azione": "Richiedere a Marco dettagli su questo pagamento."
-     },
-     {
-      "movimentoId": "MOV-2026-0087",
-      "controparte": "TeamSystem S.P.A.",
-      "importoMovimento": 71.38,
-      "nota": "FAT-0006 è €157,38 (CRM Q1). €71,38 potrebbe essere rata 1/2 o altro prodotto.",
-      "azione": "Verificare con commercialista o TeamSystem."
-     }
-    ],
-    "contoPersonaleSocio": {
-     "note": "Spese aziendali pagate dal conto personale Marco Vurro",
-     "febbraio": [
-      "MOV-2026-0048",
-      "MOV-2026-0049",
-      "MOV-2026-0050",
-      "MOV-2026-0051",
-      "MOV-2026-0052"
-     ],
-     "totaleFebbraio": 868.76,
-     "stato": "verificato_ec_personale"
-    }
-   }
-  }
+  "nota": "La riconciliazione live è ricalcolata da compute.js sui movimenti/saldi. Lo storico delle quadrature mensili vive nei report in 07_REPORT/ e nella history git (sezione \"mesi\" rimossa il 05/07/2026: era ferma a febbraio e non letta da nessuno)."
  },
  "datiMancanti": [
   {
    "campo": "fatture.FAT-2026-0006.pagamento",
    "nota": "TeamSystem CRM Ri.Ba €157,38 — pagamento non identificato in E/C gennaio"
-  },
-  {
-   "campo": "fatture.FAT-2026-0027/28/29.pagamento",
-   "nota": "RISOLTO (10/03): Pagate con MOV-2026-0072 del 05/02 (€1.264,40 = €268,80 + €268,80 + €726,80)"
   },
   {
    "campo": "fatture.FAT-2026-0030/31/32/33.pagamento",
@@ -9230,26 +8910,6 @@
   {
    "campo": "movimenti.MOV-2026-0026.riconciliazione",
    "nota": "Pluxee bank €536,87 vs SDI €351,51 — differenza €185,36 da chiarire"
-  },
-  {
-   "campo": "movimenti.TeamSystem.competenza",
-   "nota": "RISOLTO (11/02). Tutti 4 MOV TeamSystem gen verificati con dettaglio clienti. MOV-0003: Artigianscavi+Cubica (2025). MOV-0006: GD Tech+Ecomondi+Sia Impianti+Security Dealers (2025). MOV-0008: Costruire ArtigianLab (2026). MOV-0010: GIMA+Sureness+Emmeti+COISA (2026). 5° accredito Tecno Soluzioni (€1.444, 2025) su E/C feb. Commissioni €14,30 (MOV-0053). Riconciliazione gen: 93,0% (40/43)."
-  },
-  {
-   "campo": "scadenze.rimborso_km_gen",
-   "nota": "RISOLTO (10/03): Rimborso km gen (€810,02) pagato 13/02 — MOV-2026-0079"
-  },
-  {
-   "campo": "fatture.FAT-2026-0016/17.dataScadenza",
-   "nota": "RISOLTO (10/03): Pagate con MOV-2026-0076 del 10/02"
-  },
-  {
-   "campo": "fatture.FAT-2026-0018.dataScadenza",
-   "nota": "RISOLTO (10/03): Pagata con MOV-2026-0089 del 24/02"
-  },
-  {
-   "campo": "fatture.FAT-2026-0019-0026.dataScadenza",
-   "nota": "RISOLTO (10/03): Fatture feb pagate — date scadenza non più necessarie."
   },
   {
    "campo": "fatture.FAT-2026-0040.applicazione",
@@ -9977,84 +9637,6 @@
    }
   ]
  },
- "debitiVersoSoci": [
-  {
-   "socio": "Marco Vurro",
-   "totaleAnticipato": 3067.04,
-   "totaleRimborsato": 291.31,
-   "saldo": 2775.73,
-   "movimenti": [
-    "MOV-2026-0045",
-    "MOV-2026-0046",
-    "MOV-2026-0047",
-    "MOV-2026-0048",
-    "MOV-2026-0049",
-    "MOV-2026-0050",
-    "MOV-2026-0051",
-    "MOV-2026-0052",
-    "MOV-2026-0229",
-    "MOV-2026-0230",
-    "MOV-2026-0231",
-    "MOV-2026-0232",
-    "MOV-2026-0233",
-    "MOV-2026-0234",
-    "MOV-2026-0235",
-    "MOV-2026-0236",
-    "MOV-2026-0237",
-    "MOV-2026-0238",
-    "MOV-2026-0239"
-   ],
-   "note": "Rimborso da effettuare con bonifico NLI -> Marco. Anticipazioni gen-mar 2026: 19 fatture pagate con carta personale Marco (€3.067,04). 08/05/2026: rettifica conguaglio overpayment KM marzo a €291,31 (era €300 stima precedente) — Marco si era fatto 2 bonifici uguali per errore, generando overpayment €1.147,38 che copre integralmente RIM-2026-0004 aprile e residua €291,31. USD convertito @ 0,92 stima — da finalizzare con tasso BCE.",
-   "conguagli": [
-    {
-     "data": "2026-04-28",
-     "importo": 291.31,
-     "rifRimborso": "RIM-2026-0003",
-     "descrizione": "Compensazione residuo overpayment KM marzo (bonifico duplicato MOV-0227): €1.147,38 totale - €856,07 a copertura RIM-2026-0004 aprile = €291,31 a riduzione debitiVersoSoci."
-    }
-   ],
-   "aggiornamenti": [
-    {
-     "data": "2026-05-08",
-     "operazione": "Allineamento anticipazioni socio",
-     "delta": "+€286.99",
-     "movimentiAggiunti": [
-      "MOV-2026-0229",
-      "MOV-2026-0230",
-      "MOV-2026-0231",
-      "MOV-2026-0232",
-      "MOV-2026-0233",
-      "MOV-2026-0234",
-      "MOV-2026-0235",
-      "MOV-2026-0236",
-      "MOV-2026-0237",
-      "MOV-2026-0238",
-      "MOV-2026-0239"
-     ],
-     "fattureColleate": [
-      "FAT-2026-0056",
-      "FAT-2026-0057",
-      "FAT-2026-0058",
-      "FAT-2026-0059",
-      "FAT-2026-0060",
-      "FAT-2026-0061",
-      "FAT-2026-0062",
-      "FAT-2026-0063",
-      "FAT-2026-0064",
-      "FAT-2026-0128",
-      "FAT-2026-0129"
-     ],
-     "note": "Allineamento storico: 11 fatture pagate da Marco (Anthropic/OpenAI feb + SiteGround feb-mar) precedentemente segnalate come 'rimborso in sospeso' ma non tracciate in debitiVersoSoci. USD@0,92 stima."
-    },
-    {
-     "data": "2026-05-08",
-     "operazione": "Rettifica conguaglio KM marzo: €300 -> €291,31",
-     "motivo": "Marco ha confermato che MOV-0227 (28/04 €847,38) era bonifico duplicato erroneo di MOV-0144 (causale 'marzo'), non pagamento aprile. Overpayment marzo €1.147,38 (€300 acconto + €847,38 saldo + €847,38 duplicato) copre RIM-0004 aprile (€856,07), residuo €291,31 abbatte debiti anticipazioni socio.",
-     "delta": "-€8,69 (residuo overpayment più preciso)"
-    }
-   ]
-  }
- ],
  "pianoDeiConti": {
   "descrizione": "Piano dei conti gestionale NLI — non ufficiale, uso interno soci",
   "contoEconomico": {
@@ -10221,7 +9803,7 @@
    "id": "IMM-2023-0001",
    "descrizione": "Macchinario DTF (stampante Direct-To-Film)",
    "fornitore": "GUANG ZHOU XIN FLYING DIGITAL TECHNOLOGY CO. LIMITED (Cina)",
-   "fatturaCollegata": "Autofattura TD19 n.18/E del 30/03/2024 (rif. fattura estera [IBAN rimosso] del 30/11/2023); SDI 11806478448",
+   "fatturaCollegata": "Autofattura TD19 n.18/E del 30/03/2024 (rif. fattura estera [IBAN rimosso] del 30/11/2023); SDI [P.IVA rimossa]",
    "movimentoCollegato": null,
    "dataAcquisto": "2023-11-30",
    "costoAcquisto": 3869.24,
@@ -10519,21 +10101,6 @@
    },
    "_nota": "Parametri fiscali DATATI per anno: fonte canonica del calcolo. Il blocco 'parametri' resta solo come fallback legacy. Anno mancante -> il motore segnala in datiMancanti, MAI applica le aliquote di un altro anno in silenzio. Per il 2027 aggiungere qui il set completo (scaglioni, INPS minimale/fisso/eccedenza, IRAP, addizionali)."
   },
-  "stima": {
-   "dataAggiornamento": "2026-02-10",
-   "utileAnteImposte": -9274.61,
-   "costiPersonaleB9": 2178.36,
-   "baseImponibileIRAP": -7067.75,
-   "irap": {
-    "importo": 0,
-    "acconto1": 0,
-    "acconto2": 0,
-    "saldo": 0
-   },
-   "totaleCaricofiscale": 4515,
-   "percentualeSuUtile": null,
-   "nota": "Utile negativo — nessuna imposta stimata tranne INPS fisso Marco 4.515/anno"
-  },
   "impostePerAnno": {
    "2026": {
     "irap": {
@@ -10638,5 +10205,383 @@
    "2028-04": 90.28
   },
   "notaBatchCiechi": "Ordini 2026 riconciliati al 100% da TSPay charges (export 02/06, fino a fine maggio) + bonifici diretti: 11 incassati, 5 parziali, 3 da incassare (rate future). Lo spacchettamento per-movimento bancario dei batch SDD mar-mag resta un TODO di pulizia dell'estratto conto (non impatta lo stato ordini)."
+ },
+ "catalogoAdempimenti": {
+  "_nota": "Catalogo informativo di TUTTE le tasse e gli adempimenti che genera la società. Alimenta la sezione 'Guida tasse' della dashboard. Le voci con applicabile=false si mostrano come 'non riguarda NLI' con il perché. matchScadenze = regex (case-insensitive) per agganciare le scadenze censite in registro.json>scadenze e mostrare il badge 'in scadenzario'. Rivedere date/aliquote a inizio anno (annoRiferimento).",
+  "annoRiferimento": 2026,
+  "voci": [
+   {
+    "id": "ADE-IVA-TRIM",
+    "gruppo": "IVA",
+    "nome": "Liquidazione IVA trimestrale",
+    "chi": "società",
+    "cosa": "Ogni 3 mesi si fa il conto: IVA incassata sulle vendite meno IVA pagata sugli acquisti. Se il risultato è positivo si versa, se è negativo è un credito che si porta al trimestre dopo.",
+    "comeSiCalcola": "IVA a debito − IVA a credito del trimestre, +1% di interessi (siamo trimestrali per opzione). Il credito del trimestre prima si scala.",
+    "quando": "16/05 (Q1) · 20/08 (Q2) · 16/11 (Q3) · il Q4 si versa col saldo annuale il 16/03 dell'anno dopo",
+    "codiciTributo": [
+     "6031",
+     "6032",
+     "6033",
+     "6099"
+    ],
+    "applicabile": true,
+    "matchScadenze": "iva.*(trimestre|acconto|saldo)|liquidazione iva"
+   },
+   {
+    "id": "ADE-IVA-ACCONTO",
+    "gruppo": "IVA",
+    "nome": "Acconto IVA di dicembre",
+    "chi": "società",
+    "cosa": "A fine anno lo Stato chiede un anticipo sull'IVA dell'ultimo trimestre.",
+    "comeSiCalcola": "88% di quanto versato per lo stesso periodo dell'anno prima (metodo storico). Sotto €103,29 non si versa.",
+    "quando": "27/12",
+    "codiciTributo": [
+     "6035"
+    ],
+    "applicabile": true,
+    "matchScadenze": "acconto iva"
+   },
+   {
+    "id": "ADE-LIPE",
+    "gruppo": "IVA",
+    "nome": "LIPE (comunicazione liquidazioni IVA)",
+    "chi": "società (la invia il commercialista)",
+    "cosa": "Comunicazione telematica all'Agenzia delle Entrate con i numeri delle liquidazioni IVA. Non si paga nulla: è solo un invio.",
+    "comeSiCalcola": "Riepilogo dei conteggi IVA del trimestre.",
+    "quando": "31/05 (Q1) · 30/09 (Q2) · 30/11 (Q3) · 28/02 dell'anno dopo (Q4)",
+    "codiciTributo": [],
+    "applicabile": true,
+    "matchScadenze": "lipe"
+   },
+   {
+    "id": "ADE-DICH-IVA",
+    "gruppo": "IVA",
+    "nome": "Dichiarazione IVA annuale",
+    "chi": "società (la invia il commercialista)",
+    "cosa": "Il riepilogo annuale di tutta l'IVA dell'anno precedente.",
+    "comeSiCalcola": "Somma di tutte le liquidazioni; l'eventuale saldo Q4 si versa entro il 16/03.",
+    "quando": "tra febbraio e il 30/04 di ogni anno (per l'anno prima)",
+    "codiciTributo": [
+     "6099"
+    ],
+    "applicabile": true,
+    "matchScadenze": "dichiarazione iva"
+   },
+   {
+    "id": "ADE-RC-ESTERO",
+    "gruppo": "IVA",
+    "nome": "Reverse charge su acquisti esteri",
+    "chi": "società (lo gestisce il commercialista)",
+    "cosa": "Sugli acquisti da fornitori esteri (Roly Spagna, Metrie Cechia, Hostinger Cipro, servizi USA) l'IVA si 'autofattura': si registra sia a debito sia a credito, quindi di solito non si paga nulla in più.",
+    "comeSiCalcola": "Integrazione TD17/TD18/TD19 via SDI a ogni liquidazione. Neutra se l'IVA è detraibile.",
+    "quando": "dentro ogni liquidazione trimestrale",
+    "codiciTributo": [],
+    "applicabile": true,
+    "matchScadenze": null
+   },
+   {
+    "id": "ADE-IRAP",
+    "gruppo": "Imposte sul reddito",
+    "nome": "IRAP",
+    "chi": "società",
+    "cosa": "L'imposta regionale sulle attività produttive. La paga la società sul valore della produzione; il costo dei dipendenti a tempo indeterminato è deducibile, gli altri costi del personale no.",
+    "comeSiCalcola": "3,9% sulla base IRAP (ricavi − costi, con le regole di deducibilità del personale). Saldo anno prima + 2 acconti anno corrente. Gli importi veri li calcola il commercialista.",
+    "quando": "saldo + 1° acconto 30/06 (20/07 con proroga ISA) · 2° acconto 30/11",
+    "codiciTributo": [
+     "3800",
+     "3812",
+     "3813"
+    ],
+    "applicabile": true,
+    "matchScadenze": "irap"
+   },
+   {
+    "id": "ADE-IRPEF-SOCI",
+    "gruppo": "Imposte sul reddito",
+    "nome": "IRPEF dei soci (trasparenza fiscale)",
+    "chi": "soci (F24 personali di il socio e la socia)",
+    "cosa": "La SAS non paga imposte sull'utile: l'utile si divide tra i soci in base alle quote e ognuno ci paga la PROPRIA IRPEF nella dichiarazione personale, anche se l'utile non è stato prelevato.",
+    "comeSiCalcola": "Quota utile × scaglioni IRPEF (23% fino a 28k, 35% fino a 50k, 43% oltre) + addizionale regionale Puglia 1,73% + comunale Bari 0,8%. Saldo anno prima + 2 acconti.",
+    "quando": "saldo + 1° acconto 30/06 (20/07 con proroga ISA) · 2° acconto 30/11",
+    "codiciTributo": [
+     "4001",
+     "4033",
+     "4034",
+     "3801",
+     "3844",
+     "3843"
+    ],
+    "applicabile": true,
+    "matchScadenze": "irpef.*soci|soci.*irpef"
+   },
+   {
+    "id": "ADE-REDDITI-SP",
+    "gruppo": "Imposte sul reddito",
+    "nome": "Dichiarazione Redditi SP + ISA",
+    "chi": "società (la invia il commercialista)",
+    "cosa": "La dichiarazione dei redditi della società: calcola l'utile fiscale da dividere tra i soci. Con gli ISA (le 'pagelle fiscali').",
+    "comeSiCalcola": "Adempimento dichiarativo, non un pagamento.",
+    "quando": "31/10 di ogni anno (per l'anno prima)",
+    "codiciTributo": [],
+    "applicabile": true,
+    "matchScadenze": "redditi sp"
+   },
+   {
+    "id": "ADE-REDDITI-PF",
+    "gruppo": "Imposte sul reddito",
+    "nome": "Dichiarazione Redditi PF dei soci",
+    "chi": "soci (il socio e la socia)",
+    "cosa": "Le dichiarazioni personali dei soci, dove entra la quota di utile della società (quadro RH) più gli altri redditi personali.",
+    "comeSiCalcola": "Adempimento dichiarativo; da qui escono saldo e acconti IRPEF personali.",
+    "quando": "31/10 di ogni anno (per l'anno prima)",
+    "codiciTributo": [],
+    "applicabile": true,
+    "matchScadenze": "redditi pf"
+   },
+   {
+    "id": "ADE-INPS-MARCO",
+    "gruppo": "Contributi",
+    "nome": "INPS Gestione Commercianti (il socio)",
+    "chi": "il socio (F24 personale; NLI gli bonifica l'importo)",
+    "cosa": "Il socio che lavora nell'impresa (accomandatario) paga i contributi INPS artigiani/commercianti: una parte fissa comunque dovuta + una percentuale sull'utile sopra il minimale.",
+    "comeSiCalcola": "Fisso ~€4.515/anno in 4 rate da ~€1.137 (sul minimale €18.415) + 24,48% sulla quota di utile oltre il minimale (si paga con saldo/acconti IRPEF).",
+    "quando": "rate fisse: 16/05 · 20/08 · 16/11 · 16/02 dell'anno dopo · eccedenza: 20/07 e 30/11",
+    "codiciTributo": [
+     "CP",
+     "CPR"
+    ],
+    "applicabile": true,
+    "matchScadenze": "inps commercianti"
+   },
+   {
+    "id": "ADE-INPS-SAJAY",
+    "gruppo": "Contributi",
+    "nome": "INPS del socio accomandante (la socia)",
+    "chi": "nessuno",
+    "cosa": "Il socio accomandante che NON lavora come autonomo nell'impresa non paga la gestione commercianti. la socia è coperta come dipendente: i suoi contributi passano dalla busta paga.",
+    "comeSiCalcola": "—",
+    "quando": "—",
+    "codiciTributo": [],
+    "applicabile": false,
+    "notaApplicabile": "la socia è dipendente: contributi già versati col F24 mensile della società.",
+    "matchScadenze": null
+   },
+   {
+    "id": "ADE-F24-DIPENDENTE",
+    "gruppo": "Contributi",
+    "nome": "F24 mensile dipendente (INPS + ritenute IRPEF)",
+    "chi": "società",
+    "cosa": "Ogni mese la società versa i contributi INPS del dipendente e l'IRPEF trattenuta in busta paga.",
+    "comeSiCalcola": "Da cedolino: INPS azienda ~€200 + quota dipendente, meno eventuali bonus compensati. Importo variabile mese per mese.",
+    "quando": "il 16 di ogni mese (per il mese prima); 16/08 slitta al 20/08",
+    "codiciTributo": [
+     "DM10",
+     "1001",
+     "1002",
+     "1704"
+    ],
+    "applicabile": true,
+    "matchScadenze": "f24 contributi|contributi/ritenute"
+   },
+   {
+    "id": "ADE-TFR-SOST",
+    "gruppo": "Contributi",
+    "nome": "Imposta sostitutiva rivalutazione TFR",
+    "chi": "società",
+    "cosa": "Il TFR accantonato si rivaluta ogni anno e sulla rivalutazione si paga una piccola imposta (17%).",
+    "comeSiCalcola": "17% della rivalutazione TFR; acconto 90% a dicembre, saldo a febbraio. Importi piccoli (pochi euro).",
+    "quando": "acconto 16/12 · saldo 16/02",
+    "codiciTributo": [
+     "1712",
+     "1713"
+    ],
+    "applicabile": true,
+    "matchScadenze": "sostitutiva.*tfr|rivalutazione tfr"
+   },
+   {
+    "id": "ADE-INAIL",
+    "gruppo": "Contributi",
+    "nome": "INAIL (assicurazione infortuni)",
+    "chi": "società",
+    "cosa": "L'assicurazione obbligatoria contro gli infortuni, per la dipendente e per i soci che lavorano. Si paga una volta l'anno (rateizzabile in 4) con l'autoliquidazione.",
+    "comeSiCalcola": "Premio su retribuzioni e voce di rischio (2 posizioni: dipendenti + titolare/soci). 2026: €274,58 in 4 rate. Entro il 28/02 si invia anche la dichiarazione delle retribuzioni.",
+    "quando": "16/02 (1a rata + dichiarazione 28/02) · 16/05 · 20/08 · 16/11",
+    "codiciTributo": [],
+    "applicabile": true,
+    "matchScadenze": "inail"
+   },
+   {
+    "id": "ADE-RITENUTE-1040",
+    "gruppo": "Sostituto d'imposta",
+    "nome": "Ritenute d'acconto su professionisti e collaboratori",
+    "chi": "società",
+    "cosa": "Quando la società paga un professionista (avvocato), le royalties d'uso del marchio o i diritti d'autore (grafico), trattiene il 20% e lo versa lei all'Agenzia delle Entrate per conto loro.",
+    "comeSiCalcola": "20% sul compenso (per royalties e diritti d'autore la base è ridotta: 75%, o 60% se under 35). Royalties marchio: €30+€30 al mese.",
+    "quando": "il 16 del mese dopo il pagamento",
+    "codiciTributo": [
+     "1040"
+    ],
+    "applicabile": true,
+    "matchScadenze": "ritenut"
+   },
+   {
+    "id": "ADE-CU",
+    "gruppo": "Sostituto d'imposta",
+    "nome": "Certificazione Unica (CU)",
+    "chi": "società (la invia il commercialista)",
+    "cosa": "Il 'riassunto annuale' di quanto pagato e trattenuto a dipendenti e collaboratori: va inviato all'Agenzia e consegnato a ciascuno.",
+    "comeSiCalcola": "Adempimento dichiarativo, nessun pagamento.",
+    "quando": "16/03 (31/03 per i soli autonomi) di ogni anno, per l'anno prima",
+    "codiciTributo": [],
+    "applicabile": true,
+    "matchScadenze": "certificazione unica|\\bcu\\b"
+   },
+   {
+    "id": "ADE-770",
+    "gruppo": "Sostituto d'imposta",
+    "nome": "Modello 770",
+    "chi": "società (la invia il commercialista)",
+    "cosa": "La dichiarazione annuale del sostituto d'imposta: riepiloga tutte le ritenute versate nell'anno (dipendente, professionisti, royalties).",
+    "comeSiCalcola": "Adempimento dichiarativo, nessun pagamento.",
+    "quando": "31/10 di ogni anno (per l'anno prima)",
+    "codiciTributo": [],
+    "applicabile": true,
+    "matchScadenze": "770"
+   },
+   {
+    "id": "ADE-CCIAA",
+    "gruppo": "Altri tributi",
+    "nome": "Diritto annuale Camera di Commercio",
+    "chi": "società",
+    "cosa": "La quota annuale di iscrizione al registro imprese (sede + unità locale).",
+    "comeSiCalcola": "Importo fisso: €152 per il 2026.",
+    "quando": "col 1° acconto redditi: 30/06, o 20/07 con proroga ISA",
+    "codiciTributo": [
+     "3850"
+    ],
+    "applicabile": true,
+    "matchScadenze": "camerale|cciaa|camera di commercio"
+   },
+   {
+    "id": "ADE-REGISTRO-AFFITTO",
+    "gruppo": "Altri tributi",
+    "nome": "Imposta di registro sul contratto d'affitto",
+    "chi": "società (per metà; l'altra metà spetta alla proprietaria)",
+    "cosa": "Sul contratto di locazione della sede si paga ogni anno l'imposta di registro.",
+    "comeSiCalcola": "2% del canone annuo (€4.200) = ~€84/anno, minimo €67. Divisa a metà col locatore.",
+    "quando": "entro 30 giorni dall'inizio di ogni annualità (contratto dal 17/03 → entro ~16/04)",
+    "codiciTributo": [
+     "1501"
+    ],
+    "applicabile": true,
+    "matchScadenze": "registro.*locazion|locazion.*registro"
+   },
+   {
+    "id": "ADE-BOLLO-EC",
+    "gruppo": "Altri tributi",
+    "nome": "Bollo su estratto conto bancario",
+    "chi": "società",
+    "cosa": "L'imposta di bollo sul conto corrente: la banca la addebita da sola ogni trimestre.",
+    "comeSiCalcola": "~€25 a trimestre (€100/anno), addebito automatico Intesa.",
+    "quando": "ogni trimestre, in automatico",
+    "codiciTributo": [],
+    "applicabile": true,
+    "matchScadenze": "bollo.*(e/c|estratto|bancario)"
+   },
+   {
+    "id": "ADE-BOLLO-FATTURE",
+    "gruppo": "Altri tributi",
+    "nome": "Bollo virtuale sulle fatture elettroniche",
+    "chi": "nessuno (oggi)",
+    "cosa": "Bollo da €2 sulle fatture SENZA IVA sopra €77,47. Le nostre fatture di vendita sono tutte con IVA al 22%, quindi oggi non si paga.",
+    "comeSiCalcola": "€2 per fattura esente/fuori campo > €77,47, versamento trimestrale.",
+    "quando": "31/05 · 30/09 · 30/11 · 28/02 (solo se dovuto)",
+    "codiciTributo": [
+     "2521",
+     "2522",
+     "2523",
+     "2524"
+    ],
+    "applicabile": false,
+    "notaApplicabile": "Tutte le fatture emesse sono con IVA 22% → bollo non dovuto. Se un giorno si emettono fatture esenti, si riattiva.",
+    "matchScadenze": null
+   },
+   {
+    "id": "ADE-BOLLO-RICEVUTE",
+    "gruppo": "Altri tributi",
+    "nome": "Marca da bollo sulle ricevute royalty/diritti d'autore",
+    "chi": "società (di fatto)",
+    "cosa": "Sulle ricevute dei compensi fuori campo IVA sopra €77,47 va la marca da bollo da €2.",
+    "comeSiCalcola": "€2 a ricevuta (royalties marchio mensili, diritti d'autore).",
+    "quando": "a ogni ricevuta",
+    "codiciTributo": [],
+    "applicabile": true,
+    "matchScadenze": null
+   },
+   {
+    "id": "ADE-IMU",
+    "gruppo": "Altri tributi",
+    "nome": "IMU",
+    "chi": "nessuno",
+    "cosa": "L'imposta sugli immobili di proprietà.",
+    "comeSiCalcola": "—",
+    "quando": "—",
+    "codiciTributo": [],
+    "applicabile": false,
+    "notaApplicabile": "NLI non possiede immobili: la sede è in affitto.",
+    "matchScadenze": null
+   },
+   {
+    "id": "ADE-CCGG",
+    "gruppo": "Altri tributi",
+    "nome": "Tassa vidimazione libri sociali",
+    "chi": "nessuno",
+    "cosa": "Tassa annuale sui libri sociali.",
+    "comeSiCalcola": "—",
+    "quando": "—",
+    "codiciTributo": [],
+    "applicabile": false,
+    "notaApplicabile": "Dovuta solo dalle società di capitali (SRL/SpA), non dalle SAS.",
+    "matchScadenze": null
+   },
+   {
+    "id": "ADE-INTRASTAT",
+    "gruppo": "Altri tributi",
+    "nome": "Intrastat",
+    "chi": "nessuno",
+    "cosa": "Comunicazione degli acquisti/vendite UE sopra soglia.",
+    "comeSiCalcola": "—",
+    "quando": "—",
+    "codiciTributo": [],
+    "applicabile": false,
+    "notaApplicabile": "Obbligo solo sopra €350.000/trimestre di acquisti UE: NLI è ampiamente sotto.",
+    "matchScadenze": null
+   },
+   {
+    "id": "ADE-TFR-DEBITO",
+    "gruppo": "Personale",
+    "nome": "TFR (trattamento di fine rapporto)",
+    "chi": "società",
+    "cosa": "Non è una tassa: è la liquidazione che matura ogni mese per la dipendente e si paga quando il rapporto finisce.",
+    "comeSiCalcola": "~€47/mese accantonati per la dipendente. Si versa alla cessazione del rapporto (come fatto per l'ex dipendente nel 2026).",
+    "quando": "alla cessazione del rapporto",
+    "codiciTributo": [],
+    "applicabile": true,
+    "matchScadenze": "^(?!.*sostitutiva).*\\btfr\\b"
+   },
+   {
+    "id": "ADE-TARI",
+    "gruppo": "Altri tributi",
+    "nome": "TARI (tassa rifiuti) sulla sede",
+    "chi": "da chiarire",
+    "cosa": "La tassa sui rifiuti del locale della sede. Di norma la paga chi occupa l'immobile (l'inquilino), anche se in affitto.",
+    "comeSiCalcola": "La calcola il Comune di Bari in base ai metri quadri e alla categoria.",
+    "quando": "rate decise dal Comune (di solito 2-3 rate l'anno)",
+    "codiciTributo": [],
+    "applicabile": true,
+    "notaApplicabile": "⚠️ Nei movimenti NLI 2026 non risulta nessun pagamento TARI: chiarire con la proprietaria/Mascolo chi la paga e se è dovuta.",
+    "matchScadenze": "tari|rifiuti"
+   }
+  ]
  }
 }
