@@ -10885,7 +10885,7 @@
  ],
  "iva": {
   "regime": "trimestrale",
-  "note": "Monitoraggio previsionale — liquidazione ufficiale a cura del commercialista (Studio Mascolo). Importi calcolati da importoTotale / (1 + aliquota). Possibili scostamenti centesimali rispetto ai valori ufficiali.",
+  "note": "Monitoraggio previsionale — liquidazione ufficiale a cura del commercialista (Studio Mascolo). DAL 05/07: i totali debito/credito dei trimestri SENZA liquidazioneUfficiale sono calcolati DAL VIVO da fatture[] (compute.js > ivaTrimestreLive) — i numeri scritti qui sotto per quei trimestri restano come snapshot/audit e NON vanno più aggiornati a mano. I trimestri con liquidazioneUfficiale sono congelati sui numeri Mascolo.",
   "trimestri": [
    {
     "id": "IVA-Q1-2026",

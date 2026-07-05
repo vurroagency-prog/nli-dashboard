@@ -256,8 +256,8 @@
       iban: conto.iban || '',
       saldoAttuale: money(saldoAttuale),
       saldoInizialeAnno: money(saldoInizio),
-      ultimoAggiornamento: (statics && statics.lastUpdate) || '',
-      dataAggiornamento: (statics && statics.lastUpdate) || '',
+      ultimoAggiornamento: ultimaDataBanca(reg) || (statics && statics.lastUpdate) || '',
+      dataAggiornamento: ultimaDataBanca(reg) || (statics && statics.lastUpdate) || '',
       riepilogoMensile: riepilogo,
       totali: {
         entrate: money(totE),
@@ -300,18 +300,59 @@
   }
 
   // ================================================================== IVA
-  // I totali debito/credito per trimestre sono DATI (somma fatture per aliquota,
-  // con la liquidazione ufficiale Mascolo dove presente). Tutto il resto e'
-  // FORMULA a catena: credito riportato dal trimestre precedente, saldo,
-  // versamento e stato (dedotto dalla data). Niente piu' valori incollati.
+  // Trimestri CON liquidazione ufficiale Mascolo: numeri congelati (DATI).
+  // Trimestri SENZA: debito/credito calcolati DAL VIVO da registro.fatture —
+  // così le fatture nuove aggiornano l'IVA da sole, niente più somme a mano.
+  // Il resto e' FORMULA a catena: credito riportato, saldo, versamento, stato.
+  var IVA_ALIQ = { ordinario_22: 0.22, ordinario_10: 0.10, ridotto_4: 0.04 };
+  function ivaFattura(f) {
+    if (typeof f.iva === 'number') return f.iva;
+    var a = IVA_ALIQ[f.regimeIva]; // fatture vecchio stile: scorporo da regimeIva (stessa regola dei totali curati)
+    if (a && f.importoTotale) return round2(f.importoTotale - f.importoTotale / (1 + a));
+    return 0;
+  }
+  function bucketIva(f) {
+    if (f.regimeIva && IVA_ALIQ[f.regimeIva] != null) return f.regimeIva;
+    var imp = f.imponibile || 0, iva = (typeof f.iva === 'number') ? f.iva : 0;
+    if (!imp || !iva) return null;
+    var r = iva / imp;
+    return r > 0.15 ? 'ordinario_22' : (r > 0.07 ? 'ordinario_10' : 'ridotto_4');
+  }
+  function shallowCloneIvaTrim(t, live) { // clona il trimestre col breakdown live (non muta il registro)
+    var o = {}; for (var k in t) o[k] = t[k];
+    o.ivaDebito = live.debito; o.ivaCredito = live.credito;
+    return o;
+  }
+  function ivaTrimestreLive(reg, mesi) {
+    var deb = { ordinario_22: 0, ordinario_10: 0, ridotto_4: 0, totale: 0 };
+    var cred = { ordinario_22: 0, ordinario_10: 0, ridotto_4: 0, totale: 0 };
+    (reg.fatture || []).forEach(function (f) {
+      if (mesi.indexOf(String(f.data || '').slice(0, 7)) === -1) return;
+      var dir = f.tipo || f.direzione;
+      var iva = ivaFattura(f);
+      if (!iva) return;
+      var b = bucketIva(f);
+      function addTo(o, v) { o.totale = round2(o.totale + v); if (b) o[b] = round2(o[b] + v); }
+      if (dir === 'vendita') {
+        var isNC = /note_credito|_nc_|^nc/i.test(f.voceBilancio || '') || /^NC/i.test(f.numero || '') || f.tipoDocumento === 'TD04' || f.tipoDocumento === 'nota_credito';
+        addTo(deb, (isNC ? -1 : 1) * Math.abs(iva));
+      } else if (dir === 'autofattura') addTo(deb, iva); // TD27 omaggi: IVA a debito, non ricavo
+      else if (dir === 'acquisto') addTo(cred, iva);
+      else if (dir === 'nota_credito') addTo(cred, -iva); // NC fornitore inverte il segno
+    });
+    return { debito: deb, credito: cred };
+  }
   function calcIVA(reg, statics) {
     var iva = reg.iva || {};
     var anno = (reg.meta && reg.meta.annoFiscale) || 2026;
     var oggi = new Date();
     var prevCredito = 0; // credito IVA che si riporta al trimestre successivo
     var trimestri = (iva.trimestri || []).map(function (t) {
-      var debito = (t.ivaDebito && t.ivaDebito.totale) || 0;
-      var credito = (t.ivaCredito && t.ivaCredito.totale) || 0;
+      var ufficiale = t.liquidazioneUfficiale && typeof t.liquidazioneUfficiale.credito === 'number';
+      var live = ufficiale ? null : ivaTrimestreLive(reg, t.mesi || []);
+      var debito = live ? live.debito.totale : ((t.ivaDebito && t.ivaDebito.totale) || 0);
+      var credito = live ? live.credito.totale : ((t.ivaCredito && t.ivaCredito.totale) || 0);
+      if (live) { t = shallowCloneIvaTrim(t, live); }
       var creditoRip = round2(prevCredito); // FORMULA: riportato dal trim precedente
       var saldo, creditoIva, importoVers;
       if (t.liquidazioneUfficiale && typeof t.liquidazioneUfficiale.credito === 'number') {
@@ -432,6 +473,15 @@
   }
 
   // ================================================================== KPI
+  // Ultima data coperta dai dati banca (movimenti/saldi) — "aggiornato al" della card
+  // Banca: prima leggeva statics.lastUpdate e restava indietro a ogni import.
+  function ultimaDataBanca(reg) {
+    var mx = '';
+    (reg.movimenti || []).forEach(function (m) { if ((m.data || '') > mx) mx = m.data; });
+    (reg.saldi || []).forEach(function (s) { if ((s.data || '') > mx) mx = s.data; });
+    return mx ? formatDataIT(mx) : '';
+  }
+
   // Erogazioni di finanziamenti (categoria FIN_finanziamento): sono cassa vera ma NON vendite.
   // I KPI "operativi" (margine, cassa generata) le escludono; saldo e flussi di cassa le tengono.
   function totFinanziamenti(reg) {
@@ -705,7 +755,7 @@
     return {
       disclaimer: (statics && statics.bilancioTesti && statics.bilancioTesti.disclaimer) || 'Bilancio gestionale interno provvisorio, non ufficiale.',
       notaCompetenza: (statics && statics.bilancioTesti && statics.bilancioTesti.notaCompetenza) || 'CE per competenza economica; SP a valori correnti.',
-      dataRiferimento: (statics && statics.lastUpdate) || '',
+      dataRiferimento: formatDataIT(reg.meta && reg.meta.ultimoAggiornamento) || (statics && statics.lastUpdate) || '',
       ce: ce,
       sp: sp,
       previsioneFiscale: pf
@@ -1662,6 +1712,38 @@
         out.mensile = st.mensile.filter(function (x) { return String(x.anno) !== anno; }).concat(mensLive);
       }
     }
+    // top clienti dell'anno in corso DAL VIVO (grafico "Concentrazione Clienti"):
+    // stessa sorte della serie mensile, lo snapshot statico invecchiava a ogni import.
+    if (st.clienti && st.clienti[anno]) {
+      var cl = {}; for (var y2 in st.clienti) cl[y2] = st.clienti[y2];
+      var liveCl = calcClientiAnnoCorrente(reg, anno);
+      if (liveCl.length) { cl[anno] = liveCl; out.clienti = cl; }
+    }
+    return out;
+  }
+
+  // Top 5 clienti + "Altri" dell'anno corrente, da registro.fatture (vendite nette NC).
+  function calcClientiAnnoCorrente(reg, anno) {
+    var per = {}, tot = 0;
+    (reg.fatture || []).forEach(function (f) {
+      var dir = f.tipo || f.direzione;
+      if (dir !== 'vendita') return;
+      var comp = f.competenza ? String(f.competenza) : String(parseISO(f.data).y);
+      if (comp !== String(anno)) return;
+      var vb = f.voceBilancio || '';
+      var isNC = /note_credito|_nc_|^nc/i.test(vb) || /^NC/i.test(f.numero || '');
+      var imp = (isNC ? -1 : 1) * Math.abs(f.imponibile || 0);
+      var nome = f.controparte || '(senza nome)';
+      per[nome] = round2((per[nome] || 0) + imp);
+      tot = round2(tot + imp);
+    });
+    if (tot <= 0) return [];
+    var nomi = Object.keys(per).sort(function (a, b) { return per[b] - per[a]; });
+    var out = nomi.slice(0, 5).map(function (n) {
+      return { nome: n, importo: per[n], percentuale: round2(per[n] / tot * 100) };
+    });
+    var resto = round2(nomi.slice(5).reduce(function (s, n) { return s + per[n]; }, 0));
+    if (resto) out.push({ nome: 'Altri', importo: resto, percentuale: round2(resto / tot * 100) });
     return out;
   }
 
