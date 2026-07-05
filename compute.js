@@ -1285,8 +1285,15 @@
   // Espone fatture (aperte/collegate) e movimenti di pagamento, per abbinarli.
   // Flusso: si parte dalle FATTURE APERTE (poche) e si abbina il movimento che
   // le paga; un movimento puo' coprire piu' fatture (fattureCollegate[]).
-  function fattAperta(f) { var p = f.pagamento || {}; return !(p.stato === 'pagata' || p.stato === 'pagato' || p.movimentoId); }
+  // 'non_dovuto' = fattura senza pagamento atteso (es. autofattura omaggio TD27): mai in "Abbina pagamenti".
+  function fattAperta(f) { var p = f.pagamento || {}; return !(p.stato === 'pagata' || p.stato === 'pagato' || p.stato === 'non_dovuto' || p.movimentoId); }
   function calcRiconciliazione(reg) {
+    // Un abbinamento registrato sul MOVIMENTO (fattureCollegate) vale quanto quello sulla
+    // fattura: senza questa mappa le fatture linkate in import restavano "da abbinare".
+    var refDaMovimento = {};
+    (reg.movimenti || []).forEach(function (m) {
+      (m.fattureCollegate || []).forEach(function (fid) { if (!refDaMovimento[fid]) refDaMovimento[fid] = m.id; });
+    });
     // direzione con fallback su tipo: 48 fatture storiche hanno solo `tipo` (stesso fix
     // gia' applicato a calcPartitario/calcPartitarioDanea — senza, sparivano da "Abbina pagamenti")
     var fatture = (reg.fatture || []).map(function (f) {
@@ -1295,7 +1302,7 @@
       return {
         id: f.id, direzione: dir, controparte: f.controparte || '', partitaIva: f.partitaIva || '',
         data: f.data, importo: round2((nc ? -1 : 1) * (f.importoTotale || 0)), importoFmt: money(round2((nc ? -1 : 1) * (f.importoTotale || 0))),
-        nc: nc, aperta: fattAperta(f), movimentoId: (f.pagamento || {}).movimentoId || ''
+        nc: nc, aperta: fattAperta(f) && !refDaMovimento[f.id], movimentoId: (f.pagamento || {}).movimentoId || refDaMovimento[f.id] || ''
       };
     }).filter(function (f) { return f.direzione === 'acquisto' || f.direzione === 'vendita'; });
     var movimenti = movBanca(reg).filter(function (m) { return m.tipo === 'uscita' || m.tipo === 'entrata'; }).map(function (m) {

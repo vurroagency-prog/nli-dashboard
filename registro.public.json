@@ -9082,7 +9082,12 @@
    "voceBilancio": "B6_merci",
    "conto": "73.01.013 MERCI C/ACQUISTI",
    "stato": "pagata",
-   "note": "Fattura data 31/03, registrata dal commercialista il 01/04. Confermata nel registro apr. Pagata 09/06/2026 con bonifico €1.434,92 insieme a FE26/05179."
+   "note": "Fattura data 31/03, registrata dal commercialista il 01/04. Confermata nel registro apr. Pagata 09/06/2026 con bonifico €1.434,92 insieme a FE26/05179.",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-09",
+    "movimentoId": "MOV-2026-0354"
+   }
   },
   {
    "id": "FAT-2026-0128",
@@ -9273,8 +9278,13 @@
    "iva": 0.18,
    "importoTotale": 0.98,
    "voceBilancio": "B7_spedizioni",
-   "stato": "da_abbinare",
-   "fonte": "2026-06-01_Sendcloud_B7.xml"
+   "stato": "pagata",
+   "fonte": "2026-06-01_Sendcloud_B7.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-03",
+    "movimentoId": "MOV-2026-0334"
+   }
   },
   {
    "id": "FAT-2026-0136",
@@ -9287,8 +9297,13 @@
    "iva": 7.46,
    "importoTotale": 41.36,
    "voceBilancio": "B7_canone_servizio",
-   "stato": "da_abbinare",
-   "fonte": "2026-06-01_Fastweb_B7.xml"
+   "stato": "pagata",
+   "fonte": "2026-06-01_Fastweb_B7.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-25",
+    "movimentoId": "MOV-2026-0382"
+   }
   },
   {
    "id": "FAT-2026-0137",
@@ -9301,9 +9316,14 @@
    "iva": 6.53,
    "importoTotale": 169.73,
    "voceBilancio": "B9_personale",
-   "stato": "da_abbinare",
+   "stato": "pagata",
    "note": "Buoni pasto — pagata 01/06 bonifico €169,73 (rif. ordine RDA2600047184)",
-   "fonte": "2026-06-03_Pluxee_B9.xml"
+   "fonte": "2026-06-03_Pluxee_B9.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-01",
+    "movimentoId": "MOV-2026-0325"
+   }
   },
   {
    "id": "FAT-2026-0138",
@@ -9316,9 +9336,14 @@
    "iva": 10.56,
    "importoTotale": 58.56,
    "voceBilancio": "B6_merci",
-   "stato": "da_abbinare",
+   "stato": "pagata",
    "note": "Fattura di acconto (TD02) — Conferma ordine 224: TROLLEY CAMPIONARIO cm 70x40x35h",
-   "fonte": "2026-06-04_GreenSports_B6.xml"
+   "fonte": "2026-06-04_GreenSports_B6.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-04",
+    "movimentoId": "MOV-2026-0337"
+   }
   },
   {
    "id": "FAT-2026-0139",
@@ -9331,8 +9356,13 @@
    "iva": 14.8,
    "importoTotale": 82.08,
    "voceBilancio": "B7_energia_elettrica",
-   "stato": "da_abbinare",
-   "fonte": "2026-06-05_Frisbi_B7.xml"
+   "stato": "pagata",
+   "fonte": "2026-06-05_Frisbi_B7.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-22",
+    "movimentoId": "MOV-2026-0374"
+   }
   },
   {
    "id": "FAT-2026-0140",
@@ -9345,9 +9375,14 @@
    "iva": 0,
    "importoTotale": 120,
    "voceBilancio": "B7_posteggio",
-   "stato": "da_abbinare",
+   "stato": "pagata",
    "note": "Canone posteggio auto giugno — regime forfettario (N2.2), no IVA",
-   "fonte": "2026-06-06_Lapenna_B7.xml"
+   "fonte": "2026-06-06_Lapenna_B7.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-08",
+    "movimentoId": "MOV-2026-0347"
+   }
   },
   {
    "id": "FAT-2026-0141",
@@ -9360,9 +9395,14 @@
    "iva": 0,
    "importoTotale": 34.69,
    "voceBilancio": "B7_spedizioni",
-   "stato": "da_abbinare",
+   "stato": "pagata",
    "note": "Onere di esborso + anticipo IVA dogana — natura N3.4/N1, no IVA detraibile",
-   "fonte": "2026-06-08_Fedex_B7.xml"
+   "fonte": "2026-06-08_Fedex_B7.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-16",
+    "movimentoId": "MOV-2026-0369"
+   }
   },
   {
    "id": "FAT-2026-0142",
@@ -9375,8 +9415,13 @@
    "iva": 5.44,
    "importoTotale": 31.17,
    "voceBilancio": "B7_spedizioni",
-   "stato": "da_abbinare",
-   "fonte": "2026-06-08_Sendcloud_B7.xml"
+   "stato": "pagata",
+   "fonte": "2026-06-08_Sendcloud_B7.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-10",
+    "movimentoId": "MOV-2026-0357"
+   }
   },
   {
    "id": "FAT-2026-0143",
@@ -9394,7 +9439,12 @@
    "modalitaPagamento": "MP05",
    "descrizione": "Fattura di acconto — Conferma d'ordine 433 del 09/06/2026",
    "stato": "registrata",
-   "fonte": "2026-06-10_CasaIdea_A1_ricavi_vendite.xml"
+   "fonte": "2026-06-10_CasaIdea_A1_ricavi_vendite.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-12",
+    "movimentoId": "MOV-2026-0359"
+   }
   },
   {
    "id": "FAT-2026-0144",
@@ -9424,9 +9474,14 @@
    "iva": 25.64,
    "importoTotale": 142.19,
    "voceBilancio": "B6_merci",
-   "stato": "da_abbinare",
+   "stato": "pagata",
    "note": "NC reso merce — rimborsata da Siggi con bonifico 30/06 €248,83 (insieme a V26I008458)",
-   "fonte": "2026-06-18_SiggiGroup_NC_B6.xml"
+   "fonte": "2026-06-18_SiggiGroup_NC_B6.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-30",
+    "movimentoId": "MOV-2026-0393"
+   }
   },
   {
    "id": "FAT-2026-0146",
@@ -9443,7 +9498,11 @@
    "competenza": "2026",
    "descrizione": "Autofattura per omaggio/cessione gratuita (art.2 c.2 n.4 DPR 633/72) — T-shirt Rainold, rif. conferma ordine 431. Solo IVA a debito: NON è ricavo monetario.",
    "stato": "registrata",
-   "fonte": "2026-06-19_NextLevel_Autofattura-TD27.xml"
+   "fonte": "2026-06-19_NextLevel_Autofattura-TD27.xml",
+   "pagamento": {
+    "stato": "non_dovuto",
+    "nota": "Autofattura omaggio: nessun incasso previsto"
+   }
   },
   {
    "id": "FAT-2026-0147",
@@ -9456,8 +9515,13 @@
    "iva": 4.99,
    "importoTotale": 29.7,
    "voceBilancio": "B7_spedizioni",
-   "stato": "da_abbinare",
-   "fonte": "2026-06-22_Sendcloud_B7.xml"
+   "stato": "pagata",
+   "fonte": "2026-06-22_Sendcloud_B7.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-24",
+    "movimentoId": "MOV-2026-0378"
+   }
   },
   {
    "id": "FAT-2026-0148",
@@ -9486,9 +9550,14 @@
    "iva": 19.23,
    "importoTotale": 106.64,
    "voceBilancio": "B6_merci",
-   "stato": "da_abbinare",
+   "stato": "pagata",
    "note": "NC reso merce — rimborsata da Siggi con bonifico 30/06 €248,83 (insieme a V26I007884)",
-   "fonte": "2026-06-26_SiggiGroup_NC_B6.xml"
+   "fonte": "2026-06-26_SiggiGroup_NC_B6.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-30",
+    "movimentoId": "MOV-2026-0393"
+   }
   },
   {
    "id": "FAT-2026-0150",
@@ -9532,9 +9601,14 @@
    "iva": 33,
    "importoTotale": 183,
    "voceBilancio": "B7_servizi",
-   "stato": "da_abbinare",
+   "stato": "pagata",
    "note": "Aggiornamento DVR (valutazione rischi + stress lavoro correlato) + sopralluogo — pagata 30/06",
-   "fonte": "2026-06-30_WeSafe_B7.xml"
+   "fonte": "2026-06-30_WeSafe_B7.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-06-30",
+    "movimentoId": "MOV-2026-0389"
+   }
   },
   {
    "id": "FAT-2026-0153",
@@ -9591,8 +9665,13 @@
    "iva": 0.13,
    "importoTotale": 0.73,
    "voceBilancio": "B7_spedizioni",
-   "stato": "da_abbinare",
-   "fonte": "2026-07-01_Sendcloud_B7.xml"
+   "stato": "pagata",
+   "fonte": "2026-07-01_Sendcloud_B7.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-07-03",
+    "movimentoId": "MOV-2026-0409"
+   }
   },
   {
    "id": "FAT-2026-0157",
@@ -9634,9 +9713,14 @@
    "iva": 6.53,
    "importoTotale": 169.73,
    "voceBilancio": "B9_personale",
-   "stato": "da_abbinare",
+   "stato": "pagata",
    "note": "Buoni pasto — pagata 01/07 bonifico €169,73 (causale banca cita doc 2025 VK25028635, riscontro per importo/periodo)",
-   "fonte": "2026-07-02_Pluxee_BuoniPasto_B9.xml"
+   "fonte": "2026-07-02_Pluxee_BuoniPasto_B9.xml",
+   "pagamento": {
+    "stato": "pagata",
+    "dataPagamento": "2026-07-01",
+    "movimentoId": "MOV-2026-0398"
+   }
   }
  ],
  "scadenze": [
