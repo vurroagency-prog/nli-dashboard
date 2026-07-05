@@ -94,6 +94,15 @@ if (pub.portafoglioOrdini) {
 // nota esplicativa sugli ordini ora orfana (ordini rimosso) → via
 if (pub.meta && pub.meta.notaOrdini) { delete pub.meta.notaOrdini; removed['§meta.notaOrdini'] = 1; }
 
+// DETTAGLIO CLIENTI dei batch SDD: piani rate per-cliente (stessa sensibilità delle rate
+// portafoglio, già rimosse). Il movimento aggregato resta, il breakdown no.
+(pub.movimenti || []).forEach(m => {
+  if (m.dettaglioClienti !== undefined) {
+    delete m.dettaglioClienti;
+    removed['§movimenti.dettaglioClienti'] = (removed['§movimenti.dettaglioClienti'] || 0) + 1;
+  }
+});
+
 // previsione fiscale: togli il dettaglio per-socio (redditi/netti), tieni gli aggregati societari
 if (pub.previsioneFiscale) {
   delete pub.previsioneFiscale.soci;

@@ -432,6 +432,14 @@
   }
 
   // ================================================================== KPI
+  // Erogazioni di finanziamenti (categoria FIN_finanziamento): sono cassa vera ma NON vendite.
+  // I KPI "operativi" (margine, cassa generata) le escludono; saldo e flussi di cassa le tengono.
+  function totFinanziamenti(reg) {
+    return movBanca(reg).reduce(function (s, m) {
+      return s + (m.categoria === 'FIN_finanziamento' && m.tipo === 'entrata' ? Math.abs(m.importo || 0) : 0);
+    }, 0);
+  }
+
   function calcKPI(reg, banca, iva, mensili) {
     var scad = scadenzeImminenti(reg, 45);
     var totE = parseEuro(banca.totali.entrate);
@@ -440,7 +448,17 @@
     var subU = mensili.map(function (m) { return m.label + ' ' + compactEuro(parseEuro(m.totaleUscite)); }).join(' · ');
     var ultimo = mensili[mensili.length - 1];
     var nettoUltimo = ultimo ? parseEuro(ultimo.netto) : 0;
-    var margine = totE > 0 ? round2((totE - totU) / totE * 100) : 0;
+    var finanz = totFinanziamenti(reg);
+    if (finanz) subE = 'di cui ' + money(finanz) + ' di finanziamento (non vendite) · ' + subE;
+    var finUltimoMese = 0;
+    if (finanz) {
+      var lastKey = movBanca(reg).reduce(function (mx, m) { var k = (m.data || '').slice(0, 7); return k > mx ? k : mx; }, '');
+      finUltimoMese = movBanca(reg).reduce(function (s, m) {
+        return s + (m.categoria === 'FIN_finanziamento' && m.tipo === 'entrata' && (m.data || '').slice(0, 7) === lastKey ? Math.abs(m.importo || 0) : 0);
+      }, 0);
+    }
+    var totEop = round2(totE - finanz);
+    var margine = totEop > 0 ? round2((totEop - totU) / totEop * 100) : 0;
 
     // ricavi competenza 2026: fatture di vendita (al netto NC) anno corrente
     var ricComp = calcRicaviCompetenza(reg);
@@ -454,10 +472,10 @@
       { label: 'INCASSI YTD (' + ytdRange(mensili) + ')', value: money(totE), sub: subE, class: 'positive' },
       { label: 'Ricavi Competenza 2026', value: money(ricComp.netto), sub: ricComp.nota, class: 'success' },
       { label: 'COSTI YTD (' + ytdRange(mensili) + ')', value: money(totU), sub: subU, class: 'neutral' },
-      { label: 'Margine Operativo', value: nf(margine) + '%', sub: 'Incassi vs costi YTD (cassa)', class: margine >= 0 ? 'positive' : 'negative' },
+      { label: 'Margine Operativo', value: nf(margine) + '%', sub: finanz ? 'Incassi (senza il finanziamento) vs costi YTD (cassa)' : 'Incassi vs costi YTD (cassa)', class: margine >= 0 ? 'positive' : 'negative' },
       { label: 'IVA Q1 — SALDO', value: ivaSaldoLabel, sub: q1.note ? 'Liquidazione Q1' : '', class: q1.saldoTipo === 'credito' ? 'success' : 'neutral' },
       { label: 'Saldo Banca', value: banca.saldoAttuale, sub: 'Da E/C ufficiale', class: 'positive' },
-      { label: 'FLUSSO ' + (ultimo ? ultimo.label.toUpperCase() + ' ' + ultimo.mese.split(' ')[1] : ''), value: moneySigned(nettoUltimo), sub: 'Netto ultimo mese', class: nettoUltimo >= 0 ? 'positive' : 'negative' },
+      { label: 'FLUSSO ' + (ultimo ? ultimo.label.toUpperCase() + ' ' + ultimo.mese.split(' ')[1] : ''), value: moneySigned(nettoUltimo), sub: finUltimoMese ? 'Netto ultimo mese — di cui ' + money(finUltimoMese) + ' di finanziamento' : 'Netto ultimo mese', class: nettoUltimo >= 0 ? 'positive' : 'negative' },
       { label: 'DA PAGARE (scadute + 45gg)', value: scad.count ? money(scad.totale) : '—', sub: (scad.scaduteCount ? '⚠ ' + scad.scaduteCount + ' SCADUTE (' + money(scad.scaduteTot) + ') + ' : '') + (scad.count - scad.scaduteCount) + ' in arrivo', class: scad.scaduteCount > 0 ? 'danger' : (scad.totale > 0 ? 'neutral' : 'success') }
     ];
   }
@@ -632,6 +650,7 @@
     }
     var cauzione = vociSP(/cauzion/i);
     var capitale = vociSP(/capitale/i);
+    var debitiFinanziamenti = vociSP(/finanziament/i);
     var debitiSoci = (reg.debitiVersoSoci || []).reduce(function (s, d) { return s + (d.saldo != null ? d.saldo : (d.importo || 0)); }, 0);
     var creditoIVA = (calcIVA(reg, statics).trimestri[0] || {}).creditoIva || 0;
     var liquidita = parseEuro(banca.saldoAttuale);
@@ -652,6 +671,7 @@
     var passivoGruppi = [
       { label: 'Debiti verso soci', importo: round2(debitiSoci) },
       { label: 'Debiti verso soci uscenti (liquidazione)', importo: round2(liquidazUsciti) },
+      { label: 'Debiti per finanziamenti', importo: round2(debitiFinanziamenti) },
       { label: 'Risconti passivi', importo: round2(risconti.passivi) }
     ];
     var totPassivo = passivoGruppi.reduce(function (s, g) { return s + g.importo; }, 0);
@@ -1542,7 +1562,8 @@
     var cr = calcCostiRicorrenti(reg);
     var cascata = (bilancio && bilancio.ce && bilancio.ce.cascata) || {};
     var totE = parseEuro(banca.totali.entrate), totU = parseEuro(banca.totali.uscite);
-    var flusso = round2(totE - totU);
+    var finanz = totFinanziamenti(reg);
+    var flusso = round2(totE - totU - finanz); // il prestito non è cassa "generata": è un debito da restituire
     var pfLive = calcPortafoglioPerMese(reg);
     return {
       anno: anno,
@@ -1558,7 +1579,7 @@
         { key: 'utile', label: 'Utile ' + anno + ' (dalle fatture)', valoreFmt: money(cascata.utileNetto || 0),
           sub: 'calcolato solo dalle fatture: mancano stipendi e tasse, quindi il risultato reale è più basso di così', cls: (cascata.utileNetto || 0) >= 0 ? 'positive' : 'negative' },
         { key: 'cassa', label: 'Cassa generata ' + anno, valoreFmt: moneySigned(flusso),
-          sub: 'incassi meno uscite in banca — saldo all\'ultimo estratto conto: ' + banca.saldoAttuale, cls: flusso >= 0 ? 'positive' : 'negative' },
+          sub: (finanz ? 'incassi meno uscite in banca, escluso il finanziamento ricevuto (' + money(finanz) + ': è un prestito da restituire, non cassa generata)' : 'incassi meno uscite in banca') + ' — saldo all\'ultimo estratto conto: ' + banca.saldoAttuale, cls: flusso >= 0 ? 'positive' : 'negative' },
         { key: 'firmato', label: 'Già firmato, da incassare', valoreFmt: money(pfLive.totaleRateCerte || 0),
           sub: (pfLive.numeroRate || 0) + ' rate future di ordini già chiusi', cls: 'positive' }
       ]
