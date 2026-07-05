@@ -1647,7 +1647,43 @@
       ann[anno] = calcAnnoCorrenteLive(reg, statics);
       out.annuale = ann;
     }
+    // serie mensile dell'anno in corso DAL VIVO (gli anni chiusi restano statici):
+    // senza questo la linea 2026 del grafico si fermava all'ultimo snapshot manuale.
+    if (Array.isArray(st.mensile)) {
+      var mensLive = calcMensileAnnoCorrente(reg, anno);
+      if (mensLive.length) {
+        out.mensile = st.mensile.filter(function (x) { return String(x.anno) !== anno; }).concat(mensLive);
+      }
+    }
     return out;
+  }
+
+  // Ricavi/costi per mese dell'anno corrente, da registro.fatture — stesse regole di
+  // calcAnnoCorrenteLive (competenza anno, NC vendita sottratte, autofatture escluse).
+  // Il mese in corso entra solo se ha già fatture di vendita (evita il tuffo a €0).
+  function calcMensileAnnoCorrente(reg, anno) {
+    var byM = {};
+    (reg.fatture || []).forEach(function (f) {
+      var dir = f.tipo || f.direzione;
+      var comp = f.competenza ? String(f.competenza) : String(parseISO(f.data).y);
+      if (comp !== String(anno)) return;
+      var m = parseISO(f.data).m;
+      var b = byM[m] || (byM[m] = { ricavi: 0, costi: 0, vendite: 0 });
+      if (dir === 'vendita') {
+        var vb = f.voceBilancio || '';
+        var isNC = /note_credito|_nc_|^nc/i.test(vb) || /^NC/i.test(f.numero || '');
+        b.ricavi += (isNC ? -1 : 1) * Math.abs(f.imponibile || 0);
+        b.vendite++;
+      } else if (dir === 'acquisto') b.costi += imponibileDi(f);
+    });
+    var oggi = new Date();
+    var meseCorrente = (String(oggi.getFullYear()) === String(anno)) ? oggi.getMonth() + 1 : 13;
+    return Object.keys(byM).map(Number).sort(function (a, b) { return a - b; })
+      .filter(function (m) { return m < meseCorrente || byM[m].vendite > 0; })
+      .map(function (m) {
+        var r = round2(byM[m].ricavi), c = round2(byM[m].costi);
+        return { anno: String(anno), mese: m, label: MESI_ABBR[m - 1] + ' ' + anno, ricavi: r, costi: c, margine: round2(r - c) };
+      });
   }
 
   // data ISO (2026-06-26) -> "26 giugno 2026"; se già in forma testuale la lascia com'è.
