@@ -2216,10 +2216,30 @@
       });
     });
 
-    // prelievi documentati per socio
+    // prelievi documentati per socio: anni passati dalla lista curata (prima nota / E/C),
+    // ANNO CORRENTE dal vivo dai movimenti distribuzione_utili — la lista manuale
+    // invecchiava a ogni import (a giugno mancavano €2.000/socio di anticipi).
     var prelMap = {};
-    (ru.prelievi || []).forEach(function (p) { prelMap[p.socio] = (prelMap[p.socio] || 0) + (p.importo || 0); });
-    var prelieviTotali = round2((ru.prelievi || []).reduce(function (s, p) { return s + (p.importo || 0); }, 0));
+    var prelieviTotali = 0;
+    var usciti = {};
+    (ru.liquidazioneUsciti || []).forEach(function (l) { usciti[l.socio] = true; });
+    (ru.prelievi || []).forEach(function (p) {
+      if (+p.anno === annoCorrente && !usciti[p.socio]) return; // soci attuali: l'anno corrente si deriva live qui sotto
+      prelMap[p.socio] = round2((prelMap[p.socio] || 0) + (p.importo || 0));
+      prelieviTotali = round2(prelieviTotali + (p.importo || 0));
+    });
+    var nomiSoci = Object.keys(sociMap).filter(function (n) { return !usciti[n]; });
+    (reg.movimenti || []).forEach(function (m) {
+      if (m.categoria !== 'distribuzione_utili' || m.tipo !== 'uscita') return;
+      if (String(m.data || '').slice(0, 4) !== String(annoCorrente)) return;
+      var testo = (m.controparte || '') + ' ' + (m.descrizione || '');
+      // match sul nome proprio (Marco/Sajay): se il testo non identifica UN socio attuale
+      // (es. bonifico agli usciti) resta fuori — gli usciti vivono su righe curate + liquidazione
+      var match = nomiSoci.filter(function (n) { return testo.indexOf(n.split(' ')[0]) !== -1; });
+      if (match.length !== 1) return;
+      prelMap[match[0]] = round2((prelMap[match[0]] || 0) + Math.abs(m.importo || 0));
+      prelieviTotali = round2(prelieviTotali + Math.abs(m.importo || 0));
+    });
 
     // liquidazione ufficiale soci usciti
     var liqMap = {};

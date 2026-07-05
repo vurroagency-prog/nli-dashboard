@@ -41,12 +41,19 @@ near(sajay.attribuito, 36227.15, 0.01, 'Sajay attribuito cumulato');
 // somma attribuito = utile cumulato
 near(u.soci.reduce((a, s) => a + s.attribuito, 0), u.utileCumulatoPostIRAP, 0.05, 'Σ attribuito = utile cumulato');
 
-console.log('\n[3] Prelievi acconto utili per socio (bank-verified: 2024 prima nota + 2025 E/C + 2026 registro)');
-near(marco.prelevato, 29149.86, 0.01, 'Marco prelevato (17341 + 11308,86 + 500)');
-near(sajay.prelevato, 22522.30, 0.01, 'Sajay prelevato (4200 + 17822,30 + 500)');
+console.log('\n[3] Prelievi acconto utili per socio (bank-verified: 2024 prima nota + 2025 E/C + 2026 LIVE dai movimenti)');
+// 2026 dal vivo: somma dei movimenti distribuzione_utili che citano il nome proprio del socio
+function prel2026(nomeProprio) {
+  return Math.round((reg.movimenti || [])
+    .filter(m => m.categoria === 'distribuzione_utili' && m.tipo === 'uscita' && String(m.data || '').startsWith('2026'))
+    .filter(m => ((m.controparte || '') + ' ' + (m.descrizione || '')).includes(nomeProprio))
+    .reduce((s, m) => s + Math.abs(m.importo || 0), 0) * 100) / 100;
+}
+near(marco.prelevato, 17341 + 11308.86 + prel2026('Marco'), 0.01, 'Marco prelevato (17341 + 11308,86 + 2026 live)');
+near(sajay.prelevato, 4200 + 17822.30 + prel2026('Sajay'), 0.01, 'Sajay prelevato (4200 + 17822,30 + 2026 live)');
 near(ales.prelevato, 34310.32, 0.01, 'Alessandro prelevato (10510,25 + 19704,98 + 4095,09)');
 near(claudia.prelevato, 33463.18, 0.01, 'Claudia prelevato (5757,76 + 21800,51 + 5904,91)');
-near(u.prelieviTotali, 119445.66, 0.01, 'prelievi totali = somma per socio');
+near(u.prelieviTotali, Math.round(u.soci.reduce((a, s) => a + s.prelevato, 0) * 100) / 100, 0.01, 'prelievi totali = somma per socio');
 
 console.log('\n[4] Residuo bank-verified; usciti = liquidazione ufficiale');
 ok(ales.uscito && claudia.uscito, 'Alessandro e Claudia marcati usciti');
@@ -55,8 +62,8 @@ near(ales.residuo, 1916.83, 0.01, 'Alessandro residuo = liquidazione ufficiale')
 near(claudia.residuo, 2763.97, 0.01, 'Claudia residuo = liquidazione ufficiale');
 near(u.liquidazioneUscitiTotale, 4680.80, 0.01, 'liquidazione usciti totale');
 ok(!marco.parziale && !sajay.parziale, 'residuo soci attuali NON più stima (bank-verified)');
-near(marco.residuo, 7077.29, 0.01, 'Marco residuo = attribuito − prelevato (verificato)');
-near(sajay.residuo, 13704.85, 0.01, 'Sajay residuo = attribuito − prelevato (verificato)');
+near(marco.residuo, Math.round((marco.attribuito - marco.prelevato) * 100) / 100, 0.01, 'Marco residuo = attribuito − prelevato (verificato)');
+near(sajay.residuo, Math.round((sajay.attribuito - sajay.prelevato) * 100) / 100, 0.01, 'Sajay residuo = attribuito − prelevato (verificato)');
 // il residuo calcolato dei soci usciti deve coincidere con la liquidazione (cross-check 0 warning)
 ok(!u.datiMancanti.some(d => /≠ liquidazione/.test(d)), 'residuo calcolato usciti coincide con liquidazione ufficiale');
 
