@@ -6636,7 +6636,7 @@
    "tipo": "uscita",
    "importo": 2229.03,
    "controparte": "Fornitori via Ri.Ba (2 effetti)",
-   "descrizione": "Addebito 2 Ri.Ba fornitori (conferma Marco 05/07: uno è Rossini). Ipotesi: Rossini FE26/05178 €717,81 (aperta, MP12) + effetto ignoto €1.511,22 (probabile fattura 2025). Dettaglio esatto: Intesa > portafoglio effetti.",
+   "descrizione": "Addebito 2 Ri.Ba fornitori. Dettaglio CERTO da stampa Intesa CASSA EFFETTI del 01/07/2026 (09_ARCHIVIO_STORICO/06_ALLEGATI_GMAIL/Intesa_Sanpaolo/2026-07-01_MANCINI_ALDO_riba_2026_nerxt.pdf): effetto n.1577095632 €2.186,03 + effetto n.1575807605 €43,00 = €2.229,03 (entrambi scad. 30/06, stato PAGATO). NB: l'ipotesi precedente (Rossini FE26/05178 €717,81) era ERRATA — quell'effetto €717,81 è del 30/04 (già pagato). Resta da abbinare i 2 effetti al fornitore/fattura (la stampa non riporta il creditore).",
    "categoria": null,
    "metodo": "riba",
    "conto": "BANCA-ISP-001",
@@ -6946,8 +6946,8 @@
    "data": "2026-07-02",
    "tipo": "entrata",
    "importo": 34562.5,
-   "controparte": "Istituto finanziario (da identificare)",
-   "descrizione": "Erogazione finanziamento rateale — contratto da acquisire (istituto/durata/tasso/rate)",
+   "controparte": "Intesa Sanpaolo (finanziamento rateale)",
+   "descrizione": "Erogazione finanziamento rateale Intesa Sanpaolo — nominale €35.000, netto €34.562,50, durata 36 mesi, finalità liquidità, garanzia Fondo PMI de minimis. Termini economici (TAN/rata) da contratto (fuori repo).",
    "categoria": "FIN_finanziamento",
    "metodo": "accredito",
    "conto": "BANCA-ISP-001",
@@ -7756,7 +7756,7 @@
     "dataPagamento": "2026-01-08",
     "movimentoId": "MOV-2026-0019"
    },
-   "voceBilancio": "A1_3_note_credito",
+   "voceBilancio": "A1_note_credito",
    "imponibile": 450,
    "iva": 99
   },
@@ -7777,10 +7777,12 @@
     "dataPagamento": "2026-01-29",
     "movimentoId": "MOV-2026-0012"
    },
-   "voceBilancio": "A1_2_prestazioni_servizi",
+   "voceBilancio": "A1_ricavi",
    "imponibile": 300,
    "iva": 66,
-   "note": " | imponibile/IVA popolati da liquidazione IVA Q1 ufficiale (erano null) — 31/05"
+   "note": " | imponibile/IVA popolati da liquidazione IVA Q1 ufficiale (erano null) — 31/05",
+   "statoIncasso": "da_verificare",
+   "ordineCollegato": "ORD-2026-0001"
   },
   {
    "id": "FAT-2026-0039",
@@ -7800,7 +7802,7 @@
     "dataPagamento": "2026-01-20",
     "movimentoId": "MOV-2026-0009"
    },
-   "voceBilancio": "A1_3_note_credito",
+   "voceBilancio": "A1_note_credito",
    "imponibile": 32,
    "iva": 7.04
   },
@@ -7821,7 +7823,7 @@
     "dataPagamento": null,
     "movimentoId": null
    },
-   "voceBilancio": "A1_3_note_credito",
+   "voceBilancio": "A1_note_credito",
    "imponibile": 81.6,
    "iva": 17.95,
    "note": " | imponibile/IVA popolati da liquidazione IVA Q1 ufficiale (erano null) — 31/05"
@@ -7843,10 +7845,11 @@
     "dataScadenza": null,
     "movimentoId": null
    },
-   "voceBilancio": "A1_1_vendita_merci",
+   "voceBilancio": "A1_ricavi_vendite",
    "imponibile": 512.35,
    "iva": 112.72,
-   "note": " | imponibile/IVA popolati da liquidazione IVA Q1 ufficiale (erano null) — 31/05"
+   "note": " | imponibile/IVA popolati da liquidazione IVA Q1 ufficiale (erano null) — 31/05",
+   "statoIncasso": "da_verificare"
   },
   {
    "id": "FAT-2026-0042",
@@ -7975,8 +7978,10 @@
     "dataPagamento": null,
     "movimentoId": null
    },
-   "voceBilancio": "A1_1_vendita_merci",
-   "note": "Abbigliamento personalizzato stampa DTF (Clasica). Rif. proforma 5 del 23/01, ordine 374 del 22/01. Cliente Bari."
+   "voceBilancio": "A1_ricavi_vendite",
+   "note": "Abbigliamento personalizzato stampa DTF (Clasica). Rif. proforma 5 del 23/01, ordine 374 del 22/01. Cliente Bari.",
+   "statoIncasso": "da_incassare",
+   "ordineCollegato": "ORD-2026-0004"
   },
   {
    "id": "FAT-2026-0048",
@@ -7998,8 +8003,9 @@
     "dataPagamento": "2026-02-24",
     "movimentoId": "MOV-2026-0061"
    },
-   "voceBilancio": "A1_2_prestazioni_servizi",
-   "note": "Consulenza come da contratto del 05/11/2025. Cliente Roma."
+   "voceBilancio": "A1_ricavi",
+   "note": "Consulenza come da contratto del 05/11/2025. Cliente Roma.",
+   "statoIncasso": "da_incassare"
   },
   {
    "id": "FAT-2026-0049",
@@ -8021,8 +8027,10 @@
     "dataPagamento": null,
     "movimentoId": null
    },
-   "voceBilancio": "A1_1_vendita_merci",
-   "note": "T-Shirts KOS personalizzate stampa DTF. Rif. proforma 7 del 12/02. Cliente Valenzano (BA)."
+   "voceBilancio": "A1_ricavi_vendite",
+   "note": "T-Shirts KOS personalizzate stampa DTF. Rif. proforma 7 del 12/02. Cliente Valenzano (BA).",
+   "statoIncasso": "da_incassare",
+   "ordineCollegato": "ORD-2026-0006"
   },
   {
    "id": "FAT-2026-0050",
@@ -8044,8 +8052,10 @@
     "dataPagamento": null,
     "movimentoId": null
    },
-   "voceBilancio": "A1_1_vendita_merci",
-   "note": "Ordine 373 del 14/01, proforma 6 del 04/02. Spedizione assicurata inclusa. Cliente Modugno (BA)."
+   "voceBilancio": "A1_ricavi_vendite",
+   "note": "Ordine 373 del 14/01, proforma 6 del 04/02. Spedizione assicurata inclusa. Cliente Modugno (BA).",
+   "statoIncasso": "da_incassare",
+   "ordineCollegato": "ORD-2026-0005"
   },
   {
    "id": "FAT-2026-0051",
@@ -8746,7 +8756,8 @@
    "descrizione": "Abbigliamento da lavoro personalizzato (t-shirt, felpe Montblanc, pantaloni Rainold)",
    "nota": "Saldo €304,78 scad. 03/12/2025 — da abbinare (TS Payments aggregato)",
    "stato": "da_abbinare",
-   "fonte": "2026-03-04_CassanoSrl_A1_ricavi_vendite.xml"
+   "fonte": "2026-03-04_CassanoSrl_A1_ricavi_vendite.xml",
+   "statoIncasso": "da_verificare"
   },
   {
    "id": "FAT-2026-0094",
@@ -8765,7 +8776,9 @@
    "descrizione": "Abbigliamento da lavoro personalizzato (gilet Florida, stampa)",
    "nota": "MOV-2026-0186 (11/03, €200) acconto parziale \"Saldo proforma 11\"; residuo €68,68 da verificare",
    "stato": "da_abbinare",
-   "fonte": "2026-03-11_AmirAscensori_A1_ricavi_vendite.xml"
+   "fonte": "2026-03-11_AmirAscensori_A1_ricavi_vendite.xml",
+   "statoIncasso": "da_verificare",
+   "ordineCollegato": "ORD-2026-0007"
   },
   {
    "id": "FAT-2026-0095",
@@ -8784,7 +8797,9 @@
    "descrizione": "Abbigliamento da lavoro personalizzato (pantaloni, t-shirt, giubbotti, gilet)",
    "nota": "MOV-2026-0128 (08/04, €620,68) — saldo €621,98 - comm. €1,30 = €620,68 MATCH ESATTO",
    "stato": "abbinata_parziale",
-   "fonte": "2026-04-15_TecnoProjectSrl_A1_ricavi_vendite.xml"
+   "fonte": "2026-04-15_TecnoProjectSrl_A1_ricavi_vendite.xml",
+   "statoIncasso": "da_verificare",
+   "ordineCollegato": "ORD-2026-0009"
   },
   {
    "id": "FAT-2026-0096",
@@ -8803,7 +8818,9 @@
    "descrizione": "Sito web Lite + NEXTCARD DUO (NFC) — saldo messa online",
    "nota": "Saldo €708,94 scad. 16/01/2026 — da abbinare (TS Payments aggregato)",
    "stato": "da_abbinare",
-   "fonte": "2026-04-16_GimaCostruzioniSrl_A1_ricavi_vendite.xml"
+   "fonte": "2026-04-16_GimaCostruzioniSrl_A1_ricavi_vendite.xml",
+   "statoIncasso": "da_verificare",
+   "notaOrdine": "Più ordini 2026 per questo cliente: ORD-2026-0002,ORD-2026-0003 — abbinamento manuale."
   },
   {
    "id": "FAT-2026-0097",
@@ -8822,7 +8839,8 @@
    "descrizione": "Abbigliamento da lavoro personalizzato (giacca Siberia, pantaloni Speed)",
    "nota": "Saldo €112,17 scad. 18/12/2025 — da abbinare (TS Payments aggregato)",
    "stato": "da_abbinare",
-   "fonte": "2026-04-21_SiaImpianti_A1_ricavi_vendite.xml"
+   "fonte": "2026-04-21_SiaImpianti_A1_ricavi_vendite.xml",
+   "statoIncasso": "da_verificare"
   },
   {
    "id": "FAT-2026-0098",
@@ -8841,7 +8859,9 @@
    "descrizione": "Abbigliamento da lavoro personalizzato (t-shirt, pantaloni, stampa DTF)",
    "nota": "MOV-2026-0169 (20/03, €470,81) \"Edil Special — Pagamento abbigliamento\" SALDO ABBINATO",
    "stato": "abbinata_parziale",
-   "fonte": "2026-04-21_EdilSpecial_A1_ricavi_vendite.xml"
+   "fonte": "2026-04-21_EdilSpecial_A1_ricavi_vendite.xml",
+   "statoIncasso": "da_verificare",
+   "ordineCollegato": "ORD-2026-0008"
   },
   {
    "id": "FAT-2026-0099",
@@ -8860,7 +8880,9 @@
    "descrizione": "Abbigliamento da lavoro personalizzato (t-shirt, jeans, felpe, gilet, cappellini — ricamo + DTF)",
    "nota": "Saldo €517,61 scad. 07/04/2026 — da abbinare (TS Payments aggregato MOV-0098 27/04 €3.334,93)",
    "stato": "da_abbinare",
-   "fonte": "2026-04-27_ColellaArtinterneSrl_A1_ricavi_vendite.xml"
+   "fonte": "2026-04-27_ColellaArtinterneSrl_A1_ricavi_vendite.xml",
+   "statoIncasso": "da_verificare",
+   "ordineCollegato": "ORD-2026-0011"
   },
   {
    "id": "FAT-2026-0100",
@@ -9246,7 +9268,8 @@
    "descrizione": "Abbigliamento da lavoro personalizzato (DTF + ricamo) — rif. proforma 11 / ordine 411",
    "ordineCollegato": "ORD-2026-0010",
    "stato": "registrata",
-   "fonte": "2026-05-21_CostruzioniVulpio_A1_ricavi_vendite.xml"
+   "fonte": "2026-05-21_CostruzioniVulpio_A1_ricavi_vendite.xml",
+   "statoIncasso": "da_verificare"
   },
   {
    "id": "FAT-2026-0134",
@@ -9265,7 +9288,8 @@
    "descrizione": "Abbigliamento da lavoro personalizzato (DTF) — rif. proforma 16 / ordine 418",
    "ordineCollegato": "ORD-2026-0015",
    "stato": "registrata",
-   "fonte": "2026-05-22_RivoluzioneCasa_A1_ricavi_vendite.xml"
+   "fonte": "2026-05-22_RivoluzioneCasa_A1_ricavi_vendite.xml",
+   "statoIncasso": "da_verificare"
   },
   {
    "id": "FAT-2026-0135",
@@ -9444,7 +9468,9 @@
     "stato": "pagata",
     "dataPagamento": "2026-06-12",
     "movimentoId": "MOV-2026-0359"
-   }
+   },
+   "statoIncasso": "da_verificare",
+   "ordineCollegato": "ORD-2026-0021"
   },
   {
    "id": "FAT-2026-0144",
@@ -9461,7 +9487,9 @@
    "competenza": "2026",
    "descrizione": "Abbigliamento personalizzato — rif. proforma 18 del 14/05/2026 (incassi SDD: acconto €519,66 + rata €624,56 + rate successive)",
    "stato": "registrata",
-   "fonte": "2026-06-16_SecurityDealers_A1_ricavi_vendite.xml"
+   "fonte": "2026-06-16_SecurityDealers_A1_ricavi_vendite.xml",
+   "statoIncasso": "da_verificare",
+   "ordineCollegato": "ORD-2026-0017"
   },
   {
    "id": "FAT-2026-0145",
@@ -9493,7 +9521,7 @@
    "imponibile": 184.13,
    "iva": 40.51,
    "importoTotale": 224.64,
-   "voceBilancio": "A1_ricavi_vendite",
+   "voceBilancio": "A1_omaggi",
    "aliquotaIVA": 22,
    "competenza": "2026",
    "descrizione": "Autofattura per omaggio/cessione gratuita (art.2 c.2 n.4 DPR 633/72) — T-shirt Rainold, rif. conferma ordine 431. Solo IVA a debito: NON è ricavo monetario.",
@@ -9502,7 +9530,8 @@
    "pagamento": {
     "stato": "non_dovuto",
     "nota": "Autofattura omaggio: nessun incasso previsto"
-   }
+   },
+   "notaIgiene": "Autofattura omaggio TD27 (ordine 431): IVA a debito, NON ricavo. voceBilancio dedicata per non gonfiare la classe A1 grezza (era A1_ricavi_vendite)."
   },
   {
    "id": "FAT-2026-0147",
@@ -9574,7 +9603,9 @@
    "competenza": "2026",
    "descrizione": "Saldo proforma 21 del 10/06/2026 — incasso SDD TSPay addebitato 30/06 (accredito BL4RRNMQYE in arrivo)",
    "stato": "registrata",
-   "fonte": "2026-06-27_EmmetiImpianti_A1_ricavi_vendite.xml"
+   "fonte": "2026-06-27_EmmetiImpianti_A1_ricavi_vendite.xml",
+   "statoIncasso": "da_verificare",
+   "notaOrdine": "Più ordini 2026 per questo cliente: ORD-2026-0018,ORD-2026-0020 — abbinamento manuale."
   },
   {
    "id": "FAT-2026-0151",
@@ -9996,7 +10027,7 @@
    "chi": "commercialista",
    "fonte": "F24 Valerio Petrini 26/06/2026",
    "movimentoCollegato": null,
-   "nota": "Netto €854,50 = acconto lordo €1.359,50 − credito saldo IRAP 2025 €505. Proroga ISA 20/07. NB: IRPEF soci ancora da quantificare (dichiarazioni PF)."
+   "nota": "Netto €854,50 = acconto lordo €1.359,50 − credito saldo IRAP 2025 €505. Proroga ISA 20/07. NB: IRPEF soci ancora da quantificare (dichiarazioni PF). [F24 SOCIETÀ del 20/07: insieme al diritto camerale €152 (SCAD-2026-0019) compone un unico F24 da €1.006,50 — pagamento unico.]"
   },
   {
    "id": "SCAD-2026-0019",
@@ -10008,7 +10039,7 @@
    "chi": "commercialista",
    "fonte": "F24 Valerio Petrini 26/06/2026",
    "movimentoCollegato": null,
-   "nota": "Cod. 3850. Proroga ISA 20/07 (scadenza ordinaria 30/06)."
+   "nota": "Cod. 3850. Proroga ISA 20/07 (scadenza ordinaria 30/06). [F24 SOCIETÀ del 20/07: insieme all'IRAP 1° acconto €854,50 (SCAD-2026-0018) compone un unico F24 da €1.006,50 — pagamento unico.]"
   },
   {
    "id": "SCAD-2026-0020",
@@ -10856,11 +10887,11 @@
   },
   {
    "campo": "movimenti.MOV-2026-0407",
-   "nota": "FINANZIAMENTO €34.562,50 erogato 02/07: Marco (05/07) ha archiviato il contratto FUORI dal repo. Servono i termini (istituto, durata, tasso, importo rata) per censire le rate come scadenze e aggiornare il residuo in vociManualiSP. Metterlo anche in 05_CONTRATTI."
+   "nota": "FINANZIAMENTO €34.562,50 erogato 02/07 (Intesa Sanpaolo). Dal PDF all.4 (domanda garanzia Fondo PMI, in archivio) estratti i termini CERTI: nominale €35.000, durata 36 mesi, finalità liquidità, de minimis, oneri iniziali €437,50 (→ censiti in vociManualiSP.debiti_finanziamento_rateale.dettaglio). RESTA da acquisire il CONTRATTO/documento di sintesi con TAN, TAEG, importo rata, data 1ª rata, periodicità: SENZA questi le 36 rate non sono censibili come scadenze (mai importi stimati). Copia contratto in 05_CONTRATTI quando disponibile."
   },
   {
    "campo": "movimenti.MOV-2026-0388",
-   "nota": "Addebito Ri.Ba €2.229,03 del 30/06 (MOV-2026-0388): 2 effetti, uno è Rossini (Marco 05/07). Estrarre il dettaglio effetti da Intesa (portafoglio Ri.Ba passive) per abbinarli alle fatture — candidata Rossini FE26/05178 €717,81."
+   "nota": "Ri.Ba €2.229,03 del 30/06 SPACCHETTATA (stampa Intesa CASSA EFFETTI 01/07): €2.186,03 (n.1577095632) + €43,00 (n.1575807605). L'effetto piccolo €43,00 è ricorrente (compare anche il 28/02). Resta da abbinare effetto↔fornitore/fattura (candidato €2.186,03 = Rossini; la stampa non riporta il creditore, confermare col portafoglio effetti o con Rossini)."
   },
   {
    "campo": "movimenti.MOV-2026-0366",
@@ -10881,6 +10912,10 @@
   {
    "campo": "movimenti.MOV-2026-0343",
    "nota": "Liliya Zozulya €1.037 (08/06, setup Ads Meta): manca fattura/ricevuta della fornitrice."
+  },
+  {
+   "campo": "movimenti.SiliconDev.natura",
+   "nota": "SiliconDev S.p.A. — 2 incassi €9.816,12 (02/01 MOV-0002) + €8.540,02 (25/02 MOV-0062) = €18.356,14, competenza 2025, già esclusoBusiness=true. Natura da CONFERMARE con Marco/Mascolo: partita di giro / flusso non caratteristico? Se confermato non-ricavo, mantenere esclusione; altrimenti riclassificare. NON modificato senza conferma."
   }
  ],
  "iva": {
@@ -12053,8 +12088,22 @@
   {
    "voce": "debiti_finanziamento_rateale",
    "importo": 34562.5,
-   "descrizione": "Finanziamento rateale erogato 02/07/2026 (E/C Intesa) — contratto da acquisire: istituto, durata, tasso, piano rate. Residuo da aggiornare a ogni rata pagata.",
-   "tipo": "passivo"
+   "descrizione": "Finanziamento rateale Intesa Sanpaolo — nominale €35.000, erogato netto €34.562,50 il 02/07/2026, durata 36 mesi, finalità liquidità (sostegno circolante). Garanzia Fondo di Garanzia PMI L.662/96 (de minimis), gestore Mediocredito Centrale. Residuo da aggiornare a ogni rata pagata. PIANO RATE non ancora disponibile: serve il contratto/documento di sintesi (TAN, TAEG, importo rata, data 1ª rata).",
+   "tipo": "passivo",
+   "dettaglio": {
+    "importoNominale": 35000,
+    "erogatoNetto": 34562.5,
+    "oneriInizialiTrattenuti": 437.5,
+    "durataMesi": 36,
+    "finalita": "Liquidità — sostegno al circolante (utenze, fitti, fornitori, stipendi)",
+    "garanzia": "Fondo di Garanzia PMI L.662/96 (regime de minimis) — gestore Mediocredito Centrale S.p.A.",
+    "istituto": "Intesa Sanpaolo",
+    "dataDomandaGaranzia": "2026-05-19",
+    "dataErogazione": "2026-07-02",
+    "movimentoErogazione": "MOV-2026-0407",
+    "fonteTerminiCerti": "09_ARCHIVIO_STORICO/06_ALLEGATI_GMAIL/Intesa_Sanpaolo/2026-05-19_MANCINI_ALDO_all.4.pdf (domanda di garanzia Fondo PMI — contiene importo/durata/finalità, NON i termini economici)",
+    "daAcquisire": "Contratto di finanziamento / documento di sintesi con: TAN, TAEG, importo rata, data prima rata, periodicità (mensile/RiBa?), preammortamento. Non presente nell'archivio (fuori repo)."
+   }
   }
  ],
  "previsioneFiscale": {
