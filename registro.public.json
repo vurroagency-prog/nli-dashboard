@@ -10907,7 +10907,7 @@
   },
   {
    "campo": "movimenti.MOV-2026-0388",
-   "nota": "Ri.Ba €2.229,03 del 30/06 = €2.186,03 (n.1577095632) + €43,00 (n.1575807605) [stampa Intesa CASSA EFFETTI 01/07]. Marco (18/07): l'effetto grosso €2.186,03 è CUMULATIVO, raggruppa più fatture di VARI fornitori (non un solo creditore). Per spacchettarlo alle singole fatture serve la distinta Ri.Ba dall'app banca / portafoglio effetti Intesa. €43,00 = effetto piccolo ricorrente (anche 28/02), da identificare."
+   "nota": "Ri.Ba €2.229,03 del 30/06 = €2.186,03 (n.1577095632, cumulativo VARI fornitori — Marco 18/07) + €43,00 (n.1575807605). €43,00 = effetto piccolo ricorrente (28/02 e 30/06). Ipotesi TeamSystem VERIFICATA e SCARTATA (18/07): TeamSystem CRM = €157,38/trim (FAT-0006/0126/0148), prodotto rateizzato = €71,38 (effetto Ri.Ba del 30/04, MOV-0087, SCAD-0050) — nessun importo TeamSystem da €43. Il €43,00 resta da identificare dalla distinta Ri.Ba (app banca / portafoglio effetti Intesa, che elenca il creditore per effetto)."
   },
   {
    "campo": "movimenti.MOV-2026-0366",
