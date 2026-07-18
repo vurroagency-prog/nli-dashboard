@@ -7982,8 +7982,9 @@
    },
    "voceBilancio": "A1_ricavi_vendite",
    "note": "Abbigliamento personalizzato stampa DTF (Clasica). Rif. proforma 5 del 23/01, ordine 374 del 22/01. Cliente Bari.",
-   "statoIncasso": "da_incassare",
-   "ordineCollegato": "ORD-2026-0004"
+   "statoIncasso": "incassata",
+   "ordineCollegato": "ORD-2026-0004",
+   "notaIncasso": "Incassata (confermato Marco 18/07). Movimento bancario da abbinare al prossimo import estratto conto luglio."
   },
   {
    "id": "FAT-2026-0048",
@@ -8007,7 +8008,8 @@
    },
    "voceBilancio": "A1_ricavi",
    "note": "Consulenza come da contratto del 05/11/2025. Cliente Roma.",
-   "statoIncasso": "da_incassare"
+   "statoIncasso": "incassata",
+   "notaIncasso": "Incassata (confermato Marco 18/07). Movimento bancario da abbinare al prossimo import estratto conto luglio."
   },
   {
    "id": "FAT-2026-0049",
@@ -8031,8 +8033,9 @@
    },
    "voceBilancio": "A1_ricavi_vendite",
    "note": "T-Shirts KOS personalizzate stampa DTF. Rif. proforma 7 del 12/02. Cliente Valenzano (BA).",
-   "statoIncasso": "da_incassare",
-   "ordineCollegato": "ORD-2026-0006"
+   "statoIncasso": "incassata",
+   "ordineCollegato": "ORD-2026-0006",
+   "notaIncasso": "Incassata (confermato Marco 18/07). Movimento bancario da abbinare al prossimo import estratto conto luglio."
   },
   {
    "id": "FAT-2026-0050",
@@ -8056,8 +8059,9 @@
    },
    "voceBilancio": "A1_ricavi_vendite",
    "note": "Ordine 373 del 14/01, proforma 6 del 04/02. Spedizione assicurata inclusa. Cliente Modugno (BA).",
-   "statoIncasso": "da_incassare",
-   "ordineCollegato": "ORD-2026-0005"
+   "statoIncasso": "incassata",
+   "ordineCollegato": "ORD-2026-0005",
+   "notaIncasso": "Incassata (confermato Marco 18/07). Movimento bancario da abbinare al prossimo import estratto conto luglio."
   },
   {
    "id": "FAT-2026-0051",
