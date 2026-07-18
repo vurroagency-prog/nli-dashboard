@@ -138,7 +138,8 @@
    "riconciliato": true,
    "fattureCollegate": [],
    "fonte": "estratto_conto_gen_2026",
-   "esclusoBusiness": true
+   "esclusoBusiness": true,
+   "notaEsclusione": "Fatturato vero al cliente collegato del fratello (competenza 2025). Escluso dai KPI business NL (intercompany), ma è ricavo reale — confermato Marco 18/07."
   },
   {
    "id": "MOV-2026-0003",
@@ -1081,7 +1082,8 @@
    "riconciliato": true,
    "fattureCollegate": [],
    "fonte": "estratto_conto_feb_2026",
-   "esclusoBusiness": true
+   "esclusoBusiness": true,
+   "notaEsclusione": "Fatturato vero al cliente collegato del fratello (competenza 2025). Escluso dai KPI business NL (intercompany), ma è ricavo reale — confermato Marco 18/07."
   },
   {
    "id": "MOV-2026-0063",
@@ -10605,6 +10607,20 @@
    "fineValidita": null,
    "ceStruttura": false,
    "nota": "~€24,70-25,20 a trimestre, addebito automatico su E/C (gen/apr/lug/ott). Prima censito solo una tantum (SCAD-0037). ceStruttura=false: il bollo entra gia nel CE dagli oneri C dei movimenti (evita doppio conteggio nel break-even); qui serve solo al previsionale di cassa."
+  },
+  {
+   "id": "RIC-019",
+   "tipo": "rata_finanziamento",
+   "giorno": 2,
+   "importo": 1064.76,
+   "beneficiario": "Intesa Sanpaolo",
+   "descrizione": "Rata finanziamento Intesa n.0IR1049872496 (capitale+interessi, 36 rate)",
+   "categoria": "FIN_rata_finanziamento",
+   "ceStruttura": false,
+   "attiva": true,
+   "inizioValidita": "2026-08-02",
+   "fineValidita": "2029-07-02",
+   "note": "Rata costante €1.064,76 (TAN 6%). Uscita di cassa: capitale (rimborso debito, non costo CE) + interessi (oneri finanziari). Piano francese, 1ª 02/08/2026, ultima 02/07/2029."
   }
  ],
  "costiStruttura": {
@@ -10886,12 +10902,8 @@
    "stato": "aperto"
   },
   {
-   "campo": "movimenti.MOV-2026-0407",
-   "nota": "FINANZIAMENTO €34.562,50 erogato 02/07 (Intesa Sanpaolo). Dal PDF all.4 (domanda garanzia Fondo PMI, in archivio) estratti i termini CERTI: nominale €35.000, durata 36 mesi, finalità liquidità, de minimis, oneri iniziali €437,50 (→ censiti in vociManualiSP.debiti_finanziamento_rateale.dettaglio). RESTA da acquisire il CONTRATTO/documento di sintesi con TAN, TAEG, importo rata, data 1ª rata, periodicità: SENZA questi le 36 rate non sono censibili come scadenze (mai importi stimati). Copia contratto in 05_CONTRATTI quando disponibile."
-  },
-  {
    "campo": "movimenti.MOV-2026-0388",
-   "nota": "Ri.Ba €2.229,03 del 30/06 SPACCHETTATA (stampa Intesa CASSA EFFETTI 01/07): €2.186,03 (n.1577095632) + €43,00 (n.1575807605). L'effetto piccolo €43,00 è ricorrente (compare anche il 28/02). Resta da abbinare effetto↔fornitore/fattura (candidato €2.186,03 = Rossini; la stampa non riporta il creditore, confermare col portafoglio effetti o con Rossini)."
+   "nota": "Ri.Ba €2.229,03 del 30/06 = €2.186,03 (n.1577095632) + €43,00 (n.1575807605) [stampa Intesa CASSA EFFETTI 01/07]. Marco (18/07): l'effetto grosso €2.186,03 è CUMULATIVO, raggruppa più fatture di VARI fornitori (non un solo creditore). Per spacchettarlo alle singole fatture serve la distinta Ri.Ba dall'app banca / portafoglio effetti Intesa. €43,00 = effetto piccolo ricorrente (anche 28/02), da identificare."
   },
   {
    "campo": "movimenti.MOV-2026-0366",
@@ -10912,10 +10924,6 @@
   {
    "campo": "movimenti.MOV-2026-0343",
    "nota": "Liliya Zozulya €1.037 (08/06, setup Ads Meta): manca fattura/ricevuta della fornitrice."
-  },
-  {
-   "campo": "movimenti.SiliconDev.natura",
-   "nota": "SiliconDev S.p.A. — 2 incassi €9.816,12 (02/01 MOV-0002) + €8.540,02 (25/02 MOV-0062) = €18.356,14, competenza 2025, già esclusoBusiness=true. Natura da CONFERMARE con Marco/Mascolo: partita di giro / flusso non caratteristico? Se confermato non-ricavo, mantenere esclusione; altrimenti riclassificare. NON modificato senza conferma."
   }
  ],
  "iva": {
@@ -12088,21 +12096,33 @@
   {
    "voce": "debiti_finanziamento_rateale",
    "importo": 34562.5,
-   "descrizione": "Finanziamento rateale Intesa Sanpaolo — nominale €35.000, erogato netto €34.562,50 il 02/07/2026, durata 36 mesi, finalità liquidità (sostegno circolante). Garanzia Fondo di Garanzia PMI L.662/96 (de minimis), gestore Mediocredito Centrale. Residuo da aggiornare a ogni rata pagata. PIANO RATE non ancora disponibile: serve il contratto/documento di sintesi (TAN, TAEG, importo rata, data 1ª rata).",
+   "descrizione": "Finanziamento Intesa Sanpaolo n.0IR1049872496 (forma IR1 'Riequilibrio Impresa'), stipulato 02/07/2026. Capitale €35.000, 36 rate mensili da €1.064,76 (TAN 6% / TAEG 7,32%), 1ª rata 02/08/2026, ultima 02/07/2029, addebito su c/c Intesa ...14534. Residuo da aggiornare con la quota capitale di ogni rata pagata.",
    "tipo": "passivo",
    "dettaglio": {
-    "importoNominale": 35000,
+    "istituto": "Intesa Sanpaolo S.p.A. — Filiale Roma, Via Eschilo 180",
+    "numeroFinanziamento": "0IR1049872496",
+    "numeroDomanda": "0186049773726",
+    "formaTecnica": "IR1 — Riequilibrio Impresa",
+    "capitaleNominale": 35000,
+    "speseIstruttoria": 437.5,
     "erogatoNetto": 34562.5,
-    "oneriInizialiTrattenuti": 437.5,
-    "durataMesi": 36,
-    "finalita": "Liquidità — sostegno al circolante (utenze, fitti, fornitori, stipendi)",
-    "garanzia": "Fondo di Garanzia PMI L.662/96 (regime de minimis) — gestore Mediocredito Centrale S.p.A.",
-    "istituto": "Intesa Sanpaolo",
-    "dataDomandaGaranzia": "2026-05-19",
-    "dataErogazione": "2026-07-02",
-    "movimentoErogazione": "MOV-2026-0407",
-    "fonteTerminiCerti": "09_ARCHIVIO_STORICO/06_ALLEGATI_GMAIL/Intesa_Sanpaolo/2026-05-19_MANCINI_ALDO_all.4.pdf (domanda di garanzia Fondo PMI — contiene importo/durata/finalità, NON i termini economici)",
-    "daAcquisire": "Contratto di finanziamento / documento di sintesi con: TAN, TAEG, importo rata, data prima rata, periodicità (mensile/RiBa?), preammortamento. Non presente nell'archivio (fuori repo)."
+    "nRate": 36,
+    "periodicita": "mensile",
+    "rataCostante": 1064.76,
+    "tan": 6,
+    "taeg": 7.32,
+    "tassoMensile": 0.5,
+    "dataStipula": "2026-07-02",
+    "dataPrimaRata": "2026-08-02",
+    "dataUltimaRata": "2029-07-02",
+    "montanteTotale": 38331.36,
+    "interessiTotali": 3331.36,
+    "addebitoRata": "c/c Intesa ...14534 (stesso conto NLI)",
+    "estinzioneAnticipata": "compenso 30‰ del capitale residuo (20‰ dalla rata 19 in poi)",
+    "finalita": "Liquidità — sostegno al circolante",
+    "garanzia": "Fondo di Garanzia PMI L.662/96 (de minimis) — MCC",
+    "fonte": "05_CONTRATTI/2026-07-02_IntesaSanpaolo_ConteggiErogazioneFinanziamento.pdf (Conteggi di utilizzo Intesa, 02/07/2026)",
+    "notaMascolo": "Debito CAPITALE verso Intesa = €35.000 (il valore SP qui è il netto erogato €34.562,50 per non sbilanciare). Le €437,50 spese istruttoria: definire trattamento (costo immediato vs risconto su 36 mesi). Interessi €3.331,36 = oneri finanziari deducibili su tutta la durata."
    }
   }
  ],
