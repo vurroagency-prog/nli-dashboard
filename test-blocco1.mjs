@@ -118,9 +118,20 @@ const fwd = fi.scadenzarioForward || [];
 ok('scadenzarioForward e un array non vuoto', Array.isArray(fwd) && fwd.length > 0, 'len=' + (fwd && fwd.length));
 const importi = fwd.map(function (x) { return x && x.importo; });
 function hasImporto(v) { return importi.some(function (i) { return near(i, v, 0.01); }); }
-ok('contiene IRAP 1° acconto €854,50', hasImporto(854.5));
-ok('contiene CCIAA €152', hasImporto(152));
-ok('contiene IRAP 2° acconto €1.359,50', hasImporto(1359.5));
+// Data-aware (fix 22/07/2026): il forward mostra SOLO scadenze future — una voce hardcoded
+// che scavalca la data odierna (es. F24 20/07) deve USCIRE dal forward, non far fallire il test.
+const oggiIso = new Date().toISOString().slice(0, 10);
+function expectFwd(id, importo, label) {
+  const s = (reg.scadenze || []).find(function (x) { return x.id === id; });
+  if (!s) { ok(label + ' (scadenza ' + id + ' presente nel registro)', false); return; }
+  const chiusa = s.stato === 'pagato' || s.stato === 'pagata' || s.stato === 'annullata';
+  if (!chiusa && s.data >= oggiIso) ok('contiene ' + label, hasImporto(importo));
+  else ok(label + ' correttamente FUORI dal forward (scaduta/chiusa: ' + s.data + ', ' + s.stato + ')',
+          !fwd.some(function (x) { return x && x.id === id; }));
+}
+expectFwd('SCAD-2026-0018', 854.5, 'IRAP 1° acconto €854,50');
+expectFwd('SCAD-2026-0019', 152, 'CCIAA €152');
+expectFwd('SCAD-2026-0024', 1359.5, 'IRAP 2° acconto €1.359,50');
 // ordinato per data crescente
 const date = fwd.map(function (x) { return x && x.data; }).filter(Boolean);
 let ordinato = true; for (let i = 1; i < date.length; i++) if (date[i] < date[i - 1]) ordinato = false;

@@ -10928,6 +10928,26 @@
   {
    "campo": "movimenti.MOV-2026-0343",
    "nota": "Liliya Zozulya €1.037 (08/06, setup Ads Meta): manca fattura/ricevuta della fornitrice."
+  },
+  {
+   "campo": "ordini.ORD-2026-0019",
+   "nota": "ANGELILLO IMPIANTI (proforma 20, ordine 425) - DECISIONE 21/07: si fattura ogni rata incassata (servizi, art. 6 c.3 DPR 633/72), NON fattura unica a saldo. Da emettere: 2 fatture acconto TD02 da imponibile 1.000,00 + IVA 220,00 (incasso SDD 15/06 gia' avvenuto = TARDIVA, termine era 27/06; rata 15/07 da verificare su TSPay). Nel 2027: 4 fatture su rate 1.347,49 (imponibile 1.104,50 + IVA 243,00). Attesa numeri fatture da Sajay."
+  },
+  {
+   "campo": "rateiRisconti.ORD-2026-0019",
+   "nota": "ANGELILLO - competenza calcolata 21/07 (sito ONLINE, manutenzione e social decorrono da agosto 2026): ricavo 2026 = 5.525,00 (sito 2.388 + setup social 597 + WhatsApp/Email 214 + NEXTSOCIAL 3 mesi 2.091 + manutenzione 5/24 = 235); 2027 = 564,00; 2028 = 329,00. Fatturato 2026 previsto 2.000,00 -> iscrivere FATTURE DA EMETTERE 3.525,00 al 31/12/2026. Serve il costo sviluppo Luca nello stesso esercizio (correlazione costi-ricavi)."
+  },
+  {
+   "campo": "scadenze.angelillo-2027",
+   "nota": "ANGELILLO - emettere fattura entro 12 gg da ogni addebito SDD: 15/03, 15/06, 15/09, 15/12/2027 (1.347,49 cad.). Verificare inoltre sul mandato SDD TeamSystem se sono caricate 6 rate: la proforma consegnata al cliente ne espone 5 (6.482,47) contro un totale di 7.829,96 - manca 1.347,49."
+  },
+  {
+   "campo": "fatture.meta-platforms",
+   "nota": "Meta Platforms Ireland (Facebook Ads): 5 addebiti sul conto NLI dal 15/06 al 03/07 per 22,57 totali, categorizzati B7_pubblicita, ma NESSUNA fattura/ricevuta a registro. Scaricare le ricevute da Meta > Fatturazione e verificare intestazione (deve essere NEXT LEVEL ITALIA SAS, P.IVA [P.IVA rimossa]). Servizio intra-UE: integrazione con autofattura elettronica TD17 da concordare con Mascolo (stesso tema di Richartz)."
+  },
+  {
+   "campo": "debitiVersoSoci.marco-carta-meta",
+   "nota": "Meta ha restrizioni sul metodo di pagamento aziendale: le campagne si pagheranno con carta personale di Marco, alimentata con bonifico NLI causale 'Anticipazione spese pubblicitarie Meta Ads - socio Marco Vurro - <mese> <anno>'. Il bonifico e' ANTICIPAZIONE (credito verso socio), non costo: il costo nasce con la ricevuta Meta. Da presidiare: residuo non speso, ricevute mensili, anticipo e spesa nello stesso anno (regime per cassa). NB: saldo attuale opposto - la societa' deve a Marco 2.775,73."
   }
  ],
  "iva": {
@@ -12426,11 +12446,11 @@
  "portafoglioOrdini": {
   "generatoIl": "2026-07-05",
   "fonte": "proforme NL.DefXml (Payments con Paid=false e data futura)",
-  "nota": "Rate gia contrattualizzate non ancora incassate, con scadenza futura. Base certa del forecast cassa (componente 1). Esclude rate passate non pagate (stantie/da verificare). Solo proforme con piano pagamenti in Danea (22/177) hanno rate. Aggiornato 05/07: tolte 4 rate incassate a giugno (Gima 46,72 + GIAMI 847,13 + Security 624,56 + Emmeti 90,28), aggiunte le rate future delle proforme 22-24. NON incluse: rate scadute non pagate (Simone Impianti 225,09 del 16/06 — sollecitare; Totaro 327,57 del 02/07) e il saldo Emmeti pf21 1.074,50 netto in transito TSPay.",
-  "totaleRateCerte": 13629.58,
-  "numeroRate": 52,
+  "nota": "Rate gia contrattualizzate non ancora incassate, con scadenza futura. Base certa del forecast cassa (componente 1). Esclude rate passate non pagate (stantie/da verificare). Solo proforme con piano pagamenti in Danea (22/177) hanno rate. Aggiornato 05/07: tolte 4 rate incassate a giugno (Gima 46,72 + GIAMI 847,13 + Security 624,56 + Emmeti 90,28), aggiunte le rate future delle proforme 22-24. NON incluse: rate scadute non pagate (Simone Impianti 225,09 del 16/06 — sollecitare; Totaro 327,57 del 02/07) e il saldo Emmeti pf21 1.074,50 netto in transito TSPay. | 22/07/2026: rimossa rata Simone Impianti €525,21 (proforma 23 annullata, cliente non ha pagato).",
+  "totaleRateCerte": 13104.37,
+  "numeroRate": 51,
   "perMese": {
-   "2026-07": 5455.92,
+   "2026-07": 4930.71,
    "2026-08": 137,
    "2026-09": 137,
    "2026-10": 137,
