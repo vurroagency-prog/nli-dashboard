@@ -10931,7 +10931,7 @@
   },
   {
    "campo": "ordini.ORD-2026-0019",
-   "nota": "ANGELILLO IMPIANTI (proforma 20, ordine 425) - DECISIONE 21/07: si fattura ogni rata incassata (servizi, art. 6 c.3 DPR 633/72), NON fattura unica a saldo. Da emettere: 2 fatture acconto TD02 da imponibile 1.000,00 + IVA 220,00 (incasso SDD 15/06 gia' avvenuto = TARDIVA, termine era 27/06; rata 15/07 da verificare su TSPay). Nel 2027: 4 fatture su rate 1.347,49 (imponibile 1.104,50 + IVA 243,00). Attesa numeri fatture da Sajay."
+   "nota": "ANGELILLO IMPIANTI (proforma 20, ordine 425) - DECISIONE 21/07: si fattura ogni rata incassata (servizi, art. 6 c.3 DPR 633/72), NON fattura unica a saldo. Da emettere: 2 fatture acconto TD02 da imponibile 1.000,00 + IVA 220,00 (incasso SDD 15/06 gia' avvenuto = TARDIVA, termine era 27/06; rata 15/07 da verificare su TSPay). Nel 2027: 4 fatture su rate 1.347,49 (imponibile 1.104,50 + IVA 243,00). Attesa numeri fatture da Sajay. | 22/07: incasso acconto 15/06 CONFERMATO da Marco. Istruzioni operative date a Marco/Sajay: fattura 1 data documento 15/06 trasmessa subito (tardiva, ravvedimento Mascolo, IVA in Q2), fattura 2 data 15/07 entro il 27/07 previa conferma addebito su TSPay. Procedura Danea: Nuovo > Fattura d'acconto (autonoma), rif. ordine 425 in Proprieta' fattura elettr., NO retrodatazione (SDI certifica la trasmissione)."
   },
   {
    "campo": "rateiRisconti.ORD-2026-0019",
@@ -10939,7 +10939,7 @@
   },
   {
    "campo": "scadenze.angelillo-2027",
-   "nota": "ANGELILLO - emettere fattura entro 12 gg da ogni addebito SDD: 15/03, 15/06, 15/09, 15/12/2027 (1.347,49 cad.). Verificare inoltre sul mandato SDD TeamSystem se sono caricate 6 rate: la proforma consegnata al cliente ne espone 5 (6.482,47) contro un totale di 7.829,96 - manca 1.347,49."
+   "nota": "ANGELILLO - emettere fattura entro 12 gg da ogni addebito SDD: 15/03, 15/06, 15/09, 15/12/2027 (1.347,49 cad.). Piano rate CONFERMATO da Marco 22/07: acconto + 5 rate = 6 pagamenti totali per 7.829,96 (la proforma espone 5 rate + acconto separato). Verifica mandato SDD chiusa."
   },
   {
    "campo": "fatture.meta-platforms",
